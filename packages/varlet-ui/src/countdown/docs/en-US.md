@@ -114,15 +114,15 @@ function change() {
   <var-countdown
     time="3000"
     ref="countdown"
-    :auto-start="false"
     format="ss : SSS"
+    :auto-start="false"
     @end="end"
     @change="change"
   />
   <var-row justify="space-between" align="center" style="margin-top: 10px">
-    <var-button type="primary" @click="$refs.countdown.start()">start</var-button>
-    <var-button @click="$refs.countdown.pause()">pause</var-button>
-    <var-button @click="$refs.countdown.reset()">reset</var-button>
+    <var-button type="primary" @click="countdown.start()">Start</var-button>
+    <var-button @click="countdown.pause()">Pause</var-button>
+    <var-button @click="countdown.reset()">Reset</var-button>
   </var-row>
 </template>
 ```
@@ -151,7 +151,7 @@ function change() {
 
 ### Events
 
-| Event    | Description                     | arguments            |
+| Event    | Description                     | Arguments            |
 | -------- | ------------------------------- | -------------------- |
 | `end`    | Emitted after countdown ended   | `-`                  |
 | `change` | Emitted after countdown changed | `timeData: TimeData` |
@@ -176,7 +176,7 @@ function change() {
 
 Use ref to get CountDown instance and call instance methods.
 
-| Method | Description	 | arguments | Return |
+| Method | Description	 | Arguments | Return |
 | ---- | ------- | -------- |--------|
 | `start` | Start countdown | `-`       | `-` |
 | `pause` | Pause countdown | `-`       | `-` |

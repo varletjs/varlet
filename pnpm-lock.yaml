@@ -274,8 +274,8 @@ importers:
   packages/varlet-shared:
     dependencies:
       rattail:
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.14
+        version: 1.0.14
     devDependencies:
       '@types/node':
         specifier: ^18.7.18
@@ -4242,8 +4242,8 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  rattail@1.0.0:
-    resolution: {integrity: sha512-ccYN21TuJWxP4/XI0BfYcc9NFE+wvNk5tT4J4oyYMG3vUryiW218NZdXAbtp6C1L4IZLjdCW/dFz1Ym4WwBGFA==}
+  rattail@1.0.14:
+    resolution: {integrity: sha512-PWwwg843q7awJltAziDbET54VtIJ5JKm57QfMb6G6p1dTMJ+/BPcUaVRJXAqhqvWKdmZBplBt6SCC8qwCjqHzQ==}
     engines: {pnpm: '>=9.0'}
 
   rc@1.2.8:
@@ -9302,7 +9302,7 @@ snapshots:
 
   range-parser@1.2.1: {}
 
-  rattail@1.0.0:
+  rattail@1.0.14:
     dependencies:
       mitt: 3.0.1
 

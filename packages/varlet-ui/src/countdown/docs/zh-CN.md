@@ -120,9 +120,9 @@ function change() {
     @change="change"
   />
   <var-row justify="space-between" align="center" style="margin-top: 10px">
-    <var-button type="primary" @click="$refs.countdown.start()">开始</var-button>
-    <var-button @click="$refs.countdown.pause()">暂停</var-button>
-    <var-button @click="$refs.countdown.reset()">重置</var-button>
+    <var-button type="primary" @click="countdown.start()">开始</var-button>
+    <var-button @click="countdown.pause()">暂停</var-button>
+    <var-button @click="countdown.reset()">重置</var-button>
   </var-row>
 </template>
 ```
@@ -189,4 +189,4 @@ function change() {
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
 | `--countdown-text-color`     | `var(--color-text)`                |
-| `--countdown-text-font-size` | `var(--font-size-lg)` 
+| `--countdown-text-font-size` | `var(--font-size-lg)` |
