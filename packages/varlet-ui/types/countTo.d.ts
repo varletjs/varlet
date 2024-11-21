@@ -7,11 +7,11 @@ export interface CountToData {
 }
 
 export interface CountToProps extends BasicAttributes {
-  from: string | number
-  to: string | number
-  duration: string | number
-  precision: string | number
-  autoStart: boolean
+  from?: string | number
+  to?: string | number
+  duration?: string | number
+  precision?: string | number
+  autoStart?: boolean
   timingFunction?: (v: number) => number
   onEnd?: ListenerProp<() => void>
 }
