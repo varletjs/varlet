@@ -66,6 +66,7 @@ import appBar from './appBar'
 import code from './code'
 
 export default {
+  '--color-scheme': 'light',
   '--font-size-xs': '10px',
   '--font-size-sm': '12px',
   '--font-size-md': '14px',

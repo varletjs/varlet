@@ -66,6 +66,7 @@ import swipe from './swipe'
 import code from './code'
 
 export default {
+  '--color-scheme': 'dark',
   '--font-size-xs': '10px',
   '--font-size-sm': '12px',
   '--font-size-md': '14px',
