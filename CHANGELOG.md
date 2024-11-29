@@ -1,3 +1,12 @@
+## [3.7.1](https://github.com/varletjs/varlet/compare/v3.7.0...v3.7.1) (2024-11-29)
+
+
+### Features
+
+* **themes:** support --color-scheme ([35320bb](https://github.com/varletjs/varlet/commit/35320bb55270069704f171c46b4b5573da7516bc))
+
+
+
 # [3.7.0](https://github.com/varletjs/varlet/compare/v3.6.5...v3.7.0) (2024-11-21)
 
 
