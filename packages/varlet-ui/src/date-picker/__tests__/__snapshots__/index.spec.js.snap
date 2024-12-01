@@ -59,11 +59,11 @@ exports[`test datePicker rerender date panel when max or min changes 1`] = `
   <div class="var-date-picker__title">
     <div class="var-date-picker__title-select">
       <div class="var-date-picker__title-hint">选择日期</div>
-      <div class="var-date-picker__title-year">2024</div>
+      <div class="var-date-picker__title-year">2020</div>
     </div>
     <div class="var-date-picker__title-date var-date-picker__title-date--active">
       <transition-stub name="var-date-picker-translatey" appear="false" persisted="false" css="true">
-        <div>12-23 星期一</div>
+        <div>12-23 星期三</div>
       </transition-stub>
     </div>
   </div>
@@ -78,7 +78,7 @@ exports[`test datePicker rerender date panel when max or min changes 1`] = `
             </button>
             <div class="var-date-picker-header__value">
               <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-                <div>2024 十二月</div>
+                <div>2020 十二月</div>
               </transition-stub>
             </div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-button--disabled var-button--text-disabled var-date-picker-header__arrow" type="button" var-date-picker-header-cover="" disabled="">
               <!--v-if-->
@@ -98,6 +98,16 @@ exports[`test datePicker rerender date panel when max or min changes 1`] = `
                 <li>六</li>
               </ul>
               <ul class="var-day-picker__body">
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                    <!--v-if-->
+                    <div class="var-button__content"></div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                    <!--v-if-->
+                    <div class="var-button__content"></div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
                 <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
                     <!--v-if-->
                     <div class="var-button__content">1</div>
@@ -269,7 +279,7 @@ exports[`test datePicker rerender date panel when max or min changes 2`] = `
   <div class="var-date-picker__title">
     <div class="var-date-picker__title-select">
       <div class="var-date-picker__title-hint">选择日期</div>
-      <div class="var-date-picker__title-year">2025</div>
+      <div class="var-date-picker__title-year">2020</div>
     </div>
     <div class="var-date-picker__title-date var-date-picker__title-date--active">
       <transition-stub name="var-date-picker-translatey" appear="false" persisted="false" css="true">
@@ -288,7 +298,7 @@ exports[`test datePicker rerender date panel when max or min changes 2`] = `
             </button>
             <div class="var-date-picker-header__value">
               <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-                <div>2025 一月</div>
+                <div>2020 一月</div>
               </transition-stub>
             </div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-button--disabled var-button--text-disabled var-date-picker-header__arrow" type="button" var-date-picker-header-cover="" disabled="">
               <!--v-if-->
@@ -413,12 +423,12 @@ exports[`test datePicker rerender date panel when max or min changes 2`] = `
                     <div class="var-button__content">18</div>
                     <div class="var-hover-overlay"></div>
                   </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
                     <!--v-if-->
                     <div class="var-button__content">19</div>
                     <div class="var-hover-overlay"></div>
                   </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
                     <!--v-if-->
                     <div class="var-button__content">20</div>
                     <div class="var-hover-overlay"></div>
@@ -428,12 +438,12 @@ exports[`test datePicker rerender date panel when max or min changes 2`] = `
                     <div class="var-button__content">21</div>
                     <div class="var-hover-overlay"></div>
                   </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
                     <!--v-if-->
                     <div class="var-button__content">22</div>
                     <div class="var-hover-overlay"></div>
                   </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
                     <!--v-if-->
                     <div class="var-button__content">23</div>
                     <div class="var-hover-overlay"></div>

@@ -1,13 +1,24 @@
 :root {
+  --switch-width: 40px;
+  --switch-height: 24px;
+  --switch-track-width: 38px;
+  --switch-track-height: 14.4px;
+  --switch-track-border-radius: calc(20px * 2 / 3);
   --switch-track-background: #fff;
   --switch-track-active-background: var(--color-primary);
   --switch-track-error-background: var(--color-danger);
-  --switch-ripple-color: var(--color-primary);
+  --switch-handle-width: 20px;
+  --switch-handle-height: 20px;
   --switch-handle-background: var(--color-on-primary);
   --switch-handle-color: var(--color-primary);
   --switch-handle-active-color: var(--color-on-primary);
   --switch-handle-active-background: var(--color-primary);
   --switch-handle-error-background: var(--color-danger);
+  --switch-ripple-color: var(--color-primary);
+  --switch-ripple-size: 40px;
+  --switch-ripple-left: -10px;
+  --switch-ripple-active-left: 10px;
+  --switch-loading-size: 16px;
   --switch-disabled-opacity: var(--opacity-disabled);
   --switch-variant-width: 52px;
   --switch-variant-height: 32px;
@@ -19,6 +30,8 @@
   --switch-variant-handle-active-color: var(--color-primary);
   --switch-variant-handle-background: #888;
   --switch-variant-handle-active-background: var(--color-on-primary);
+  --switch-variant-ripple-left: -4px;
+  --switch-variant-ripple-active-left: 16px;
 }
 
 .var-switch {
@@ -31,8 +44,8 @@
     -webkit-tap-highlight-color: transparent;
     align-items: center;
     justify-content: center;
-    height: 24px;
-    width: 40px;
+    width: var(--switch-width);
+    height: var(--switch-height);
     transition: filter 0.25s;
   }
 
@@ -42,12 +55,12 @@
   }
 
   &__track {
+    width: var(--switch-track-width);
+    height: var(--switch-track-height);
+    border-radius: var(--switch-track-border-radius);
     background-color: var(--switch-track-background);
     transition: background-color 0.25s;
     filter: opacity(var(--switch-disabled-opacity));
-    height: 14.4px;
-    width: 38px;
-    border-radius: calc(20px * 2 / 3);
 
     &--active {
       background-color: var(--switch-track-active-background);
@@ -68,12 +81,12 @@
     overflow: hidden;
     outline: none;
     transition: 0.3s var(--cubic-bezier);
-    width: 40px;
-    height: 40px;
-    left: -10px;
+    width: var(--switch-ripple-size);
+    height: var(--switch-ripple-size);
+    left: var(--switch-ripple-left);
 
     &--active {
-      left: 10px;
+      left: var(--switch-ripple-active-left);
     }
   }
 
@@ -85,8 +98,8 @@
     justify-content: center;
     color: var(--switch-handle-color);
     transition: background-color 0.25s;
-    width: 20px;
-    height: 20px;
+    width: var(--switch-handle-width);
+    height: var(--switch-handle-height);
     outline: none;
 
     &--active {
@@ -125,10 +138,10 @@
       }
 
       &__ripple {
-        left: -4px;
+        left: var(--switch-variant-ripple-left);
 
         &--active {
-          left: 16px;
+          left: var(--switch-variant-ripple-active-left);
         }
       }
 
@@ -157,8 +170,8 @@
 
   &__loading {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: var(--switch-loading-size);
+    height: var(--switch-loading-size);
     animation: circle 1.8s linear infinite;
 
     svg {

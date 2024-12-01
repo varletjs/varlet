@@ -430,9 +430,9 @@ test('test datePicker rerender date panel when max or min changes', async () => 
     },
     data() {
       return {
-        date: '2024-12-23',
-        max: '2024-12-24',
-        min: '2024-12-22',
+        date: '2020-12-23',
+        max: '2020-12-24',
+        min: '2020-12-22',
       }
     },
     template: `<var-date-picker v-model="date" :min="min" :max="max" />`,
@@ -442,9 +442,9 @@ test('test datePicker rerender date panel when max or min changes', async () => 
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({
-    min: '2025-01-05',
-    date: '2025-01-06',
-    max: '2025-01-07',
+    min: '2020-01-05',
+    date: '2020-01-06',
+    max: '2020-01-07',
   })
   expect(wrapper.html()).toMatchSnapshot()
 

@@ -209,3 +209,16 @@ const value = ref(true)
 | `--switch-variant-handle-active-color` | `var(--color-primary)` |
 | `--switch-variant-handle-background` | `#888` |
 | `--switch-variant-handle-active-background` | `var(--color-on-primary)` |
+| `--switch-width` | `40px` |
+| `--switch-height` | `24px` |
+| `--switch-track-width` | `38px` |
+| `--switch-track-height` | `14.4px` |
+| `--switch-track-border-radius` | `calc(20px * 2 / 3)` |
+| `--switch-handle-width` | `20px` |
+| `--switch-handle-height` | `20px` |
+| `--switch-ripple-size` | `40px` |
+| `--switch-ripple-left` | `-10px` |
+| `--switch-ripple-active-left` | `10px` |
+| `--switch-loading-size` | `16px` |
+| `--switch-variant-ripple-left` | `-4px` |
+| `--switch-variant-ripple-active-left` | `16px` |
