@@ -78,12 +78,11 @@ export function usePopover(options: UsePopoverOptions) {
   useStack(() => show.value, zIndex)
 
   let popoverInstance: Instance | null = null
-  let reference: string | HTMLElement
+  let reference: Reference
   let enterPopover = false
-  let enterHost = false
+  let enterReference = false
 
   useEventListener(() => window, 'keydown', handleKeydown)
-  onWindowResize(resize)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
   watch(
@@ -95,6 +94,7 @@ export function usePopover(options: UsePopoverOptions) {
     }
   )
 
+  onWindowResize(resize)
   onMounted(createPopperInstance)
   onUnmounted(destroyPopperInstance)
 
@@ -102,19 +102,22 @@ export function usePopover(options: UsePopoverOptions) {
     const reference = getReference()!
 
     popoverInstance = createPopper(reference, popover.value!, getPopperOptions())
-    reference.addEventListener('mouseenter', handleHostMouseenter)
-    reference.addEventListener('mouseleave', handleHostMouseleave)
+    reference.addEventListener('mouseenter', handleReferenceMouseenter)
+    reference.addEventListener('mouseleave', handleReferenceMouseleave)
     reference.addEventListener('click', handleReferenceClick)
     document.addEventListener('click', handleClickOutside)
   }
 
   function destroyPopperInstance() {
-    const reference = getReference()!
+    const reference = getReference()
+
+    if (reference) {
+      reference.removeEventListener('mouseenter', handleReferenceMouseenter)
+      reference.removeEventListener('mouseleave', handleReferenceMouseleave)
+      reference.removeEventListener('click', handleReferenceClick)
+    }
 
     popoverInstance!.destroy()
-    reference.removeEventListener('mouseenter', handleHostMouseenter)
-    reference.removeEventListener('mouseleave', handleHostMouseleave)
-    reference.removeEventListener('click', handleReferenceClick)
     document.removeEventListener('click', handleClickOutside)
   }
 
@@ -172,22 +175,22 @@ export function usePopover(options: UsePopoverOptions) {
     }
   }
 
-  function handleHostMouseenter() {
+  function handleReferenceMouseenter() {
     if (options.trigger !== 'hover') {
       return
     }
 
-    enterHost = true
+    enterReference = true
 
     open()
   }
 
-  async function handleHostMouseleave() {
+  async function handleReferenceMouseleave() {
     if (options.trigger !== 'hover') {
       return
     }
 
-    enterHost = false
+    enterReference = false
 
     await doubleRaf()
 
@@ -215,7 +218,7 @@ export function usePopover(options: UsePopoverOptions) {
 
     await doubleRaf()
 
-    if (enterHost) {
+    if (enterReference) {
       return
     }
 
