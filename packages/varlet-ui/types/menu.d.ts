@@ -22,11 +22,13 @@ export type MenuTrigger = 'click' | 'hover' | 'manual'
 
 export type MenuStrategy = PositioningStrategy
 
+export type MenuReference = string | HTMLElement
+
 export interface MenuProps extends BasicAttributes {
   show?: boolean
   disabled?: boolean
   trigger?: MenuTrigger
-  reference?: string
+  reference?: MenuReference
   placement?: MenuPlacement
   strategy?: MenuStrategy
   offsetX?: string | number

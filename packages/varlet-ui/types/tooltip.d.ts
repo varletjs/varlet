@@ -11,6 +11,8 @@ export type TooltipPlacement = TooltipNeededPopperPlacement
 
 export type TooltipTrigger = 'click' | 'hover' | 'manual'
 
+export type TooltipReference = string | HTMLElement
+
 export type TooltipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
 export type TooltipStrategy = PositioningStrategy
@@ -23,7 +25,7 @@ export interface TooltipProps extends BasicAttributes {
   textColor?: string
   type?: TooltipType
   trigger?: TooltipTrigger
-  reference?: string
+  reference?: TooltipReference
   placement?: TooltipPlacement
   strategy?: TooltipStrategy
   offsetX?: string | number

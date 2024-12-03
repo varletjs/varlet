@@ -30,12 +30,12 @@ const placementOptions = ref([
   'cover-right',
 ])
 
+watchLang(use)
+onThemeChange()
+
 function closeMenu() {
   show.value = false
 }
-
-watchLang(use)
-onThemeChange()
 </script>
 
 <template>
