@@ -1,11 +1,5 @@
 <template>
-  <div
-    ref="host"
-    :class="classes(n(), n('$--box'))"
-    @click="handleHostClick"
-    @mouseenter="handleHostMouseenter"
-    @mouseleave="handleHostMouseleave"
-  >
+  <div ref="host" :class="classes(n(), n('$--box'))">
     <slot />
 
     <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
@@ -23,7 +17,7 @@
             :style="{
               background: color,
               color: textColor,
-              width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined,
+              width: sameWidth ? toSizeUnit(Math.ceil(referenceSize.width)) : undefined,
             }"
             :class="classes(n('content-container'), n(`--${type}`))"
             role="tooltip"
@@ -53,12 +47,9 @@ export default defineComponent({
     const {
       popover,
       host,
-      hostSize,
+      referenceSize,
       show,
       zIndex,
-      handleHostClick,
-      handleHostMouseenter,
-      handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
@@ -69,28 +60,28 @@ export default defineComponent({
       close,
       // expose
       resize,
+      // expose
+      setReference,
     } = usePopover(props)
 
     return {
       popover,
       host,
-      hostSize,
+      referenceSize,
       show,
       zIndex,
       teleportDisabled,
       toSizeUnit,
       n,
       classes,
-      handleHostClick,
       handlePopoverClose,
-      handleHostMouseenter,
-      handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handleClosed,
       resize,
       open,
       close,
+      setReference,
     }
   },
 })

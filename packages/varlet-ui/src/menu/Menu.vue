@@ -1,11 +1,5 @@
 <template>
-  <div
-    ref="host"
-    :class="classes(n(), n('$--box'))"
-    @click="handleHostClick"
-    @mouseenter="handleHostMouseenter"
-    @mouseleave="handleHostMouseleave"
-  >
+  <div ref="host" :class="classes(n(), n('$--box'))">
     <slot />
 
     <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
@@ -14,7 +8,7 @@
           ref="popover"
           :style="{
             zIndex,
-            width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined,
+            width: sameWidth ? toSizeUnit(Math.ceil(referenceSize.width)) : undefined,
           }"
           :class="
             classes(
@@ -54,12 +48,9 @@ export default defineComponent({
     const {
       popover,
       host,
-      hostSize,
+      referenceSize,
       show,
       zIndex,
-      handleHostClick,
-      handleHostMouseenter,
-      handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
@@ -70,12 +61,14 @@ export default defineComponent({
       close,
       // expose
       resize,
+      // expose
+      setReference,
     } = usePopover(props)
 
     return {
       popover,
       host,
-      hostSize,
+      referenceSize,
       show,
       zIndex,
       teleportDisabled,
@@ -83,9 +76,6 @@ export default defineComponent({
       toSizeUnit,
       n,
       classes,
-      handleHostClick,
-      handleHostMouseenter,
-      handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
@@ -93,6 +83,7 @@ export default defineComponent({
       resize,
       open,
       close,
+      setReference,
     }
   },
 })
