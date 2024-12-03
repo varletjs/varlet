@@ -78,7 +78,7 @@ export function usePopover(options: UsePopoverOptions) {
   useStack(() => show.value, zIndex)
 
   let popoverInstance: Instance | null = null
-  let reference: Reference
+  let reference: Reference | undefined = undefined
   let enterPopover = false
   let enterReference = false
 
