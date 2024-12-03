@@ -668,6 +668,19 @@ interface BaseStyleVars {
   '--switch-variant-handle-active-color'?: string
   '--switch-variant-handle-background'?: string
   '--switch-variant-handle-active-background'?: string
+  '--switch-width'?: string
+  '--switch-height'?: string
+  '--switch-track-width'?: string
+  '--switch-track-height'?: string
+  '--switch-track-border-radius'?: string
+  '--switch-handle-width'?: string
+  '--switch-handle-height'?: string
+  '--switch-ripple-size'?: string
+  '--switch-ripple-left'?: string
+  '--switch-ripple-active-left'?: string
+  '--switch-loading-size'?: string
+  '--switch-variant-ripple-left'?: string
+  '--switch-variant-ripple-active-left'?: string
   '--table-background'?: string
   '--table-border-radius'?: string
   '--table-thead-border-bottom'?: string
