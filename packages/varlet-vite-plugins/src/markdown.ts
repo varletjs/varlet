@@ -14,7 +14,7 @@ function htmlWrapper(html: string) {
   const matches = html.matchAll(/<h3>(.*?)<\/h3>/g)
   const hGroup = html
     .replace(/<h3>/g, () => {
-      const hash = transformHash(matches.next().value[1])
+      const hash = transformHash(matches.next().value![1])
 
       return `:::<h3 id="${hash}"><router-link to="#${hash}">#</router-link>`
     })
