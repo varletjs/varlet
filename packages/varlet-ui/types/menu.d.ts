@@ -63,6 +63,8 @@ export class Menu extends VarComponent {
   close(): void
 
   resize(): void
+
+  setReference(reference: MenuReference): void
 }
 
 export class _MenuComponent extends Menu {}

@@ -77,6 +77,8 @@ export class MenuSelect extends VarComponent {
   close(): void
 
   resize(): void
+
+  setReference(reference: MenuSelectReference): void
 }
 
 export class _MenuSelectComponent extends MenuSelect {}

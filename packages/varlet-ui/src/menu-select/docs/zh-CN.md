@@ -300,7 +300,7 @@ const options = ref([
 | `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to'] \| false_ | `body`            |
 | `disabled`      | 是否禁用菜单                                                      | _boolean_             | `false`           |
 | `trigger`       | 菜单触发方式，可选值为 `click` `hover` `manual` | _string_              | `click`           |
-| `reference`       | 菜单关联的触发元素选择器，用于指定菜单的特定子元素为触发元素 | _string_              | `-`           |
+| `reference`       | 菜单关联的触发元素，`string` 类型为菜单组件的子孙元素选择器， `HTMLElement` 类型为任意指定的元素节点 | _string \| HTMLElement_ | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
@@ -361,6 +361,7 @@ const options = ref([
 | `open` | 打开 MenuSelect | `-` | `-` |
 | `close` | 关闭 MenuSelect | `-` | `-` |
 | `resize` | MenuSelect 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `setReference` ***3.7.2*** | 设置 MenuSelect 关联的触发元素 | `reference: 与组件属性的 reference 一致` | `-` |
 
 ### 事件
 

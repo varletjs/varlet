@@ -57,6 +57,8 @@ export class Tooltip extends VarComponent {
   close(): void
 
   resize(): void
+
+  setReference(reference: TooltipReference): void
 }
 
 export class _TooltipComponent extends Tooltip {}

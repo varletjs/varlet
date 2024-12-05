@@ -300,7 +300,7 @@ const options = ref([
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
 | `disabled`      | Whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover` `manual` | _string_  | `click`           |
-| `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `reference` | The trigger element associated with the menu, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
@@ -361,6 +361,7 @@ const options = ref([
 | `open` | Open Menu                       | `-` | `-` |
 | `close` | Close Menu                      | `-` | `-` |
 | `resize` | This method can be called to redraw when the default slot element of Menu select changes its position and size | `-` | `-` |
+| `setReference` ***3.7.2*** | Set the trigger element associated with the menu | `reference: consistent with the reference of the component attribute` | `-` |
 
 ### Events
 
