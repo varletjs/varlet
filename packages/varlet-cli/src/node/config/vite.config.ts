@@ -1,3 +1,5 @@
+import vue from '@vitejs/plugin-vue'
+import jsx from '@vitejs/plugin-vue-jsx'
 import {
   SRC_DIR,
   ES_DIR,
@@ -14,8 +16,7 @@ import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig, Plugin } from 'vite'
 import { resolve } from 'path'
 import { VarletConfig, type VarletConfigHtmlInject, type VarletConfigHtmlInjectPoint } from './varlet.config.js'
-import vue from '@vitejs/plugin-vue'
-import jsx from '@vitejs/plugin-vue-jsx'
+import { isArray } from '@varlet/shared'
 
 export function getHtmlInject(inject: VarletConfigHtmlInject) {
   const getContent = (injectKey: keyof VarletConfigHtmlInject, position: VarletConfigHtmlInjectPoint['position']) =>
@@ -38,7 +39,7 @@ export function getHtmlInject(inject: VarletConfigHtmlInject) {
 export function getPlugins(varletConfig: Required<VarletConfig>): Plugin[] {
   const { vitePlugins = [] } = varletConfig
 
-  const _plugins = [
+  const plugins = [
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -67,11 +68,11 @@ export function getPlugins(varletConfig: Required<VarletConfig>): Plugin[] {
     }),
   ]
 
-  if (Array.isArray(vitePlugins)) {
-    return [..._plugins, ...vitePlugins]
+  if (isArray(vitePlugins)) {
+    return [...plugins, ...vitePlugins]
   }
 
-  return vitePlugins(_plugins)
+  return vitePlugins(plugins)
 }
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
