@@ -11,7 +11,7 @@ import {
   EXTENSION_ENTRY,
 } from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
-import { InlineConfig } from 'vite'
+import { InlineConfig, Plugin } from 'vite'
 import { resolve } from 'path'
 import { VarletConfig, type VarletConfigHtmlInject, type VarletConfigHtmlInjectPoint } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
@@ -33,6 +33,45 @@ export function getHtmlInject(inject: VarletConfigHtmlInject) {
       scriptStart: getContent('body', 'script-start'),
     },
   }
+}
+
+export function getPlugins(varletConfig: Required<VarletConfig>): Plugin[] {
+  const { vitePlugins = [] } = varletConfig
+
+  const _plugins = [
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+
+    jsx(),
+
+    markdown({ style: varletConfig?.highlight?.style }),
+
+    copy({ paths: varletConfig?.copy || [] }),
+
+    html({
+      data: {
+        logo: varletConfig?.logo,
+        baidu: varletConfig?.analysis?.baidu,
+
+        pcTitle: varletConfig?.seo?.title ?? '',
+        pcDescription: varletConfig?.seo?.description ?? '',
+        pcKeywords: varletConfig?.seo?.keywords ?? '',
+        pcHtmlInject: getHtmlInject(varletConfig?.pc?.htmlInject || {}),
+
+        mobileTitle: varletConfig?.seo?.title ?? '',
+        mobileDescription: varletConfig?.seo?.description ?? '',
+        mobileKeywords: varletConfig?.seo?.keywords ?? '',
+        mobileHtmlInject: getHtmlInject(varletConfig?.mobile?.htmlInject || {}),
+      },
+    }),
+  ]
+
+  if (Array.isArray(vitePlugins)) {
+    return [..._plugins, ...vitePlugins]
+  }
+
+  return vitePlugins(_plugins)
 }
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
@@ -66,34 +105,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
     publicDir: SITE_PUBLIC_PATH,
 
-    plugins: [
-      vue({
-        include: [/\.vue$/, /\.md$/],
-      }),
-
-      jsx(),
-
-      markdown({ style: varletConfig?.highlight?.style }),
-
-      copy({ paths: varletConfig?.copy || [] }),
-
-      html({
-        data: {
-          logo: varletConfig?.logo,
-          baidu: varletConfig?.analysis?.baidu,
-
-          pcTitle: varletConfig?.seo?.title ?? '',
-          pcDescription: varletConfig?.seo?.description ?? '',
-          pcKeywords: varletConfig?.seo?.keywords ?? '',
-          pcHtmlInject: getHtmlInject(varletConfig?.pc?.htmlInject || {}),
-
-          mobileTitle: varletConfig?.seo?.title ?? '',
-          mobileDescription: varletConfig?.seo?.description ?? '',
-          mobileKeywords: varletConfig?.seo?.keywords ?? '',
-          mobileHtmlInject: getHtmlInject(varletConfig?.mobile?.htmlInject || {}),
-        },
-      }),
-    ],
+    plugins: getPlugins(varletConfig),
   }
 }
 

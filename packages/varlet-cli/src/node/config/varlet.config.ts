@@ -5,7 +5,7 @@ import { isArray, mergeWith } from '@varlet/shared'
 import { pathToFileURL } from 'url'
 import { type VIConfig } from '@varlet/icon-builder'
 import { type CopyOptions } from '@varlet/vite-plugins'
-import { ProxyOptions } from 'vite'
+import { Plugin, ProxyOptions } from 'vite'
 
 const { pathExistsSync, statSync } = fse
 
@@ -181,6 +181,13 @@ export interface VarletConfig {
     external?: string[]
     globals?: Record<string, string>
   }
+  /**
+   *  @vitePlugins
+   * @default `[]`
+   * Vite plugins
+   */
+  vitePlugins?: Plugin[] | ((plugins: Plugin[]) => Plugin[])
+
   /**
    * @default `[]`
    * Directive folder name for component library.
