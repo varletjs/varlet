@@ -63,6 +63,7 @@ varlet-cli gen
 | `pc` | pc 端文档结构配置 | _[VarletConfigPc](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `mobile` | mobile 端文档结构配置 | _[VarletConfigMobile](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `bundle` | 组件库编译的捆绑产物配置 | _{ external: string[], globals: Record<string, string> }_ | `-` |
+| `vitePlugins` | vite 插件 | _[Plugin](https://vite.dev/guide/using-plugins.html)[]_ \| `(plugins: Plugin[]) => Plugin[])` | `-` |
 | `directives` | 组件库指令文件夹名称 | _string[]_ | `[]` |
 | `copy` | 复制文件配置 | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
 | `icons` | 字体图标打包相关配置 | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |

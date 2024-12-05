@@ -63,6 +63,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `pc` | PC side document structure configuration | _[VarletConfigPc](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `mobile` | Mobile document structure configuration | _[VarletConfigMobile](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `bundle` | Bundle output options | _{ external: string[], globals: Record<string, string> }_ | `-` |
+| `vitePlugins` | vite plugins | _[Plugin](https://vite.dev/guide/using-plugins.html)[]_ \| `(plugins: Plugin[]) => Plugin[])` | `-` |
 | `directives` | Component library directive folder name | _string[]_ | `[]` |
 | `copy` | Copy file configuration | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `- ` |
 | `icons` | Font icon packaging related configurations | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts) _ | `-` |
