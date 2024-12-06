@@ -56,10 +56,11 @@ import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
-import { type MenuOptionProvider } from '../menu-option/provide'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
 import { focusChildElementByKey } from '../utils/elements'
+import { type MenuOptionProvider } from '../menu-option/provide'
+import { type Reference } from '../menu/usePopover'
 
 const { name, n, classes } = createNamespace('menu-select')
 
@@ -139,6 +140,11 @@ export default defineComponent({
       menu.value?.resize()
     }
 
+    // expose
+    function setReference(reference: Reference) {
+      menu.value?.setReference(reference)
+    }
+
     return {
       show,
       menu,
@@ -149,6 +155,7 @@ export default defineComponent({
       open,
       close,
       resize,
+      setReference,
     }
   },
 })

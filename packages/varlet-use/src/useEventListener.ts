@@ -98,6 +98,7 @@ export function useEventListener(
   onBeforeUnmount(() => {
     remove(target)
   })
+
   onDeactivated(() => {
     remove(target)
   })

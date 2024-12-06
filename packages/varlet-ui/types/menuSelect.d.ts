@@ -24,6 +24,8 @@ export type MenuSelectStrategy = PositioningStrategy
 
 export type MenuSelectSize = 'normal' | 'mini' | 'small' | 'large'
 
+export type MenuSelectReference = string | HTMLElement
+
 export type MenuSelectOptionLabelRender = (option: MenuSelectOption, checked: boolean) => VNodeChild
 
 export interface MenuSelectOption {
@@ -42,7 +44,7 @@ export interface MenuSelectProps extends BasicAttributes {
   show?: boolean
   disabled?: boolean
   trigger?: MenuSelectTrigger
-  reference?: string
+  reference?: MenuSelectReference
   placement?: MenuSelectPlacement
   strategy?: MenuSelectStrategy
   offsetX?: string | number
@@ -75,6 +77,8 @@ export class MenuSelect extends VarComponent {
   close(): void
 
   resize(): void
+
+  setReference(reference: MenuSelectReference): void
 }
 
 export class _MenuSelectComponent extends MenuSelect {}

@@ -192,7 +192,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `same-width`    | Whether to same width as trigger element                   | _boolean_ | `false`           |
 | `disabled` | Whether to disable the tooltip                                                      | _boolean_            | `false`   |
 | `trigger` | Tooltip trigger method, optional value is `click` `hover` `manual` | _string_  | `hover`   |
-| `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `reference` | The trigger element associated with the tooltip, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
 | `close-on-key-escape` | Whether to support keyboard ESC to close the tooltip | _boolean_ | `true`  |
 
@@ -214,11 +214,13 @@ In the `disabled` state, the tooltip will not be opened.
 | `left-end` | Bottom left position                    |
 
 ### Methods
-| Method   | Description                     | Arguments | Return |
+
+| Method   | Description     | Arguments | Return |
 | --- |---------------------------------| --- | --- |
 | `open` | Open `Tooltip`                       | `-` | `-` |
 | `close` | Close `Tooltip`                      | `-` | `-` |
 | `resize` | This method can be called to redraw when the default slot element of `Tooltip` changes its position and size | `-` | `-` |
+| `setReference` ***3.7.2*** | Set the trigger element associated with the `Tooltip` | `reference: consistent with the reference of the component attribute` | `-` |
 
 ### Events
 
