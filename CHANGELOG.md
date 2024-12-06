@@ -1,3 +1,14 @@
+## [3.7.2](https://github.com/varletjs/varlet/compare/v3.7.1...v3.7.2) (2024-12-06)
+
+
+### Features
+
+* **cli:** support vite plugin ([#1825](https://github.com/varletjs/varlet/issues/1825)) ([2cbb8d4](https://github.com/varletjs/varlet/commit/2cbb8d42000cd258807e31e8e616f017f38cf74a))
+* enhance popover reference ([#1826](https://github.com/varletjs/varlet/issues/1826)) ([33b6e87](https://github.com/varletjs/varlet/commit/33b6e8763f6b3800e6c8fda7b0b99f84c5b57d73))
+* **switch:** support more css vars ([9cf6783](https://github.com/varletjs/varlet/commit/9cf6783cb6604d5664999b431e3727cd7925a5a5))
+
+
+
 ## [3.7.1](https://github.com/varletjs/varlet/compare/v3.7.0...v3.7.1) (2024-11-29)
 
 
