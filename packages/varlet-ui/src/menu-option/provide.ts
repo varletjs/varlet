@@ -1,5 +1,5 @@
 import { useParent } from '@varlet/use'
-import { error } from '../utils/logger'
+import { assert } from '@varlet/shared'
 import { MENU_SELECT_BIND_MENU_OPTION_KEY, type MenuSelectProvider } from '../menu-select/provide'
 import { type OptionProvider } from '../option/provide'
 
@@ -10,9 +10,7 @@ export function useMenuSelect() {
     MENU_SELECT_BIND_MENU_OPTION_KEY
   )
 
-  if (!bindParent) {
-    error('MenuOption', '<var-menu-option/> must in <var-menu-select/>')
-  }
+  assert(!!bindParent, 'MenuOption', '<var-menu-option/> must in <var-menu-select/>')
 
   return {
     index,

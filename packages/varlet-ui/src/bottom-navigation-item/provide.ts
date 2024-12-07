@@ -1,6 +1,6 @@
 import { type ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
-import { error } from '../utils/logger'
+import { assert } from '@varlet/shared'
 import {
   BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY,
   type BottomNavigationProvider,
@@ -16,9 +16,7 @@ export function useBottomNavigation() {
     BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY
   )
 
-  if (!bindParent) {
-    error('BottomNavigationItem', '<var-bottom-navigation-item/> must in <var-bottom-navigation/>')
-  }
+  assert(!!bindParent, 'BottomNavigationItem', '<var-bottom-navigation-item/> must in <var-bottom-navigation/>')
 
   return {
     index,

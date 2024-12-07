@@ -1,6 +1,6 @@
 import type { ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
-import { error } from '../utils/logger'
+import { assert } from '@varlet/shared'
 import { INDEX_BAR_BIND_INDEX_ANCHOR_KEY, type IndexBarProvider } from '../index-bar/provide'
 
 export interface IndexAnchorProvider {
@@ -15,9 +15,7 @@ export function useIndexBar() {
     INDEX_BAR_BIND_INDEX_ANCHOR_KEY
   )
 
-  if (!bindParent) {
-    error('IndexAnchor', 'You should use this component in "IndexBar"')
-  }
+  assert(!!bindParent, 'IndexAnchor', 'You should use this component in "IndexBar"')
 
   return {
     index,

@@ -1,5 +1,5 @@
 import { useChildren, useParent } from '@varlet/use'
-import { error } from '../utils/logger'
+import { assert } from '@varlet/shared'
 import { TABS_ITEMS_BIND_TAB_ITEM_KEY, type TabsItemsProvider } from '../tabs-items/provide'
 import { type ComputedRef } from 'vue'
 import { type ListProvider } from '../list/provide'
@@ -18,9 +18,7 @@ export function useTabsItems() {
     TABS_ITEMS_BIND_TAB_ITEM_KEY
   )
 
-  if (!bindParent) {
-    error('TabItem', '<var-tab-item/> must in <var-tabs-items/>')
-  }
+  assert(!!bindParent, 'TabItem', '<var-tab-item/> must in <var-tabs-items/>')
 
   return {
     index,

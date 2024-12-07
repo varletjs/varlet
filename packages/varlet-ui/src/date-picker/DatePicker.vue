@@ -119,7 +119,7 @@ import {
   type TouchDirection,
   type Week,
 } from './props'
-import { isArray, toNumber, doubleRaf, call } from '@varlet/shared'
+import { isArray, toNumber, doubleRaf, call, error } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { t } from '../locale'
@@ -466,21 +466,25 @@ export default defineComponent({
 
     function checkValue() {
       if ((props.multiple || props.range) && !isArray(props.modelValue)) {
-        console.error('[Varlet] DatePicker: type of prop "modelValue" should be an Array')
+        error('DatePicker', 'type of prop "modelValue" should be an Array')
         return false
       }
+
       if (!props.multiple && !props.range && isArray(props.modelValue)) {
-        console.error('[Varlet] DatePicker: type of prop "modelValue" should be a String')
+        error('DatePicker', 'type of prop "modelValue" should be a String')
         return false
       }
+
       return true
     }
 
     function invalidFormatDate(date: string | Array<string> | undefined): boolean {
-      if (isArray(date)) return false
+      if (isArray(date)) {
+        return false
+      }
 
       if (date === 'Invalid Date') {
-        console.error('[Varlet] DatePicker: "modelValue" is an Invalid Date')
+        error('DatePicker', '"modelValue" is an Invalid Date')
         return true
       }
 

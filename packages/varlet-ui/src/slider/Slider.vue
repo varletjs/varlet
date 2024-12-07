@@ -81,8 +81,7 @@ import { defineComponent, ref, onBeforeUnmount, computed, reactive, nextTick, wa
 import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, toSizeUnit } from '../utils/elements'
-import { warn } from '../utils/logger'
-import { isArray, isNumber, toNumber, getRect, preventDefault, call, hasOwn, clamp } from '@varlet/shared'
+import { isArray, isNumber, toNumber, getRect, preventDefault, call, hasOwn, clamp, error, warn } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import { onSmartMounted, onWindowResize, useEventListener } from '@varlet/use'
 import { type SliderProvider } from './provide'
@@ -449,7 +448,7 @@ export default defineComponent({
 
     function stepValidator() {
       if (toNumber(props.step) <= 0) {
-        warn('[Varlet] Slider', '"step" should be > 0')
+        warn('Slider', '"step" should be > 0')
         return false
       }
 
@@ -460,17 +459,17 @@ export default defineComponent({
       const { range, modelValue } = props
 
       if (range && !isArray(modelValue)) {
-        console.error('[Varlet] Slider: "modelValue" should be an Array')
+        error('Slider', '"modelValue" should be an Array')
         return false
       }
 
       if (!range && isArray(modelValue)) {
-        console.error('[Varlet] Slider: "modelValue" should be a Number')
+        error('Slider', '"modelValue" should be a Number')
         return false
       }
 
       if (range && isArray(modelValue) && modelValue.length < 2) {
-        console.error('[Varlet] Slider: "modelValue" should have two value')
+        error('Slider', '"modelValue" should have two value')
         return false
       }
 

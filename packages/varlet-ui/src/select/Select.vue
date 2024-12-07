@@ -139,13 +139,12 @@ import VarOption from '../option'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty, call, preventDefault, doubleRaf, isFunction } from '@varlet/shared'
+import { isArray, isEmpty, call, preventDefault, doubleRaf, isFunction, assert } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
 import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
-import { error } from '../utils/logger'
 import { useSelectController } from './useSelectController'
 import { type OptionProvider } from '../option/provide'
 import { useEventListener } from '@varlet/use'
@@ -222,10 +221,11 @@ export default defineComponent({
     watch(
       () => props.multiple,
       () => {
-        const { multiple, modelValue } = props
-        if (multiple && !isArray(modelValue)) {
-          error('Select', 'The modelValue must be an array when multiple is true')
-        }
+        assert(
+          props.multiple && isArray(props.modelValue),
+          'Select',
+          'The modelValue must be an array when multiple is true'
+        )
       }
     )
 

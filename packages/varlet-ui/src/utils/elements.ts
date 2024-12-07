@@ -12,7 +12,7 @@ import {
   getScrollLeft,
   isNumeric,
 } from '@varlet/shared'
-import { error } from './logger'
+import { assert } from '@varlet/shared'
 import { type StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
@@ -73,16 +73,14 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
   if (isString(target)) {
     const el = document.querySelector(target)
 
-    if (!el) {
-      error(componentName, 'target element cannot found')
-    }
+    assert(!!el, componentName, 'target element cannot found')
 
     return el as HTMLElement
   }
 
-  if (isObject(target)) return target
+  assert(isObject(target), componentName, 'type of prop "target" should be an element object')
 
-  error(componentName, 'type of prop "target" should be a selector or an element object')
+  return target
 }
 
 export function getViewportSize() {
