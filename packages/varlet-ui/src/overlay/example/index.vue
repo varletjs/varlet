@@ -34,7 +34,7 @@ onThemeChange()
 
   <var-overlay v-model:show="baseOverlay" />
   <var-overlay v-model:show="contentOverlay">
-    <div class="overlay-content" @click.stop>
+    <div class="overlay-content">
       {{ t('text') }}
     </div>
   </var-overlay>

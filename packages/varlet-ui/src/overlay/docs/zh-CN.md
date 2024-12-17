@@ -34,7 +34,7 @@ const show = ref(false)
 <template>
   <var-button type="primary" block @click="show = true">嵌入内容</var-button>
   <var-overlay v-model:show="show">
-    <div class="overlay-content" @click.stop>
+    <div class="overlay-content">
       素胚勾勒出青花笔锋浓转淡, 
       瓶身描绘的牡丹一如你初妆, 
       冉冉檀香透过窗心事我了然, 

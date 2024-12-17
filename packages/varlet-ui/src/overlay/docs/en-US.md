@@ -32,7 +32,7 @@ const show = ref(false)
 <template>
   <var-button type="primary" block @click="show = true">Overlay Content</var-button>
   <var-overlay v-model:show="show">
-    <div class="overlay-content" @click.stop>
+    <div class="overlay-content">
       As he came into the window.
       It was the sound of a crescendo.
       He came into her apartment.

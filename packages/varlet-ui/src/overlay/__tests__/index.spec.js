@@ -50,12 +50,12 @@ test('test overlay click on clickOverlay', async () => {
 
   await wrapper.setData({ show: true })
 
-  await wrapper.find('.var-overlay').trigger('click')
+  await wrapper.find('.var-overlay__overlay').trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
 
   await wrapper.setData({ show: true })
   await wrapper.setProps({ closeOnClickOverlay: false })
-  await wrapper.find('.var-overlay').trigger('click')
+  await wrapper.find('.var-overlay__overlay').trigger('click')
   expect(onClick).toHaveBeenCalledTimes(2)
 
   wrapper.unmount()

@@ -11,8 +11,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--overlay-background-color);
-  transition: all 0.25s;
 
   &--fade-enter-from,
   &--fade-leave-to {
@@ -21,5 +19,18 @@
   &--fade-enter-active,
   &--fade-leave-active {
     transition: opacity 0.25s;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--overlay-background-color);
+  }
+
+  &__content {
+    position: relative;
   }
 }
