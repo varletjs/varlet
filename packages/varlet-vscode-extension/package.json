@@ -2,7 +2,7 @@
   "name": "varlet-vscode-extension",
   "private": true,
   "main": "./dist/extension.js",
-  "icon": "src/assets/icon.png",
+  "icon": "assets/icon.png",
   "displayName": "varlet-vscode-extension",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
@@ -99,7 +99,7 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
-    "@vscode/vsce": "^2.17.0",
+    "@vscode/vsce": "^3.2.1",
     "@types/node": "14.x",
     "@types/vscode": "^1.56.0",
     "typescript": "5.3.3"
