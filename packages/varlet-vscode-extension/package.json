@@ -37,6 +37,12 @@
       }
     ],
     "menus": {
+      "commandPalette": [
+        {
+          "command": "varlet.open-webview",
+          "when": "false"
+        }
+      ],
       "editor/context": [
         {
           "command": "varlet.open-playground-by-selection",
