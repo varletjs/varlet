@@ -1,3 +1,18 @@
+## [3.7.4](https://github.com/varletjs/varlet/compare/v3.7.3...v3.7.4) (2024-12-22)
+
+
+### Bug Fixes
+
+* **overlay:** popover in overlay cannot be closed correctly and close [#1828](https://github.com/varletjs/varlet/issues/1828) ([4590eb1](https://github.com/varletjs/varlet/commit/4590eb101b974f6f21ca260f28a673dcdf3b981f))
+
+
+### Performance Improvements
+
+* **extension:** hidden open webview command in commandPalette ([#1829](https://github.com/varletjs/varlet/issues/1829)) ([ed08283](https://github.com/varletjs/varlet/commit/ed08283a7193e2cd1a0956351c3e1d7b3dc6296c))
+* **extension:** reduce extension size ([#1830](https://github.com/varletjs/varlet/issues/1830)) ([7c90a66](https://github.com/varletjs/varlet/commit/7c90a66d026970cf24a72eb1d55c871812772d31))
+
+
+
 ## [3.7.3](https://github.com/varletjs/varlet/compare/v3.7.2...v3.7.3) (2024-12-13)
 
 
