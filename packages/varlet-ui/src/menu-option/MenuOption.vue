@@ -36,10 +36,8 @@
       </div>
     </slot>
 
-    <div :class="n('arrow')">
-      <slot name="arrow-icon" v-if="$slots.arrow || childrenTrigger">
-        <var-icon var-menu-option-cover :class="n('arrow-icon')" name="chevron-right" />
-      </slot>
+    <div :class="n('arrow')" v-if="childrenTrigger">
+      <var-icon var-menu-option-cover :class="n('arrow-icon')" name="chevron-right" />
     </div>
 
     <var-hover-overlay :hovering="(hovering || highlight) && !disabled" :focusing="isFocusing && !disabled" />
@@ -56,7 +54,7 @@ import { defineComponent, computed, ref, watch, nextTick } from 'vue'
 import { useMenuSelect, type MenuOptionProvider } from './provide'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
-import { preventDefault, isFunction, isBoolean } from '@varlet/shared'
+import { preventDefault, isFunction, isBoolean, call } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('menu-option')
@@ -73,6 +71,7 @@ export default defineComponent({
   props,
   setup(props) {
     const root = ref<HTMLElement>()
+    const checkbox = ref<InstanceType<typeof VarCheckbox>>()
     const isFocusing = ref(false)
     const optionSelected = ref(false)
     const optionIndeterminate = ref(false)
@@ -136,7 +135,7 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isFocusing.value) {
+      if (!isFocusing.value && !checkbox.value?.isFocusing) {
         return
       }
 
@@ -146,6 +145,14 @@ export default defineComponent({
 
       if (event.key === 'Enter') {
         root.value!.click()
+      }
+
+      if (event.key === 'ArrowRight') {
+        call(props.onKeyboardTrigger, event.key)
+      }
+
+      if (event.key === 'ArrowLeft') {
+        call(props.onKeyboardTrigger, event.key)
       }
     }
 
@@ -175,6 +182,7 @@ export default defineComponent({
 
     return {
       root,
+      checkbox,
       optionSelected,
       optionIndeterminate,
       size,

@@ -51,23 +51,33 @@ const cascadeValue = ref()
 const cascadeMultipleValue = ref([])
 const cascadeOptions = ref([
   {
-    label: 'Option 1',
+    label: '1',
     value: 1,
   },
   {
-    label: 'Option 2',
+    label: '2',
     value: 2,
     children: [
       {
-        label: 'Option 2-1',
+        label: '2-1',
         value: 21,
+        children: [
+          {
+            label: '2-1-1',
+            value: 211,
+          },
+          {
+            label: '2-1-2',
+            value: 212,
+          },
+        ],
       },
       {
-        label: 'Option 2-2',
+        label: '2-2',
         value: 22,
       },
       {
-        label: 'Option 2-3',
+        label: '2-3',
         value: 23,
       },
     ],
