@@ -11,4 +11,5 @@ export const props = {
   },
   // internal
   option: Object as PropType<MenuSelectOption>,
+  childrenTrigger: Boolean,
 }

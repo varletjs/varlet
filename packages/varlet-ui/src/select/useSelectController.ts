@@ -7,6 +7,7 @@ export interface UseSelectControllerOptions {
   multiple: () => boolean
   optionProviders: () => OptionProvider[]
   optionProvidersLength: () => number
+  optionIsIndeterminate?: (option: OptionProvider) => boolean
 }
 
 export function useSelectController(options: UseSelectControllerOptions) {
@@ -15,6 +16,7 @@ export function useSelectController(options: UseSelectControllerOptions) {
     modelValue: modelValueGetter,
     optionProviders: optionProvidersGetter,
     optionProvidersLength: optionProvidersLengthGetter,
+    optionIsIndeterminate,
   } = options
   const label = ref<any>('')
   const labels = ref<any[]>([])
@@ -68,7 +70,12 @@ export function useSelectController(options: UseSelectControllerOptions) {
     const options = optionProvidersGetter()
 
     if (multiple) {
-      options.forEach((option) => option.sync(modelValue.includes(findValueOrLabel(option))))
+      options.forEach((option) =>
+        option.sync(
+          modelValue.includes(findValueOrLabel(option)),
+          optionIsIndeterminate ? optionIsIndeterminate(option) : undefined
+        )
+      )
     } else {
       options.forEach((option) => option.sync(modelValue === findValueOrLabel(option)))
     }

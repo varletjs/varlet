@@ -7,7 +7,8 @@ export interface OptionProvider {
   label: ComputedRef<any>
   value: ComputedRef<any>
   selected: ComputedRef<boolean>
-  sync(checked: boolean): void
+  indeterminate?: ComputedRef<boolean>
+  sync(checked: boolean, indeterminate?: boolean): void
 }
 
 export function useSelect() {

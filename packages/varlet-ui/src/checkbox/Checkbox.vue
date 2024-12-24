@@ -19,28 +19,13 @@
         @blur="isFocusing = false"
       >
         <slot name="indeterminate-icon" v-if="isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="minus-box"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="minus-box" :size="iconSize" var-checkbox-cover />
         </slot>
         <slot name="checked-icon" v-if="checked && !isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="checkbox-marked"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
         </slot>
         <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="checkbox-blank-outline"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
         </slot>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"

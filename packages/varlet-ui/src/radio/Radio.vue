@@ -19,20 +19,10 @@
         @blur="isFocusing = false"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            var-radio-cover
-            name="radio-marked"
-            :size="iconSize"
-          />
+          <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            var-radio-cover
-            name="radio-blank"
-            :size="iconSize"
-          />
+          <var-icon :class="n('icon')" var-radio-cover name="radio-blank" :size="iconSize" />
         </slot>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"

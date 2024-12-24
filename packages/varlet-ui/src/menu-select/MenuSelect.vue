@@ -32,16 +32,29 @@
         :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
       >
         <template v-if="options.length">
-          <var-menu-option
-            v-for="option in options"
-            :key="option[valueKey]"
-            :label="option[labelKey]"
-            :value="option[valueKey]"
-            :option="option"
-            :ripple="option.ripple"
-            :disabled="option.disabled"
-          />
+          <template v-for="option in options" :key="option[valueKey]">
+            <var-menu-children v-if="option.children" :options="option.children" :disabled="option.disabled">
+              <var-menu-option
+                children-trigger
+                :label="option[labelKey]"
+                :value="option[valueKey]"
+                :option="option"
+                :ripple="option.ripple"
+                :disabled="option.disabled"
+              />
+            </var-menu-children>
+
+            <var-menu-option
+              v-else
+              :label="option[labelKey]"
+              :value="option[valueKey]"
+              :option="option"
+              :ripple="option.ripple"
+              :disabled="option.disabled"
+            />
+          </template>
         </template>
+
         <slot name="options" />
       </div>
     </template>
@@ -51,8 +64,9 @@
 <script lang="ts">
 import VarMenu from '../menu'
 import VarMenuOption from '../menu-option'
+import VarMenuChildren from './MenuChildren.vue'
 import { defineComponent, computed, ref } from 'vue'
-import { props } from './props'
+import { props, MenuSelectOption } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
@@ -66,19 +80,34 @@ const { name, n, classes } = createNamespace('menu-select')
 
 export default defineComponent({
   name,
-  components: { VarMenu, VarMenuOption },
+  components: { VarMenu, VarMenuOption, VarMenuChildren },
   props,
   setup(props) {
     const menu = ref<null | typeof VarMenu>(null)
     const menuOptionsRef = ref<null | HTMLElement>(null)
     const show = useVModel(props, 'show')
+
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
+
     const { computeLabel, getSelectedValue } = useSelectController({
       modelValue: () => props.modelValue,
       multiple: () => props.multiple,
       optionProviders: () => menuOptions,
       optionProvidersLength: () => length.value,
+      optionIsIndeterminate(optionProvider) {
+        const option = flattenOptions.value.find((option) => option.value === optionProvider.value.value)
+        if (!option) {
+          return false
+        }
+
+        const children = option.children ?? []
+        const selectedChildren = children.filter((option) => props.modelValue.includes(option.value))
+
+        return selectedChildren.length > 0 && selectedChildren.length < children.length
+      },
     })
+
+    const flattenOptions = computed(() => flatten(props.options))
 
     const menuSelectProvider: MenuSelectProvider = {
       size: computed(() => props.size),
@@ -91,14 +120,95 @@ export default defineComponent({
 
     useEventListener(() => window, 'keydown', handleKeydown)
 
-    function onSelect(option: MenuOptionProvider) {
-      const { multiple, closeOnSelect } = props
+    function flatten(options: MenuSelectOption[]) {
+      const flattenOptions: MenuSelectOption[] = []
 
-      call(props['onUpdate:modelValue'], getSelectedValue(option))
+      baseFlatten(options)
+
+      function baseFlatten(options: MenuSelectOption[], parent?: MenuSelectOption) {
+        options.forEach((option) => {
+          if (parent) {
+            option._parent = parent
+          }
+
+          flattenOptions.push(option)
+
+          if (option.children) {
+            baseFlatten(option.children, option)
+          }
+        })
+      }
+
+      return flattenOptions
+    }
+
+    function onSelect(optionProvider: MenuOptionProvider) {
+      const { multiple, closeOnSelect } = props
+      const { value, selected } = optionProvider
+      const option = flattenOptions.value.find((option) => option.value === value.value)
+
+      if (option) {
+        const children = flatten(option.children ?? [])
+        const relationChildrenValues = children.map((option) => option.value)
+
+        if (multiple && selected.value) {
+          menuOptions.forEach((optionProvider) => {
+            if (relationChildrenValues.includes(optionProvider.value.value)) {
+              optionProvider.sync(true, false)
+            }
+          })
+
+          broadcastParentOption(option)
+        }
+
+        if (multiple && !selected.value) {
+          menuOptions.forEach((optionProvider) => {
+            if (relationChildrenValues.includes(optionProvider.value.value)) {
+              optionProvider.sync(false, false)
+            }
+          })
+
+          broadcastParentOption(option)
+        }
+      }
+
+      const selectedValue = getSelectedValue(optionProvider)
+      call(props['onUpdate:modelValue'], selectedValue)
+      call(props.onSelect, selectedValue)
 
       if (!multiple && closeOnSelect) {
         menu.value!.$el.focus()
         close()
+      }
+    }
+
+    function broadcastParentOption(option: MenuSelectOption) {
+      let parentOption = option._parent
+
+      while (parentOption) {
+        const parentOptionProvider = menuOptions.find(
+          (optionProvider) => optionProvider.value.value === parentOption!.value
+        )!
+
+        const isAllChildrenUnselected = parentOption.children!.every((option) => {
+          const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
+          return !optionProvider.selected.value
+        })
+
+        const isAllChildrenSelected = parentOption.children!.every((option) => {
+          const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
+          return optionProvider.selected.value
+        })
+
+        if (isAllChildrenUnselected) {
+          parentOptionProvider.sync(false, false)
+        } else if (isAllChildrenSelected) {
+          parentOptionProvider.sync(true, false)
+        } else {
+          parentOptionProvider.sync(false, true)
+        }
+
+        parentOption = parentOption._parent
       }
     }
 

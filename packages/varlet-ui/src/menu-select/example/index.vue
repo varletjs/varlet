@@ -47,6 +47,30 @@ const keyedSelectOptions = computed(() => [
   },
 ])
 
+const cascadeValue = ref()
+const cascadeMultipleValue = ref([])
+const cascadeOptions = ref([
+  {
+    label: 'Option 1',
+    value: 1,
+  },
+  {
+    label: 'Option 2',
+    value: 2,
+    disabled: true,
+    children: [
+      {
+        label: 'Option 2-1',
+        value: 21,
+      },
+      {
+        label: 'Option 2-2',
+        value: 22,
+      },
+    ],
+  },
+])
+
 watchLang((lang) => {
   use(lang)
   value.value = undefined
@@ -59,7 +83,10 @@ watchLang((lang) => {
   valueScrollable.value = undefined
   valueCloseOnSelect.value = undefined
   valueMultiple.value = []
+  cascadeValue.value = undefined
+  cascadeMultipleValue.value = []
 })
+
 onThemeChange()
 </script>
 
@@ -176,6 +203,16 @@ onThemeChange()
   <app-type>{{ t('selectOptions') }}</app-type>
   <var-menu-select v-model="valueSelectOptions" :options="selectOptions">
     <var-button type="primary">{{ valueSelectOptions ? valueSelectOptions : t('please') }}</var-button>
+  </var-menu-select>
+
+  <app-type>Cascade</app-type>
+  <var-menu-select :options="cascadeOptions" v-model="cascadeValue">
+    <var-button type="primary">{{ cascadeValue ? cascadeValue : t('please') }}</var-button>
+  </var-menu-select>
+
+  <app-type>Cascade Multiple</app-type>
+  <var-menu-select multiple :options="cascadeOptions" v-model="cascadeMultipleValue">
+    <var-button type="primary">{{ cascadeMultipleValue.length ? cascadeMultipleValue : t('please') }}</var-button>
   </var-menu-select>
 
   <app-type>{{ t('selectOptionsWithCustomizedKey') }}</app-type>
