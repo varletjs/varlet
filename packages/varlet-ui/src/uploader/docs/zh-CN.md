@@ -510,6 +510,7 @@ const files = ref([
 | --- | --- | --- |
 | `default` | 上传按钮内容 | `-` |
 | `extra-message` | 附加信息 | `-` |
+| `remove-button` | 删除按钮 | `remove: () => void` |
 
 ### 样式变量
 
