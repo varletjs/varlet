@@ -272,9 +272,12 @@ export default defineComponent({
           return
         }
 
-        if (child.option.value !== option.value) {
-          child.close()
+        if (child.option.value === option.value) {
+          // skip active option
+          return
         }
+
+        child.close()
       })
     }
 

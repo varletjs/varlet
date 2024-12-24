@@ -88,7 +88,7 @@ export default defineComponent({
     const menu = ref<InstanceType<typeof VarMenu>>()
     const trigger = ref<InstanceType<typeof VarMenuOption>>()
     const menuOptions = ref<HTMLElement>()
-    const menuChildren = ref<any>()
+    const menuChildren = ref<{ option: MenuSelectOption; allowClose(): void; close(): void }[]>()
 
     watch(
       () => props.parentShow,
@@ -130,7 +130,7 @@ export default defineComponent({
     }
 
     function allowChildrenClose(option?: MenuSelectOption) {
-      menuChildren.value?.forEach((child: any) => {
+      menuChildren.value?.forEach((child) => {
         child.allowClose()
 
         if (option == null) {
@@ -138,9 +138,12 @@ export default defineComponent({
           return
         }
 
-        if (child.option.value !== option.value) {
-          child.close()
+        if (child.option.value === option.value) {
+          // skip active option
+          return
         }
+
+        child.close()
       })
     }
 
