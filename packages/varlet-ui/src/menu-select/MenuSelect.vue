@@ -35,7 +35,7 @@
           <template v-for="option in options" :key="option[valueKey]">
             <var-menu-children
               v-if="option[childrenKey]"
-              :menu-select-show="show"
+              :parent-show="show"
               :option="option"
               :options="option[childrenKey]"
               :highlight-options="highlightOptions"

@@ -3,7 +3,6 @@
     ref="menu"
     trigger="hover"
     placement="right-start"
-    cascade-optimization
     :class="n()"
     :disabled="disabled"
     :teleport="false"
@@ -27,7 +26,7 @@
         <template v-for="option in options" :key="option[valueKey]">
           <var-menu-children
             v-if="option[childrenKey]"
-            :menu-select-show="menuSelectShow"
+            :parent-show="parentShow"
             :option="option"
             :options="option[childrenKey]"
             :disabled="option.disabled || !show"
@@ -67,7 +66,7 @@ export default defineComponent({
     VarMenuOption,
   },
   props: {
-    menuSelectShow: Boolean,
+    parentShow: Boolean,
     disabled: Boolean,
     option: {
       type: Object as PropType<MenuSelectOption>,
@@ -84,7 +83,7 @@ export default defineComponent({
     const menuOptions = ref<HTMLElement>()
 
     watch(
-      () => props.menuSelectShow,
+      () => props.parentShow,
       (value) => {
         if (!value) {
           show.value = false
