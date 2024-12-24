@@ -42,7 +42,7 @@
       </slot>
     </div>
 
-    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isFocusing && !disabled" />
+    <var-hover-overlay :hovering="(hovering || highlight) && !disabled" :focusing="isFocusing && !disabled" />
   </div>
 </template>
 

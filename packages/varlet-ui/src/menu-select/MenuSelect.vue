@@ -33,16 +33,13 @@
       >
         <template v-if="options.length">
           <template v-for="option in options" :key="option[valueKey]">
-            <var-menu-children v-if="option.children" :options="option.children" :disabled="option.disabled">
-              <var-menu-option
-                children-trigger
-                :label="option[labelKey]"
-                :value="option[valueKey]"
-                :option="option"
-                :ripple="option.ripple"
-                :disabled="option.disabled"
-              />
-            </var-menu-children>
+            <var-menu-children
+              v-if="option[childrenKey]"
+              :option="option"
+              :options="option[childrenKey]"
+              :highlight-options="highlightOptions"
+              :disabled="option.disabled"
+            />
 
             <var-menu-option
               v-else
@@ -100,7 +97,7 @@ export default defineComponent({
           return false
         }
 
-        const children = option.children ?? []
+        const children = getOptionChildren(option) ?? []
         const selectedChildren = children.filter((option) => props.modelValue.includes(option.value))
 
         return selectedChildren.length > 0 && selectedChildren.length < children.length
@@ -108,6 +105,25 @@ export default defineComponent({
     })
 
     const flattenOptions = computed(() => flatten(props.options))
+
+    const highlightOptions = computed(() => {
+      const { multiple, modelValue } = props
+
+      if (multiple) {
+        return []
+      }
+
+      const selectedOption = flattenOptions.value.find((option) => option.value === modelValue)
+      const highlightOptions: MenuSelectOption[] = []
+      let parent = selectedOption?._parent
+
+      while (parent) {
+        highlightOptions.push(parent)
+        parent = parent._parent
+      }
+
+      return highlightOptions
+    })
 
     const menuSelectProvider: MenuSelectProvider = {
       size: computed(() => props.size),
@@ -119,6 +135,10 @@ export default defineComponent({
     bindMenuOptions(menuSelectProvider)
 
     useEventListener(() => window, 'keydown', handleKeydown)
+
+    function getOptionChildren(option: MenuSelectOption) {
+      return option[props.childrenKey] as MenuSelectOption[] | undefined
+    }
 
     function flatten(options: MenuSelectOption[]) {
       const flattenOptions: MenuSelectOption[] = []
@@ -133,8 +153,9 @@ export default defineComponent({
 
           flattenOptions.push(option)
 
-          if (option.children) {
-            baseFlatten(option.children, option)
+          const children = getOptionChildren(option)
+          if (children) {
+            baseFlatten(children, option)
           }
         })
       }
@@ -148,7 +169,7 @@ export default defineComponent({
       const option = flattenOptions.value.find((option) => option.value === value.value)
 
       if (option) {
-        const children = flatten(option.children ?? [])
+        const children = flatten(getOptionChildren(option) ?? [])
         const relationChildrenValues = children.map((option) => option.value)
 
         if (multiple && selected.value) {
@@ -190,12 +211,14 @@ export default defineComponent({
           (optionProvider) => optionProvider.value.value === parentOption!.value
         )!
 
-        const isAllChildrenUnselected = parentOption.children!.every((option) => {
+        const parentOptionChildren = getOptionChildren(parentOption)!
+
+        const isAllChildrenUnselected = parentOptionChildren.every((option) => {
           const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
           return !optionProvider.selected.value
         })
 
-        const isAllChildrenSelected = parentOption.children!.every((option) => {
+        const isAllChildrenSelected = parentOptionChildren.every((option) => {
           const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
           return optionProvider.selected.value
         })
@@ -259,6 +282,7 @@ export default defineComponent({
       show,
       menu,
       menuOptionsRef,
+      highlightOptions,
       n,
       classes,
       formatElevation,

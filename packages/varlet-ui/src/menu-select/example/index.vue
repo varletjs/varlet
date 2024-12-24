@@ -57,7 +57,6 @@ const cascadeOptions = ref([
   {
     label: 'Option 2',
     value: 2,
-    disabled: true,
     children: [
       {
         label: 'Option 2-1',
@@ -66,6 +65,10 @@ const cascadeOptions = ref([
       {
         label: 'Option 2-2',
         value: 22,
+      },
+      {
+        label: 'Option 2-3',
+        value: 23,
       },
     ],
   },
