@@ -82,6 +82,20 @@ const cascadeOptions = ref([
       },
     ],
   },
+  {
+    label: '3',
+    value: 3,
+    children: [
+      {
+        label: '3-1',
+        value: 31,
+      },
+      {
+        label: '3-2',
+        value: 32,
+      },
+    ],
+  },
 ])
 
 watchLang((lang) => {

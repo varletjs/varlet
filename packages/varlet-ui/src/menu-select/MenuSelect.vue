@@ -34,12 +34,14 @@
         <template v-if="options.length">
           <template v-for="option in options" :key="option[valueKey]">
             <var-menu-children
+              ref="menuChildren"
               v-if="option[childrenKey]"
               :parent-show="show"
               :option="option"
               :options="option[childrenKey]"
               :highlight-options="highlightOptions"
               :disabled="option.disabled"
+              @trigger-mouseenter="allowChildrenClose(option)"
             />
 
             <var-menu-option
@@ -49,6 +51,7 @@
               :option="option"
               :ripple="option.ripple"
               :disabled="option.disabled"
+              @mouseenter="allowChildrenClose()"
             />
           </template>
         </template>
@@ -81,8 +84,9 @@ export default defineComponent({
   components: { VarMenu, VarMenuOption, VarMenuChildren },
   props,
   setup(props) {
-    const menu = ref<null | typeof VarMenu>(null)
-    const menuOptionsRef = ref<null | HTMLElement>(null)
+    const menu = ref<InstanceType<typeof VarMenu>>()
+    const menuOptionsRef = ref<HTMLElement>()
+    const menuChildren = ref<InstanceType<typeof VarMenuChildren>[]>()
     const show = useVModel(props, 'show')
 
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
@@ -259,6 +263,21 @@ export default defineComponent({
       }
     }
 
+    function allowChildrenClose(option?: MenuSelectOption) {
+      menuChildren.value?.forEach((child) => {
+        child.allowClose()
+
+        if (option == null) {
+          child.close()
+          return
+        }
+
+        if (child.option.value !== option.value) {
+          child.close()
+        }
+      })
+    }
+
     // expose
     function open() {
       menu.value?.open()
@@ -283,9 +302,11 @@ export default defineComponent({
       show,
       menu,
       menuOptionsRef,
+      menuChildren,
       highlightOptions,
       n,
       classes,
+      allowChildrenClose,
       formatElevation,
       open,
       close,

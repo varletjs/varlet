@@ -3,6 +3,8 @@
     ref="menu"
     trigger="hover"
     placement="right-start"
+    cascade-optimization
+    var-menu-children-cover
     :class="n()"
     :disabled="disabled"
     :teleport="false"
@@ -18,7 +20,8 @@
       :ripple="option.ripple"
       :disabled="option.disabled"
       :highlight="highlightOptions.includes(option)"
-      @keyboard-trigger="open"
+      @keyboard-trigger="handleArrowRight"
+      @mouseenter="handleTriggerMouseenter"
     />
 
     <template #menu v-if="options.length">
@@ -26,11 +29,13 @@
         <template v-for="option in options" :key="option[valueKey]">
           <var-menu-children
             v-if="option[childrenKey]"
-            :parent-show="parentShow"
+            ref="menuChildren"
+            :parent-show="show"
             :option="option"
             :options="option[childrenKey]"
             :disabled="option.disabled || !show"
-            @keyboard-trigger="close"
+            @keyboard-trigger="handleArrowLeft"
+            @trigger-mouseenter="allowChildrenClose(option)"
           />
 
           <var-menu-option
@@ -40,7 +45,8 @@
             :option="option"
             :ripple="option.ripple"
             :disabled="option.disabled || !show"
-            @keyboard-trigger="close"
+            @keyboard-trigger="handleArrowLeft"
+            @mouseenter="allowChildrenClose()"
           />
         </template>
       </div>
@@ -74,6 +80,7 @@ export default defineComponent({
     },
     highlightOptions: pickProps(menuSelectProps, 'options'),
     onKeyboardTrigger: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
+    onTriggerMouseenter: defineListenerProp<() => void>(),
     ...pickProps(menuSelectProps, ['options', 'valueKey', 'labelKey', 'childrenKey']),
   },
   setup(props) {
@@ -81,6 +88,7 @@ export default defineComponent({
     const menu = ref<InstanceType<typeof VarMenu>>()
     const trigger = ref<InstanceType<typeof VarMenuOption>>()
     const menuOptions = ref<HTMLElement>()
+    const menuChildren = ref<any>()
 
     watch(
       () => props.parentShow,
@@ -88,10 +96,11 @@ export default defineComponent({
         if (!value) {
           show.value = false
         }
-      }
+      },
+      { immediate: true }
     )
 
-    async function open(key: 'ArrowRight' | 'ArrowLeft') {
+    async function handleArrowRight(key: 'ArrowRight' | 'ArrowLeft') {
       call(props.onKeyboardTrigger, key)
 
       if (key !== 'ArrowRight') {
@@ -103,7 +112,7 @@ export default defineComponent({
       focusChildElementByKey(menu.value!.$el, menuOptions.value!, 'ArrowDown')
     }
 
-    function close(key: 'ArrowRight' | 'ArrowLeft') {
+    function handleArrowLeft(key: 'ArrowRight' | 'ArrowLeft') {
       if (key !== 'ArrowLeft') {
         return
       }
@@ -112,14 +121,46 @@ export default defineComponent({
       trigger.value?.$el.focus()
     }
 
+    function close() {
+      menu.value?.close()
+    }
+
+    function allowClose() {
+      menu.value?.allowClose()
+    }
+
+    function allowChildrenClose(option?: MenuSelectOption) {
+      menuChildren.value?.forEach((child: any) => {
+        child.allowClose()
+
+        if (option == null) {
+          child.close()
+          return
+        }
+
+        if (child.option.value !== option.value) {
+          child.close()
+        }
+      })
+    }
+
+    function handleTriggerMouseenter() {
+      call(props.onTriggerMouseenter)
+    }
+
     return {
       show,
       menu,
       trigger,
       menuOptions,
+      menuChildren,
       n,
-      open,
       close,
+      handleArrowLeft,
+      handleArrowRight,
+      handleTriggerMouseenter,
+      allowClose,
+      allowChildrenClose,
     }
   },
 })

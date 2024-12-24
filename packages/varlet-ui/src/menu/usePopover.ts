@@ -55,6 +55,7 @@ export interface UsePopoverOptions {
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onClickOutside?: ListenerProp<(event: Event) => void>
+  cascadeOptimization?: boolean
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
@@ -81,6 +82,7 @@ export function usePopover(options: UsePopoverOptions) {
   let reference: Reference | undefined = undefined
   let enterPopover = false
   let enterReference = false
+  let allowClose = true
 
   useEventListener(() => window, 'keydown', handleKeydown)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
@@ -207,6 +209,10 @@ export function usePopover(options: UsePopoverOptions) {
     }
 
     enterPopover = true
+
+    if (options.cascadeOptimization) {
+      allowClose = false
+    }
   }
 
   async function handlePopoverMouseleave() {
@@ -413,6 +419,10 @@ export function usePopover(options: UsePopoverOptions) {
     return targetReference
   }
 
+  function setAllowClose(value: boolean) {
+    allowClose = value
+  }
+
   function setReference(newReference: Reference) {
     destroyPopperInstance()
     reference = newReference
@@ -444,6 +454,10 @@ export function usePopover(options: UsePopoverOptions) {
 
   // expose
   function close() {
+    if (!allowClose) {
+      return
+    }
+
     show.value = false
     call(options['onUpdate:show'], false)
   }
@@ -459,6 +473,7 @@ export function usePopover(options: UsePopoverOptions) {
     handlePopoverMouseleave,
     handleClosed,
     setReference,
+    setAllowClose,
     resize,
     open,
     close,

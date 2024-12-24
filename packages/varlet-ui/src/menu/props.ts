@@ -52,4 +52,8 @@ export const props = {
   onClosed: defineListenerProp<() => void>(),
   onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
+
+  // internal start
+  cascadeOptimization: Boolean,
+  // internal end
 }
