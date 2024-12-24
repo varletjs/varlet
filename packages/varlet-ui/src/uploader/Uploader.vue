@@ -9,9 +9,19 @@
         @click="preview(f)"
       >
         <div :class="n('file-name')">{{ f.name || f.url }}</div>
-        <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
-          <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
-        </div>
+        <slot
+          name="remove-button"
+          v-if="removable"
+          :remove="
+            () => {
+              handleRemove(f)
+            }
+          "
+        >
+          <div :class="n('file-close')" @click.stop="handleRemove(f)">
+            <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
+          </div>
+        </slot>
         <img
           role="img"
           :class="n('file-cover')"

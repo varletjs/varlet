@@ -67,6 +67,7 @@ export class Uploader extends VarComponent {
   $slots: {
     default(): VNode[]
     'extra-message'(): VNode[]
+    'remove-button'(remove: () => void): VNode[]
   }
 
   getLoading(): VarFile[]
