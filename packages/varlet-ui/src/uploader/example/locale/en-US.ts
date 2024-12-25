@@ -23,4 +23,5 @@ export default {
   useProgress: 'Use Progress',
   beforeFilter: 'File List Filter',
   clickAction: 'Upload Button Click Event',
+  removeButtonSlot: 'Custom Remove Button',
 }

@@ -220,7 +220,14 @@ function handleActionClick(chooseFile) {
     </var-uploader>
   </var-space>
 
-  <var-space></var-space>
+  <app-type>{{ t('removeButtonSlot') }}</app-type>
+  <var-uploader v-model="values.files2">
+    <template #remove-button="{ remove }">
+      <div class="custom-remove-button">
+        <var-icon color="#fff" name="window-close" @click.stop="remove"></var-icon>
+      </div>
+    </template>
+  </var-uploader>
 </template>
 
 <style scoped lang="less">
@@ -234,5 +241,12 @@ function handleActionClick(chooseFile) {
   border-radius: 50%;
   font-size: 12px;
   object-fit: cover;
+}
+
+.custom-remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
 }
 </style>

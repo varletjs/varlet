@@ -434,6 +434,44 @@ const files = ref([
 </style>
 ```
 
+### 自定义删除按钮
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([
+  {
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg'
+  },
+  {
+    url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
+    cover: 'https://varletjs.org/cover.jpg'
+  }
+])
+</script>
+
+<template>
+  <var-uploader v-model="files">
+    <template #remove-button="{ remove }">
+      <div class="custom-remove-button">
+        <var-icon color="#fff" name="window-close" @click.stop="remove"></var-icon>
+      </div>
+    </template>
+  </var-uploader>
+</template>
+
+<style>
+.custom-remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+</style>
+```
+
 ## API
 
 ### 属性
@@ -510,6 +548,7 @@ const files = ref([
 | --- | --- | --- |
 | `default` | 上传按钮内容 | `-` |
 | `extra-message` | 附加信息 | `-` |
+| `remove-button` ***3.8.0*** | 删除按钮 | `remove: () => void` |
 
 ### 样式变量
 
