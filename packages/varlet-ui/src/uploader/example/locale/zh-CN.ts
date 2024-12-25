@@ -23,4 +23,5 @@ export default {
   useProgress: '使用进度条',
   beforeFilter: '文件列表过滤',
   clickAction: '上传按钮点击事件',
+  removeButtonSlot: '自定义删除按钮',
 }
