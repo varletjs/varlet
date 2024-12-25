@@ -31,29 +31,27 @@
         ref="menuOptionsRef"
         :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
       >
-        <template v-if="options.length">
-          <template v-for="option in options" :key="option[valueKey]">
-            <var-menu-children
-              ref="menuChildren"
-              v-if="option[childrenKey]"
-              :parent-show="show"
-              :option="option"
-              :options="option[childrenKey]"
-              :highlight-options="highlightOptions"
-              :disabled="option.disabled"
-              @trigger-mouseenter="allowChildrenClose(option)"
-            />
-
-            <var-menu-option
-              v-else
-              :label="option[labelKey]"
-              :value="option[valueKey]"
-              :option="option"
-              :ripple="option.ripple"
-              :disabled="option.disabled"
-              @mouseenter="allowChildrenClose()"
-            />
-          </template>
+        <template v-for="option in options" :key="option[valueKey]">
+          <var-menu-children
+            ref="menuChildren"
+            v-if="option[childrenKey]"
+            :parent-show="show"
+            :option="option"
+            :options="option[childrenKey]"
+            :highlight-options="highlightOptions"
+            :disabled="option.disabled"
+            @key-arrow-right-open="allowChildrenClose(option)"
+            @mouseenter="allowChildrenClose(option)"
+          />
+          <var-menu-option
+            v-else
+            :label="option[labelKey]"
+            :value="option[valueKey]"
+            :option="option"
+            :ripple="option.ripple"
+            :disabled="option.disabled"
+            @mouseenter="allowChildrenClose()"
+          />
         </template>
 
         <slot name="options" />

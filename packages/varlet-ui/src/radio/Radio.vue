@@ -79,7 +79,6 @@ export default defineComponent({
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const checked = computed(() => value.value === props.checkedValue)
-    const withAnimation = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -173,7 +172,6 @@ export default defineComponent({
         return
       }
 
-      withAnimation.value = true
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
@@ -212,7 +210,6 @@ export default defineComponent({
     return {
       action,
       isFocusing,
-      withAnimation,
       checked,
       errorMessage,
       radioGroupErrorMessage: radioGroup?.errorMessage,

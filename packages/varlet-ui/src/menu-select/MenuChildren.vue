@@ -21,7 +21,7 @@
       :disabled="option.disabled"
       :highlight="highlightOptions.includes(option)"
       @key-arrow-x="handleArrowRight"
-      @mouseenter="handleTriggerMouseenter"
+      @mouseenter="handleMouseenter"
     />
 
     <template #menu v-if="options.length">
@@ -34,19 +34,19 @@
             :option="option"
             :options="option[childrenKey]"
             :highlight-options="highlightOptions"
-            :disabled="option.disabled || !show"
+            :disabled="option.disabled"
             @key-arrow-x="handleArrowLeft"
-            @trigger-mouseenter="allowChildrenClose(option)"
+            @key-arrow-right-open="allowChildrenClose(option)"
+            @mouseenter="allowChildrenClose(option)"
           />
-
           <var-menu-option
             v-else
             :label="option[labelKey]"
             :value="option[valueKey]"
             :option="option"
             :ripple="option.ripple"
-            :disabled="option.disabled || !show"
-            @keyboard-trigger="handleArrowLeft"
+            :disabled="option.disabled"
+            @key-arrow-x="handleArrowLeft"
             @mouseenter="allowChildrenClose()"
           />
         </template>
@@ -80,8 +80,9 @@ export default defineComponent({
       required: true,
     },
     highlightOptions: pickProps(menuSelectProps, 'options'),
-    onKeyboardTrigger: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
-    onTriggerMouseenter: defineListenerProp<() => void>(),
+    onKeyArrowX: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
+    onKeyArrowRightOpen: defineListenerProp<() => void>(),
+    onMouseenter: defineListenerProp<() => void>(),
     ...pickProps(menuSelectProps, ['options', 'valueKey', 'labelKey', 'childrenKey']),
   },
   setup(props) {
@@ -102,12 +103,13 @@ export default defineComponent({
     )
 
     async function handleArrowRight(key: 'ArrowRight' | 'ArrowLeft') {
-      call(props.onKeyboardTrigger, key)
+      call(props.onKeyArrowX, key)
 
       if (key !== 'ArrowRight') {
         return
       }
 
+      call(props.onKeyArrowRightOpen)
       menu.value?.open()
       await raf()
       focusChildElementByKey(menu.value!.$el, menuOptions.value!, 'ArrowDown')
@@ -118,7 +120,8 @@ export default defineComponent({
         return
       }
 
-      menu.value?.close()
+      allowClose()
+      close()
       trigger.value?.$el.focus()
     }
 
@@ -148,8 +151,8 @@ export default defineComponent({
       })
     }
 
-    function handleTriggerMouseenter() {
-      call(props.onTriggerMouseenter)
+    function handleMouseenter() {
+      call(props.onMouseenter)
     }
 
     return {
@@ -162,7 +165,7 @@ export default defineComponent({
       close,
       handleArrowLeft,
       handleArrowRight,
-      handleTriggerMouseenter,
+      handleMouseenter,
       allowClose,
       allowChildrenClose,
     }

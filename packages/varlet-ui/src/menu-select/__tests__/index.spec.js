@@ -430,3 +430,230 @@ test('test menu-select value-key', async () => {
   expect(wrapper.vm.modelValue).toStrictEqual(1)
   wrapper.unmount()
 })
+
+test('test menu-select cascade', async () => {
+  const root = document.createElement('div')
+
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: undefined,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      options: [
+        {
+          label: 'Option 1',
+          value: 1,
+        },
+        {
+          label: 'Option 2',
+          value: 2,
+          children: [
+            {
+              label: 'Option 2-1',
+              value: 21,
+            },
+            {
+              label: 'Option 2-2',
+              value: 22,
+            },
+          ],
+        },
+        {
+          label: 'Option 3',
+          value: 3,
+          disabled: true,
+        },
+      ],
+    },
+    slots: {
+      default: () => h('button', { class: 'trigger' }, 'trigger'),
+    },
+  })
+
+  await delay(0)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  const button = wrapper.find('.trigger')
+  await button.trigger('click')
+
+  const options = root.querySelectorAll('.var-menu-option')
+  const option2 = options[1]
+  await trigger(option2, 'mouseenter')
+  const option21 = options[2]
+  await trigger(option21, 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual(21)
+})
+
+test('test menu-select cascade multiple mode', async () => {
+  const root = document.createElement('div')
+
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      multiple: true,
+      options: [
+        {
+          label: 'Option 1',
+          value: 1,
+        },
+        {
+          label: 'Option 2',
+          value: 2,
+          children: [
+            {
+              label: 'Option 2-1',
+              value: 21,
+            },
+            {
+              label: 'Option 2-2',
+              value: 22,
+              children: [
+                {
+                  label: 'Option 2-2-1',
+                  value: 221,
+                },
+                {
+                  label: 'Option 2-2-2',
+                  value: 222,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Option 3',
+          value: 3,
+          disabled: true,
+        },
+      ],
+    },
+    slots: {
+      default: () => h('button', { class: 'trigger' }, 'trigger'),
+    },
+  })
+
+  await delay(0)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  const button = wrapper.find('.trigger')
+  await button.trigger('click')
+
+  const options = root.querySelectorAll('.var-menu-option')
+  const option2 = options[1]
+  await trigger(option2, 'mouseenter')
+  const option21 = options[2]
+  const option22 = options[3]
+  const option221 = options[4]
+  const option222 = options[5]
+  await trigger(option21, 'click')
+  await trigger(option22, 'mouseenter')
+  await trigger(option221, 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual([21, 221])
+  await trigger(option222, 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual([2, 21, 22, 221, 222])
+  await trigger(option222, 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual([21, 221])
+  await trigger(option222, 'focus')
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
+  expect(wrapper.vm.modelValue).toStrictEqual([2, 21, 22, 221, 222])
+
+  const checkbox = option222.querySelector('.var-checkbox')
+  await trigger(checkbox, 'click')
+  await delay(0)
+  expect(wrapper.vm.modelValue).toStrictEqual([21, 221])
+  await trigger(option2, 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual([])
+})
+
+test('test menu-select cascade menu open and close', async () => {
+  const root = document.createElement('div')
+
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      multiple: true,
+      options: [
+        {
+          label: 'Option 1',
+          value: 1,
+        },
+        {
+          label: 'Option 2',
+          value: 2,
+          children: [
+            {
+              label: 'Option 2-1',
+              value: 21,
+            },
+            {
+              label: 'Option 2-2',
+              value: 22,
+              children: [
+                {
+                  label: 'Option 2-2-1',
+                  value: 221,
+                },
+                {
+                  label: 'Option 2-2-2',
+                  value: 222,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Option 3',
+          value: 3,
+          disabled: true,
+        },
+      ],
+    },
+    slots: {
+      default: () => h('button', { class: 'trigger' }, 'trigger'),
+    },
+  })
+
+  await delay(0)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  const button = wrapper.find('.trigger')
+  await button.trigger('click')
+
+  const options = root.querySelectorAll('.var-menu-option')
+  const menus = root.querySelectorAll('.var-menu__menu')
+  const option1 = options[0]
+  const option2 = options[1]
+  const option21 = options[2]
+  const option2Menu = menus[1]
+  await trigger(option2, 'focus')
+  expect(option2Menu.style.display).toBe('none')
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowRight' })
+  expect(option2Menu.style.display).not.toBe('none')
+  await trigger(option21, 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowLeft' })
+  expect(option2Menu.style.display).toBe('none')
+
+  await trigger(option2, 'mouseenter')
+  expect(option2Menu.style.display).not.toBe('none')
+  await trigger(option21, 'mouseenter')
+  await trigger(option21, 'mouseleave')
+  expect(option2Menu.style.display).not.toBe('none')
+  await trigger(option1, 'mouseenter')
+  expect(option2Menu.style.display).toBe('none')
+})

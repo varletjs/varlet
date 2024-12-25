@@ -84,7 +84,6 @@ export default defineComponent({
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
     const checkedValue = computed(() => props.checkedValue)
-    const withAnimation = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -103,7 +102,6 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
-      resetWithAnimation,
     }
 
     call(bindCheckboxGroup, checkboxProvider)
@@ -143,7 +141,6 @@ export default defineComponent({
         return
       }
 
-      withAnimation.value = true
       const maximum = checkboxGroup ? checkboxGroup.checkedCount.value >= Number(checkboxGroup.max.value) : false
 
       if (!checked.value && maximum) {
@@ -160,10 +157,6 @@ export default defineComponent({
     function sync(values: Array<any>) {
       const { checkedValue, uncheckedValue } = props
       value.value = values.includes(checkedValue) ? checkedValue : uncheckedValue
-    }
-
-    function resetWithAnimation() {
-      withAnimation.value = false
     }
 
     // expose
@@ -220,7 +213,6 @@ export default defineComponent({
       action,
       isFocusing,
       isIndeterminate,
-      withAnimation,
       checked,
       errorMessage,
       checkboxGroupErrorMessage: checkboxGroup?.errorMessage,
