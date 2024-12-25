@@ -549,7 +549,7 @@ const files = ref([
 | --- | --- | --- |
 | `default` | Upload action content | `-` |
 | `extra-message` | Extra message | `-` |
-| `remove-button` | Remove button | `remove: () => void` |
+| `remove-button` ***3.8.0*** | Remove button | `remove: () => void` |
 
 ### Style Variables
 
