@@ -139,6 +139,8 @@ varlet-cli build
 ```shell
 # playground-ignore
 varlet-cli preview
+# set port number
+varlet-cli preview -p <port>
 ```
 
 #### Compile component library
