@@ -645,3 +645,26 @@ test('test uploader validation with zod', async () => {
   wrapper.unmount()
   mockRestore()
 })
+
+test('test uploader remove button slot', async () => {
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [
+        {
+          url: 'https://varletjs.org/varlet/cat.jpg',
+          cover: 'https://varletjs.org/varlet/cat.jpg',
+        },
+      ],
+    },
+    slots: {
+      'remove-button': () => 'remove',
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  mockRestoreStubs()
+  wrapper.unmount()
+})

@@ -101,6 +101,25 @@ exports[`test uploader progress 1`] = `
 </div>"
 `;
 
+exports[`test uploader remove button slot 1`] = `
+"<div class="var-uploader var--box">
+  <div class="var-uploader__file-list">
+    <div class="var-uploader__file var-elevation--2">
+      <div class="var-uploader__file-name">https://varletjs.org/varlet/cat.jpg</div>remove<img role="img" class="var-uploader__file-cover" src="https://varletjs.org/varlet/cat.jpg">
+      <div class="var-uploader__file-indicator">
+        <div class="var-uploader__progress"></div>
+      </div>
+    </div>
+    <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*"><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-hover-overlay"></div>
+    </div>
+  </div>
+  <!--v-if-->
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
 exports[`test uploader validation 1`] = `
 "<div class="var-uploader var--box">
   <div class="var-uploader__file-list">
