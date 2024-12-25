@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 import { use, t } from './locale'
+import { Snackbar } from '@varlet/ui'
 
 const value = ref()
 const valueNormal = ref()
@@ -125,12 +126,27 @@ watchLang((lang) => {
 })
 
 onThemeChange()
+
+function handleSelect(value) {
+  Snackbar(`Select: ${value}`)
+}
 </script>
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-menu-select v-model="value">
     <var-button type="primary">{{ value ? value : t('please') }}</var-button>
+
+    <template #options>
+      <var-menu-option :label="t('eat')" />
+      <var-menu-option :label="t('sleep')" />
+      <var-menu-option :label="t('play')" />
+    </template>
+  </var-menu-select>
+
+  <app-type>{{ t('onSelect') }}</app-type>
+  <var-menu-select @select="handleSelect">
+    <var-button type="primary">{{ t('please') }}</var-button>
 
     <template #options>
       <var-menu-option :label="t('eat')" />
@@ -242,12 +258,12 @@ onThemeChange()
     <var-button type="primary">{{ valueSelectOptions ? valueSelectOptions : t('please') }}</var-button>
   </var-menu-select>
 
-  <app-type>Cascade</app-type>
+  <app-type>{{ t('cascade') }}</app-type>
   <var-menu-select :options="cascadeOptions" v-model="cascadeValue">
     <var-button type="primary">{{ cascadeValue ? cascadeValue : t('please') }}</var-button>
   </var-menu-select>
 
-  <app-type>Cascade Multiple</app-type>
+  <app-type>{{ t('multipleCascade') }}</app-type>
   <var-menu-select multiple :options="cascadeOptions" v-model="cascadeMultipleValue">
     <var-button type="primary">{{ cascadeMultipleValue.length ? cascadeMultipleValue : t('please') }}</var-button>
   </var-menu-select>

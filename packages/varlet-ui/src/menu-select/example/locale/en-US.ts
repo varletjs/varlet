@@ -18,4 +18,5 @@ export default {
   closeOnSelect: 'Disable Close On Select',
   selectOptions: 'Options API',
   selectOptionsWithCustomizedKey: 'Options API (With Customized Key)',
+  onSelect: 'Select Event',
 }

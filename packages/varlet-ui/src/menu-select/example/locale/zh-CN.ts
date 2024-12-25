@@ -18,4 +18,7 @@ export default {
   closeOnSelect: '选择选项时禁止关闭菜单',
   selectOptions: '选项式 API',
   selectOptionsWithCustomizedKey: '选项式 API（自定义字段）',
+  onSelect: '选中事件',
+  cascade: '级联单选',
+  multipleCascade: '级联多选',
 }
