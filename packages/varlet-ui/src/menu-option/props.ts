@@ -14,5 +14,5 @@ export const props = {
   option: Object as PropType<MenuSelectOption>,
   childrenTrigger: Boolean,
   highlight: Boolean,
-  onKeyboardTrigger: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
+  onKeyArrowX: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
 }

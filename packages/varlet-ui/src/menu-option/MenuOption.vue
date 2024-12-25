@@ -148,11 +148,11 @@ export default defineComponent({
       }
 
       if (event.key === 'ArrowRight') {
-        call(props.onKeyboardTrigger, event.key)
+        call(props.onKeyArrowX, event.key)
       }
 
       if (event.key === 'ArrowLeft') {
-        call(props.onKeyboardTrigger, event.key)
+        call(props.onKeyArrowX, event.key)
       }
     }
 

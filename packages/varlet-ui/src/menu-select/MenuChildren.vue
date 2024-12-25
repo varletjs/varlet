@@ -20,7 +20,7 @@
       :ripple="option.ripple"
       :disabled="option.disabled"
       :highlight="highlightOptions.includes(option)"
-      @keyboard-trigger="handleArrowRight"
+      @key-arrow-x="handleArrowRight"
       @mouseenter="handleTriggerMouseenter"
     />
 
@@ -33,8 +33,9 @@
             :parent-show="show"
             :option="option"
             :options="option[childrenKey]"
+            :highlight-options="highlightOptions"
             :disabled="option.disabled || !show"
-            @keyboard-trigger="handleArrowLeft"
+            @key-arrow-x="handleArrowLeft"
             @trigger-mouseenter="allowChildrenClose(option)"
           />
 
