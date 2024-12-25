@@ -63,6 +63,7 @@ import { createNamespace, defineListenerProp, pickProps } from '../utils/compone
 import { type MenuSelectOption, props as menuSelectProps } from './props'
 import { focusChildElementByKey } from '../utils/elements'
 import { call, raf } from '@varlet/shared'
+import { type MenuOptionKeyArrowX } from '../menu-option/props'
 
 const { name, n } = createNamespace('menu-children')
 
@@ -102,7 +103,7 @@ export default defineComponent({
       { immediate: true }
     )
 
-    async function handleArrowRight(key: 'ArrowRight' | 'ArrowLeft') {
+    async function handleArrowRight(key: MenuOptionKeyArrowX) {
       call(props.onKeyArrowX, key)
 
       if (key !== 'ArrowRight') {
@@ -115,7 +116,7 @@ export default defineComponent({
       focusChildElementByKey(menu.value!.$el, menuOptions.value!, 'ArrowDown')
     }
 
-    function handleArrowLeft(key: 'ArrowRight' | 'ArrowLeft') {
+    function handleArrowLeft(key: MenuOptionKeyArrowX) {
       if (key !== 'ArrowLeft') {
         return
       }

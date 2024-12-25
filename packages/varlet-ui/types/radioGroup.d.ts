@@ -27,10 +27,10 @@ export { RadioGroupDirection }
 export interface RadioGroupProps extends BasicAttributes {
   modelValue?: any
   direction?: RadioGroupDirection
-  options?: Array<RadioGroupOption>
+  options?: RadioGroupOption[]
   labelKey?: string
   valueKey?: string
-  validateTrigger?: Array<RadioGroupValidateTrigger>
+  validateTrigger?: RadioGroupValidateTrigger[]
   rules?: RadioGroupRules
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>

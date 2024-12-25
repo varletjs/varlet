@@ -30,13 +30,17 @@ export type MenuSelectOptionLabelRender = (option: MenuSelectOption, checked: bo
 
 export interface MenuSelectOption {
   label?: string | VNode | MenuSelectOptionLabelRender
-  disabled?: boolean
   value?: any
+  disabled?: boolean
   ripple?: boolean
+  children?: MenuSelectOption[]
+
+  [key: PropertyKey]: any
 }
 
 export interface MenuSelectProps extends BasicAttributes {
   modelValue?: any
+  options?: MenuSelectOption[]
   size?: MenuSelectSize
   multiple?: boolean
   scrollable?: boolean
@@ -47,6 +51,9 @@ export interface MenuSelectProps extends BasicAttributes {
   reference?: MenuSelectReference
   placement?: MenuSelectPlacement
   strategy?: MenuSelectStrategy
+  labelKey?: string
+  valueKey?: string
+  childrenKey?: string
   offsetX?: string | number
   offsetY?: string | number
   teleport?: TeleportProps['to'] | false
@@ -58,6 +65,7 @@ export interface MenuSelectProps extends BasicAttributes {
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
+  onSelect?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }

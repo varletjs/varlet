@@ -29,9 +29,9 @@ export interface CheckboxGroupProps extends BasicAttributes {
   max?: string | number
   labelKey?: string
   valueKey?: string
-  options?: Array<CheckboxGroupOption>
+  options?: CheckboxGroupOption[]
   direction?: CheckboxGroupDirection
-  validateTrigger?: Array<CheckboxGroupValidateTrigger>
+  validateTrigger?: CheckboxGroupValidateTrigger[]
   rules?: CheckboxGroupRules
   onChange?: ListenerProp<(value: Array<any>) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: Array<any>) => void>
