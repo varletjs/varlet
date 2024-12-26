@@ -26,6 +26,30 @@ const value = ref()
 </template>
 ```
 
+### Selected Event
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+
+function handleSelect(value) {
+  Snackbar(`Select: ${value}`)
+}
+</script>
+
+<template>
+  <var-menu-select @select="handleSelect">
+    <var-button type="primary">Please Select</var-button>
+
+    <template #options>
+      <var-menu-option label="Eat" />
+      <var-menu-option label="Sleep" />
+      <var-menu-option label="Play game" />
+    </template>
+  </var-menu-select>
+</template>
+```
+
 ### Size
 
 ```html
@@ -246,6 +270,110 @@ const options = ref([
 </template>
 ```
 
+### Cascade
+
+An array of options may be passed to the `children` attribute of options to achieve a cascading effect.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+const options = ref([
+  {
+    label: '1',
+    value: 1,
+  },
+  {
+    label: '2',
+    value: 2,
+    children: [
+      {
+        label: '2-1',
+        value: 21,
+        children: [
+          {
+            label: '2-1-1',
+            value: 211,
+          },
+          {
+            label: '2-1-2',
+            value: 212,
+          },
+        ],
+      },
+      {
+        label: '2-2',
+        value: 22,
+      },
+    ],
+  },
+  {
+    label: '3',
+    value: 3,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="options">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
+### Multiple Cascade
+
+Cascading multiple selections can be achieved by setting the `multiple` attribute on the basis of cascading single selections.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+const options = ref([
+  {
+    label: '1',
+    value: 1,
+  },
+  {
+    label: '2',
+    value: 2,
+    children: [
+      {
+        label: '2-1',
+        value: 21,
+        children: [
+          {
+            label: '2-1-1',
+            value: 211,
+          },
+          {
+            label: '2-1-2',
+            value: 212,
+          },
+        ],
+      },
+      {
+        label: '2-2',
+        value: 22,
+      },
+    ],
+  },
+  {
+    label: '3',
+    value: 3,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select multiple v-model="value" :options="options">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
 ### Options API With Customized Key
 
 You can pass the options as an array of objects to the `options` property. Use the `label-key` and `value-key` properties to specify the fields for the label and value within the options array.
@@ -308,6 +436,7 @@ const options = ref([
 | `options` ***3.3.7*** | Specifies options | _MenuSelectOption[]_ | `[]` |
 | `label-key` ***3.3.7*** | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` ***3.3.7*** | As the key that uniquely identifies value | _string_ | `value` |
+| `children-key` ***3.8.0*** |  As the key that uniquely identifies children | _string_ | `children` |
 
 #### MenuSelectOption
 
@@ -315,6 +444,7 @@ const options = ref([
 | ------- | --- |----------------|-----------|
 | `label`    |   The text of option    | _string \| VNode \| (option: MenuSelectOption, selected: boolean) => VNodeChild_      | `-`   |
 | `value`  |    The value of option    | _any_      | `-`   |
+| `children` ***3.8.0***  |    The children options of option | _MenuSelectOption[]_      | `-`   |
 | `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
 | `ripple`  | Whether to enable ripple | _boolean_ | `true` |
 
@@ -374,6 +504,7 @@ const options = ref([
 | `close` | Triggered when the menu is closed | `-` |
 | `closed` | Triggered when the closing menu animation ends | `-` |
 | `click-outside` | Triggered when clicking outside the menu | `event: Event` |
+| `select` ***3.8.0*** | Triggered when selecting a option | `value: any, option: MenuSelectOption` |
 
 ### Slots
 

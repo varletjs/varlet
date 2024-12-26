@@ -497,6 +497,7 @@ const keyOptions = ref([
 | `label` | 选项显示的文本 | _any_ | `-` |
 | `value` | 选项绑定的值 | _any_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
+| `ripple` ***3.8.0***  | 是否启用水波效果 | _boolean_ | `true` |
 
 ### 方法
 

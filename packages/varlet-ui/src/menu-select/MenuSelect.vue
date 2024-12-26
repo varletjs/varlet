@@ -90,7 +90,7 @@ export default defineComponent({
 
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
 
-    const { computeLabel, getSelectedValue } = useSelectController({
+    const { computeLabel, getSelectedValue, getOptionProviderKey } = useSelectController({
       modelValue: () => props.modelValue,
       multiple: () => props.multiple,
       optionProviders: () => menuOptions,
@@ -172,7 +172,7 @@ export default defineComponent({
     function enhance(options: MenuSelectOption[]) {
       function baseEnhance(options: MenuSelectOption[], parent?: MenuSelectOption) {
         return options.map((option) => {
-          option = { ...option }
+          option = { ...option, _rawOption: option }
 
           if (parent) {
             option._parent = parent
@@ -195,7 +195,7 @@ export default defineComponent({
 
     function onSelect(optionProvider: MenuOptionProvider) {
       const { multiple, closeOnSelect } = props
-      const { value, selected } = optionProvider
+      const { value, label, selected, disabled, ripple } = optionProvider
       const enhancedOption = getEnhancedOption(value.value)
 
       if (enhancedOption) {
@@ -225,8 +225,15 @@ export default defineComponent({
       }
 
       const selectedValue = getSelectedValue(optionProvider)
+      const selectedOption: MenuSelectOption = enhancedOption?._rawOption ?? {
+        value: value.value,
+        label: label.value,
+        disabled: disabled.value,
+        ripple: ripple.value,
+      }
+
+      call(props.onSelect, getOptionProviderKey(optionProvider), selectedOption)
       call(props['onUpdate:modelValue'], selectedValue)
-      call(props.onSelect, selectedValue)
 
       if (!multiple && closeOnSelect) {
         menu.value!.$el.focus()

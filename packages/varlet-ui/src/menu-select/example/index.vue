@@ -76,37 +76,12 @@ const cascadeOptions = ref([
       {
         label: '2-2',
         value: 22,
-        children: [
-          {
-            label: '2-2-1',
-            value: 221,
-            disabled: true,
-          },
-          {
-            label: '2-2-2',
-            value: 222,
-          },
-        ],
-      },
-      {
-        label: '2-3',
-        value: 23,
       },
     ],
   },
   {
     label: '3',
     value: 3,
-    children: [
-      {
-        label: '3-1',
-        value: 31,
-      },
-      {
-        label: '3-2',
-        value: 32,
-      },
-    ],
   },
 ])
 

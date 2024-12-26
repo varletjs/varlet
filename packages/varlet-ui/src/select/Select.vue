@@ -120,6 +120,7 @@
               :value="option[valueKey]"
               :option="option"
               :disabled="option.disabled"
+              :ripple="option.ripple"
             />
           </template>
           <slot />

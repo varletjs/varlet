@@ -6,7 +6,7 @@
       color: optionSelected ? focusColor : undefined,
     }"
     :tabindex="disabled ? undefined : '-1'"
-    v-ripple="{ disabled }"
+    v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
     @focus="isFocusing = true"
     @blur="isFocusing = false"
@@ -67,6 +67,13 @@ export default defineComponent({
     const isFocusing = ref(false)
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
+    const value = computed<any>(() => props.value)
+    const disabled = computed(() => props.disabled)
+    const ripple = computed(() => props.ripple)
+    const { select, bindSelect } = useSelect()
+    const { multiple, focusColor, onSelect, computeLabel } = select
+    const { hovering, handleHovering } = useHoverOverlay()
+
     const labelVNode = computed(() =>
       isFunction(props.label)
         ? props.label(
@@ -79,14 +86,12 @@ export default defineComponent({
           )
         : props.label
     )
-    const value = computed<any>(() => props.value)
-    const { select, bindSelect } = useSelect()
-    const { multiple, focusColor, onSelect, computeLabel } = select
-    const { hovering, handleHovering } = useHoverOverlay()
 
     const optionProvider: OptionProvider = {
       label: labelVNode,
       value,
+      disabled,
+      ripple,
       selected,
       sync,
     }

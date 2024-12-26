@@ -53,7 +53,7 @@ export function useSelectController(options: UseSelectControllerOptions) {
     return option?.label.value ?? ''
   }
 
-  function findValueOrLabel({ value, label }: OptionProvider) {
+  function getOptionProviderKey({ value, label }: OptionProvider) {
     return value.value ?? label.value
   }
 
@@ -61,7 +61,9 @@ export function useSelectController(options: UseSelectControllerOptions) {
     const multiple = multipleGetter()
     const options = optionProvidersGetter()
 
-    return multiple ? options.filter(({ selected }) => selected.value).map(findValueOrLabel) : findValueOrLabel(option)
+    return multiple
+      ? options.filter(({ selected }) => selected.value).map(getOptionProviderKey)
+      : getOptionProviderKey(option)
   }
 
   function syncOptions() {
@@ -72,12 +74,12 @@ export function useSelectController(options: UseSelectControllerOptions) {
     if (multiple) {
       options.forEach((option) =>
         option.sync(
-          modelValue.includes(findValueOrLabel(option)),
+          modelValue.includes(getOptionProviderKey(option)),
           optionIsIndeterminate ? optionIsIndeterminate(option) : undefined
         )
       )
     } else {
-      options.forEach((option) => option.sync(modelValue === findValueOrLabel(option)))
+      options.forEach((option) => option.sync(modelValue === getOptionProviderKey(option)))
     }
 
     computeLabel()
@@ -86,6 +88,7 @@ export function useSelectController(options: UseSelectControllerOptions) {
   return {
     label,
     labels,
+    getOptionProviderKey,
     computeLabel,
     getSelectedValue,
   }

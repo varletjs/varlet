@@ -14,9 +14,11 @@ export interface MenuSelectOption {
   children?: MenuSelectOption[]
   disabled?: boolean
   ripple?: boolean
+  [key: PropertyKey]: any
+
   _parent?: MenuSelectOption
   _children?: MenuSelectOption[]
-  [key: PropertyKey]: any
+  _rawOption?: MenuSelectOption
 }
 
 export const props = {
@@ -51,7 +53,7 @@ export const props = {
     default: true,
   },
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
-  onSelect: defineListenerProp<(value: any) => void>(),
+  onSelect: defineListenerProp<(value: any, option: MenuSelectOption) => void>(),
   ...pickProps(menuProps, [
     'show',
     'disabled',

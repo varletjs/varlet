@@ -488,6 +488,7 @@ const keyOptions = ref([
 | `label`    |   The text of option    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
 | `value`  |    The value of option    | _any_      | `-`   |
 | `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
+| `ripple` ***3.3.0***  | Whether to enable ripple | _boolean_ | `true` |
 
 #### Option Props
 

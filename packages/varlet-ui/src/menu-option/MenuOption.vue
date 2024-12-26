@@ -78,6 +78,8 @@ export default defineComponent({
     const selected = computed(() => optionSelected.value)
     const indeterminate = computed(() => optionIndeterminate.value)
     const value = computed<any>(() => props.value)
+    const disabled = computed(() => props.disabled)
+    const ripple = computed(() => props.ripple)
     const { menuSelect, bindMenuSelect } = useMenuSelect()
     const { size, multiple, onSelect, computeLabel } = menuSelect
     const { hovering, handleHovering } = useHoverOverlay()
@@ -100,6 +102,8 @@ export default defineComponent({
       label: labelVNode,
       value,
       selected,
+      disabled,
+      ripple,
       indeterminate,
       sync,
     }
