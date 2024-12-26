@@ -3,7 +3,7 @@
 ### 介绍
 
 组件库提供移动端和桌面端适配方案，
-移动端使用 `postcss-px-to-viewport` 方案进行适配，
+移动端使用 [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport) 方案进行适配，
 桌面端使用 `@varlet/touch-emulator` 方案进行适配。
 
 ### 移动端适配
