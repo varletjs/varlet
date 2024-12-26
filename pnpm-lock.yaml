@@ -66,8 +66,8 @@ importers:
         specifier: 0.2.14
         version: 0.2.14(vue@3.4.21(typescript@5.3.3))
       '@varlet/release':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.3.2
+        version: 0.3.2
       '@varlet/shared':
         specifier: workspace:*
         version: link:../varlet-shared
@@ -1865,9 +1865,9 @@ packages:
     resolution: {integrity: sha512-KLwNZgOktZc363l9xIJhryA4ZFdpiOoI1MWj76XrMZD/I9CXphjmn1smteloEpepjZ5ZPJjfbTmlHj0nAjUZtg==}
     hasBin: true
 
-  '@varlet/release@0.3.1':
-    resolution: {integrity: sha512-MVOc2mp9HtjMQFm/wzNrexJWzfqEaFRGQ4RiBmeC6yNtoV0fx0zoEKc1DBz5ZbbLzz/TTF9oEDjKmbB23lJ+Ow==}
-    engines: {node: '>=16.0.0', pnpm: '>=8.0'}
+  '@varlet/release@0.3.2':
+    resolution: {integrity: sha512-wPQ4UrQ/m/d54nTc8VVkchWV7iiVizjaOpdTWMtjDKAe/keVdbGwuUSbPprmOaocgXwp3PfQrAV3ChPHFfnPFg==}
+    engines: {node: '>=16.0.0', pnpm: '>=9.0'}
     hasBin: true
 
   '@varlet/shared@2.20.3':
@@ -5787,7 +5787,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/parser@7.21.8':
     dependencies:
@@ -6845,7 +6845,7 @@ snapshots:
       - debug
       - vue
 
-  '@varlet/release@0.3.1':
+  '@varlet/release@0.3.2':
     dependencies:
       '@inquirer/prompts': 6.0.1
       commander: 11.1.0
@@ -6854,7 +6854,7 @@ snapshots:
       glob: 10.4.5
       nanospinner: 1.1.0
       picocolors: 1.1.0
-      semver: 7.5.4
+      semver: 7.6.3
       tinyexec: 0.3.0
 
   '@varlet/shared@2.20.3': {}
