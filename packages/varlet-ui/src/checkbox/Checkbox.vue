@@ -121,9 +121,7 @@ export default defineComponent({
       const { checkedValue, onChange } = props
 
       value.value = changedValue
-      isIndeterminate.value = false
-
-      call(onChange, value.value)
+      call(onChange, value.value, isIndeterminate.value)
       validateWithTrigger('onChange')
       changedValue === checkedValue ? checkboxGroup?.onChecked(checkedValue) : checkboxGroup?.onUnchecked(checkedValue)
     }
@@ -138,6 +136,13 @@ export default defineComponent({
       call(onClick, e)
 
       if (form?.readonly.value || readonly) {
+        return
+      }
+
+      if (isIndeterminate.value === true) {
+        isIndeterminate.value = false
+        call(props.onChange, value.value, isIndeterminate.value)
+        validateWithTrigger('onChange')
         return
       }
 

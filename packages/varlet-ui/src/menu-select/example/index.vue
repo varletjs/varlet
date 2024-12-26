@@ -80,6 +80,7 @@ const cascadeOptions = ref([
           {
             label: '2-2-1',
             value: 221,
+            disabled: true,
           },
           {
             label: '2-2-2',

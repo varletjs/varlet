@@ -19,7 +19,7 @@
       :option="option"
       :ripple="option.ripple"
       :disabled="option.disabled"
-      :highlight="highlightOptions.includes(option)"
+      :highlight="highlightOptions.some((_option) => _option.value === option.value)"
       @key-arrow-x="handleArrowRight"
       @mouseenter="handleMouseenter"
     />

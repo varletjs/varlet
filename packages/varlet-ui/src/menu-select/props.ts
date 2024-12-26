@@ -15,6 +15,7 @@ export interface MenuSelectOption {
   disabled?: boolean
   ripple?: boolean
   _parent?: MenuSelectOption
+  _children?: MenuSelectOption[]
   [key: PropertyKey]: any
 }
 

@@ -32,7 +32,7 @@ export const props = {
   },
   rules: [Array, Function, Object] as PropType<any>,
   onClick: defineListenerProp<(e: Event) => void>(),
-  onChange: defineListenerProp<(value: any) => void>(),
+  onChange: defineListenerProp<(value: any, indeterminate: boolean) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
   'onUpdate:indeterminate': defineListenerProp<(value: boolean) => void>(),
 }

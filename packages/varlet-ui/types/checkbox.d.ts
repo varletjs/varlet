@@ -19,7 +19,7 @@ export interface CheckboxProps extends BasicAttributes {
   validateTrigger?: Array<CheckboxValidateTrigger>
   rules?: CheckboxRules
   onClick?: ListenerProp<(e: Event) => void>
-  onChange?: ListenerProp<(value: any) => void>
+  onChange?: ListenerProp<(value: any, indeterminate: boolean) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
   'onUpdate:indeterminate'?: ListenerProp<(value: boolean) => void>
 }

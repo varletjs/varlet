@@ -82,10 +82,11 @@ export default defineComponent({
   components: { VarMenu, VarMenuOption, VarMenuChildren },
   props,
   setup(props) {
+    const show = useVModel(props, 'show')
     const menu = ref<InstanceType<typeof VarMenu>>()
     const menuOptionsRef = ref<HTMLElement>()
     const menuChildren = ref<InstanceType<typeof VarMenuChildren>[]>()
-    const show = useVModel(props, 'show')
+    const enhancedOptions = computed(() => enhance(props.options))
 
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
 
@@ -95,19 +96,17 @@ export default defineComponent({
       optionProviders: () => menuOptions,
       optionProvidersLength: () => length.value,
       optionIsIndeterminate(optionProvider) {
-        const option = flattenOptions.value.find((option) => option.value === optionProvider.value.value)
-        if (!option) {
+        const enhancedOption = getEnhancedOption(optionProvider.value.value)
+        if (!enhancedOption) {
           return false
         }
 
-        const children = getOptionChildren(option) ?? []
+        const children = (enhancedOption._children ?? []).filter((option) => !option.disabled)
         const selectedChildren = children.filter((option) => props.modelValue.includes(option.value))
 
         return selectedChildren.length > 0 && selectedChildren.length < children.length
       },
     })
-
-    const flattenOptions = computed(() => flatten(props.options))
 
     const highlightOptions = computed(() => {
       const { multiple, modelValue } = props
@@ -116,7 +115,7 @@ export default defineComponent({
         return []
       }
 
-      const selectedOption = flattenOptions.value.find((option) => option.value === modelValue)
+      const selectedOption = enhancedOptions.value.find((option) => option.value === modelValue)
       const highlightOptions: MenuSelectOption[] = []
       let parent = selectedOption?._parent
 
@@ -139,6 +138,14 @@ export default defineComponent({
 
     useEventListener(() => window, 'keydown', handleKeydown)
 
+    function getEnhancedOption(value: any) {
+      return enhancedOptions.value.find((option) => option.value === value)
+    }
+
+    function getOptionProvider(value: any) {
+      return menuOptions.find((optionProvider) => optionProvider.value.value === value)
+    }
+
     function getOptionChildren(option: MenuSelectOption) {
       return option[props.childrenKey] as MenuSelectOption[] | undefined
     }
@@ -148,17 +155,13 @@ export default defineComponent({
 
       baseFlatten(options)
 
-      function baseFlatten(options: MenuSelectOption[], parent?: MenuSelectOption) {
+      function baseFlatten(options: MenuSelectOption[]) {
         options.forEach((option) => {
-          if (parent) {
-            option._parent = parent
-          }
-
           flattenOptions.push(option)
 
           const children = getOptionChildren(option)
           if (children) {
-            baseFlatten(children, option)
+            baseFlatten(children)
           }
         })
       }
@@ -166,33 +169,58 @@ export default defineComponent({
       return flattenOptions
     }
 
+    function enhance(options: MenuSelectOption[]) {
+      function baseEnhance(options: MenuSelectOption[], parent?: MenuSelectOption) {
+        return options.map((option) => {
+          option = { ...option }
+
+          if (parent) {
+            option._parent = parent
+          }
+
+          const children = getOptionChildren(option)
+
+          if (children) {
+            const enhancedChildren = baseEnhance(children, option)
+            option[props.childrenKey] = enhancedChildren
+            option._children = flatten(enhancedChildren)
+          }
+
+          return option
+        })
+      }
+
+      return flatten(baseEnhance(options))
+    }
+
     function onSelect(optionProvider: MenuOptionProvider) {
       const { multiple, closeOnSelect } = props
       const { value, selected } = optionProvider
-      const option = flattenOptions.value.find((option) => option.value === value.value)
+      const enhancedOption = getEnhancedOption(value.value)
 
-      if (option) {
-        const children = flatten(getOptionChildren(option) ?? [])
-        const relationChildrenValues = children.map((option) => option.value)
+      if (enhancedOption) {
+        const childrenValues = (enhancedOption._children ?? [])
+          .filter((option) => !option.disabled)
+          .map((option) => option.value)
 
         if (multiple && selected.value) {
           menuOptions.forEach((optionProvider) => {
-            if (relationChildrenValues.includes(optionProvider.value.value)) {
+            if (childrenValues.includes(optionProvider.value.value)) {
               optionProvider.sync(true, false)
             }
           })
 
-          broadcastParentOption(option)
+          broadcastParentOption(enhancedOption)
         }
 
         if (multiple && !selected.value) {
           menuOptions.forEach((optionProvider) => {
-            if (relationChildrenValues.includes(optionProvider.value.value)) {
+            if (childrenValues.includes(optionProvider.value.value)) {
               optionProvider.sync(false, false)
             }
           })
 
-          broadcastParentOption(option)
+          broadcastParentOption(enhancedOption)
         }
       }
 
@@ -206,23 +234,20 @@ export default defineComponent({
       }
     }
 
-    function broadcastParentOption(option: MenuSelectOption) {
-      let parentOption = option._parent
+    function broadcastParentOption(enhancedOption: MenuSelectOption) {
+      let parentOption = enhancedOption._parent
 
       while (parentOption) {
-        const parentOptionProvider = menuOptions.find(
-          (optionProvider) => optionProvider.value.value === parentOption!.value
-        )!
-
-        const parentOptionChildren = getOptionChildren(parentOption)!
+        const parentOptionProvider = getOptionProvider(parentOption.value)!
+        const parentOptionChildren = getOptionChildren(parentOption)!.filter((option) => !option.disabled)
 
         const isAllChildrenUnselected = parentOptionChildren.every((option) => {
-          const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
+          const optionProvider = getOptionProvider(option.value)!
           return !optionProvider.selected.value
         })
 
         const isAllChildrenSelected = parentOptionChildren.every((option) => {
-          const optionProvider = menuOptions.find((optionProvider) => optionProvider.value.value === option.value)!
+          const optionProvider = getOptionProvider(option.value)!
           return optionProvider.selected.value
         })
 

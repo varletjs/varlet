@@ -21,7 +21,7 @@
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `click` | Triggered on Click | `e: Event` |
-| `change` | Triggered on change | `value: any` |
+| `change` | Triggered on change | `value: any, indeterminate: boolean` |
 
 ### Slots
 
