@@ -177,7 +177,6 @@ export default defineComponent({
 
     async function handleSelect() {
       await nextTick()
-      console.log(menuOptionProvider)
       onSelect(menuOptionProvider)
     }
 
