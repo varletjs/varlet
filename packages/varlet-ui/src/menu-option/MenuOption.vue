@@ -143,20 +143,24 @@ export default defineComponent({
         return
       }
 
-      if (event.key === ' ' || event.key === 'Enter') {
-        preventDefault(event)
-      }
-
-      if (event.key === 'Enter') {
-        root.value!.click()
-      }
-
       if (event.key === 'ArrowRight') {
         call(props.onKeyArrowX, event.key)
       }
 
       if (event.key === 'ArrowLeft') {
         call(props.onKeyArrowX, event.key)
+      }
+
+      if (!isFocusing.value) {
+        return
+      }
+
+      if (event.key === ' ' || event.key === 'Enter') {
+        preventDefault(event)
+      }
+
+      if (event.key === 'Enter') {
+        root.value!.click()
       }
     }
 
@@ -173,6 +177,7 @@ export default defineComponent({
 
     async function handleSelect() {
       await nextTick()
+      console.log(menuOptionProvider)
       onSelect(menuOptionProvider)
     }
 
