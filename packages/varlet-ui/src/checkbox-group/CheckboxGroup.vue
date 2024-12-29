@@ -102,16 +102,10 @@ export default defineComponent({
       checkboxes.forEach(({ sync }) => sync(props.modelValue))
     }
 
-    function resetWithAnimation() {
-      checkboxes.forEach((checkbox) => checkbox.resetWithAnimation())
-    }
-
     // expose
     function checkAll() {
       const checkedValues: any[] = checkboxes.map(({ checkedValue }) => checkedValue.value)
       const changedModelValue: any[] = uniq(checkedValues)
-
-      resetWithAnimation()
 
       call(props['onUpdate:modelValue'], changedModelValue)
 
@@ -124,8 +118,6 @@ export default defineComponent({
         .filter(({ checked }) => !checked.value)
         .map(({ checkedValue }) => checkedValue.value)
       const changedModelValue: any[] = uniq(checkedValues)
-
-      resetWithAnimation()
 
       call(props['onUpdate:modelValue'], changedModelValue)
 

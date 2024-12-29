@@ -2,7 +2,14 @@
   <div
     ref="root"
     :class="
-      classes(n(), n('$--box'), n(`--${size}`), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])
+      classes(
+        n(),
+        n('$--box'),
+        n(`--${size}`),
+        [optionSelected, n('--selected-color')],
+        [disabled, n('--disabled')],
+        [childrenTrigger, n('--children-trigger')]
+      )
     "
     v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
@@ -17,6 +24,7 @@
       v-if="multiple"
       ref="checkbox"
       v-model="optionSelected"
+      v-model:indeterminate="optionIndeterminate"
       :disabled="disabled"
       @click.stop
       @change="handleSelect"
@@ -28,20 +36,25 @@
       </div>
     </slot>
 
-    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isFocusing && !disabled" />
+    <div :class="n('arrow')" v-if="childrenTrigger">
+      <var-icon var-menu-option-cover :class="n('arrow-icon')" name="chevron-right" />
+    </div>
+
+    <var-hover-overlay :hovering="(hovering || highlight) && !disabled" :focusing="isFocusing && !disabled" />
   </div>
 </template>
 
 <script lang="ts">
 import VarCheckbox from '../checkbox'
+import VarIcon from '../icon'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Ripple from '../ripple'
 import Hover from '../hover'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, computed, ref, watch, nextTick } from 'vue'
 import { useMenuSelect, type MenuOptionProvider } from './provide'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
-import { preventDefault, isFunction } from '@varlet/shared'
+import { preventDefault, isFunction, isBoolean, call } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('menu-option')
@@ -52,14 +65,25 @@ export default defineComponent({
   components: {
     VarCheckbox,
     VarHoverOverlay,
+    VarIcon,
     MaybeVNode,
   },
   props,
   setup(props) {
     const root = ref<HTMLElement>()
+    const checkbox = ref<InstanceType<typeof VarCheckbox>>()
     const isFocusing = ref(false)
     const optionSelected = ref(false)
+    const optionIndeterminate = ref(false)
     const selected = computed(() => optionSelected.value)
+    const indeterminate = computed(() => optionIndeterminate.value)
+    const value = computed<any>(() => props.value)
+    const disabled = computed(() => props.disabled)
+    const ripple = computed(() => props.ripple)
+    const { menuSelect, bindMenuSelect } = useMenuSelect()
+    const { size, multiple, onSelect, computeLabel } = menuSelect
+    const { hovering, handleHovering } = useHoverOverlay()
+
     const labelVNode = computed(() =>
       isFunction(props.label)
         ? props.label(
@@ -73,15 +97,14 @@ export default defineComponent({
           )
         : props.label
     )
-    const value = computed<any>(() => props.value)
-    const { menuSelect, bindMenuSelect } = useMenuSelect()
-    const { size, multiple, onSelect, computeLabel } = menuSelect
-    const { hovering, handleHovering } = useHoverOverlay()
 
     const menuOptionProvider: MenuOptionProvider = {
       label: labelVNode,
       value,
       selected,
+      disabled,
+      ripple,
+      indeterminate,
       sync,
     }
 
@@ -97,11 +120,26 @@ export default defineComponent({
         return
       }
 
-      handleSelect()
+      if (!multiple.value && props.childrenTrigger) {
+        return
+      }
+
+      if (multiple.value && optionIndeterminate.value) {
+        optionIndeterminate.value = false
+        optionSelected.value = false
+        onSelect(menuOptionProvider)
+        return
+      }
+
+      if (multiple.value && !optionIndeterminate.value) {
+        optionSelected.value = !optionSelected.value
+      }
+
+      onSelect(menuOptionProvider)
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isFocusing.value) {
+      if (!isFocusing.value && !checkbox.value?.isFocusing) {
         return
       }
 
@@ -111,6 +149,14 @@ export default defineComponent({
 
       if (event.key === 'Enter') {
         root.value!.click()
+      }
+
+      if (event.key === 'ArrowRight') {
+        call(props.onKeyArrowX, event.key)
+      }
+
+      if (event.key === 'ArrowLeft') {
+        call(props.onKeyArrowX, event.key)
       }
     }
 
@@ -125,21 +171,24 @@ export default defineComponent({
       }
     }
 
-    function handleSelect() {
-      if (multiple.value) {
-        optionSelected.value = !optionSelected.value
-      }
-
+    async function handleSelect() {
+      await nextTick()
       onSelect(menuOptionProvider)
     }
 
-    function sync(checked: boolean) {
+    function sync(checked: boolean, indeterminate?: boolean) {
       optionSelected.value = checked
+
+      if (isBoolean(indeterminate)) {
+        optionIndeterminate.value = indeterminate
+      }
     }
 
     return {
       root,
+      checkbox,
       optionSelected,
+      optionIndeterminate,
       size,
       multiple,
       hovering,
@@ -157,6 +206,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../icon/icon';
 @import '../ripple/ripple';
 @import '../checkbox/checkbox';
 @import './menuOption';

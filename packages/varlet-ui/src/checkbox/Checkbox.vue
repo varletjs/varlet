@@ -19,28 +19,13 @@
         @blur="isFocusing = false"
       >
         <slot name="indeterminate-icon" v-if="isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="minus-box"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="minus-box" :size="iconSize" var-checkbox-cover />
         </slot>
         <slot name="checked-icon" v-if="checked && !isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="checkbox-marked"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
         </slot>
         <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            name="checkbox-blank-outline"
-            :size="iconSize"
-            var-checkbox-cover
-          />
+          <var-icon :class="n('icon')" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
         </slot>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"
@@ -99,7 +84,6 @@ export default defineComponent({
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
     const checkedValue = computed(() => props.checkedValue)
-    const withAnimation = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -118,7 +102,6 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
-      resetWithAnimation,
     }
 
     call(bindCheckboxGroup, checkboxProvider)
@@ -138,9 +121,7 @@ export default defineComponent({
       const { checkedValue, onChange } = props
 
       value.value = changedValue
-      isIndeterminate.value = false
-
-      call(onChange, value.value)
+      call(onChange, value.value, isIndeterminate.value)
       validateWithTrigger('onChange')
       changedValue === checkedValue ? checkboxGroup?.onChecked(checkedValue) : checkboxGroup?.onUnchecked(checkedValue)
     }
@@ -158,7 +139,13 @@ export default defineComponent({
         return
       }
 
-      withAnimation.value = true
+      if (isIndeterminate.value === true) {
+        isIndeterminate.value = false
+        call(props.onChange, value.value, isIndeterminate.value)
+        validateWithTrigger('onChange')
+        return
+      }
+
       const maximum = checkboxGroup ? checkboxGroup.checkedCount.value >= Number(checkboxGroup.max.value) : false
 
       if (!checked.value && maximum) {
@@ -175,10 +162,6 @@ export default defineComponent({
     function sync(values: Array<any>) {
       const { checkedValue, uncheckedValue } = props
       value.value = values.includes(checkedValue) ? checkedValue : uncheckedValue
-    }
-
-    function resetWithAnimation() {
-      withAnimation.value = false
     }
 
     // expose
@@ -235,7 +218,6 @@ export default defineComponent({
       action,
       isFocusing,
       isIndeterminate,
-      withAnimation,
       checked,
       errorMessage,
       checkboxGroupErrorMessage: checkboxGroup?.errorMessage,

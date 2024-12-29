@@ -19,20 +19,10 @@
         @blur="isFocusing = false"
       >
         <slot name="checked-icon" v-if="checked">
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            var-radio-cover
-            name="radio-marked"
-            :size="iconSize"
-          />
+          <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
         </slot>
         <slot name="unchecked-icon" v-else>
-          <var-icon
-            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-            var-radio-cover
-            name="radio-blank"
-            :size="iconSize"
-          />
+          <var-icon :class="n('icon')" var-radio-cover name="radio-blank" :size="iconSize" />
         </slot>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"
@@ -89,7 +79,6 @@ export default defineComponent({
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const checked = computed(() => value.value === props.checkedValue)
-    const withAnimation = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -183,7 +172,6 @@ export default defineComponent({
         return
       }
 
-      withAnimation.value = true
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
@@ -222,7 +210,6 @@ export default defineComponent({
     return {
       action,
       isFocusing,
-      withAnimation,
       checked,
       errorMessage,
       radioGroupErrorMessage: radioGroup?.errorMessage,

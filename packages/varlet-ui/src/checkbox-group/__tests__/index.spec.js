@@ -72,7 +72,7 @@ test('test checkbox onClick & onChange', async () => {
 
   await wrapper.find('.var-checkbox').trigger('click')
   expect(onClick).toHaveBeenCalledTimes(1)
-  expect(onChange).lastCalledWith(true)
+  expect(onChange).lastCalledWith(true, false)
 
   wrapper.unmount()
 })
@@ -146,16 +146,20 @@ test('test checkbox readonly', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox indeterminate', () => {
+test('test checkbox indeterminate', async () => {
+  const onChange = vi.fn()
   const wrapper = mount(VarCheckbox, {
     props: {
       modelValue: false,
       indeterminate: true,
+      onChange,
     },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
 
+  await wrapper.find('.var-checkbox').trigger('click')
+  expect(onChange).lastCalledWith(false, false)
   wrapper.unmount()
 })
 

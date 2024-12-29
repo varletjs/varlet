@@ -21,7 +21,7 @@
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | `click` | 点击时触发 | `e: Event` |
-| `change` | 状态变更时触发 | `value: any` |
+| `change` | 状态变更时触发 | `value: any, indeterminate: boolean` |
 
 ### 插槽
 

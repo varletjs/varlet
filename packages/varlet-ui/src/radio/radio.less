@@ -8,23 +8,6 @@
   --radio-text-color: #555;
 }
 
-@keyframes var-vibrate-animation {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.8;
-    transform: scale(0.8);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .var-radio {
   display: flex;
   align-items: center;
@@ -56,10 +39,6 @@
 
   &__text {
     color: var(--radio-text-color);
-  }
-
-  &--with-animation[var-radio-cover] {
-    animation: var-vibrate-animation 0.25s;
   }
 
   &--checked {

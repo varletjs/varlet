@@ -8,5 +8,5 @@
     "allowJs": true,
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*.{ts,tsx,vue}"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
 }

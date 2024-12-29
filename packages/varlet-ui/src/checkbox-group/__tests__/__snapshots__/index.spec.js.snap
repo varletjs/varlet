@@ -123,7 +123,7 @@ exports[`test checkbox group label is function 2`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>
@@ -172,7 +172,7 @@ exports[`test checkbox group label is function 3`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>
@@ -185,7 +185,7 @@ exports[`test checkbox group label is function 3`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>
@@ -221,7 +221,7 @@ exports[`test checkbox group label is function 4`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>
@@ -235,7 +235,7 @@ exports[`test checkbox group label is function 4`] = `
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
           <!--v-if-->
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-checkbox__text"><span>2-false</span></div>
@@ -441,7 +441,7 @@ exports[`test checkbox group validation 2`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>
@@ -567,7 +567,7 @@ exports[`test checkbox validation 2`] = `
 "<div class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-      <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+      <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
       <div class="var-hover-overlay"></div>
     </div>
@@ -610,7 +610,7 @@ exports[`validation with zod > checkbox 2`] = `
 "<div class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-      <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+      <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
       <div class="var-hover-overlay"></div>
     </div>
@@ -677,7 +677,7 @@ exports[`validation with zod > checkbox group 2`] = `
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
-          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
         </div>

@@ -55,6 +55,7 @@ export default defineComponent({
       handlePopoverMouseleave,
       handlePopoverClose,
       handleClosed,
+      setAllowClose,
       // expose
       open,
       // expose
@@ -65,6 +66,10 @@ export default defineComponent({
       setReference,
     } = usePopover(props)
 
+    function allowClose() {
+      setAllowClose(true)
+    }
+
     return {
       popover,
       host,
@@ -72,6 +77,7 @@ export default defineComponent({
       show,
       zIndex,
       teleportDisabled,
+      allowClose,
       formatElevation,
       toSizeUnit,
       n,

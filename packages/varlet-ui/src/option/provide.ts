@@ -6,8 +6,11 @@ import { SELECT_BIND_OPTION_KEY, type SelectProvider } from '../select/provide'
 export interface OptionProvider {
   label: ComputedRef<any>
   value: ComputedRef<any>
+  disabled: ComputedRef<boolean>
+  ripple: ComputedRef<boolean>
   selected: ComputedRef<boolean>
-  sync(checked: boolean): void
+  indeterminate?: ComputedRef<boolean>
+  sync(checked: boolean, indeterminate?: boolean): void
 }
 
 export function useSelect() {

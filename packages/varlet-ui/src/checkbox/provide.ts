@@ -7,7 +7,6 @@ export interface CheckboxProvider extends Validation {
   checkedValue: ComputedRef
   checked: ComputedRef<boolean>
   sync(values: Array<any>): void
-  resetWithAnimation(): void
 }
 
 export function useCheckboxGroup() {

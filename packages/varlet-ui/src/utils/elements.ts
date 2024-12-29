@@ -247,6 +247,20 @@ export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
 }
 
+export function isDisplayNoneElement(element: HTMLElement) {
+  let parent: HTMLElement | null = element
+
+  while (parent && parent !== document.documentElement) {
+    if (getStyle(parent).display === 'none') {
+      return true
+    }
+
+    parent = parent.parentNode as HTMLElement | null
+  }
+
+  return false
+}
+
 const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]', '[href]']
   .map((s) => `${s}:not([disabled])`)
   .join(', ')
@@ -256,7 +270,10 @@ export function focusChildElementByKey(
   parentElement: HTMLElement,
   key: 'ArrowDown' | 'ArrowUp'
 ) {
-  const focusableElements = parentElement.querySelectorAll<HTMLElement>(focusableSelector)
+  const focusableElements = Array.from(parentElement.querySelectorAll<HTMLElement>(focusableSelector)).filter(
+    (element) => !isDisplayNoneElement(element)
+  )
+
   if (!focusableElements.length) {
     return
   }

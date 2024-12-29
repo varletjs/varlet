@@ -26,6 +26,30 @@ const value = ref()
 </template>
 ```
 
+### 选中事件
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+
+function handleSelect(value) {
+  Snackbar(`Select: ${value}`)
+}
+</script>
+
+<template>
+  <var-menu-select @select="handleSelect">
+    <var-button type="primary">请选择</var-button>
+
+    <template #options>
+      <var-menu-option label="吃饭" />
+      <var-menu-option label="睡觉" />
+      <var-menu-option label="打游戏" />
+    </template>
+  </var-menu-select>
+</template>
+```
+
 ### 尺寸
 
 ```html
@@ -246,6 +270,110 @@ const options = ref([
 </template>
 ```
 
+### 级联单选
+
+可以将选项数组传递给选项的 `children` 属性以实现级联效果。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+const options = ref([
+  {
+    label: '1',
+    value: 1,
+  },
+  {
+    label: '2',
+    value: 2,
+    children: [
+      {
+        label: '2-1',
+        value: 21,
+        children: [
+          {
+            label: '2-1-1',
+            value: 211,
+          },
+          {
+            label: '2-1-2',
+            value: 212,
+          },
+        ],
+      },
+      {
+        label: '2-2',
+        value: 22,
+      },
+    ],
+  },
+  {
+    label: '3',
+    value: 3,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="options">
+    <var-button type="primary">{{ value ? value : '请选择' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
+### 级联多选
+
+在级联单选的基础上设置 `multiple` 属性即可实现级联多选。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+const options = ref([
+  {
+    label: '1',
+    value: 1,
+  },
+  {
+    label: '2',
+    value: 2,
+    children: [
+      {
+        label: '2-1',
+        value: 21,
+        children: [
+          {
+            label: '2-1-1',
+            value: 211,
+          },
+          {
+            label: '2-1-2',
+            value: 212,
+          },
+        ],
+      },
+      {
+        label: '2-2',
+        value: 22,
+      },
+    ],
+  },
+  {
+    label: '3',
+    value: 3,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select multiple v-model="value" :options="options">
+    <var-button type="primary">{{ value ? value : '请选择' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
 ### 选项式 API（自定义字段）
 
 可以将选项以数组形式传给 `options` 属性，同时通过 `label-key` 和 `value-key` 属性指定选项数组内文本和值的字段。
@@ -308,6 +436,7 @@ const options = ref([
 | `options` ***3.3.7*** | 指定可选项 | _MenuSelectOption[]_ | `[]` |
 | `label-key` ***3.3.7*** | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` ***3.3.7*** | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `children-key` ***3.8.0*** | 作为 children 唯一标识的键名 | _string_ | `children` |
 
 #### MenuSelectOption
 
@@ -315,6 +444,7 @@ const options = ref([
 | ------- | --- |----------------|-----------|
 | `label`    |    选项的标签    | _string \| VNode \| (option: MenuSelectOption, selected: boolean) => VNodeChild_      | `-`   |
 | `value`  |    选项的值    | _any_      | `-`   |
+| `children` ***3.8.0***  |    选项的子选项    | _MenuSelectOption[]_      | `-`   |
 | `disabled`    |    是否禁用   | _boolean_      | `-`   |
 | `ripple` | 是否启用水波效果 | _boolean_ | `true` |
 
@@ -374,6 +504,7 @@ const options = ref([
 | `close` | 关闭菜单时触发 | `-` |
 | `closed` | 关闭菜单动画结束时触发 | `-` |
 | `click-outside` | 点击菜单外部时触发 | `event: Event` |
+| `select` ***3.8.0*** | 选择某个选项时触发 | `value: any, option: MenuSelectOption` |
 
 ### 插槽
 

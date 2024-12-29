@@ -11,9 +11,14 @@ export type MenuSelectOptionLabel = string | VNode | MenuSelectOptionLabelRender
 export interface MenuSelectOption {
   label?: MenuSelectOptionLabel
   value?: any
+  children?: MenuSelectOption[]
   disabled?: boolean
   ripple?: boolean
   [key: PropertyKey]: any
+
+  _parent?: MenuSelectOption
+  _children?: MenuSelectOption[]
+  _rawOption?: MenuSelectOption
 }
 
 export const props = {
@@ -33,6 +38,10 @@ export const props = {
     type: String,
     default: 'value',
   },
+  childrenKey: {
+    type: String,
+    default: 'children',
+  },
   size: {
     type: String as PropType<MenuSelectSize>,
     default: 'normal',
@@ -44,6 +53,7 @@ export const props = {
     default: true,
   },
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
+  onSelect: defineListenerProp<(value: any, option: MenuSelectOption) => void>(),
   ...pickProps(menuProps, [
     'show',
     'disabled',
