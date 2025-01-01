@@ -1,3 +1,12 @@
+## [3.8.1](https://github.com/varletjs/varlet/compare/v3.8.0...v3.8.1) (2025-01-01)
+
+
+### Bug Fixes
+
+* **menu-option:** prevent keyboard event default ([dd6d5ba](https://github.com/varletjs/varlet/commit/dd6d5babb71fe59488fda252813abac818273035))
+
+
+
 # [3.8.0](https://github.com/varletjs/varlet/compare/v3.7.4...v3.8.0) (2025-01-01)
 
 
