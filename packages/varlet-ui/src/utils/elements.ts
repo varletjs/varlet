@@ -266,9 +266,14 @@ const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]'
   .join(', ')
 
 export function focusChildElementByKey(
-  hostElement: HTMLElement,
+  referenceElement: HTMLElement,
   parentElement: HTMLElement,
-  key: 'ArrowDown' | 'ArrowUp'
+  key: 'ArrowDown' | 'ArrowUp',
+  beforeFocus?: (
+    activeElement: HTMLElement,
+    nextActiveElement: HTMLElement,
+    isActiveInReferenceElements: boolean
+  ) => boolean
 ) {
   const focusableElements = Array.from(parentElement.querySelectorAll<HTMLElement>(focusableSelector)).filter(
     (element) => !isDisplayNoneElement(element)
@@ -278,33 +283,47 @@ export function focusChildElementByKey(
     return
   }
 
-  const isActiveHostElement =
-    [hostElement, ...Array.from(hostElement.querySelectorAll<HTMLElement>(focusableSelector))].findIndex(
+  const isActiveInReferenceElements =
+    [referenceElement, ...Array.from(referenceElement.querySelectorAll<HTMLElement>(focusableSelector))].findIndex(
       (el) => el === document.activeElement
     ) !== -1
 
   const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
 
   if (key === 'ArrowDown') {
-    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === focusableElements.length - 1) {
-      focusableElements[0].focus()
+    if (
+      (isActiveInReferenceElements && activeElementIndex === -1) ||
+      activeElementIndex === focusableElements.length - 1
+    ) {
+      focus(focusableElements[0])
       return
     }
 
     if (activeElementIndex !== -1 && activeElementIndex < focusableElements.length - 1) {
-      focusableElements[activeElementIndex + 1].focus()
+      focus(focusableElements[activeElementIndex + 1])
       return
     }
   }
 
   if (key === 'ArrowUp') {
-    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === 0) {
-      focusableElements[focusableElements.length - 1]?.focus()
+    if ((isActiveInReferenceElements && activeElementIndex === -1) || activeElementIndex === 0) {
+      focus(focusableElements[focusableElements.length - 1])
       return
     }
 
     if (activeElementIndex > 0) {
-      focusableElements[activeElementIndex - 1].focus()
+      focus(focusableElements[activeElementIndex - 1])
     }
+  }
+
+  function focus(nextActiveElement: HTMLElement) {
+    if (
+      beforeFocus &&
+      !beforeFocus(document.activeElement as HTMLElement, nextActiveElement, isActiveInReferenceElements)
+    ) {
+      return
+    }
+
+    nextActiveElement.focus()
   }
 }

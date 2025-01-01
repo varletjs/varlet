@@ -289,8 +289,35 @@ export default defineComponent({
       }
 
       if (key === 'ArrowDown' || key === 'ArrowUp') {
-        focusChildElementByKey(menu.value!.$el, menuOptionsRef.value!, key)
+        focusChildElementByKey(
+          menu.value!.$el,
+          menuOptionsRef.value!,
+          key,
+          (activeElement, nextActiveElement, isActiveInReferenceElements) => {
+            if (isActiveInReferenceElements) {
+              return true
+            }
+
+            return getActiveElementParent(activeElement) === getActiveElementParent(nextActiveElement)
+          }
+        )
       }
+    }
+
+    function getActiveElementParent(activeElement: HTMLElement) {
+      if (activeElement.classList.contains('var-menu-option--children-trigger')) {
+        return activeElement.parentNode?.parentNode
+      }
+
+      if (activeElement.classList.contains('var-checkbox__action')) {
+        const optionElement = activeElement.parentNode?.parentNode?.parentNode
+
+        if (optionElement) {
+          return getActiveElementParent(optionElement as HTMLElement)
+        }
+      }
+
+      return activeElement.parentNode
     }
 
     function allowChildrenClose(option?: MenuSelectOption) {
