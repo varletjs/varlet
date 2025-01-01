@@ -143,11 +143,8 @@ export default defineComponent({
         return
       }
 
-      if (event.key === 'ArrowRight') {
-        call(props.onKeyArrowX, event.key)
-      }
-
-      if (event.key === 'ArrowLeft') {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        preventDefault(event)
         call(props.onKeyArrowX, event.key)
       }
 
