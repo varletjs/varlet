@@ -1,3 +1,19 @@
+# [3.8.0](https://github.com/varletjs/varlet/compare/v3.7.4...v3.8.0) (2025-01-01)
+
+
+### Bug Fixes
+
+* **menu-option:** fix keyboard trigger conflict ([a95811f](https://github.com/varletjs/varlet/commit/a95811feafda8a1942a253432e5d5ad07236cac0))
+
+
+### Features
+
+* **cli:** add port option for preview command ([#1834](https://github.com/varletjs/varlet/issues/1834)) ([f611882](https://github.com/varletjs/varlet/commit/f6118821279cbca61335eb8fa868c9d53de81996))
+* **menu-select:** support cascade mode ([#1840](https://github.com/varletjs/varlet/issues/1840)) ([f68f840](https://github.com/varletjs/varlet/commit/f68f840b553c805c71c445e585f5884f69aab97a))
+* **ui/uploader:** support remove button slot ([#1835](https://github.com/varletjs/varlet/issues/1835)) ([859701d](https://github.com/varletjs/varlet/commit/859701d2d199b3435ef5bd0f0731d4839d9d22aa))
+
+
+
 ## [3.7.4](https://github.com/varletjs/varlet/compare/v3.7.3...v3.7.4) (2024-12-22)
 
 
