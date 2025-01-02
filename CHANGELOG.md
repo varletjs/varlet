@@ -1,3 +1,12 @@
+## [3.8.2](https://github.com/varletjs/varlet/compare/v3.8.1...v3.8.2) (2025-01-02)
+
+
+### Bug Fixes
+
+* enhance menu select keyboard navigation ([839dca4](https://github.com/varletjs/varlet/commit/839dca43b9617d95c61ff5e8d1c1f7143a572657))
+
+
+
 ## [3.8.1](https://github.com/varletjs/varlet/compare/v3.8.0...v3.8.1) (2025-01-01)
 
 
