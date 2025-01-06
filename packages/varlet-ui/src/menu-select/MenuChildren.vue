@@ -26,26 +26,26 @@
 
     <template #menu v-if="options.length">
       <div ref="menuOptions">
-        <template v-for="option in options" :key="option[valueKey]">
+        <template v-for="menuOption in options" :key="menuOption[valueKey]">
           <var-menu-children
-            v-if="option[childrenKey]"
+            v-if="menuOption[childrenKey]"
             ref="menuChildren"
             :parent-show="show"
-            :option="option"
-            :options="option[childrenKey]"
+            :option="menuOption"
+            :options="menuOption[childrenKey]"
             :highlight-options="highlightOptions"
-            :disabled="option.disabled"
+            :disabled="menuOption.disabled"
             @key-arrow-x="handleArrowLeft"
-            @key-arrow-right-open="allowChildrenClose(option)"
-            @mouseenter="allowChildrenClose(option)"
+            @key-arrow-right-open="allowChildrenClose(menuOption)"
+            @mouseenter="allowChildrenClose(menuOption)"
           />
           <var-menu-option
             v-else
-            :label="option[labelKey]"
-            :value="option[valueKey]"
-            :option="option"
-            :ripple="option.ripple"
-            :disabled="option.disabled"
+            :label="menuOption[labelKey]"
+            :value="menuOption[valueKey]"
+            :option="menuOption"
+            :ripple="menuOption.ripple"
+            :disabled="menuOption.disabled"
             @key-arrow-x="handleArrowLeft"
             @mouseenter="allowChildrenClose()"
           />
