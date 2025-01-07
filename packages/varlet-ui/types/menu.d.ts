@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 import { PositioningStrategy } from '@popperjs/core'
+import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const menuProps: Record<keyof MenuProps, any>
 

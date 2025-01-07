@@ -29,15 +29,15 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch } from 'vue'
+import type { ComputedRef, PropType, Ref } from 'vue'
+import { toNumber } from '@varlet/shared'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
-import { defineComponent, ref, computed, watch } from 'vue'
-import { toNumber } from '@varlet/shared'
-import { createNamespace } from '../../utils/components'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
-import type { Ref, ComputedRef, PropType } from 'vue'
-import type { Preview, PanelBtnDisabled } from '../props'
+import { createNamespace } from '../../utils/components'
+import type { PanelBtnDisabled, Preview } from '../props'
 
 const { n } = createNamespace('date-picker-header')
 
@@ -72,16 +72,22 @@ export default defineComponent({
       const { date, type } = props
       const { previewMonth, previewYear }: Preview = date
 
-      if (type === 'year') return previewYear
+      if (type === 'year') {
+        return previewYear
+      }
 
-      if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
+      if (type === 'month') {
+        return toNumber(previewYear) + forwardOrBackNum.value
+      }
 
       const monthName = (pt || t)('datePickerMonthDict')?.[previewMonth!].name
       return (pt || t)('lang') === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
     const checkDate = (checkType: string) => {
-      if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) return
+      if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) {
+        return
+      }
 
       emit('check-date', checkType)
       reverse.value = checkType === 'prev'
@@ -92,7 +98,7 @@ export default defineComponent({
       () => props.date,
       () => {
         forwardOrBackNum.value = 0
-      }
+      },
     )
 
     return {

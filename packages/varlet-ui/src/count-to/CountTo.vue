@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, watch } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
-import { useMotion } from '@varlet/use'
+import { computed, defineComponent, onMounted, watch } from 'vue'
 import { call, floor, toNumber } from '@varlet/shared'
+import { useMotion } from '@varlet/use'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 
 const { name, n } = createNamespace('count-to')
 

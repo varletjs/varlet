@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
+import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const codeProps: Record<keyof CodeProps, any>
 

@@ -1,8 +1,8 @@
-import logger from '../shared/logger.js'
-import fse from 'fs-extra'
-import { input, confirm, select } from '@inquirer/prompts'
 import { resolve } from 'path'
+import { confirm, input, select } from '@inquirer/prompts'
+import fse from 'fs-extra'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant.js'
+import logger from '../shared/logger.js'
 
 const { copy, pathExistsSync, readFileSync, writeFileSync, rename } = fse
 

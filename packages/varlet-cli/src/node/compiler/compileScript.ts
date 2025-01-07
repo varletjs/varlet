@@ -1,14 +1,14 @@
-import { ES_DIR } from '../shared/constant.js'
+import { dirname, extname, relative, resolve } from 'path'
 import { transformAsync } from '@babel/core'
+import type { BabelFileResult } from '@babel/core'
 import { pascalCase } from '@varlet/shared'
+import jsx from '@vue/babel-plugin-jsx'
+import esbuild from 'esbuild'
+import fse from 'fs-extra'
+import { getVarletConfig, VarletConfig } from '../config/varlet.config.js'
+import { ES_DIR } from '../shared/constant.js'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE, IMPORT_SCSS_RE } from './compileStyle.js'
-import { resolve, relative, extname, dirname } from 'path'
-import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
-import type { BabelFileResult } from '@babel/core'
-import jsx from '@vue/babel-plugin-jsx'
-import fse from 'fs-extra'
-import esbuild from 'esbuild'
 
 const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExistsSync } = fse
 
@@ -28,7 +28,6 @@ export const scriptIndexes = ['index.mjs', 'index.vue', 'index.ts', 'index.tsx',
 export const styleIndexes = ['index.less', 'index.scss', 'index.css']
 
 export const tryMatchExtname = (file: string, extname: string[]) => {
-  // eslint-disable-next-line no-restricted-syntax
   for (const ext of extname) {
     const matched = `${file}${ext}`
 

@@ -20,14 +20,14 @@
 </template>
 
 <script lang="ts">
-import VarFormDetails from '../form-details'
+import { computed, defineComponent, nextTick, watch } from 'vue'
+import { call, isFunction, uniq } from '@varlet/shared'
 import VarCheckbox from '../checkbox'
-import { defineComponent, computed, watch, nextTick } from 'vue'
-import { props, type CheckboxGroupValidateTrigger } from './props'
-import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
-import { useCheckboxes, type CheckboxGroupProvider } from './provide'
+import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
-import { uniq, call, isFunction } from '@varlet/shared'
+import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
+import { props, type CheckboxGroupValidateTrigger } from './props'
+import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 

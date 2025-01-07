@@ -1,7 +1,7 @@
 <script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 watchLang(use)
 onThemeChange()
@@ -112,9 +112,9 @@ onThemeChange()
     <template #indicator="{ index, length, to }">
       <div class="swipe-indicators">
         <div
-          class="swipe-indicator"
-          :key="l"
           v-for="(l, idx) in length"
+          :key="l"
+          class="swipe-indicator"
           :class="{ 'swipe-active-indicator': idx === index }"
           @click="to(idx)"
         ></div>

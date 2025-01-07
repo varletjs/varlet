@@ -1,6 +1,6 @@
-import LoadingBarComponent from './LoadingBar'
 import { reactive } from 'vue'
 import { mountInstance } from '../utils/components'
+import LoadingBarComponent from './LoadingBar'
 import { props as loadingBarProps } from './props'
 
 interface LoadingBarOptions {

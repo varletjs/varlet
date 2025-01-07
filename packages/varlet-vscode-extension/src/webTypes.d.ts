@@ -105,7 +105,7 @@ export interface Html {
   'description-markup'?: 'html' | 'markdown' | 'none'
   tags?: HtmlTag[]
   attributes?: HtmlAttribute[]
-  'vue-filters'?: HtmlVueFilter[]
+  'vue-filters'?: any[]
 }
 export interface HtmlTag {
   name: Name
@@ -178,6 +178,6 @@ export interface HtmlAttribute {
   required?: HtmlAttributeRequired
   value?: HtmlAttributeValue
   source?: Source
-  'vue-argument'?: HtmlAttributeVueArgument
-  'vue-modifiers'?: HtmlAttributeVueModifier[]
+  'vue-argument'?: any
+  'vue-modifiers'?: any[]
 }

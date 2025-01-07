@@ -1,6 +1,6 @@
-import { VNode, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp, Type, SetPropsDefaults } from './varComponent'
+import { TeleportProps, VNode } from 'vue'
 import { DragProps } from './drag'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, Type, VarComponent } from './varComponent'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
 

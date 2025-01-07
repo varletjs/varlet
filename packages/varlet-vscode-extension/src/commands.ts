@@ -1,5 +1,5 @@
-import { commands, window, Selection, env, Uri, Range, ViewColumn, type ExtensionContext } from 'vscode'
 import { isPlainObject } from '@varlet/shared'
+import { commands, env, Range, Selection, Uri, ViewColumn, window, type ExtensionContext } from 'vscode'
 import { envs } from './env'
 
 interface OpenPlaygroundOptions {
@@ -104,6 +104,6 @@ export function registerCommands(context: ExtensionContext) {
       openPlayground({ selection: true, selectionWrapTemplate: true })
     }),
 
-    commands.registerCommand('varlet.open-webview', openWebview)
+    commands.registerCommand('varlet.open-webview', openWebview),
   )
 }

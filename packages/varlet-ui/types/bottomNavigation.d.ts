@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { ButtonProps } from './button'
 import { VNode } from 'vue'
+import { ButtonProps } from './button'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const bottomNavigationProps: Record<keyof BottomNavigationProps, any>
 

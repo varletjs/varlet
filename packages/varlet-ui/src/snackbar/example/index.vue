@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar, Icon, Button } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, toRefs, onBeforeUnmount, h } from 'vue'
+import { h, onBeforeUnmount, reactive, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Button, Icon, Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
 
 const shows = reactive({
@@ -63,7 +63,7 @@ function createSnackbar(type) {
         h(
           Button,
           { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() },
-          { default: () => t('close') }
+          { default: () => t('close') },
         ),
     })
   }

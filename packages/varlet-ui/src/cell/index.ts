@@ -1,5 +1,5 @@
-import Cell from './Cell.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Cell from './Cell.vue'
 import { props as cellProps } from './props'
 
 withInstall(Cell)

@@ -7,32 +7,32 @@
         @click="click"
       >
         <var-icon
+          v-if="isActive"
           :class="n('icon')"
           var-step-cover
           :name="activeIcon"
           :namespace="activeIconNamespace"
-          v-if="isActive"
         />
         <var-icon
+          v-else-if="isCurrent && currentIcon"
           :class="n('icon')"
           var-step-cover
           :name="currentIcon"
           :namespace="currentIconNamespace"
-          v-else-if="isCurrent && currentIcon"
         />
         <var-icon
+          v-else-if="inactiveIcon"
           :class="n('icon')"
           var-step-cover
           :name="inactiveIcon"
           :namespace="inactiveIconNamespace"
-          v-else-if="inactiveIcon"
         />
         <span v-else>{{ index + 1 }}</span>
       </div>
       <div
+        v-if="$slots.default"
         :class="classes(n(`${direction}-content`), [isActive || isCurrent, n(`${direction}-content--active`)])"
         @click="click"
-        v-if="$slots.default"
       >
         <slot />
       </div>
@@ -42,12 +42,12 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
 import { computed, defineComponent, type ComputedRef } from 'vue'
+import { toNumber } from '@varlet/shared'
+import VarIcon from '../icon'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useSteps, type StepProvider } from './provide'
-import { toNumber } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('step')
 

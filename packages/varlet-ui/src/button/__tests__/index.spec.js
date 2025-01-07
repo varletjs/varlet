@@ -1,11 +1,11 @@
+import { createApp, Fragment, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Button from '..'
 import ButtonGroup from '../../button-group'
-import VarButton from '../Button.vue'
 import VarButtonGroup from '../../button-group/ButtonGroup.vue'
-import { mount } from '@vue/test-utils'
-import { createApp, Fragment, h } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarButton from '../Button.vue'
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)

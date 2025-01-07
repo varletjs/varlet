@@ -1,5 +1,5 @@
-import BottomNavigationItem from './BottomNavigationItem.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import BottomNavigationItem from './BottomNavigationItem.vue'
 import { props as bottomNavigationItemProps } from './props'
 
 withInstall(BottomNavigationItem)

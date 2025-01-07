@@ -1,5 +1,5 @@
-import { useChildren } from '@varlet/use'
 import type { ComputedRef } from 'vue'
+import { useChildren } from '@varlet/use'
 
 export interface BreadcrumbsProvider {
   length: ComputedRef<number>
@@ -10,7 +10,7 @@ export const BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMBS_BIND_BRE
 
 export function useBreadcrumbsList() {
   const { childProviders, bindChildren, length } = useChildren<BreadcrumbsProvider, null>(
-    BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY
+    BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY,
   )
 
   return {

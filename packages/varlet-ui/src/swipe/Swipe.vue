@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" ref="swipeEl" v-hover="handleHovering">
+  <div ref="swipeEl" v-hover="handleHovering" :class="n()">
     <div
       :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
@@ -92,14 +92,14 @@
         to,
       }"
     >
-      <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
+      <div v-if="indicator && length" :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])">
         <div
+          v-for="(l, idx) in length"
+          :key="l"
           :class="
             classes(n('indicator'), [index === idx, n('--indicator-active')], [vertical, n('--indicator-vertical')])
           "
           :style="{ background: indicatorColor }"
-          :key="l"
-          v-for="(l, idx) in length"
           @click="to(idx)"
         ></div>
       </div>
@@ -108,18 +108,18 @@
 </template>
 
 <script lang="ts">
-import VarButton from '../button'
-import VarIcon from '../icon'
-import Hover from '../hover'
-import { defineComponent, ref, computed, watch, onActivated } from 'vue'
-import { useSwipeItems, useSwipeResizeListeners, type SwipeProvider } from './provide'
-import { props, type SwipeToOptions } from './props'
-import { clamp, isNumber, toNumber, doubleRaf, preventDefault, call } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
+import { computed, defineComponent, onActivated, ref, watch } from 'vue'
+import { call, clamp, doubleRaf, isNumber, preventDefault, toNumber } from '@varlet/shared'
 import { onSmartUnmounted, onWindowResize, useEventListener, useTouch } from '@varlet/use'
+import VarButton from '../button'
+import Hover from '../hover'
+import VarIcon from '../icon'
 import { usePopup } from '../popup/provide'
 import { type SwipeItemProvider } from '../swipe-item/provide'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { props, type SwipeToOptions } from './props'
+import { useSwipeItems, useSwipeResizeListeners, type SwipeProvider } from './provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_OFFSET = 20
@@ -182,7 +182,7 @@ export default defineComponent({
 
         initialIndex()
         resize()
-      }
+      },
     )
 
     if (popup) {
@@ -196,7 +196,7 @@ export default defineComponent({
           } else {
             stopAutoplay()
           }
-        }
+        },
       )
     }
 

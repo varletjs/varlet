@@ -1,4 +1,4 @@
-import { type PropType, InputHTMLAttributes } from 'vue'
+import { InputHTMLAttributes, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export interface VarFile {

@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
 import { popupProps } from '../popup'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export type PickerColumnOption = {
   text?: string | number

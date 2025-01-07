@@ -1,7 +1,7 @@
 <script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
-import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 watchLang(use)
 onThemeChange()
@@ -99,7 +99,7 @@ function handleAutoLoadingClick() {
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button type="success" @click="handleClick">{{ t('click') }}</var-button>
     <var-button type="success" @touchstart="handleTouchstart">{{ t('touchstart') }}</var-button>
-    <var-button type="success" @click="handleAutoLoadingClick" auto-loading>{{ t('autoLoading') }}</var-button>
+    <var-button type="success" auto-loading @click="handleAutoLoadingClick">{{ t('autoLoading') }}</var-button>
   </var-space>
 
   <app-type>{{ t('themeColorButtonGroup') }}</app-type>

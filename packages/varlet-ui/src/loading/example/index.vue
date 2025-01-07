@@ -38,7 +38,7 @@ onThemeChange()
   </var-space>
 
   <app-type>{{ t('wrap') }}</app-type>
-  <var-button @click="loading = !loading" style="margin-bottom: 8px">
+  <var-button style="margin-bottom: 8px" @click="loading = !loading">
     {{ loading ? t('close') : t('open') }}
   </var-button>
   <var-loading description="LOADING" :loading="loading">

@@ -1,8 +1,8 @@
+import { cpus } from 'os'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitest/config'
 import { VITE_RESOLVE_EXTENSIONS } from '../shared/constant.js'
-import { cpus } from 'os'
 
 const cpuNum = Math.max(cpus().length - 1, 1)
 

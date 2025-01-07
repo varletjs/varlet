@@ -1,8 +1,8 @@
 <script setup>
-import { t, use } from './locale'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { codeToHtml } from 'shiki'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { codeToHtml } from 'shiki'
+import { t, use } from './locale'
 
 const rootTheme = ref('vitesse-light')
 const customTheme = ref('github-light')

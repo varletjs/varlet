@@ -1,9 +1,9 @@
-import HighlighterProvider from '../index'
-import VarHighlighterProvider from '../HighlighterProvider'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test } from 'vitest'
 import { codeToHtml } from 'shiki'
+import { expect, test } from 'vitest'
+import VarHighlighterProvider from '../HighlighterProvider'
+import HighlighterProvider from '../index'
 
 test('test highlighterProvider component plugin', () => {
   const app = createApp({}).use(HighlighterProvider)

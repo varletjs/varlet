@@ -1,16 +1,16 @@
+import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
+import { type Placement as PopperPlacement, type PositioningStrategy } from '@popperjs/core'
+import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
 import flip from '@popperjs/core/lib/modifiers/flip.js'
 import offset from '@popperjs/core/lib/modifiers/offset.js'
-import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
-import { onWindowResize, useEventListener, useVModel } from '@varlet/use'
-import { doubleRaf, getStyle, call, preventDefault, isString } from '@varlet/shared'
-import { toPxNum } from '../utils/elements'
-import { type ListenerProp } from '../utils/components'
-import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite.js'
-import { useZIndex } from '../context/zIndex'
 import { type Instance, type Modifier } from '@popperjs/core/lib/types'
-import { type Placement as PopperPlacement, type PositioningStrategy } from '@popperjs/core'
+import { call, doubleRaf, getStyle, isString, preventDefault } from '@varlet/shared'
+import { onWindowResize, useEventListener, useVModel } from '@varlet/use'
 import { useStack } from '../context/stack'
+import { useZIndex } from '../context/zIndex'
+import { type ListenerProp } from '../utils/components'
+import { toPxNum } from '../utils/elements'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -93,7 +93,7 @@ export function usePopover(options: UsePopoverOptions) {
       if (newValue) {
         resize()
       }
-    }
+    },
   )
 
   onWindowResize(resize)

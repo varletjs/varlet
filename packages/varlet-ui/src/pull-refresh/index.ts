@@ -1,6 +1,6 @@
-import PullRefresh from './PullRefresh.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as pullRefreshProps } from './props'
+import PullRefresh from './PullRefresh.vue'
 
 withInstall(PullRefresh)
 withPropsDefaultsSetter(PullRefresh, pullRefreshProps)

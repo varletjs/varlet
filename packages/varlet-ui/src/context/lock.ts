@@ -1,5 +1,5 @@
+import { getCurrentInstance, onActivated, onBeforeMount, onDeactivated, onUnmounted, watch } from 'vue'
 import context from '.'
-import { watch, onBeforeMount, onUnmounted, onDeactivated, onActivated, getCurrentInstance } from 'vue'
 import { createNamespace } from '../utils/components'
 
 const { n } = createNamespace('')

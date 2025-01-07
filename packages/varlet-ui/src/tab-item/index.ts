@@ -1,6 +1,6 @@
-import TabItem from './TabItem.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as tabItemProps } from './props'
+import TabItem from './TabItem.vue'
 
 withInstall(TabItem)
 withPropsDefaultsSetter(TabItem, tabItemProps)

@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
 
 const countdown = ref(null)
@@ -41,7 +41,7 @@ function change() {
   </var-countdown>
 
   <app-type>{{ t('manualControl') }}</app-type>
-  <var-countdown :time="time" ref="countdown" :auto-start="false" format="ss : SSS" @end="end" @change="change" />
+  <var-countdown ref="countdown" :time="time" :auto-start="false" format="ss : SSS" @end="end" @change="change" />
   <var-row justify="space-between" align="center" style="margin-top: 10px">
     <var-button type="primary" @click="$refs.countdown.start()">{{ t('startText') }}</var-button>
     <var-button @click="$refs.countdown.pause()">{{ t('pauseText') }}</var-button>

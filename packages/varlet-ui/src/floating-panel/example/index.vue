@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { onThemeChange, watchLang } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 const tabsRef = ref(null)
 const active = ref(0)
@@ -24,11 +24,11 @@ onThemeChange()
   <var-style-provider :style-vars="styleVars">
     <var-tabs
       ref="tabsRef"
+      v-model:active="active"
       elevation
       color="var(--color-primary)"
       active-color="var(--color-on-primary)"
       inactive-color="var(--color-on-info)"
-      v-model:active="active"
       style="margin-top: 14px"
     >
       <var-tab style="font-size: 13px">{{ t('basicUsage') }}</var-tab>

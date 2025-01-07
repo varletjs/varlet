@@ -1,6 +1,6 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const show = ref(true)
@@ -47,8 +47,8 @@ onThemeChange()
 
   <app-type>{{ t('canCloseChip') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip closeable v-if="show" @close="show = false">{{ t('canCloseChip') }}</var-chip>
-    <var-chip closeable icon-name="delete" v-if="show1" @close="show1 = false"> {{ t('customCloseIcon') }}</var-chip>
+    <var-chip v-if="show" closeable @close="show = false">{{ t('canCloseChip') }}</var-chip>
+    <var-chip v-if="show1" closeable icon-name="delete" @close="show1 = false"> {{ t('customCloseIcon') }}</var-chip>
   </var-space>
 
   <app-type>{{ t('customColor') }}</app-type>

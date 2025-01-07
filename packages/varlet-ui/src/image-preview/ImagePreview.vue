@@ -1,5 +1,6 @@
 <template>
   <var-popup
+    v-model:show="show"
     var-image-preview-cover
     :class="n('popup')"
     :transition="n('$-fade')"
@@ -8,7 +9,6 @@
     :close-on-key-escape="closeOnKeyEscape"
     :lock-scroll="lockScroll"
     :teleport="teleport"
-    v-model:show="show"
     @open="onOpen"
     @close="onClose"
     @closed="onClosed"
@@ -24,11 +24,11 @@
       :indicator="indicator && images.length > 1"
       :initial-index="toNumber(initialIndex)"
       :loop="loop"
-      @change="onChange"
       v-bind="$attrs"
+      @change="onChange"
     >
       <template #default>
-        <var-swipe-item :class="n('swipe-item')" var-image-preview-cover v-for="(image, idx) in images" :key="image">
+        <var-swipe-item v-for="(image, idx) in images" :key="image" :class="n('swipe-item')" var-image-preview-cover>
           <div
             :class="n('zoom-container')"
             :style="{
@@ -53,32 +53,32 @@
 
       <template #indicator="{ index, length }">
         <slot name="indicator" :index="index" :length="length">
-          <div :class="n('indicators')" v-if="indicator && images.length > 1">{{ index + 1 }} / {{ length }}</div>
+          <div v-if="indicator && images.length > 1" :class="n('indicators')">{{ index + 1 }} / {{ length }}</div>
         </slot>
       </template>
     </var-swipe>
 
     <slot name="close-icon">
-      <var-icon :class="n('close-icon')" name="close-circle" var-image-preview-cover v-if="closeable" @click="close" />
+      <var-icon v-if="closeable" :class="n('close-icon')" name="close-circle" var-image-preview-cover @click="close" />
     </slot>
 
-    <div :class="n('extra')" v-if="$slots.extra">
+    <div v-if="$slots.extra" :class="n('extra')">
       <slot name="extra" />
     </div>
   </var-popup>
 </template>
 
 <script lang="ts">
-import VarSwipe from '../swipe'
-import VarSwipeItem from '../swipe-item'
+import { computed, defineComponent, ref } from 'vue'
+import { call, clamp, preventDefault, toNumber } from '@varlet/shared'
+import { useEventListener, useTouch, useVModel } from '@varlet/use'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed } from 'vue'
-import { toNumber, clamp, preventDefault, call } from '@varlet/shared'
-import { useEventListener, useTouch, useVModel } from '@varlet/use'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
+import VarSwipe from '../swipe'
+import VarSwipeItem from '../swipe-item'
 import { type SwipeToOptions } from '../swipe/props'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('image-preview')
 

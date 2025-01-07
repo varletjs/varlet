@@ -1,7 +1,7 @@
+import { type PropType } from 'vue'
 import { badgeProps } from '../badge'
 import { iconProps } from '../icon'
-import { type PropType } from 'vue'
-import { type ExtractPublicPropTypes, defineListenerProp, pickProps } from '../utils/components'
+import { defineListenerProp, pickProps, type ExtractPublicPropTypes } from '../utils/components'
 
 export const props = {
   name: String,

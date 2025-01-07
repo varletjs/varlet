@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
 
 const values = reactive({

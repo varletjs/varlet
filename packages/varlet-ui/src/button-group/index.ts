@@ -1,5 +1,5 @@
-import ButtonGroup from './ButtonGroup.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import ButtonGroup from './ButtonGroup.vue'
 import { props as buttonGroupProps } from './props'
 
 withInstall(ButtonGroup)

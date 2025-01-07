@@ -1,10 +1,10 @@
-import Slider from '..'
-import VarSlider from '../Slider'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, mockConsole } from '../../utils/test'
-import { expect, vi, test, describe, beforeAll, afterAll } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
 import { z } from 'zod'
+import Slider from '..'
+import { delay, mockConsole, trigger } from '../../utils/test'
+import VarSlider from '../Slider'
 
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
 beforeAll(() => {
@@ -68,7 +68,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test range prop', async () => {
+  test('test range prop', () => {
     const wrapper = mount(VarSlider, {
       props: {
         range: true,
@@ -221,7 +221,7 @@ describe('test slider props', () => {
     })
 
     expect(wrapper.find('.var-slider__horizontal-thumb-label--active').attributes('style')).toContain(
-      'height: 20px; width: 20px;'
+      'height: 20px; width: 20px;',
     )
     wrapper.unmount()
   })

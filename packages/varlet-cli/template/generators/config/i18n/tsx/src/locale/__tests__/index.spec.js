@@ -1,6 +1,6 @@
+import { expect, test, vi } from 'vitest'
 import enUS from '../en-US'
 import { useLocale } from '../index'
-import { expect, vi, test } from 'vitest'
 
 function mockConsole(method, fn = () => {}) {
   const originMethod = console[method]

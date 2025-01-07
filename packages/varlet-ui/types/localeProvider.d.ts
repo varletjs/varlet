@@ -1,6 +1,6 @@
-import { Message } from './locale'
-import { VarComponent, SetPropsDefaults, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
+import { Message } from './locale'
+import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const localeProviderProps: Record<keyof LocaleProviderProps, any>
 

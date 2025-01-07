@@ -1,8 +1,8 @@
 <script setup>
-import { watchLang, AppType } from '@varlet/cli/client'
-import { use, t } from './locale'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
+import { t, use } from './locale'
 
 const { value: standardValue, options: standardOptions } = useAutoComplete()
 const { value: standardValue2, options: standardOptions2 } = useAutoComplete()
@@ -41,7 +41,7 @@ function useAutoComplete() {
         label: `${prefix}${suffix}`,
         value: `${prefix}${suffix}`,
       }
-    })
+    }),
   )
 
   return {
@@ -54,28 +54,28 @@ function useAutoComplete() {
 <template>
   <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
-    <var-auto-complete :placeholder="t('placeholder')" :options="standardOptions" v-model="standardValue" />
-    <var-auto-complete readonly :placeholder="t('readonly')" :options="standardOptions2" v-model="standardValue2" />
-    <var-auto-complete disabled :placeholder="t('disabled')" :options="standardOptions3" v-model="standardValue3" />
-    <var-auto-complete clearable :placeholder="t('clearable')" :options="standardOptions4" v-model="standardValue4" />
-    <var-auto-complete clearable :placeholder="t('clearIconSlot')" :options="standardOptions5" v-model="standardValue5">
+    <var-auto-complete v-model="standardValue" :placeholder="t('placeholder')" :options="standardOptions" />
+    <var-auto-complete v-model="standardValue2" readonly :placeholder="t('readonly')" :options="standardOptions2" />
+    <var-auto-complete v-model="standardValue3" disabled :placeholder="t('disabled')" :options="standardOptions3" />
+    <var-auto-complete v-model="standardValue4" clearable :placeholder="t('clearable')" :options="standardOptions4" />
+    <var-auto-complete v-model="standardValue5" clearable :placeholder="t('clearIconSlot')" :options="standardOptions5">
       <template #clear-icon="{ clear }">
         <var-icon name="error" @click="clear" />
       </template>
     </var-auto-complete>
     <var-auto-complete
+      v-model="standardValue6"
       :placeholder="t('validate')"
       :options="standardOptions6"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
-      v-model="standardValue6"
     />
     <var-auto-complete
+      v-model="standardValue12"
       :placeholder="t('validateWithZod')"
       :options="standardOptions12"
       :rules="z.string().min(7, { message: t('maxMessage') })"
-      v-model="standardValue12"
     />
-    <var-auto-complete :placeholder="t('displayIcon')" :options="standardOptions7" v-model="standardValue7">
+    <var-auto-complete v-model="standardValue7" :placeholder="t('displayIcon')" :options="standardOptions7">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
@@ -83,7 +83,7 @@ function useAutoComplete() {
         <var-icon class="append-icon" name="github" />
       </template>
     </var-auto-complete>
-    <var-auto-complete :placeholder="t('customIconSize')" :options="standardOptions8" v-model="standardValue8">
+    <var-auto-complete v-model="standardValue8" :placeholder="t('customIconSize')" :options="standardOptions8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
@@ -92,84 +92,84 @@ function useAutoComplete() {
       </template>
     </var-auto-complete>
     <var-auto-complete
+      v-model="standardValue9"
       :placeholder="t('maxlength')"
       :maxlength="10"
       :options="standardOptions9"
-      v-model="standardValue9"
     />
     <var-auto-complete
+      v-model="standardValue10"
       :placeholder="t('customMenuShowTiming')"
       :get-show="(value) => value.length > 3"
       :options="standardOptions10"
-      v-model="standardValue10"
     />
     <var-auto-complete
+      v-model="standardValue11"
       size="small"
       :placeholder="t('smallSize')"
       :options="standardOptions11"
-      v-model="standardValue11"
     />
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
     <var-auto-complete
+      v-model="outlinedValue"
       variant="outlined"
       :placeholder="t('placeholder')"
       :options="outlinedOptions"
-      v-model="outlinedValue"
     />
     <var-auto-complete
+      v-model="outlinedValue2"
       variant="outlined"
       readonly
       :placeholder="t('readonly')"
       :options="outlinedOptions2"
-      v-model="outlinedValue2"
     />
     <var-auto-complete
+      v-model="outlinedValue3"
       variant="outlined"
       disabled
       :placeholder="t('disabled')"
       :options="outlinedOptions3"
-      v-model="outlinedValue3"
     />
     <var-auto-complete
+      v-model="outlinedValue4"
       variant="outlined"
       clearable
       :placeholder="t('clearable')"
       :options="outlinedOptions4"
-      v-model="outlinedValue4"
     />
     <var-auto-complete
+      v-model="outlinedValue5"
       variant="outlined"
       clearable
       :placeholder="t('clearIconSlot')"
       :options="outlinedOptions5"
-      v-model="outlinedValue5"
     >
       <template #clear-icon="{ clear }">
         <var-icon name="error" @click="clear" />
       </template>
     </var-auto-complete>
     <var-auto-complete
+      v-model="outlinedValue6"
       variant="outlined"
       :placeholder="t('validate')"
       :options="outlinedOptions6"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
-      v-model="outlinedValue6"
     />
     <var-auto-complete
+      v-model="outlinedValue12"
       variant="outlined"
       :placeholder="t('validateWithZod')"
       :options="outlinedOptions12"
       :rules="z.string().min(7, { message: t('maxMessage') })"
-      v-model="outlinedValue12"
     />
     <var-auto-complete
+      v-model="outlinedValue7"
       variant="outlined"
       :placeholder="t('displayIcon')"
       :options="outlinedOptions7"
-      v-model="outlinedValue7"
     >
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -179,10 +179,10 @@ function useAutoComplete() {
       </template>
     </var-auto-complete>
     <var-auto-complete
+      v-model="outlinedValue8"
       variant="outlined"
       :placeholder="t('customIconSize')"
       :options="outlinedOptions8"
-      v-model="outlinedValue8"
     >
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
@@ -192,25 +192,25 @@ function useAutoComplete() {
       </template>
     </var-auto-complete>
     <var-auto-complete
+      v-model="outlinedValue9"
       variant="outlined"
       :placeholder="t('maxlength')"
       :maxlength="10"
       :options="outlinedOptions9"
-      v-model="outlinedValue9"
     />
     <var-auto-complete
+      v-model="outlinedValue10"
       variant="outlined"
       :placeholder="t('customMenuShowTiming')"
       :get-show="(value) => value.length > 3"
       :options="outlinedOptions10"
-      v-model="outlinedValue10"
     />
     <var-auto-complete
+      v-model="outlinedValue11"
       variant="outlined"
       size="small"
       :placeholder="t('smallSize')"
       :options="outlinedOptions11"
-      v-model="outlinedValue11"
     />
   </var-space>
 </template>

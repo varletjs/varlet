@@ -1,8 +1,8 @@
-import ImagePreview from '../index'
-import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
+import { expect, test, vi } from 'vitest'
 import { delay, trigger, triggerDrag } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarImagePreview from '../ImagePreview.vue'
+import ImagePreview from '../index'
 
 test('test image preview plugin', () => {
   const app = createApp({}).use(ImagePreview)

@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="bottomNavigationDom"
     :class="
       classes(
         n(),
@@ -7,10 +8,9 @@
         [fixed, n('--fixed')],
         [border, n('--border')],
         [safeArea, n('--safe-area')],
-        [variant, n('--variant')]
+        [variant, n('--variant')],
       )
     "
-    ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
     v-bind="$attrs"
   >
@@ -20,8 +20,8 @@
       v-if="$slots.fab"
       :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
       var-bottom-navigation__fab
-      @click="handleFabClick"
       v-bind="fabProps"
+      @click="handleFabClick"
     >
       <slot name="fab"></slot>
     </var-button>
@@ -31,15 +31,15 @@
 </template>
 
 <script lang="ts">
-import VarButton from '../button'
-import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
-import { props } from './props'
-import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
-import { createNamespace } from '../utils/components'
-import { isNumber, normalizeToArray, call, getRect } from '@varlet/shared'
+import { computed, defineComponent, onUpdated, ref, watch } from 'vue'
+import { call, getRect, isNumber, normalizeToArray } from '@varlet/shared'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
+import VarButton from '../button'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
+import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 
 const { name, n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -82,7 +82,7 @@ export default defineComponent({
       (newValue) => {
         fabProps.value = { ...defaultFabProps, ...newValue }
       },
-      { immediate: true, deep: true }
+      { immediate: true, deep: true },
     )
 
     onWindowResize(resizePlaceholder)

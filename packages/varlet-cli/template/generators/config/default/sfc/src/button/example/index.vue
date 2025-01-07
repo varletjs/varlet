@@ -1,6 +1,6 @@
 <script setup>
-import VaButton from '..'
 import { AppType } from '@varlet/cli/client'
+import VaButton from '..'
 </script>
 
 <template>

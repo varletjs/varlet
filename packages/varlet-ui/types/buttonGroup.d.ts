@@ -1,10 +1,10 @@
 import { VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
-  Type as ButtonGroupType,
   Size as ButtonGroupSize,
+  Type as ButtonGroupType,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
 
 export declare const buttonGroupProps: Record<keyof ButtonGroupProps, any>

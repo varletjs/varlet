@@ -1,7 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 
 const list = ref([])
 
@@ -21,7 +21,7 @@ function handleChange(value) {
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-index-bar @change="handleChange" duration="300" :sticky-offset-top="54">
+  <var-index-bar duration="300" :sticky-offset-top="54" @change="handleChange">
     <div v-for="item in list" :key="item">
       <var-index-anchor
         :index="item"

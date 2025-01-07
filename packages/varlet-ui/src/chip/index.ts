@@ -1,5 +1,5 @@
-import Chip from './Chip.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Chip from './Chip.vue'
 import { props as chipProps } from './props'
 
 withInstall(Chip)

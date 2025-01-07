@@ -23,7 +23,7 @@ test('test toViewport', () => {
       '--e': '10px',
       '--f': '10.55px',
       '--g': 'calc(100% - 30px)',
-    })
+    }),
   ).toStrictEqual({
     '--a': '8vmin',
     '--b': '8vmin -8vmin',
@@ -49,8 +49,8 @@ test('test toViewport', () => {
         viewportWidth: 750,
         viewportUnit: 'vw',
         unitPrecision: 4,
-      }
-    )
+      },
+    ),
   ).toStrictEqual({
     '--a': '4vw',
     '--b': '4vw -4vw',

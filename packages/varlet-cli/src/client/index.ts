@@ -1,7 +1,7 @@
-import config from '@config'
-import AppType from './appType'
-import { Themes, StyleProvider } from '@varlet/ui'
 import { onMounted, onUnmounted } from 'vue'
+import config from '@config'
+import { StyleProvider, Themes } from '@varlet/ui'
+import AppType from './appType'
 
 interface PCLocationInfo {
   language: string
@@ -51,7 +51,7 @@ export function getBrowserTheme(): Theme {
 
 export function watchLang(cb: (lang: string) => void, platform: 'pc' | 'mobile' = 'mobile') {
   const handleHashchange = () => {
-    const language = platform === 'mobile' ? getHashSearch().get('language') ?? 'zh-CN' : getPCLocationInfo().language
+    const language = platform === 'mobile' ? (getHashSearch().get('language') ?? 'zh-CN') : getPCLocationInfo().language
     cb(language)
   }
 
@@ -118,7 +118,7 @@ export function setColorScheme(theme: Theme) {
 
 export function watchTheme(
   cb: (theme: Theme, from: 'pc' | 'mobile' | 'default' | 'playground') => void,
-  shouldUnmount = true
+  shouldUnmount = true,
 ) {
   const handleThemeChange = (event: MessageEvent) => {
     const { data } = event

@@ -1,8 +1,8 @@
-import Dialog from '../index'
-import VarDialog from '../Dialog'
 import { createApp } from 'vue'
+import { expect, test, vi } from 'vitest'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarDialog from '../Dialog'
+import Dialog from '../index'
 
 test('test dialog plugin', () => {
   const app = createApp({}).use(Dialog)

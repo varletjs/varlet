@@ -1,5 +1,5 @@
-import SwipeItem from './SwipeItem.vue'
 import { withInstall } from '../utils/components'
+import SwipeItem from './SwipeItem.vue'
 
 withInstall(SwipeItem)
 

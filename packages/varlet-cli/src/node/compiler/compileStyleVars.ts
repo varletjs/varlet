@@ -1,8 +1,8 @@
-import fse from 'fs-extra'
-import { SRC_DIR, TYPES_DIR } from '../shared/constant.js'
 import { resolve } from 'path'
-import { isDir, isMD } from '../shared/fsUtils.js'
+import fse from 'fs-extra'
 import { getVarletConfig } from '../config/varlet.config.js'
+import { SRC_DIR, TYPES_DIR } from '../shared/constant.js'
+import { isDir, isMD } from '../shared/fsUtils.js'
 
 const { ensureDirSync, readdirSync, readFileSync, writeFileSync } = fse
 
@@ -58,6 +58,6 @@ type FormatStyleVars<T> = {
   writeFileSync(
     resolve(TYPES_DIR, 'styleVars.d.ts'),
     `${assistanceType}${baseStyleVars}
-export interface StyleVars extends FormatStyleVars<BaseStyleVars> {}`
+export interface StyleVars extends FormatStyleVars<BaseStyleVars> {}`,
   )
 }

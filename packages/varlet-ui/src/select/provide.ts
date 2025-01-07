@@ -1,7 +1,7 @@
-import { useChildren } from '@varlet/use'
 import { type ComputedRef } from 'vue'
-import { type OptionProvider } from '../option/provide'
+import { useChildren } from '@varlet/use'
 import { type Validation } from '../form/provide'
+import { type OptionProvider } from '../option/provide'
 
 export const SELECT_BIND_OPTION_KEY = Symbol('SELECT_BIND_OPTION_KEY')
 

@@ -1,7 +1,7 @@
-import { inBrowser } from '@varlet/shared'
 import { ref } from 'vue'
-import { onWindowResize } from './onWindowResize'
+import { inBrowser } from '@varlet/shared'
 import { onSmartMounted } from './onSmartMounted'
+import { onWindowResize } from './onWindowResize'
 
 export interface UseWindowSizeOptions {
   initialWidth?: number

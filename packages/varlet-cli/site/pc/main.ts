@@ -1,11 +1,10 @@
-import App from './App.vue'
-import routes from '@pc-routes'
-import config from '@config'
-import Varlet, { Snackbar } from '@varlet/ui'
-import CodeExample from './components/code-example'
 import { createApp } from 'vue'
+import config from '@config'
+import routes from '@pc-routes'
+import Varlet, { Snackbar } from '@varlet/ui'
 import { createRouter, createWebHashHistory } from 'vue-router'
-
+import App from './App.vue'
+import CodeExample from './components/code-example'
 import '@varlet/ui/es/style'
 import '@varlet/touch-emulator'
 

@@ -17,9 +17,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { useSwipe, type SwipeItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { useSwipe, type SwipeItemProvider } from './provide'
 
 const { name, n } = createNamespace('swipe-item')
 

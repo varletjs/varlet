@@ -1,5 +1,5 @@
-import List from './List.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import List from './List.vue'
 import { props as listProps } from './props'
 
 withInstall(List)

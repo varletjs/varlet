@@ -1,6 +1,6 @@
-import Skeleton from './Skeleton.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as skeletonProps } from './props'
+import Skeleton from './Skeleton.vue'
 
 withInstall(Skeleton)
 withPropsDefaultsSetter(Skeleton, skeletonProps)

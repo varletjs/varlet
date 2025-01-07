@@ -1,6 +1,6 @@
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import Button from './Button.vue'
 import { props as buttonProps } from './props'
-import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 
 withInstall(Button)
 withPropsDefaultsSetter(Button, buttonProps)

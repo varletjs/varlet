@@ -1,8 +1,8 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { toRefs, reactive, computed } from 'vue'
+import { computed, reactive, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 const values = reactive({
   value: false,
@@ -56,10 +56,10 @@ onThemeChange()
   <var-radio v-model="value">{{ t('currentValue') }} {{ value }}</var-radio>
 
   <app-type>{{ t('setState') }}</app-type>
-  <var-radio :unchecked-value="0" :checked-value="1" v-model="value2"> {{ t('currentValue') }} {{ value2 }} </var-radio>
+  <var-radio v-model="value2" :unchecked-value="0" :checked-value="1"> {{ t('currentValue') }} {{ value2 }} </var-radio>
 
   <app-type>{{ t('setStyle') }}</app-type>
-  <var-radio unchecked-color="var(--color-warning)" checked-color="var(--color-danger)" v-model="value3">
+  <var-radio v-model="value3" unchecked-color="var(--color-warning)" checked-color="var(--color-danger)">
     <template #unchecked-icon>
       <var-icon name="heart-half-full" size="24px" />
     </template>
@@ -70,10 +70,10 @@ onThemeChange()
   </var-radio>
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-radio disabled v-model="value4">{{ t('currentValue') }} {{ value4 }}</var-radio>
+  <var-radio v-model="value4" disabled>{{ t('currentValue') }} {{ value4 }}</var-radio>
 
   <app-type>{{ t('readonly') }}</app-type>
-  <var-radio readonly v-model="value5">{{ t('currentValue') }} {{ value5 }}</var-radio>
+  <var-radio v-model="value5" readonly>{{ t('currentValue') }} {{ value5 }}</var-radio>
 
   <app-type>{{ t('radioGroup') }}</app-type>
   <var-radio-group v-model="value6">

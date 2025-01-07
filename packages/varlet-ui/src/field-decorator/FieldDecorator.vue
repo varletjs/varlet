@@ -9,7 +9,7 @@
           n('controller'),
           [isFocusing, n('--focus')],
           [isError, n('--error')],
-          [formDisabled || disabled, n('--disabled')]
+          [formDisabled || disabled, n('--disabled')],
         )
       "
       :style="{
@@ -40,7 +40,7 @@
             [formDisabled || disabled, n('--disabled')],
             [isError, n('--error')],
             [transitionDisabled, n('--transition-disabled')],
-            computePlaceholderState()
+            computePlaceholderState(),
           )
         "
         :style="{
@@ -52,7 +52,7 @@
       </label>
 
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
-        <slot name="clear-icon" v-if="clearable && !isEmpty(value)" :clear="handleClear">
+        <slot v-if="clearable && !isEmpty(value)" name="clear-icon" :clear="handleClear">
           <var-icon :class="n('clear-icon')" var-field-decorator-cover name="close-circle" @click="handleClear" />
         </slot>
         <slot name="append-icon" />
@@ -67,7 +67,7 @@
             n('line'),
             [isFocusing, n('--line-focus')],
             [isError, n('--line-error')],
-            [formDisabled || disabled, n('--line-disabled')]
+            [formDisabled || disabled, n('--line-disabled')],
           )
         "
         :style="{ borderColor: color }"
@@ -76,7 +76,7 @@
           :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
           :style="{ width: legendWidth }"
         >
-          <teleport to="body" v-if="placeholder && hint">
+          <teleport v-if="placeholder && hint" to="body">
             <span
               ref="placeholderTextEl"
               :class="
@@ -89,9 +89,9 @@
       </fieldset>
 
       <div
+        v-else
         :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [isError, n('--line-error')])"
         :style="{ background: !isError ? blurColor : undefined }"
-        v-else
       >
         <div
           :class="
@@ -99,7 +99,7 @@
               n('dot'),
               [isFocusing, n('--line-focus')],
               [formDisabled || disabled, n('--line-disabled')],
-              [isError, n('--line-error')]
+              [isError, n('--line-error')],
             )
           "
           :style="{ background: !isError ? focusColor : undefined }"
@@ -110,14 +110,14 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, nextTick, onUpdated, ref, watch } from 'vue'
+import { call, doubleRaf, getStyle, isEmpty } from '@varlet/shared'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, nextTick, onUpdated, watch } from 'vue'
-import { props } from './props'
-import { isEmpty, getStyle, call, doubleRaf } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
-import { onWindowResize, onSmartMounted } from '@varlet/use'
 import { usePopup } from '../popup/provide'
 import { useSwipeResizeDispatcher } from '../swipe/provide'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('field-decorator')
 
@@ -138,7 +138,7 @@ export default defineComponent({
     const { bindSwipeResizeDispatcher } = useSwipeResizeDispatcher()
 
     const color = computed<string | undefined>(() =>
-      !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
+      !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined,
     )
 
     onWindowResize(resize)
@@ -168,7 +168,7 @@ export default defineComponent({
             await doubleRaf()
             resize()
           }
-        }
+        },
       )
     }
 

@@ -1,15 +1,15 @@
+import { parse, resolve } from 'path'
+import { buildIcons, getIo } from '@varlet/icon-builder'
+import chokidar from 'chokidar'
 import fse from 'fs-extra'
 import sharp from 'sharp'
-import chokidar from 'chokidar'
-import logger from '../shared/logger.js'
-import { parse, resolve } from 'path'
-import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
-import { buildIcons, getIo } from '@varlet/icon-builder'
+import { getVarletConfig, VarletConfig } from '../config/varlet.config.js'
 import { ICONS_PNG_DIR_NAME } from '../shared/constant.js'
+import logger from '../shared/logger.js'
 
 const { removeSync, ensureDirSync, readdirSync } = fse
 
-async function clearPngOutputs(pngDir: string) {
+function clearPngOutputs(pngDir: string) {
   removeSync(pngDir)
   ensureDirSync(pngDir)
 }
@@ -49,8 +49,8 @@ async function buildPNG(io: { entry: string; output: string }) {
                   done()
                 })
             })
-        })
-    )
+        }),
+    ),
   )
 
   logger.success('build png success!')

@@ -1,11 +1,11 @@
+import { VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
-  Direction as StepsDirection,
   ListenerProp,
   SetPropsDefaults,
+  Direction as StepsDirection,
+  VarComponent,
 } from './varComponent'
-import { VNode } from 'vue'
 
 export { StepsDirection }
 

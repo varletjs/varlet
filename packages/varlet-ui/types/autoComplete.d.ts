@@ -1,12 +1,12 @@
+import { VNode, VNodeChild, type InputHTMLAttributes } from 'vue'
 import {
-  VarComponent,
+  Rules as AutoCompleteRules,
+  Variant as AutoCompleteVariant,
   BasicAttributes,
   ListenerProp,
-  Variant as AutoCompleteVariant,
-  Rules as AutoCompleteRules,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
-import { VNode, VNodeChild, type InputHTMLAttributes } from 'vue'
 
 export declare const autoComponentProps: Record<keyof AutoCompleteProps, any>
 

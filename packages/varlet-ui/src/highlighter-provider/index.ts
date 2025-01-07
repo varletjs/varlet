@@ -1,5 +1,5 @@
-import HighlighterProvider from './HighlighterProvider.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import HighlighterProvider from './HighlighterProvider.vue'
 import { props as highlighterProviderProps } from './props'
 
 withInstall(HighlighterProvider)

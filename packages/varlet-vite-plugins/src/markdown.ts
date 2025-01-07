@@ -1,6 +1,6 @@
-import markdownIt from 'markdown-it'
-import hljs from 'highlight.js'
 import { kebabCase } from '@varlet/shared'
+import hljs from 'highlight.js'
+import markdownIt from 'markdown-it'
 import { pinyin } from 'pinyin-pro'
 import type { Plugin } from 'vite'
 

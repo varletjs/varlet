@@ -3,10 +3,10 @@
     <transition :name="`${n()}-fade`" @after-enter="onOpened" @after-leave="onClosed">
       <var-snackbar-core v-bind="$props" :class="n('transition')">
         <slot />
-        <template #icon v-if="$slots.icon">
+        <template v-if="$slots.icon" #icon>
           <slot name="icon" />
         </template>
-        <template #action v-if="$slots.action">
+        <template v-if="$slots.action" #action>
           <slot name="action" />
         </template>
       </var-snackbar-core>
@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts">
-import VarSnackbarCore from './core.vue'
 import { defineComponent } from 'vue'
 import { createNamespace, useTeleport } from '../utils/components'
+import VarSnackbarCore from './core.vue'
 import { props } from './props'
 
 const { name, n } = createNamespace('snackbar')

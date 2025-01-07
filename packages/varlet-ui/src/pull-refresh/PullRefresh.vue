@@ -23,13 +23,13 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import { call, getRect, getScrollTop, isNumber, isString, preventDefault, toNumber } from '@varlet/shared'
+import { onSmartMounted, useEventListener, useTouch } from '@varlet/use'
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, nextTick } from 'vue'
+import { createNamespace } from '../utils/components'
 import { getParentScroller, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isNumber, isString, toNumber, getRect, preventDefault, getScrollTop, call } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
-import { useEventListener, onSmartMounted, useTouch } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('pull-refresh')
 
@@ -51,7 +51,7 @@ export default defineComponent({
     const maxDistance = computed(() => Math.abs(2 * controlPosition.value))
     const isSuccess = computed(() => refreshStatus.value === 'success')
     const isTouchable = computed(
-      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
+      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled,
     )
     const controlStyle = computed(() => ({
       transform: `translate3d(0px, ${
@@ -78,14 +78,14 @@ export default defineComponent({
             reset()
           }, toNumber(props.successDuration))
         }
-      }
+      },
     )
 
     onSmartMounted(setScroller)
 
     useEventListener(freshNode, 'touchmove', handleTouchmove)
 
-    async function startIconTransition(name: string) {
+    function startIconTransition(name: string) {
       if (iconName.value === name) {
         return
       }

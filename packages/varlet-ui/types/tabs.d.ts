@@ -1,11 +1,11 @@
+import { VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
-  Direction as TabsDirection,
   ListenerProp,
   SetPropsDefaults,
+  Direction as TabsDirection,
+  VarComponent,
 } from './varComponent'
-import { VNode } from 'vue'
 
 export declare const tabsProps: Record<keyof TabsProps, any>
 

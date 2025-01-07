@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as RateRules } from './varComponent'
+import { BasicAttributes, ListenerProp, Rules as RateRules, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const rateProps: Record<keyof RateProps, any>
 

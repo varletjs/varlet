@@ -1,6 +1,6 @@
-import Watermark from './Watermark.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as watermarkProps } from './props'
+import Watermark from './Watermark.vue'
 
 withInstall(Watermark)
 withPropsDefaultsSetter(Watermark, watermarkProps)

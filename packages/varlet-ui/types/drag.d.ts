@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { TeleportProps, VNode } from 'vue'
+import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export type DragDirection = 'x' | 'y' | 'xy'
 

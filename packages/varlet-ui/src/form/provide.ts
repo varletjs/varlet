@@ -1,5 +1,5 @@
+import { getCurrentInstance, type ComponentInternalInstance, type ComputedRef } from 'vue'
 import { useChildren, useParent } from '@varlet/use'
-import { getCurrentInstance, type ComputedRef, type ComponentInternalInstance } from 'vue'
 
 export interface Validation {
   validate(): Promise<boolean>

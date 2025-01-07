@@ -1,12 +1,12 @@
+import { VNode, VNodeChild } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
   Direction as CheckboxGroupDirection,
   Rules as CheckboxGroupRules,
   ListenerProp,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
-import { VNode, VNodeChild } from 'vue'
 
 export declare const checkboxGroupProps: Record<keyof CheckboxGroupProps, any>
 

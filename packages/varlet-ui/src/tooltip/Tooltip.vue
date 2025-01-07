@@ -5,10 +5,10 @@
     <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
       <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
+          v-show="show"
           ref="popover"
           :class="classes(n('tooltip'), n('$--box'))"
           :style="{ zIndex }"
-          v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
@@ -31,10 +31,10 @@
 </template>
 
 <script lang="ts">
-import { createNamespace, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
-import { toSizeUnit } from '../utils/elements'
 import { usePopover } from '../menu/usePopover'
+import { createNamespace, useTeleport } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
 
 const { name, n, classes } = createNamespace('tooltip')

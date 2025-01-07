@@ -1,13 +1,13 @@
 <template>
   <div
     ref="root"
+    v-ripple="{ disabled: disabled || !ripple }"
+    v-hover:desktop="handleHovering"
     :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])"
     :style="{
       color: optionSelected ? focusColor : undefined,
     }"
     :tabindex="disabled ? undefined : '-1'"
-    v-ripple="{ disabled: disabled || !ripple }"
-    v-hover:desktop="handleHovering"
     @focus="isFocusing = true"
     @blur="isFocusing = false"
     @click="handleClick"
@@ -40,16 +40,16 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch } from 'vue'
+import { isFunction, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 import VarCheckbox from '../checkbox'
-import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, computed, ref, watch } from 'vue'
-import { useSelect, OptionProvider } from './provide'
+import Ripple from '../ripple'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
-import { preventDefault, isFunction } from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
+import { OptionProvider, useSelect } from './provide'
 
 const { name, n, classes } = createNamespace('option')
 
@@ -82,9 +82,9 @@ export default defineComponent({
               value: props.value,
               disabled: props.disabled,
             },
-            optionSelected.value
+            optionSelected.value,
           )
-        : props.label
+        : props.label,
     )
 
     const optionProvider: OptionProvider = {

@@ -18,7 +18,7 @@ function refresh() {
 </script>
 
 <template>
-  <var-pull-refresh @refresh="refresh" v-model="isRefresh" success-duration="2000">
+  <var-pull-refresh v-model="isRefresh" success-duration="2000" @refresh="refresh">
     <var-cell v-for="(item, index) in data" :key="index" border>{{ item + ' ' + (index + 1) }}</var-cell>
   </var-pull-refresh>
 </template>

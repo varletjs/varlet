@@ -7,7 +7,7 @@
         [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
-        [animateInProgress, animationClass == null ? n('--shrinking') : animationClass]
+        [animateInProgress, animationClass == null ? n('--shrinking') : animationClass],
       )
     "
     :style="{
@@ -23,11 +23,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, nextTick } from 'vue'
+import { defineComponent, nextTick, ref, watch } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
-import { props } from './props'
-import { toSizeUnit } from '../utils/elements'
 import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('icon')
 

@@ -1,17 +1,17 @@
 <template>
   <div
-    :class="classes(n('action-item'), className, [disabled, n('--disabled')])"
     v-ripple="{ disabled }"
     v-hover:desktop="handleHovering"
+    :class="classes(n('action-item'), className, [disabled, n('--disabled')])"
     :style="{ color }"
   >
     <var-icon
+      v-if="icon"
       var-action-sheet-cover
       :class="n('action-icon')"
       :namespace="namespace"
       :name="icon"
       :size="iconSize"
-      v-if="icon"
     />
     <div :class="n('action-name')">{{ name }}</div>
 
@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import VarIcon from '../icon'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
 import { defineComponent } from 'vue'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
 import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('action-sheet')

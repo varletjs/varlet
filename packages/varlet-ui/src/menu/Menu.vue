@@ -5,6 +5,7 @@
     <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
       <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
+          v-show="show"
           ref="popover"
           :style="{
             zIndex,
@@ -16,10 +17,9 @@
               n('$--box'),
               popoverClass,
               [defaultStyle, n('--menu-background-color')],
-              [defaultStyle, formatElevation(elevation, 3)]
+              [defaultStyle, formatElevation(elevation, 3)],
             )
           "
-          v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
@@ -32,11 +32,11 @@
 </template>
 
 <script lang="ts">
-import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
+import { createNamespace, formatElevation, useTeleport } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
 import { usePopover } from './usePopover'
-import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('menu')
 

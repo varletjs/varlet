@@ -1,8 +1,8 @@
-import { registerCompletions } from './completions'
+import { type ExtensionContext } from 'vscode'
 import { registerCommands } from './commands'
+import { registerCompletions } from './completions'
 import { registerHover } from './hover'
 import { registerStatusBarItems } from './statusBarItems'
-import { type ExtensionContext } from 'vscode'
 
 export function activate(context: ExtensionContext) {
   registerCommands(context)

@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { computed, defineComponent } from 'vue'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useBreadcrumbsList, type BreadcrumbsProvider } from './provide'
-import { createNamespace } from '../utils/components'
 
 const { name, n } = createNamespace('breadcrumbs')
 

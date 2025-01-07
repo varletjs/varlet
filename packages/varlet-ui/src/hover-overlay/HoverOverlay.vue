@@ -4,9 +4,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
 import { inMobile } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('hover-overlay')
 

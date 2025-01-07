@@ -1,6 +1,6 @@
-import { x } from 'tinyexec'
-import { createSpinner } from 'nanospinner'
 import { resolve } from 'path'
+import { createSpinner } from 'nanospinner'
+import { x } from 'tinyexec'
 
 const CWD = process.cwd()
 
@@ -45,7 +45,7 @@ export async function runTaskQueue() {
 
   await runTask('shared & touch-emulator', () => Promise.all([buildShared(), buildToucheEmulator()]))
   await runTask('preset-unocss & preset-tailwindcss & import-resolver & use & vite-plugins', () =>
-    Promise.all([buildPresetUnocss(), buildPresetTailwindcss(), buildImportResolver(), buildUse(), buildVitePlugins()])
+    Promise.all([buildPresetUnocss(), buildPresetTailwindcss(), buildImportResolver(), buildUse(), buildVitePlugins()]),
   )
   await runTask('cli', buildCli)
   await runTask('icons', buildIcons)

@@ -1,6 +1,6 @@
-import Space from './Space'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as spaceProps } from './props'
+import Space from './Space'
 
 withInstall(Space)
 withPropsDefaultsSetter(Space, spaceProps)

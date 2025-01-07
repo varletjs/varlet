@@ -1,5 +1,5 @@
-import { useChildren } from '@varlet/use'
 import { ComputedRef } from 'vue'
+import { useChildren } from '@varlet/use'
 
 export interface RowProvider {
   average: ComputedRef<number[]>

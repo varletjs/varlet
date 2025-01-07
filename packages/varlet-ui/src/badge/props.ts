@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
-import { pickProps } from '../utils/components'
 import { iconProps } from '../icon'
+import { pickProps } from '../utils/components'
 
 export type BadgeType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 

@@ -1,9 +1,9 @@
-import Countdown from '..'
-import VarCountdown from '../Countdown'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import Countdown from '..'
 import { delay } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import VarCountdown from '../Countdown'
 
 test('test countdown plugin', () => {
   const app = createApp({}).use(Countdown)

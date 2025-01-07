@@ -1,5 +1,5 @@
-import FloatingPanel from './FloatingPanel.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import FloatingPanel from './FloatingPanel.vue'
 import { props as floatingPanelProps } from './props'
 
 withInstall(FloatingPanel)

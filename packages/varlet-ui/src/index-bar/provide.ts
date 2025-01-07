@@ -14,7 +14,7 @@ export const INDEX_BAR_BIND_INDEX_ANCHOR_KEY = Symbol('INDEX_BAR_BIND_INDEX_ANCH
 
 export function useIndexAnchors() {
   const { bindChildren, length, childProviders } = useChildren<IndexBarProvider, IndexAnchorProvider>(
-    INDEX_BAR_BIND_INDEX_ANCHOR_KEY
+    INDEX_BAR_BIND_INDEX_ANCHOR_KEY,
   )
 
   return {

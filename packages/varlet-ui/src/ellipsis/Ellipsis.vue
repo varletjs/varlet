@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import VarTooltip, { tooltipProps as _tooltipProps } from '../tooltip'
 import { computed, defineComponent, type CSSProperties } from 'vue'
+import { useVModel } from '@varlet/use'
+import VarTooltip, { tooltipProps as _tooltipProps } from '../tooltip'
 import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'
-import { useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('ellipsis')
 

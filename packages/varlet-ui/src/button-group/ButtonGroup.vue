@@ -6,7 +6,7 @@
         n('$--box'),
         [mode, `${n(`--mode-${mode}`)}`],
         [vertical, n('--vertical'), n('--horizontal')],
-        [mode === 'normal', formatElevation(elevation, 2)]
+        [mode === 'normal', formatElevation(elevation, 2)],
       )
     "
   >
@@ -16,9 +16,9 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useButtons, type ButtonGroupProvider } from './provide'
 import { createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
+import { useButtons, type ButtonGroupProvider } from './provide'
 
 const { name, n, classes } = createNamespace('button-group')
 

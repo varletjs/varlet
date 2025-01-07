@@ -1,8 +1,8 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { computed, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 const standardValue = ref()
 const standardValue2 = ref()
@@ -119,35 +119,35 @@ watchLang((lang) => {
 <template>
   <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
-    <var-select :placeholder="t('placeholder')" v-model="standardValue">
+    <var-select v-model="standardValue" :placeholder="t('placeholder')">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('relation')" v-model="standardValue2">
+    <var-select v-model="standardValue2" :placeholder="t('relation')">
       <var-option :label="t('eat')" :value="1" />
       <var-option :label="t('sleep')" :value="2" />
     </var-select>
     <div class="relation">{{ t('currentSelect') }} {{ standardValue2 }}</div>
-    <var-select :placeholder="t('readonly')" readonly v-model="standardValue3">
+    <var-select v-model="standardValue3" :placeholder="t('readonly')" readonly>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('disabled')" disabled v-model="standardValue4">
+    <var-select v-model="standardValue4" :placeholder="t('disabled')" disabled>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('clearable')" clearable v-model="standardValue5">
+    <var-select v-model="standardValue5" :placeholder="t('clearable')" clearable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('clearIconSlot')" clearable v-model="standardValue6">
+    <var-select v-model="standardValue6" :placeholder="t('clearIconSlot')" clearable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <template #clear-icon="{ clear }">
         <var-icon class="clear-icon" name="github" @click="clear" />
       </template>
     </var-select>
-    <var-select :placeholder="t('customIcon')" v-model="standardValue7">
+    <var-select v-model="standardValue7" :placeholder="t('customIcon')">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -172,7 +172,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="t('customIconSize')" v-model="standardValue8">
+    <var-select v-model="standardValue8" :placeholder="t('customIconSize')">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -201,41 +201,41 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="t('multiple')" multiple v-model="standardValue9">
+    <var-select v-model="standardValue9" :placeholder="t('multiple')" multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="t('chipMultiple')" chip multiple v-model="standardValue10">
+    <var-select v-model="standardValue10" :placeholder="t('chipMultiple')" chip multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
     <var-select
+      v-model="standardValue11"
       :placeholder="t('validate')"
       :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
-      v-model="standardValue11"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      v-model="standardValue17"
       :placeholder="t('validateWithZod')"
       :rules="z.string().refine((v) => v === t('rest'), { message: t('mustSelectRest') })"
-      v-model="standardValue17"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      v-model="standardValue12"
       multiple
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
-      v-model="standardValue12"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
@@ -243,25 +243,25 @@ watchLang((lang) => {
       <var-option :label="t('coding')" />
     </var-select>
     <var-select
+      v-model="standardValue18"
       multiple
       :placeholder="t('multipleValidateWithZod')"
       :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
-      v-model="standardValue18"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="t('smallSize')" v-model="standardValue13">
+    <var-select v-model="standardValue13" :placeholder="t('smallSize')">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options" />
-    <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple />
+    <var-select v-model="standardValue14" :placeholder="t('selectOptions')" :options="options" />
+    <var-select v-model="standardValue15" :placeholder="t('selectOptionsMultiple')" :options="options" multiple />
     <var-select
-      :placeholder="t('customFields')"
       v-model="standardValue16"
+      :placeholder="t('customFields')"
       :options="keyOptions"
       label-key="name"
       value-key="id"
@@ -270,35 +270,35 @@ watchLang((lang) => {
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
-    <var-select variant="outlined" :placeholder="t('placeholder')" v-model="outlinedValue">
+    <var-select v-model="outlinedValue" variant="outlined" :placeholder="t('placeholder')">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('relation')" v-model="outlinedValue2">
+    <var-select v-model="outlinedValue2" variant="outlined" :placeholder="t('relation')">
       <var-option :label="t('eat')" :value="1" />
       <var-option :label="t('sleep')" :value="2" />
     </var-select>
     <div class="relation">{{ t('currentSelect') }} {{ outlinedValue2 }}</div>
-    <var-select variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue3">
+    <var-select v-model="outlinedValue3" variant="outlined" :placeholder="t('readonly')" readonly>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue4">
+    <var-select v-model="outlinedValue4" variant="outlined" :placeholder="t('disabled')" disabled>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue5">
+    <var-select v-model="outlinedValue5" variant="outlined" :placeholder="t('clearable')" clearable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('clearIconSlot')" clearable v-model="outlinedValue6">
+    <var-select v-model="outlinedValue6" variant="outlined" :placeholder="t('clearIconSlot')" clearable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <template #clear-icon="{ clear }">
         <var-icon class="clear-icon" name="github" @click="clear" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="t('customIcon')" v-model="outlinedValue7">
+    <var-select v-model="outlinedValue7" variant="outlined" :placeholder="t('customIcon')">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -323,7 +323,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue8">
+    <var-select v-model="outlinedValue8" variant="outlined" :placeholder="t('customIconSize')">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -352,44 +352,44 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="t('multiple')" multiple v-model="outlinedValue9">
+    <var-select v-model="outlinedValue9" variant="outlined" :placeholder="t('multiple')" multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('chipMultiple')" chip multiple v-model="outlinedValue10">
+    <var-select v-model="outlinedValue10" variant="outlined" :placeholder="t('chipMultiple')" chip multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
     <var-select
+      v-model="outlinedValue11"
       variant="outlined"
       :placeholder="t('validate')"
       :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
-      v-model="outlinedValue11"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      v-model="outlinedValue17"
       variant="outlined"
       :placeholder="t('validateWithZod')"
       :rules="z.string().refine((v) => v === t('rest'), { message: t('mustSelectRest') })"
-      v-model="outlinedValue17"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      v-model="outlinedValue12"
       multiple
       variant="outlined"
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
-      v-model="outlinedValue12"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
@@ -397,33 +397,33 @@ watchLang((lang) => {
       <var-option :label="t('coding')" />
     </var-select>
     <var-select
+      v-model="outlinedValue18"
       multiple
       variant="outlined"
       :placeholder="t('multipleValidateWithZod')"
       :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
-      v-model="outlinedValue18"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" size="small" :placeholder="t('smallSize')" v-model="outlinedValue13">
+    <var-select v-model="outlinedValue13" variant="outlined" size="small" :placeholder="t('smallSize')">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('selectOptions')" v-model="outlinedValue14" :options="options" />
+    <var-select v-model="outlinedValue14" variant="outlined" :placeholder="t('selectOptions')" :options="options" />
     <var-select
+      v-model="outlinedValue15"
       variant="outlined"
       :placeholder="t('selectOptionsMultiple')"
-      v-model="outlinedValue15"
       :options="options"
       multiple
     />
     <var-select
+      v-model="outlinedValue16"
       variant="outlined"
       :placeholder="t('customFields')"
-      v-model="outlinedValue16"
       :options="keyOptions"
       label-key="name"
       value-key="id"

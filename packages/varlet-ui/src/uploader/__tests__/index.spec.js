@@ -1,10 +1,10 @@
-import Uploader from '..'
-import VarUploader from '../Uploader'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockFileReader, mockStubs, triggerKeyboard } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
 import { z } from 'zod'
+import Uploader from '..'
+import { delay, mockFileReader, mockStubs, triggerKeyboard } from '../../utils/test'
+import VarUploader from '../Uploader'
 
 const createEvent = (filename, type) => ({
   target: {
@@ -52,7 +52,7 @@ test('test uploader onBeforeFilter', async () => {
     modelValue: [],
     multiple: true,
     'onUpdate:modelValue': onUpdateModelValue,
-    async onBeforeFilter(files) {
+    onBeforeFilter(files) {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(files.filter((file) => file.name.endsWith('jpg')))
@@ -356,7 +356,7 @@ test('test uploader hideList', async () => {
   mockRestore()
 })
 
-test('test uploader file utils', async () => {
+test('test uploader file utils', () => {
   const modelValue = [
     {
       id: 1,
@@ -646,7 +646,7 @@ test('test uploader validation with zod', async () => {
   mockRestore()
 })
 
-test('test uploader remove button slot', async () => {
+test('test uploader remove button slot', () => {
   const { mockRestore: mockRestoreStubs } = mockStubs()
 
   const wrapper = mount(VarUploader, {

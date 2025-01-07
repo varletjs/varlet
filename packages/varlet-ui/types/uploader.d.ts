@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as UploaderRules } from './varComponent'
-import { VNode, InputHTMLAttributes } from 'vue'
+import { InputHTMLAttributes, VNode } from 'vue'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, Rules as UploaderRules, VarComponent } from './varComponent'
 
 export declare const uploaderProps: Record<keyof UploaderProps, any>
 

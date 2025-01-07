@@ -8,25 +8,25 @@
         [withText, n('--with-text')],
         [withPresetInset, n('--inset')],
         [dashed, n('--dashed')],
-        [hairline, n('--hairline')]
+        [hairline, n('--hairline')],
       )
     "
     :style="style"
     role="separator"
   >
     <slot v-if="!vertical">
-      <span :class="n('text')" v-if="description">{{ description }}</span>
+      <span v-if="description" :class="n('text')">{{ description }}</span>
     </slot>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onUpdated } from 'vue'
-import { toSizeUnit } from '../utils/elements'
-import { toNumber, isBoolean } from '@varlet/shared'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { computed, defineComponent, onUpdated, ref } from 'vue'
+import { isBoolean, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
+import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('divider')
 

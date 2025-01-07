@@ -1,5 +1,5 @@
-import Countdown from './Countdown.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Countdown from './Countdown.vue'
 import { props as countdownProps } from './props'
 
 withInstall(Countdown)

@@ -1,15 +1,15 @@
+import { resolve } from 'path'
+import { kebabCase } from '@varlet/shared'
 import chokidar, { FSWatcher } from 'chokidar'
 import fse from 'fs-extra'
-import logger from '../shared/logger.js'
 import { createServer, ViteDevServer } from 'vite'
-import { ES_DIR, SRC, SRC_DIR, VARLET_CONFIG } from '../shared/constant.js'
-import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
-import { getDevConfig } from '../config/vite.config.js'
-import { getVarletConfig, VarletConfig } from '../config/varlet.config.js'
-import { resolve } from 'path'
 import { generateEsEntryTemplate, getScriptExtname } from '../compiler/compileScript.js'
+import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
+import { getVarletConfig, VarletConfig } from '../config/varlet.config.js'
+import { getDevConfig } from '../config/vite.config.js'
+import { ES_DIR, SRC, SRC_DIR, VARLET_CONFIG } from '../shared/constant.js'
 import { getPublicDirs } from '../shared/fsUtils.js'
-import { kebabCase } from '@varlet/shared'
+import logger from '../shared/logger.js'
 
 const { ensureDirSync, pathExistsSync, readFileSync, outputFileSync, removeSync } = fse
 

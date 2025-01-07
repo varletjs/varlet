@@ -1,12 +1,12 @@
-import VarSnackbarCore from './core.vue'
-import VarSnackbar from './Snackbar.vue'
-import context from '../context'
 import type { App, Component, TeleportProps, VNode } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
-import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
-import { isFunction, isPlainObject, isString, toNumber, call } from '@varlet/shared'
+import { call, isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
+import context from '../context'
 import type { LoadingSize, LoadingType } from '../loading/props'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import VarSnackbarCore from './core.vue'
 import { props as snackbarProps } from './props'
+import VarSnackbar from './Snackbar.vue'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -108,7 +108,7 @@ const transitionGroupProps: any = {
   class: 'var-transition-group',
 }
 
-const getSlotValue = (value?: SlotType) => () => isFunction(value) ? value() : value
+const getSlotValue = (value?: SlotType) => () => (isFunction(value) ? value() : value)
 
 const TransitionGroupHost = {
   setup() {
@@ -283,7 +283,9 @@ function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string
 }
 
 function getTop(position = 'top') {
-  if (position === 'bottom') return { top: '85%' }
+  if (position === 'bottom') {
+    return { top: '85%' }
+  }
 
   return { top: position === 'top' ? '5%' : '45%' }
 }

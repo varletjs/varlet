@@ -1,7 +1,7 @@
 import { kebabCase, pascalCase, uniq } from '@varlet/shared'
-import { languages, Position, Hover, MarkdownString, Uri, type TextDocument, type ExtensionContext } from 'vscode'
+import { Hover, languages, MarkdownString, Position, Uri, type ExtensionContext, type TextDocument } from 'vscode'
 import { componentsMap } from './componentsMap'
-import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
+import { LANGUAGE_IDS, TAG_BIG_CAMELIZE_RE, TAG_LINK_RE } from './constant'
 import { envs, getWebTypesTags } from './env'
 
 export interface TableDataProp {
@@ -34,7 +34,7 @@ export function getComponentTableData(component: string) {
   const tag = tags.find((tag) => tag.name === name)
   const documentation = `${envs().t('documentation')}${componentsMap[component].path}`
   const documentationCommand = Uri.parse(
-    `command:varlet.open-webview?${encodeURIComponent(JSON.stringify([documentation]))}`
+    `command:varlet.open-webview?${encodeURIComponent(JSON.stringify([documentation]))}`,
   )
   const link = `\
 [Varlet: ${bigCamelName} -> ${envs().t('linkWebviewText')}](${documentationCommand})
@@ -87,7 +87,7 @@ export function getComponentTableTemplate(component: string) {
         `\
 | ${envs().t('prop')} | ${envs().t('description')} | ${envs().t('default')} |
 | :--- | :--- | :--- |
-`
+`,
       )
     : ''
 
@@ -100,7 +100,7 @@ export function getComponentTableTemplate(component: string) {
         `\
 | ${envs().t('event')} | ${envs().t('description')} |
 | :--- | :--- |
-`
+`,
       )
     : ''
 
@@ -113,7 +113,7 @@ export function getComponentTableTemplate(component: string) {
         `\
 | ${envs().t('slot')} | ${envs().t('description')} |
 | :--- | :--- |
-`
+`,
       )
     : ''
 
@@ -147,7 +147,7 @@ export function registerHover(context: ExtensionContext) {
           linkMarkdown,
           new MarkdownString(item.propsTable),
           new MarkdownString(item.eventsTable),
-          new MarkdownString(item.slotsTable)
+          new MarkdownString(item.slotsTable),
         )
 
         return hoverContents
@@ -159,6 +159,6 @@ export function registerHover(context: ExtensionContext) {
   context.subscriptions.push(
     languages.registerHoverProvider(LANGUAGE_IDS, {
       provideHover,
-    })
+    }),
   )
 }

@@ -1,13 +1,12 @@
-import { defineComponent, watch, Transition, Teleport, computed } from 'vue'
-import { props } from './props'
-import { useLock } from '../context/lock'
-import { useZIndex } from '../context/zIndex'
-import { useStack } from '../context/stack'
-import { useRouteListener, useTeleport, createNamespace } from '../utils/components'
-import { usePopupItems } from './provide'
-import { useEventListener, useInitialized } from '@varlet/use'
+import { computed, defineComponent, Teleport, Transition, watch } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
-
+import { useEventListener, useInitialized } from '@varlet/use'
+import { useLock } from '../context/lock'
+import { useStack } from '../context/stack'
+import { useZIndex } from '../context/zIndex'
+import { createNamespace, useRouteListener, useTeleport } from '../utils/components'
+import { props } from './props'
+import { usePopupItems } from './provide'
 import '../styles/common.less'
 import './popup.less'
 
@@ -27,14 +26,14 @@ export default defineComponent({
 
     useLock(
       () => props.show,
-      () => props.lockScroll
+      () => props.lockScroll,
     )
 
     watch(
       () => props.show,
       (newValue: boolean) => {
         newValue ? call(props.onOpen) : call(props.onClose)
-      }
+      },
     )
 
     bindPopupItems({ show: computed(() => props.show) })
@@ -80,7 +79,7 @@ export default defineComponent({
             [props.defaultStyle, n('--content-background-color')],
             [props.defaultStyle, n('$-elevation--3')],
             [props.safeArea, n('--safe-area')],
-            [props.safeAreaTop, n('--safe-area-top')]
+            [props.safeAreaTop, n('--safe-area-top')],
           )}
           style={{ zIndex: normalizedZIndex.value }}
           role="dialog"

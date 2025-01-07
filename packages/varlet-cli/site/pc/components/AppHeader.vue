@@ -114,12 +114,12 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import config from '@config'
-import { ref, computed, defineComponent } from 'vue'
-import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme, setTheme } from '@varlet/cli/client'
-import { removeEmpty } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, setTheme, Theme, watchTheme } from '@varlet/cli/client'
 import { useRouter } from 'vue-router'
-import type { Ref, ComputedRef } from 'vue'
+import { removeEmpty } from '../../utils'
 
 export default defineComponent({
   name: 'AppHeader',
@@ -136,7 +136,7 @@ export default defineComponent({
     const versions = config?.pc?.header?.versions
     const isShowVersion: Ref<boolean> = ref(!!versions)
     const versionItems: Ref<Array<Record<string, any>>> = ref(
-      (versions ?? []).find((i: any) => window.location.host.includes(i.name))?.items ?? versions?.[0]?.items ?? []
+      (versions ?? []).find((i: any) => window.location.host.includes(i.name))?.items ?? versions?.[0]?.items ?? [],
     )
     const playground: Ref<string> = ref(config?.pc?.header?.playground)
     const github: Ref<string> = ref(config?.pc?.header?.github)

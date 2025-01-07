@@ -1,7 +1,7 @@
 import fse from 'fs-extra'
-import logger from '../shared/logger.js'
 import { x } from 'tinyexec'
 import { SITE_OUTPUT_PATH } from '../shared/constant.js'
+import logger from '../shared/logger.js'
 
 const { pathExistsSync } = fse
 

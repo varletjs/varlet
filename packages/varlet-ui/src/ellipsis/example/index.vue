@@ -1,7 +1,7 @@
 <script setup>
-import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const expand = ref(false)
 
@@ -19,7 +19,7 @@ onThemeChange()
   <app-type>{{ t('twoWayBinding') }}</app-type>
   <var-space direction="column" size="large">
     <var-button type="primary" @click="expand = !expand">{{ t('toggle') }}</var-button>
-    <var-ellipsis style="max-width: 50vmin" v-model:expand="expand">{{ t('text') }}</var-ellipsis>
+    <var-ellipsis v-model:expand="expand" style="max-width: 50vmin">{{ t('text') }}</var-ellipsis>
   </var-space>
 
   <app-type>{{ t('expand') }}</app-type>

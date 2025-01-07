@@ -1,8 +1,8 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test } from 'vitest'
 import Badge from '..'
 import VarBadge from '../Badge'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { describe, expect, test } from 'vitest'
 
 test('test badge plugin', () => {
   const app = createApp({}).use(Badge)

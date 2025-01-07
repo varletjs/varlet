@@ -1,7 +1,5 @@
 declare module 'less' {
-  declare const render: any
-
-  export { render }
+  export declare const render: any
 }
 
 declare module 'jest' {

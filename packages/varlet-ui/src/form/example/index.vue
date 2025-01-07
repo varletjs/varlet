@@ -1,8 +1,8 @@
 <script setup>
+import { computed, reactive, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import VarCustomFormComponent from './CustomFormComponent'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, ref, computed } from 'vue'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 const formData = reactive({
   username: '',
@@ -30,7 +30,7 @@ const suggestions = computed(() =>
       label: prefix + suffix,
       value: prefix + suffix,
     }
-  })
+  }),
 )
 
 watchLang((lang) => {
@@ -53,62 +53,62 @@ onThemeChange()
   >
     <var-space direction="column" :size="['4vmin', 0]">
       <var-input
+        v-model="formData.username"
         :placeholder="t('username')"
         :rules="[(v) => !!v || t('usernameMessage')]"
-        v-model="formData.username"
       />
       <var-input
+        v-model="formData.password"
         type="password"
         :placeholder="t('password')"
         :rules="[(v) => !!v || t('passwordMessage'), (v) => v.length >= 8 || t('passwordMinLengthMessage')]"
-        v-model="formData.password"
       />
       <var-auto-complete
+        v-model="formData.email"
         :placeholder="t('email')"
         :rules="[(v) => !!v || t('emailMessage')]"
         :options="suggestions"
-        v-model="formData.email"
       />
       <var-select
+        v-model="formData.department"
         :placeholder="t('department')"
         :rules="[(v) => !!v || t('departmentMessage')]"
-        v-model="formData.department"
       >
         <var-option :label="`${t('eat')}${t('departmentUnit')}`" />
         <var-option :label="`${t('sleep')}${t('departmentUnit')}`" />
         <var-option :label="`${t('play')}${t('departmentUnit')}`" />
       </var-select>
       <var-select
+        v-model="formData.group"
         multiple
         :placeholder="t('group')"
         :rules="[(v) => v.length >= 1 || t('groupMessage')]"
-        v-model="formData.group"
       >
         <var-option :label="`${t('eat')}${t('groupUnit')}`" />
         <var-option :label="`${t('sleep')}${t('groupUnit')}`" />
         <var-option :label="`${t('play')}${t('groupUnit')}`" />
       </var-select>
-      <var-radio-group :rules="[(v) => !!v || t('genderMessage')]" v-model="formData.gender">
+      <var-radio-group v-model="formData.gender" :rules="[(v) => !!v || t('genderMessage')]">
         <var-radio :checked-value="1">{{ t('male') }}</var-radio>
         <var-radio :checked-value="2">{{ t('female') }}</var-radio>
       </var-radio-group>
-      <var-checkbox-group :rules="[(v) => v.length > 0 || t('likeMessage')]" v-model="formData.like">
+      <var-checkbox-group v-model="formData.like" :rules="[(v) => v.length > 0 || t('likeMessage')]">
         <var-checkbox :checked-value="1">{{ t('eat') }}</var-checkbox>
         <var-checkbox :checked-value="2">{{ t('sleep') }}</var-checkbox>
         <var-checkbox :checked-value="3">{{ t('play') }}</var-checkbox>
       </var-checkbox-group>
-      <var-rate :rules="[(v) => v >= 3 || t('rateMessage')]" v-model="formData.score" />
-      <var-switch variant :rules="[(v) => !!v || t('licenseMessage')]" v-model="formData.license" />
-      <var-counter :rules="[(v) => v > 10 || t('countMessage')]" v-model="formData.count" />
-      <var-slider :rules="[(v) => v > 10 || t('rangeMessage')]" v-model="formData.range" />
-      <var-uploader :rules="[(v) => v.length >= 1 || t('filesMessage')]" v-model="formData.files" />
+      <var-rate v-model="formData.score" :rules="[(v) => v >= 3 || t('rateMessage')]" />
+      <var-switch v-model="formData.license" variant :rules="[(v) => !!v || t('licenseMessage')]" />
+      <var-counter v-model="formData.count" :rules="[(v) => v > 10 || t('countMessage')]" />
+      <var-slider v-model="formData.range" :rules="[(v) => v > 10 || t('rangeMessage')]" />
+      <var-uploader v-model="formData.files" :rules="[(v) => v.length >= 1 || t('filesMessage')]" />
     </var-space>
 
     <app-type>{{ t('customFormComponent') }}</app-type>
     <var-custom-form-component
+      v-model="formData.custom"
       :extra-message="t('customExtraMessage')"
       :rules="[(v) => !!v || t('customErrorMessage')]"
-      v-model="formData.custom"
     >
       {{ t('customLabel') }}
     </var-custom-form-component>

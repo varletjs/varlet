@@ -1,6 +1,7 @@
 <template>
   <var-menu
     ref="menu"
+    v-model:show="show"
     trigger="hover"
     placement="right-start"
     cascade-optimization
@@ -9,7 +10,6 @@
     :disabled="disabled"
     :teleport="false"
     :close-on-click-reference="false"
-    v-model:show="show"
   >
     <var-menu-option
       ref="trigger"
@@ -24,7 +24,7 @@
       @mouseenter="handleMouseenter"
     />
 
-    <template #menu v-if="options.length">
+    <template v-if="options.length" #menu>
       <div ref="menuOptions">
         <template v-for="menuOption in options" :key="menuOption[valueKey]">
           <var-menu-children
@@ -56,14 +56,14 @@
 </template>
 
 <script lang="ts">
-import VarMenu from '../menu/Menu.vue'
-import VarMenuOption from '../menu-option/MenuOption.vue'
-import { type PropType, defineComponent, ref, watch } from 'vue'
-import { createNamespace, defineListenerProp, pickProps } from '../utils/components'
-import { type MenuSelectOption, props as menuSelectProps } from './props'
-import { focusChildElementByKey } from '../utils/elements'
+import { defineComponent, ref, watch, type PropType } from 'vue'
 import { call, raf } from '@varlet/shared'
+import VarMenuOption from '../menu-option/MenuOption.vue'
 import { type MenuOptionKeyArrowX } from '../menu-option/props'
+import VarMenu from '../menu/Menu.vue'
+import { createNamespace, defineListenerProp, pickProps } from '../utils/components'
+import { focusChildElementByKey } from '../utils/elements'
+import { props as menuSelectProps, type MenuSelectOption } from './props'
 
 const { name, n } = createNamespace('menu-children')
 
@@ -100,7 +100,7 @@ export default defineComponent({
           show.value = false
         }
       },
-      { immediate: true }
+      { immediate: true },
     )
 
     async function handleArrowRight(key: MenuOptionKeyArrowX) {

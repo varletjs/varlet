@@ -1,5 +1,7 @@
 <template>
   <button
+    v-ripple="{ disabled: disabled || !ripple || loading || pending }"
+    v-hover:desktop="handleHovering"
     :class="
       classes(
         n(),
@@ -14,12 +16,10 @@
         [states.outline, n('--outline')],
         [loading || pending, n('--loading')],
         [disabled, n('--disabled')],
-        [states.text && disabled, n('--text-disabled')]
+        [states.text && disabled, n('--text-disabled')],
       )
     "
     :tabindex="focusable ? undefined : '-1'"
-    v-ripple="{ disabled: disabled || !ripple || loading || pending }"
-    v-hover:desktop="handleHovering"
     :style="{
       color: states.textColor,
       background: states.color,
@@ -32,13 +32,13 @@
     @blur="isFocusing = false"
   >
     <var-loading
+      v-if="loading || pending"
       :class="n('loading')"
       var-button-cover
       :color="loadingColor"
       :type="loadingType"
       :size="loadingSize || states.size"
       :radius="loadingRadius"
-      v-if="loading || pending"
     />
     <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
@@ -52,15 +52,15 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import VarLoading from '../loading'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
 import { computed, defineComponent, ref } from 'vue'
-import { props } from './props'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useButtonGroup } from './provide'
 import { call, normalizeToArray } from '@varlet/shared'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarLoading from '../loading'
+import Ripple from '../ripple'
+import { createNamespace, formatElevation } from '../utils/components'
+import { props } from './props'
+import { useButtonGroup } from './provide'
 
 const { name, n, classes } = createNamespace('button')
 

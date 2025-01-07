@@ -1,11 +1,11 @@
+import { createApp, Fragment, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
 import MenuSelect from '..'
 import MenuOption from '../../menu-option'
-import VarMenuSelect from '../MenuSelect'
 import VarMenuOption from '../../menu-option/MenuOption'
-import { createApp, h, Fragment } from 'vue'
-import { mount } from '@vue/test-utils'
-import { expect, vi, test } from 'vitest'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
+import VarMenuSelect from '../MenuSelect'
 
 test('test menu-select plugin', () => {
   const app = createApp({}).use(MenuSelect)
@@ -174,7 +174,7 @@ test('test menu-select value mapping', async () => {
   wrapper.unmount()
 })
 
-test('test menu-option default slot', async () => {
+test('test menu-option default slot', () => {
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
     props: {

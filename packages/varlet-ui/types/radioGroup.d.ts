@@ -1,12 +1,12 @@
+import { VNode, VNodeChild } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
+  ListenerProp,
   Direction as RadioGroupDirection,
   Rules as RadioGroupRules,
-  ListenerProp,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
-import { VNode, VNodeChild } from 'vue'
 
 export declare const radioGroupProps: Record<keyof RadioGroupProps, any>
 

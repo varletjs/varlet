@@ -1,5 +1,5 @@
-import BackTop from './BackTop.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import BackTop from './BackTop.vue'
 import { props as backTopProps } from './props'
 
 withInstall(BackTop)

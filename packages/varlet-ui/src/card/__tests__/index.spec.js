@@ -1,9 +1,9 @@
-import Card from '..'
-import VarCard from '../Card'
-import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import Card from '..'
 import { delay } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarCard from '../Card'
 
 test('test card use', () => {
   const app = createApp({}).use(Card)

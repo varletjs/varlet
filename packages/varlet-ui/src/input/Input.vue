@@ -40,18 +40,18 @@
       />
       <textarea
         v-if="textarea"
+        :id="id"
+        ref="el"
         :class="
           classes(
             n('input'),
             n('--textarea'),
             [formDisabled || disabled, n('--disabled')],
             [errorMessage, n('--error')],
-            [errorMessage, n('--caret-error')]
+            [errorMessage, n('--caret-error')],
           )
         "
-        ref="el"
         :autocomplete="autocomplete ? autocomplete : 'new-password'"
-        :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"
         :type="normalizedType"
@@ -76,17 +76,17 @@
       />
       <input
         v-else
+        :id="id"
+        ref="el"
         :class="
           classes(
             n('input'),
             [formDisabled || disabled, n('--disabled')],
             [errorMessage, n('--error')],
-            [errorMessage, n('--caret-error')]
+            [errorMessage, n('--caret-error')],
           )
         "
-        ref="el"
         :autocomplete="autocomplete ? autocomplete : 'new-password'"
-        :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"
         :type="normalizedType"
@@ -117,7 +117,7 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" v-if="isShowFormDetails">
+    <var-form-details v-if="isShowFormDetails" :error-message="errorMessage" :extra-message="maxlengthText">
       <template v-if="$slots['extra-message']" #extra-message>
         <slot name="extra-message" />
       </template>
@@ -126,14 +126,14 @@
 </template>
 
 <script lang="ts">
-import VarFormDetails from '../form-details'
-import VarFieldDecorator from '../field-decorator'
-import { defineComponent, ref, computed, nextTick } from 'vue'
-import { props, type InputType, type InputValidateTrigger } from './props'
-import { isEmpty, preventDefault, toNumber, call } from '@varlet/shared'
-import { useValidation, createNamespace } from '../utils/components'
-import { useForm } from '../form/provide'
+import { computed, defineComponent, nextTick, ref } from 'vue'
+import { call, isEmpty, preventDefault, toNumber } from '@varlet/shared'
 import { onSmartMounted, useClientId } from '@varlet/use'
+import VarFieldDecorator from '../field-decorator'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import { createNamespace, useValidation } from '../utils/components'
+import { props, type InputType, type InputValidateTrigger } from './props'
 import { type InputProvider } from './provide'
 
 const { name, n, classes } = createNamespace('input')

@@ -4,11 +4,11 @@
       <div
         v-for="value in toNumber(count)"
         :key="value"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        v-hover:desktop="createHoverHandler(value)"
         :style="getStyle(value)"
         :class="getClass(value)"
         @click="handleClick(value, $event)"
-        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        v-hover:desktop="createHoverHandler(value)"
       >
         <var-icon
           :class="n('content-icon')"
@@ -29,16 +29,16 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
 import { defineComponent, nextTick, ref } from 'vue'
+import { call, toNumber } from '@varlet/shared'
+import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
-import { useValidation, createNamespace } from '../utils/components'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
+import { createNamespace, useValidation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber, call } from '@varlet/shared'
 import { props } from './props'
 import { type RateProvider } from './provide'
 
@@ -152,7 +152,7 @@ export default defineComponent({
     }
 
     function validateWithTrigger() {
-      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+      nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
     }
 
     function handleClick(score: number, event: MouseEvent) {

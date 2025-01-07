@@ -1,14 +1,16 @@
 <template>
   <div
+    v-ripple="{ disabled: !ripple }"
     :class="classes(n(), n('$--box'), [!block, n('$--inline-block')])"
     :style="{
       width: toSizeUnit(width),
       height: toSizeUnit(height),
       borderRadius: toSizeUnit(radius),
     }"
-    v-ripple="{ disabled: !ripple }"
   >
     <img
+      v-if="lazy && !showErrorSlot"
+      v-lazy="src ?? ''"
       role="img"
       :class="n('image')"
       :alt="alt"
@@ -17,13 +19,12 @@
       :lazy-loading="loading"
       :lazy-error="error"
       :style="{ objectFit: fit, objectPosition: position }"
-      v-if="lazy && !showErrorSlot"
-      v-lazy="src ?? ''"
       @load="handleLoad"
       @click="handleClick"
     />
 
     <img
+      v-if="!lazy && !showErrorSlot"
       role="img"
       :class="n('image')"
       :alt="alt"
@@ -31,24 +32,23 @@
       :referrerpolicy="referrerpolicy"
       :style="{ objectFit: fit, objectPosition: position }"
       :src="src"
-      v-if="!lazy && !showErrorSlot"
       @load="handleLoad"
       @error="handleError"
       @click="handleClick"
     />
 
-    <slot name="error" v-if="showErrorSlot" />
+    <slot v-if="showErrorSlot" name="error" />
   </div>
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import Lazy, { type LazyHTMLElement } from '../lazy'
-import { watch, defineComponent, ref } from 'vue'
-import { props } from './props'
-import { toSizeUnit } from '../utils/elements'
-import { createNamespace } from '../utils/components'
+import { defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
+import Lazy, { type LazyHTMLElement } from '../lazy'
+import Ripple from '../ripple'
+import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('image')
 
@@ -66,7 +66,7 @@ export default defineComponent({
       () => props.src,
       () => {
         showErrorSlot.value = false
-      }
+      },
     )
 
     function handleError(e: Event) {

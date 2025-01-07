@@ -15,7 +15,7 @@
           n(`--layout-${layoutDirection}-padding`),
           formatElevation(elevation, 4),
           [fixedBottom, n('--fixed-bottom')],
-          [safeArea, n('--safe-area')]
+          [safeArea, n('--safe-area')],
         )
       "
       :style="{ background: color }"
@@ -27,7 +27,7 @@
           classes(
             n('tab-wrap'),
             [localScrollable, n(`--layout-${layoutDirection}-scrollable`)],
-            n(`--layout-${layoutDirection}`)
+            n(`--layout-${layoutDirection}`),
           )
         "
       >
@@ -52,16 +52,16 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, onActivated, ref, Transition, watch } from 'vue'
+import { call, clamp, doubleRaf, isNumber } from '@varlet/shared'
+import { onWindowResize } from '@varlet/use'
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, onActivated } from 'vue'
+import { type TabProvider } from '../tab/provide'
+import { createNamespace, formatElevation } from '../utils/components'
+import { scrollTo, toSizeUnit } from '../utils/elements'
+import { linear } from '../utils/shared'
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
-import { clamp, isNumber, doubleRaf, call } from '@varlet/shared'
-import { linear } from '../utils/shared'
-import { toSizeUnit, scrollTo } from '../utils/elements'
-import { createNamespace, formatElevation } from '../utils/components'
-import { onWindowResize } from '@varlet/use'
-import { type TabProvider } from '../tab/provide'
 
 const { name, n, classes } = createNamespace('tabs')
 
@@ -103,7 +103,7 @@ export default defineComponent({
       async () => {
         await doubleRaf()
         resize()
-      }
+      },
     )
 
     watch(() => [props.active, props.scrollable], resize)
@@ -150,7 +150,9 @@ export default defineComponent({
     function moveIndicator({ element }: TabProvider) {
       const el = element.value
 
-      if (!el) return
+      if (!el) {
+        return
+      }
 
       if (props.layoutDirection === 'horizontal') {
         indicatorWidth.value = `${el.offsetWidth}px`

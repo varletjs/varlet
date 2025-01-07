@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const type = ref('primary')
 const trigger = ref('click')
@@ -27,7 +27,7 @@ function toggleActions() {
 
 <template>
   <app-type :style="{ marginTop: position.includes('top') ? '20vmin' : undefined }">{{ t('type') }}</app-type>
-  <var-select :hint="false" v-model="type">
+  <var-select v-model="type" :hint="false">
     <var-option :label="t('default')" value="default" />
     <var-option :label="t('primary')" value="primary" />
     <var-option :label="t('info')" value="info" />
@@ -65,7 +65,7 @@ function toggleActions() {
   <var-switch v-model="disabled" />
 
   <app-type>{{ t('elevation') }}</app-type>
-  <var-slider max="24" v-model="elevation"></var-slider>
+  <var-slider v-model="elevation" max="24"></var-slider>
 
   <app-type>{{ t('triggerToggle') }}</app-type>
   <var-button type="primary" @click.stop="toggleTrigger">{{ t('toggle') }}</var-button>

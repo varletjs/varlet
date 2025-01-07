@@ -1,8 +1,8 @@
 <template>
   <teleport to="body" :disabled="disabled">
     <div
-      :class="classes(n(), [show, n('--active')])"
       ref="backTopEl"
+      :class="classes(n(), [show, n('--active')])"
       :style="{
         right: toSizeUnit(right),
         bottom: toSizeUnit(bottom),
@@ -20,15 +20,15 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, onActivated, onMounted, ref, type TeleportProps } from 'vue'
+import { call, getScrollLeft, getScrollTop, throttle } from '@varlet/shared'
+import { onSmartUnmounted } from '@varlet/use'
 import VarButton from '../button'
 import VarIcon from '../icon'
-import { defineComponent, ref, onMounted, onActivated, type TeleportProps } from 'vue'
-import { props } from './props'
-import { throttle, getScrollTop, getScrollLeft, call } from '@varlet/shared'
-import { easeInOutCubic } from '../utils/shared'
-import { scrollTo, getParentScroller, toPxNum, toSizeUnit, getTarget } from '../utils/elements'
 import { createNamespace } from '../utils/components'
-import { onSmartUnmounted } from '@varlet/use'
+import { getParentScroller, getTarget, scrollTo, toPxNum, toSizeUnit } from '../utils/elements'
+import { easeInOutCubic } from '../utils/shared'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('back-top')
 

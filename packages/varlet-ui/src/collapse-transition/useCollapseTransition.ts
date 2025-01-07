@@ -1,5 +1,5 @@
-import { raf, doubleRaf } from '@varlet/shared'
-import { type ComputedRef, type Ref, nextTick, watch } from 'vue'
+import { nextTick, watch, type ComputedRef, type Ref } from 'vue'
+import { doubleRaf, raf } from '@varlet/shared'
 
 export interface UseCollapseTransitionOptions {
   contentEl: Ref<HTMLElement | null>
@@ -20,7 +20,7 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
         value ? open() : close()
       })
     },
-    { immediate: true }
+    { immediate: true },
   )
 
   async function open() {

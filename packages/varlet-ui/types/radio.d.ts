@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, ListenerProp, Rules as RadioRules, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, ListenerProp, Rules as RadioRules, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const radioProps: Record<keyof RadioProps, any>
 

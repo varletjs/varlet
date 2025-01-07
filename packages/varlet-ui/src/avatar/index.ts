@@ -1,5 +1,5 @@
-import Avatar from './Avatar.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Avatar from './Avatar.vue'
 import { props as avatarProps } from './props'
 
 withInstall(Avatar)

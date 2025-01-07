@@ -1,11 +1,11 @@
 <template>
   <div :class="n()">
-    <div :class="classes(n('content'), [loading, n('content--active')])" v-if="$slots.default">
+    <div v-if="$slots.default" :class="classes(n('content'), [loading, n('content--active')])">
       <slot />
-      <div :class="n('content-mask')" v-if="loading"></div>
+      <div v-if="loading" :class="n('content-mask')"></div>
     </div>
-    <div :class="classes(n('$--box'), n('body'), [$slots.default, n('inside')])" v-if="isShow">
-      <div :class="n('circle')" v-if="type === 'circle'">
+    <div v-if="isShow" :class="classes(n('$--box'), n('body'), [$slots.default, n('inside')])">
+      <div v-if="type === 'circle'" :class="n('circle')">
         <span
           :class="classes(n('circle-block'), n(`circle-block--${size}`))"
           :style="{
@@ -21,7 +21,7 @@
       </div>
 
       <template v-for="(nums, key) in loadingTypeDict" :key="key">
-        <div :class="classes(n(key), n(`${key}--${size}`))" v-if="type === key">
+        <div v-if="type === key" :class="classes(n(key), n(`${key}--${size}`))">
           <div
             v-for="num in nums"
             :key="num + key"
@@ -31,9 +31,9 @@
         </div>
       </template>
       <div
+        v-if="$slots.description || description"
         :class="classes(n('description'), n(`description--${size}`))"
         :style="{ color }"
-        v-if="$slots.description || description"
       >
         <slot name="description">{{ description }}</slot>
       </div>
@@ -43,10 +43,10 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { props } from './props'
+import { call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
-import { call } from '@varlet/shared'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('loading')
 

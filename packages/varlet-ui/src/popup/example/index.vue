@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
 
 const values = reactive({
@@ -34,16 +34,16 @@ onThemeChange()
   <var-popup v-model:show="center">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
-  <var-popup position="bottom" v-model:show="bottom">
+  <var-popup v-model:show="bottom" position="bottom">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
-  <var-popup position="top" v-model:show="top">
+  <var-popup v-model:show="top" position="top">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
-  <var-popup position="left" v-model:show="left">
+  <var-popup v-model:show="left" position="left">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
-  <var-popup position="right" v-model:show="right">
+  <var-popup v-model:show="right" position="right">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
 
@@ -54,14 +54,14 @@ onThemeChange()
     <var-button type="primary" block @click="overlayStyle = true">{{ t('overlayStyles') }}</var-button>
   </var-space>
 
-  <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
+  <var-popup v-model:show="overlayClass" overlay-class="custom-overlay">
     <div class="block">{{ t('text') }}</div>
   </var-popup>
   <var-popup
+    v-model:show="overlayStyle"
     :overlay-style="{
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
     }"
-    v-model:show="overlayStyle"
   >
     <div class="block">{{ t('text') }}</div>
   </var-popup>

@@ -1,12 +1,12 @@
+import { VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
   ListenerProp,
-  Variant as SelectVariant,
   Rules as SelectRules,
+  Variant as SelectVariant,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
-import { VNode } from 'vue'
 
 export declare const selectProps: Record<keyof SelectProps, any>
 

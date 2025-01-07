@@ -1,10 +1,10 @@
-import Counter from '..'
-import VarCounter from '../Counter'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
 import { z } from 'zod'
+import Counter from '..'
+import { delay, trigger } from '../../utils/test'
+import VarCounter from '../Counter'
 
 test('test counter plugin', () => {
   const app = createApp({}).use(Counter)
@@ -32,7 +32,7 @@ test('test counter increment & decrement', async () => {
   wrapper.unmount()
 })
 
-test('test counter initial value over max', async () => {
+test('test counter initial value over max', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -46,7 +46,7 @@ test('test counter initial value over max', async () => {
   wrapper.unmount()
 })
 
-test('test counter initial value less min', async () => {
+test('test counter initial value less min', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({

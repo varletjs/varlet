@@ -1,9 +1,9 @@
-import Overlay from '..'
-import VarOverlay from '../Overlay'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Overlay from '..'
 import { triggerKeyboard } from '../../utils/test'
+import VarOverlay from '../Overlay'
 
 test('test overlay plugin', () => {
   const app = createApp({}).use(Overlay)

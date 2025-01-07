@@ -1,9 +1,9 @@
-import Pagination from '..'
-import VarPagination from '../Pagination'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import Pagination from '..'
 import { delay } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import VarPagination from '../Pagination'
 
 test('test pagination plugin', () => {
   const app = createApp({}).use(Pagination)

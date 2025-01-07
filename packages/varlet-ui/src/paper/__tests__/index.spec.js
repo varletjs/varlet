@@ -1,8 +1,8 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
 import Paper from '..'
 import VarPaper from '../Paper'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { expect, vi, test } from 'vitest'
 
 test('test paper use', () => {
   const app = createApp({}).use(Paper)

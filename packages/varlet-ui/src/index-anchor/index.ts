@@ -1,5 +1,5 @@
-import IndexAnchor from './IndexAnchor.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import IndexAnchor from './IndexAnchor.vue'
 import { props as indexAnchorProps } from './props'
 
 withInstall(IndexAnchor)

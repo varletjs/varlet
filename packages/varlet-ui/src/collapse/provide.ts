@@ -1,6 +1,6 @@
+import { type ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
 import { CollapseItemProvider } from '../collapse-item/provide'
-import { type ComputedRef } from 'vue'
 
 export interface CollapseProvider {
   offset: ComputedRef<boolean>
@@ -14,7 +14,7 @@ export const COLLAPSE_BIND_COLLAPSE_ITEM_KEY = Symbol('COLLAPSE_BIND_COLLAPSE_IT
 
 export function useCollapseItem() {
   const { childProviders, length, bindChildren } = useChildren<CollapseProvider, CollapseItemProvider>(
-    COLLAPSE_BIND_COLLAPSE_ITEM_KEY
+    COLLAPSE_BIND_COLLAPSE_ITEM_KEY,
   )
 
   return {

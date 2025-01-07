@@ -1,7 +1,7 @@
 <script lang="ts">
-import config from '@config'
 import { defineComponent, onMounted, ref } from 'vue'
-import { getPCLocationInfo, getMobileIndex } from '@varlet/cli/client'
+import config from '@config'
+import { getMobileIndex, getPCLocationInfo } from '@varlet/cli/client'
 import { isPhone } from '../utils'
 
 export default defineComponent({
@@ -31,10 +31,14 @@ export default defineComponent({
 
 <style lang="less">
 body {
-  transition: background-color 0.25s, box-shadow 0.25s;
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s;
 
   * {
-    transition: background-color 0.25s, box-shadow 0.25s;
+    transition:
+      background-color 0.25s,
+      box-shadow 0.25s;
   }
 }
 </style>

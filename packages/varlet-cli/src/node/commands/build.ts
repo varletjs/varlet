@@ -1,9 +1,9 @@
 import fse from 'fs-extra'
-import { SRC_DIR } from '../shared/constant.js'
 import { build as buildVite } from 'vite'
-import { getBuildConfig } from '../config/vite.config.js'
-import { getVarletConfig } from '../config/varlet.config.js'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
+import { getVarletConfig } from '../config/varlet.config.js'
+import { getBuildConfig } from '../config/vite.config.js'
+import { SRC_DIR } from '../shared/constant.js'
 
 const { ensureDirSync } = fse
 

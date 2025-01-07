@@ -1,7 +1,7 @@
-import { Validation } from '../form/provide'
-import { useChildren } from '@varlet/use'
-import { RadioProvider } from '../radio/provide'
 import { type ComputedRef } from 'vue'
+import { useChildren } from '@varlet/use'
+import { Validation } from '../form/provide'
+import { RadioProvider } from '../radio/provide'
 
 export interface RadioGroupProvider extends Validation {
   errorMessage: ComputedRef<string>
@@ -12,7 +12,7 @@ export const RADIO_GROUP_BIND_RADIO_KEY = Symbol('RADIO_GROUP_BIND_RADIO_KEY')
 
 export function useRadios() {
   const { bindChildren, childProviders, length } = useChildren<RadioGroupProvider, RadioProvider>(
-    RADIO_GROUP_BIND_RADIO_KEY
+    RADIO_GROUP_BIND_RADIO_KEY,
   )
 
   return {

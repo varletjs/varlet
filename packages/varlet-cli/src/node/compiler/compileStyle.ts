@@ -1,11 +1,11 @@
+import { parse, resolve } from 'path'
 import fse from 'fs-extra'
+import glob from 'glob'
 import less from 'less'
 import * as sass from 'sass'
-import glob from 'glob'
-import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
-import { parse, resolve } from 'path'
-import { getScriptExtname } from './compileScript.js'
 import { CWD } from '../shared/constant.js'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
+import { getScriptExtname } from './compileScript.js'
 
 const { render: renderLess } = less
 const { readFileSync, writeFileSync, unlinkSync } = fse

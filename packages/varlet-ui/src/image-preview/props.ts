@@ -1,7 +1,7 @@
 import { type PropType } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
-import { swipeProps } from '../swipe'
 import { popupProps } from '../popup'
+import { swipeProps } from '../swipe'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export const props = {
   show: Boolean,

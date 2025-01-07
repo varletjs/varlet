@@ -1,11 +1,11 @@
-import List from '..'
-import VarList from '../List'
-import TabsItems from '../../tabs-items'
-import TabItem from '../../tab-item'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import List from '..'
+import TabItem from '../../tab-item'
+import TabsItems from '../../tabs-items'
 import { delay } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import VarList from '../List'
 
 test('test list use', () => {
   const app = createApp({}).use(List)

@@ -1,7 +1,7 @@
 <template>
   <div :class="classes(n(), n('$--box'))">
     <slot name="image">
-      <div :class="n('image-container')" v-if="type">
+      <div v-if="type" :class="n('image-container')">
         <div
           :class="classes(n('image'), n(type))"
           :style="{
@@ -20,23 +20,23 @@
     <slot name="description">
       <div v-if="description" :class="n('description')">{{ description }}</div>
     </slot>
-    <div :class="n('footer')" v-if="$slots.footer">
+    <div v-if="$slots.footer" :class="n('footer')">
       <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Info from './Info.vue'
-import Error from './Error.vue'
-import Warning from './Warning.vue'
-import Success from './Success.vue'
-import Question from './Question.vue'
-import Empty from './Empty.vue'
 import { computed, defineComponent } from 'vue'
-import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import Empty from './Empty.vue'
+import Error from './Error.vue'
+import Info from './Info.vue'
+import { props } from './props'
+import Question from './Question.vue'
+import Success from './Success.vue'
+import Warning from './Warning.vue'
 
 const { name, n, classes } = createNamespace('result')
 
@@ -53,10 +53,10 @@ export default defineComponent({
   props,
   setup(props) {
     const circleSize = computed(
-      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.9)`
+      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.9)`,
     )
     const borderSize = computed(
-      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.05)`
+      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.05)`,
     )
 
     return {

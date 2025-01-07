@@ -1,21 +1,21 @@
 <script setup>
-import vLazy from '..'
 import { AppType, watchLang } from '@varlet/cli/client'
-import { use, t } from './locale'
+import vLazy from '..'
+import { t, use } from './locale'
 
 watchLang(use)
 </script>
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
+  <img v-lazy="'cat.jpg'" class="lazy-example-cat" />
+  <img v-lazy="'cat.jpg'" class="lazy-example-cat" />
+  <img v-lazy="'cat.jpg'" class="lazy-example-cat" />
+  <img v-lazy="'cat.jpg'" class="lazy-example-cat" />
+  <img v-lazy="'cat.jpg'" class="lazy-example-cat" />
 
   <app-type>{{ t('backgroundImageLazyLoad') }}</app-type>
-  <div class="lazy-example-cat" v-lazy:background-image="'cat.jpg'"></div>
+  <div v-lazy:background-image="'cat.jpg'" class="lazy-example-cat"></div>
 </template>
 
 <style scoped lang="less">

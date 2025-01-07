@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const dates = reactive({

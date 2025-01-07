@@ -1,9 +1,9 @@
-import BackTop from '..'
-import VarBackTop from '../BackTop'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import BackTop from '..'
 import { delay, mockScrollTo } from '../../utils/test'
-import { describe, expect, vi, test } from 'vitest'
+import VarBackTop from '../BackTop'
 
 mockScrollTo()
 

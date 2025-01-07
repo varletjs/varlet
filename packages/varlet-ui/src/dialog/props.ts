@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
 import { popupProps } from '../popup'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { DialogActions } from './index'
 
 export type DialogMessageAlign = 'left' | 'center' | 'right'

@@ -1,8 +1,8 @@
 <script setup>
-import Form from '..'
-import VarIcon from '../../icon'
-import VarFormDetails from '../../form-details'
 import { nextTick } from 'vue'
+import Form from '..'
+import VarFormDetails from '../../form-details'
+import VarIcon from '../../icon'
 
 const props = defineProps({
   modelValue: Boolean,

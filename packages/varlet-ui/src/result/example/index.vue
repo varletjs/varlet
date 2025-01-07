@@ -1,7 +1,7 @@
 <script setup>
-import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { use, t } from './locale'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const success = ref(false)
 const error = ref(false)
@@ -36,7 +36,7 @@ onThemeChange()
     </var-button>
   </var-space>
 
-  <var-popup :default-style="false" v-model:show="success">
+  <var-popup v-model:show="success" :default-style="false">
     <var-result class="result" :title="t('success')" :description="t('description')">
       <template #footer>
         <var-button type="success" @click="success = false">{{ t('button') }}</var-button>
@@ -44,7 +44,7 @@ onThemeChange()
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="error">
+  <var-popup v-model:show="error" :default-style="false">
     <var-result class="result" type="error" :title="t('error')" :description="t('description')">
       <template #footer>
         <var-button type="danger" @click="error = false">{{ t('button') }}</var-button>
@@ -52,7 +52,7 @@ onThemeChange()
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="warning">
+  <var-popup v-model:show="warning" :default-style="false">
     <var-result class="result" type="warning" :title="t('warning')" :description="t('description')">
       <template #footer>
         <var-button type="warning" @click="warning = false">{{ t('button') }}</var-button>
@@ -60,7 +60,7 @@ onThemeChange()
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="info">
+  <var-popup v-model:show="info" :default-style="false">
     <var-result class="result" type="info" :title="t('info')" :description="t('description')">
       <template #footer>
         <var-button type="info" @click="info = false">{{ t('button') }}</var-button>
@@ -68,7 +68,7 @@ onThemeChange()
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="question">
+  <var-popup v-model:show="question" :default-style="false">
     <var-result class="result" type="question" :title="t('question')" :description="t('description')">
       <template #footer>
         <var-button color="var(--result-question-color)" text-color="#fff" @click="question = false"
@@ -78,7 +78,7 @@ onThemeChange()
     </var-result>
   </var-popup>
 
-  <var-popup :default-style="false" v-model:show="empty">
+  <var-popup v-model:show="empty" :default-style="false">
     <var-result class="result" type="empty" :title="t('empty')" :description="t('description')">
       <template #footer>
         <var-button color="var(--result-empty-color)" text-color="#fff" @click="empty = false"

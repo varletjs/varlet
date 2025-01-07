@@ -13,7 +13,7 @@ export function toViewport(theme: StyleVars, options: ThemesToViewportOptions = 
     target[key] = value.includes('px')
       ? value.replace(
           /(\d+(\.\d+)?)px/g,
-          (_, p1) => `${Number(((p1 / viewportWidth) * 100).toFixed(unitPrecision))}${viewportUnit}`
+          (_, p1) => `${Number(((p1 / viewportWidth) * 100).toFixed(unitPrecision))}${viewportUnit}`,
         )
       : value
 

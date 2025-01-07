@@ -7,10 +7,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { createNamespace } from '../utils/components'
-
 // i18n for component's internal
 import { t } from '../locale'
+import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('button')
 

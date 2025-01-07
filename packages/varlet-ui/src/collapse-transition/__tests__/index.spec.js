@@ -1,9 +1,9 @@
-import CollapseTransition from '..'
-import VarCollapseTransition from '../CollapseTransition'
-import { mount } from '@vue/test-utils'
 import { createApp, ref } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test } from 'vitest'
+import CollapseTransition from '..'
 import { delay } from '../../utils/test'
-import { expect, describe, test } from 'vitest'
+import VarCollapseTransition from '../CollapseTransition'
 
 describe('test collapseTransition render', () => {
   test('test collapseTransition use', () => {

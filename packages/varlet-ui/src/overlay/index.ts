@@ -1,5 +1,5 @@
-import Overlay from './Overlay'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Overlay from './Overlay'
 import { props as overlayProps } from './props'
 
 withInstall(Overlay)

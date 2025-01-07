@@ -1,5 +1,5 @@
-import Checkbox from './Checkbox.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Checkbox from './Checkbox.vue'
 import { props as checkboxProps } from './props'
 
 withInstall(Checkbox)

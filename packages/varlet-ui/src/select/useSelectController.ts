@@ -75,8 +75,8 @@ export function useSelectController(options: UseSelectControllerOptions) {
       options.forEach((option) =>
         option.sync(
           modelValue.includes(getOptionProviderKey(option)),
-          optionIsIndeterminate ? optionIsIndeterminate(option) : undefined
-        )
+          optionIsIndeterminate ? optionIsIndeterminate(option) : undefined,
+        ),
       )
     } else {
       options.forEach((option) => option.sync(modelValue === getOptionProviderKey(option)))

@@ -1,11 +1,11 @@
+import { createApp, ref } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Collapse from '..'
 import CollapseItem from '../../collapse-item'
-import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
-import { mount } from '@vue/test-utils'
-import { createApp, ref } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarCollapse from '../Collapse'
 
 describe('test collapse and collapseItem render', () => {
   test('test collapse and collapseItem use', () => {
@@ -148,7 +148,7 @@ describe('test collapse and collapseItem props', () => {
     await delay(100)
 
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe(
-      '--collapse-divider-top: var(--collapse-border-top);'
+      '--collapse-divider-top: var(--collapse-border-top);',
     )
 
     await wrapper.setData({ divider: false })
@@ -186,7 +186,7 @@ describe('test collapse and collapseItem props', () => {
           }
         },
       },
-      { attachTo: document.body }
+      { attachTo: document.body },
     )
 
     await delay(100)
@@ -225,7 +225,7 @@ describe('test collapse and collapseItem props', () => {
         },
         template,
       },
-      { attachTo: document.body }
+      { attachTo: document.body },
     )
 
     await delay(100)
@@ -254,7 +254,7 @@ describe('test collapse and collapseItem props', () => {
         },
         template,
       },
-      { attachTo: document.body }
+      { attachTo: document.body },
     )
 
     await delay(100)
@@ -295,7 +295,7 @@ describe('test collapse Events', () => {
         },
         template,
       },
-      { attachTo: document.body }
+      { attachTo: document.body },
     )
 
     await delay(100)
@@ -321,7 +321,7 @@ describe('test collapse Events', () => {
     expect(handleChange).toHaveBeenCalledTimes(2)
   })
 
-  describe('test collapse Methods', async () => {
+  describe('test collapse Methods', () => {
     test('test collapse toggleAll', async () => {
       const collapseRef = ref(null)
 

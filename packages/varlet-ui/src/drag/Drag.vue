@@ -6,12 +6,12 @@
       :style="{
         'z-index': zIndex,
       }"
+      v-bind="getAttrs()"
       @touchstart="handleTouchstart"
       @touchmove="handleTouchmove"
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
       @click="handleClick"
-      v-bind="getAttrs()"
     >
       <slot />
     </div>
@@ -19,12 +19,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, watch } from 'vue'
-import { props } from './props'
+import { defineComponent, reactive, ref, watch } from 'vue'
+import { call, clamp, getRect, preventDefault } from '@varlet/shared'
+import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
 import { createNamespace, useTeleport } from '../utils/components'
 import { toPxNum } from '../utils/elements'
-import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
-import { clamp, getRect, preventDefault, call } from '@varlet/shared'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('drag')
 
@@ -65,7 +65,7 @@ export default defineComponent({
       saveXY()
     }
 
-    async function handleTouchmove(event: TouchEvent) {
+    function handleTouchmove(event: TouchEvent) {
       if (!touching.value || props.disabled) {
         return
       }

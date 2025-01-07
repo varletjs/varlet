@@ -1,8 +1,8 @@
-import { defineListenerProp, pickProps } from '../utils/components'
-import { loadingProps } from '../loading'
-import { SnackbarType } from './index'
 import { type PropType, type TeleportProps } from 'vue'
 import type { SlotType } from '.'
+import { loadingProps } from '../loading'
+import { defineListenerProp, pickProps } from '../utils/components'
+import { SnackbarType } from './index'
 
 export type SnackbarPosition = 'top' | 'center' | 'bottom'
 

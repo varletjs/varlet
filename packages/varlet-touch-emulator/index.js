@@ -76,13 +76,19 @@ function onMouse(mouseEvent, touchType) {
 
   initiated = isMousedown(type) ? true : isMouseup(type) ? false : initiated
 
-  if (isMousemove(type) && !initiated) return
+  if (isMousemove(type) && !initiated) {
+    return
+  }
 
-  if (isUpdateTarget(type)) eventTarget = target
+  if (isUpdateTarget(type)) {
+    eventTarget = target
+  }
 
   triggerTouch(touchType, mouseEvent)
 
-  if (isMouseup(type)) eventTarget = null
+  if (isMouseup(type)) {
+    eventTarget = null
+  }
 }
 
 function createTouchEmulator() {

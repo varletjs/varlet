@@ -1,7 +1,7 @@
 <script setup>
+import { onThemeChange, watchLang } from '@varlet/cli/client'
 import VarButton from '../../src/button'
 import VarIcon from '../../src/icon'
-import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 watchLang(use, 'pc')

@@ -1,22 +1,20 @@
-import { useEventListener } from '@varlet/use'
-import type { SafeParseReturnType, ZodType } from 'zod'
 import {
+  Comment,
   createApp,
+  defineComponent,
+  Fragment,
   h,
-  ref,
   onActivated,
   onDeactivated,
-  Comment,
-  Fragment,
-  type PropType,
-  type ExtractPropTypes,
-  type Component,
-  type VNode,
-  type Ref,
-  type ComponentPublicInstance,
-  type Plugin,
+  ref,
   type App,
-  defineComponent,
+  type Component,
+  type ComponentPublicInstance,
+  type ExtractPropTypes,
+  type Plugin,
+  type PropType,
+  type Ref,
+  type VNode,
 } from 'vue'
 import {
   createNamespaceFn,
@@ -27,6 +25,8 @@ import {
   isString,
   normalizeToArray,
 } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
+import type { SafeParseReturnType, ZodType } from 'zod'
 
 export type ListenerProp<F> = F | F[]
 
@@ -109,7 +109,7 @@ export function mount(component: Component): MountInstance {
 export function mountInstance(
   component: any,
   props: Record<string, any> = {},
-  eventListener: Record<string, any> = {}
+  eventListener: Record<string, any> = {},
 ): {
   unmountInstance: () => void
 } {
@@ -163,7 +163,7 @@ export function useValidation() {
     const rules = normalizeToArray(ruleOrRules).filter((rule) => isZodRule(rule) || isFunction(rule))
 
     const results = await Promise.all(
-      rules.map((rule) => (isZodRule(rule) ? rule.safeParseAsync(value) : rule(value, apis)))
+      rules.map((rule) => (isZodRule(rule) ? rule.safeParseAsync(value) : rule(value, apis))),
     )
 
     resetValidation()

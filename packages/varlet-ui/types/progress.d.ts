@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, Type as ProgressType, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, Type as ProgressType, SetPropsDefaults, VarComponent } from './varComponent'
 
 export type ProgressMode = 'linear' | 'circle'
 

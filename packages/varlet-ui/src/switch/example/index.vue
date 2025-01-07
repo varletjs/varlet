@@ -1,6 +1,6 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
 import { t, use } from './locale'
 
@@ -64,5 +64,5 @@ onThemeChange()
   </var-space>
 
   <app-type>{{ t('variant') }}</app-type>
-  <var-switch variant v-model="value6" />
+  <var-switch v-model="value6" variant />
 </template>

@@ -1,5 +1,5 @@
-import Badge from './Badge.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Badge from './Badge.vue'
 import { props as badgeProps } from './props'
 
 withInstall(Badge)

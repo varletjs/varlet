@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale/index'
 
 const trigger = ref('click')
@@ -41,7 +41,7 @@ onThemeChange()
   </var-tooltip>
 
   <app-type>{{ t('placement') }}</app-type>
-  <var-select :hint="false" v-model="placementValue">
+  <var-select v-model="placementValue" :hint="false">
     <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
   </var-select>
   <div class="placement-container">
@@ -85,7 +85,7 @@ onThemeChange()
   </var-tooltip>
 
   <app-type>{{ t('trigger') }}</app-type>
-  <var-select :hint="false" v-model="trigger">
+  <var-select v-model="trigger" :hint="false">
     <var-option label="click" />
     <var-option label="hover" />
   </var-select>

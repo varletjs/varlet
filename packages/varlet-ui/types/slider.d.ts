@@ -1,12 +1,12 @@
+import { VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
-  Direction as SliderDirection,
-  Rules as SliderRules,
   ListenerProp,
   SetPropsDefaults,
+  Direction as SliderDirection,
+  Rules as SliderRules,
+  VarComponent,
 } from './varComponent'
-import { VNode } from 'vue'
 
 export { SliderDirection }
 

@@ -1,8 +1,8 @@
+import { COMMIT_MESSAGE_RE, getCommitMessage, isVersionCommitMessage } from '@varlet/release'
 import fse from 'fs-extra'
 import markdownIt from 'markdown-it'
-import logger from '../shared/logger.js'
 import { CHECKLIST_FILE } from '../shared/constant.js'
-import { COMMIT_MESSAGE_RE, isVersionCommitMessage, getCommitMessage } from '@varlet/release'
+import logger from '../shared/logger.js'
 
 const { readFileSync, existsSync } = fse
 
@@ -40,7 +40,7 @@ export function getCheckBlocks(html: string) {
         .replaceAll('</li>', '')
         .replaceAll('<p>', '')
         .replaceAll('</p>', '')
-        .replaceAll('\n', '')
+        .replaceAll('\n', ''),
     )
 
     checkBlocks.push({
@@ -52,7 +52,7 @@ export function getCheckBlocks(html: string) {
   return checkBlocks
 }
 
-export async function checklist(gitParams: string) {
+export function checklist(gitParams: string) {
   const commitMessage = getCommitMessage(gitParams)
 
   if (isVersionCommitMessage(commitMessage) || !existsSync(CHECKLIST_FILE)) {

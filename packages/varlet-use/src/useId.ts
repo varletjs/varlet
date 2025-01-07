@@ -1,4 +1,4 @@
-import { ref, getCurrentInstance } from 'vue'
+import { getCurrentInstance, ref } from 'vue'
 import { kebabCase } from '@varlet/shared'
 
 export function useId() {

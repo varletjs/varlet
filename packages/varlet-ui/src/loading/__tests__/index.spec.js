@@ -1,8 +1,8 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test } from 'vitest'
 import Loading from '..'
 import VarLoading from '../Loading'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { expect, test, describe } from 'vitest'
 
 test('test loading use', () => {
   const app = createApp({}).use(Loading)

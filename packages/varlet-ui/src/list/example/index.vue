@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, toRefs } from 'vue'
-import { watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const values = reactive({
   loading: false,
@@ -77,25 +77,25 @@ function load3() {
 
   <var-tabs-items v-model:active="current">
     <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load">
-        <var-cell :key="d" v-for="d in list"> {{ t('listItem') }}: {{ d }} </var-cell>
+      <var-list v-model:loading="loading" :finished="finished" @load="load">
+        <var-cell v-for="d in list" :key="d"> {{ t('listItem') }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
-      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
-        <var-cell :key="d" v-for="d in list2"> {{ t('listItem') }}: {{ d }} </var-cell>
+      <var-list v-model:error="error" v-model:loading="loading2" :finished="finished2" @load="load2">
+        <var-cell v-for="d in list2" :key="d"> {{ t('listItem') }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
       <var-list
+        v-model:loading="loading3"
         :loading-text="t('loadingText')"
         :finished-text="t('finishedText')"
         :error-text="t('errorText')"
         :finished="finished3"
-        v-model:loading="loading3"
         @load="load3"
       >
-        <var-cell :key="d" v-for="d in list3"> {{ t('listItem') }}: {{ d }} </var-cell>
+        <var-cell v-for="d in list3" :key="d"> {{ t('listItem') }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
   </var-tabs-items>

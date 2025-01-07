@@ -1,6 +1,6 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const disabled = ref(false)
@@ -63,7 +63,7 @@ function closeAllSkipDisabled() {
   </var-collapse>
 
   <app-type>{{ t('controlledDivider') }}</app-type>
-  <var-button @click="divider = !divider" style="margin-bottom: 8px">{{
+  <var-button style="margin-bottom: 8px" @click="divider = !divider">{{
     divider ? t('hideDivider') : t('showDivider')
   }}</var-button>
   <var-collapse v-model="values.value5" :divider="divider">
@@ -100,15 +100,15 @@ function closeAllSkipDisabled() {
   </var-collapse>
 
   <app-type>{{ t('toggleAll') }}</app-type>
-  <var-button @click="toggleAll" style="margin: 8px">{{ t('toggleAll') }}</var-button>
-  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">{{ t('toggleAllSkipDisabled') }}</var-button>
-  <var-button @click="openAll" style="margin: 8px">{{ t('openAll') }}</var-button>
-  <var-button @click="openAllSkipDisabled" style="margin: 8px">{{ t('openAllSkipDisabled') }}</var-button>
-  <var-button @click="closeAll" style="margin: 8px">{{ t('closeAll') }}</var-button>
-  <var-button @click="closeAllSkipDisabled" style="margin: 8px 8px 16px 8px">{{
+  <var-button style="margin: 8px" @click="toggleAll">{{ t('toggleAll') }}</var-button>
+  <var-button style="margin: 8px" @click="toggleAllSkipDisabled">{{ t('toggleAllSkipDisabled') }}</var-button>
+  <var-button style="margin: 8px" @click="openAll">{{ t('openAll') }}</var-button>
+  <var-button style="margin: 8px" @click="openAllSkipDisabled">{{ t('openAllSkipDisabled') }}</var-button>
+  <var-button style="margin: 8px" @click="closeAll">{{ t('closeAll') }}</var-button>
+  <var-button style="margin: 8px 8px 16px 8px" @click="closeAllSkipDisabled">{{
     t('closeAllSkipDisabled')
   }}</var-button>
-  <var-collapse v-model="values.value6" ref="collapseRef" style="margin-bottom: 40px">
+  <var-collapse ref="collapseRef" v-model="values.value6" style="margin-bottom: 40px">
     <var-collapse-item :title="t('slotTitle')" name="1">{{ t('text') }}</var-collapse-item>
     <var-collapse-item :title="t('slotTitle')" name="2"> {{ t('text') }}</var-collapse-item>
     <var-collapse-item :title="t('slotTitle')" disabled name="3"> {{ t('text') }}</var-collapse-item>

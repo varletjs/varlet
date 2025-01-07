@@ -1,7 +1,7 @@
-import CountTo from '..'
 import { createApp } from 'vue'
-import { expect, test, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import CountTo from '..'
 import { delay } from '../../utils/test'
 
 test('test count-to plugin', () => {

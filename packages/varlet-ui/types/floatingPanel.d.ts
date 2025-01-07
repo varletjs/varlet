@@ -1,5 +1,5 @@
-import { VNode, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { TeleportProps, VNode } from 'vue'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const floatingPanelProps: Record<keyof FloatingPanelProps, any>
 

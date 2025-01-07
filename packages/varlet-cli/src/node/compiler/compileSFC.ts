@@ -1,26 +1,26 @@
-import fse from 'fs-extra'
-import hash from 'hash-sum'
 import { parse, resolve } from 'path'
 import {
-  parse as parseSFC,
-  compileTemplate,
-  compileStyle,
   compileScript as compileScriptSFC,
+  compileStyle,
+  compileTemplate,
+  parse as parseSFC,
   registerTS,
 } from '@vue/compiler-sfc'
-import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
-import { SRC_DIR, ES_DIR } from '../shared/constant.js'
-import { compileScript, getScriptExtname } from './compileScript.js'
+import type { SFCStyleBlock } from '@vue/compiler-sfc'
+import fse from 'fs-extra'
+import hash from 'hash-sum'
 import ts from 'typescript'
+import { ES_DIR, SRC_DIR } from '../shared/constant.js'
+import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
+import { compileScript, getScriptExtname } from './compileScript.js'
 import {
-  compressCss,
   compileLess,
   compileScss,
+  compressCss,
   extractStyleDependencies,
   normalizeStyleDependency,
   STYLE_IMPORT_RE,
 } from './compileStyle.js'
-import type { SFCStyleBlock } from '@vue/compiler-sfc'
 
 const { readFile, existsSync, readFileSync, writeFileSync } = fse
 

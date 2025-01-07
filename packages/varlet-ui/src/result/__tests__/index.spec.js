@@ -1,8 +1,8 @@
-import Result from '..'
-import VarResult from '../Result'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test, describe } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import Result from '..'
+import VarResult from '../Result'
 
 test('test result plugin', () => {
   const app = createApp({}).use(Result)

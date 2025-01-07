@@ -1,8 +1,8 @@
-import Alert from '..'
-import VarAlert from '../Alert'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test, describe, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
+import Alert from '..'
+import VarAlert from '../Alert'
 
 test('test alert plugin', () => {
   const app = createApp({}).use(Alert)
@@ -110,7 +110,7 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert variant', async () => {
+  test('test alert variant', () => {
     ;['tonal', 'outlined', 'standard'].forEach((variant) => {
       const wrapper = mount(VarAlert, {
         props: { variant },

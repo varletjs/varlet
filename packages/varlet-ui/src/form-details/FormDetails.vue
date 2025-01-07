@@ -1,6 +1,6 @@
 <template>
   <transition :name="n()">
-    <div :class="n()" v-if="errorMessage || extraMessage || $slots['extra-message']">
+    <div v-if="errorMessage || extraMessage || $slots['extra-message']" :class="n()">
       <div :class="n('error-message')">
         <transition :name="n('message')">
           <div v-if="errorMessage">

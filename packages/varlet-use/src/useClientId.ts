@@ -1,4 +1,4 @@
-import { ref, getCurrentInstance, onMounted } from 'vue'
+import { getCurrentInstance, onMounted, ref } from 'vue'
 import { kebabCase } from '@varlet/shared'
 
 export function useClientId() {

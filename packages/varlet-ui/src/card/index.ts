@@ -1,5 +1,5 @@
-import Card from './Card.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Card from './Card.vue'
 import { props as cardProps } from './props'
 
 withInstall(Card)

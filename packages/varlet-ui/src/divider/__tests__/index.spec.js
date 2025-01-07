@@ -1,8 +1,8 @@
-import VarDivider from '../Divider'
-import Divider from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test, describe } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import Divider from '..'
+import VarDivider from '../Divider'
 
 test('test divider plugin', () => {
   const app = createApp({}).use(Divider)

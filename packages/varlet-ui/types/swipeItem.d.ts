@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, VarComponent } from './varComponent'
 
 export interface SwipeItemProps extends BasicAttributes {}
 

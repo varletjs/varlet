@@ -1,6 +1,6 @@
-import Tooltip from './Tooltip.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as tooltipProps } from './props'
+import Tooltip from './Tooltip.vue'
 
 withInstall(Tooltip)
 withPropsDefaultsSetter(Tooltip, tooltipProps)

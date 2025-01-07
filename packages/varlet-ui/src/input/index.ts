@@ -1,5 +1,5 @@
-import Input from './Input.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Input from './Input.vue'
 import { props as inputProps } from './props'
 
 withInstall(Input)

@@ -1,7 +1,7 @@
 <script setup>
-import { watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
 import { ref } from 'vue'
+import { onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const list = ref(gen(1, 10))
 

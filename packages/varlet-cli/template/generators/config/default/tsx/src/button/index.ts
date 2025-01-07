@@ -1,5 +1,5 @@
-import Button from './Button'
 import { withInstall } from '../utils/components'
+import Button from './Button'
 
 withInstall(Button)
 

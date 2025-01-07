@@ -1,7 +1,7 @@
 import { type PropType, type TeleportProps } from 'vue'
-import { type Placement, type Trigger, type Reference } from './usePopover'
 import { type PositioningStrategy } from '@popperjs/core'
 import { defineListenerProp } from '../utils/components'
+import { type Placement, type Reference, type Trigger } from './usePopover'
 
 export const props = {
   show: Boolean,

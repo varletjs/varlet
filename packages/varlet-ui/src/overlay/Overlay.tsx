@@ -1,12 +1,11 @@
 import { defineComponent, Teleport, Transition } from 'vue'
-import { props } from './props'
+import { call, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 import { useLock } from '../context/lock'
+import { useStack } from '../context/stack'
 import { useZIndex } from '../context/zIndex'
 import { createNamespace, useTeleport } from '../utils/components'
-import { call, preventDefault } from '@varlet/shared'
-import { useStack } from '../context/stack'
-import { useEventListener } from '@varlet/use'
-
+import { props } from './props'
 import '../styles/common.less'
 import './overlay.less'
 
@@ -23,7 +22,7 @@ export default defineComponent({
 
     useLock(
       () => props.show,
-      () => props.lockScroll
+      () => props.lockScroll,
     )
 
     useEventListener(() => window, 'keydown', handleKeydown)

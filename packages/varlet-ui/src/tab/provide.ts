@@ -1,7 +1,7 @@
-import { useParent } from '@varlet/use'
-import { assert } from '@varlet/shared'
-import { TABS_BIND_TAB_KEY, type TabsProvider } from '../tabs/provide'
 import type { ComputedRef } from 'vue'
+import { assert } from '@varlet/shared'
+import { useParent } from '@varlet/use'
+import { TABS_BIND_TAB_KEY, type TabsProvider } from '../tabs/provide'
 
 export interface TabProvider {
   name: ComputedRef<number | string | undefined>

@@ -1,6 +1,6 @@
 <script setup>
-import { ref, nextTick } from 'vue'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { nextTick, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const drag = ref(null)

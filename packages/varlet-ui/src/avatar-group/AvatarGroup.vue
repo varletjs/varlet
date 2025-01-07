@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type CSSProperties } from 'vue'
-import { props } from './props'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('avatar-group')
 

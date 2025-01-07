@@ -1,9 +1,9 @@
 <script setup>
-import { Snackbar, Dialog } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, onUnmounted } from 'vue'
-import { use, t } from './locale'
+import { onUnmounted, reactive } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Dialog, Snackbar } from '@varlet/ui'
 import { z } from 'zod'
+import { t, use } from './locale'
 
 const values = reactive({
   files: [],
@@ -186,10 +186,10 @@ function handleActionClick(chooseFile) {
   <var-uploader v-model="values.files15" @click-action="handleActionClick" />
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-uploader disabled v-model="values.files8" />
+  <var-uploader v-model="values.files8" disabled />
 
   <app-type>{{ t('readonly') }}</app-type>
-  <var-uploader readonly v-model="values.files9" />
+  <var-uploader v-model="values.files9" readonly />
 
   <app-type>{{ t('beforeRemove') }}</app-type>
   <var-uploader v-model="values.files11" @before-remove="handleBeforeRemove" />
@@ -200,20 +200,20 @@ function handleActionClick(chooseFile) {
   </var-uploader>
 
   <app-type>{{ t('validate') }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError().length === 0 || t('validateMessage')]" v-model="values.files10" />
+  <var-uploader v-model="values.files10" :rules="[(v, u) => u.getError().length === 0 || t('validateMessage')]" />
 
   <app-type>{{ t('validateWithZod') }}</app-type>
   <var-uploader
+    v-model="values.files16"
     :rules="
       z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, t('validateMessage'))
     "
-    v-model="values.files16"
   />
 
   <app-type>{{ t('customRender') }}</app-type>
   <var-space>
-    <img class="custom-uploader-file" v-for="f in values.files12" :key="f.id" :src="f.cover" />
-    <var-uploader hide-list v-model="values.files12">
+    <img v-for="f in values.files12" :key="f.id" class="custom-uploader-file" :src="f.cover" />
+    <var-uploader v-model="values.files12" hide-list>
       <var-button round type="primary">
         <var-icon :size="28" name="upload" />
       </var-button>

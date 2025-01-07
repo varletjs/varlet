@@ -1,10 +1,10 @@
 import { reactive, watchEffect } from 'vue'
-import { compileFile, File, StoreOptions } from '@vue/repl'
-import { utoa, atou } from './utils/encode'
-import { usePreviewVersion } from './utils/env'
 import { Dialog, Snackbar } from '@varlet/ui'
+import { compileFile, File, StoreOptions } from '@vue/repl'
+import type { OutputModes, SFCOptions, Store, StoreState } from '@vue/repl'
 import * as defaultCompiler from 'vue/compiler-sfc'
-import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
+import { atou, utoa } from './utils/encode'
+import { usePreviewVersion } from './utils/env'
 
 const imports = {
   '@varlet/ui': usePreviewVersion ? './varlet.esm.js' : 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.esm.js',
@@ -175,13 +175,13 @@ export class ReplStore implements Store {
 
     if (serializedState) {
       const saved = JSON.parse(atou(serializedState))
-      // eslint-disable-next-line no-restricted-syntax, guard-for-in
+
       for (const filename in saved) {
         setFile(
           files,
           filename,
           saved[filename],
-          !import.meta.env.DEV && (`src/${filename}` === varletReplPlugin || `src/${filename}` === appWrapperFile)
+          !import.meta.env.DEV && (`src/${filename}` === varletReplPlugin || `src/${filename}` === appWrapperFile),
         )
       }
     } else {
@@ -197,7 +197,7 @@ export class ReplStore implements Store {
         files,
         varletReplPlugin,
         getVarletReplPluginCode(usePreviewVersion ? 'preview' : 'latest'),
-        !import.meta.env.DEV
+        !import.meta.env.DEV,
       )
     }
 
@@ -221,11 +221,10 @@ export class ReplStore implements Store {
   }
 
   init() {
-    // eslint-disable-next-line no-return-assign
     watchEffect(() => compileFile(this, this.state.activeFile).then((errs) => (this.state.errors = errs)))
 
     this.state.errors = []
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const file in this.state.files) {
       if (file !== appFile) {
         compileFile(this, this.state.files[file]).then((errs) => this.state.errors.push(...errs))
@@ -258,7 +257,9 @@ export class ReplStore implements Store {
   addFile(fileOrFilename: string | File): void {
     const file = typeof fileOrFilename === 'string' ? new File(fileOrFilename) : fileOrFilename
     this.state.files[file.filename] = file
-    if (!file.hidden) this.setActive(file.filename)
+    if (!file.hidden) {
+      this.setActive(file.filename)
+    }
   }
 
   deleteFile(filename: string) {
@@ -296,7 +297,7 @@ export class ReplStore implements Store {
     const newFiles: Record<string, File> = {}
 
     // Preserve iteration order for files
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const name in files) {
       if (name === oldFilename) {
         newFiles[newFilename] = file
@@ -311,7 +312,6 @@ export class ReplStore implements Store {
       this.state.mainFile = newFilename
     }
 
-    // eslint-disable-next-line no-return-assign
     compileFile(this, file).then((errs) => (this.state.errors = errs))
   }
 
@@ -337,7 +337,7 @@ export class ReplStore implements Store {
 
   getFiles() {
     const exported: Record<string, string> = {}
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+
     for (const filename in this.state.files) {
       const normalized = filename === importMapFile ? filename : filename.replace(/^src\//, '')
       exported[normalized] = this.state.files[filename].code
@@ -364,8 +364,8 @@ export class ReplStore implements Store {
             },
           },
           null,
-          2
-        )
+          2,
+        ),
       )
     } else {
       try {
@@ -381,8 +381,7 @@ export class ReplStore implements Store {
           json.imports['vue/server-renderer'] = fixURL(json.imports['vue/server-renderer'])
         }
         map.code = JSON.stringify(json, null, 2)
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
+      } catch {}
     }
   }
 

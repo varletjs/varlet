@@ -1,5 +1,5 @@
-import Divider from './Divider.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Divider from './Divider.vue'
 import { props as dividerProps } from './props'
 
 withInstall(Divider)

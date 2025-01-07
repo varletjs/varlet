@@ -1,7 +1,7 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const actives = reactive({
   active: 0,
@@ -33,11 +33,11 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('modifyStyle') }}</app-type>
   <var-tabs
+    v-model:active="active2"
     elevation
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active2"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -46,12 +46,12 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tabs
+    v-model:active="active3"
     elevation
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     :disabled-color="currentTheme === 'darkTheme' ? '#bbb' : undefined"
-    v-model:active="active3"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -60,11 +60,11 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('enableScroll') }}</app-type>
   <var-tabs
+    v-model:active="active4"
     elevation
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active4"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -78,12 +78,12 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('tabVerticalLayout') }}</app-type>
   <var-tabs
+    v-model:active="active5"
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active5"
   >
     <var-tab>
       <var-icon class="icon" name="information" />
@@ -101,13 +101,13 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('tabsVerticalLayout') }}</app-type>
   <var-tabs
+    v-model:active="active6"
     class="vertical-tabs"
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active6"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -116,11 +116,11 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('viewRelation') }}</app-type>
   <var-tabs
+    v-model:active="activeRelation"
     elevation
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="activeRelation"
     offset-top="50"
   >
     <var-tab>{{ t('option') }}1</var-tab>
@@ -128,7 +128,7 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
+  <var-tabs-items v-model:active="activeRelation" style="margin: 8px 0">
     <var-tab-item>
       {{ t('text') }}
     </var-tab-item>
@@ -142,13 +142,13 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('stickyLayout') }}</app-type>
   <var-tabs
+    v-model:active="active7"
     sticky
     elevation
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     offset-top="14.4vmin"
-    v-model:active="active7"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -157,12 +157,12 @@ onThemeChange((theme) => {
 
   <app-type>{{ t('indicatorPosition') }}</app-type>
   <var-tabs
+    v-model:active="active8"
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active8"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -170,6 +170,7 @@ onThemeChange((theme) => {
   </var-tabs>
 
   <var-tabs
+    v-model:active="active8"
     style="margin-top: 20px"
     elevation
     class="vertical-tabs"
@@ -178,7 +179,6 @@ onThemeChange((theme) => {
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
-    v-model:active="active8"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>

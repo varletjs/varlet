@@ -1,8 +1,8 @@
-import Hover from '..'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Hover from '..'
 import { mockUserAgent } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
 
 test('test hover use', () => {
   const app = createApp({}).use(Hover)
@@ -91,7 +91,7 @@ test('test hover style binding restore', async () => {
 
 test('test hover desktop args', async () => {
   const { restore } = mockUserAgent(
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
   )
 
   const Wrapper = {
@@ -106,7 +106,7 @@ test('test hover desktop args', async () => {
   restore()
 
   const { restore: restoreToRaw } = mockUserAgent(
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
   )
 
   wrapper = mount(Wrapper)
@@ -118,7 +118,7 @@ test('test hover desktop args', async () => {
 
 test('test hover mobile args', async () => {
   const { restore } = mockUserAgent(
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
   )
 
   const Wrapper = {
@@ -133,7 +133,7 @@ test('test hover mobile args', async () => {
   restore()
 
   const { restore: restoreToRaw } = mockUserAgent(
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1',
   )
 
   wrapper = mount(Wrapper)

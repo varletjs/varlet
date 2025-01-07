@@ -1,9 +1,8 @@
-import context from '../context'
 import { defineComponent } from 'vue'
+import context from '../context'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
-
 import '../styles/common.less'
 import './loadingBar.less'
 

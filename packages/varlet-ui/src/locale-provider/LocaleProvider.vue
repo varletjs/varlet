@@ -1,10 +1,10 @@
 <script lang="ts">
 import { computed, defineComponent, h } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
 import { call, hasOwn } from '@varlet/shared'
-import { provideLocaleProvider } from './provide'
 import { type Message } from '../locale'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
+import { provideLocaleProvider } from './provide'
 
 const { name, n } = createNamespace('locale-provider')
 
@@ -13,13 +13,16 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const messages = computed(() =>
-      Object.entries(props.messages ?? {}).reduce((messages, [key, value]) => {
-        messages[key] = {
-          ...value,
-          lang: key,
-        }
-        return messages
-      }, {} as Record<string, Partial<Message>>)
+      Object.entries(props.messages ?? {}).reduce(
+        (messages, [key, value]) => {
+          messages[key] = {
+            ...value,
+            lang: key,
+          }
+          return messages
+        },
+        {} as Record<string, Partial<Message>>,
+      ),
     )
     provideLocaleProvider({
       t,
@@ -37,7 +40,7 @@ export default defineComponent({
         {
           class: n(),
         },
-        call(slots.default)
+        call(slots.default),
       )
   },
 })

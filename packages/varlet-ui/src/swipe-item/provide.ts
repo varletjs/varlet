@@ -1,7 +1,7 @@
-import { useParent } from '@varlet/use'
-import { assert } from '@varlet/shared'
 import { type ComputedRef } from 'vue'
-import { type SwipeProvider, SWIPE_BIND_SWIPE_ITEM_KEY } from '../swipe/provide'
+import { assert } from '@varlet/shared'
+import { useParent } from '@varlet/use'
+import { SWIPE_BIND_SWIPE_ITEM_KEY, type SwipeProvider } from '../swipe/provide'
 
 export interface SwipeItemProvider {
   index: ComputedRef<number>

@@ -1,9 +1,9 @@
-import Picker from '..'
-import VarPicker from '../Picker'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Picker from '..'
 import { delay, mockTranslate, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarPicker from '../Picker'
 
 mockTranslate()
 
@@ -144,7 +144,7 @@ test('test cascade mode', async () => {
         ],
       },
       { text: '新吴区' },
-    ]
+    ],
   )
 
   // find elements again for rebuild children
@@ -167,7 +167,7 @@ test('test cascade mode', async () => {
         ],
       },
       { text: '惠山区' },
-    ]
+    ],
   )
 
   wrapper.unmount()
@@ -228,7 +228,7 @@ test('test custom key', async () => {
         id: 10,
         label: '新吴区',
       },
-    ]
+    ],
   )
 
   wrapper.unmount()
@@ -277,7 +277,7 @@ test('test multiple column picker columnsCount', async () => {
         text: 'B',
         value: '2-2',
       },
-    ]
+    ],
   )
   wrapper.unmount()
 })
@@ -366,12 +366,12 @@ test('test cascade column picker columnsCount', async () => {
           },
         ],
       },
-    ]
+    ],
   )
   wrapper.unmount()
 })
 
-test('test column option className', async () => {
+test('test column option className', () => {
   const wrapper = mount(VarPicker, {
     props: {
       columns: [

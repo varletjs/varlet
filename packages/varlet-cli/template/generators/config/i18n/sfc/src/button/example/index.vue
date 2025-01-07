@@ -1,6 +1,6 @@
 <script setup>
+import { AppType, watchLang } from '@varlet/cli/client'
 import VaButton from '..'
-import { watchLang, AppType } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 watchLang(use)

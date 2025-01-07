@@ -89,12 +89,12 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch, type ComputedRef, type Ref } from 'vue'
 import config from '@config'
-import { computed, defineComponent, ref, watch, type Ref, type ComputedRef } from 'vue'
-import { useRoute } from 'vue-router'
-import { getBrowserTheme, watchLang, watchTheme, setTheme, getMobileIndex, type Theme } from '@varlet/cli/client'
-import { removeEmpty, inIframe, isPhone } from '../utils'
+import { getBrowserTheme, getMobileIndex, setTheme, watchLang, watchTheme, type Theme } from '@varlet/cli/client'
 import { pascalCase } from '@varlet/shared'
+import { useRoute } from 'vue-router'
+import { inIframe, isPhone, removeEmpty } from '../utils'
 
 export default defineComponent({
   setup() {
@@ -151,7 +151,7 @@ export default defineComponent({
         const redirectName = pascalCase(redirect.slice(1))
         bigCamelizeComponentName.value = componentName === redirectName ? '' : componentName
         showBackIcon.value = componentName !== redirectName
-      }
+      },
     )
 
     const getThemeMessage = () => ({ action: 'theme-change', from: 'mobile', data: currentTheme.value })
@@ -221,7 +221,9 @@ body {
   -webkit-tap-highlight-color: transparent;
   background: var(--site-config-color-mobile-body);
   color: var(--site-config-color-text);
-  transition: background-color 0.25s, color 0.25s;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
 }
 
 ::-webkit-scrollbar {

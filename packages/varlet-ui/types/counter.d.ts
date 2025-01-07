@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as CounterRules } from './varComponent'
+import { BasicAttributes, Rules as CounterRules, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const counterProps: Record<keyof CounterProps, any>
 

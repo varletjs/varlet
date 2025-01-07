@@ -1,5 +1,5 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
+import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const avatarGroupProps: Record<keyof AvatarGroupProps, any>
 

@@ -1,5 +1,5 @@
-import Paper from './Paper.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Paper from './Paper.vue'
 import { props as paperProps } from './props'
 
 withInstall(Paper)

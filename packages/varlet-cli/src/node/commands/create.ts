@@ -1,12 +1,12 @@
+import { resolve } from 'path'
+import { confirm, input, select } from '@inquirer/prompts'
+import { camelize, kebabCase, pascalCase } from '@varlet/shared'
 import ejs from 'ejs'
 import fse from 'fs-extra'
-import logger from '../shared/logger.js'
-import { pascalCase, camelize, kebabCase } from '@varlet/shared'
-import { input, confirm, select } from '@inquirer/prompts'
-import { resolve } from 'path'
-import { glob } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { SRC_DIR, dirname } from '../shared/constant.js'
+import { dirname, SRC_DIR } from '../shared/constant.js'
+import { glob } from '../shared/fsUtils.js'
+import logger from '../shared/logger.js'
 
 const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync, renameSync } = fse
 
@@ -109,7 +109,7 @@ export async function create(options: CreateCommandOptions) {
     removeSync(resolve(componentFolder, './example/locale/index.ts'))
     renameSync(
       resolve(componentFolder, './example/locale/_index.ts'),
-      resolve(componentFolder, './example/locale/index.ts')
+      resolve(componentFolder, './example/locale/index.ts'),
     )
   } else {
     removeSync(resolve(componentFolder, './example/locale/_index.ts'))

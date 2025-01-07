@@ -1,5 +1,5 @@
-import { TAB_ITEM_BIND_LIST_KEY, type TabItemProvider } from '../tab-item/provide'
 import { useParent } from '@varlet/use'
+import { TAB_ITEM_BIND_LIST_KEY, type TabItemProvider } from '../tab-item/provide'
 
 export interface ListProvider {}
 

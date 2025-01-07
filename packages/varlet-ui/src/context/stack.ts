@@ -1,6 +1,6 @@
-import { type Ref, getCurrentInstance, watch } from 'vue'
+import { getCurrentInstance, watch, type Ref } from 'vue'
 import { removeItem } from '@varlet/shared'
-import { onSmartUnmounted, onSmartMounted } from '@varlet/use'
+import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 
 interface ContextStackItem {
   uid: number

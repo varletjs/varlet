@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const spaceProps: Record<keyof SpaceProps, any>
 

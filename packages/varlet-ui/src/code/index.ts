@@ -1,5 +1,5 @@
-import Code from './Code.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Code from './Code.vue'
 import { props as codeProps } from './props'
 
 withInstall(Code)

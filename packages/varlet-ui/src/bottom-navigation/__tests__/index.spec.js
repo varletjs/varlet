@@ -1,11 +1,11 @@
-import BottomNavigation from '..'
-import BottomNavigationItem from '../../bottom-navigation-item'
-import VarBottomNavigation from '../BottomNavigation'
-import VarBottomNavigationItem from '../../bottom-navigation-item/BottomNavigationItem'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import BottomNavigation from '..'
+import BottomNavigationItem from '../../bottom-navigation-item'
+import VarBottomNavigationItem from '../../bottom-navigation-item/BottomNavigationItem'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import VarBottomNavigation from '../BottomNavigation'
 
 const Wrapper = {
   components: {
@@ -108,7 +108,7 @@ describe('test bottom-navigation events', () => {
           setTimeout(() => {
             resolve(true)
           }, 200)
-        })
+        }),
     )
     const wrapper = mount({
       components: {
@@ -240,7 +240,7 @@ describe('test bottom-navigation component props', () => {
     expect(wrapper.find('.var-bottom-navigation-item--active').attributes('style')).toContain('color: red;')
     await wrapper.setProps({ activeColor: '#ffffff' })
     expect(wrapper.find('.var-bottom-navigation-item--active').attributes('style')).toContain(
-      'color: rgb(255, 255, 255);'
+      'color: rgb(255, 255, 255);',
     )
     wrapper.unmount()
   })

@@ -1,10 +1,10 @@
+import { createApp, Fragment, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
 import Avatar from '..'
-import VarAvatar from '../Avatar.vue'
 import AvatarGroup from '../../avatar-group'
 import VarAvatarGroup from '../../avatar-group/AvatarGroup.vue'
-import { mount } from '@vue/test-utils'
-import { createApp, Fragment, h } from 'vue'
-import { expect, vi, test } from 'vitest'
+import VarAvatar from '../Avatar.vue'
 
 test('test avatar plugin', () => {
   const app = createApp({}).use(Avatar)

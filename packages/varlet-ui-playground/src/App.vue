@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Header from './Header.vue'
-import { ReplStore } from './store'
 import { ref, watchEffect } from 'vue'
 import { Repl } from '@vue/repl'
-// @ts-ignore
+// @ts-expect-error no types
 import Monaco from '@vue/repl/monaco-editor'
+import Header from './Header.vue'
+import { ReplStore } from './store'
 
 const store = new ReplStore({
   serializedState: location.hash.slice(1),
@@ -23,7 +23,7 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 </script>
 
 <template>
-  <Header :store="store" v-model:theme="theme" />
+  <Header v-model:theme="theme" :store="store" />
   <Repl
     :editor="Monaco"
     :store="store"

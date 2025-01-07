@@ -3,28 +3,28 @@
     <div :class="n()" @click="handleClick">
       <div
         ref="action"
+        v-hover:desktop="handleHovering"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         :class="
           classes(
             n('action'),
             [checked || isIndeterminate, n('--checked'), n('--unchecked')],
             [errorMessage || checkboxGroupErrorMessage, n('--error')],
-            [formDisabled || disabled, n('--disabled')]
+            [formDisabled || disabled, n('--disabled')],
           )
         "
         :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
         :tabindex="disabled || formDisabled ? undefined : '0'"
-        v-hover:desktop="handleHovering"
-        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         @focus="isFocusing = true"
         @blur="isFocusing = false"
       >
-        <slot name="indeterminate-icon" v-if="isIndeterminate">
+        <slot v-if="isIndeterminate" name="indeterminate-icon">
           <var-icon :class="n('icon')" name="minus-box" :size="iconSize" var-checkbox-cover />
         </slot>
-        <slot name="checked-icon" v-if="checked && !isIndeterminate">
+        <slot v-if="checked && !isIndeterminate" name="checked-icon">
           <var-icon :class="n('icon')" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
         </slot>
-        <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
+        <slot v-if="!checked && !isIndeterminate" name="unchecked-icon">
           <var-icon :class="n('icon')" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
         </slot>
         <var-hover-overlay
@@ -34,14 +34,14 @@
       </div>
 
       <div
+        v-if="$slots.default"
         :class="
           classes(
             n('text'),
             [errorMessage || checkboxGroupErrorMessage, n('--error')],
-            [formDisabled || disabled, n('--disabled')]
+            [formDisabled || disabled, n('--disabled')],
           )
         "
-        v-if="$slots.default"
         @click="handleTextClick"
       >
         <slot :checked="checked" />
@@ -53,18 +53,18 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import Hover from '../hover'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, ref, computed, nextTick } from 'vue'
-import { props, type CheckboxValidateTrigger } from './props'
-import { useValidation, createNamespace } from '../utils/components'
-import { useCheckboxGroup, type CheckboxProvider } from './provide'
-import { useForm } from '../form/provide'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
+import { createNamespace, useValidation } from '../utils/components'
+import { props, type CheckboxValidateTrigger } from './props'
+import { useCheckboxGroup, type CheckboxProvider } from './provide'
 
 const { name, n, classes } = createNamespace('checkbox')
 

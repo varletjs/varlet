@@ -1,9 +1,9 @@
-import Link from '..'
-import VarLink from '../Link'
-import { mount, RouterLinkStub } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount, RouterLinkStub } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import Link from '..'
 import { trigger } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarLink from '../Link'
 
 const HREF = 'https://varletjs.org/varlet/'
 

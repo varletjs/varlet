@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="classes(n(), [enableCSSMode, n('--css-mode')])"
     ref="stickyEl"
+    :class="classes(n(), [enableCSSMode, n('--css-mode')])"
     :style="{
       zIndex: toNumber(zIndex),
       top: enableCSSMode ? `${offsetTop}px` : undefined,
@@ -10,8 +10,8 @@
     }"
   >
     <div
-      :class="n('wrapper')"
       ref="wrapperEl"
+      :class="n('wrapper')"
       :style="{
         zIndex: toNumber(zIndex),
         position: enableFixedMode ? 'fixed' : undefined,
@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './props'
-import { getParentScroller, toPxNum } from '../utils/elements'
-import { toNumber, raf, doubleRaf, getRect, call } from '@varlet/shared'
+import { computed, defineComponent, ref, watch } from 'vue'
+import { call, doubleRaf, getRect, raf, toNumber } from '@varlet/shared'
+import { onSmartMounted, onSmartUnmounted, onWindowResize, useEventListener } from '@varlet/use'
 import { createNamespace } from '../utils/components'
-import { useEventListener, onSmartMounted, onWindowResize, onSmartUnmounted } from '@varlet/use'
+import { getParentScroller, toPxNum } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('sticky')
 

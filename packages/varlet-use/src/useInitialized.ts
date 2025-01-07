@@ -1,4 +1,4 @@
-import { watch, ref, type WatchSource } from 'vue'
+import { ref, watch, type WatchSource } from 'vue'
 
 export function useInitialized<T>(source: WatchSource<T>, value: T) {
   const initialized = ref(false)
@@ -10,7 +10,7 @@ export function useInitialized<T>(source: WatchSource<T>, value: T) {
         initialized.value = true
       }
     },
-    { immediate: true }
+    { immediate: true },
   )
 
   return initialized

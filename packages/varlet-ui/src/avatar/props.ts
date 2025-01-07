@@ -1,5 +1,5 @@
-import { defineListenerProp } from '../utils/components'
 import { type PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type AvatarSize = 'mini' | 'small' | 'normal' | 'large' | number | string
 

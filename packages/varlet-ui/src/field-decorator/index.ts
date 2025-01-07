@@ -1,5 +1,5 @@
-import FieldDecorator from './FieldDecorator.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import FieldDecorator from './FieldDecorator.vue'
 import { props as fieldDecoratorProps } from './props'
 
 withInstall(FieldDecorator)

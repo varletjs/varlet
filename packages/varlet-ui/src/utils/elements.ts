@@ -1,18 +1,18 @@
 import {
+  assert,
+  getRect,
+  getScrollLeft,
+  getScrollTop,
+  getStyle,
+  inBrowser,
   isNumber,
+  isNumeric,
   isObject,
   isString,
+  isWindow,
   kebabCase,
   toNumber,
-  isWindow,
-  inBrowser,
-  getRect,
-  getStyle,
-  getScrollTop,
-  getScrollLeft,
-  isNumeric,
 } from '@varlet/shared'
-import { assert } from '@varlet/shared'
 import { type StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
@@ -207,7 +207,7 @@ interface ScrollToOptions {
 
 export function scrollTo(
   element: HTMLElement | Window,
-  { top = 0, left = 0, duration = 300, animation }: ScrollToOptions
+  { top = 0, left = 0, duration = 300, animation }: ScrollToOptions,
 ): Promise<void> {
   const startTime = Date.now()
 
@@ -272,11 +272,11 @@ export function focusChildElementByKey(
   beforeFocus?: (
     activeElement: HTMLElement,
     nextActiveElement: HTMLElement,
-    isActiveInReferenceElements: boolean
-  ) => boolean
+    isActiveInReferenceElements: boolean,
+  ) => boolean,
 ) {
   const focusableElements = Array.from(parentElement.querySelectorAll<HTMLElement>(focusableSelector)).filter(
-    (element) => !isDisplayNoneElement(element)
+    (element) => !isDisplayNoneElement(element),
   )
 
   if (!focusableElements.length) {
@@ -285,7 +285,7 @@ export function focusChildElementByKey(
 
   const isActiveInReferenceElements =
     [referenceElement, ...Array.from(referenceElement.querySelectorAll<HTMLElement>(focusableSelector))].findIndex(
-      (el) => el === document.activeElement
+      (el) => el === document.activeElement,
     ) !== -1
 
   const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)

@@ -1,5 +1,6 @@
 <template>
   <transition :name="n('$-fade')">
+    <!-- eslint-disable-next-line vue/require-toggle-inside-transition -->
     <span
       :class="classes(n(), n('$--box'), formatElevation(elevation, 1), ...contentClass)"
       :style="chipStyle"
@@ -21,11 +22,11 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import { defineComponent, computed, CSSProperties } from 'vue'
-import { props } from './props'
-import { createNamespace, formatElevation } from '../utils/components'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import VarIcon from '../icon'
+import { createNamespace, formatElevation } from '../utils/components'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('chip')
 

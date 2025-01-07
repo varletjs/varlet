@@ -1,6 +1,6 @@
-import { type PropType, InputHTMLAttributes } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
+import { InputHTMLAttributes, type PropType } from 'vue'
 import { fieldDecoratorProps } from '../field-decorator'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 

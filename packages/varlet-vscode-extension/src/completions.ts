@@ -1,19 +1,19 @@
 import icons from '@varlet/icons'
+import { isString, kebabCase, pascalCase } from '@varlet/shared'
 import {
-  languages,
-  Range,
   CompletionItem,
   CompletionItemKind,
-  TextDocument,
-  Position,
+  languages,
   MarkdownString,
-  type ExtensionContext,
+  Position,
+  Range,
+  TextDocument,
   type CompletionItemProvider,
+  type ExtensionContext,
 } from 'vscode'
 import { componentsMap, type ComponentDescriptor } from './componentsMap'
-import { pascalCase, isString, kebabCase } from '@varlet/shared'
 import { ATTR_RE, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
-import { getWebTypesTags, envs } from './env'
+import { envs, getWebTypesTags } from './env'
 
 export function shouldDisableProvide(document: TextDocument, position: Position) {
   if (document.languageId !== 'vue') {
@@ -48,7 +48,7 @@ export function registerCompletions(context: ExtensionContext) {
 
         completionItems.push(
           new CompletionItem(name, CompletionItemKind.Field),
-          new CompletionItem(pascalCase(name), CompletionItemKind.Field)
+          new CompletionItem(pascalCase(name), CompletionItemKind.Field),
         )
       })
 
@@ -78,7 +78,7 @@ export function registerCompletions(context: ExtensionContext) {
   const iconsProvider: CompletionItemProvider = {
     provideCompletionItems(document: TextDocument, position: Position) {
       const line = document.getText(
-        new Range(new Position(position.line, 0), new Position(position.line, position.character))
+        new Range(new Position(position.line, 0), new Position(position.line, position.character)),
       )
 
       if (!PROP_NAME_RE.test(line)) {
@@ -86,7 +86,7 @@ export function registerCompletions(context: ExtensionContext) {
       }
 
       const completionItems: CompletionItem[] = icons.map(
-        (icon: string) => new CompletionItem(icon, CompletionItemKind.Field)
+        (icon: string) => new CompletionItem(icon, CompletionItemKind.Field),
       )
 
       return completionItems
@@ -128,7 +128,6 @@ export function registerCompletions(context: ExtensionContext) {
       let matchedValue: string
       let startIndex = 0
 
-      // eslint-disable-next-line no-restricted-syntax
       for (const matched of text.matchAll(ATTR_RE)) {
         name = kebabCase(matched[1] ?? matched[2])
         matchedValue = matched[0]
@@ -160,7 +159,7 @@ export function registerCompletions(context: ExtensionContext) {
             label: `@${event.name}`,
             description: event.description,
           },
-          CompletionItemKind.Event
+          CompletionItemKind.Event,
         )
 
         item.filterText = event.name
@@ -179,7 +178,7 @@ export function registerCompletions(context: ExtensionContext) {
             label: attr.name,
             description: attr.description,
           },
-          CompletionItemKind.Value
+          CompletionItemKind.Value,
         )
 
         item.sortText = '0'

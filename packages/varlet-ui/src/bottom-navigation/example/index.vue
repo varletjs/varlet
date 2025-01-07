@@ -1,8 +1,8 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
 import { ref } from 'vue'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { t, use } from './locale'
 
 const basicUsage = ref(0)
 const matchByName = ref('home')
@@ -56,7 +56,7 @@ function handleClick(active) {
   </var-bottom-navigation>
 
   <app-type>{{ t('customColor') }}</app-type>
-  <var-bottom-navigation active-color="var(--color-warning)" v-model:active="customColor">
+  <var-bottom-navigation v-model:active="customColor" active-color="var(--color-warning)">
     <var-bottom-navigation-item :label="t('label')" icon="home" />
     <var-bottom-navigation-item :label="t('label')" icon="magnify" />
     <var-bottom-navigation-item :label="t('label')" icon="heart" />
@@ -73,14 +73,14 @@ function handleClick(active) {
 
   <app-type>{{ t('clickEvent') }}</app-type>
   <var-bottom-navigation v-model:active="clickEvent">
-    <var-bottom-navigation-item @click="handleClick" :label="t('label')" icon="home" />
-    <var-bottom-navigation-item @click="handleClick" :label="t('label')" icon="magnify" />
-    <var-bottom-navigation-item @click="handleClick" :label="t('label')" icon="heart" />
-    <var-bottom-navigation-item @click="handleClick" :label="t('label')" icon="account-circle" />
+    <var-bottom-navigation-item :label="t('label')" icon="home" @click="handleClick" />
+    <var-bottom-navigation-item :label="t('label')" icon="magnify" @click="handleClick" />
+    <var-bottom-navigation-item :label="t('label')" icon="heart" @click="handleClick" />
+    <var-bottom-navigation-item :label="t('label')" icon="account-circle" @click="handleClick" />
   </var-bottom-navigation>
 
   <app-type>{{ t('fab') }}</app-type>
-  <var-bottom-navigation v-model:active="fab" @fab-click="isEven = !isEven" style="margin-top: 10px">
+  <var-bottom-navigation v-model:active="fab" style="margin-top: 10px" @fab-click="isEven = !isEven">
     <template #fab>
       <var-icon name="heart" />
     </template>
@@ -92,7 +92,7 @@ function handleClick(active) {
   </var-bottom-navigation>
 
   <app-type>{{ t('variant') }}</app-type>
-  <var-bottom-navigation variant v-model:active="variant">
+  <var-bottom-navigation v-model:active="variant" variant>
     <var-bottom-navigation-item :label="t('label')" icon="home" />
     <var-bottom-navigation-item :label="t('label')" icon="magnify" />
     <var-bottom-navigation-item :label="t('label')" icon="heart" />

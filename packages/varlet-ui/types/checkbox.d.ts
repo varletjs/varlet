@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as CheckboxRules } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, Rules as CheckboxRules, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const checkboxProps: Record<keyof CheckboxProps, any>
 

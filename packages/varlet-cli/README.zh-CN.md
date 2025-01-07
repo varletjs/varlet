@@ -206,13 +206,6 @@ varlet-cli test -w
 varlet-cli test -cov
 ```
 
-#### 检查代码
-
-```shell
-# playground-ignore
-varlet-cli lint
-```
-
 #### 校验提交信息
 
 ```shell

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { computed, defineComponent, h } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
 import { call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 import { provideHighlighterProvider } from './provide'
 
 const { name, n } = createNamespace('highlighter-provider')
@@ -22,7 +22,7 @@ export default defineComponent({
         {
           class: n(),
         },
-        call(slots.default)
+        call(slots.default),
       )
   },
 })

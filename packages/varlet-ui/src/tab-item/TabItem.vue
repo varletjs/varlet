@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref } from 'vue'
 import VarSwipeItem from '../swipe-item'
-import { defineComponent, ref, computed } from 'vue'
-import { useTabsItems, useLists, type TabItemProvider } from './provide'
-import { props } from './props'
 import { createNamespace } from '../utils/components'
+import { props } from './props'
+import { useLists, useTabsItems, type TabItemProvider } from './provide'
 
 const { name, n, classes } = createNamespace('tab-item')
 

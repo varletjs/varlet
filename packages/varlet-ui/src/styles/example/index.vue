@@ -9,11 +9,11 @@ onThemeChange()
 <template>
   <var-space class="elevation-example-list" :size="['10vmin', 0]" justify="space-between">
     <div
+      v-for="e in elevations"
+      :key="e"
       class="elevation-example-item"
       :class="`var-elevation--${e}`"
       :style="{ background: 'var(--paper-background)' }"
-      v-for="e in elevations"
-      :key="e"
     >
       {{ e }}
     </div>

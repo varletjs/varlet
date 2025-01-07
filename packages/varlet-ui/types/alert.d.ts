@@ -1,5 +1,5 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from './varComponent'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const alertProps: Record<keyof AlertProps, any>
 

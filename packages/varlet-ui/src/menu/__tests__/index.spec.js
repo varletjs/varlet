@@ -1,17 +1,17 @@
-import Menu from '..'
-import VarMenu from '../Menu'
 import { createApp } from 'vue'
-import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import { doubleRaf } from '@varlet/shared'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Menu from '..'
+import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
+import VarMenu from '../Menu'
 
 test('test menu plugin', () => {
   const app = createApp({}).use(Menu)
   expect(app.component(Menu.name)).toBeTruthy()
 })
 
-test('test menu placement', async () => {
+test('test menu placement', () => {
   ;[
     'top',
     'top-start',

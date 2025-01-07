@@ -1,8 +1,8 @@
 <template>
   <div
-    :class="classes(n(), n('$--box'), computeColorClass(), n(`--${itemDirection}`))"
     ref="tabEl"
     v-ripple="{ disabled: disabled || !ripple }"
+    :class="classes(n(), n('$--box'), computeColorClass(), n(`--${itemDirection}`))"
     :style="{
       color: computeColorStyle(),
     }"
@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
-import { useTabs, type TabProvider } from './provide'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
+import Ripple from '../ripple'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
+import { useTabs, type TabProvider } from './provide'
 
 const { name, n, classes } = createNamespace('tab')
 

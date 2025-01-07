@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps, VNode } from 'vue'
+import { LoadingSize, LoadingType } from './loading'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export type SnackbarPosition = 'top' | 'center' | 'bottom'
 

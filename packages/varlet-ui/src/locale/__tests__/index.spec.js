@@ -1,7 +1,7 @@
-import enUS from '../en-US'
+import { expect, test, vi } from 'vitest'
 import { useLocale } from '..'
 import { mockConsole } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import enUS from '../en-US'
 
 test('test add lang', () => {
   const { add, use, t, messages } = useLocale()

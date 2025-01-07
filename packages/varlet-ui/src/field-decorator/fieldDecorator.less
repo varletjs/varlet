@@ -76,7 +76,10 @@
     pointer-events: none;
     cursor: inherit;
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.2s;
+    transition:
+      transform 0.28s var(--cubic-bezier),
+      color 0.25s,
+      max-width 0.2s;
   }
 
   &__clear-icon[var-field-decorator-cover] {
@@ -161,7 +164,9 @@
       background: var(--field-decorator-focus-color);
       transform: scaleX(0);
       transform-origin: center;
-      transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
+      transition:
+        transform 0.3s var(--cubic-bezier),
+        background-color 0.25s;
     }
 
     .var-field-decorator--middle-non-hint {
@@ -245,8 +250,8 @@
         )
         0
         calc(
-          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
-            var(--field-decorator-line-size)
+          var(--field-decorator-outlined-normal-padding-left) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-size)
         );
       margin: 0;
 
@@ -275,8 +280,8 @@
         )
         0
         calc(
-          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
-            var(--field-decorator-line-focus-size)
+          var(--field-decorator-outlined-normal-padding-left) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-focus-size)
         );
     }
 
@@ -366,8 +371,8 @@
           )
           0
           calc(
-            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
-              var(--field-decorator-line-size)
+            var(--field-decorator-outlined-small-padding-left) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-size)
           );
       }
 
@@ -379,8 +384,8 @@
           )
           0
           calc(
-            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
-              var(--field-decorator-line-focus-size)
+            var(--field-decorator-outlined-small-padding-left) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-focus-size)
           );
       }
     }

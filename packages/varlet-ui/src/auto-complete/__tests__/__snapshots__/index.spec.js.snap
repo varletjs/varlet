@@ -8,7 +8,7 @@ exports[`test auto-complete custom color 1`] = `
         <div class="var-field-decorator__controller" style="color: green; cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text" style="color: red; caret-color: blue;">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" style="color: red; caret-color: blue;">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -38,7 +38,7 @@ exports[`test auto-complete disabled 1`] = `
         <div class="var-field-decorator__controller var-field-decorator--disabled" style="overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="off" id="var-input-mock-id" disabled="" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--disabled" autocomplete="off" disabled="" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -68,7 +68,7 @@ exports[`test auto-complete hint and line 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
@@ -96,7 +96,7 @@ exports[`test auto-complete modelValue 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -126,7 +126,7 @@ exports[`test auto-complete placeholder 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--hint-center var-field-decorator--transition-disabled" for="var-input-mock-id"><span>Hello</span></label>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -155,7 +155,7 @@ exports[`test auto-complete readonly 1`] = `
         <div class="var-field-decorator__controller" style="overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" readonly="" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" readonly="" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -185,7 +185,7 @@ exports[`test auto-complete size 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -215,7 +215,7 @@ exports[`test auto-complete slots 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon">prepend-icon</div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -245,7 +245,7 @@ exports[`test auto-complete valiation with zod 1`] = `
         <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -286,7 +286,7 @@ exports[`test auto-complete valiation with zod 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -316,7 +316,7 @@ exports[`test auto-complete validation 1`] = `
         <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -357,7 +357,7 @@ exports[`test auto-complete validation 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">
@@ -387,7 +387,7 @@ exports[`test auto-complete variant 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon">

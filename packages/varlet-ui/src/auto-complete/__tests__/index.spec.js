@@ -1,9 +1,9 @@
-import AutoComplete from '..'
-import { createApp, nextTick, h } from 'vue'
+import { createApp, h, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
-import { trigger, triggerKeyboard } from '../../utils/test'
 import { z } from 'zod'
+import AutoComplete from '..'
+import { trigger, triggerKeyboard } from '../../utils/test'
 
 test('test auto-complete plugin', () => {
   const app = createApp({}).use(AutoComplete)

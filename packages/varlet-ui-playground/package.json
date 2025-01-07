@@ -23,11 +23,6 @@
     "jszip": "^3.6.0",
     "vue": "3.4.21"
   },
-  "eslintConfig": {
-    "rules": {
-      "no-undef": "off"
-    }
-  },
   "devDependencies": {
     "@varlet/cli": "workspace: *",
     "@types/file-saver": "^2.0.5",

@@ -6,10 +6,10 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useStep, type StepsProvider } from './provide'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
 import { call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
+import { useStep, type StepsProvider } from './provide'
 
 const { name, n } = createNamespace('steps')
 

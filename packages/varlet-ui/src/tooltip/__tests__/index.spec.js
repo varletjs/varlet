@@ -1,16 +1,16 @@
-import VarTooltip from '..'
 import { createApp } from 'vue'
-import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/test'
 import { doubleRaf } from '@varlet/shared'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import VarTooltip from '..'
+import { delay, mockStubs, trigger } from '../../utils/test'
 
 test('test tooltip plugin', () => {
   const app = createApp({}).use(VarTooltip)
   expect(app.component(VarTooltip.name)).toBeTruthy()
 })
 
-test('test tooltip placement', async () => {
+test('test tooltip placement', () => {
   ;[
     'top',
     'top-start',

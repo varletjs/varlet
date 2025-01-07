@@ -1,5 +1,5 @@
-import AvatarGroup from './AvatarGroup.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import AvatarGroup from './AvatarGroup.vue'
 import { props as avatarGroupProps } from './props'
 
 withInstall(AvatarGroup)

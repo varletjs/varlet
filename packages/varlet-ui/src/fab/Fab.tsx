@@ -1,13 +1,12 @@
-import Button from '../button'
-import Icon from '../icon'
-import Drag from '../drag'
 import { defineComponent, ref, Transition, watch } from 'vue'
+import { call, isBoolean } from '@varlet/shared'
 import { useClickOutside, useVModel } from '@varlet/use'
-import { isBoolean, call } from '@varlet/shared'
+import Button from '../button'
+import Drag from '../drag'
+import Icon from '../icon'
 import { createNamespace, flatFragment } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
-
 import '../styles/common.less'
 import '../styles/elevation.less'
 import '../ripple/ripple.less'
@@ -32,21 +31,21 @@ export default defineComponent({
       () => props.trigger,
       () => {
         isActive.value = false
-      }
+      },
     )
 
     watch(
       () => props.disabled,
       () => {
         isActive.value = false
-      }
+      },
     )
 
     watch(
       () => [props.position, props.fixed, props.top, props.bottom, props.left, props.right],
       () => {
         dragRef.value?.reset()
-      }
+      },
     )
 
     useClickOutside(host, 'click', handleClickOutside)

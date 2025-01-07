@@ -1,5 +1,6 @@
 <template>
   <div
+    v-ripple="{ disabled: !ripple }"
     :class="
       classes(
         n(),
@@ -7,7 +8,7 @@
         formatElevation(elevation, 2),
         [onClick, n('--cursor')],
         [round, n('--round')],
-        [inline, n('$--inline-flex')]
+        [inline, n('$--inline-flex')],
       )
     "
     :style="{
@@ -15,7 +16,6 @@
       height: toSizeUnit(height),
       'border-radius': toSizeUnit(radius),
     }"
-    v-ripple="{ disabled: !ripple }"
     @click="handleClick"
   >
     <slot />
@@ -23,12 +23,12 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
 import { defineComponent } from 'vue'
-import { createNamespace, formatElevation } from '../utils/components'
-import { props } from './props'
-import { toSizeUnit } from '../utils/elements'
 import { call } from '@varlet/shared'
+import Ripple from '../ripple'
+import { createNamespace, formatElevation } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('paper')
 

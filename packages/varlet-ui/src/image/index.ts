@@ -1,5 +1,5 @@
-import Image from './Image.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Image from './Image.vue'
 import { props as imageProps } from './props'
 
 withInstall(Image)

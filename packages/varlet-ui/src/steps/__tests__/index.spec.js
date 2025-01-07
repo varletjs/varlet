@@ -1,11 +1,11 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Steps from '..'
 import Step from '../../step'
-import VarSteps from '../Steps'
 import VarStep from '../../step/Step'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import VarSteps from '../Steps'
 
 const clickStep = vi.fn()
 const Wrapper = {

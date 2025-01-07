@@ -1,8 +1,8 @@
-import Drag from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, trigger, delay } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { expect, test, vi } from 'vitest'
+import Drag from '..'
+import { delay, trigger, triggerDrag } from '../../utils/test'
 
 test('test drag plugin', () => {
   const app = createApp({}).use(Drag)

@@ -10,7 +10,7 @@
           zIndex,
         }"
       >
-        <div ref="svgRef" v-show="false">
+        <div v-show="false" ref="svgRef">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -56,10 +56,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
+import { defineComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { getStyle } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { getStyle } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('watermark')
 
@@ -90,7 +90,7 @@ export default defineComponent({
       resize,
       {
         deep: true,
-      }
+      },
     )
 
     onMounted(resize)
@@ -109,7 +109,7 @@ export default defineComponent({
       return false
     }
 
-    async function imageToBase64(): Promise<string> {
+    function imageToBase64(): Promise<string> {
       return new Promise((resolve) => {
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')

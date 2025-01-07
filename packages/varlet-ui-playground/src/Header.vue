@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import Palette from './icons/Palette.vue'
-import GitHub from './icons/GitHub.vue'
-import Share from './icons/Share.vue'
-import Download from './icons/Download.vue'
-import Close from './icons/Close.vue'
-import { downloadProject } from './download/download'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { Snackbar, StyleProvider, Themes } from '@varlet/ui'
+import { downloadProject } from './download/download'
+import Close from './icons/Close.vue'
+import Download from './icons/Download.vue'
+import GitHub from './icons/GitHub.vue'
+import Palette from './icons/Palette.vue'
+import Share from './icons/Share.vue'
 import { usePreviewVersion } from './utils/env'
 
-// eslint-disable-next-line vue/require-prop-types
 const props = defineProps(['store', 'theme'])
 const emit = defineEmits(['update:theme'])
 const inIframe = ref(window.self !== window.top)
@@ -50,13 +49,13 @@ watch(
   () => {
     currentTheme.value = props.theme
     syncTheme()
-  }
+  },
 )
 watch(
   () => currentTheme.value,
   () => {
     emit('update:theme', currentTheme.value)
-  }
+  },
 )
 watch(() => currentVueVersion.value, setVueVersion)
 watch(() => currentVarletVersion.value, setVarletVersion)
@@ -91,7 +90,7 @@ function notifyParentThemeChange() {
       data: props.theme,
       from: 'playground',
     },
-    '*'
+    '*',
   )
 }
 
@@ -149,34 +148,34 @@ async function setVarletVersion(v: string) {
 
 <template>
   <nav>
-    <Close class="close" v-if="inIframe" @click="handleClose" />
+    <Close v-if="inIframe" class="close" @click="handleClose" />
     <h1 v-else>
       <img alt="logo" src="./logo.svg" />
       <span>Varlet UI Playground</span>
     </h1>
     <var-space align="center">
       <var-select
+        v-model="currentVarletVersion"
         style="width: 210px"
         :offset-y="8"
         variant="outlined"
         size="small"
         placeholder="Varlet Version"
-        v-model="currentVarletVersion"
       >
         <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'preview' ? '' : 'v'}${v}`" :value="v" />
       </var-select>
       <var-select
+        v-model="currentVueVersion"
         style="width: 210px"
         :offset-y="8"
         variant="outlined"
         size="small"
         placeholder="Vue Version"
-        v-model="currentVueVersion"
       >
         <var-option v-for="v in vueVersions" :key="v" :label="`v${v}`" :value="v" />
       </var-select>
 
-      <var-menu-select placement="bottom" :offset-y="10" v-model="currentTheme">
+      <var-menu-select v-model="currentTheme" placement="bottom" :offset-y="10">
         <var-button class="link-button" text round>
           <Palette />
         </var-button>

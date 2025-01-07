@@ -6,7 +6,7 @@
     }"
     role="alert"
   >
-    <div :class="n('icon')" v-if="isInternalType || $slots['icon']">
+    <div v-if="isInternalType || $slots['icon']" :class="n('icon')">
       <slot name="icon">
         <var-icon v-if="isInternalType" :name="iconTypeMap[type]" />
       </slot>
@@ -14,10 +14,10 @@
 
     <slot name="content">
       <div :class="n('content')">
-        <div :class="n('title')" v-if="title || $slots['title']">
+        <div v-if="title || $slots['title']" :class="n('title')">
           <slot name="title">{{ title }}</slot>
         </div>
-        <div :class="n('message')" v-if="message || $slots['default']">
+        <div v-if="message || $slots['default']" :class="n('message')">
           <slot>{{ message }}</slot>
         </div>
       </div>
@@ -32,11 +32,11 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
-import { props, type AlertType } from './props'
-import { createNamespace, formatElevation } from '../utils/components'
+import { computed, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import VarIcon from '../icon'
+import { createNamespace, formatElevation } from '../utils/components'
+import { props, type AlertType } from './props'
 
 const { name, n, classes } = createNamespace('alert')
 

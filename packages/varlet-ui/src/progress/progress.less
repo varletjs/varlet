@@ -43,7 +43,9 @@
       background-color: var(--progress-background);
       top: 0;
       left: 0;
-      transition: all 0.2s, background-color 0.8s;
+      transition:
+        all 0.2s,
+        background-color 0.8s;
     }
 
     &-label {
@@ -196,7 +198,9 @@
     }
 
     &-overlay {
-      animation: progress-circle-dash 1.4s ease-in-out infinite, progress-circle-rotate 1.4s linear infinite;
+      animation:
+        progress-circle-dash 1.4s ease-in-out infinite,
+        progress-circle-rotate 1.4s linear infinite;
       stroke-dasharray: 25, 200;
       stroke-dashoffset: 0;
       stroke-linecap: round;

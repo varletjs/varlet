@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="appBar"
     :class="
       classes(
         n(),
@@ -8,27 +9,26 @@
         [round, n('--round')],
         [fixed, n('--fixed')],
         [border, n('--border')],
-        formatElevation(elevation, 3)
+        formatElevation(elevation, 3),
       )
     "
-    ref="appBar"
     :style="rootStyles"
     v-bind="$attrs"
   >
     <div :class="n('toolbar')">
       <div :class="n('left')">
         <slot name="left" />
-        <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
+        <div v-if="titlePosition === 'left'" :class="n('title')" :style="{ paddingLeft }">
           <slot>{{ title }}</slot>
         </div>
       </div>
 
-      <div :class="n('title')" v-if="titlePosition === 'center'">
+      <div v-if="titlePosition === 'center'" :class="n('title')">
         <slot>{{ title }}</slot>
       </div>
 
       <div :class="n('right')">
-        <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
+        <div v-if="titlePosition === 'right'" :class="n('title')" :style="{ paddingRight }">
           <slot>{{ title }}</slot>
         </div>
         <slot name="right" />
@@ -42,12 +42,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onUpdated, computed, CSSProperties } from 'vue'
-import { props } from './props'
-import { createNamespace, formatElevation } from '../utils/components'
-import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { computed, CSSProperties, defineComponent, onUpdated, ref } from 'vue'
 import { getRect } from '@varlet/shared'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('app-bar')
 

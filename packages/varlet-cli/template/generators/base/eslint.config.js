@@ -1,16 +1,15 @@
-{
-  "root": true,
-  "ignorePatterns": [
+const { defineConfig } = require("@configurajs/eslint");
+
+module.export = defineConfig({
+  ignores: [
     "lib/**",
     "es/**",
     "umd/**",
     "site/**",
     "public/**",
-    "src/*/__tests__/**",
     "coverage/**",
     "highlight/**",
     "types/index.d.ts",
-    ".varlet/**"
+    ".varlet/**",
   ],
-  "extends": ["@varlet"]
-}
+});

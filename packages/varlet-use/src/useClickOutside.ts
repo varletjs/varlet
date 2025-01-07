@@ -1,6 +1,6 @@
-import { useEventListener } from './useEventListener.js'
-import { inBrowser, isFunction } from '@varlet/shared'
 import { unref, type Ref } from 'vue'
+import { inBrowser, isFunction } from '@varlet/shared'
+import { useEventListener } from './useEventListener.js'
 
 export type UseClickOutsideTarget = Element | Ref<Element | undefined | null> | (() => Element)
 

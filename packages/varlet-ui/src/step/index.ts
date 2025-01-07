@@ -1,6 +1,6 @@
-import Step from './Step.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { props as stepProps } from './props'
+import Step from './Step.vue'
 
 withInstall(Step)
 withPropsDefaultsSetter(Step, stepProps)

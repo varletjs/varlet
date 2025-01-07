@@ -7,6 +7,7 @@
     @click="handleClick"
   >
     <var-menu-select
+      v-model:show="isShowMenuSelect"
       same-width
       auto-complete-cover
       scrollable
@@ -15,7 +16,6 @@
       :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
       :popover-class="variant === 'standard' ? n('--standard-menu-margin') : undefined"
-      v-model:show="isShowMenuSelect"
       @update:model-value="handleAutoComplete"
       @key-escape="handleKeyEscape"
     >
@@ -36,6 +36,7 @@
           disabled,
           clearable,
         }"
+        v-model="value"
         autocomplete="off"
         :is-force-focusing-effect="isFocusing"
         :is-force-error-effect="!!errorMessage"
@@ -44,21 +45,20 @@
         @blur="handleBlur"
         @clear="handleClear"
         @change="handleChange"
-        v-model="value"
       >
-        <template #prepend-icon v-if="$slots['prepend-icon']">
+        <template v-if="$slots['prepend-icon']" #prepend-icon>
           <slot name="prepend-icon" />
         </template>
 
-        <template #append-icon v-if="$slots['append-icon']">
+        <template v-if="$slots['append-icon']" #append-icon>
           <slot name="append-icon" />
         </template>
 
-        <template #clear-icon="{ clear }" v-if="$slots['clear-icon']">
+        <template v-if="$slots['clear-icon']" #clear-icon="{ clear }">
           <slot name="clear-icon" :clear="clear" />
         </template>
 
-        <template #extra-message v-if="$slots['extra-message']">
+        <template v-if="$slots['extra-message']" #extra-message>
           <slot name="extra-message" />
         </template>
       </var-input>
@@ -82,16 +82,16 @@
 </template>
 
 <script lang="ts">
-import VarInput from '../input'
-import VarMenuSelect from '../menu-select'
-import VarMenuOption from '../menu-option'
-import VarFormDetails from '../form-details'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { type AutoCompleteValidateTrigger, props, type AutoCompleteOption } from './props'
-import { createNamespace, useValidation } from '../utils/components'
-import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
 import { call, isEmpty, preventDefault, raf, toNumber } from '@varlet/shared'
+import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
+import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
+import VarInput from '../input'
+import VarMenuOption from '../menu-option'
+import VarMenuSelect from '../menu-select'
+import { createNamespace, useValidation } from '../utils/components'
+import { props, type AutoCompleteOption, type AutoCompleteValidateTrigger } from './props'
 import { AutoCompleteProvider } from './provide'
 
 const { name, n } = createNamespace('auto-complete')
@@ -158,7 +158,7 @@ export default defineComponent({
         }
 
         blur()
-      }
+      },
     )
 
     watch(() => [props.options, isFocusing.value], changeMenuState)
@@ -250,7 +250,7 @@ export default defineComponent({
       }
     }
 
-    async function changeMenuState() {
+    function changeMenuState() {
       if (isFocusing.value) {
         isShowMenuSelect.value = getShowMenuSelect(value.value!)
       }
@@ -261,7 +261,7 @@ export default defineComponent({
       }
     }
 
-    async function handleInput(newValue: string, event: Event) {
+    function handleInput(newValue: string, event: Event) {
       changeMenuState()
       call(props.onInput, newValue, event)
       validateWithTrigger('onInput')

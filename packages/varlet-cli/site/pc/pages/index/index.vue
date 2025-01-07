@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import config from '@config'
-import AppHeader from '../../components/AppHeader.vue'
-import AppAd from '../../components/AppAd.vue'
 import { ref, watch, type Ref } from 'vue'
+import config from '@config'
+import { getBrowserTheme, getPCLocationInfo, onThemeChange, setTheme, watchTheme, type Theme } from '@varlet/cli/client'
 import { useRoute, useRouter } from 'vue-router'
-import { getPCLocationInfo, watchTheme, onThemeChange, getBrowserTheme, setTheme, type Theme } from '@varlet/cli/client'
+import AppAd from '../../components/AppAd.vue'
+import AppHeader from '../../components/AppHeader.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -58,7 +58,7 @@ watch(
     language.value = getPCLocationInfo().language
     setLocale()
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>
 
@@ -275,7 +275,10 @@ watch(
     padding: 20px;
     border-radius: 12px;
     background: var(--site-config-color-index-page-feature-background);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
 
   &__feature-description {
@@ -321,7 +324,10 @@ watch(
     padding: 30px 20px;
     border-radius: 12px;
     background: var(--site-config-color-index-page-feature-background);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
     &-avatar {
       width: 80px;

@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, Type as LinkType, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
+import { BasicAttributes, Type as LinkType, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const linkProps: Record<keyof LinkProps, any>
 

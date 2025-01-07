@@ -31,8 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import { MenuTypes, type Menu } from '../../utils'
 import { reactive } from 'vue'
+import { MenuTypes, type Menu } from '../../utils'
 
 const props = defineProps<{ menu: Menu[]; menuName: string; language: string }>()
 const emit = defineEmits(['change'])

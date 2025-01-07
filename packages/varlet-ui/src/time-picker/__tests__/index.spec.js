@@ -1,9 +1,9 @@
-import TimePicker from '..'
-import VarTimePicker from '../TimePicker'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import TimePicker from '..'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarTimePicker from '../TimePicker'
 
 test('test timePicker plugin', () => {
   const app = createApp({}).use(TimePicker)

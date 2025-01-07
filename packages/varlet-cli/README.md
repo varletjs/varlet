@@ -207,13 +207,6 @@ varlet-cli test -w
 varlet-cli test -cov
 ```
 
-#### Lint the code
-
-```shell
-# playground-ignore
-varlet-cli lint
-```
-
 #### Lint git commit message
 
 ```shell

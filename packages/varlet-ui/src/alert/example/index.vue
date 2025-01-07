@@ -1,8 +1,8 @@
 <script setup>
-import VarAlert from '..'
-import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { use, t } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import VarAlert from '..'
+import { t, use } from './locale'
 
 const options = ['info', 'success', 'warning', 'danger'].map((value) => ({ label: value, value }))
 const show = ref(true)
@@ -29,7 +29,7 @@ onThemeChange()
 
   <app-type>{{ t('variant') }}</app-type>
   <var-space direction="column" size="large">
-    <var-select variant="outlined" size="small" v-model="type" :options="options" />
+    <var-select v-model="type" variant="outlined" size="small" :options="options" />
     <var-alert :title="t('alertTitle')" :message="t('alertText')" :type="type" />
     <var-alert variant="tonal" :title="t('alertTitle')" :message="t('alertText')" :type="type" />
     <var-alert variant="outlined" :title="t('alertTitle')" :message="t('alertText')" :type="type" />

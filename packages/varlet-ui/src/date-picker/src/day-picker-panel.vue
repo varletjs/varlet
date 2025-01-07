@@ -38,29 +38,29 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm/index.js'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
-import PanelHeader from './panel-header.vue'
-import VarButton from '../../button'
 import {
-  defineComponent,
-  ref,
   computed,
-  watch,
+  defineComponent,
   reactive,
-  type Ref,
+  ref,
+  watch,
   type ComputedRef,
-  type UnwrapRef,
   type PropType,
+  type Ref,
   type RendererNode,
+  type UnwrapRef,
 } from 'vue'
-import { WEEK_HEADER, type Choose, type Preview, type ComponentProps, type Week, type PanelBtnDisabled } from '../props'
 import { toNumber } from '@varlet/shared'
-import { createNamespace } from '../../utils/components'
-import { t } from '../../locale'
 import { onSmartMounted } from '@varlet/use'
+import dayjs from 'dayjs/esm/index.js'
+import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
+import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
+import VarButton from '../../button'
+import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
+import { createNamespace } from '../../utils/components'
+import { WEEK_HEADER, type Choose, type ComponentProps, type PanelBtnDisabled, type Preview, type Week } from '../props'
+import PanelHeader from './panel-header.vue'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -112,12 +112,13 @@ export default defineComponent({
     const { t: pt } = injectLocaleProvider()
 
     const isCurrent: ComputedRef<boolean> = computed(
-      () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth
+      () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth,
     )
 
     const isSame: ComputedRef<boolean> = computed(
       () =>
-        props.choose.chooseYear === props.preview.previewYear && props.choose.chooseMonth === props.preview.previewMonth
+        props.choose.chooseYear === props.preview.previewYear &&
+        props.choose.chooseMonth === props.preview.previewMonth,
     )
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
@@ -172,8 +173,12 @@ export default defineComponent({
       let isAfterMin = true
       const previewDate = `${previewYear}-${previewMonth}-${day}`
 
-      if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
-      if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
+      if (max) {
+        isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
+      }
+      if (min) {
+        isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
+      }
 
       return isBeforeMax && isAfterMin
     }
@@ -185,7 +190,9 @@ export default defineComponent({
       }: { choose: Choose; componentProps: ComponentProps } = props
 
       if (range) {
-        if (!chooseRangeDay.length) return false
+        if (!chooseRangeDay.length) {
+          return false
+        }
 
         const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
         const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
@@ -215,46 +222,69 @@ export default defineComponent({
       const val = `${previewYear}-${previewMonth}-${day}`
 
       const dayExist = (): boolean => {
-        if (range || multiple) return shouldChoose(val)
+        if (range || multiple) {
+          return shouldChoose(val)
+        }
 
         return toNumber(chooseDay) === day && isSame.value
       }
 
       const computeDisabled = (): boolean => {
-        if (!inRange(day)) return true
-        if (!allowedDates) return false
+        if (!inRange(day)) {
+          return true
+        }
+        if (!allowedDates) {
+          return false
+        }
 
         return !allowedDates(val)
       }
       const disabled = computeDisabled()
 
       const computeText = (): boolean => {
-        if (disabled) return true
-        if (range || multiple) return !shouldChoose(val)
+        if (disabled) {
+          return true
+        }
+        if (range || multiple) {
+          return !shouldChoose(val)
+        }
 
         return !isSame.value || toNumber(chooseDay) !== day
       }
 
       const computeOutline = (): boolean => {
-        // 不满足基本条件， 基本条件为当前年、当前月、当前日并且 showCurrent 为true的情况
-        if (!(isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent)) return false
+        // Not satisfied with the basic conditions, the basic conditions are the current year, the current month, the current day, and the showCurrent as true
+        if (!(isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent)) {
+          return false
+        }
 
-        // 存在着 disabled
-        if ((range || multiple || isSame.value) && disabled) return true
+        if ((range || multiple || isSame.value) && disabled) {
+          return true
+        }
 
-        // 在选择范围之外
-        if (range || multiple) return !shouldChoose(val)
+        // Outside the selection range
+        if (range || multiple) {
+          return !shouldChoose(val)
+        }
 
-        // 同一年但是未被选择的情况
-        if (isSame.value) return chooseDay !== currentDay
+        // In the same year but not selected
+        if (isSame.value) {
+          return chooseDay !== currentDay
+        }
 
         return true
       }
 
       const textColorOrCover = (): string => {
-        if (disabled) return ''
-        if (computeOutline()) return color ?? ''
-        if (dayExist()) return ''
+        if (disabled) {
+          return ''
+        }
+        if (computeOutline()) {
+          return color ?? ''
+        }
+        if (dayExist()) {
+          return ''
+        }
 
         return `${nDate()}-color-cover`
       }
@@ -279,7 +309,9 @@ export default defineComponent({
 
     const chooseDay = (day: number, event: Event) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains(n('button--disabled'))) return
+      if (buttonEl.classList.contains(n('button--disabled'))) {
+        return
+      }
 
       emit('choose-day', day)
     }
@@ -299,7 +331,7 @@ export default defineComponent({
       () => {
         initDate()
         initHeader()
-      }
+      },
     )
 
     watch(() => [props.componentProps.max, props.componentProps.min], initHeader)

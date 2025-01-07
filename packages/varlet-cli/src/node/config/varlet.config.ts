@@ -1,11 +1,11 @@
-import fse from 'fs-extra'
-import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
-import { outputFileSyncOnChange } from '../shared/fsUtils.js'
-import { isArray, mergeWith } from '@varlet/shared'
 import { pathToFileURL } from 'url'
 import { type VIConfig } from '@varlet/icon-builder'
+import { isArray, mergeWith } from '@varlet/shared'
 import { type CopyOptions } from '@varlet/vite-plugins'
+import fse from 'fs-extra'
 import { Plugin, ProxyOptions } from 'vite'
+import { SITE_CONFIG, VARLET_CONFIG } from '../shared/constant.js'
+import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 
 const { pathExistsSync, statSync } = fse
 

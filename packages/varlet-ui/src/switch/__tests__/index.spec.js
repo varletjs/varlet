@@ -1,10 +1,10 @@
-import Switch from '..'
-import VarSwitch from '../Switch'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, triggerKeyboard } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import { z } from 'zod'
+import Switch from '..'
+import { delay, triggerKeyboard } from '../../utils/test'
+import VarSwitch from '../Switch'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)

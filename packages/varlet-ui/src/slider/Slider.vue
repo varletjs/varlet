@@ -1,8 +1,8 @@
 <template>
   <div :class="classes(n(direction), n('$--box'))">
     <div
-      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n(`${direction}--error`)])"
       ref="sliderEl"
+      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n(`${direction}--error`)])"
       @click="handleClick"
     >
       <div :class="n(`${direction}-track`)">
@@ -18,8 +18,8 @@
       </div>
       <div
         v-for="item in thumbList"
-        :class="n(`${direction}-thumb`)"
         :key="item.enumValue"
+        :class="n(`${direction}-thumb`)"
         :style="thumbStyle(item)"
         :tabindex="isDisabled ? undefined : '0'"
         role="slider"
@@ -34,11 +34,11 @@
       >
         <slot name="button" :current-value="item.text">
           <div
+            v-hover:desktop="(value: boolean) => hover(value, item)"
             :class="n(`${direction}-thumb-block`)"
             :style="{
               background: thumbColor,
             }"
-            v-hover:desktop="(value: boolean) => hover(value, item)"
           ></div>
           <div
             :class="
@@ -74,16 +74,16 @@
 </template>
 
 <script lang="ts">
-import VarFormDetails from '../form-details'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
-import { defineComponent, ref, onBeforeUnmount, computed, reactive, nextTick, watch, type CSSProperties } from 'vue'
-import { useValidation, createNamespace } from '../utils/components'
-import { useForm } from '../form/provide'
-import { getLeft, toSizeUnit } from '../utils/elements'
-import { isArray, isNumber, toNumber, getRect, preventDefault, call, hasOwn, clamp, error, warn } from '@varlet/shared'
-import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
+import { computed, defineComponent, nextTick, onBeforeUnmount, reactive, ref, watch, type CSSProperties } from 'vue'
+import { call, clamp, error, getRect, hasOwn, isArray, isNumber, preventDefault, toNumber, warn } from '@varlet/shared'
 import { onSmartMounted, onWindowResize, useEventListener } from '@varlet/use'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { createNamespace, useValidation } from '../utils/components'
+import { getLeft, toSizeUnit } from '../utils/elements'
+import { props, Thumbs, type ThumbProps, type ThumbsListProps, type ThumbsProps } from './props'
 import { type SliderProvider } from './provide'
 
 const { name, n, classes } = createNamespace('slider')
@@ -240,7 +240,7 @@ export default defineComponent({
     }
 
     function validateWithTrigger() {
-      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+      nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
     }
 
     function getOffset(e: MouseEvent) {

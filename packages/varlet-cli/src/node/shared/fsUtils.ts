@@ -1,8 +1,8 @@
-import globSync from 'glob'
-import fse from 'fs-extra'
 import { extname, resolve } from 'path'
-import { CLI_PACKAGE_JSON, PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR, UI_PACKAGE_JSON } from './constant.js'
 import { fileURLToPath } from 'url'
+import fse from 'fs-extra'
+import globSync from 'glob'
+import { CLI_PACKAGE_JSON, PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR, UI_PACKAGE_JSON } from './constant.js'
 
 const {
   appendFileSync,

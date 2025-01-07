@@ -1,5 +1,5 @@
-import { VarDirective } from './varDirective'
 import { StyleValue } from 'vue'
+import { VarDirective } from './varDirective'
 
 export type HoverValue = StyleValue | ((hovering: boolean) => void)
 

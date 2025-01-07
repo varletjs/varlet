@@ -1,11 +1,11 @@
 // @ts-nocheck
 // lib
-import _zhCN from '../../../locale/zh-CN'
+import { add as _add, use as _use, useLocale } from '../../../locale'
 import _enCN from '../../../locale/en-US'
+import _zhCN from '../../../locale/zh-CN'
+import enUS from './en-US'
 // mobile example doc
 import zhCN from './zh-CN'
-import enUS from './en-US'
-import { useLocale, add as _add, use as _use } from '../../../locale'
 
 const { add, use: exampleUse, t, merge } = useLocale()
 

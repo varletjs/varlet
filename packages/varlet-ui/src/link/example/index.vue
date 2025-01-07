@@ -1,6 +1,6 @@
 <script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 watchLang(use)
 onThemeChange()

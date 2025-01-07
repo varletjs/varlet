@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from './varComponent'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const countToProps: Record<keyof CountToProps, any>
 

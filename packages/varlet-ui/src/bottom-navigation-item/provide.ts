@@ -1,6 +1,6 @@
 import { type ComputedRef } from 'vue'
-import { useParent } from '@varlet/use'
 import { assert } from '@varlet/shared'
+import { useParent } from '@varlet/use'
 import {
   BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY,
   type BottomNavigationProvider,
@@ -13,7 +13,7 @@ export interface BottomNavigationItemProvider {
 
 export function useBottomNavigation() {
   const { parentProvider, index, bindParent } = useParent<BottomNavigationProvider, BottomNavigationItemProvider>(
-    BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY
+    BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY,
   )
 
   assert(!!bindParent, 'BottomNavigationItem', '<var-bottom-navigation-item/> must in <var-bottom-navigation/>')

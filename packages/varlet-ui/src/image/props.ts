@@ -1,4 +1,4 @@
-import { type PropType, ImgHTMLAttributes } from 'vue'
+import { ImgHTMLAttributes, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'

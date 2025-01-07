@@ -1,44 +1,44 @@
 <template>
   <div
+    v-ripple="{ disabled: !ripple }"
     :class="classes(n(), [border, n('--border')], [onClick, n('--cursor')])"
     :style="borderOffsetStyles"
-    v-ripple="{ disabled: !ripple }"
     @click="handleClick"
   >
     <slot name="icon">
-      <div :class="classes(n('icon'), iconClass)" v-if="icon">
+      <div v-if="icon" :class="classes(n('icon'), iconClass)">
         <var-icon :name="icon" :namespace="namespace" />
       </div>
     </slot>
 
     <div :class="n('content')">
       <slot>
-        <div :class="classes(n('title'), titleClass)" v-if="title">
+        <div v-if="title" :class="classes(n('title'), titleClass)">
           {{ title }}
         </div>
       </slot>
 
       <slot name="description">
-        <div :class="classes(n('description'), descriptionClass)" v-if="description">
+        <div v-if="description" :class="classes(n('description'), descriptionClass)">
           {{ description }}
         </div>
       </slot>
     </div>
 
-    <div :class="classes(n('extra'), extraClass)" v-if="$slots.extra">
+    <div v-if="$slots.extra" :class="classes(n('extra'), extraClass)">
       <slot name="extra" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { computed, CSSProperties, defineComponent } from 'vue'
+import { call } from '@varlet/shared'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, CSSProperties } from 'vue'
-import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { call } from '@varlet/shared'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('cell')
 

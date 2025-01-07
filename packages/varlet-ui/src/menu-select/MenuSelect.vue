@@ -1,6 +1,7 @@
 <template>
   <var-menu
     ref="menu"
+    v-model:show="show"
     tabindex="-1"
     :class="n()"
     :disabled="disabled"
@@ -17,7 +18,6 @@
     :popover-class="popoverClass"
     :close-on-click-reference="closeOnClickReference"
     :close-on-key-escape="false"
-    v-model:show="show"
     @open="onOpen"
     @opened="onOpened"
     @close="onClose"
@@ -33,8 +33,8 @@
       >
         <template v-for="option in options" :key="option[valueKey]">
           <var-menu-children
-            ref="menuChildren"
             v-if="option[childrenKey]"
+            ref="menuChildren"
             :parent-show="show"
             :option="option"
             :options="option[childrenKey]"
@@ -61,19 +61,19 @@
 </template>
 
 <script lang="ts">
-import VarMenu from '../menu'
-import VarMenuOption from '../menu-option'
-import VarMenuChildren from './MenuChildren.vue'
-import { defineComponent, computed, ref } from 'vue'
-import { props, MenuSelectOption } from './props'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useMenuOptions, type MenuSelectProvider } from './provide'
-import { useSelectController } from '../select/useSelectController'
+import { computed, defineComponent, ref } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
-import { focusChildElementByKey } from '../utils/elements'
+import VarMenu from '../menu'
+import VarMenuOption from '../menu-option'
 import { type MenuOptionProvider } from '../menu-option/provide'
 import { type Reference } from '../menu/usePopover'
+import { useSelectController } from '../select/useSelectController'
+import { createNamespace, formatElevation } from '../utils/components'
+import { focusChildElementByKey } from '../utils/elements'
+import VarMenuChildren from './MenuChildren.vue'
+import { MenuSelectOption, props } from './props'
+import { useMenuOptions, type MenuSelectProvider } from './provide'
 
 const { name, n, classes } = createNamespace('menu-select')
 
@@ -299,7 +299,7 @@ export default defineComponent({
             }
 
             return getActiveElementParent(activeElement) === getActiveElementParent(nextActiveElement)
-          }
+          },
         )
       }
     }

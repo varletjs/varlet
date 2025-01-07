@@ -11,7 +11,7 @@
       :role="accordion ? 'tab' : 'button'"
       @click="toggle"
     >
-      <div :class="n('header-title')" v-if="$slots.title || title">
+      <div v-if="$slots.title || title" :class="n('header-title')">
         <slot name="title">{{ title }}</slot>
       </div>
       <div :class="n('header-icon')">
@@ -23,7 +23,7 @@
               classes(
                 n('header-icon'),
                 [isShow && icon === 'chevron-down', n('header-open')],
-                [disabled, n('header--disable')]
+                [disabled, n('header--disable')],
               )
             "
           />
@@ -31,9 +31,9 @@
       </div>
     </div>
     <div
-      :class="n('content')"
       v-show="showContent"
       ref="contentEl"
+      :class="n('content')"
       @transitionend="handleTransitionEnd"
       @transitionstart="handleTransitionStart"
     >
@@ -45,12 +45,12 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import { defineComponent, ref, computed } from 'vue'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useCollapse, type CollapseItemProvider } from './provide'
-import { props } from './props'
+import { computed, defineComponent, ref } from 'vue'
 import { useCollapseTransition } from '../collapse-transition/useCollapseTransition'
+import VarIcon from '../icon'
+import { createNamespace, formatElevation } from '../utils/components'
+import { props } from './props'
+import { useCollapse, type CollapseItemProvider } from './provide'
 
 const { name, n, classes } = createNamespace('collapse-item')
 

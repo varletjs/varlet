@@ -1,10 +1,10 @@
-import logger from '../shared/logger.js'
 import fse from 'fs-extra'
 import { createSpinner } from 'nanospinner'
-import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant.js'
 import { compileBundle, compileModule } from '../compiler/compileModule.js'
 import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight.js'
 import { compileTypes } from '../compiler/compileTypes.js'
+import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant.js'
+import logger from '../shared/logger.js'
 
 const { remove } = fse
 

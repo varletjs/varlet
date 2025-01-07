@@ -1,5 +1,5 @@
+import { isRef, onBeforeUnmount, onDeactivated, unref, watch, type Ref, type WatchStopHandle } from 'vue'
 import { inBrowser, isFunction } from '@varlet/shared'
-import { isRef, onDeactivated, onBeforeUnmount, unref, watch, type Ref, type WatchStopHandle } from 'vue'
 import { onSmartMounted } from './onSmartMounted.js'
 
 export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null> | (() => EventTarget)
@@ -13,21 +13,21 @@ export function useEventListener<T extends keyof DocumentEventMap>(
   target: UseEventListenerTarget,
   type: T,
   listener: (event: DocumentEventMap[T]) => void,
-  options?: UseEventListenerOptions
+  options?: UseEventListenerOptions,
 ): () => void
 
 export function useEventListener(
   target: UseEventListenerTarget,
   type: string,
   listener: EventListener,
-  options?: UseEventListenerOptions
+  options?: UseEventListenerOptions,
 ): () => void
 
 export function useEventListener(
   target: UseEventListenerTarget,
   type: string,
   listener: EventListener,
-  options: UseEventListenerOptions = {}
+  options: UseEventListenerOptions = {},
 ) {
   if (!inBrowser()) {
     return
@@ -81,7 +81,7 @@ export function useEventListener(
       (newValue, oldValue) => {
         remove(oldValue)
         add(newValue)
-      }
+      },
     )
   }
 

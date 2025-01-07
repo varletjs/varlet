@@ -1,8 +1,8 @@
-import VarEllipsis from '../Ellipsis.vue'
-import Ellipsis from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, vi, test } from 'vitest'
+import { expect, test, vi } from 'vitest'
+import Ellipsis from '..'
+import VarEllipsis from '../Ellipsis.vue'
 
 test('test ellipsis plugin', () => {
   const app = createApp({}).use(Ellipsis)

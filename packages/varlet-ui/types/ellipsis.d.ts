@@ -1,5 +1,5 @@
 import { TooltipProps } from './tooltip'
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const ellipsisProps: Record<keyof EllipsisProps, any>
 

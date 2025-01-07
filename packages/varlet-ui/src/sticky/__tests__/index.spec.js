@@ -1,9 +1,9 @@
-import Sticky from '..'
-import VarSticky from '../Sticky'
-import { delay, trigger } from '../../utils/test'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, test, describe } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test } from 'vitest'
+import Sticky from '..'
+import { delay, trigger } from '../../utils/test'
+import VarSticky from '../Sticky'
 
 const mockRect = (top) => {
   const origin = HTMLElement.prototype.getBoundingClientRect

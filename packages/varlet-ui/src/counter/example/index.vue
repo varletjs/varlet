@@ -1,8 +1,8 @@
 <script setup>
 import { reactive } from 'vue'
-import { use, t } from './locale'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
+import { t, use } from './locale'
 
 const values = reactive({
   value: 0,
@@ -32,31 +32,31 @@ function handleBeforeChange(value, change) {
   <var-counter v-model="values.value" />
 
   <app-type>{{ t('range') }}</app-type>
-  <var-counter :min="0" :max="5" v-model="values.value2" />
+  <var-counter v-model="values.value2" :min="0" :max="5" />
 
   <app-type>{{ t('step') }}</app-type>
-  <var-counter :step="10" v-model="values.value3" />
+  <var-counter v-model="values.value3" :step="10" />
 
   <app-type>{{ t('toFixed') }}</app-type>
-  <var-counter :decimal-length="1" v-model="values.value4" />
+  <var-counter v-model="values.value4" :decimal-length="1" />
 
   <app-type>{{ t('size') }}</app-type>
-  <var-counter input-text-size="18px" input-width="50px" button-size="36px" v-model="values.value5" />
+  <var-counter v-model="values.value5" input-text-size="18px" input-width="50px" button-size="36px" />
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-counter disabled v-model="values.value6" />
+  <var-counter v-model="values.value6" disabled />
 
   <app-type>{{ t('readonly') }}</app-type>
-  <var-counter readonly v-model="values.value7" />
+  <var-counter v-model="values.value7" readonly />
 
   <app-type>{{ t('lazyChange') }}</app-type>
-  <var-counter lazy-change v-model="values.value8" @before-change="handleBeforeChange" />
+  <var-counter v-model="values.value8" lazy-change @before-change="handleBeforeChange" />
 
   <app-type>{{ t('validate') }}</app-type>
-  <var-counter :rules="[(v) => v > 5 || t('validateMessage')]" v-model="values.value9" />
+  <var-counter v-model="values.value9" :rules="[(v) => v > 5 || t('validateMessage')]" />
 
   <app-type>{{ t('validateWithZod') }}</app-type>
-  <var-counter :rules="z.number().min(6, t('validateMessage'))" v-model="values.value10" />
+  <var-counter v-model="values.value10" :rules="z.number().min(6, t('validateMessage'))" />
 
   <div class="space"></div>
 </template>

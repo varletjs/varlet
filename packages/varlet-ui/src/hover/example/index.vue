@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const translateY = ref('100%')
 
@@ -16,18 +16,18 @@ onThemeChange()
 <template>
   <app-type>{{ t('styleBinding') }}</app-type>
   <var-paper
+    v-hover="{ color: 'var(--color-on-primary)', background: ' var(--color-primary)' }"
     class="paper"
     :elevation="2"
     :width="100"
     :height="100"
     ripple
-    v-hover="{ color: 'var(--color-on-primary)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
 
   <app-type>{{ t('functionBinding') }}</app-type>
-  <div class="image-container" v-hover="handleHover">
+  <div v-hover="handleHover" class="image-container">
     <var-image src="tree.jpeg" />
     <div class="image-mask" :style="{ transform: `translateY(${translateY})` }">HOVER</div>
   </div>

@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { BadgeProps } from './badge'
 import { VNode } from 'vue'
+import { BadgeProps } from './badge'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const bottomNavigationItemProps: Record<keyof BottomNavigationItemProps, any>
 

@@ -1,12 +1,12 @@
+import { InputHTMLAttributes, VNode } from 'vue'
 import {
-  VarComponent,
   BasicAttributes,
-  ListenerProp,
-  Variant as InputVariant,
   Rules as InputRules,
+  Variant as InputVariant,
+  ListenerProp,
   SetPropsDefaults,
+  VarComponent,
 } from './varComponent'
-import { VNode, InputHTMLAttributes } from 'vue'
 
 export declare const inputProps: Record<keyof InputProps, any>
 

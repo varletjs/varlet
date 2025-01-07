@@ -6,11 +6,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { useCollapseItem, type CollapseProvider } from './provide'
-import { props, type CollapseModelValue } from './props'
-import { createNamespace } from '../utils/components'
-import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
+import { call, normalizeToArray, removeArrayBlank } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
+import { createNamespace } from '../utils/components'
+import { props, type CollapseModelValue } from './props'
+import { useCollapseItem, type CollapseProvider } from './provide'
 
 const { name, n } = createNamespace('collapse')
 
@@ -37,12 +37,12 @@ export default defineComponent({
 
     watch(
       () => length.value,
-      () => nextTick().then(resize)
+      () => nextTick().then(resize),
     )
 
     watch(
       () => props.modelValue,
-      () => nextTick().then(resize)
+      () => nextTick().then(resize),
     )
 
     bindCollapseItems(collapseProvider)
@@ -81,10 +81,10 @@ export default defineComponent({
       }
 
       const matchedNameItems = collapseItems.filter(
-        ({ name }) => name.value != null && normalizeValues.value.includes(name.value)
+        ({ name }) => name.value != null && normalizeValues.value.includes(name.value),
       )
       const matchedIndexItems = collapseItems.filter(
-        ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
+        ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value),
       )
 
       return [...matchedNameItems, ...matchedIndexItems]
@@ -100,7 +100,9 @@ export default defineComponent({
 
     // expose
     const toggleAll = (options: CollapseToggleAllOptions) => {
-      if (props.accordion) return
+      if (props.accordion) {
+        return
+      }
 
       const matchedItems = collapseItems.filter((item) => {
         const itemValue = item.name.value ?? item.index.value

@@ -1,8 +1,8 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Chip from '..'
 import VarChip from '../Chip'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { expect, vi, test, describe } from 'vitest'
 
 test('test chip plugin', () => {
   const app = createApp({}).use(Chip)

@@ -1,5 +1,5 @@
-import Alert from './Alert.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Alert from './Alert.vue'
 import { props as alertProps } from './props'
 
 withInstall(Alert)

@@ -1,5 +1,5 @@
-import { isFunction, camelize, inMobile } from '@varlet/shared'
-import { type App, type Directive, type Plugin, type DirectiveBinding } from 'vue'
+import { type App, type Directive, type DirectiveBinding, type Plugin } from 'vue'
+import { camelize, inMobile, isFunction } from '@varlet/shared'
 
 export type HoverValue = Record<string, any> | ((isHovering: boolean) => void)
 
@@ -30,18 +30,23 @@ export type HoverHTMLElement = HTMLElement & {
 function getStyle(element: HoverHTMLElement) {
   const style = element.getAttribute('style')
 
-  if (!style) return {}
+  if (!style) {
+    return {}
+  }
 
   return style
     .split(';')
     .filter(Boolean)
-    .reduce((style, item) => {
-      const [key, value] = item.split(':').map((item) => item.trim())
+    .reduce(
+      (style, item) => {
+        const [key, value] = item.split(':').map((item) => item.trim())
 
-      style[camelize(key)] = value
+        style[camelize(key)] = value
 
-      return style
-    }, {} as Record<string, any>)
+        return style
+      },
+      {} as Record<string, any>,
+    )
 }
 
 function updateRawStyle(element: HoverHTMLElement) {

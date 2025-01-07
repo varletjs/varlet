@@ -6,7 +6,7 @@
           n('controller'),
           formatElevation(elevation, 2),
           [disabled || formDisabled, n('--disabled')],
-          [errorMessage, n('--error')]
+          [errorMessage, n('--error')],
         )
       "
       :style="{ background: color }"
@@ -17,7 +17,7 @@
           classes(
             n('decrement-button'),
             [!decrementButton, n('--hidden')],
-            [disabled || formDisabled, n('--not-allowed')]
+            [disabled || formDisabled, n('--not-allowed')],
           )
         "
         :style="{
@@ -45,6 +45,7 @@
       </var-button>
 
       <input
+        v-model="inputValue"
         :class="classes(n('input'), [disabled || formDisabled, n('--not-allowed')])"
         :style="{
           width: toSizeUnit(inputWidth),
@@ -53,7 +54,6 @@
         :inputmode="toNumber(decimalLength) === 0 ? 'numeric' : 'decimal'"
         :readonly="readonly || formReadonly"
         :disabled="disabled || formDisabled || disableInput"
-        v-model="inputValue"
         @change="handleChange"
       />
 
@@ -62,7 +62,7 @@
           classes(
             n('increment-button'),
             [!incrementButton, n('--hidden')],
-            [disabled || formDisabled, n('--not-allowed')]
+            [disabled || formDisabled, n('--not-allowed')],
           )
         "
         :style="{
@@ -95,17 +95,17 @@
 </template>
 
 <script lang="ts">
-import VarButton from '../button'
-import VarIcon from '../icon'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import { defineComponent, ref, watch, computed, nextTick, type ComputedRef } from 'vue'
+import { computed, defineComponent, nextTick, ref, watch, type ComputedRef } from 'vue'
+import { call, toNumber } from '@varlet/shared'
 import { Decimal } from 'decimal.js'
-import { props, type CounterValidateTrigger } from './props'
-import { toNumber, call } from '@varlet/shared'
-import { toSizeUnit } from '../utils/elements'
+import VarButton from '../button'
+import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
-import { useValidation, createNamespace, formatElevation } from '../utils/components'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
+import { createNamespace, formatElevation, useValidation } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props, type CounterValidateTrigger } from './props'
 import { type CounterProvider } from './provide'
 
 const SPEED = 100
@@ -160,7 +160,7 @@ export default defineComponent({
       (newValue) => {
         setNormalizedValue(normalizeValue(String(newValue)))
         call(props.onChange, toNumber(newValue))
-      }
+      },
     )
 
     setNormalizedValue(normalizeValue(String(props.modelValue)))

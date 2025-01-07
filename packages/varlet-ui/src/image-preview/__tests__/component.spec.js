@@ -1,9 +1,9 @@
-import ImagePreview from '../index'
-import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarImagePreview from '../ImagePreview.vue'
+import ImagePreview from '../index'
 
 mockImageNaturalSize(1440, 1080)
 mockOffset({ offsetWidth: 375, offsetHeight: 815 })

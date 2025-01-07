@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
 import { iconProps } from '../icon'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export const props = {
   modelValue: {

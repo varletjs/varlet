@@ -1,6 +1,6 @@
-import { buttonProps } from '../button'
 import type { PropType } from 'vue'
-import { type ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
+import { buttonProps } from '../button'
+import { defineListenerProp, type ExtractPublicPropTypes } from '../utils/components'
 
 export const props = {
   active: {

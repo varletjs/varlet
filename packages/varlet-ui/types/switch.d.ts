@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as SwitchRules } from './varComponent'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, Rules as SwitchRules, VarComponent } from './varComponent'
 
 export declare const switchProps: Record<keyof SwitchProps, any>
 

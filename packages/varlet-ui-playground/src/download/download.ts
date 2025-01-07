@@ -1,11 +1,10 @@
-import { saveAs } from 'file-saver'
 import { Dialog } from '@varlet/ui'
-
+import { saveAs } from 'file-saver'
 import index from './template/index.html?raw'
 import main from './template/main.js?raw'
 import pkg from './template/package.json?raw'
-import config from './template/vite.config.js?raw'
 import readme from './template/README.md?raw'
+import config from './template/vite.config.js?raw'
 
 const excludes = ['varlet-repl-plugin.js', 'import-map.json', 'tsconfig.json', 'AppWrapper.vue']
 
@@ -30,7 +29,7 @@ export async function downloadProject(store: any) {
   src.file('main.js', main)
 
   const files = store.getFiles()
-  // eslint-disable-next-line guard-for-in,no-restricted-syntax
+
   for (const file in files) {
     if (!excludes.includes(file)) {
       const code = files[file]

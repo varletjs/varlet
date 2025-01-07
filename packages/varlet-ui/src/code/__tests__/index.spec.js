@@ -1,11 +1,11 @@
-import Code from '..'
-import VarCode from '../Code'
-import VarHighlighterProvider from '../../highlighter-provider'
-import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { delay } from '../../utils/test'
-import { expect, describe, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 import { codeToHtml } from 'shiki'
+import { describe, expect, test } from 'vitest'
+import Code from '..'
+import VarHighlighterProvider from '../../highlighter-provider'
+import { delay } from '../../utils/test'
+import VarCode from '../Code'
 
 test('test code use', () => {
   const app = createApp({}).use(Code)

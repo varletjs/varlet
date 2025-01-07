@@ -40,14 +40,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, nextTick, onMounted, ref, type Ref } from 'vue'
 import config from '@config'
-import Clipboard from 'clipboard'
-import { Context, Snackbar } from '@varlet/ui'
-import { defineComponent, nextTick, ref, onMounted, type Ref } from 'vue'
-import { doubleRaf } from '@varlet/shared'
 import { getBrowserTheme, getPCLocationInfo } from '@varlet/cli/client'
-import { utoa } from '../../../utils'
+import { doubleRaf } from '@varlet/shared'
+import { Context, Snackbar } from '@varlet/ui'
+import Clipboard from 'clipboard'
 import { type SiteContext } from '../../../types'
+import { utoa } from '../../../utils'
 
 const context = Context as SiteContext
 
@@ -70,7 +70,7 @@ export default defineComponent({
     const clipboard: Ref = ref(config?.pc?.clipboard || {})
     const height: Ref<number> = ref(-1)
     const playground: Ref<string | undefined> = ref(
-      !props.playgroundIgnore ? config?.pc?.header?.playground : undefined
+      !props.playgroundIgnore ? config?.pc?.header?.playground : undefined,
     )
     let timer: any = null
 

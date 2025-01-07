@@ -1,27 +1,27 @@
 <template>
   <div :class="n('wrap')">
-    <div :class="n()" @click="handleClick" v-bind="$attrs">
+    <div :class="n()" v-bind="$attrs" @click="handleClick">
       <div
         ref="action"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        v-hover:desktop="handleHovering"
         :class="
           classes(
             n('action'),
             [checked, n('--checked'), n('--unchecked')],
             [errorMessage || radioGroupErrorMessage, n('--error')],
-            [formDisabled || disabled, n('--disabled')]
+            [formDisabled || disabled, n('--disabled')],
           )
         "
         :tabindex="formDisabled || disabled ? undefined : '0'"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
-        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        v-hover:desktop="handleHovering"
         @focus="isFocusing = true"
         @blur="isFocusing = false"
       >
-        <slot name="checked-icon" v-if="checked">
+        <slot v-if="checked" name="checked-icon">
           <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
         </slot>
-        <slot name="unchecked-icon" v-else>
+        <slot v-else name="unchecked-icon">
           <var-icon :class="n('icon')" var-radio-cover name="radio-blank" :size="iconSize" />
         </slot>
         <var-hover-overlay
@@ -30,14 +30,14 @@
         />
       </div>
       <div
+        v-if="$slots.default"
         :class="
           classes(
             n('text'),
             [errorMessage || radioGroupErrorMessage, n('--error')],
-            [formDisabled || disabled, n('--disabled')]
+            [formDisabled || disabled, n('--disabled')],
           )
         "
-        v-if="$slots.default"
         @click="handleTextClick"
       >
         <slot :checked="checked" />
@@ -49,18 +49,18 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import Hover from '../hover'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { computed, defineComponent, nextTick, ref } from 'vue'
-import { props, type RadioValidateTrigger } from './props'
-import { useValidation, createNamespace } from '../utils/components'
-import { useRadioGroup, type RadioProvider } from './provide'
-import { useForm } from '../form/provide'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
+import { createNamespace, useValidation } from '../utils/components'
+import { props, type RadioValidateTrigger } from './props'
+import { useRadioGroup, type RadioProvider } from './provide'
 
 const { name, n, classes } = createNamespace('radio')
 

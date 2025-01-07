@@ -1,12 +1,12 @@
+import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import { z } from 'zod'
 import RadioGroup from '..'
 import Radio from '../../radio'
-import VarRadioGroup from '../RadioGroup'
 import VarRadio from '../../radio/Radio'
-import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
-import { z } from 'zod'
+import VarRadioGroup from '../RadioGroup'
 
 test('test radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)
@@ -251,7 +251,7 @@ test('test radio group validation', async () => {
   wrapper.unmount()
 })
 
-test('test radio group layout direction', async () => {
+test('test radio group layout direction', () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,

@@ -1,6 +1,6 @@
 import { Locale } from '@varlet/ui'
-import zhCN from './zh-CN'
 import enUS from './en-US'
+import zhCN from './zh-CN'
 
 const { add, use: exampleUse, t, merge } = Locale.useLocale()
 

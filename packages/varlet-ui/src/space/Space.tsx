@@ -1,10 +1,9 @@
 import { defineComponent, VNodeChild } from 'vue'
-import { props, type SpaceSize } from './props'
-import { isArray, call } from '@varlet/shared'
+import { call, isArray } from '@varlet/shared'
 import { createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
-
+import { props, type SpaceSize } from './props'
 import '../styles/common.less'
 import './space.less'
 
@@ -16,8 +15,8 @@ function getSize(size: SpaceSize, isInternalSize: boolean): string[] {
   return isInternalSize
     ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
     : isArray(size)
-    ? (size.map(toSizeUnit) as string[])
-    : ([toSizeUnit(size), toSizeUnit(size)] as string[])
+      ? (size.map(toSizeUnit) as string[])
+      : ([toSizeUnit(size), toSizeUnit(size)] as string[])
 }
 
 export default defineComponent({

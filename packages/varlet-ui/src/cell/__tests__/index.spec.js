@@ -1,9 +1,9 @@
-import Cell from '..'
-import VarCell from '../Cell'
-import VarIcon from '../../icon/Icon'
-import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { expect, test, describe } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test } from 'vitest'
+import Cell from '..'
+import VarIcon from '../../icon/Icon'
+import VarCell from '../Cell'
 
 test('test cell plugin', () => {
   const app = createApp({}).use(Cell)

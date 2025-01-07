@@ -1,17 +1,17 @@
 <template>
-  <var-swipe :class="n()" ref="swipe" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
+  <var-swipe ref="swipe" :class="n()" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
     <slot />
   </var-swipe>
 </template>
 
 <script lang="ts">
+import { defineComponent, ref, watch } from 'vue'
+import { call, doubleRaf } from '@varlet/shared'
 import VarSwipe from '../swipe'
-import { defineComponent, watch, ref } from 'vue'
-import { useTabItem } from './provide'
+import { type TabItemProvider } from '../tab-item/provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { doubleRaf, call } from '@varlet/shared'
-import { type TabItemProvider } from '../tab-item/provide'
+import { useTabItem } from './provide'
 
 const { name, n } = createNamespace('tabs-items')
 
@@ -32,7 +32,7 @@ export default defineComponent({
       async () => {
         await doubleRaf()
         handleActiveChange(props.active)
-      }
+      },
     )
 
     function matchName(active: number | string | undefined): TabItemProvider | undefined {

@@ -8,10 +8,10 @@
 
 <script lang="ts">
 import { defineComponent, onActivated, onDeactivated, onMounted, onUnmounted, ref, watch } from 'vue'
-import { props, type TimeData } from './props'
+import { call, cancelAnimationFrame, requestAnimationFrame, toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import { toNumber, requestAnimationFrame, cancelAnimationFrame, call } from '@varlet/shared'
+import { props, type TimeData } from './props'
 
 const { name, n } = createNamespace('countdown')
 
@@ -47,7 +47,7 @@ export default defineComponent({
         if (props.autoStart) {
           start()
         }
-      }
+      },
     )
 
     onMounted(() => {

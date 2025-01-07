@@ -1,5 +1,5 @@
-import Col from './Col.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Col from './Col.vue'
 import { props as colProps } from './props'
 
 withInstall(Col)

@@ -1,6 +1,6 @@
+import { expect, test } from 'vitest'
 import LoadingBar from '..'
 import { delay } from '../../utils/test'
-import { expect, test } from 'vitest'
 
 test('test loading-bar methods', async () => {
   LoadingBar.start()

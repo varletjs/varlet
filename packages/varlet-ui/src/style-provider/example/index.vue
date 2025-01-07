@@ -1,8 +1,8 @@
 <script setup>
-import { Themes, StyleProvider } from '@varlet/ui'
-import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, onThemeChange } from '@varlet/cli/client'
-import { ref, reactive, onUnmounted } from 'vue'
-import { use, t } from './locale'
+import { onUnmounted, reactive, ref } from 'vue'
+import { AppType, getBrowserTheme, getSiteStyleVars, onThemeChange, watchLang } from '@varlet/cli/client'
+import { StyleProvider, Themes } from '@varlet/ui'
+import { t, use } from './locale'
 
 const VarStyleProvider = StyleProvider.Component
 

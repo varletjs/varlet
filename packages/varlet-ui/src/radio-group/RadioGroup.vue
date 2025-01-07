@@ -21,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import VarFormDetails from '../form-details'
-import VarRadio from '../radio'
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { props, type RadioGroupValidateTrigger } from './props'
-import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
-import { useRadios, type RadioGroupProvider } from './provide'
-import { useForm } from '../form/provide'
-import { call, preventDefault, isFunction } from '@varlet/shared'
+import { call, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import VarRadio from '../radio'
+import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
+import { props, type RadioGroupValidateTrigger } from './props'
+import { useRadios, type RadioGroupProvider } from './provide'
 
 const { name, n, classes } = createNamespace('radio-group')
 
@@ -91,7 +91,9 @@ export default defineComponent({
     }
 
     function moveRadio(fromIndex: number, method: 'prev' | 'next') {
-      while (true) {
+      const looping = true
+
+      while (looping) {
         if (method === 'prev') {
           fromIndex--
         } else {

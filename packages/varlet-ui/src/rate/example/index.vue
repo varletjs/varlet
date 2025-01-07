@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
 import { z } from 'zod'
 import { t, use } from './locale'
 
@@ -77,8 +77,8 @@ watchLang(use)
   <var-rate v-model="scores.score10" @change="handleChange" />
 
   <app-type>{{ t('validate') }}</app-type>
-  <var-rate :rules="[(v) => v >= 3 || t('errorMessage')]" v-model="scores.score11" />
+  <var-rate v-model="scores.score11" :rules="[(v) => v >= 3 || t('errorMessage')]" />
 
   <app-type>{{ t('validateWithZod') }}</app-type>
-  <var-rate :rules="z.number().min(3, t('errorMessage'))" v-model="scores.score13" />
+  <var-rate v-model="scores.score13" :rules="z.number().min(3, t('errorMessage'))" />
 </template>

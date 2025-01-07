@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
-import { type ColSizeDescriptor } from './provide'
 import { defineListenerProp } from '../utils/components'
+import { type ColSizeDescriptor } from './provide'
 
 export type ColAlign =
   | 'stretch'

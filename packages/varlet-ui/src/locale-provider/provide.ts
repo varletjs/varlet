@@ -1,5 +1,5 @@
-import { keyInProvides } from '@varlet/use'
 import { inject, provide } from 'vue'
+import { keyInProvides } from '@varlet/use'
 
 export interface LocaleProvider {
   t: (id: string) => string | undefined

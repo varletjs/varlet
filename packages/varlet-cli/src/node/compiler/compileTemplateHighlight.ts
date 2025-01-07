@@ -1,9 +1,10 @@
+import { resolve } from 'path'
 import fse from 'fs-extra'
+import { getVarletConfig, type VarletConfig } from '../config/varlet.config.js'
 import {
-  SRC_DIR,
-  HL_DIR,
   HL_API_RE,
   HL_COMPONENT_NAME_RE,
+  HL_DIR,
   HL_EN_MD,
   HL_EN_TITLE_ATTRIBUTES_RE,
   HL_EN_TITLE_EVENTS_RE,
@@ -14,10 +15,9 @@ import {
   HL_ZH_TITLE_EVENTS_RE,
   HL_ZH_TITLE_SLOTS_RE,
   HL_ZH_WEB_TYPES_JSON,
+  SRC_DIR,
 } from '../shared/constant.js'
-import { resolve } from 'path'
 import { getCliVersion, isDir, isMD } from '../shared/fsUtils.js'
-import { getVarletConfig, type VarletConfig } from '../config/varlet.config.js'
 
 const { ensureDir, readdirSync, readFileSync, writeFileSync } = fse
 
@@ -80,7 +80,7 @@ export function compileWebTypes(
   table: Record<string, any>,
   webTypes: Record<string, any>,
   componentName: string,
-  varletConfig: Required<VarletConfig>
+  varletConfig: Required<VarletConfig>,
 ) {
   const { attributesTable, eventsTable, slotsTable } = table
 
@@ -116,7 +116,7 @@ export function compileMD(
   path: string,
   webTypes: Record<string, any>,
   varletConfig: Required<VarletConfig>,
-  options: TemplateHighlightCompilerOptions
+  options: TemplateHighlightCompilerOptions,
 ) {
   if (!path.endsWith(options.md)) {
     return
@@ -141,7 +141,7 @@ export function compileDir(
   path: string,
   webTypes: Record<string, any>,
   varletConfig: Required<VarletConfig>,
-  options: TemplateHighlightCompilerOptions
+  options: TemplateHighlightCompilerOptions,
 ) {
   const dir = readdirSync(path)
 

@@ -1,11 +1,11 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Swipe from '..'
 import SwipeItem from '../../swipe-item'
-import VarSwipe from '../Swipe'
 import VarSwipeItem from '../../swipe-item/SwipeItem'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
-import { delay, mockOffset, triggerDrag, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
+import { delay, mockOffset, trigger, triggerDrag, triggerKeyboard } from '../../utils/test'
+import VarSwipe from '../Swipe'
 
 mockOffset()
 

@@ -1,5 +1,5 @@
-import Breadcrumbs from './Breadcrumbs.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Breadcrumbs from './Breadcrumbs.vue'
 import { props as breadcrumbsProps } from './props'
 
 withInstall(Breadcrumbs)

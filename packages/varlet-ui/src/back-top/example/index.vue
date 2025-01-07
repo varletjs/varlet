@@ -1,6 +1,6 @@
 <script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { onThemeChange, AppType, watchLang } from '@varlet/cli/client'
 
 const lists = [...Array(100).keys()]
 

@@ -1,8 +1,8 @@
-import ActionSheet from '../index'
-import VarActionSheet from '../ActionSheet'
 import { createApp } from 'vue'
+import { expect, test, vi } from 'vitest'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarActionSheet from '../ActionSheet'
+import ActionSheet from '../index'
 
 test('test action sheet plugin', () => {
   const app = createApp({}).use(ActionSheet)

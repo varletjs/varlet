@@ -1,5 +1,5 @@
-import MenuSelect from './MenuSelect.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import MenuSelect from './MenuSelect.vue'
 import { props as menuSelectProps } from './props'
 
 withInstall(MenuSelect)

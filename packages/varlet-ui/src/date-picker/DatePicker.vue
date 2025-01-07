@@ -19,42 +19,42 @@
           classes(
             n('title-date'),
             [!isYearPanel || type === 'year', n('title-date--active')],
-            [range, n('title-date--range')]
+            [range, n('title-date--range')],
           )
         "
         @click="clickEl('date')"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
-          <div :key="`${chooseYear}`" v-if="type === 'year'">
-            <slot name="range" :choose="getChoose.chooseRangeYear" v-if="range">
+          <div v-if="type === 'year'" :key="`${chooseYear}`">
+            <slot v-if="range" name="range" :choose="getChoose.chooseRangeYear">
               {{ getYearTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseYears" v-else-if="multiple">
+            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseYears">
               {{ getYearTitle }}
             </slot>
-            <slot name="year" :year="chooseYear" v-else>
+            <slot v-else name="year" :year="chooseYear">
               {{ getYearTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth}`" v-else-if="type === 'month'">
-            <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
+          <div v-else-if="type === 'month'" :key="`${chooseYear}${chooseMonth}`">
+            <slot v-if="range" name="range" :choose="getChoose.chooseRangeMonth">
               {{ getMonthTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
+            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseMonths">
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="chooseMonth" :year="chooseYear" v-else>
+            <slot v-else name="month" :month="chooseMonth" :year="chooseYear">
               {{ getMonthTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth}${chooseDay}`" v-else>
-            <slot name="range" :choose="formatRange" v-if="range">
+          <div v-else :key="`${chooseYear}${chooseMonth}${chooseDay}`">
+            <slot v-if="range" name="range" :choose="formatRange">
               {{ getDateTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseDays" v-else-if="multiple">
+            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseDays">
               {{ getDateTitle }}
             </slot>
-            <slot name="date" v-bind="slotProps" v-else>
+            <slot v-else name="date" v-bind="slotProps">
               {{ getDateTitle }}
             </slot>
           </div>
@@ -64,15 +64,16 @@
     <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
       <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
+          v-if="getPanelType === 'year'"
           ref="yearPanelEl"
           :choose="getChoose"
           :current="currentDate"
           :component-props="componentProps"
           :preview="previewYear"
           @choose-year="getChooseYear"
-          v-if="getPanelType === 'year'"
         />
         <month-picker-panel
+          v-else-if="getPanelType === 'month'"
           ref="monthPanelEl"
           :current="currentDate"
           :choose="getChoose"
@@ -81,9 +82,9 @@
           :component-props="componentProps"
           @choose-month="getChooseMonth"
           @check-preview="checkPreview"
-          v-else-if="getPanelType === 'month'"
         />
         <day-picker-panel
+          v-else-if="getPanelType === 'date'"
           ref="dayPanelEl"
           :current="currentDate"
           :choose="getChoose"
@@ -92,38 +93,37 @@
           :click-month="() => clickEl('month')"
           @choose-day="getChooseDay"
           @check-preview="checkPreview"
-          v-else-if="getPanelType === 'date'"
         />
       </transition>
     </div>
-    <div :class="n('actions')" v-if="$slots.actions">
+    <div v-if="$slots.actions" :class="n('actions')">
       <slot name="actions" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch, type RendererNode } from 'vue'
+import { call, doubleRaf, error, isArray, toNumber } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
-import MonthPickerPanel from './src/month-picker-panel.vue'
-import YearPickerPanel from './src/year-picker-panel.vue'
-import DayPickerPanel from './src/day-picker-panel.vue'
-import { defineComponent, ref, computed, watch, type RendererNode } from 'vue'
+import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
+import { createNamespace, formatElevation } from '../utils/components'
+import { padStart } from '../utils/shared'
 import {
-  props,
   MONTH_LIST,
+  props,
   WEEK_HEADER,
-  type Month,
   type Choose,
-  type Preview,
   type ComponentProps,
+  type Month,
+  type Preview,
   type TouchDirection,
   type Week,
 } from './props'
-import { isArray, toNumber, doubleRaf, call, error } from '@varlet/shared'
-import { createNamespace, formatElevation } from '../utils/components'
-import { padStart } from '../utils/shared'
-import { t } from '../locale'
-import { injectLocaleProvider } from '../locale-provider/provide'
+import DayPickerPanel from './src/day-picker-panel.vue'
+import MonthPickerPanel from './src/month-picker-panel.vue'
+import YearPickerPanel from './src/year-picker-panel.vue'
 
 const { name, n, classes } = createNamespace('date-picker')
 
@@ -193,7 +193,7 @@ export default defineComponent({
         return chooseRangeYear.value.length ? `${chooseRangeYear.value[0]} ~ ${chooseRangeYear.value[1]}` : ''
       }
 
-      return multiple ? `${chooseYears.value.length}${(pt || t)('datePickerSelected')}` : chooseYear.value ?? ''
+      return multiple ? `${chooseYears.value.length}${(pt || t)('datePickerSelected')}` : (chooseYear.value ?? '')
     })
 
     const getMonthTitle = computed<string>(() => {
@@ -219,9 +219,13 @@ export default defineComponent({
         return formatRangeDays.length ? `${formatRangeDays[0]} ~ ${formatRangeDays[1]}` : ''
       }
 
-      if (multiple) return `${chooseDays.value.length}${(pt || t)('datePickerSelected')}`
+      if (multiple) {
+        return `${chooseDays.value.length}${(pt || t)('datePickerSelected')}`
+      }
 
-      if (!chooseYear.value || !chooseMonth.value || !chooseDay.value) return ''
+      if (!chooseYear.value || !chooseMonth.value || !chooseDay.value) {
+        return ''
+      }
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
       const week: Week = WEEK_HEADER.find((value) => value === `${weekIndex}`) as Week
       const weekName = (pt || t)('datePickerWeekDict')?.[week].name ?? ''
@@ -229,15 +233,23 @@ export default defineComponent({
       const monthName = (pt || t)('datePickerMonthDict')?.[chooseMonth.value].name ?? ''
       const showDay = padStart(chooseDay.value, 2, '0')
 
-      if ((pt || t)('lang') === 'zh-CN') return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
+      if ((pt || t)('lang') === 'zh-CN') {
+        return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
+      }
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
     const getPanelType = computed<string>(() => {
-      if (props.type === 'year' || isYearPanel.value) return 'year'
+      if (props.type === 'year' || isYearPanel.value) {
+        return 'year'
+      }
 
-      if (props.type === 'month' || isMonthPanel.value) return 'month'
+      if (props.type === 'month' || isMonthPanel.value) {
+        return 'month'
+      }
 
-      if (props.type === 'date') return 'date'
+      if (props.type === 'date') {
+        return 'date'
+      }
 
       return ''
     })
@@ -254,7 +266,7 @@ export default defineComponent({
       }
     })
     const formatRange = computed<string[]>(() =>
-      getChoose.value.chooseRangeDay.map((choose) => dayjs(choose).format('YYYY-MM-DD'))
+      getChoose.value.chooseRangeDay.map((choose) => dayjs(choose).format('YYYY-MM-DD')),
     )
     const isSameYear = computed(() => chooseYear.value === previewYear.value)
     const isSameMonth = computed(() => chooseMonth.value === previewMonth.value)
@@ -267,37 +279,47 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (value) => {
-        if (!checkValue() || invalidFormatDate(value)) return
+        if (!checkValue() || invalidFormatDate(value)) {
+          return
+        }
 
         if (props.range) {
-          if (!isArray(value)) return
+          if (!isArray(value)) {
+            return
+          }
 
           rangeDone.value = value.length !== 1
           rangeInit(value, props.type)
         } else if (props.multiple) {
-          if (!isArray(value)) return
+          if (!isArray(value)) {
+            return
+          }
 
           multipleInit(value, props.type)
         } else {
           dateInit(value as string)
         }
       },
-      { immediate: true }
+      { immediate: true },
     )
 
     watch(getPanelType, resetState)
 
     function clickEl(type: string) {
-      if (type === 'year') isYearPanel.value = true
-      else if (type === 'month') isMonthPanel.value = true
-      else {
+      if (type === 'year') {
+        isYearPanel.value = true
+      } else if (type === 'month') {
+        isMonthPanel.value = true
+      } else {
         isYearPanel.value = false
         isMonthPanel.value = false
       }
     }
 
     function handleTouchstart(event: TouchEvent) {
-      if (isUntouchable.value) return
+      if (isUntouchable.value) {
+        return
+      }
 
       const { clientX, clientY } = event.touches[0]
       startX = clientX
@@ -309,7 +331,9 @@ export default defineComponent({
     }
 
     function handleTouchmove(event: TouchEvent) {
-      if (isUntouchable.value) return
+      if (isUntouchable.value) {
+        return
+      }
 
       const { clientX, clientY } = event.touches[0]
       const x = clientX - startX
@@ -320,7 +344,9 @@ export default defineComponent({
     }
 
     async function handleTouchend() {
-      if (isUntouchable.value || touchDirection !== 'x') return
+      if (isUntouchable.value || touchDirection !== 'x') {
+        return
+      }
 
       const componentRef =
         getPanelType.value === 'year' ? yearPanelEl : getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
@@ -350,36 +376,51 @@ export default defineComponent({
 
       const index = formatDates.findIndex((choose) => choose === date)
 
-      if (index === -1) formatDates.push(date)
-      else formatDates.splice(index, 1)
+      if (index === -1) {
+        formatDates.push(date)
+      } else {
+        formatDates.splice(index, 1)
+      }
 
       call(props['onUpdate:modelValue'], formatDates)
       call(props.onChange, formatDates)
     }
 
     function getReverse(dateType: string, date: Month | number) {
-      if (!chooseYear.value || !chooseMonth.value) return false
-      if (!isSameYear.value) return chooseYear.value > previewYear.value
+      if (!chooseYear.value || !chooseMonth.value) {
+        return false
+      }
+      if (!isSameYear.value) {
+        return chooseYear.value > previewYear.value
+      }
 
-      if (dateType === 'year') return (date as number) < toNumber(chooseYear.value)
+      if (dateType === 'year') {
+        return (date as number) < toNumber(chooseYear.value)
+      }
 
-      if (dateType === 'month') return (date as Month) < chooseMonth.value
+      if (dateType === 'month') {
+        return (date as Month) < chooseMonth.value
+      }
 
       return isSameMonth.value ? (date as number) < toNumber(chooseDay.value) : chooseMonth.value > previewMonth.value
     }
 
     function getChooseDay(day: number) {
       const { readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
-      if (day < 0 || readonly) return
+      if (day < 0 || readonly) {
+        return
+      }
 
       reverse.value = getReverse('day', day)
 
       const date = `${previewYear.value}-${previewMonth.value}-${day}`
       const formatDate = dayjs(date).format('YYYY-MM-DD')
 
-      if (range) updateRange(formatDate, 'day')
-      else if (multiple) updateMultiple(formatDate, 'day')
-      else {
+      if (range) {
+        updateRange(formatDate, 'day')
+      } else if (multiple) {
+        updateMultiple(formatDate, 'day')
+      } else {
         call(updateModelValue, formatDate)
         call(onChange, formatDate)
       }
@@ -392,9 +433,11 @@ export default defineComponent({
       if (type === 'month' && !readonly) {
         const date = `${previewYear.value}-${month}`
 
-        if (range) updateRange(date, 'month')
-        else if (multiple) updateMultiple(date, 'month')
-        else {
+        if (range) {
+          updateRange(date, 'month')
+        } else if (multiple) {
+          updateMultiple(date, 'month')
+        } else {
           call(updateModelValue, date)
           call(onChange, date)
         }
@@ -404,7 +447,7 @@ export default defineComponent({
           onPreview,
           toNumber(previewYear.value),
           toNumber(previewMonth.value),
-          type === 'date' ? toNumber(chooseDay.value) : undefined
+          type === 'date' ? toNumber(chooseDay.value) : undefined,
         )
       }
 
@@ -416,9 +459,11 @@ export default defineComponent({
       reverse.value = getReverse('year', year)
 
       if (type === 'year' && !readonly) {
-        if (range) updateRange(`${year}`, 'year')
-        else if (multiple) updateMultiple(`${year}`, 'year')
-        else {
+        if (range) {
+          updateRange(`${year}`, 'year')
+        } else if (multiple) {
+          updateMultiple(`${year}`, 'year')
+        } else {
           call(updateModelValue, `${year}`)
           call(onChange, `${year}`)
         }
@@ -428,7 +473,7 @@ export default defineComponent({
           onPreview,
           toNumber(previewYear.value),
           toNumber(previewMonth.value),
-          type === 'date' ? toNumber(chooseDay.value) : undefined
+          type === 'date' ? toNumber(chooseDay.value) : undefined,
         )
       }
 
@@ -460,7 +505,7 @@ export default defineComponent({
         props.onPreview,
         toNumber(previewYear.value),
         toNumber(previewMonth.value),
-        props.type === 'date' ? toNumber(chooseDay.value) : undefined
+        props.type === 'date' ? toNumber(chooseDay.value) : undefined,
       )
     }
 
@@ -497,7 +542,9 @@ export default defineComponent({
       const formatDateList = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
 
       const isValid = rangeDate.value.some((date) => invalidFormatDate(date))
-      if (isValid) return
+      if (isValid) {
+        return
+      }
 
       rangeDate.value = formatDateList
 
@@ -521,7 +568,9 @@ export default defineComponent({
       const handleValue = value ? dayjs(value) : dayjs()
       const formatDate = handleValue.format('YYYY-MM-D')
 
-      if (invalidFormatDate(formatDate)) return
+      if (invalidFormatDate(formatDate)) {
+        return
+      }
 
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
 

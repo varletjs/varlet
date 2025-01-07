@@ -78,13 +78,6 @@ program
     return styleVars();
 });
 program
-    .command('lint')
-    .description('Lint code')
-    .action(async () => {
-    const { lint } = await import('./commands/lint.js');
-    return lint();
-});
-program
     .command('create')
     .description('Create a component directory')
     .option('-i, --internal', 'varlet internal mode')

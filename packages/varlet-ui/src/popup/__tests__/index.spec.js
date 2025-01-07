@@ -1,9 +1,9 @@
-import Popup from '..'
-import VarPopup from '../Popup'
-import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, vi, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Popup from '..'
 import { triggerKeyboard } from '../../utils/test'
+import VarPopup from '../Popup'
 
 test('test popup plugin', () => {
   const app = createApp({}).use(Popup)

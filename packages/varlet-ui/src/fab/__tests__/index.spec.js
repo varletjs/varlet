@@ -1,8 +1,8 @@
-import Fab from '..'
-import { createApp, h, Fragment } from 'vue'
+import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, delay, mockStubs, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { expect, test, vi } from 'vitest'
+import Fab from '..'
+import { delay, mockStubs, trigger, triggerDrag } from '../../utils/test'
 
 mockStubs()
 

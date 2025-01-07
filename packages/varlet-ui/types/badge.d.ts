@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, Type as BadgeType, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
+import { Type as BadgeType, BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const badgeProps: Record<keyof BadgeProps, any>
 

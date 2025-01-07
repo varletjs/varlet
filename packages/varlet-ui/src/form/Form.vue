@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { props } from './props'
-import { useFormItems, type FormProvider } from './provide'
+import { computed, defineComponent } from 'vue'
+import { call, find, preventDefault } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
-import { find, preventDefault, call } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
+import { props } from './props'
+import { useFormItems, type FormProvider } from './provide'
 
 const { name, n } = createNamespace('form')
 

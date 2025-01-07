@@ -1,5 +1,5 @@
-import { defineListenerProp } from '../utils/components'
 import { type PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type RefreshStatus = 'default' | 'pulling' | 'loosing' | 'loading' | 'success'
 

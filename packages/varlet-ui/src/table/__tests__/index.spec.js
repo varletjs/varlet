@@ -1,8 +1,8 @@
-import Table from '..'
-import VarTable from '../Table'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, describe, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import Table from '..'
+import VarTable from '../Table'
 
 test('test table use', () => {
   const app = createApp({}).use(Table)
@@ -40,7 +40,7 @@ describe('test table component props', () => {
     wrapper.unmount()
   })
 
-  test('test table scroller height', async () => {
+  test('test table scroller height', () => {
     const wrapper = mount(VarTable, {
       props: {
         scrollerHeight: '300px',
@@ -54,7 +54,7 @@ describe('test table component props', () => {
 })
 
 describe('test table component slots', () => {
-  test('test table default slot', async () => {
+  test('test table default slot', () => {
     const wrapper = mount(VarTable, {
       slots: {
         default: () => 'table default slot',
@@ -66,7 +66,7 @@ describe('test table component slots', () => {
     wrapper.unmount()
   })
 
-  test('test table footer slot', async () => {
+  test('test table footer slot', () => {
     const wrapper = mount(VarTable, {
       slots: {
         footer: () => 'table footer slot',

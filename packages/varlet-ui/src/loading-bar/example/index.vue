@@ -1,8 +1,8 @@
 <script setup>
-import { LoadingBar } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { LoadingBar } from '@varlet/ui'
+import { t, use } from './locale'
 
 const hasCustomStyle = ref(false)
 

@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import config from '@config'
-import AppAd from './components/AppAd.vue'
-import AppMobile from './components/AppMobile.vue'
-import AppHeader from './components/AppHeader.vue'
-import AppSidebar from './components/AppSidebar.vue'
-import { Context } from '@varlet/ui'
 import { nextTick, onMounted, ref, watch, type Ref } from 'vue'
-import { useRoute } from 'vue-router'
+import config from '@config'
 import { getPCLocationInfo } from '@varlet/cli/client'
-import { MenuTypes, type Menu } from '../utils'
+import { Context } from '@varlet/ui'
+import { useRoute } from 'vue-router'
 import { type SiteContext } from '../types'
+import { MenuTypes, type Menu } from '../utils'
+import AppAd from './components/AppAd.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppMobile from './components/AppMobile.vue'
+import AppSidebar from './components/AppSidebar.vue'
 
 const context = Context as SiteContext
 const menu: Ref<Menu[]> = ref(config?.pc?.menu ?? [])
@@ -91,7 +91,7 @@ watch(
     useMobile.value = menu.value.find((item) => item.doc === _menuName)?.useMobile ?? config?.useMobile
     document.title = config?.pc?.title[lang] as string
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>
 
@@ -227,7 +227,10 @@ iframe {
     border-top: 6px solid var(--site-config-color-introduce-border);
     border-radius: 2px;
     background: var(--site-config-color-bar);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow:
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
     &__row {
       display: flex;
@@ -448,7 +451,10 @@ iframe {
         background: var(--site-config-color-bar);
         padding: 20px;
         margin-bottom: 30px;
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        box-shadow:
+          0 2px 1px -1px rgba(0, 0, 0, 0.2),
+          0 1px 1px 0 rgba(0, 0, 0, 0.14),
+          0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         &:first-child {
           margin-top: 30px;

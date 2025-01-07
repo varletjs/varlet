@@ -1,5 +1,5 @@
-import { VarComponent, BasicAttributes, Size as LoadingSize, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
+import { BasicAttributes, Size as LoadingSize, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const loadingProps: Record<keyof LoadingProps, any>
 

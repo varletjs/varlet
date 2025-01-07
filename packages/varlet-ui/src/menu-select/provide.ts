@@ -1,5 +1,5 @@
-import { useChildren } from '@varlet/use'
 import { type ComputedRef } from 'vue'
+import { useChildren } from '@varlet/use'
 import { type MenuOptionProvider } from '../menu-option/provide'
 import { type MenuSelectSize } from './props'
 
@@ -14,7 +14,7 @@ export interface MenuSelectProvider {
 
 export function useMenuOptions() {
   const { length, childProviders, bindChildren } = useChildren<MenuSelectProvider, MenuOptionProvider>(
-    MENU_SELECT_BIND_MENU_OPTION_KEY
+    MENU_SELECT_BIND_MENU_OPTION_KEY,
   )
 
   return {

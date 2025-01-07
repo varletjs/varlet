@@ -1,7 +1,7 @@
-import HoverOverlay from './HoverOverlay.vue'
-import { withInstall, withPropsDefaultsSetter } from '../utils/components'
-import { props as hoverOverlayProps } from './props'
 import { ref } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import HoverOverlay from './HoverOverlay.vue'
+import { props as hoverOverlayProps } from './props'
 
 withInstall(HoverOverlay)
 withPropsDefaultsSetter(HoverOverlay, hoverOverlayProps)

@@ -1,6 +1,8 @@
 <template>
   <div
     ref="root"
+    v-ripple="{ disabled: disabled || !ripple }"
+    v-hover:desktop="handleHovering"
     :class="
       classes(
         n(),
@@ -8,11 +10,9 @@
         n(`--${size}`),
         [optionSelected, n('--selected-color')],
         [disabled, n('--disabled')],
-        [childrenTrigger, n('--children-trigger')]
+        [childrenTrigger, n('--children-trigger')],
       )
     "
-    v-ripple="{ disabled: disabled || !ripple }"
-    v-hover:desktop="handleHovering"
     :tabindex="disabled ? undefined : '-1'"
     @click="handleClick"
     @focus="isFocusing = true"
@@ -32,11 +32,11 @@
 
     <slot>
       <div :class="classes(n('text'))">
-        <maybe-v-node :class="n('$--ellipsis')" :is="labelVNode" />
+        <maybe-v-node :is="labelVNode" :class="n('$--ellipsis')" />
       </div>
     </slot>
 
-    <div :class="n('arrow')" v-if="childrenTrigger">
+    <div v-if="childrenTrigger" :class="n('arrow')">
       <var-icon var-menu-option-cover :class="n('arrow-icon')" name="chevron-right" />
     </div>
 
@@ -45,17 +45,17 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import { call, isBoolean, isFunction, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 import VarCheckbox from '../checkbox'
-import VarIcon from '../icon'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Ripple from '../ripple'
 import Hover from '../hover'
-import { defineComponent, computed, ref, watch, nextTick } from 'vue'
-import { useMenuSelect, type MenuOptionProvider } from './provide'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
-import { preventDefault, isFunction, isBoolean, call } from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
+import { useMenuSelect, type MenuOptionProvider } from './provide'
 
 const { name, n, classes } = createNamespace('menu-option')
 
@@ -93,9 +93,9 @@ export default defineComponent({
               disabled: props.disabled,
               ripple: props.ripple,
             },
-            optionSelected.value
+            optionSelected.value,
           )
-        : props.label
+        : props.label,
     )
 
     const menuOptionProvider: MenuOptionProvider = {

@@ -1,10 +1,10 @@
-import LocaleProvider from '../index'
+import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { expect, test } from 'vitest'
+import DatePicker from '../../date-picker'
 import Dialog from '../../dialog/Dialog.vue'
 import Locale from '../../locale'
-import DatePicker from '../../date-picker'
-import { createApp, h } from 'vue'
-import { expect, test } from 'vitest'
-import { mount } from '@vue/test-utils'
+import LocaleProvider from '../index'
 
 test('test localeProvider component plugin', () => {
   const app = createApp({}).use(LocaleProvider)

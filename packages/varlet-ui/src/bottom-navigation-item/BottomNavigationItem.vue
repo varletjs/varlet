@@ -1,7 +1,7 @@
 <template>
   <button
-    :class="classes(n(), n('$--box'), [variant, n('--variant-padding')], [isActive && !variant, n('--active')])"
     v-ripple
+    :class="classes(n(), n('$--box'), [variant, n('--variant-padding')], [isActive && !variant, n('--active')])"
     :style="{
       color: isActive ? activeColor : inactiveColor,
     }"
@@ -12,11 +12,11 @@
         classes(
           n('icon-container'),
           [variant, n('--variant-icon-container')],
-          [isActive && variant, n('--variant-active')]
+          [isActive && variant, n('--variant-active')],
         )
       "
     >
-      <var-badge v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover v-if="badge">
+      <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover>
         <slot name="icon" :active="isActive">
           <var-icon
             v-if="icon"
@@ -27,7 +27,7 @@
           />
         </slot>
       </var-badge>
-      <slot name="icon" :active="isActive" v-else>
+      <slot v-else name="icon" :active="isActive">
         <var-icon v-if="icon" :name="icon" :namespace="namespace" :class="n('icon')" var-bottom-navigation-item-cover />
       </slot>
     </div>
@@ -39,15 +39,15 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
+import { computed, defineComponent } from 'vue'
+import { call } from '@varlet/shared'
+import { type BadgeProps } from '../../types'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
+import Ripple from '../ripple'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useBottomNavigation, type BottomNavigationItemProvider } from './provide'
-import { createNamespace } from '../utils/components'
-import { type BadgeProps } from '../../types'
-import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('bottom-navigation-item')
 

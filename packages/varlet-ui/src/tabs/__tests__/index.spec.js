@@ -1,11 +1,11 @@
+import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Tabs from '..'
 import Tab from '../../tab'
-import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
-import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
+import TabsItems from '../../tabs-items'
 import { delay, mockOffset, mockScrollTo } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
 
 mockScrollTo()
 mockOffset()
@@ -171,7 +171,7 @@ describe('test tabs component props', () => {
 
     await delay(100)
     expect(wrapper.find('.var-tabs--layout-horizontal-indicator-inner').attributes('style')).toContain(
-      'background: red;'
+      'background: red;',
     )
     wrapper.unmount()
   })

@@ -1,11 +1,13 @@
 {
   "private": true,
   "version": "3.8.2",
+  "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
-    "lint": "varlet-cli lint",
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
     "changelog": "varlet-cli changelog",
     "clean": "rimraf ./node_modules ./packages/*/node_modules",
     "dev": "pnpm --dir ./packages/varlet-ui dev",
@@ -33,16 +35,17 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
-    "@varlet/eslint-config": "workspace:*",
     "@varlet/icons": "workspace:*",
-    "eslint": "^8.57.1",
-    "tinyexec": "^0.3.0",
-    "rimraf": "^5.0.1",
+    "@configurajs/eslint": "^0.0.11",
+    "@configurajs/prettier": "^0.0.2",
+    "eslint": "^9.17.0",
     "nano-staged": "0.8.0",
     "nanospinner": "^1.1.0",
-    "prettier": "^2.8.8",
-    "typescript": "5.3.3",
-    "simple-git-hooks": "^2.8.0"
+    "prettier": "^3.4.2",
+    "rimraf": "^5.0.1",
+    "simple-git-hooks": "^2.8.0",
+    "tinyexec": "^0.3.0",
+    "typescript": "5.3.3"
   },
   "packageManager": "pnpm@9.1.1",
   "engines": {

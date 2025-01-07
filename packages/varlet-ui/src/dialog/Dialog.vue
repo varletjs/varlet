@@ -35,23 +35,23 @@
       <slot name="actions" :slot-class="n('actions')" :cancel="cancel" :confirm="confirm">
         <div :class="n('actions')">
           <var-button
+            v-if="cancelButton"
             :class="classes(n('button'), n('cancel-button'))"
             var-dialog-cover
             text
             :text-color="cancelButtonTextColor"
             :color="cancelButtonColor"
-            v-if="cancelButton"
             @click="cancel"
           >
             {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
           </var-button>
           <var-button
+            v-if="confirmButton"
             :class="classes(n('button'), n('confirm-button'))"
             var-dialog-cover
             text
             :text-color="confirmButtonTextColor"
             :color="confirmButtonColor"
-            v-if="confirmButton"
             @click="confirm"
           >
             {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
@@ -63,15 +63,15 @@
 </template>
 
 <script lang="ts">
-import VarPopup from '../popup'
-import VarButton from '../button'
-import { props } from './props'
 import { defineComponent, ref, watch } from 'vue'
+import { call } from '@varlet/shared'
+import VarButton from '../button'
 import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
+import VarPopup from '../popup'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { call } from '@varlet/shared'
-import { injectLocaleProvider } from '../locale-provider/provide'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('dialog')
 
@@ -93,7 +93,7 @@ export default defineComponent({
       (newValue) => {
         popupShow.value = newValue
       },
-      { immediate: true }
+      { immediate: true },
     )
 
     watch(
@@ -106,7 +106,7 @@ export default defineComponent({
 
         popupCloseOnClickOverlay.value = newValue
       },
-      { immediate: true }
+      { immediate: true },
     )
 
     function done() {

@@ -1,5 +1,5 @@
-import Icon from './Icon.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Icon from './Icon.vue'
 import { props as iconProps } from './props'
 
 withInstall(Icon)

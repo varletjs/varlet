@@ -51,13 +51,18 @@
   user-select: none;
   cursor: pointer;
   font-family: inherit;
-  transition: box-shadow 0.2s, background-color 0.25s, border-radius 0.2s;
+  transition:
+    box-shadow 0.2s,
+    background-color 0.25s,
+    border-radius 0.2s;
   will-change: box-shadow;
   -webkit-tap-highlight-color: transparent;
   white-space: nowrap;
 
   &:active {
-    box-shadow: 0 3px 5px -1px var(--shadow-key-umbra-opacity), 0 5px 8px 0 var(--shadow-key-penumbra-opacity),
+    box-shadow:
+      0 3px 5px -1px var(--shadow-key-umbra-opacity),
+      0 5px 8px 0 var(--shadow-key-penumbra-opacity),
       0 1px 14px 0 var(--shadow-key-ambient-opacity);
   }
 

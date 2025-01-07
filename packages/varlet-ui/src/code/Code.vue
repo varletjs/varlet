@@ -4,9 +4,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
+import { injectHighlighterProvider } from '../highlighter-provider/provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { injectHighlighterProvider } from '../highlighter-provider/provide'
 
 const { name, n, classes } = createNamespace('code')
 
@@ -28,7 +28,7 @@ export default defineComponent({
 
           highlightedCode.value = await highlighter.codeToHtml(trim ? code.trim() : code, { lang, theme })
         },
-        { immediate: true }
+        { immediate: true },
       )
     }
 

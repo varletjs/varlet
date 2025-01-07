@@ -1,8 +1,8 @@
-import fse from 'fs-extra'
-import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
+import { relative, resolve } from 'path'
 import { pascalCase } from '@varlet/shared'
-import { resolve, relative } from 'path'
+import fse from 'fs-extra'
 import { getVarletConfig } from '../config/varlet.config.js'
+import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
 import { compileStyleVars } from './compileStyleVars.js'
 
 const { ensureDir, writeFileSync, readdir, writeFile, readJSONSync } = fse
@@ -12,7 +12,7 @@ export function generateReference(moduleDir: string) {
     resolve(moduleDir, 'index.d.ts'),
     `\
 export * from '${relative(moduleDir, TYPES_DIR)}'
-`
+`,
   )
 }
 

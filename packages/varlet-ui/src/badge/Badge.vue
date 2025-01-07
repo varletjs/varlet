@@ -4,20 +4,20 @@
 
     <transition :name="n('$-badge-fade')">
       <span
+        v-show="!hidden"
         :class="
           classes(
             n('content'),
             n(`--${type}`),
             [$slots.default, n(`--${position}`), n('--offset')],
             [dot, n('--dot')],
-            [icon, n('--icon')]
+            [icon, n('--icon')],
           )
         "
         :style="{ background: color, ...offsetStyle }"
-        v-show="!hidden"
         v-bind="$attrs"
       >
-        <var-icon :class="n('icon')" var-badge-cover :name="icon" :namespace="namespace" v-if="icon" />
+        <var-icon v-if="icon" :class="n('icon')" var-badge-cover :name="icon" :namespace="namespace" />
 
         <slot name="value">
           <span v-if="!icon && !dot">{{ value }}</span>
@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts">
-import VarIcon from '../icon'
-import { toNumber } from '@varlet/shared'
 import { computed, defineComponent, type CSSProperties } from 'vue'
-import { props } from './props'
+import { toNumber } from '@varlet/shared'
+import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('badge')
 

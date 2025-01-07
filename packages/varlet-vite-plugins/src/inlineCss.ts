@@ -1,5 +1,5 @@
-import type { Plugin } from 'vite'
 import fse from 'fs-extra'
+import type { Plugin } from 'vite'
 
 const { pathExistsSync, writeFileSync, readFileSync, removeSync } = fse
 

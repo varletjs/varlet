@@ -1,6 +1,6 @@
-import { defineListenerProp, pickProps } from '../utils/components'
-import { iconProps } from '../icon'
 import { type PropType } from 'vue'
+import { iconProps } from '../icon'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export type ChipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 

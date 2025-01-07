@@ -1,5 +1,5 @@
-import CollapseTransition from './CollapseTransition.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import CollapseTransition from './CollapseTransition.vue'
 import { props as collapseTransitionProps } from './props'
 
 withInstall(CollapseTransition)

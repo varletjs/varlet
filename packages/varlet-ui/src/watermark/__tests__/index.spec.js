@@ -1,9 +1,9 @@
-import Watermark from '..'
-import VarWatermark from '../Watermark'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect, test, vi } from 'vitest'
+import Watermark from '..'
 import { mockCanvas } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import VarWatermark from '../Watermark'
 
 global.URL.createObjectURL = vi.fn()
 global.URL.revokeObjectURL = vi.fn()

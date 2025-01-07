@@ -1,11 +1,11 @@
 <template>
   <component
     :is="sticky ? n('$-sticky') : Transition"
+    ref="anchorEl"
     :offset-top="sticky ? stickyOffsetTop : null"
     :z-index="sticky ? zIndex : null"
     :disabled="disabled && !cssMode"
     :css-mode="cssMode"
-    ref="anchorEl"
   >
     <div :class="n()" v-bind="$attrs">
       <slot>{{ name }}</slot>
@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import VarSticky from '../sticky'
 import { computed, defineComponent, ref, Transition, type RendererNode } from 'vue'
-import { useIndexBar, type IndexAnchorProvider } from './provide'
-import { props } from './props'
+import VarSticky from '../sticky'
 import { createNamespace } from '../utils/components'
+import { props } from './props'
+import { useIndexBar, type IndexAnchorProvider } from './provide'
 
 const { name, n, classes } = createNamespace('index-anchor')
 

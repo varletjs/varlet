@@ -1,6 +1,6 @@
-import { hours24, hoursAmpm } from './props'
-import type { AmPm, AllowedTime } from './props'
 import { toNumber } from '@varlet/shared'
+import { hours24, hoursAmpm } from './props'
+import type { AllowedTime, AmPm } from './props'
 
 type DisableProps = {
   time: number
@@ -42,7 +42,9 @@ export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>): boolea
   let isBetweenMinMax = false
   let isAllow = false
 
-  if (disableHour.includes(hourStr)) return true
+  if (disableHour.includes(hourStr)) {
+    return true
+  }
 
   if (max && !min) {
     const { hour: maxHour, minute: maxMinute } = getNumberTime(max)
@@ -62,7 +64,9 @@ export const getIsDisableMinute = (values: Omit<DisableProps, 'minute'>): boolea
     isBetweenMinMax = (minHour === hourNum && time < minMinute) || (maxHour === hourNum && time > maxMinute)
   }
 
-  if (values.allowedTime?.minutes) isAllow = values.allowedTime?.minutes(time)
+  if (values.allowedTime?.minutes) {
+    isAllow = values.allowedTime?.minutes(time)
+  }
 
   return isBetweenMinMax || isAllow
 }
@@ -73,7 +77,9 @@ export const getIsDisableSecond = (values: DisableProps): boolean => {
   let isBetweenMinMax = false
   let isAllow = false
 
-  if (disableHour.includes(hourStr)) return true
+  if (disableHour.includes(hourStr)) {
+    return true
+  }
 
   if (max && !min) {
     const { hour: maxHour, minute: maxMinute, second: maxSecond } = getNumberTime(max)
@@ -98,7 +104,9 @@ export const getIsDisableSecond = (values: DisableProps): boolean => {
       (minHour === hourNum && minMinute === minute && time < minSecond)
   }
 
-  if (values.allowedTime?.seconds) isAllow = values.allowedTime?.seconds(time)
+  if (values.allowedTime?.seconds) {
+    isAllow = values.allowedTime?.seconds(time)
+  }
 
   return isBetweenMinMax || isAllow
 }

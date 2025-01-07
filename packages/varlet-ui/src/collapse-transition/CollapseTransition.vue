@@ -1,8 +1,8 @@
 <template>
   <div
-    :class="n('content')"
     v-show="showContent"
     ref="contentEl"
+    :class="n('content')"
     @transitionend="handleTransitionEnd"
     @transitionstart="handleTransitionStart"
   >
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useCollapseTransition } from './useCollapseTransition'

@@ -1,8 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Snackbar } from '@varlet/ui'
+import { t, use } from './locale'
 
 const value = ref()
 const valueNormal = ref()
@@ -143,7 +143,7 @@ function handleSelect(value) {
       </template>
     </var-menu-select>
 
-    <var-menu-select size="small" v-model="valueSmall">
+    <var-menu-select v-model="valueSmall" size="small">
       <var-button type="primary">{{ valueSmall ? valueSmall : t('small') }}</var-button>
 
       <template #options>
@@ -153,7 +153,7 @@ function handleSelect(value) {
       </template>
     </var-menu-select>
 
-    <var-menu-select size="mini" v-model="valueMini">
+    <var-menu-select v-model="valueMini" size="mini">
       <var-button type="primary">{{ valueMini ? valueMini : t('mini') }}</var-button>
 
       <template #options>
@@ -163,7 +163,7 @@ function handleSelect(value) {
       </template>
     </var-menu-select>
 
-    <var-menu-select size="large" v-model="valueLarge">
+    <var-menu-select v-model="valueLarge" size="large">
       <var-button type="primary">{{ valueLarge ? valueLarge : t('large') }}</var-button>
 
       <template #options>
@@ -186,7 +186,7 @@ function handleSelect(value) {
   </var-menu-select>
 
   <app-type>{{ t('scrollable') }}</app-type>
-  <var-menu-select scrollable v-model="valueScrollable">
+  <var-menu-select v-model="valueScrollable" scrollable>
     <var-button type="primary">{{ valueScrollable ? valueScrollable : t('please') }}</var-button>
 
     <template #options>
@@ -206,7 +206,7 @@ function handleSelect(value) {
   </var-menu-select>
 
   <app-type>{{ t('multiple') }}</app-type>
-  <var-menu-select multiple v-model="valueMultiple">
+  <var-menu-select v-model="valueMultiple" multiple>
     <var-button type="primary">{{ valueMultiple.length ? valueMultiple : t('please') }}</var-button>
 
     <template #options>
@@ -219,7 +219,7 @@ function handleSelect(value) {
   </var-menu-select>
 
   <app-type>{{ t('closeOnSelect') }}</app-type>
-  <var-menu-select :close-on-select="false" v-model="valueCloseOnSelect">
+  <var-menu-select v-model="valueCloseOnSelect" :close-on-select="false">
     <var-button type="primary">{{ valueCloseOnSelect ? valueCloseOnSelect : t('please') }}</var-button>
 
     <template #options>
@@ -235,12 +235,12 @@ function handleSelect(value) {
   </var-menu-select>
 
   <app-type>{{ t('cascade') }}</app-type>
-  <var-menu-select :options="cascadeOptions" v-model="cascadeValue">
+  <var-menu-select v-model="cascadeValue" :options="cascadeOptions">
     <var-button type="primary">{{ cascadeValue ? cascadeValue : t('please') }}</var-button>
   </var-menu-select>
 
   <app-type>{{ t('multipleCascade') }}</app-type>
-  <var-menu-select multiple :options="cascadeOptions" v-model="cascadeMultipleValue">
+  <var-menu-select v-model="cascadeMultipleValue" multiple :options="cascadeOptions">
     <var-button type="primary">{{ cascadeMultipleValue.length ? cascadeMultipleValue : t('please') }}</var-button>
   </var-menu-select>
 

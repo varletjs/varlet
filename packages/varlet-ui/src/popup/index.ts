@@ -1,5 +1,5 @@
-import Popup from './Popup'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Popup from './Popup'
 import { props as popupProps } from './props'
 
 withInstall(Popup)

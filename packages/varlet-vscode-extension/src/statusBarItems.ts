@@ -13,7 +13,7 @@ function getIsInWorkspace(path: string) {
 
 export function registerStatusBarItems() {
   const isInWorkspace = workspace.workspaceFolders?.some((workspaceFolder) =>
-    getIsInWorkspace(workspaceFolder.uri.fsPath)
+    getIsInWorkspace(workspaceFolder.uri.fsPath),
   )
 
   if (isInWorkspace) {

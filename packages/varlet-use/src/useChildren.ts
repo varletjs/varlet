@@ -1,14 +1,14 @@
-import { removeItem, isArray } from '@varlet/shared'
 import {
-  getCurrentInstance,
   computed,
+  getCurrentInstance,
+  isVNode,
   provide,
   reactive,
-  isVNode,
-  type VNode,
   type ComponentInternalInstance,
   type ComputedRef,
+  type VNode,
 } from 'vue'
+import { isArray, removeItem } from '@varlet/shared'
 
 function flatVNodes(subTree: any) {
   const vNodes: VNode[] = []

@@ -1,12 +1,12 @@
+import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import { z } from 'zod'
 import CheckboxGroup from '..'
 import Checkbox from '../../checkbox'
-import VarCheckboxGroup from '../CheckboxGroup'
 import VarCheckbox from '../../checkbox/Checkbox'
-import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
-import { delay, triggerKeyboard, trigger } from '../../utils/test'
-import { expect, vi, test, describe } from 'vitest'
-import { z } from 'zod'
+import { delay, trigger, triggerKeyboard } from '../../utils/test'
+import VarCheckboxGroup from '../CheckboxGroup'
 
 test('test checkbox group plugin', () => {
   const app = createApp({}).use(CheckboxGroup)
@@ -326,7 +326,7 @@ test('test checkbox group checkAll & inverseAll methods', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group layout direction', async () => {
+test('test checkbox group layout direction', () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,

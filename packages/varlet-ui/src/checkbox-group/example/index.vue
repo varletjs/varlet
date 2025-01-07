@@ -1,8 +1,8 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, toRefs, computed } from 'vue'
+import { computed, reactive, toRefs } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
-import { use, t } from './locale'
+import { t, use } from './locale'
 
 const values = reactive({
   value: false,
@@ -65,12 +65,12 @@ onThemeChange()
   <var-checkbox v-model="value">{{ t('currentValue') }} {{ value }}</var-checkbox>
 
   <app-type>{{ t('setState') }}</app-type>
-  <var-checkbox :unchecked-value="0" :checked-value="1" v-model="value2">
+  <var-checkbox v-model="value2" :unchecked-value="0" :checked-value="1">
     {{ t('currentValue') }} {{ value2 }}
   </var-checkbox>
 
   <app-type>{{ t('setStyle') }}</app-type>
-  <var-checkbox unchecked-color="var(--color-warning)" checked-color="var(--color-danger)" v-model="value3">
+  <var-checkbox v-model="value3" unchecked-color="var(--color-warning)" checked-color="var(--color-danger)">
     <template #unchecked-icon>
       <var-icon name="heart-half-full" size="24px" />
     </template>
@@ -81,10 +81,10 @@ onThemeChange()
   </var-checkbox>
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-checkbox disabled v-model="value4">{{ t('currentValue') }} {{ value4 }}</var-checkbox>
+  <var-checkbox v-model="value4" disabled>{{ t('currentValue') }} {{ value4 }}</var-checkbox>
 
   <app-type>{{ t('readonly') }}</app-type>
-  <var-checkbox readonly v-model="value5">{{ t('currentValue') }} {{ value5 }}</var-checkbox>
+  <var-checkbox v-model="value5" readonly>{{ t('currentValue') }} {{ value5 }}</var-checkbox>
 
   <app-type>{{ t('indeterminate') }}</app-type>
   <var-space :size="[0, 10]">

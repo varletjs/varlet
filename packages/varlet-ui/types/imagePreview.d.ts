@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { SwipeToOptions } from './swipe'
 import { App, TeleportProps, VNode } from 'vue'
+import { SwipeToOptions } from './swipe'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const imagePreviewProps: Record<keyof ImagePreviewProps, any>
 

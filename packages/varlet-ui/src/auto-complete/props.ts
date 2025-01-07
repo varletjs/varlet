@@ -1,6 +1,6 @@
 import { type PropType, type VNode, type VNodeChild } from 'vue'
-import { defineListenerProp, pickProps } from '../utils/components'
 import { inputProps } from '../input'
+import { defineListenerProp, pickProps } from '../utils/components'
 
 export type AutoCompleteOptionLabelRender = (option: AutoCompleteOption, checked: boolean) => VNodeChild
 

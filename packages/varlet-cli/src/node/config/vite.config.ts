@@ -1,22 +1,22 @@
+import { resolve } from 'path'
+import { isArray } from '@varlet/shared'
+import { copy, html, inlineCss, markdown } from '@varlet/vite-plugins'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
+import { InlineConfig, Plugin } from 'vite'
 import {
-  SRC_DIR,
   ES_DIR,
+  EXTENSION_ENTRY,
   SITE_CONFIG,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
   SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
+  SRC_DIR,
   VITE_RESOLVE_EXTENSIONS,
-  EXTENSION_ENTRY,
 } from '../shared/constant.js'
-import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
-import { InlineConfig, Plugin } from 'vite'
-import { resolve } from 'path'
 import { VarletConfig, type VarletConfigHtmlInject, type VarletConfigHtmlInjectPoint } from './varlet.config.js'
-import { isArray } from '@varlet/shared'
 
 export function getHtmlInject(inject: VarletConfigHtmlInject) {
   const getContent = (injectKey: keyof VarletConfigHtmlInject, position: VarletConfigHtmlInjectPoint['position']) =>
@@ -78,11 +78,14 @@ export function getPlugins(varletConfig: Required<VarletConfig>): Plugin[] {
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const { alias = {}, host } = varletConfig
 
-  const resolveAlias = Object.entries(alias).reduce((resolveAlias, [key, value]) => {
-    const isRelative = value.startsWith('.')
-    resolveAlias[key] = isRelative ? resolve(SRC_DIR, value) : value
-    return resolveAlias
-  }, {} as Record<string, string>)
+  const resolveAlias = Object.entries(alias).reduce(
+    (resolveAlias, [key, value]) => {
+      const isRelative = value.startsWith('.')
+      resolveAlias[key] = isRelative ? resolve(SRC_DIR, value) : value
+      return resolveAlias
+    },
+    {} as Record<string, string>,
+  )
 
   return {
     root: SITE_DIR,
@@ -152,7 +155,7 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
       inlineCss({
         jsFile: resolve(output, fileName),
         cssFile: resolve(output, 'style.css'),
-      })
+      }),
     )
   }
 

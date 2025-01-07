@@ -1,7 +1,7 @@
 <script setup>
+import { reactive, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { ActionSheet, Snackbar } from '@varlet/ui'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { ref, reactive } from 'vue'
 import { t, use } from './locale'
 
 const rawActions = [
@@ -139,9 +139,9 @@ function handleSelect(action) {
     <var-button type="warning" block @click="show4 = true">{{ t('customActionStyles') }}</var-button>
   </var-space>
 
-  <var-action-sheet :actions="actions" v-model:show="show" @select="handleSelect" />
-  <var-action-sheet :title="t('customTitle')" :actions="actions" v-model:show="show1" @select="handleSelect" />
-  <var-action-sheet :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
-  <var-action-sheet :close-on-click-action="false" :actions="actions" v-model:show="show3" @select="handleSelect" />
-  <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
+  <var-action-sheet v-model:show="show" :actions="actions" @select="handleSelect" />
+  <var-action-sheet v-model:show="show1" :title="t('customTitle')" :actions="actions" @select="handleSelect" />
+  <var-action-sheet v-model:show="show2" :actions="disabledActions" @select="handleSelect" />
+  <var-action-sheet v-model:show="show3" :close-on-click-action="false" :actions="actions" @select="handleSelect" />
+  <var-action-sheet v-model:show="show4" :actions="customStyleActions" @select="handleSelect" />
 </template>

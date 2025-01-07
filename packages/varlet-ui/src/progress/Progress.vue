@@ -6,7 +6,7 @@
     aria-valuemax="100"
     :aria-valuenow="indeterminate ? undefined : mode === 'linear' ? linearProps.value : circleProps.value"
   >
-    <div :class="n('linear')" v-if="mode === 'linear'">
+    <div v-if="mode === 'linear'" :class="n('linear')">
       <div
         :class="classes(n('linear-block'), [track, n('linear-background')])"
         :style="{ height: toSizeUnit(lineWidth), background: trackColor }"
@@ -21,7 +21,7 @@
           :style="{ background: progressColor, width: linearProps.width }"
         ></div>
       </div>
-      <div :class="classes(n('linear-label'), [labelClass, labelClass])" v-if="label">
+      <div v-if="label" :class="classes(n('linear-label'), [labelClass, labelClass])">
         <slot>
           {{ linearProps.roundValue }}
         </slot>
@@ -70,7 +70,7 @@
         ></path>
       </svg>
 
-      <div :class="classes(n('circle-label'), labelClass)" v-if="label">
+      <div v-if="label" :class="classes(n('circle-label'), labelClass)">
         <slot>
           {{ circleProps.roundValue }}
         </slot>
@@ -80,12 +80,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { props } from './props'
-import { isPlainObject, toNumber, clamp } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
+import { clamp, isPlainObject, toNumber } from '@varlet/shared'
 import { useClientId } from '@varlet/use'
-import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
+import { toPxNum, toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const MAX = 100
 const MIN = 0
@@ -147,7 +147,7 @@ export default defineComponent({
     })
 
     const linearGradientProgress = computed(() =>
-      Object.keys(props.color!).sort((a, b) => parseFloat(a) - parseFloat(b))
+      Object.keys(props.color!).sort((a, b) => parseFloat(a) - parseFloat(b)),
     )
 
     return {

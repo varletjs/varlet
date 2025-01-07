@@ -1,12 +1,12 @@
+import { createApp, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
+import { z } from 'zod'
 import Select from '..'
-import VarSelect from '../Select'
 import Option from '../../option'
 import VarOption from '../../option/Option'
-import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
-import { z } from 'zod'
+import VarSelect from '../Select'
 
 const Wrapper = {
   components: {
@@ -61,7 +61,7 @@ test('test select variant', () => {
     switch (variant) {
       case 'standard': {
         expect(
-          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot'),
         ).toBeTruthy()
         break
       }
@@ -236,7 +236,7 @@ test('test select disabled', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await trigger(document.querySelector('.var-select__menu'), 'click')
@@ -290,7 +290,7 @@ test('test select readonly', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.trigger('click')
@@ -329,7 +329,7 @@ test('test select clear', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.find('.var-icon-close-circle').trigger('click')
@@ -352,7 +352,7 @@ test('test select multiple value', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.trigger('click')
@@ -378,7 +378,7 @@ test('test select multiple value in chips', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.trigger('click')
@@ -408,7 +408,7 @@ test('test select validation', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   const { select } = wrapper.vm.$refs
@@ -471,7 +471,7 @@ test('test select keyboard select option by space', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await trigger(wrapper, 'focus')
@@ -499,7 +499,7 @@ test('test select keyboard select option by enter', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await trigger(wrapper, 'focus')
@@ -527,7 +527,7 @@ test('test select keyboard close menu by escape', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.trigger('focus')
@@ -559,7 +559,7 @@ test('test select offset-y', async () => {
       </var-select>
       `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   const { select } = wrapper.vm.$refs
@@ -591,7 +591,7 @@ test('test select options', async () => {
       </var-select>
     `,
     },
-    { attachTo: document.body }
+    { attachTo: document.body },
   )
 
   await wrapper.trigger('click')

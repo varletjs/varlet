@@ -1,5 +1,5 @@
-import Option from './Option.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Option from './Option.vue'
 import { props as optionProps } from './props'
 
 withInstall(Option)

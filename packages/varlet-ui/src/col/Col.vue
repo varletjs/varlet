@@ -10,7 +10,7 @@
         ...getSize('sm', sm),
         ...getSize('md', md),
         ...getSize('lg', lg),
-        ...getSize('xl', xl)
+        ...getSize('xl', xl),
       )
     "
     :style="{
@@ -29,12 +29,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { isPlainObject, toNumber, call } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
+import { call, isPlainObject, toNumber } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { props } from './props'
 import { useRow, type ColPadding, type ColSizeDescriptor } from './provide'
-import { padStartFlex, toSizeUnit } from '../utils/elements'
-import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('col')
 

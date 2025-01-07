@@ -1,5 +1,5 @@
-import Link from './Link.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import Link from './Link.vue'
 import { props as linkProps } from './props'
 
 withInstall(Link)

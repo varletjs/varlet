@@ -1,7 +1,7 @@
 <script setup>
-import { watchLang, AppType } from '@varlet/cli/client'
-import { t, use } from './locale'
 import { ref } from 'vue'
+import { AppType, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const countToRef = ref()
 
@@ -29,7 +29,7 @@ watchLang(use)
   <var-count-to :to="123456" :timing-function="(v) => 1 - Math.pow(1 - v, 3)" />
 
   <app-type>{{ t('manualControl') }}</app-type>
-  <var-count-to :to="123456" ref="countToRef" :auto-start="false" />
+  <var-count-to ref="countToRef" :to="123456" :auto-start="false" />
   <var-row justify="space-between" align="center" style="margin-top: 10px">
     <var-button type="primary" @click="countToRef.start()">{{ t('startText') }}</var-button>
     <var-button @click="countToRef.pause()">{{ t('pauseText') }}</var-button>

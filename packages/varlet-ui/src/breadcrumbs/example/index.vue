@@ -1,7 +1,7 @@
 <script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Snackbar } from '@varlet/ui'
-import { use, t } from './locale'
-import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 onThemeChange()
 watchLang(use)

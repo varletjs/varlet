@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-import { onThemeChange, watchLang, AppType } from '@varlet/cli/client'
 
 const text = ref('VARLET')
 

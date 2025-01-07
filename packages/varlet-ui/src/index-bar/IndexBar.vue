@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" ref="barEl">
+  <div ref="barEl" :class="n()">
     <slot />
     <ul :class="n('anchor-list')" :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }">
       <li
@@ -18,24 +18,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated, onActivated } from 'vue'
+import { computed, defineComponent, onActivated, onBeforeUnmount, onDeactivated, ref, watch } from 'vue'
 import {
-  isPlainObject,
-  toNumber,
+  call,
   doubleRaf,
-  requestAnimationFrame,
   getRect,
   getScrollLeft,
   getScrollTop,
-  call,
+  isPlainObject,
+  requestAnimationFrame,
+  toNumber,
 } from '@varlet/shared'
-import { easeInOutCubic } from '../utils/shared'
-import { getParentScroller, scrollTo as varScrollTo, toPxNum } from '../utils/elements'
-import { useIndexAnchors, type IndexBarProvider } from './provide'
-import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
-import { createNamespace } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 import { type IndexAnchorProvider } from '../index-anchor/provide'
+import { createNamespace } from '../utils/components'
+import { getParentScroller, toPxNum, scrollTo as varScrollTo } from '../utils/elements'
+import { easeInOutCubic } from '../utils/shared'
+import { props, type ClickOptions, type IndexBarScrollToOptions } from './props'
+import { useIndexAnchors, type IndexBarProvider } from './provide'
 
 const { name, n, classes } = createNamespace('index-bar')
 
@@ -70,7 +70,7 @@ export default defineComponent({
         anchorNameList.value = indexAnchors
           .filter(({ name }) => name.value != null)
           .map(({ name }) => name.value) as Array<string | number>
-      }
+      },
     )
 
     onSmartMounted(setupScroller)
@@ -83,7 +83,9 @@ export default defineComponent({
     })
 
     onActivated(() => {
-      if (!isDeactivated || active.value === undefined) return
+      if (!isDeactivated || active.value === undefined) {
+        return
+      }
 
       anchorClick({
         anchorName: active.value,
@@ -96,7 +98,9 @@ export default defineComponent({
 
     function emitEvent(anchor: IndexAnchorProvider | number | string, options?: IndexBarScrollToOptions) {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
-      if (anchorName === active.value || anchorName === undefined) return
+      if (anchorName === active.value || anchorName === undefined) {
+        return
+      }
 
       active.value = anchorName
       if (options?.event !== false) {

@@ -1,13 +1,13 @@
-import {
-  VarComponent,
-  SetPropsDefaults,
-  BasicAttributes,
-  Type as ButtonType,
-  Size as ButtonSize,
-  ListenerProp,
-} from './varComponent'
-import { LoadingType, LoadingSize } from './loading'
 import { ButtonHTMLAttributes, VNode } from 'vue'
+import { LoadingSize, LoadingType } from './loading'
+import {
+  BasicAttributes,
+  Size as ButtonSize,
+  Type as ButtonType,
+  ListenerProp,
+  SetPropsDefaults,
+  VarComponent,
+} from './varComponent'
 
 export { ButtonType, ButtonSize }
 

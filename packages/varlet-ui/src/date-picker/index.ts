@@ -1,5 +1,5 @@
-import DatePicker from './DatePicker.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import DatePicker from './DatePicker.vue'
 import { props as datePickerProps } from './props'
 
 withInstall(DatePicker)

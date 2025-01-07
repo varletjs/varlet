@@ -1,6 +1,6 @@
 <script setup>
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const value = ref(0)

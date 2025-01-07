@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { props } from './props'
-import { isArray, call } from '@varlet/shared'
-import { useCols } from './provide'
-import { toPxNum, padStartFlex } from '../utils/elements'
+import { computed, defineComponent } from 'vue'
+import { call, isArray } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
+import { padStartFlex, toPxNum } from '../utils/elements'
+import { props } from './props'
+import { useCols } from './provide'
 
 const { name, n, classes } = createNamespace('row')
 
@@ -27,7 +27,7 @@ export default defineComponent({
   props,
   setup(props) {
     const average = computed(() =>
-      isArray(props.gutter) ? props.gutter.map((numeric) => toPxNum(numeric) / 2) : [0, toPxNum(props.gutter) / 2]
+      isArray(props.gutter) ? props.gutter.map((numeric) => toPxNum(numeric) / 2) : [0, toPxNum(props.gutter) / 2],
     )
     const { bindCols } = useCols()
 

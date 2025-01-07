@@ -1,11 +1,11 @@
+import { createApp } from 'vue'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import Dialog from '..'
-import VarDialog from '../Dialog'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
-import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import VarDialog from '../Dialog'
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)
@@ -199,7 +199,7 @@ describe('test dialog component props', () => {
     })
 
     expect(wrapper.find('.var-dialog__confirm-button[var-dialog-cover]').attributes('style')).toContain(
-      'background: blue'
+      'background: blue',
     )
 
     wrapper.unmount()
@@ -214,7 +214,7 @@ describe('test dialog component props', () => {
     })
 
     expect(wrapper.find('.var-dialog__cancel-button[var-dialog-cover]').attributes('style')).toContain(
-      'background: blue'
+      'background: blue',
     )
 
     wrapper.unmount()
@@ -388,7 +388,7 @@ describe('test dialog component slots', () => {
     wrapper.unmount()
   })
 
-  test('test dialog default slot', async () => {
+  test('test dialog default slot', () => {
     const wrapper = mount({
       components: {
         [VarDialog.name]: VarDialog,

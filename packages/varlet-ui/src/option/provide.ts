@@ -1,6 +1,6 @@
 import { type ComputedRef } from 'vue'
-import { useParent } from '@varlet/use'
 import { assert } from '@varlet/shared'
+import { useParent } from '@varlet/use'
 import { SELECT_BIND_OPTION_KEY, type SelectProvider } from '../select/provide'
 
 export interface OptionProvider {

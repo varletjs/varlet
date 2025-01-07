@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { Swipe } from './swipe'
 import { VNode } from 'vue'
+import { Swipe } from './swipe'
+import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const tabsItemsProps: Record<keyof TabsItemsProps, any>
 

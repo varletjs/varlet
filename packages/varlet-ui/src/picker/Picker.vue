@@ -25,7 +25,7 @@
     var-picker-cover
   >
     <div :class="n()" v-bind="$attrs">
-      <div :class="n('toolbar')" v-if="toolbar">
+      <div v-if="toolbar" :class="n('toolbar')">
         <slot name="cancel">
           <var-button
             :class="n('cancel-button')"
@@ -54,16 +54,16 @@
       </div>
       <div :class="n('columns')" :style="{ height: `${columnHeight}px` }">
         <div
-          :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
+          :class="n('column')"
           @touchstart.passive="handleTouchstart($event, c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend(c)"
         >
           <div
-            :class="n('scroller')"
             :ref="(el) => setScrollEl(el, c)"
+            :class="n('scroller')"
             :style="{
               transform: `translateY(${c.translate}px)`,
               transitionDuration: `${c.duration}ms`,
@@ -96,16 +96,16 @@
 </template>
 
 <script lang="ts">
-import VarButton from '../button'
-import VarPopup from '../popup'
-import { defineComponent, watch, ref, computed, Transition, type ComponentPublicInstance } from 'vue'
-import { props, type PickerColumnOption } from './props'
+import { computed, defineComponent, ref, Transition, watch, type ComponentPublicInstance } from 'vue'
+import { call, clamp, clampArrayRange, toNumber } from '@varlet/shared'
 import { useTouch, useVModel } from '@varlet/use'
-import { clamp, clampArrayRange, call, toNumber } from '@varlet/shared'
-import { toPxNum, getTranslateY } from '../utils/elements'
+import VarButton from '../button'
 import { t } from '../locale'
-import { createNamespace } from '../utils/components'
 import { injectLocaleProvider } from '../locale-provider/provide'
+import VarPopup from '../popup'
+import { createNamespace } from '../utils/components'
+import { getTranslateY, toPxNum } from '../utils/elements'
+import { props, type PickerColumnOption } from './props'
 
 export interface ScrollColumn {
   id: number
@@ -210,7 +210,7 @@ export default defineComponent({
       scrollColumns: ScrollColumn[],
       children: PickerColumnOption[],
       syncModelValue = true,
-      depth = 1
+      depth = 1,
     ) {
       if (children.length && (props.columnsCount == null || depth <= visibleColumnsCount.value)) {
         const scrollColumn: ScrollColumn = {
@@ -240,7 +240,7 @@ export default defineComponent({
           scrollColumns,
           scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
           syncModelValue,
-          depth + 1
+          depth + 1,
         )
       }
     }
@@ -251,7 +251,7 @@ export default defineComponent({
         scrollColumns.value,
         scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
         false,
-        scrollColumns.value.length + 1
+        scrollColumns.value.length + 1,
       )
     }
 

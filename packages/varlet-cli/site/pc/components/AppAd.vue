@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import config from '@config'
 import { ref } from 'vue'
+import config from '@config'
 
 defineProps({
   language: {

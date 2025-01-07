@@ -1,9 +1,9 @@
 <template>
   <div
+    v-hover:desktop="hover"
     :class="classes(n(), [variant, n('--variant')])"
     role="switch"
     :aria-checked="modelValue"
-    v-hover:desktop="hover"
   >
     <div
       ref="switchRef"
@@ -16,12 +16,12 @@
         :class="classes(n('track'), [isActive, n('track--active')], [errorMessage && !variant, n('track--error')])"
       ></div>
       <div
-        :class="classes(n('ripple'), [isActive, n('ripple--active')])"
-        :style="styleComputed.ripple"
-        :tabindex="disabled || formDisabled ? undefined : '0'"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled || readonly || formReadonly,
         }"
+        :class="classes(n('ripple'), [isActive, n('ripple--active')])"
+        :style="styleComputed.ripple"
+        :tabindex="disabled || formDisabled ? undefined : '0'"
         @focus="isFocusing = true"
         @blur="isFocusing = false"
       >
@@ -33,7 +33,7 @@
               formatElevation(buttonElevation, 2),
               [isActive, n('handle--active')],
               [errorMessage && !variant, n('handle--error')],
-              [hovering, n('handle--hover')]
+              [hovering, n('handle--hover')],
             )
           "
         >
@@ -62,17 +62,17 @@
 </template>
 
 <script lang="ts">
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import Hover from '../hover'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, computed, nextTick, ref } from 'vue'
-import { useValidation, createNamespace, formatElevation } from '../utils/components'
-import { multiplySizeUnit } from '../utils/elements'
-import { useForm } from '../form/provide'
-import { props, type SwitchValidateTrigger } from './props'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import VarFormDetails from '../form-details'
+import { useForm } from '../form/provide'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Ripple from '../ripple'
+import { createNamespace, formatElevation, useValidation } from '../utils/components'
+import { multiplySizeUnit } from '../utils/elements'
+import { props, type SwitchValidateTrigger } from './props'
 import { type SwitchProvider } from './provide'
 
 const { name, n, classes } = createNamespace('switch')

@@ -1,10 +1,10 @@
-import Input from '..'
-import VarInput from '../Input'
-import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { delay } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { describe, expect, test, vi } from 'vitest'
 import { z } from 'zod'
+import Input from '..'
+import { delay } from '../../utils/test'
+import VarInput from '../Input'
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
@@ -24,7 +24,7 @@ test('test input variant', () => {
     switch (variant) {
       case 'standard': {
         expect(
-          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot'),
         ).toBeTruthy()
         break
       }
@@ -410,7 +410,7 @@ describe('test input component slots', () => {
     wrapper.unmount()
   })
 
-  test('test input append-icon slot', async () => {
+  test('test input append-icon slot', () => {
     const wrapper = mount(VarInput, {
       slots: {
         'append-icon': () => 'append-icon',
@@ -422,7 +422,7 @@ describe('test input component slots', () => {
     wrapper.unmount()
   })
 
-  test('test input prepend-icon slot', async () => {
+  test('test input prepend-icon slot', () => {
     const wrapper = mount(VarInput, {
       slots: {
         'prepend-icon': () => 'prepend-icon',

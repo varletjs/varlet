@@ -2,30 +2,30 @@
   <div :class="n('clock')">
     <div :class="n('clock-hand')" :style="handStyle"></div>
     <div
+      v-for="(timeScale, index) in timeScales"
+      :key="timeScale"
       :class="
         classes(
           n('clock-item'),
           [isActive(index, false), n('clock-item--active')],
-          [isDisable(timeScale), n('clock-item--disable')]
+          [isDisable(timeScale), n('clock-item--disable')],
         )
       "
-      v-for="(timeScale, index) in timeScales"
-      :key="timeScale"
       :style="getStyle(index, timeScale, false)"
     >
       {{ timeScale }}
     </div>
-    <div :class="n('clock-inner')" ref="inner" v-if="format === '24hr' && type === 'hour'">
+    <div v-if="format === '24hr' && type === 'hour'" ref="inner" :class="n('clock-inner')">
       <div
+        v-for="(hour, index) in hours24"
+        :key="hour"
         :class="
           classes(
             n('clock-item'),
             [isActive(index, true), n('clock-item--active')],
-            [isDisable(hour), n('clock-item--disable')]
+            [isDisable(hour), n('clock-item--disable')],
           )
         "
-        v-for="(hour, index) in hours24"
-        :key="hour"
         :style="getStyle(index, hour, true)"
       >
         {{ hour }}
@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
+import { getRect, toNumber } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
-import { computed, defineComponent, ref, watch, type ComputedRef, type Ref, type PropType } from 'vue'
-import { hoursAmpm, hours24, minSec, type Time, type AmPm, type Format, type AllowedTime } from './props'
-import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
-import { toNumber, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
+import { hours24, hoursAmpm, minSec, type AllowedTime, type AmPm, type Format, type Time } from './props'
+import { convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime, notConvert } from './utils'
 
 const { n, classes } = createNamespace('time-picker')
 
@@ -104,13 +104,17 @@ export default defineComponent({
     }))
 
     const activeItemIndex: ComputedRef<number | undefined> = computed(() => {
-      if (props.rad === undefined) return
+      if (props.rad === undefined) {
+        return
+      }
       const value = props.rad / 30
       return value >= 0 ? value : value + 12
     })
 
     const timeScales: ComputedRef<Array<string>> = computed(() => {
-      if (props.type === 'hour') return hoursAmpm
+      if (props.type === 'hour') {
+        return hoursAmpm
+      }
 
       return minSec
     })
@@ -132,13 +136,17 @@ export default defineComponent({
         disableHour: disableHour.value,
       }
 
-      if (isDisable && props.type === 'minute') Reflect.deleteProperty(values, 'minute')
+      if (isDisable && props.type === 'minute') {
+        Reflect.deleteProperty(values, 'minute')
+      }
 
       return disableMethod(values)
     }
 
     const getHandleColor = () => {
-      if (activeItemIndex.value === undefined) return props.color
+      if (activeItemIndex.value === undefined) {
+        return props.color
+      }
       const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
 
       if (timeScales.value === minSec) {
@@ -149,14 +157,18 @@ export default defineComponent({
     }
 
     const isActive = (index: number, inner: boolean): boolean => {
-      if (inner) return activeItemIndex.value === index && props.isInner
+      if (inner) {
+        return activeItemIndex.value === index && props.isInner
+      }
 
       return activeItemIndex.value === index && (!props.isInner || props.type !== 'hour')
     }
 
     const isDisable = (time: string) => {
       if (props.type === 'hour') {
-        if (notConvert(props.format, props.ampm)) return disableHour.value.includes(time)
+        if (notConvert(props.format, props.ampm)) {
+          return disableHour.value.includes(time)
+        }
 
         const timeIndex = hoursAmpm.findIndex((hour) => hour === time)
         return disable24HourIndex.value.includes(timeIndex)
@@ -210,7 +222,9 @@ export default defineComponent({
     }
 
     const getHour = (): string | undefined => {
-      if (activeItemIndex.value === undefined) return undefined
+      if (activeItemIndex.value === undefined) {
+        return undefined
+      }
       const hours = props.ampm === 'am' ? hoursAmpm : hours24
 
       return padStart(hours[activeItemIndex.value], 2, '0')
@@ -218,13 +232,17 @@ export default defineComponent({
 
     watch([activeItemIndex, () => props.isInner], ([index, inner], [oldIndex, oldInner]) => {
       const isSame = index === oldIndex && inner === oldInner
-      if (isSame || props.type !== 'hour' || activeItemIndex.value === undefined) return
+      if (isSame || props.type !== 'hour' || activeItemIndex.value === undefined) {
+        return
+      }
 
       const newHour = inner ? hours24[activeItemIndex.value] : getHour()
       const second = props.useSeconds ? `:${props.time.second}` : ''
       const newTime = `${newHour}:${props.time.minute}${second}`
 
-      if (!props.preventNextUpdate) emit('update', newTime)
+      if (!props.preventNextUpdate) {
+        emit('update', newTime)
+      }
 
       emit('change-prevent-update')
     })
@@ -232,12 +250,16 @@ export default defineComponent({
     watch(
       () => props.rad,
       (rad, oldRad) => {
-        if (props.type === 'hour' || rad === undefined || oldRad === undefined) return
+        if (props.type === 'hour' || rad === undefined || oldRad === undefined) {
+          return
+        }
 
         const radToMinSec = rad / 6 >= 0 ? rad / 6 : rad / 6 + 60
         const oldRadToMinSec = oldRad / 6 >= 0 ? oldRad / 6 : oldRad / 6 + 60
 
-        if (radToMinSec === oldRadToMinSec) return
+        if (radToMinSec === oldRadToMinSec) {
+          return
+        }
 
         let newTime
         const { hourStr } = convertHour(props.format, props.ampm, props.time.hour)
@@ -257,7 +279,7 @@ export default defineComponent({
         }
 
         emit('update', newTime)
-      }
+      },
     )
 
     watch(
@@ -301,7 +323,7 @@ export default defineComponent({
           .map((hour) => hours24.findIndex((hour24) => hour === hour24))
           .filter((hour) => hour >= 0)
       },
-      { immediate: true, deep: true }
+      { immediate: true, deep: true },
     )
 
     return {

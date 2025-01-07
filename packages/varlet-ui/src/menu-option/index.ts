@@ -1,5 +1,5 @@
-import MenuOption from './MenuOption.vue'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import MenuOption from './MenuOption.vue'
 import { props as menuOptionProps } from './props'
 
 withInstall(MenuOption)

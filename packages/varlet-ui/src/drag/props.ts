@@ -1,4 +1,4 @@
-import { type TeleportProps, type PropType } from 'vue'
+import { type PropType, type TeleportProps } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type DragDirection = 'x' | 'y' | 'xy'

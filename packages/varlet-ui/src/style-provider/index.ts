@@ -1,7 +1,7 @@
-import VarStyleProvider from './StyleProvider.vue'
-import { formatStyleVars } from '../utils/elements'
 import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { formatStyleVars } from '../utils/elements'
 import { props as styleProviderProps } from './props'
+import VarStyleProvider from './StyleProvider.vue'
 
 export type StyleVars = Record<string, string>
 

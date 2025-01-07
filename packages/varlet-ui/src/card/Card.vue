@@ -1,19 +1,19 @@
 <template>
   <div
     ref="card"
+    v-ripple="{ disabled: !ripple || floater }"
     :class="
       classes(
         n(),
         [isRow, n('--layout-row')],
         [variant === 'outlined' || outline, n('--outline')],
         [variant === 'filled', n('--filled')],
-        [variant === 'standard' || outline, formatElevation(elevation, 1)]
+        [variant === 'standard' || outline, formatElevation(elevation, 1)],
       )
     "
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
-    v-ripple="{ disabled: !ripple || floater }"
     @click="handleClick"
   >
     <div
@@ -35,6 +35,7 @@
     >
       <slot name="image">
         <img
+          v-if="src"
           :class="n('image')"
           :style="{
             objectFit: fit,
@@ -43,47 +44,46 @@
           }"
           :src="src"
           :alt="alt"
-          v-if="src"
         />
       </slot>
 
       <div :class="n('container')">
         <slot name="title" :slot-class="n('title')">
-          <div :class="n('title')" v-if="title">{{ title }}</div>
+          <div v-if="title" :class="n('title')">{{ title }}</div>
         </slot>
         <slot name="subtitle" :slot-class="n('subtitle')">
-          <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
+          <div v-if="subtitle" :class="n('subtitle')">{{ subtitle }}</div>
         </slot>
-        <div :class="n('content')" v-if="$slots.default">
+        <div v-if="$slots.default" :class="n('content')">
           <slot />
         </div>
         <slot name="description" :slot-class="n('description')">
-          <div :class="n('description')" v-if="description">{{ description }}</div>
+          <div v-if="description" :class="n('description')">{{ description }}</div>
         </slot>
-        <div :class="n('footer')" v-if="$slots.extra">
+        <div v-if="$slots.extra" :class="n('footer')">
           <slot name="extra" />
         </div>
         <div
+          v-if="$slots['floating-content'] && !isRow"
           :class="n('floating-content')"
           :style="{
             height: contentHeight,
             opacity,
             transition: `opacity ${floatingDuration * 2}ms`,
           }"
-          v-if="$slots['floating-content'] && !isRow"
         >
           <slot name="floating-content" />
         </div>
       </div>
 
       <div
+        v-if="showFloatingButtons"
         :class="classes(n('floating-buttons'), n('$--box'))"
         :style="{
           zIndex,
           opacity,
           transition: `opacity ${floatingDuration * 2}ms`,
         }"
-        v-if="showFloatingButtons"
       >
         <slot name="close-button">
           <var-button var-card-cover :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
@@ -104,16 +104,16 @@
 </template>
 
 <script lang="ts">
-import Ripple from '../ripple'
-import VarIcon from '../icon'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import { call, doubleRaf, getRect } from '@varlet/shared'
 import VarButton from '../button'
-import { ref, defineComponent, watch, computed, nextTick } from 'vue'
-import { props } from './props'
-import { toSizeUnit } from '../utils/elements'
-import { doubleRaf, getRect, call } from '@varlet/shared'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
+import { useZIndex } from '../context/zIndex'
+import VarIcon from '../icon'
+import Ripple from '../ripple'
+import { createNamespace, formatElevation } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('card')
 
@@ -152,22 +152,24 @@ export default defineComponent({
 
     useLock(
       () => props.floating,
-      () => !isRow.value
+      () => !isRow.value,
     )
 
     watch(
       () => props.floating,
       (value) => {
-        if (isRow.value) return
+        if (isRow.value) {
+          return
+        }
 
         nextTick(() => {
           value ? floating() : dropdown()
         })
       },
-      { immediate: true }
+      { immediate: true },
     )
 
-    async function floating() {
+    function floating() {
       clearTimeout(floater.value)
       clearTimeout(dropper)
 
@@ -176,12 +178,12 @@ export default defineComponent({
       floater.value = setTimeout(
         async () => {
           const { width, height, left, top } = getRect(card.value!)
-          holderWidth.value = <string>toSizeUnit(width)
-          holderHeight.value = <string>toSizeUnit(height)
+          holderWidth.value = toSizeUnit(width)!
+          holderHeight.value = toSizeUnit(height)!
           floaterWidth.value = holderWidth.value
           floaterHeight.value = holderHeight.value
-          floaterTop.value = <string>toSizeUnit(top)
-          floaterLeft.value = <string>toSizeUnit(left)
+          floaterTop.value = toSizeUnit(top)!
+          floaterLeft.value = toSizeUnit(left)!
           floaterPosition.value = 'fixed'
           dropdownFloaterTop = floaterTop.value
           dropdownFloaterLeft = floaterLeft.value
@@ -198,7 +200,7 @@ export default defineComponent({
           floaterOverflow.value = 'auto'
           floated.value = true
         },
-        props.ripple ? RIPPLE_DELAY : 0
+        props.ripple ? RIPPLE_DELAY : 0,
       )
     }
 

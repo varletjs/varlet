@@ -1,7 +1,7 @@
-import { Validation } from '../form/provide'
-import { useParent } from '@varlet/use'
-import { RADIO_GROUP_BIND_RADIO_KEY, RadioGroupProvider } from '../radio-group/provide'
 import { type ComputedRef } from 'vue'
+import { useParent } from '@varlet/use'
+import { Validation } from '../form/provide'
+import { RADIO_GROUP_BIND_RADIO_KEY, RadioGroupProvider } from '../radio-group/provide'
 
 export interface RadioProvider extends Validation {
   isFocusing: ComputedRef<boolean>

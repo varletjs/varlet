@@ -8,7 +8,7 @@
         transition: touching
           ? 'none'
           : `transform ${toNumber(
-              duration
+              duration,
             )}ms var(--floating-panel-transition-timing-function), background-color 0.25s`,
       }"
       @touchstart="handleTouchstart"
@@ -21,7 +21,7 @@
           <div :class="n('header-toolbar')"></div>
         </div>
       </slot>
-      <div :class="n('content')" ref="contentRef">
+      <div ref="contentRef" :class="n('content')">
         <slot></slot>
       </div>
     </div>
@@ -29,13 +29,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './props'
+import { computed, defineComponent, ref, watch } from 'vue'
+import { call, isEmpty, preventDefault, toNumber } from '@varlet/shared'
+import { useTouch, useVModel, useWindowSize } from '@varlet/use'
 import { useLock } from '../context/lock'
 import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { useTouch, useWindowSize, useVModel } from '@varlet/use'
-import { toNumber, isEmpty, preventDefault, call } from '@varlet/shared'
+import { props } from './props'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
@@ -72,7 +72,7 @@ export default defineComponent({
       () => {
         matchAnchor(anchor.value)
       },
-      { immediate: true }
+      { immediate: true },
     )
 
     function matchAnchor(anchor: number | undefined | null) {

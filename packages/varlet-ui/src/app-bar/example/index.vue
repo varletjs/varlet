@@ -1,7 +1,7 @@
 <script setup>
-import { t, use } from './locale'
-import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const active = ref(0)
 
@@ -76,11 +76,11 @@ onThemeChange()
 
     <template #content>
       <var-tabs
+        v-model:active="active"
         style="margin-top: 20vmin"
         color="transparent"
         active-color="#fff"
         inactive-color="#ddd"
-        v-model:active="active"
       >
         <var-tab>{{ t('option') }}</var-tab>
         <var-tab>{{ t('option') }}</var-tab>

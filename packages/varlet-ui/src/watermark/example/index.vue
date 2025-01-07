@@ -1,7 +1,7 @@
 <script setup>
 import { nextTick, ref } from 'vue'
-import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
-import { use, t } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const fullscreen = ref(false)
 const watermarkRef = ref(null)
@@ -29,22 +29,22 @@ onThemeChange(() => {
 
 <template>
   <app-type>{{ t('textWatermark') }}</app-type>
-  <var-watermark content="Varlet" ref="watermarkRef">
+  <var-watermark ref="watermarkRef" content="Varlet">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ t('customGap') }}</app-type>
-  <var-watermark content="Varlet" :gap-x="40" :gap-y="40" ref="watermarkRef2">
+  <var-watermark ref="watermarkRef2" content="Varlet" :gap-x="40" :gap-y="40">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ t('customOffset') }}</app-type>
-  <var-watermark content="Varlet" :offset-x="20" :offset-y="20" ref="watermarkRef3">
+  <var-watermark ref="watermarkRef3" content="Varlet" :offset-x="20" :offset-y="20">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ t('customRotate') }}</app-type>
-  <var-watermark content="Varlet" :rotate="22" :offset-y="20" ref="watermarkRef4">
+  <var-watermark ref="watermarkRef4" content="Varlet" :rotate="22" :offset-y="20">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
