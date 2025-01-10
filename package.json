@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@configurajs/eslint": "^0.0.14",
-    "@configurajs/prettier": "^0.2.0",
+    "@configurajs/prettier": "^0.1.0",
     "@varlet/cli": "workspace:*",
     "@varlet/icons": "workspace:*",
     "eslint": "^9.17.0",
