@@ -1,3 +1,5 @@
 import { defineConfig } from '@configurajs/prettier'
 
-export default defineConfig()
+export default defineConfig({
+  singleQuote: true,
+})

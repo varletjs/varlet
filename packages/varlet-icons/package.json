@@ -2,29 +2,29 @@
   "name": "@varlet/icons",
   "version": "3.8.2",
   "description": "Icons of varlet",
-  "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
   "keywords": [
     "icons",
     "svg",
     "varlet"
   ],
-  "author": "haoziqaq <357229046@qq.com>",
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/varletjs/varlet.git"
   },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
-  },
+  "license": "MIT",
+  "author": "haoziqaq <357229046@qq.com>",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "varlet-cli build:icons -w",
-    "build": "varlet-cli build:icons"
+    "build": "varlet-cli build:icons",
+    "dev": "varlet-cli build:icons -w"
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*"

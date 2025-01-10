@@ -26,7 +26,6 @@ packages/varlet-import-resolver/lib/**
 packages/varlet-use/lib/**
 packages/varlet-touch-emulator/iife.js
 
-**/package.json
 *.md
 .github/**
 .history/**

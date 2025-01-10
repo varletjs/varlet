@@ -1,19 +1,6 @@
 {
   "name": "@varlet/import-resolver",
   "version": "3.8.2",
-  "type": "module",
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs",
-      "types": "./lib/index.d.ts"
-    },
-    "./*": "./*"
-  },
   "description": "varlet import resolver for unplugin-vue-components and unplugin-auto-import",
   "keywords": [
     "varlet",
@@ -22,29 +9,42 @@
     "unplugin-vue-components",
     "unplugin-auto-import"
   ],
-  "author": "haoziqaq <357229046@qq.com>",
-  "license": "MIT",
-  "files": [
-    "lib",
-    "tsconfig.json"
-  ],
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/varletjs/varlet.git"
   },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
+  "license": "MIT",
+  "author": "haoziqaq <357229046@qq.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./*": "./*"
   },
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "tsconfig.json"
+  ],
   "scripts": {
-    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
-    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean"
+    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
   },
   "dependencies": {
     "@varlet/shared": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
-    "typescript": "5.3.3",
-    "tsup": "7.2.0"
+    "tsup": "7.2.0",
+    "typescript": "5.3.3"
   }
 }

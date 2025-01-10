@@ -1,19 +1,26 @@
 {
   "name": "@varlet/cli",
   "version": "3.8.2",
-  "type": "module",
   "description": "cli of varlet",
-  "bin": {
-    "varlet-cli": "./lib/node/bin.js"
-  },
-  "main": "./lib/node/index.js",
-  "module": "./lib/node/index.js",
   "keywords": [
     "cli",
     "varlet"
   ],
-  "author": "haoziqaq <357229046@qq.com>",
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varletjs/varlet.git"
+  },
   "license": "MIT",
+  "author": "haoziqaq <357229046@qq.com>",
+  "type": "module",
+  "main": "./lib/node/index.js",
+  "module": "./lib/node/index.js",
+  "bin": {
+    "varlet-cli": "./lib/node/bin.js"
+  },
   "files": [
     "lib",
     "client.js",
@@ -22,19 +29,9 @@
     "site",
     "tsconfig.json"
   ],
-  "engines": {
-    "node": "^14.18.0 || >=16.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/varletjs/varlet.git"
-  },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
-  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "rimraf ./lib && tsc"
+    "build": "rimraf ./lib && tsc",
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "@babel/core": "^7.25.2",
@@ -53,7 +50,6 @@
     "commander": "^8.3.0",
     "ejs": "^3.1.8",
     "esbuild": "0.23.1",
-    "tinyexec": "^0.3.0",
     "fs-extra": "^9.0.1",
     "glob": "^7.2.0",
     "hash-sum": "^2.0.0",
@@ -63,6 +59,7 @@
     "picocolors": "^1.0.0",
     "sass": "^1.77.4",
     "sharp": "0.31.1",
+    "tinyexec": "^0.3.0",
     "typescript": "5.3.3",
     "vite": "5.4.6",
     "vitest": "2.1.1",
@@ -94,5 +91,8 @@
     "live-server": "^1.2.1",
     "vue": "3.4.21",
     "vue-router": "4.2.0"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
   }
 }

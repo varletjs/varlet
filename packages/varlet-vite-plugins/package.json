@@ -1,28 +1,28 @@
 {
   "name": "@varlet/vite-plugins",
   "version": "3.8.2",
-  "type": "module",
   "description": "vite plugins of varlet",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
   "keywords": [
     "vite",
     "plugins",
     "varlet"
   ],
-  "author": "haoziqaq <357229046@qq.com>",
   "homepage": "https://github.com/varletjs/varlet#readme",
-  "license": "MIT",
-  "scripts": {
-    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
-    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/varletjs/varlet.git"
   },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
+  "license": "MIT",
+  "author": "haoziqaq <357229046@qq.com>",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean",
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
   },
   "dependencies": {
     "@varlet/shared": "workspace:*",

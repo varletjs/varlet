@@ -1,18 +1,26 @@
 {
   "name": "varlet-vscode-extension",
-  "private": true,
-  "main": "./dist/extension.js",
-  "icon": "assets/icon.png",
   "displayName": "varlet-vscode-extension",
-  "description": "varlet extension for vscode",
-  "publisher": "haoziqaq",
   "version": "3.8.2",
-  "engines": {
-    "vscode": "^1.56.0"
-  },
+  "private": true,
+  "description": "varlet extension for vscode",
   "categories": [
     "Other"
   ],
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varletjs/varlet.git"
+  },
+  "publisher": "haoziqaq",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "build": "varlet-cli build:extension",
+    "dev": "varlet-cli dev:extension",
+    "release": "pnpm build && vsce package --no-dependencies && vsce publish --no-dependencies"
+  },
   "contributes": {
     "commands": [
       {
@@ -36,6 +44,22 @@
         "title": "Varlet: Open Webview"
       }
     ],
+    "configuration": {
+      "type": "object",
+      "title": "Varlet Extension Configuration",
+      "properties": {
+        "varlet.useChineseLanguage": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use chinese language"
+        },
+        "varlet.useVercelOrigin": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use vercel origin"
+        }
+      }
+    },
     "menus": {
       "commandPalette": [
         {
@@ -55,22 +79,6 @@
           "when": "editorHasSelection"
         }
       ]
-    },
-    "configuration": {
-      "type": "object",
-      "title": "Varlet Extension Configuration",
-      "properties": {
-        "varlet.useChineseLanguage": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use chinese language"
-        },
-        "varlet.useVercelOrigin": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use vercel origin"
-        }
-      }
     }
   },
   "activationEvents": [
@@ -80,28 +88,20 @@
     "onLanguage:javascriptreact",
     "onLanguage:typescriptreact"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/varletjs/varlet.git"
-  },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
-  },
-  "scripts": {
-    "dev": "varlet-cli dev:extension",
-    "build": "varlet-cli build:extension",
-    "release": "pnpm build && vsce package --no-dependencies && vsce publish --no-dependencies"
-  },
   "dependencies": {
-    "@varlet/shared": "workspace:*",
     "@varlet/icons": "workspace:*",
+    "@varlet/shared": "workspace:*",
     "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
-    "@varlet/cli": "workspace:*",
-    "@vscode/vsce": "^3.2.1",
     "@types/node": "14.x",
     "@types/vscode": "^1.56.0",
+    "@varlet/cli": "workspace:*",
+    "@vscode/vsce": "^3.2.1",
     "typescript": "5.3.3"
-  }
+  },
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "icon": "assets/icon.png"
 }

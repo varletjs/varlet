@@ -2,13 +2,6 @@
   "name": "@varlet/ui",
   "version": "3.8.2",
   "description": "A material like components library",
-  "main": "lib/varlet.cjs.js",
-  "module": "es/index.mjs",
-  "typings": "types/index.d.ts",
-  "style": "umd/style.css",
-  "unpkg": "umd/varlet.js",
-  "jsdelivr": "umd/varlet.js",
-  "web-types": "highlight/web-types.en-US.json",
   "keywords": [
     "Vue3",
     "Mobile",
@@ -16,6 +9,29 @@
     "UI",
     "Components"
   ],
+  "homepage": "https://varletjs.org",
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varletjs/varlet.git"
+  },
+  "license": "MIT",
+  "author": "haoziqaq <357229046@qq.com>",
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "es/style.mjs",
+    "lib/style.js",
+    "*.css"
+  ],
+  "main": "lib/varlet.cjs.js",
+  "jsdelivr": "umd/varlet.js",
+  "unpkg": "umd/varlet.js",
+  "module": "es/index.mjs",
+  "typings": "types/index.d.ts",
+  "style": "umd/style.css",
   "files": [
     "json",
     "lib",
@@ -24,36 +40,16 @@
     "highlight",
     "types"
   ],
-  "author": "haoziqaq <357229046@qq.com>",
-  "license": "MIT",
-  "homepage": "https://varletjs.org",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/varletjs/varlet.git"
-  },
-  "bugs": {
-    "url": "https://github.com/varletjs/varlet/issues"
-  },
-  "sideEffects": [
-    "es/**/style/*",
-    "lib/**/style/*",
-    "es/style.mjs",
-    "lib/style.js",
-    "*.css"
-  ],
   "scripts": {
-    "dev": "varlet-cli dev",
     "build": "varlet-cli build",
-    "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
     "compile:style-vars": "varlet-cli compile:style-vars",
     "create": "varlet-cli create -i",
+    "dev": "varlet-cli dev",
+    "preview": "varlet-cli preview",
     "test": "varlet-cli test",
-    "test:watch": "varlet-cli test -w -cov",
-    "test:coverage": "varlet-cli test -cov"
-  },
-  "peerDependencies": {
-    "vue": "^3.2.0"
+    "test:coverage": "varlet-cli test -cov",
+    "test:watch": "varlet-cli test -w -cov"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
@@ -80,5 +76,9 @@
     "vue": "3.4.21",
     "vue-router": "4.2.0",
     "zod": "^3.23.8"
-  }
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "web-types": "highlight/web-types.en-US.json"
 }
