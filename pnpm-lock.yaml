@@ -18,8 +18,8 @@ importers:
   .:
     devDependencies:
       '@configurajs/eslint':
-        specifier: ^0.0.14
-        version: 0.0.14(eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.0)))(eslint@9.17.0(jiti@1.21.0))(prettier@3.4.2)(typescript@5.3.3)
+        specifier: ^0.1.0
+        version: 0.1.0(eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.0)))(eslint@9.17.0(jiti@1.21.0))(prettier@3.4.2)(typescript@5.3.3)
       '@configurajs/prettier':
         specifier: ^0.1.1
         version: 0.1.1(@vue/compiler-sfc@3.5.13)(prettier@3.4.2)
@@ -808,8 +808,8 @@ packages:
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
     engines: {node: '>=6.9.0'}
 
-  '@configurajs/eslint@0.0.14':
-    resolution: {integrity: sha512-drI+JIGCswy16knjVN+/UWctnuCrK/wRsYwFTuoFATTE5yIQloevVyHwr505is3asIe/WoiHECXEYFlW/PH/1A==}
+  '@configurajs/eslint@0.1.0':
+    resolution: {integrity: sha512-AFquY5vpRn1ldUhBnYPi5DeuwF+jv8o6ZOVrp8VfHeWecgDYIz0tcwA+dVxhJ5uuqHsEQ8FQfy1XZ+h7GgBcIw==}
     engines: {pnpm: '>=9.0'}
     peerDependencies:
       eslint: ^9.17.0
@@ -6353,7 +6353,7 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@configurajs/eslint@0.0.14(eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.0)))(eslint@9.17.0(jiti@1.21.0))(prettier@3.4.2)(typescript@5.3.3)':
+  '@configurajs/eslint@0.1.0(eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.0)))(eslint@9.17.0(jiti@1.21.0))(prettier@3.4.2)(typescript@5.3.3)':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.1(eslint@9.17.0(jiti@1.21.0))
       '@eslint-react/eslint-plugin': 1.23.2(eslint@9.17.0(jiti@1.21.0))(typescript@5.3.3)
