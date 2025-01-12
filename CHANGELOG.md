@@ -1,3 +1,17 @@
+## [3.8.3](https://github.com/varletjs/varlet/compare/v3.8.2...v3.8.3) (2025-01-12)
+
+
+### Features
+
+* integrate configurajs/eslint and configurajs/prettier, migrate eslint to 9 and prettier to 3, deprecate cli lint command ([49c306c](https://github.com/varletjs/varlet/commit/49c306cc8c4be5940ad88bda892a24e3508feea0))
+
+
+### BREAKING CHANGES
+
+* Varlet CLI lint command is deprecated, please use eslint and prettier directly
+
+
+
 ## [3.8.2](https://github.com/varletjs/varlet/compare/v3.8.1...v3.8.2) (2025-01-02)
 
 
