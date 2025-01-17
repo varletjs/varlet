@@ -17,6 +17,7 @@ export const props = {
     default: 'text',
   },
   textarea: Boolean,
+  ariaLabel: String,
   rows: {
     type: [String, Number],
     default: 8,
