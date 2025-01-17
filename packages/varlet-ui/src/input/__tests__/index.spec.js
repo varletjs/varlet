@@ -451,3 +451,17 @@ describe('test input component slots', () => {
     wrapper.unmount()
   })
 })
+
+test('test input aria-label', async () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'text',
+      ariaLabel: 'test aria-label',
+    },
+  })
+
+  await delay(100)
+  expect(wrapper.find('.var-input__input').attributes('aria-label')).toBe('test aria-label')
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})

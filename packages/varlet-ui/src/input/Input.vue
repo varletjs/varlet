@@ -7,6 +7,7 @@
         size,
         variant,
         placeholder,
+        ariaLabel,
         line,
         hint,
         textColor,
@@ -31,6 +32,7 @@
       <input
         v-if="normalizedType === 'password'"
         tabindex="-1"
+        :aria-label="ariaLabel"
         :class="n('autocomplete')"
         :placeholder="!hint ? placeholder : undefined"
         :style="{
@@ -42,6 +44,7 @@
         v-if="textarea"
         :id="id"
         ref="el"
+        :aria-label="ariaLabel"
         :class="
           classes(
             n('input'),
@@ -78,6 +81,7 @@
         v-else
         :id="id"
         ref="el"
+        :aria-label="ariaLabel"
         :class="
           classes(
             n('input'),
