@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import AppBar from '..'
 import VarAppBar from '../AppBar'
 
-test('test app bar use', () => {
+test('app bar use', () => {
   const app = createApp({}).use(AppBar)
   expect(app.component(AppBar.name)).toBeTruthy()
 })
 
 describe('test app bar component props', () => {
-  test('test app bar color', () => {
+  test('app bar color', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         color: 'red',
@@ -21,7 +21,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar round', () => {
+  test('app bar round', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         round: true,
@@ -32,7 +32,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar border', () => {
+  test('app bar border', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         border: true,
@@ -43,7 +43,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar textColor', () => {
+  test('app bar textColor', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         textColor: 'red',
@@ -54,7 +54,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar title', () => {
+  test('app bar title', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         title: 'text',
@@ -65,7 +65,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar titlePosition', async () => {
+  test('app bar titlePosition', async () => {
     const wrapper = mount(VarAppBar, {
       props: {
         titlePosition: 'left',
@@ -88,7 +88,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar elevation', async () => {
+  test('app bar elevation', async () => {
     const wrapper = mount(VarAppBar, {
       props: {
         elevation: true,
@@ -105,7 +105,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar image and image-linear-gradient', () => {
+  test('app bar image and image-linear-gradient', () => {
     const wrapper = mount(VarAppBar, {
       props: {
         image: 'https://1.png',
@@ -116,7 +116,7 @@ describe('test app bar component props', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('test app bar fixed', async () => {
+  test('app bar fixed', async () => {
     const wrapper = mount(VarAppBar)
 
     expect(wrapper.find('.var-app-bar--fixed').exists()).toBe(false)
@@ -130,7 +130,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app-bar placeholder', async () => {
+  test('app-bar placeholder', async () => {
     const wrapper = mount(VarAppBar, {
       props: {
         placeholder: true,
@@ -147,7 +147,7 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test app bar z-index', async () => {
+  test('app bar z-index', async () => {
     const wrapper = mount(VarAppBar)
 
     expect(wrapper.find('.var-app-bar').attributes('style')).toContain('z-index: 1')
@@ -163,7 +163,7 @@ describe('test app bar component props', () => {
 })
 
 describe('test app bar slots', () => {
-  test('test app bar default slot', () => {
+  test('app bar default slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         default: () => 'This is default slot',
@@ -175,7 +175,7 @@ describe('test app bar slots', () => {
     wrapper.unmount()
   })
 
-  test('test app bar left slot', () => {
+  test('app bar left slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         left: () => 'This is left slot',
@@ -187,7 +187,7 @@ describe('test app bar slots', () => {
     wrapper.unmount()
   })
 
-  test('test app bar right slot', () => {
+  test('app bar right slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         right: () => 'This is right slot',
@@ -199,7 +199,7 @@ describe('test app bar slots', () => {
     wrapper.unmount()
   })
 
-  test('test app bar content slot', () => {
+  test('app bar content slot', () => {
     const wrapper = mount(VarAppBar, {
       slots: {
         content: () => 'This is content slot',

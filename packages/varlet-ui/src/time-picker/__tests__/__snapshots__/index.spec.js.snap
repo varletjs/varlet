@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test timePicker hint 1`] = `
+exports[`timePicker hint 1`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">choose clock-in time</div>
@@ -43,7 +43,7 @@ exports[`test timePicker hint 1`] = `
 </div>"
 `;
 
-exports[`test timePicker hint 2`] = `
+exports[`timePicker hint 2`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">choose off-duty time</div>
@@ -86,7 +86,7 @@ exports[`test timePicker hint 2`] = `
 </div>"
 `;
 
-exports[`test timePicker max and min 1`] = `
+exports[`timePicker max and min 1`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -129,7 +129,7 @@ exports[`test timePicker max and min 1`] = `
 </div>"
 `;
 
-exports[`test timePicker max and min 2`] = `
+exports[`timePicker max and min 2`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -172,7 +172,7 @@ exports[`test timePicker max and min 2`] = `
 </div>"
 `;
 
-exports[`test timePicker reset when modelValue is undefined or an empty string 1`] = `
+exports[`timePicker reset when modelValue is undefined or an empty string 1`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -215,7 +215,7 @@ exports[`test timePicker reset when modelValue is undefined or an empty string 1
 </div>"
 `;
 
-exports[`test timePicker reset when modelValue is undefined or an empty string 2`] = `
+exports[`timePicker reset when modelValue is undefined or an empty string 2`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -258,7 +258,7 @@ exports[`test timePicker reset when modelValue is undefined or an empty string 2
 </div>"
 `;
 
-exports[`test timePicker reset when modelValue is undefined or an empty string 3`] = `
+exports[`timePicker reset when modelValue is undefined or an empty string 3`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -301,7 +301,7 @@ exports[`test timePicker reset when modelValue is undefined or an empty string 3
 </div>"
 `;
 
-exports[`test timePicker reset when modelValue is undefined or an empty string 4`] = `
+exports[`timePicker reset when modelValue is undefined or an empty string 4`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -344,7 +344,7 @@ exports[`test timePicker reset when modelValue is undefined or an empty string 4
 </div>"
 `;
 
-exports[`test timePicker style and format 1`] = `
+exports[`timePicker style and format 1`] = `
 "<div class="var-time-picker var-elevation--2">
   <div class="var-time-picker__title" style="background: purple;">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -387,7 +387,7 @@ exports[`test timePicker style and format 1`] = `
 </div>"
 `;
 
-exports[`test timePicker style and format 2`] = `
+exports[`timePicker style and format 2`] = `
 "<div class="var-time-picker var-elevation--2">
   <div class="var-time-picker__title" style="background: purple;">
     <div class="var-time-picker__title-hint">选择时间</div>
@@ -440,7 +440,7 @@ exports[`test timePicker style and format 2`] = `
 </div>"
 `;
 
-exports[`test timePicker useSeconds 1`] = `
+exports[`timePicker useSeconds 1`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
     <div class="var-time-picker__title-hint">选择时间</div>

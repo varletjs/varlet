@@ -15,17 +15,17 @@ const Wrapper = {
   },
 }
 
-test('test select plugin', () => {
+test('select plugin', () => {
   const app = createApp({}).use(Select)
   expect(app.component(Select.name)).toBeTruthy()
 })
 
-test('test option plugin', () => {
+test('option plugin', () => {
   const app = createApp({}).use(Option)
   expect(app.component(Option.name)).toBeTruthy()
 })
 
-test('test option default slot', () => {
+test('option default slot', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -48,7 +48,7 @@ test('test option default slot', () => {
   wrapper.unmount()
 })
 
-test('test select variant', () => {
+test('select variant', () => {
   ;['standard', 'outlined'].forEach((variant) => {
     const wrapper = mount(VarSelect, {
       props: {
@@ -80,7 +80,7 @@ test('test select variant', () => {
   })
 })
 
-test('test select size', async () => {
+test('select size', async () => {
   const wrapper = mount(VarSelect, {
     props: {
       value: '',
@@ -100,7 +100,7 @@ test('test select size', async () => {
   wrapper.unmount()
 })
 
-test('test select by label', async () => {
+test('select by label', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -121,7 +121,7 @@ test('test select by label', async () => {
   wrapper.unmount()
 })
 
-test('test select by value', async () => {
+test('select by value', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -142,7 +142,7 @@ test('test select by value', async () => {
   wrapper.unmount()
 })
 
-test('test select by disabled', async () => {
+test('select by disabled', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -163,7 +163,7 @@ test('test select by disabled', async () => {
   wrapper.unmount()
 })
 
-test('test select hint to be false', () => {
+test('select hint to be false', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -182,7 +182,7 @@ test('test select hint to be false', () => {
   wrapper.unmount()
 })
 
-test('test select onFocus', async () => {
+test('select onFocus', async () => {
   const onFocus = vi.fn()
 
   const wrapper = mount({
@@ -207,7 +207,7 @@ test('test select onFocus', async () => {
   wrapper.unmount()
 })
 
-test('test select disabled', async () => {
+test('select disabled', async () => {
   const onFocus = vi.fn()
   const onBlur = vi.fn()
 
@@ -261,7 +261,7 @@ test('test select disabled', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select readonly', async () => {
+test('select readonly', async () => {
   const onFocus = vi.fn()
   const onBlur = vi.fn()
 
@@ -315,7 +315,7 @@ test('test select readonly', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select clear', async () => {
+test('select clear', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -338,7 +338,7 @@ test('test select clear', async () => {
   wrapper.unmount()
 })
 
-test('test select multiple value', async () => {
+test('select multiple value', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -364,7 +364,7 @@ test('test select multiple value', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select multiple value in chips', async () => {
+test('select multiple value in chips', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -394,7 +394,7 @@ test('test select multiple value in chips', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select validation', async () => {
+test('select validation', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -430,7 +430,7 @@ test('test select validation', async () => {
   document.innerHTML = ''
 })
 
-test('test select focus & blur methods', async () => {
+test('select focus & blur methods', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -457,7 +457,7 @@ test('test select focus & blur methods', async () => {
   wrapper.unmount()
 })
 
-test('test select keyboard select option by space', async () => {
+test('select keyboard select option by space', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -485,7 +485,7 @@ test('test select keyboard select option by space', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select keyboard select option by enter', async () => {
+test('select keyboard select option by enter', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -513,7 +513,7 @@ test('test select keyboard select option by enter', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select keyboard close menu by escape', async () => {
+test('select keyboard close menu by escape', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -540,7 +540,7 @@ test('test select keyboard close menu by escape', async () => {
   document.body.innerHTML = ''
 })
 
-test('test select offset-y', async () => {
+test('select offset-y', async () => {
   const wrapper = mount(
     {
       components: {
@@ -574,7 +574,7 @@ test('test select offset-y', async () => {
   wrapper.unmount()
 })
 
-test('test select options', async () => {
+test('select options', async () => {
   const wrapper = mount(
     {
       ...Wrapper,
@@ -608,7 +608,7 @@ test('test select options', async () => {
   wrapper.unmount()
 })
 
-test('test select options multiple', async () => {
+test('select options multiple', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -639,7 +639,7 @@ test('test select options multiple', async () => {
   wrapper.unmount()
 })
 
-test('test select label-key', async () => {
+test('select label-key', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -670,7 +670,7 @@ test('test select label-key', async () => {
   wrapper.unmount()
 })
 
-test('test select value-key', async () => {
+test('select value-key', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -702,7 +702,7 @@ test('test select value-key', async () => {
 })
 
 describe('test select component slots', () => {
-  test('test select clear icon slot', async () => {
+  test('select clear icon slot', async () => {
     const wrapper = mount(VarSelect, {
       props: {
         clearable: true,
@@ -719,7 +719,7 @@ describe('test select component slots', () => {
     wrapper.unmount()
   })
 
-  test('test select append icon slot', () => {
+  test('select append icon slot', () => {
     const wrapper = mount(VarSelect, {
       props: {
         clearable: true,
@@ -735,7 +735,7 @@ describe('test select component slots', () => {
     wrapper.unmount()
   })
 
-  test('test select prepend icon slot', () => {
+  test('select prepend icon slot', () => {
     const wrapper = mount(VarSelect, {
       props: {
         clearable: true,

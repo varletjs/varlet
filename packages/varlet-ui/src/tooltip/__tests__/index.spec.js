@@ -5,12 +5,12 @@ import { expect, test, vi } from 'vitest'
 import VarTooltip from '..'
 import { delay, mockStubs, trigger } from '../../utils/test'
 
-test('test tooltip plugin', () => {
+test('tooltip plugin', () => {
   const app = createApp({}).use(VarTooltip)
   expect(app.component(VarTooltip.name)).toBeTruthy()
 })
 
-test('test tooltip placement', () => {
+test('tooltip placement', () => {
   ;[
     'top',
     'top-start',
@@ -42,7 +42,7 @@ test('test tooltip placement', () => {
   })
 })
 
-test('test tooltip click trigger', async () => {
+test('tooltip click trigger', async () => {
   const { mockRestore } = mockStubs()
 
   const wrapper = mount(VarTooltip, {
@@ -66,7 +66,7 @@ test('test tooltip click trigger', async () => {
   wrapper.unmount()
 })
 
-test('test tooltip hover trigger and events', async () => {
+test('tooltip hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
   const onOpen = vi.fn()
@@ -107,7 +107,7 @@ test('test tooltip hover trigger and events', async () => {
   mockRestore()
 })
 
-test('test tooltip type', () => {
+test('tooltip type', () => {
   ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
     const { mockRestore } = mockStubs()
     const root = document.createElement('div')
@@ -126,7 +126,7 @@ test('test tooltip type', () => {
   })
 })
 
-test('test tooltip content', async () => {
+test('tooltip content', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -146,7 +146,7 @@ test('test tooltip content', async () => {
   mockRestore()
 })
 
-test('test tooltip color', async () => {
+test('tooltip color', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -166,7 +166,7 @@ test('test tooltip color', async () => {
   mockRestore()
 })
 
-test('test tooltip text-color', async () => {
+test('tooltip text-color', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -186,7 +186,7 @@ test('test tooltip text-color', async () => {
   mockRestore()
 })
 
-test('test tooltip offset', async () => {
+test('tooltip offset', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -207,7 +207,7 @@ test('test tooltip offset', async () => {
   mockRestore()
 })
 
-test('test tooltip hover the tooltip list', async () => {
+test('tooltip hover the tooltip list', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')

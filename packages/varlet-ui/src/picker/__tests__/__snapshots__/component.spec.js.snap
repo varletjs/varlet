@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test cascade column picker columnsCount 1`] = `
+exports[`cascade column picker columnsCount 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -42,7 +42,7 @@ exports[`test cascade column picker columnsCount 1`] = `
 </transition-stub>"
 `;
 
-exports[`test cascade mode 1`] = `
+exports[`cascade mode 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -84,7 +84,7 @@ exports[`test cascade mode 1`] = `
 </transition-stub>"
 `;
 
-exports[`test column option className 1`] = `
+exports[`column option className 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -116,7 +116,7 @@ exports[`test column option className 1`] = `
 </transition-stub>"
 `;
 
-exports[`test custom key 1`] = `
+exports[`custom key 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -155,7 +155,7 @@ exports[`test custom key 1`] = `
 </transition-stub>"
 `;
 
-exports[`test custom key 2`] = `
+exports[`custom key 2`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -194,7 +194,7 @@ exports[`test custom key 2`] = `
 </transition-stub>"
 `;
 
-exports[`test multiple column picker columnsCount 1`] = `
+exports[`multiple column picker columnsCount 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -242,7 +242,7 @@ exports[`test multiple column picker columnsCount 1`] = `
 </transition-stub>"
 `;
 
-exports[`test scroll down & onCancel 1`] = `
+exports[`scroll down & onCancel 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -277,7 +277,7 @@ exports[`test scroll down & onCancel 1`] = `
 </transition-stub>"
 `;
 
-exports[`test scroll down & onCancel 2`] = `
+exports[`scroll down & onCancel 2`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -312,7 +312,7 @@ exports[`test scroll down & onCancel 2`] = `
 </transition-stub>"
 `;
 
-exports[`test scroll up & onConfirm 1`] = `
+exports[`scroll up & onConfirm 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -347,7 +347,7 @@ exports[`test scroll up & onConfirm 1`] = `
 </transition-stub>"
 `;
 
-exports[`test scroll up & onConfirm 2`] = `
+exports[`scroll up & onConfirm 2`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">

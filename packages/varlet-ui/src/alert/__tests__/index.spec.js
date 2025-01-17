@@ -4,13 +4,13 @@ import { describe, expect, test, vi } from 'vitest'
 import Alert from '..'
 import VarAlert from '../Alert'
 
-test('test alert plugin', () => {
+test('alert plugin', () => {
   const app = createApp({}).use(Alert)
   expect(app.component(Alert.name)).toBeTruthy()
 })
 
 describe('test alert component props', () => {
-  test('test alert title', async () => {
+  test('alert title', async () => {
     const wrapper = mount(VarAlert, {
       props: {
         title: 'Pride And Prejudice',
@@ -34,7 +34,7 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert type', () => {
+  test('alert type', () => {
     const ICON_TYPE_MAP = {
       success: 'checkbox-marked-circle',
       warning: 'warning',
@@ -54,7 +54,7 @@ describe('test alert component props', () => {
     })
   })
 
-  test('test alert message', async () => {
+  test('alert message', async () => {
     const wrapper = mount(VarAlert, {
       props: {
         message: 'Pride And Prejudice',
@@ -78,7 +78,7 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert color', async () => {
+  test('alert color', async () => {
     const wrapper = mount(VarAlert, {
       props: {
         color: 'red',
@@ -96,7 +96,7 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert closeable', async () => {
+  test('alert closeable', async () => {
     const wrapper = mount(VarAlert)
 
     expect(wrapper.find('.var-alert--close').exists()).toBe(false)
@@ -110,7 +110,7 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert variant', () => {
+  test('alert variant', () => {
     ;['tonal', 'outlined', 'standard'].forEach((variant) => {
       const wrapper = mount(VarAlert, {
         props: { variant },
@@ -122,7 +122,7 @@ describe('test alert component props', () => {
     })
   })
 
-  test('test alert elevation', async () => {
+  test('alert elevation', async () => {
     const wrapper = mount(VarAlert)
 
     expect(wrapper.find('.var-elevation--2').exists()).toBe(false)
@@ -144,7 +144,7 @@ describe('test alert component props', () => {
 })
 
 describe('test alert component events', () => {
-  test('test alert close', async () => {
+  test('alert close', async () => {
     const onClose = vi.fn()
     const wrapper = mount(VarAlert, {
       props: {
@@ -166,7 +166,7 @@ describe('test alert component events', () => {
 })
 
 describe('test alert component slots', () => {
-  test('test alert icon slot', () => {
+  test('alert icon slot', () => {
     const wrapper = mount(VarAlert, {
       slots: {
         icon: () => 'Pride And Prejudice',
@@ -178,7 +178,7 @@ describe('test alert component slots', () => {
     wrapper.unmount()
   })
 
-  test('test alert default slot', () => {
+  test('alert default slot', () => {
     const wrapper = mount(VarAlert, {
       slots: {
         default: () => 'Pride And Prejudice',
@@ -190,7 +190,7 @@ describe('test alert component slots', () => {
     wrapper.unmount()
   })
 
-  test('test alert title slot', () => {
+  test('alert title slot', () => {
     const wrapper = mount(VarAlert, {
       slots: {
         title: () => 'Pride And Prejudice',
@@ -202,7 +202,7 @@ describe('test alert component slots', () => {
     wrapper.unmount()
   })
 
-  test('test alert content slot', () => {
+  test('alert content slot', () => {
     const wrapper = mount(VarAlert, {
       slots: {
         content: () => 'Pride And Prejudice',
@@ -214,7 +214,7 @@ describe('test alert component slots', () => {
     wrapper.unmount()
   })
 
-  test('test alert close icon slot', () => {
+  test('alert close icon slot', () => {
     const wrapper = mount(VarAlert, {
       props: {
         closeable: true,

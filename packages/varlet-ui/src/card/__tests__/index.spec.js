@@ -5,19 +5,21 @@ import Card from '..'
 import { delay } from '../../utils/test'
 import VarCard from '../Card'
 
-test('test card use', () => {
+test('card use', () => {
   const app = createApp({}).use(Card)
   expect(app.component(Card.name)).toBeTruthy()
 })
 
 describe('test card component events', () => {
-  test('test card onClick with null callback', () => {
+  test('card onClick with null callback', () => {
+    const onClick = vi.fn()
     const wrapper = mount(VarCard)
     wrapper.trigger('click')
+    expect(onClick).toHaveBeenCalledTimes(0)
     wrapper.unmount()
   })
 
-  test('test card onClick', () => {
+  test('card onClick', () => {
     const onClick = vi.fn()
     const wrapper = mount(VarCard, {
       props: {
@@ -32,7 +34,7 @@ describe('test card component events', () => {
 })
 
 describe('test card component props', () => {
-  test('test card title', async () => {
+  test('card title', async () => {
     const wrapper = mount(VarCard, {
       props: {
         title: 'This is title',
@@ -49,7 +51,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card subtitle', async () => {
+  test('card subtitle', async () => {
     const wrapper = mount(VarCard, {
       props: {
         subtitle: 'This is subtitle',
@@ -66,7 +68,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card description', async () => {
+  test('card description', async () => {
     const wrapper = mount(VarCard, {
       props: {
         description: 'This is description',
@@ -83,7 +85,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card elevation', async () => {
+  test('card elevation', async () => {
     const wrapper = mount(VarCard)
 
     expect(wrapper.find('.var-elevation--1').exists()).toBe(true)
@@ -96,7 +98,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card outline', async () => {
+  test('card outline', async () => {
     const wrapper = mount(VarCard)
 
     expect(wrapper.find('.var-card--outline').exists()).toBe(false)
@@ -110,7 +112,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card outlined variant', async () => {
+  test('card outlined variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
         variant: 'outlined',
@@ -127,7 +129,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card filled variant', async () => {
+  test('card filled variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
         variant: 'filled',
@@ -144,7 +146,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card src', async () => {
+  test('card src', async () => {
     const wrapper = mount(VarCard, {
       props: {
         src: 'https://varletjs.org/varlet/cat.jpg',
@@ -161,7 +163,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card fit', () => {
+  test('card fit', () => {
     ;['fill', 'contain', 'cover', 'none', 'scale-down'].forEach((fit) => {
       const wrapper = mount(VarCard, {
         props: {
@@ -175,7 +177,7 @@ describe('test card component props', () => {
     })
   })
 
-  test('test card alt', async () => {
+  test('card alt', async () => {
     const wrapper = mount(VarCard, {
       props: {
         alt: 'This is alt',
@@ -193,7 +195,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card imageHeight', async () => {
+  test('card imageHeight', async () => {
     const wrapper = mount(VarCard, {
       props: {
         imageHeight: 100,
@@ -211,7 +213,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card imageWidth', async () => {
+  test('card imageWidth', async () => {
     const wrapper = mount(VarCard, {
       props: {
         imageWidth: 100,
@@ -229,7 +231,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card floating', async () => {
+  test('card floating', async () => {
     const wrapper = mount(VarCard, {
       props: {
         floating: false,
@@ -245,7 +247,7 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card layout', async () => {
+  test('card layout', async () => {
     const wrapper = mount(VarCard)
 
     expect(wrapper.find('.var-card--layout-row').exists()).toBe(false)
@@ -260,7 +262,7 @@ describe('test card component props', () => {
 })
 
 describe('test card component slots', () => {
-  test('test card image slot', () => {
+  test('card image slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         image: '<img src="https://varletjs.org/varlet/cat.jpg" alt="cat" />',
@@ -272,7 +274,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card default slot', () => {
+  test('card default slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         default: 'default slot',
@@ -284,7 +286,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card title slot', () => {
+  test('card title slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         title: ({ slotClass }) => h('span', { class: slotClass }, 'title'),
@@ -296,7 +298,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card subtitle slot', () => {
+  test('card subtitle slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         subtitle: ({ slotClass }) => h('span', { class: slotClass }, 'subtitle'),
@@ -308,7 +310,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card description slot', () => {
+  test('card description slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         description: ({ slotClass }) => h('span', { class: slotClass }, 'description'),
@@ -320,7 +322,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card extra slot', () => {
+  test('card extra slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
         extra: '<span>extra</span>',
@@ -332,7 +334,7 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
-  test('test card floating-content slot', async () => {
+  test('card floating-content slot', async () => {
     const wrapper = mount(VarCard, {
       slots: {
         'floating-content': '<span>floating-content</span>',

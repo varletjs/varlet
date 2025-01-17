@@ -7,17 +7,17 @@ import VarMenuOption from '../../menu-option/MenuOption'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import VarMenuSelect from '../MenuSelect'
 
-test('test menu-select plugin', () => {
+test('menu-select plugin', () => {
   const app = createApp({}).use(MenuSelect)
   expect(app.component(MenuSelect.name)).toBeTruthy()
 })
 
-test('test menu-option plugin', () => {
+test('menu-option plugin', () => {
   const app = createApp({}).use(MenuOption)
   expect(app.component(MenuOption.name)).toBeTruthy()
 })
 
-test('test menu-select size', () => {
+test('menu-select size', () => {
   ;['normal', 'mini', 'small', 'large'].forEach((size) => {
     const root = document.createElement('div')
     const wrapper = mount(VarMenuSelect, {
@@ -38,7 +38,7 @@ test('test menu-select size', () => {
   })
 })
 
-test('test menu-select scrollable', () => {
+test('menu-select scrollable', () => {
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
     props: {
@@ -56,7 +56,7 @@ test('test menu-select scrollable', () => {
   wrapper.unmount()
 })
 
-test('test menu-select modelValue', async () => {
+test('menu-select modelValue', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -78,7 +78,7 @@ test('test menu-select modelValue', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select multiple', async () => {
+test('menu-select multiple', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -103,7 +103,7 @@ test('test menu-select multiple', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select closeOnSelect', async () => {
+test('menu-select closeOnSelect', async () => {
   const onUpdateShow = vi.fn()
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
@@ -131,7 +131,7 @@ test('test menu-select closeOnSelect', async () => {
   wrapper.unmount()
 })
 
-test('test menu-option disabled', async () => {
+test('menu-option disabled', async () => {
   const onUpdateModelValue = vi.fn()
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
@@ -152,7 +152,7 @@ test('test menu-option disabled', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select value mapping', async () => {
+test('menu-select value mapping', async () => {
   const onUpdateModelValue = vi.fn()
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
@@ -174,7 +174,7 @@ test('test menu-select value mapping', async () => {
   wrapper.unmount()
 })
 
-test('test menu-option default slot', () => {
+test('menu-option default slot', () => {
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
     props: {
@@ -191,7 +191,7 @@ test('test menu-option default slot', () => {
   wrapper.unmount()
 })
 
-test('test menu-select methods', async () => {
+test('menu-select methods', async () => {
   const { mockRestore } = mockStubs()
   const root = document.createElement('div')
   const wrapper = mount(VarMenuSelect, {
@@ -215,7 +215,7 @@ test('test menu-select methods', async () => {
   mockRestore()
 })
 
-test('test menu-select keyboard ArrowDown and Enter', async () => {
+test('menu-select keyboard ArrowDown and Enter', async () => {
   const { mockRestore } = mockStubs()
   const onUpdateModelValue = vi.fn()
   const root = document.createElement('div')
@@ -241,7 +241,7 @@ test('test menu-select keyboard ArrowDown and Enter', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select keyboard ArrowUp and Enter', async () => {
+test('menu-select keyboard ArrowUp and Enter', async () => {
   const { mockRestore } = mockStubs()
   const onUpdateModelValue = vi.fn()
   const root = document.createElement('div')
@@ -267,7 +267,7 @@ test('test menu-select keyboard ArrowUp and Enter', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select keyboard Escape', async () => {
+test('menu-select keyboard Escape', async () => {
   const { mockRestore } = mockStubs()
   const onUpdateShow = vi.fn()
   const root = document.createElement('div')
@@ -291,7 +291,7 @@ test('test menu-select keyboard Escape', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select options api', async () => {
+test('menu-select options api', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -323,7 +323,7 @@ test('test menu-select options api', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select multiple options api', async () => {
+test('menu-select multiple options api', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -360,7 +360,7 @@ test('test menu-select multiple options api', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select label-key', async () => {
+test('menu-select label-key', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -394,7 +394,7 @@ test('test menu-select label-key', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select value-key', async () => {
+test('menu-select value-key', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -431,7 +431,7 @@ test('test menu-select value-key', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select cascade', async () => {
+test('menu-select cascade', async () => {
   const root = document.createElement('div')
 
   const onUpdateModelValue = vi.fn((value) => {
@@ -488,7 +488,7 @@ test('test menu-select cascade', async () => {
   expect(wrapper.vm.modelValue).toStrictEqual(21)
 })
 
-test('test menu-select cascade multiple mode', async () => {
+test('menu-select cascade multiple mode', async () => {
   const root = document.createElement('div')
 
   const onUpdateModelValue = vi.fn((value) => {
@@ -575,7 +575,7 @@ test('test menu-select cascade multiple mode', async () => {
   expect(wrapper.vm.modelValue).toStrictEqual([])
 })
 
-test('test menu-select cascade menu open and close', async () => {
+test('menu-select cascade menu open and close', async () => {
   const root = document.createElement('div')
 
   const onUpdateModelValue = vi.fn((value) => {

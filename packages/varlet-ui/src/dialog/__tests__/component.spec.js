@@ -7,7 +7,7 @@ import VarIcon from '../../icon'
 import { delay, triggerKeyboard } from '../../utils/test'
 import VarDialog from '../Dialog'
 
-test('test dialog component plugin', () => {
+test('dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)
   expect(app.component(Dialog.Component.name)).toBeTruthy()
 })
@@ -26,7 +26,7 @@ const Wrapper = {
 }
 
 describe('test dialog component props', () => {
-  test('test dialog component confirmButton', async () => {
+  test('dialog component confirmButton', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -43,7 +43,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component cancelButton', async () => {
+  test('dialog component cancelButton', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -60,7 +60,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component confirmButtonText', async () => {
+  test('dialog component confirmButtonText', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -77,7 +77,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component cancelButtonText', async () => {
+  test('dialog component cancelButtonText', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -94,7 +94,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component title', async () => {
+  test('dialog component title', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -111,7 +111,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component message', async () => {
+  test('dialog component message', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -129,7 +129,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component dialogClass', () => {
+  test('dialog component dialogClass', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -142,7 +142,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component dialogStyle', () => {
+  test('dialog component dialogStyle', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -157,7 +157,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component width', async () => {
+  test('dialog component width', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -175,7 +175,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component messageAlign', () => {
+  test('dialog component messageAlign', () => {
     ;['left', 'center', 'right'].forEach((align) => {
       const wrapper = mount(Wrapper, {
         props: {
@@ -190,7 +190,7 @@ describe('test dialog component props', () => {
     })
   })
 
-  test('test dialog component confirmButtonColor', () => {
+  test('dialog component confirmButtonColor', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -205,7 +205,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component cancelButtonColor', () => {
+  test('dialog component cancelButtonColor', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -220,7 +220,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component confirmButtonTextColor', () => {
+  test('dialog component confirmButtonTextColor', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -233,7 +233,7 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component cancelButtonTextColor', () => {
+  test('dialog component cancelButtonTextColor', () => {
     const wrapper = mount(Wrapper, {
       props: {
         show: true,
@@ -248,7 +248,7 @@ describe('test dialog component props', () => {
 })
 
 describe('test dialog component events', () => {
-  test('test dialog component click overlay', async () => {
+  test('dialog component click overlay', async () => {
     const onClickOverlay = vi.fn()
 
     const wrapper = mount(Wrapper, {
@@ -271,7 +271,7 @@ describe('test dialog component events', () => {
     wrapper.unmount()
   })
 
-  test('test dialog component onBeforeClose', async () => {
+  test('dialog component onBeforeClose', async () => {
     const wrapper = mount({
       components: {
         [VarDialog.name]: VarDialog,
@@ -317,7 +317,7 @@ describe('test dialog component events', () => {
     wrapper.unmount()
   })
 
-  test('test dialog keyboard escape', async () => {
+  test('dialog keyboard escape', async () => {
     const onKeyEscape = vi.fn()
     const wrapper = mount({
       components: {
@@ -339,7 +339,7 @@ describe('test dialog component events', () => {
     wrapper.unmount()
   })
 
-  test('test dialog keyboard escape and closeOnKeyEscape', async () => {
+  test('dialog keyboard escape and closeOnKeyEscape', async () => {
     const onKeyEscape = vi.fn()
     const wrapper = mount({
       components: {
@@ -363,7 +363,7 @@ describe('test dialog component events', () => {
 })
 
 describe('test dialog component slots', () => {
-  test('test dialog title slot', async () => {
+  test('dialog title slot', async () => {
     const wrapper = mount({
       components: {
         [VarDialog.name]: VarDialog,
@@ -388,7 +388,7 @@ describe('test dialog component slots', () => {
     wrapper.unmount()
   })
 
-  test('test dialog default slot', () => {
+  test('dialog default slot', () => {
     const wrapper = mount({
       components: {
         [VarDialog.name]: VarDialog,
@@ -410,7 +410,7 @@ describe('test dialog component slots', () => {
     wrapper.unmount()
   })
 
-  test('test dialog actions slot', async () => {
+  test('dialog actions slot', async () => {
     const wrapper = mount({
       components: {
         [VarDialog.name]: VarDialog,

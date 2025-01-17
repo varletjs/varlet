@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test progress component props > test circle progress color 1`] = `
+exports[`test progress component props > circle progress color 1`] = `
 "<div class="var-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
   <!--v-if-->
   <div class="var-progress__circle" style="width: 40px; height: 40px;"><svg class="var-progress__circle-svg" viewBox="0 0 44.44444444444444 44.44444444444444">

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test counter decimalLength 1`] = `
+exports[`counter decimalLength 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -17,7 +17,7 @@ exports[`test counter decimalLength 1`] = `
 </div>"
 `;
 
-exports[`test counter decimalLength 2`] = `
+exports[`counter decimalLength 2`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -34,7 +34,7 @@ exports[`test counter decimalLength 2`] = `
 </div>"
 `;
 
-exports[`test counter decrementButton 1`] = `
+exports[`counter decrementButton 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -51,7 +51,7 @@ exports[`test counter decrementButton 1`] = `
 </div>"
 `;
 
-exports[`test counter decrementButton 2`] = `
+exports[`counter decrementButton 2`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button var-counter--hidden" type="button" var-counter-cover="">
       <!--v-if-->
@@ -68,7 +68,7 @@ exports[`test counter decrementButton 2`] = `
 </div>"
 `;
 
-exports[`test counter elevation 1`] = `
+exports[`counter elevation 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -85,7 +85,7 @@ exports[`test counter elevation 1`] = `
 </div>"
 `;
 
-exports[`test counter elevation 2`] = `
+exports[`counter elevation 2`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -102,7 +102,7 @@ exports[`test counter elevation 2`] = `
 </div>"
 `;
 
-exports[`test counter incrementButton 1`] = `
+exports[`counter incrementButton 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -119,7 +119,7 @@ exports[`test counter incrementButton 1`] = `
 </div>"
 `;
 
-exports[`test counter incrementButton 2`] = `
+exports[`counter incrementButton 2`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -136,7 +136,7 @@ exports[`test counter incrementButton 2`] = `
 </div>"
 `;
 
-exports[`test counter validation 1`] = `
+exports[`counter validation 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
@@ -164,7 +164,7 @@ exports[`test counter validation 1`] = `
 </div>"
 `;
 
-exports[`test counter validation with zod 1`] = `
+exports[`counter validation with zod 1`] = `
 "<div class="var-counter var--box">
   <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->

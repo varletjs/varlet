@@ -4,12 +4,12 @@ import { expect, test } from 'vitest'
 import VarActionSheet from '../ActionSheet'
 import ActionSheet from '../index'
 
-test('test action-sheet component plugin', () => {
+test('action-sheet component plugin', () => {
   const app = createApp({}).use(ActionSheet.Component)
   expect(app.component(ActionSheet.Component.name)).toBeTruthy()
 })
 
-test('test action-sheet styles', () => {
+test('action-sheet styles', () => {
   const wrapper = mount(VarActionSheet, {
     props: {
       teleport: null,

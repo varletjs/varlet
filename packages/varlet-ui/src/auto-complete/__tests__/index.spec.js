@@ -5,12 +5,12 @@ import { z } from 'zod'
 import AutoComplete from '..'
 import { trigger, triggerKeyboard } from '../../utils/test'
 
-test('test auto-complete plugin', () => {
+test('auto-complete plugin', () => {
   const app = createApp({}).use(AutoComplete)
   expect(app.component(AutoComplete.name)).toBeTruthy()
 })
 
-test('test auto-complete modelValue', async () => {
+test('auto-complete modelValue', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -25,7 +25,7 @@ test('test auto-complete modelValue', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete options', async () => {
+test('auto-complete options', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -53,7 +53,7 @@ test('test auto-complete options', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete getShow', async () => {
+test('auto-complete getShow', async () => {
   const wrapper = mount(AutoComplete, {
     props: {
       modelValue: 'a',
@@ -84,7 +84,7 @@ test('test auto-complete getShow', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete options custom key', async () => {
+test('auto-complete options custom key', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -114,7 +114,7 @@ test('test auto-complete options custom key', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete placeholder', () => {
+test('auto-complete placeholder', () => {
   const wrapper = mount(AutoComplete, {
     props: {
       placeholder: 'Hello',
@@ -125,7 +125,7 @@ test('test auto-complete placeholder', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete maxlength', async () => {
+test('auto-complete maxlength', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -140,7 +140,7 @@ test('test auto-complete maxlength', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete maxlength for handle auto complete', async () => {
+test('auto-complete maxlength for handle auto complete', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -170,7 +170,7 @@ test('test auto-complete maxlength for handle auto complete', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete disabled', async () => {
+test('auto-complete disabled', async () => {
   const onUpdateModelValue = vi.fn()
   const onClick = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -204,7 +204,7 @@ test('test auto-complete disabled', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete readonly', async () => {
+test('auto-complete readonly', async () => {
   const onUpdateModelValue = vi.fn()
   const onClick = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -238,7 +238,7 @@ test('test auto-complete readonly', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete clearable', async () => {
+test('auto-complete clearable', async () => {
   const onClear = vi.fn()
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -256,7 +256,7 @@ test('test auto-complete clearable', async () => {
   wrapper.unmount()
 })
 
-test('test auto complete onInput onChange onFocus onBlur', async () => {
+test('auto complete onInput onChange onFocus onBlur', async () => {
   const onUpdateModelValue = vi.fn()
   const onInput = vi.fn()
   const onChange = vi.fn()
@@ -286,7 +286,7 @@ test('test auto complete onInput onChange onFocus onBlur', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete hint and line', () => {
+test('auto-complete hint and line', () => {
   const wrapper = mount(AutoComplete, {
     props: {
       hint: false,
@@ -298,7 +298,7 @@ test('test auto-complete hint and line', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete custom color', () => {
+test('auto-complete custom color', () => {
   const wrapper = mount(AutoComplete, {
     props: {
       textColor: 'red',
@@ -311,7 +311,7 @@ test('test auto-complete custom color', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete size', () => {
+test('auto-complete size', () => {
   const wrapper = mount(AutoComplete, {
     props: {
       size: 'small',
@@ -322,7 +322,7 @@ test('test auto-complete size', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete variant', () => {
+test('auto-complete variant', () => {
   const wrapper = mount(AutoComplete, {
     props: {
       variant: 'outlined',
@@ -333,7 +333,7 @@ test('test auto-complete variant', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete slots', () => {
+test('auto-complete slots', () => {
   const wrapper = mount(AutoComplete, {
     slots: {
       'append-icon': () => 'append-icon',
@@ -347,7 +347,7 @@ test('test auto-complete slots', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete validation', async () => {
+test('auto-complete validation', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -370,7 +370,7 @@ test('test auto-complete validation', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete click outside', async () => {
+test('auto-complete click outside', async () => {
   const wrapper = mount(AutoComplete, {
     props: {
       modelValue: 'a',
@@ -397,7 +397,7 @@ test('test auto-complete click outside', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete select option by keyboard', async () => {
+test('auto-complete select option by keyboard', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -428,7 +428,7 @@ test('test auto-complete select option by keyboard', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete close menu by keyboard tab', async () => {
+test('auto-complete close menu by keyboard tab', async () => {
   const wrapper = mount(AutoComplete, {
     props: {
       modelValue: 'a',
@@ -455,7 +455,7 @@ test('test auto-complete close menu by keyboard tab', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete handle same value by option', async () => {
+test('auto-complete handle same value by option', async () => {
   const onChange = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -480,7 +480,7 @@ test('test auto-complete handle same value by option', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete focus and blur methods', () => {
+test('auto-complete focus and blur methods', () => {
   const onFocus = vi.fn()
   const onBlur = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -499,7 +499,7 @@ test('test auto-complete focus and blur methods', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete clear-icon scoped clear method', async () => {
+test('auto-complete clear-icon scoped clear method', async () => {
   const onClear = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -522,7 +522,7 @@ test('test auto-complete clear-icon scoped clear method', async () => {
   wrapper.unmount()
 })
 
-test('test auto-complete blur without focus', () => {
+test('auto-complete blur without focus', () => {
   const onBlur = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {
@@ -539,7 +539,7 @@ test('test auto-complete blur without focus', () => {
   wrapper.unmount()
 })
 
-test('test auto-complete valiation with zod', async () => {
+test('auto-complete valiation with zod', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
     props: {

@@ -4,12 +4,12 @@ import { expect, test, vi } from 'vitest'
 import Drag from '..'
 import { delay, trigger, triggerDrag } from '../../utils/test'
 
-test('test drag plugin', () => {
+test('drag plugin', () => {
   const app = createApp({}).use(Drag)
   expect(app.component(Drag.name)).toBeTruthy()
 })
 
-test('test drag direction', async () => {
+test('drag direction', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Drag, {
     props: {
@@ -31,7 +31,7 @@ test('test drag direction', async () => {
   wrapper.unmount()
 })
 
-test('test drag attraction', async () => {
+test('drag attraction', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Drag, {
     props: {
@@ -53,7 +53,7 @@ test('test drag attraction', async () => {
   wrapper.unmount()
 })
 
-test('test drag disabled', async () => {
+test('drag disabled', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Drag, {
     props: {
@@ -68,7 +68,7 @@ test('test drag disabled', async () => {
   wrapper.unmount()
 })
 
-test('test drag boundary', async () => {
+test('drag boundary', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Drag, {
     props: {
@@ -89,7 +89,7 @@ test('test drag boundary', async () => {
   wrapper.unmount()
 })
 
-test('test drag reset', async () => {
+test('drag reset', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Drag, {
     props: {
@@ -107,7 +107,7 @@ test('test drag reset', async () => {
   wrapper.unmount()
 })
 
-test('test drag click method', async () => {
+test('drag click method', async () => {
   const container = document.createElement('div')
   const onClick = vi.fn()
 

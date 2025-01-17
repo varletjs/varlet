@@ -21,13 +21,13 @@ const Wrapper = {
   },
 }
 
-test('test pullRefresh plugin', () => {
+test('pullRefresh plugin', () => {
   const app = createApp({}).use(PullRefresh)
   expect(app.component(PullRefresh.name)).toBeTruthy()
 })
 
 describe('test pull-refresh props', () => {
-  test('test pull-refresh color and bgColor', () => {
+  test('pull-refresh color and bgColor', () => {
     const wrapper = mount(Wrapper, {
       props: {
         color: 'green',
@@ -43,7 +43,7 @@ describe('test pull-refresh props', () => {
     wrapper.unmount()
   })
 
-  test('test pull-refresh animationDuration', async () => {
+  test('pull-refresh animationDuration', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         animationDuration: 200,
@@ -62,7 +62,7 @@ describe('test pull-refresh props', () => {
     wrapper.unmount()
   })
 
-  test('test disabled prop', async () => {
+  test('disabled prop', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         disabled: true,
@@ -81,7 +81,7 @@ describe('test pull-refresh props', () => {
   })
 })
 
-test('test pull-refresh success state', async () => {
+test('pull-refresh success state', async () => {
   const refresh = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {

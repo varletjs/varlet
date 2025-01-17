@@ -26,14 +26,14 @@ const Wrapper = {
   },
 }
 
-test('test steps and step use', () => {
+test('steps and step use', () => {
   const app = createApp({}).use(Steps).use(Step)
 
   expect(app.component(Steps.name)).toBeTruthy()
   expect(app.component(Step.name)).toBeTruthy()
 })
 
-test('test steps component event', async () => {
+test('steps component event', async () => {
   const wrapper = mount(Wrapper)
   await wrapper.find('.var-step__horizontal-tag').trigger('click')
   expect(clickStep).toHaveBeenCalledTimes(1)
@@ -41,7 +41,7 @@ test('test steps component event', async () => {
 })
 
 describe('test steps and step components props', () => {
-  test('test steps active', async () => {
+  test('steps active', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         active: 1,
@@ -56,7 +56,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps direction', async () => {
+  test('steps direction', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         direction: 'vertical',
@@ -69,7 +69,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps active-color', async () => {
+  test('steps active-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         activeColor: 'red',
@@ -81,7 +81,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps inactive-color', async () => {
+  test('steps inactive-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         inactiveColor: 'red',
@@ -95,7 +95,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps current-icon', async () => {
+  test('steps current-icon', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         active: 3,
@@ -107,7 +107,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps active-icon', async () => {
+  test('steps active-icon', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         active: 2,
@@ -119,7 +119,7 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 
-  test('test steps inactive-icon', async () => {
+  test('steps inactive-icon', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         active: 1,

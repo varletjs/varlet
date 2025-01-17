@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test breadcrumbs basic usage 1`] = `
+exports[`breadcrumbs basic usage 1`] = `
 "<div class="var-breadcrumbs" role="navigation" aria-label="Breadcrumbs">
   <div class="var-breadcrumb">
     <div class="var-breadcrumb__content var-breadcrumb--active">HOME</div>
@@ -17,7 +17,7 @@ exports[`test breadcrumbs basic usage 1`] = `
 </div>"
 `;
 
-exports[`test breadcrumbs parent and child separator 1`] = `
+exports[`breadcrumbs parent and child separator 1`] = `
 "<div class="var-breadcrumbs" role="navigation" aria-label="Breadcrumbs">
   <div class="var-breadcrumb">
     <div class="var-breadcrumb__content var-breadcrumb--active">HOME</div>
@@ -34,7 +34,7 @@ exports[`test breadcrumbs parent and child separator 1`] = `
 </div>"
 `;
 
-exports[`test breadcrumbs parent separator 1`] = `
+exports[`breadcrumbs parent separator 1`] = `
 "<div class="var-breadcrumbs" role="navigation" aria-label="Breadcrumbs">
   <div class="var-breadcrumb">
     <div class="var-breadcrumb__content var-breadcrumb--active">HOME</div>
@@ -51,7 +51,7 @@ exports[`test breadcrumbs parent separator 1`] = `
 </div>"
 `;
 
-exports[`test breadcrumbs slots 1`] = `
+exports[`breadcrumbs slots 1`] = `
 "<div class="var-breadcrumbs" role="navigation" aria-label="Breadcrumbs">
   <div class="var-breadcrumb">
     <div class="var-breadcrumb__content var-breadcrumb--active">HOME</div><span>*</span>

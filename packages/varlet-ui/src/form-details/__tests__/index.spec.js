@@ -3,13 +3,13 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
 import FormDetails from '..'
 
-test('test form details plugin', () => {
+test('form details plugin', () => {
   const app = createApp({}).use(FormDetails)
   expect(app.component(FormDetails.name)).toBeTruthy()
 })
 
 describe('test form details component props', () => {
-  test('test form details errorMessage', async () => {
+  test('form details errorMessage', async () => {
     const wrapper = mount(FormDetails, {
       props: {
         errorMessage: 'Initial errorMessage',
@@ -30,7 +30,7 @@ describe('test form details component props', () => {
     wrapper.unmount()
   })
 
-  test('test form details extraMessage', async () => {
+  test('form details extraMessage', async () => {
     const wrapper = mount(FormDetails, {
       props: {
         extraMessage: 'Initial extraMessage',
@@ -53,7 +53,7 @@ describe('test form details component props', () => {
 })
 
 describe('test form details component slots', () => {
-  test('test chip extraMessage slots', () => {
+  test('chip extraMessage slots', () => {
     const wrapper = mount(FormDetails, {
       slots: {
         'extra-message': () => 'This is extra message slot',

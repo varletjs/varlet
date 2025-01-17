@@ -6,12 +6,12 @@ import Dialog from '../../dialog/Dialog.vue'
 import Locale from '../../locale'
 import LocaleProvider from '../index'
 
-test('test localeProvider component plugin', () => {
+test('localeProvider component plugin', () => {
   const app = createApp({}).use(LocaleProvider)
   expect(app.component(LocaleProvider.name)).toBeTruthy()
 })
 
-test('test localeProvider tag', async () => {
+test('localeProvider tag', async () => {
   const wrapper = mount(LocaleProvider)
   expect(wrapper.html()).toMatchSnapshot()
   await wrapper.setProps({ tag: 'span' })
@@ -19,7 +19,7 @@ test('test localeProvider tag', async () => {
   wrapper.unmount()
 })
 
-test('test localeProvider locale', async () => {
+test('localeProvider locale', async () => {
   const container = document.createElement('div')
   const wrapper = mount(LocaleProvider, {
     props: {

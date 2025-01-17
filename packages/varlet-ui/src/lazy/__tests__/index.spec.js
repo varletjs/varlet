@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest'
 import Lazy, { imageCache } from '..'
 import { delay, mockDoubleRaf, trigger } from '../../utils/test'
 
-test('test lazy use', () => {
+test('lazy use', () => {
   const app = createApp({}).use(Lazy)
   expect(app.directive('lazy')).toBeTruthy()
 })
@@ -26,7 +26,7 @@ const Wrapper = {
 }
 
 describe('test lazy component props', () => {
-  test('test lazy loading', async () => {
+  test('lazy loading', async () => {
     const { mockRestore } = mockDoubleRaf()
     const wrapper = mount(Wrapper)
 
@@ -42,7 +42,7 @@ describe('test lazy component props', () => {
     mockRestore()
   })
 
-  test('test lazy error', () => {
+  test('lazy error', () => {
     const { mockRestore } = mockDoubleRaf()
     const wrapper = mount(Wrapper)
     expect(wrapper.find('img').attributes('lazy-error')).toBe('https://varletjs.org/varlet/error.jpg')
@@ -51,7 +51,7 @@ describe('test lazy component props', () => {
     mockRestore()
   })
 
-  test('test lazy attempt', async () => {
+  test('lazy attempt', async () => {
     const { mockRestore } = mockDoubleRaf()
     const wrapper = mount(Wrapper)
 
@@ -64,7 +64,7 @@ describe('test lazy component props', () => {
     mockRestore()
   })
 
-  test('test lazy throttleWait', () => {
+  test('lazy throttleWait', () => {
     const { mockRestore } = mockDoubleRaf()
     const wrapper = mount(Wrapper)
     expect(wrapper.find('img').attributes('lazy-throttle-wait')).toBe('500')
@@ -73,7 +73,7 @@ describe('test lazy component props', () => {
     mockRestore()
   })
 
-  test('test lazy update', async () => {
+  test('lazy update', async () => {
     const { mockRestore } = mockDoubleRaf()
     const wrapper = mount(Wrapper)
 

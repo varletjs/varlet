@@ -8,17 +8,17 @@ import VarCheckbox from '../../checkbox/Checkbox'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import VarCheckboxGroup from '../CheckboxGroup'
 
-test('test checkbox group plugin', () => {
+test('checkbox group plugin', () => {
   const app = createApp({}).use(CheckboxGroup)
   expect(app.component(CheckboxGroup.name)).toBeTruthy()
 })
 
-test('test checkbox plugin', () => {
+test('checkbox plugin', () => {
   const app = createApp({}).use(Checkbox)
   expect(app.component(Checkbox.name)).toBeTruthy()
 })
 
-test('test checkbox check value', async () => {
+test('checkbox check value', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
@@ -39,7 +39,7 @@ test('test checkbox check value', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox check value with custom value', async () => {
+test('checkbox check value with custom value', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
@@ -58,7 +58,7 @@ test('test checkbox check value with custom value', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox onClick & onChange', async () => {
+test('checkbox onClick & onChange', async () => {
   const onClick = vi.fn()
   const onChange = vi.fn()
 
@@ -77,7 +77,7 @@ test('test checkbox onClick & onChange', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox toggle method', async () => {
+test('checkbox toggle method', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
@@ -96,7 +96,7 @@ test('test checkbox toggle method', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox disabled', async () => {
+test('checkbox disabled', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onClick = vi.fn()
   const onChange = vi.fn()
@@ -121,7 +121,7 @@ test('test checkbox disabled', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox readonly', async () => {
+test('checkbox readonly', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onClick = vi.fn()
   const onChange = vi.fn()
@@ -146,7 +146,7 @@ test('test checkbox readonly', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox indeterminate', async () => {
+test('checkbox indeterminate', async () => {
   const onChange = vi.fn()
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -163,7 +163,7 @@ test('test checkbox indeterminate', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox with checkbox group', async () => {
+test('checkbox with checkbox group', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -188,7 +188,7 @@ test('test checkbox with checkbox group', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox validation', async () => {
+test('checkbox validation', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
@@ -218,7 +218,7 @@ test('test checkbox validation', async () => {
   wrapper.unmount()
 })
 
-test('test radio default slot', () => {
+test('radio default slot', () => {
   const wrapper = mount(VarCheckbox, {
     slots: {
       default: ({ checked }) => h('span', { class: 'test-default-slot' }, checked),
@@ -230,7 +230,7 @@ test('test radio default slot', () => {
   wrapper.unmount()
 })
 
-test('test checkbox group max', async () => {
+test('checkbox group max', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -258,7 +258,7 @@ test('test checkbox group max', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group validation', async () => {
+test('checkbox group validation', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -295,7 +295,7 @@ test('test checkbox group validation', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group checkAll & inverseAll methods', async () => {
+test('checkbox group checkAll & inverseAll methods', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -326,7 +326,7 @@ test('test checkbox group checkAll & inverseAll methods', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group layout direction', () => {
+test('checkbox group layout direction', () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -347,7 +347,7 @@ test('test checkbox group layout direction', () => {
   wrapper.unmount()
 })
 
-test('test checkbox group options', async () => {
+test('checkbox group options', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -385,7 +385,7 @@ test('test checkbox group options', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group label-key', async () => {
+test('checkbox group label-key', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -424,7 +424,7 @@ test('test checkbox group label-key', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group value-key', async () => {
+test('checkbox group value-key', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -463,7 +463,7 @@ test('test checkbox group value-key', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group label is VNode', async () => {
+test('checkbox group label is VNode', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,
@@ -503,7 +503,7 @@ test('test checkbox group label is VNode', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox group label is function', async () => {
+test('checkbox group label is function', async () => {
   const formatLabel = (option, checked) => `${option.id}-${checked}`
   const wrapper = mount({
     components: {
@@ -547,7 +547,7 @@ test('test checkbox group label is function', async () => {
   wrapper.unmount()
 })
 
-test('test checkbox keyboard Enter', async () => {
+test('checkbox keyboard Enter', async () => {
   const wrapper = mount({
     components: {
       [VarCheckboxGroup.name]: VarCheckboxGroup,

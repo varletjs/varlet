@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import Divider from '..'
 import VarDivider from '../Divider'
 
-test('test divider plugin', () => {
+test('divider plugin', () => {
   const app = createApp({}).use(Divider)
   expect(app.component(Divider.name)).toBeTruthy()
 })
 
 describe('test divider components props', () => {
-  test('test divider inset', async () => {
+  test('divider inset', async () => {
     const wrapper = mount(VarDivider, {
       props: {
         inset: true,
@@ -25,7 +25,7 @@ describe('test divider components props', () => {
     wrapper.unmount()
   })
 
-  test('test divider vertical', async () => {
+  test('divider vertical', async () => {
     const wrapper = mount(VarDivider, {
       props: {
         vertical: true,
@@ -39,7 +39,7 @@ describe('test divider components props', () => {
     wrapper.unmount()
   })
 
-  test('test divider dashed', async () => {
+  test('divider dashed', async () => {
     const wrapper = mount(VarDivider, {
       props: {
         dashed: true,
@@ -52,7 +52,7 @@ describe('test divider components props', () => {
     wrapper.unmount()
   })
 
-  test('test divider description', () => {
+  test('divider description', () => {
     const wrapper = mount(VarDivider, {
       props: {
         description: 'This is description',
@@ -64,7 +64,7 @@ describe('test divider components props', () => {
     wrapper.unmount()
   })
 
-  test('test divider margin', () => {
+  test('divider margin', () => {
     const wrapper = mount(VarDivider, {
       props: {
         margin: '20px',
@@ -75,7 +75,7 @@ describe('test divider components props', () => {
     wrapper.unmount()
   })
 
-  test('test divider hairline', async () => {
+  test('divider hairline', async () => {
     const wrapper = mount(VarDivider, {
       props: {
         hairline: true,

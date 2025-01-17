@@ -2,7 +2,7 @@ import { expect, test } from 'vitest'
 import LoadingBar from '..'
 import { delay } from '../../utils/test'
 
-test('test loading-bar methods', async () => {
+test('loading-bar methods', async () => {
   LoadingBar.start()
 
   const el = document.querySelector('.var-loading-bar')
@@ -23,7 +23,7 @@ test('test loading-bar methods', async () => {
   expect(document.querySelector('.var-loading-bar--error')).toBeFalsy()
 })
 
-test('test loading-bar finish delay', async () => {
+test('loading-bar finish delay', async () => {
   LoadingBar.setDefaultOptions({
     finishDelay: 500,
   })
@@ -46,7 +46,7 @@ test('test loading-bar finish delay', async () => {
   LoadingBar.resetDefaultOptions()
 })
 
-test('test setDefaultOptions and resetDefaultOptions', async () => {
+test('setDefaultOptions and resetDefaultOptions', async () => {
   LoadingBar.setDefaultOptions({
     color: 'white',
     errorColor: 'black',

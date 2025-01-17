@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test dark theme 1`] = `
+exports[`dark theme 1`] = `
 {
   "--action-sheet-action-item-color": "#fff",
   "--action-sheet-action-item-disabled-color": "var(--color-text-disabled)",
@@ -891,7 +891,7 @@ exports[`test dark theme 1`] = `
 }
 `;
 
-exports[`test md3Dark theme 1`] = `
+exports[`md3Dark theme 1`] = `
 {
   "--action-sheet-action-item-color": "var(--color-inverse-surface)",
   "--action-sheet-action-item-disabled-color": "var(--color-text-disabled)",
@@ -1781,7 +1781,7 @@ exports[`test md3Dark theme 1`] = `
 }
 `;
 
-exports[`test md3Light theme 1`] = `
+exports[`md3Light theme 1`] = `
 {
   "--action-sheet-action-item-color": "#1D1B20",
   "--action-sheet-background": "var(--color-surface-container-high)",

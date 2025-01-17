@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test action-sheet styles 1`] = `
+exports[`action-sheet styles 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 1998;">
     <div class="var-popup__overlay" style="z-index: 1999;"></div>

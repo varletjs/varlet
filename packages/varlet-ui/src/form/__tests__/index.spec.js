@@ -18,7 +18,7 @@ import VarForm from '../Form'
 
 mockScrollTo()
 
-test('test form plugin', () => {
+test('form plugin', () => {
   const app = createApp({}).use(Form)
   expect(app.component(Form.name)).toBeTruthy()
 })
@@ -54,7 +54,7 @@ const Wrapper = {
   },
 }
 
-test('test form with input', async () => {
+test('form with input', async () => {
   const onClick = vi.fn()
   const onInput = vi.fn()
   const onChange = vi.fn()
@@ -113,7 +113,7 @@ test('test form with input', async () => {
   wrapper.unmount()
 })
 
-test('test form with select', async () => {
+test('form with select', async () => {
   const onClear = vi.fn()
   const onClick = vi.fn()
   const onClose = vi.fn()
@@ -178,7 +178,7 @@ test('test form with select', async () => {
   wrapper.unmount()
 })
 
-test('test form with radio', async () => {
+test('form with radio', async () => {
   const onChange = vi.fn()
   const onClick = vi.fn()
 
@@ -226,7 +226,7 @@ test('test form with radio', async () => {
   wrapper.unmount()
 })
 
-test('test form with checkbox', async () => {
+test('form with checkbox', async () => {
   const onChange = vi.fn()
   const onClick = vi.fn()
 
@@ -275,7 +275,7 @@ test('test form with checkbox', async () => {
   wrapper.unmount()
 })
 
-test('test form with counter', async () => {
+test('form with counter', async () => {
   const onIncrement = vi.fn()
   const onDecrement = vi.fn()
   const onChange = vi.fn()
@@ -333,7 +333,7 @@ test('test form with counter', async () => {
   wrapper.unmount()
 })
 
-test('test form with rate', async () => {
+test('form with rate', async () => {
   const onChange = vi.fn()
 
   const wrapper = mount({
@@ -376,7 +376,7 @@ test('test form with rate', async () => {
   wrapper.unmount()
 })
 
-test('test form with uploader', async () => {
+test('form with uploader', async () => {
   const onAfterRead = vi.fn()
 
   const createEvent = (filename) => ({
@@ -425,7 +425,7 @@ test('test form with uploader', async () => {
   wrapper.unmount()
 })
 
-test('test form with switch', async () => {
+test('form with switch', async () => {
   const onChange = vi.fn()
 
   const wrapper = mount({
@@ -474,7 +474,7 @@ test('test form with switch', async () => {
   wrapper.unmount()
 })
 
-test('test form with slider', async () => {
+test('form with slider', async () => {
   const onChange = vi.fn()
   const onStart = vi.fn()
   const onEnd = vi.fn()
@@ -539,7 +539,7 @@ test('test form with slider', async () => {
   wrapper.unmount()
 })
 
-test('test form events', async () => {
+test('form events', async () => {
   const onSubmit = vi.fn()
   const onReset = vi.fn()
 
@@ -579,7 +579,7 @@ test('test form events', async () => {
   wrapper.unmount()
 })
 
-test('test form with auto-complete', async () => {
+test('form with auto-complete', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({

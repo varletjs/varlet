@@ -6,17 +6,17 @@ import AvatarGroup from '../../avatar-group'
 import VarAvatarGroup from '../../avatar-group/AvatarGroup.vue'
 import VarAvatar from '../Avatar.vue'
 
-test('test avatar plugin', () => {
+test('avatar plugin', () => {
   const app = createApp({}).use(Avatar)
   expect(app.component(Avatar.name)).toBeTruthy()
 })
 
-test('test avatar group plugin', () => {
+test('avatar group plugin', () => {
   const app = createApp({}).use(AvatarGroup)
   expect(app.component(AvatarGroup.name)).toBeTruthy()
 })
 
-test('test avatar round', async () => {
+test('avatar round', async () => {
   const wrapper = mount(VarAvatar, {
     props: { round: true },
   })
@@ -31,7 +31,7 @@ test('test avatar round', async () => {
   wrapper.unmount()
 })
 
-test('test avatar bordered', async () => {
+test('avatar bordered', async () => {
   const wrapper = mount(VarAvatar, {
     props: { bordered: true },
   })
@@ -46,7 +46,7 @@ test('test avatar bordered', async () => {
   wrapper.unmount()
 })
 
-test('test avatar hoverable', async () => {
+test('avatar hoverable', async () => {
   const wrapper = mount(VarAvatar, {
     props: { hoverable: true },
   })
@@ -61,7 +61,7 @@ test('test avatar hoverable', async () => {
   wrapper.unmount()
 })
 
-test('test avatar size', () => {
+test('avatar size', () => {
   ;['mini', 'small', 'normal', 'large'].forEach((size) => {
     const wrapper = mount(VarAvatar, {
       props: { size },
@@ -79,7 +79,7 @@ test('test avatar size', () => {
   wrapper.unmount()
 })
 
-test('test avatar color', () => {
+test('avatar color', () => {
   const wrapper = mount(VarAvatar, {
     props: { color: 'red' },
   })
@@ -88,7 +88,7 @@ test('test avatar color', () => {
   wrapper.unmount()
 })
 
-test('test avatar borderColor', () => {
+test('avatar borderColor', () => {
   const wrapper = mount(VarAvatar, {
     props: { borderColor: 'red' },
   })
@@ -97,7 +97,7 @@ test('test avatar borderColor', () => {
   wrapper.unmount()
 })
 
-test('test avatar src', () => {
+test('avatar src', () => {
   const wrapper = mount(VarAvatar, {
     props: { src: 'https://1.png' },
   })
@@ -106,7 +106,7 @@ test('test avatar src', () => {
   wrapper.unmount()
 })
 
-test('test avatar src and alt', () => {
+test('avatar src and alt', () => {
   const wrapper = mount(VarAvatar, {
     props: { src: 'https://1.png', alt: '1.png' },
   })
@@ -115,7 +115,7 @@ test('test avatar src and alt', () => {
   wrapper.unmount()
 })
 
-test('test avatar src and fit', () => {
+test('avatar src and fit', () => {
   ;['fill', 'contain', 'cover', 'none', 'scale-down'].forEach((fit) => {
     const wrapper = mount(VarAvatar, {
       props: { src: 'https://1.png', fit },
@@ -126,7 +126,7 @@ test('test avatar src and fit', () => {
   })
 })
 
-test('test avatar onClick', async () => {
+test('avatar onClick', async () => {
   const onClick = vi.fn()
   const wrapper = mount(VarAvatar, { props: { onClick } })
 
@@ -135,7 +135,7 @@ test('test avatar onClick', async () => {
   wrapper.unmount()
 })
 
-test('test avatar onLoad', async () => {
+test('avatar onLoad', async () => {
   const onLoad = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', onLoad } })
 
@@ -144,7 +144,7 @@ test('test avatar onLoad', async () => {
   wrapper.unmount()
 })
 
-test('test avatar onError', async () => {
+test('avatar onError', async () => {
   const onError = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', onError } })
 
@@ -153,7 +153,7 @@ test('test avatar onError', async () => {
   wrapper.unmount()
 })
 
-test('test avatar lazy onLoad', async () => {
+test('avatar lazy onLoad', async () => {
   const onLoad = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', lazy: true, onLoad } })
   wrapper.find('img').element._lazy.state = 'success'
@@ -163,7 +163,7 @@ test('test avatar lazy onLoad', async () => {
   wrapper.unmount()
 })
 
-test('test avatar group basic use', () => {
+test('avatar group basic use', () => {
   const wrapper = mount(VarAvatarGroup, {
     slots: {
       default: () => h(Fragment, [h(VarAvatar), h(VarAvatar), h(VarAvatar)]),
@@ -174,7 +174,7 @@ test('test avatar group basic use', () => {
   wrapper.unmount()
 })
 
-test('test avatar group vertical', () => {
+test('avatar group vertical', () => {
   const wrapper = mount(VarAvatarGroup, {
     props: {
       vertical: true,
@@ -188,7 +188,7 @@ test('test avatar group vertical', () => {
   wrapper.unmount()
 })
 
-test('test avatar group offset', () => {
+test('avatar group offset', () => {
   const wrapper = mount(VarAvatarGroup, {
     props: {
       offset: 10,

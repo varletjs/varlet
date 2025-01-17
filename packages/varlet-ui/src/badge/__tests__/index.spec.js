@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import Badge from '..'
 import VarBadge from '../Badge'
 
-test('test badge plugin', () => {
+test('badge plugin', () => {
   const app = createApp({}).use(Badge)
   expect(app.component(Badge.name)).toBeTruthy()
 })
 
 describe('test badge component props', () => {
-  test('test badge type', () => {
+  test('badge type', () => {
     ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
       const wrapper = mount(VarBadge, {
         props: { type },
@@ -21,7 +21,7 @@ describe('test badge component props', () => {
     })
   })
 
-  test('test badge dot', async () => {
+  test('badge dot', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         dot: true,
@@ -34,7 +34,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge hidden', async () => {
+  test('badge hidden', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         hidden: true,
@@ -50,7 +50,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge value', async () => {
+  test('badge value', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         value: 10,
@@ -64,7 +64,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge maxValue', async () => {
+  test('badge maxValue', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         maxValue: 1,
@@ -78,7 +78,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge position', () => {
+  test('badge position', () => {
     ;['right-top', 'right-bottom', 'left-top', 'left-bottom'].forEach((position) => {
       const wrapper = mount(VarBadge, {
         props: {
@@ -91,7 +91,7 @@ describe('test badge component props', () => {
     })
   })
 
-  test('test badge color', async () => {
+  test('badge color', async () => {
     const wrapper = mount(VarBadge, {
       props: { color: 'red' },
     })
@@ -104,7 +104,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge offsetX', async () => {
+  test('badge offsetX', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetX: 4,
@@ -125,7 +125,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge offsetY', async () => {
+  test('badge offsetY', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetY: 4,
@@ -146,7 +146,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge icon', () => {
+  test('badge icon', () => {
     const wrapper = mount(VarBadge, {
       props: { icon: 'notebook' },
     })
@@ -157,7 +157,7 @@ describe('test badge component props', () => {
 })
 
 describe('test badge component slots', () => {
-  test('test badge default slots', () => {
+  test('badge default slots', () => {
     const wrapper = mount(VarBadge, {
       slots: {
         default: () => 'default slots',
@@ -168,7 +168,7 @@ describe('test badge component slots', () => {
     wrapper.unmount()
   })
 
-  test('test badge value slots', () => {
+  test('badge value slots', () => {
     const wrapper = mount(VarBadge, {
       slots: {
         value: () => 'value slots',

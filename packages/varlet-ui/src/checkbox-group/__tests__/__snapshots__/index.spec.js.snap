@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test checkbox group label is VNode 1`] = `
+exports[`checkbox group label is VNode 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -55,7 +55,7 @@ exports[`test checkbox group label is VNode 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group label is function 1`] = `
+exports[`checkbox group label is function 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -104,7 +104,7 @@ exports[`test checkbox group label is function 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group label is function 2`] = `
+exports[`checkbox group label is function 2`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -153,7 +153,7 @@ exports[`test checkbox group label is function 2`] = `
 </div>"
 `;
 
-exports[`test checkbox group label is function 3`] = `
+exports[`checkbox group label is function 3`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -202,7 +202,7 @@ exports[`test checkbox group label is function 3`] = `
 </div>"
 `;
 
-exports[`test checkbox group label is function 4`] = `
+exports[`checkbox group label is function 4`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -251,7 +251,7 @@ exports[`test checkbox group label is function 4`] = `
 </div>"
 `;
 
-exports[`test checkbox group label-key 1`] = `
+exports[`checkbox group label-key 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -300,7 +300,7 @@ exports[`test checkbox group label-key 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group layout direction 1`] = `
+exports[`checkbox group layout direction 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--vertical">
     <!--v-if-->
@@ -337,7 +337,7 @@ exports[`test checkbox group layout direction 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group options 1`] = `
+exports[`checkbox group options 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -386,7 +386,7 @@ exports[`test checkbox group options 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group validation 1`] = `
+exports[`checkbox group validation 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
@@ -434,7 +434,7 @@ exports[`test checkbox group validation 1`] = `
 </div>"
 `;
 
-exports[`test checkbox group validation 2`] = `
+exports[`checkbox group validation 2`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
@@ -471,7 +471,7 @@ exports[`test checkbox group validation 2`] = `
 </div>"
 `;
 
-exports[`test checkbox group value-key 1`] = `
+exports[`checkbox group value-key 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
@@ -520,7 +520,7 @@ exports[`test checkbox group value-key 1`] = `
 </div>"
 `;
 
-exports[`test checkbox indeterminate 1`] = `
+exports[`checkbox indeterminate 1`] = `
 "<div class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-minus-box var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -536,7 +536,7 @@ exports[`test checkbox indeterminate 1`] = `
 </div>"
 `;
 
-exports[`test checkbox validation 1`] = `
+exports[`checkbox validation 1`] = `
 "<div class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
@@ -563,7 +563,7 @@ exports[`test checkbox validation 1`] = `
 </div>"
 `;
 
-exports[`test checkbox validation 2`] = `
+exports[`checkbox validation 2`] = `
 "<div class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked" tabindex="0">

@@ -17,13 +17,13 @@ const Wrapper = {
   `,
 }
 
-test('test ripple use', () => {
+test('ripple use', () => {
   const app = createApp({}).use(Ripple)
   expect(app.directive('ripple')).toBeTruthy()
 })
 
 describe('test ripple component props', () => {
-  test('test ripple show & hide', async () => {
+  test('ripple show & hide', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await trigger(wrapper, 'touchstart')
     await delay(60)
@@ -35,7 +35,7 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
-  test('test ripple show & hide via keydown and keyup and enter', async () => {
+  test('ripple show & hide via keydown and keyup and enter', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await triggerKeyboard(wrapper, 'keydown', { key: 'Enter' })
     await delay(60)
@@ -47,7 +47,7 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
-  test('test ripple show & hide via keydown and blur and space', async () => {
+  test('ripple show & hide via keydown and blur and space', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await triggerKeyboard(wrapper, 'keydown', { key: ' ' })
     await delay(60)
@@ -59,7 +59,7 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
-  test('test ripple update & color', async () => {
+  test('ripple update & color', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await wrapper.setData({ color: 'green' })
 
@@ -71,7 +71,7 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
-  test('test ripple disabled', async () => {
+  test('ripple disabled', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await wrapper.setData({ disabled: true })
 
@@ -82,7 +82,7 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
-  test('test ripple touchmove', async () => {
+  test('ripple touchmove', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
 
     await triggerDrag(wrapper, 0, 20)

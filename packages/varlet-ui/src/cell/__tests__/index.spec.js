@@ -5,13 +5,13 @@ import Cell from '..'
 import VarIcon from '../../icon/Icon'
 import VarCell from '../Cell'
 
-test('test cell plugin', () => {
+test('cell plugin', () => {
   const app = createApp({}).use(Cell)
   expect(app.component(Cell.name)).toBeTruthy()
 })
 
 describe('test cell component props', () => {
-  test('test cell title', () => {
+  test('cell title', () => {
     const wrapper = mount(VarCell, {
       props: {
         title: 'This is cell',
@@ -22,7 +22,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell icon', () => {
+  test('cell icon', () => {
     const wrapper = mount(VarCell, {
       props: {
         icon: 'fire',
@@ -33,7 +33,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell description', () => {
+  test('cell description', () => {
     const wrapper = mount(VarCell, {
       props: {
         description: 'This is desc',
@@ -44,7 +44,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell border', async () => {
+  test('cell border', async () => {
     const wrapper = mount(VarCell, {
       props: {
         border: true,
@@ -57,7 +57,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell icon class', () => {
+  test('cell icon class', () => {
     const wrapper = mount(VarCell, {
       props: {
         icon: 'fire',
@@ -69,7 +69,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell title class', () => {
+  test('cell title class', () => {
     const wrapper = mount(VarCell, {
       props: {
         title: 'This is Cell',
@@ -81,7 +81,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell description class', () => {
+  test('cell description class', () => {
     const wrapper = mount(VarCell, {
       props: {
         description: 'This is desc',
@@ -93,7 +93,7 @@ describe('test cell component props', () => {
     wrapper.unmount()
   })
 
-  test('test cell extra class', () => {
+  test('cell extra class', () => {
     const wrapper = mount(VarCell, {
       props: {
         extraClass: 'test-extra-class',
@@ -109,7 +109,7 @@ describe('test cell component props', () => {
 })
 
 describe('test cell component slots', () => {
-  test('test cell default slots', () => {
+  test('cell default slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
         default: () => 'This is cell',
@@ -120,7 +120,7 @@ describe('test cell component slots', () => {
     wrapper.unmount()
   })
 
-  test('test cell icon slots', () => {
+  test('cell icon slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
         icon: h(VarIcon, { name: 'fire' }),
@@ -131,7 +131,7 @@ describe('test cell component slots', () => {
     wrapper.unmount()
   })
 
-  test('test cell description slots', () => {
+  test('cell description slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
         description: () => 'This is desc',
@@ -142,7 +142,7 @@ describe('test cell component slots', () => {
     wrapper.unmount()
   })
 
-  test('test cell default and description slots', () => {
+  test('cell default and description slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
         default: () => 'This is default ',
@@ -154,7 +154,7 @@ describe('test cell component slots', () => {
     wrapper.unmount()
   })
 
-  test('test cell extra slots', () => {
+  test('cell extra slots', () => {
     const wrapper = mount(VarCell, {
       slots: {
         extra: 'information',

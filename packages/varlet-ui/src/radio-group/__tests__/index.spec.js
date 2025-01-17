@@ -8,17 +8,17 @@ import VarRadio from '../../radio/Radio'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import VarRadioGroup from '../RadioGroup'
 
-test('test radio group plugin', () => {
+test('radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)
   expect(app.component(RadioGroup.name)).toBeTruthy()
 })
 
-test('test radio plugin', () => {
+test('radio plugin', () => {
   const app = createApp({}).use(Radio)
   expect(app.component(Radio.name)).toBeTruthy()
 })
 
-test('test radio check value', async () => {
+test('radio check value', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
@@ -39,7 +39,7 @@ test('test radio check value', async () => {
   wrapper.unmount()
 })
 
-test('test radio check value with custom value', async () => {
+test('radio check value with custom value', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
@@ -58,7 +58,7 @@ test('test radio check value with custom value', async () => {
   wrapper.unmount()
 })
 
-test('test radio onClick & onChange', async () => {
+test('radio onClick & onChange', async () => {
   const onClick = vi.fn()
   const onChange = vi.fn()
 
@@ -77,7 +77,7 @@ test('test radio onClick & onChange', async () => {
   wrapper.unmount()
 })
 
-test('test radio toggle method', async () => {
+test('radio toggle method', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
@@ -96,7 +96,7 @@ test('test radio toggle method', async () => {
   wrapper.unmount()
 })
 
-test('test radio disabled', async () => {
+test('radio disabled', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onClick = vi.fn()
   const onChange = vi.fn()
@@ -121,7 +121,7 @@ test('test radio disabled', async () => {
   wrapper.unmount()
 })
 
-test('test radio readonly', async () => {
+test('radio readonly', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onClick = vi.fn()
   const onChange = vi.fn()
@@ -146,7 +146,7 @@ test('test radio readonly', async () => {
   wrapper.unmount()
 })
 
-test('test radio with radio group', async () => {
+test('radio with radio group', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -172,7 +172,7 @@ test('test radio with radio group', async () => {
   wrapper.unmount()
 })
 
-test('test radio validation', async () => {
+test('radio validation', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
@@ -202,7 +202,7 @@ test('test radio validation', async () => {
   wrapper.unmount()
 })
 
-test('test radio default slot', () => {
+test('radio default slot', () => {
   const wrapper = mount(VarRadio, {
     slots: {
       default: ({ checked }) => h('span', { class: 'test-default-slot' }, checked),
@@ -214,7 +214,7 @@ test('test radio default slot', () => {
   wrapper.unmount()
 })
 
-test('test radio group validation', async () => {
+test('radio group validation', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -251,7 +251,7 @@ test('test radio group validation', async () => {
   wrapper.unmount()
 })
 
-test('test radio group layout direction', () => {
+test('radio group layout direction', () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -272,7 +272,7 @@ test('test radio group layout direction', () => {
   wrapper.unmount()
 })
 
-test('test radio group options', async () => {
+test('radio group options', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -310,7 +310,7 @@ test('test radio group options', async () => {
   wrapper.unmount()
 })
 
-test('test radio group label-key', async () => {
+test('radio group label-key', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -349,7 +349,7 @@ test('test radio group label-key', async () => {
   wrapper.unmount()
 })
 
-test('test radio group value-key', async () => {
+test('radio group value-key', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -388,7 +388,7 @@ test('test radio group value-key', async () => {
   wrapper.unmount()
 })
 
-test('test radio group label is VNode', async () => {
+test('radio group label is VNode', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -428,7 +428,7 @@ test('test radio group label is VNode', async () => {
   wrapper.unmount()
 })
 
-test('test radio group label is function', async () => {
+test('radio group label is function', async () => {
   const formatLabel = (option, checked) => `${option.id}-${checked}`
   const wrapper = mount({
     components: {
@@ -471,7 +471,7 @@ test('test radio group label is function', async () => {
   wrapper.unmount()
 })
 
-test('test radio keyboard Enter', async () => {
+test('radio keyboard Enter', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
@@ -500,7 +500,7 @@ test('test radio keyboard Enter', async () => {
   wrapper.unmount()
 })
 
-test('test radio group keyboard Arrow', async () => {
+test('radio group keyboard Arrow', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,

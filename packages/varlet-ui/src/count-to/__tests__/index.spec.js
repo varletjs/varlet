@@ -4,14 +4,14 @@ import { expect, test, vi } from 'vitest'
 import CountTo from '..'
 import { delay } from '../../utils/test'
 
-test('test count-to plugin', () => {
+test('count-to plugin', () => {
   const app = createApp({}).use(CountTo)
   expect(app.component(CountTo.name)).toBeTruthy()
 })
 
 const DURATION = 100
 
-test('test count-to basic animation', async () => {
+test('count-to basic animation', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -26,7 +26,7 @@ test('test count-to basic animation', async () => {
   wrapper.unmount()
 })
 
-test('test count-to props change', async () => {
+test('count-to props change', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -45,7 +45,7 @@ test('test count-to props change', async () => {
   wrapper.unmount()
 })
 
-test('test count-to slot', async () => {
+test('count-to slot', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -63,7 +63,7 @@ test('test count-to slot', async () => {
   wrapper.unmount()
 })
 
-test('test count-to manual control', async () => {
+test('count-to manual control', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -91,7 +91,7 @@ test('test count-to manual control', async () => {
   wrapper.unmount()
 })
 
-test('test count-to precision', async () => {
+test('count-to precision', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -107,7 +107,7 @@ test('test count-to precision', async () => {
   wrapper.unmount()
 })
 
-test('test count-to timing function', async () => {
+test('count-to timing function', async () => {
   const wrapper = mount(CountTo, {
     props: {
       from: 0,
@@ -122,7 +122,7 @@ test('test count-to timing function', async () => {
   wrapper.unmount()
 })
 
-test('test count-to end event', async () => {
+test('count-to end event', async () => {
   const onEnd = vi.fn()
 
   const wrapper = mount(CountTo, {

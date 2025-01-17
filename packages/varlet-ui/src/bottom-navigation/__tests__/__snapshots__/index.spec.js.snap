@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test bottom-navigation component props > test variant mode 1`] = `
+exports[`test bottom-navigation component props > variant mode 1`] = `
 "<div class="var-bottom-navigation var--box" style="z-index: 1;"><button class="var-bottom-navigation-item var--box">
     <div class="var-bottom-navigation-item__icon-container">
       <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>
@@ -19,7 +19,7 @@ exports[`test bottom-navigation component props > test variant mode 1`] = `
 <!--v-if-->"
 `;
 
-exports[`test bottom-navigation component props > test variant mode 2`] = `
+exports[`test bottom-navigation component props > variant mode 2`] = `
 "<div class="var-bottom-navigation var--box var-bottom-navigation--variant" style="z-index: 1;"><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
     <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container">
       <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>

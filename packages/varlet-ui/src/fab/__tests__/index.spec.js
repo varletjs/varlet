@@ -6,12 +6,12 @@ import { delay, mockStubs, trigger, triggerDrag } from '../../utils/test'
 
 mockStubs()
 
-test('test fab plugin', () => {
+test('fab plugin', () => {
   const app = createApp({}).use(Fab)
   expect(app.component(Fab.name)).toBeTruthy()
 })
 
-test('test fab drag', async () => {
+test('fab drag', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -29,7 +29,7 @@ test('test fab drag', async () => {
   wrapper.unmount()
 })
 
-test('test fab type', () => {
+test('fab type', () => {
   ;['default', 'primary', 'warning', 'info', 'danger', 'success'].forEach((type) => {
     const container = document.createElement('div')
     const wrapper = mount(Fab, {
@@ -45,7 +45,7 @@ test('test fab type', () => {
   })
 })
 
-test('test fab position', () => {
+test('fab position', () => {
   ;['left-top', 'right-top', 'left-bottom', 'right-bottom'].forEach((position) => {
     const container = document.createElement('div')
     const wrapper = mount(Fab, {
@@ -61,7 +61,7 @@ test('test fab position', () => {
   })
 })
 
-test('test fab direction', () => {
+test('fab direction', () => {
   ;['top', 'right', 'bottom', 'left'].forEach((direction) => {
     const container = document.createElement('div')
     const wrapper = mount(Fab, {
@@ -77,7 +77,7 @@ test('test fab direction', () => {
   })
 })
 
-test('test fab fixed equals false', () => {
+test('fab fixed equals false', () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -91,7 +91,7 @@ test('test fab fixed equals false', () => {
   wrapper.unmount()
 })
 
-test('test fab zIndex and inset', () => {
+test('fab zIndex and inset', () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -109,7 +109,7 @@ test('test fab zIndex and inset', () => {
   wrapper.unmount()
 })
 
-test('test fab color', () => {
+test('fab color', () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -123,7 +123,7 @@ test('test fab color', () => {
   wrapper.unmount()
 })
 
-test('test fab trigger equals click', async () => {
+test('fab trigger equals click', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -155,7 +155,7 @@ test('test fab trigger equals click', async () => {
   wrapper.unmount()
 })
 
-test('test fab trigger equals hover', async () => {
+test('fab trigger equals hover', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -186,7 +186,7 @@ test('test fab trigger equals hover', async () => {
   wrapper.unmount()
 })
 
-test('test fab custom icon', async () => {
+test('fab custom icon', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -213,7 +213,7 @@ test('test fab custom icon', async () => {
   wrapper.unmount()
 })
 
-test('test fab disabled with trigger equals click', async () => {
+test('fab disabled with trigger equals click', async () => {
   const onOpen = vi.fn()
   const container = document.createElement('div')
 
@@ -239,7 +239,7 @@ test('test fab disabled with trigger equals click', async () => {
   wrapper.unmount()
 })
 
-test('test fab disabled with trigger equals hover', async () => {
+test('fab disabled with trigger equals hover', async () => {
   const onOpen = vi.fn()
   const container = document.createElement('div')
 
@@ -267,7 +267,7 @@ test('test fab disabled with trigger equals hover', async () => {
   wrapper.unmount()
 })
 
-test('test fab events and fragment default slots and click outside close', async () => {
+test('fab events and fragment default slots and click outside close', async () => {
   const onOpen = vi.fn()
   const onOpened = vi.fn()
   const onClose = vi.fn()
@@ -307,7 +307,7 @@ test('test fab events and fragment default slots and click outside close', async
   wrapper.unmount()
 })
 
-test('test fab trigger and disabled change', async () => {
+test('fab trigger and disabled change', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -335,7 +335,7 @@ test('test fab trigger and disabled change', async () => {
   wrapper.unmount()
 })
 
-test('test fab trigger slot', () => {
+test('fab trigger slot', () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
@@ -351,7 +351,7 @@ test('test fab trigger slot', () => {
   wrapper.unmount()
 })
 
-test('test fab teleport', () => {
+test('fab teleport', () => {
   const wrapper = mount(Fab, {
     props: {
       teleport: 'body',
@@ -365,7 +365,7 @@ test('test fab teleport', () => {
   wrapper.unmount()
 })
 
-test('test fab safeArea', () => {
+test('fab safeArea', () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {

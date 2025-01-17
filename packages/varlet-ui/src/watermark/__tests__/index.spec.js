@@ -10,12 +10,12 @@ global.URL.revokeObjectURL = vi.fn()
 
 mockCanvas()
 
-test('test watermark plugin', () => {
+test('watermark plugin', () => {
   const app = createApp({}).use(Watermark)
   expect(app.component(Watermark.name)).toBeTruthy()
 })
 
-test('test watermark content', async () => {
+test('watermark content', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       content: 'Varlet',
@@ -28,7 +28,7 @@ test('test watermark content', async () => {
   wrapper.unmount()
 })
 
-test('test watermark font', async () => {
+test('watermark font', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       content: 'Varlet',
@@ -45,7 +45,7 @@ test('test watermark font', async () => {
   wrapper.unmount()
 })
 
-test('test watermark z-index', async () => {
+test('watermark z-index', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       zIndex: 100,
@@ -58,7 +58,7 @@ test('test watermark z-index', async () => {
   wrapper.unmount()
 })
 
-test('test watermark fullscreen', async () => {
+test('watermark fullscreen', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       fullscreen: true,
@@ -70,7 +70,7 @@ test('test watermark fullscreen', async () => {
   wrapper.unmount()
 })
 
-test('test watermark opacity', async () => {
+test('watermark opacity', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       opacity: 1,
@@ -83,7 +83,7 @@ test('test watermark opacity', async () => {
   wrapper.unmount()
 })
 
-test('test watermark image', async () => {
+test('watermark image', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       image: 'https://varletjs.org/varlet/varlet_icon.png',
@@ -96,7 +96,7 @@ test('test watermark image', async () => {
   wrapper.unmount()
 })
 
-test('test watermark content rotate', async () => {
+test('watermark content rotate', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       rotate: 20,
@@ -115,7 +115,7 @@ test('test watermark content rotate', async () => {
   wrapper.unmount()
 })
 
-test('test watermark image rotate', async () => {
+test('watermark image rotate', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       rotate: 20,
@@ -135,7 +135,7 @@ test('test watermark image rotate', async () => {
   wrapper.unmount()
 })
 
-test('test watermark width', async () => {
+test('watermark width', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       width: 150,
@@ -155,7 +155,7 @@ test('test watermark width', async () => {
   wrapper.unmount()
 })
 
-test('test watermark height', async () => {
+test('watermark height', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       height: 150,
@@ -174,7 +174,7 @@ test('test watermark height', async () => {
   wrapper.unmount()
 })
 
-test('test watermark gapX', async () => {
+test('watermark gapX', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       gapX: 20,
@@ -193,7 +193,7 @@ test('test watermark gapX', async () => {
   wrapper.unmount()
 })
 
-test('test watermark gapY', async () => {
+test('watermark gapY', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       gapY: 20,
@@ -212,7 +212,7 @@ test('test watermark gapY', async () => {
   wrapper.unmount()
 })
 
-test('test watermark content offsetX', async () => {
+test('watermark content offsetX', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetX: 20,
@@ -232,7 +232,7 @@ test('test watermark content offsetX', async () => {
   wrapper.unmount()
 })
 
-test('test watermark content offsetY', async () => {
+test('watermark content offsetY', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetY: 20,
@@ -252,7 +252,7 @@ test('test watermark content offsetY', async () => {
   wrapper.unmount()
 })
 
-test('test watermark image offsetX', async () => {
+test('watermark image offsetX', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetX: 20,
@@ -272,7 +272,7 @@ test('test watermark image offsetX', async () => {
   wrapper.unmount()
 })
 
-test('test watermark image offsetY', async () => {
+test('watermark image offsetY', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetY: 20,
@@ -292,7 +292,7 @@ test('test watermark image offsetY', async () => {
   wrapper.unmount()
 })
 
-test('test watermark content slot', async () => {
+test('watermark content slot', async () => {
   const wrapper = mount(VarWatermark, {
     slots: {
       content: () => 'Varlet UI',
@@ -305,7 +305,7 @@ test('test watermark content slot', async () => {
   wrapper.unmount()
 })
 
-test('test watermark priority between image and content', async () => {
+test('watermark priority between image and content', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       image: 'https://varletjs.org/varlet/varlet_icon.png',
@@ -320,7 +320,7 @@ test('test watermark priority between image and content', async () => {
   wrapper.unmount()
 })
 
-test('test watermark priority between image and content slot', async () => {
+test('watermark priority between image and content slot', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       image: 'https://varletjs.org/varlet/varlet_icon.png',

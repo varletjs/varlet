@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import { withPropsDefaultsSetter } from '../components'
 
-test('test withPropsDefaultsSetter', () => {
+test('withPropsDefaultsSetter', () => {
   const mock = {}
   const props = {
     name: String,

@@ -5,7 +5,7 @@ import Pagination from '..'
 import { delay } from '../../utils/test'
 import VarPagination from '../Pagination'
 
-test('test pagination plugin', () => {
+test('pagination plugin', () => {
   const app = createApp({}).use(Pagination)
   expect(app.component(Pagination.name)).toBeTruthy()
 })

@@ -4,12 +4,12 @@ import { delay, trigger, triggerDrag } from '../../utils/test'
 import VarImagePreview from '../ImagePreview.vue'
 import ImagePreview from '../index'
 
-test('test image preview plugin', () => {
+test('image preview plugin', () => {
   const app = createApp({}).use(ImagePreview)
   expect(app.component(VarImagePreview.name)).toBeTruthy()
 })
 
-test('test image preview functional show & close', async () => {
+test('image preview functional show & close', async () => {
   const onOpen = vi.fn()
   const onOpened = vi.fn()
   const onClose = vi.fn()
@@ -37,7 +37,7 @@ test('test image preview functional show & close', async () => {
   expect(document.querySelector('.var-popup')).toBeFalsy()
 })
 
-test('test image preview onChange callback', async () => {
+test('image preview onChange callback', async () => {
   const onChange = vi.fn()
 
   ImagePreview({
@@ -57,7 +57,7 @@ test('test image preview onChange callback', async () => {
   await delay(16)
 })
 
-test('test image preview closeable', async () => {
+test('image preview closeable', async () => {
   ImagePreview({
     closeable: true,
   })
@@ -67,7 +67,7 @@ test('test image preview closeable', async () => {
   expect(document.querySelector('.var-popup')).toBeFalsy()
 })
 
-test('test image preview setDefaultOptions and resetDefaultOptions', async () => {
+test('image preview setDefaultOptions and resetDefaultOptions', async () => {
   ImagePreview.setDefaultOptions({ closeable: true })
   await delay(16)
   ImagePreview()
@@ -84,7 +84,7 @@ test('test image preview setDefaultOptions and resetDefaultOptions', async () =>
   ImagePreview.close()
 })
 
-test('test image preview imagePreventDefault', async () => {
+test('image preview imagePreventDefault', async () => {
   ImagePreview({
     images: ['https://varletjs.org/varlet/cat.jpg'],
     imagePreventDefault: true,
@@ -96,7 +96,7 @@ test('test image preview imagePreventDefault', async () => {
   ImagePreview.close()
 })
 
-test('test image preview onLongPress callback', async () => {
+test('image preview onLongPress callback', async () => {
   const onLongPress = vi.fn()
 
   ImagePreview({
@@ -114,7 +114,7 @@ test('test image preview onLongPress callback', async () => {
   ImagePreview.close()
 })
 
-test('test image preview initialIndex', async () => {
+test('image preview initialIndex', async () => {
   ImagePreview({
     images: ['https://varletjs.org/varlet/cat.jpg', 'https://varletjs.org/varlet/cat2.jpg'],
     initialIndex: 1,

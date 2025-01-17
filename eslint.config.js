@@ -29,4 +29,7 @@ export default defineConfig({
     'packages/varlet-import-resolver/lib/**',
     'packages/varlet-touch-emulator/iife.js',
   ],
+  rules: {
+    'vitest/expect-expect': 'warn',
+  },
 })

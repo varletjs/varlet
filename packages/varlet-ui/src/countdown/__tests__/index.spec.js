@@ -5,13 +5,13 @@ import Countdown from '..'
 import { delay } from '../../utils/test'
 import VarCountdown from '../Countdown'
 
-test('test countdown plugin', () => {
+test('countdown plugin', () => {
   const app = createApp({}).use(Countdown)
   expect(app.component(Countdown.name)).toBeTruthy()
 })
 
 describe('test countdown props', () => {
-  test('test format prop', async () => {
+  test('format prop', async () => {
     const wrapper = mount(VarCountdown, {
       props: {
         time: 108000000,
@@ -27,7 +27,7 @@ describe('test countdown props', () => {
     wrapper.unmount()
   })
 
-  test('test autostart prop', async () => {
+  test('autostart prop', async () => {
     const wrapper = mount(VarCountdown, {
       props: {
         time: 10800,
@@ -49,7 +49,7 @@ describe('test countdown events', () => {
   const onEnd = vi.fn()
   const onChange = vi.fn()
 
-  test('test onChange event', async () => {
+  test('onChange event', async () => {
     const wrapper = mount(VarCountdown, {
       props: {
         time: 1,
@@ -70,7 +70,7 @@ describe('test countdown events', () => {
     wrapper.unmount()
   })
 
-  test('test onEnd event', async () => {
+  test('onEnd event', async () => {
     const wrapper = mount(VarCountdown, {
       props: {
         time: 1,
@@ -99,7 +99,7 @@ describe('test countdown methods', () => {
       <var-countdown :time="time" ref="countdown" :auto-start="false"/>`,
   }
 
-  test('test countdown start method', async () => {
+  test('countdown start method', async () => {
     let callCount = 0
     vi.spyOn(performance, 'now').mockImplementation(() => {
       callCount += 1
@@ -121,7 +121,7 @@ describe('test countdown methods', () => {
     wrapper.unmount()
   })
 
-  test('test countdown pause method', async () => {
+  test('countdown pause method', async () => {
     const wrapper = mount(Wrapper)
     wrapper.vm.$refs.countdown.start()
 
@@ -136,7 +136,7 @@ describe('test countdown methods', () => {
     wrapper.unmount()
   })
 
-  test('test countdown reset method', async () => {
+  test('countdown reset method', async () => {
     vi.spyOn(performance, 'now').mockReturnValue(1000)
 
     const wrapper = mount(Wrapper)

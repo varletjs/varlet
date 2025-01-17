@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test swipe component props > test swipe navigation 1`] = `
+exports[`test swipe component props > swipe navigation 1`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
   <div class="var-swipe__track var-swipe--vertical" style="height: 300px; transform: translateY(0px); transition-duration: 300ms;">
     <div class="var-swipe-item" style="height: 100px; transform: translateY(0px);" tabindex="-1" aria-hidden="false">1</div>
@@ -29,7 +29,7 @@ exports[`test swipe component props > test swipe navigation 1`] = `
 </div>"
 `;
 
-exports[`test swipe component props > test swipe navigation 2`] = `
+exports[`test swipe component props > swipe navigation 2`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
   <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
     <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
@@ -58,7 +58,7 @@ exports[`test swipe component props > test swipe navigation 2`] = `
 </div>"
 `;
 
-exports[`test swipe component props > test swipe navigation 3`] = `
+exports[`test swipe component props > swipe navigation 3`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
   <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
     <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
@@ -75,7 +75,7 @@ exports[`test swipe component props > test swipe navigation 3`] = `
 </div>"
 `;
 
-exports[`test swipe component props > test swipe navigation 4`] = `
+exports[`test swipe component props > swipe navigation 4`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
   <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
     <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
@@ -104,7 +104,7 @@ exports[`test swipe component props > test swipe navigation 4`] = `
 </div>"
 `;
 
-exports[`test swipe component props > test swipe navigation 5`] = `
+exports[`test swipe component props > swipe navigation 5`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
   <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
     <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>

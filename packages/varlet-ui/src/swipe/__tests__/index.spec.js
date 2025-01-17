@@ -24,13 +24,13 @@ const Wrapper = {
   `,
 }
 
-test('test swipe & swipe-item use', () => {
+test('swipe & swipe-item use', () => {
   const app = createApp({}).use(Swipe).use(SwipeItem)
   expect(app.component(Swipe.name)).toBeTruthy()
   expect(app.component(SwipeItem.name)).toBeTruthy()
 })
 
-test('test swipe next & prev & to method', async () => {
+test('swipe next & prev & to method', async () => {
   const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
@@ -76,7 +76,7 @@ test('test swipe next & prev & to method', async () => {
   wrapper.unmount()
 })
 
-test('test swipe keyboard Arrow', async () => {
+test('swipe keyboard Arrow', async () => {
   const wrapper = mount({
     components: {
       [VarSwipe.name]: VarSwipe,
@@ -115,7 +115,7 @@ test('test swipe keyboard Arrow', async () => {
 })
 
 describe('test swipe component props', () => {
-  test('test swipe loop', async () => {
+  test('swipe loop', async () => {
     const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
@@ -137,7 +137,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe autoplay', async () => {
+  test('swipe autoplay', async () => {
     const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
@@ -154,7 +154,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe duration', () => {
+  test('swipe duration', () => {
     const wrapper = mount(Wrapper, {
       props: {
         duration: 500,
@@ -165,18 +165,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe duration', () => {
-    const wrapper = mount(Wrapper, {
-      props: {
-        duration: 500,
-      },
-    })
-
-    expect(wrapper.find('.var-swipe__track').attributes('style')).toContain('transition-duration: 500ms;')
-    wrapper.unmount()
-  })
-
-  test('test swipe initial-index', async () => {
+  test('swipe initial-index', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         initialIndex: 2,
@@ -188,7 +177,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe indicator and indicator-color', async () => {
+  test('swipe indicator and indicator-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         indicator: true,
@@ -206,7 +195,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe vertical', async () => {
+  test('swipe vertical', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         vertical: true,
@@ -219,7 +208,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test touch touchable', async () => {
+  test('touch touchable', async () => {
     const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
@@ -235,7 +224,7 @@ describe('test swipe component props', () => {
     wrapper.unmount()
   })
 
-  test('test swipe navigation', async () => {
+  test('swipe navigation', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         vertical: true,

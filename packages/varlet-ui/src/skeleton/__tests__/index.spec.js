@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import Skeleton from '..'
 import VarSkeleton from '../Skeleton'
 
-test('test skeleton use', () => {
+test('skeleton use', () => {
   const app = createApp({}).use(Skeleton)
   expect(app.component(Skeleton.name)).toBeTruthy()
 })
 
 describe('test skeleton component props', () => {
-  test('test skeleton loading', async () => {
+  test('skeleton loading', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         loading: true,
@@ -23,7 +23,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton title', async () => {
+  test('skeleton title', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         title: true,
@@ -36,7 +36,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton card', async () => {
+  test('skeleton card', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         card: true,
@@ -49,7 +49,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton avatar', async () => {
+  test('skeleton avatar', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         avatar: true,
@@ -62,7 +62,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton fullscreen', async () => {
+  test('skeleton fullscreen', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         fullscreen: true,
@@ -75,7 +75,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton fullscreen-z-index', async () => {
+  test('skeleton fullscreen-z-index', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         fullscreen: true,
@@ -89,7 +89,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton title-width', async () => {
+  test('skeleton title-width', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         title: true,
@@ -103,7 +103,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton card-height', async () => {
+  test('skeleton card-height', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         card: true,
@@ -117,7 +117,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton avatar-size', async () => {
+  test('skeleton avatar-size', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         avatar: true,
@@ -131,7 +131,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton rows', async () => {
+  test('skeleton rows', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         rows: 1,
@@ -144,7 +144,7 @@ describe('test skeleton component props', () => {
     wrapper.unmount()
   })
 
-  test('test skeleton rows-width', async () => {
+  test('skeleton rows-width', async () => {
     const wrapper = mount(VarSkeleton, {
       props: {
         rowsWidth: [10, 10, 10],
@@ -162,7 +162,7 @@ describe('test skeleton component props', () => {
   })
 })
 
-test('test skeleton default slots', () => {
+test('skeleton default slots', () => {
   const wrapper = mount(VarSkeleton, {
     props: {
       loading: false,
