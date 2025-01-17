@@ -22,6 +22,7 @@ export interface InputProps extends BasicAttributes {
   size?: InputSize
   variant?: InputVariant
   textarea?: boolean
+  ariaLabel?: string
   rows?: string | number
   placeholder?: string
   hint?: boolean

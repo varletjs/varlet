@@ -52,7 +52,6 @@ export const props = {
     'onClick',
   ]),
   // internal start
-
   autocomplete: String,
   isForceFocusingEffect: {
     type: Boolean,
