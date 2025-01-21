@@ -4,12 +4,12 @@ import { expect, test, vi } from 'vitest'
 import Ellipsis from '..'
 import VarEllipsis from '../Ellipsis.vue'
 
-test('test ellipsis plugin', () => {
+test('ellipsis plugin', () => {
   const app = createApp({}).use(Ellipsis)
   expect(app.component(Ellipsis.name)).toBeTruthy()
 })
 
-test('test ellipsis single line', () => {
+test('ellipsis single line', () => {
   const wrapper = mount(VarEllipsis, {
     slots: {
       default: () => 'hello',
@@ -21,7 +21,7 @@ test('test ellipsis single line', () => {
   wrapper.unmount()
 })
 
-test('test ellipsis lineClamp', async () => {
+test('ellipsis lineClamp', async () => {
   const wrapper = mount(VarEllipsis, {
     props: {
       lineClamp: 3,
@@ -45,7 +45,7 @@ test('test ellipsis lineClamp', async () => {
   wrapper.unmount()
 })
 
-test('test ellipsis expandTrigger', async () => {
+test('ellipsis expandTrigger', async () => {
   const wrapper = mount(VarEllipsis, {
     props: {
       expandTrigger: 'click',
@@ -69,7 +69,7 @@ test('test ellipsis expandTrigger', async () => {
   wrapper.unmount()
 })
 
-test('test ellipsis tooltip equals false', () => {
+test('ellipsis tooltip equals false', () => {
   const wrapper = mount(VarEllipsis, {
     props: {
       tooltip: false,
@@ -80,7 +80,7 @@ test('test ellipsis tooltip equals false', () => {
   wrapper.unmount()
 })
 
-test('test ellipsis tooltip equals true', () => {
+test('ellipsis tooltip equals true', () => {
   const wrapper = mount(VarEllipsis, {
     props: {
       tooltip: true,
@@ -91,7 +91,7 @@ test('test ellipsis tooltip equals true', () => {
   wrapper.unmount()
 })
 
-test('test ellipsis tooltip equals object', async () => {
+test('ellipsis tooltip equals object', async () => {
   const container = document.createElement('div')
   const wrapper = mount(VarEllipsis, {
     props: {
@@ -120,7 +120,7 @@ test('test ellipsis tooltip equals object', async () => {
   wrapper.unmount()
 })
 
-test('test ellipsis expand', async () => {
+test('ellipsis expand', async () => {
   const onUpdateExpand = vi.fn()
 
   const wrapper = mount(VarEllipsis, {

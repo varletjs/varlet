@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test localeProvider locale 1`] = `"<transition-stub name="var-fade" appear="false" persisted="false" css="true"><div class="var--box var-popup" style="z-index: 1998;"><div class="var-popup__overlay" style="z-index: 1999;"></div><transition-stub name="var-pop-center" appear="false" persisted="false" css="true"><div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-dialog__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-dialog-cover=""><div class="var--box var-dialog"><div class="var-dialog__title">提示</div><div class="var-dialog__message" style="text-align: left;"></div><div class="var-dialog__actions"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__cancel-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">取消</div><div class="var-hover-overlay"></div></button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__confirm-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">确认</div><div class="var-hover-overlay"></div></button></div></div></div></transition-stub></div></transition-stub>"`;
+exports[`localeProvider locale 1`] = `"<transition-stub name="var-fade" appear="false" persisted="false" css="true"><div class="var--box var-popup" style="z-index: 1998;"><div class="var-popup__overlay" style="z-index: 1999;"></div><transition-stub name="var-pop-center" appear="false" persisted="false" css="true"><div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-dialog__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-dialog-cover=""><div class="var--box var-dialog"><div class="var-dialog__title">提示</div><div class="var-dialog__message" style="text-align: left;"></div><div class="var-dialog__actions"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__cancel-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">取消</div><div class="var-hover-overlay"></div></button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__confirm-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">确认</div><div class="var-hover-overlay"></div></button></div></div></div></transition-stub></div></transition-stub>"`;
 
-exports[`test localeProvider locale 2`] = `
+exports[`localeProvider locale 2`] = `
 "<div class="var-locale-provider">
   <div>
     <!--teleport start-->
@@ -62,9 +62,9 @@ exports[`test localeProvider locale 2`] = `
 </div>"
 `;
 
-exports[`test localeProvider locale 3`] = `"<transition-stub name="var-fade" appear="false" persisted="false" css="true"><div class="var--box var-popup" style="z-index: 1998;"><div class="var-popup__overlay" style="z-index: 1999;"></div><transition-stub name="var-pop-center" appear="false" persisted="false" css="true"><div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-dialog__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-dialog-cover=""><div class="var--box var-dialog"><div class="var-dialog__title">Hint</div><div class="var-dialog__message" style="text-align: left;"></div><div class="var-dialog__actions"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__cancel-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">Cancel</div><div class="var-hover-overlay"></div></button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__confirm-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">Confirm</div><div class="var-hover-overlay"></div></button></div></div></div></transition-stub></div></transition-stub>"`;
+exports[`localeProvider locale 3`] = `"<transition-stub name="var-fade" appear="false" persisted="false" css="true"><div class="var--box var-popup" style="z-index: 1998;"><div class="var-popup__overlay" style="z-index: 1999;"></div><transition-stub name="var-pop-center" appear="false" persisted="false" css="true"><div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-dialog__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-dialog-cover=""><div class="var--box var-dialog"><div class="var-dialog__title">Hint</div><div class="var-dialog__message" style="text-align: left;"></div><div class="var-dialog__actions"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__cancel-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">Cancel</div><div class="var-hover-overlay"></div></button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-dialog__button var-dialog__confirm-button" type="button" var-dialog-cover=""><!--v-if--><div class="var-button__content">Confirm</div><div class="var-hover-overlay"></div></button></div></div></div></transition-stub></div></transition-stub>"`;
 
-exports[`test localeProvider locale 4`] = `
+exports[`localeProvider locale 4`] = `
 "<div class="var-locale-provider">
   <div>
     <!--teleport start-->
@@ -295,6 +295,6 @@ exports[`test localeProvider locale 4`] = `
 </div>"
 `;
 
-exports[`test localeProvider tag 1`] = `"<div class="var-locale-provider"></div>"`;
+exports[`localeProvider tag 1`] = `"<div class="var-locale-provider"></div>"`;
 
-exports[`test localeProvider tag 2`] = `"<span class="var-locale-provider"></span>"`;
+exports[`localeProvider tag 2`] = `"<span class="var-locale-provider"></span>"`;

@@ -4,19 +4,19 @@ import { describe, expect, test } from 'vitest'
 import Result from '..'
 import VarResult from '../Result'
 
-test('test result plugin', () => {
+test('result plugin', () => {
   const app = createApp({}).use(Result)
   expect(app.component(Result.name)).toBeTruthy()
 })
 
-test('test result snapshot', () => {
+test('result snapshot', () => {
   const wrapper = mount(Result)
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
 
 describe('test result component props', () => {
-  test('test result type', () => {
+  test('result type', () => {
     ;['info', 'success', 'warning', 'error', 'question', 'empty'].forEach((type) => {
       const wrapper = mount(VarResult, {
         props: { type },
@@ -27,7 +27,7 @@ describe('test result component props', () => {
     })
   })
 
-  test('test result imageSize', () => {
+  test('result imageSize', () => {
     const wrapper = mount(VarResult, {
       props: {
         type: 'empty',
@@ -41,7 +41,7 @@ describe('test result component props', () => {
     wrapper.unmount()
   })
 
-  test('test result title', () => {
+  test('result title', () => {
     const wrapper = mount(VarResult, {
       props: { title: 'This is title' },
     })
@@ -50,7 +50,7 @@ describe('test result component props', () => {
     wrapper.unmount()
   })
 
-  test('test result description', () => {
+  test('result description', () => {
     const wrapper = mount(VarResult, {
       props: { description: 'This is description' },
     })

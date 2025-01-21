@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import Loading from '..'
 import VarLoading from '../Loading'
 
-test('test loading use', () => {
+test('loading use', () => {
   const app = createApp({}).use(Loading)
   expect(app.component(Loading.name)).toBeTruthy()
 })
 
 describe('test loading component props', () => {
-  test('test loading color', () => {
+  test('loading color', () => {
     const wrapper = mount(VarLoading, {
       props: { color: 'red' },
     })
@@ -19,7 +19,7 @@ describe('test loading component props', () => {
     wrapper.unmount()
   })
 
-  test('test loading type', () => {
+  test('loading type', () => {
     ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach((type) => {
       const wrapper = mount(VarLoading, {
         props: { type },
@@ -30,7 +30,7 @@ describe('test loading component props', () => {
     })
   })
 
-  test('test loading size', () => {
+  test('loading size', () => {
     ;['large', 'normal', 'small', 'mini'].forEach((size) => {
       const wrapper = mount(VarLoading, {
         props: { size },
@@ -41,7 +41,7 @@ describe('test loading component props', () => {
     })
   })
 
-  test('test loading description', () => {
+  test('loading description', () => {
     const wrapper = mount(VarLoading, {
       props: {
         description: 'This is description',
@@ -52,7 +52,7 @@ describe('test loading component props', () => {
     wrapper.unmount()
   })
 
-  test('test loading loading', async () => {
+  test('loading loading', async () => {
     const wrapper = mount(VarLoading, {
       props: { loading: true },
       slots: {
@@ -66,7 +66,7 @@ describe('test loading component props', () => {
     wrapper.unmount()
   })
 
-  test('test loading radius', () => {
+  test('loading radius', () => {
     ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach(async (type) => {
       const wrapper = mount(VarLoading, {
         props: {
@@ -88,7 +88,7 @@ describe('test loading component props', () => {
 })
 
 describe('test loading component slots', () => {
-  test('test loading default slots', () => {
+  test('loading default slots', () => {
     const wrapper = mount(VarLoading, {
       slots: {
         default: () => 'This is default slots',
@@ -99,7 +99,7 @@ describe('test loading component slots', () => {
     wrapper.unmount()
   })
 
-  test('test loading description slots', () => {
+  test('loading description slots', () => {
     const wrapper = mount(VarLoading, {
       slots: {
         description: () => 'This is description slots',

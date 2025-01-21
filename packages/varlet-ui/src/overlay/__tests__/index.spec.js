@@ -5,7 +5,7 @@ import Overlay from '..'
 import { triggerKeyboard } from '../../utils/test'
 import VarOverlay from '../Overlay'
 
-test('test overlay plugin', () => {
+test('overlay plugin', () => {
   const app = createApp({}).use(Overlay)
   expect(app.component(Overlay.name)).toBeTruthy()
 })
@@ -25,7 +25,7 @@ const Wrapper = {
   `,
 }
 
-test('test overlay show', async () => {
+test('overlay show', async () => {
   const wrapper = mount(Wrapper)
   expect(document.body.querySelector('.var-overlay')).toBeFalsy()
 
@@ -39,7 +39,7 @@ test('test overlay show', async () => {
   wrapper.unmount()
 })
 
-test('test overlay click on clickOverlay', async () => {
+test('overlay click on clickOverlay', async () => {
   const onClick = vi.fn()
 
   const wrapper = mount(Wrapper, {
@@ -61,7 +61,7 @@ test('test overlay click on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test overlay keyboard escape', async () => {
+test('overlay keyboard escape', async () => {
   const onKeyEscape = vi.fn()
   const onUpdateShow = vi.fn()
 
@@ -80,7 +80,7 @@ test('test overlay keyboard escape', async () => {
   wrapper.unmount()
 })
 
-test('test overlay keyboard escape and closeOnKeyEscape', async () => {
+test('overlay keyboard escape and closeOnKeyEscape', async () => {
   const onKeyEscape = vi.fn()
   const onUpdateShow = vi.fn()
 

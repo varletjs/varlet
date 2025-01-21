@@ -4,12 +4,12 @@ import { delay, trigger } from '../../utils/test'
 import VarDialog from '../Dialog'
 import Dialog from '../index'
 
-test('test dialog plugin', () => {
+test('dialog plugin', () => {
   const app = createApp({}).use(Dialog)
   expect(app.component(VarDialog.name)).toBeTruthy()
 })
 
-test('test dialog functional show & close', async () => {
+test('dialog functional show & close', async () => {
   const onOpen = vi.fn()
   const onOpened = vi.fn()
   const onClose = vi.fn()
@@ -38,7 +38,7 @@ test('test dialog functional show & close', async () => {
   expect(document.querySelector('.var-popup')).toBeFalsy()
 })
 
-test('test dialog functional confirm & cancel', async () => {
+test('dialog functional confirm & cancel', async () => {
   const onConfirm = vi.fn()
   const onCancel = vi.fn()
 
@@ -63,7 +63,7 @@ test('test dialog functional confirm & cancel', async () => {
   await delay(300)
 })
 
-test('test dialog setDefaultOptions and resetDefaultOptions', async () => {
+test('dialog setDefaultOptions and resetDefaultOptions', async () => {
   const onConfirm = vi.fn()
 
   Dialog.setDefaultOptions({ onConfirm })

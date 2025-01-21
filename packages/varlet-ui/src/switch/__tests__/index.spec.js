@@ -6,13 +6,13 @@ import Switch from '..'
 import { delay, triggerKeyboard } from '../../utils/test'
 import VarSwitch from '../Switch'
 
-test('test switch plugin', () => {
+test('switch plugin', () => {
   const app = createApp({}).use(Switch)
   expect(app.component(Switch.name)).toBeTruthy()
 })
 
 describe('test switch component props', () => {
-  test('test switch value', () => {
+  test('switch value', () => {
     const wrapper = mount(VarSwitch, {
       props: {
         modelValue: true,
@@ -24,7 +24,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch activeValue and inactiveValue', async () => {
+  test('switch activeValue and inactiveValue', async () => {
     const wrapper = mount(VarSwitch, {
       props: {
         modelValue: 1,
@@ -43,7 +43,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch disabled', () => {
+  test('switch disabled', () => {
     const wrapper = mount(VarSwitch, {
       props: {
         modelValue: true,
@@ -56,7 +56,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch buttonElevation', async () => {
+  test('switch buttonElevation', async () => {
     const wrapper = mount(VarSwitch)
 
     expect(wrapper.find('.var-elevation--2').exists()).toBeTruthy()
@@ -69,7 +69,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch loading', () => {
+  test('switch loading', () => {
     const wrapper = mount(VarSwitch, {
       props: {
         loading: true,
@@ -80,7 +80,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch color, loadingColor, closeColor', async () => {
+  test('switch color, loadingColor, closeColor', async () => {
     const wrapper = mount(VarSwitch, {
       props: {
         loading: true,
@@ -102,7 +102,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test switch size', () => {
+  test('switch size', () => {
     const wrapper = mount(VarSwitch, {
       props: {
         size: '25px',
@@ -113,7 +113,7 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
-  test('test variant mode', async () => {
+  test('variant mode', async () => {
     const wrapper = mount({
       components: {
         [VarSwitch.name]: VarSwitch,
@@ -135,7 +135,7 @@ describe('test switch component props', () => {
 })
 
 describe('test switch events', () => {
-  test('test switch v-model and events', async () => {
+  test('switch v-model and events', async () => {
     const clickFn = vi.fn()
     const changeFn = vi.fn()
 
@@ -164,7 +164,7 @@ describe('test switch events', () => {
     wrapper.unmount()
   })
 
-  test('test switch event not trigger', async () => {
+  test('switch event not trigger', async () => {
     const clickFn = vi.fn()
     const changeFn = vi.fn()
     const template = `
@@ -210,7 +210,7 @@ describe('test switch events', () => {
     wrapper.unmount()
   })
 
-  test('test counter lazy change', async () => {
+  test('counter lazy change', async () => {
     const wrapper = mount({
       components: {
         [VarSwitch.name]: VarSwitch,
@@ -238,7 +238,7 @@ describe('test switch events', () => {
     wrapper.unmount()
   })
 
-  test('test switch keyboard enter for switch', async () => {
+  test('switch keyboard enter for switch', async () => {
     const click = vi.fn()
     const origin = HTMLElement.prototype.click
     HTMLElement.prototype.click = click
@@ -257,7 +257,7 @@ describe('test switch events', () => {
     wrapper.unmount()
   })
 
-  test('test switch keyboard space for switch', async () => {
+  test('switch keyboard space for switch', async () => {
     const click = vi.fn()
     const origin = HTMLElement.prototype.click
     HTMLElement.prototype.click = click
@@ -278,7 +278,7 @@ describe('test switch events', () => {
   })
 })
 
-test('test switch valiation with zod', async () => {
+test('switch valiation with zod', async () => {
   const wrapper = mount({
     components: {
       [VarSwitch.name]: VarSwitch,

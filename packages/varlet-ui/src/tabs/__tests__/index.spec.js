@@ -51,7 +51,7 @@ const Wrapper = {
   `,
 }
 
-test('test tabs & tab & tabsItems & tabItem plugin', () => {
+test('tabs & tab & tabsItems & tabItem plugin', () => {
   const app = createApp({}).use(Tabs).use(Tab).use(TabsItems).use(TabItem)
   expect(app.component(Tabs.name)).toBeTruthy()
   expect(app.component(Tab.name)).toBeTruthy()
@@ -59,7 +59,7 @@ test('test tabs & tab & tabsItems & tabItem plugin', () => {
   expect(app.component(TabItem.name)).toBeTruthy()
 })
 
-test('test tabs event', async () => {
+test('tabs event', async () => {
   const onClick = vi.fn()
   const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
@@ -77,7 +77,7 @@ test('test tabs event', async () => {
 })
 
 describe('test tabs component props', () => {
-  test('test tabs layout-direction', async () => {
+  test('tabs layout-direction', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         layoutDirection: 'horizontal',
@@ -90,7 +90,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs item-direction', async () => {
+  test('tabs item-direction', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         itemDirection: 'horizontal',
@@ -103,7 +103,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs fixed-bottom', async () => {
+  test('tabs fixed-bottom', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         fixedBottom: true,
@@ -116,7 +116,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs color', () => {
+  test('tabs color', () => {
     const wrapper = mount(Wrapper, {
       props: {
         color: 'red',
@@ -127,7 +127,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs active-color', async () => {
+  test('tabs active-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         activeColor: 'red',
@@ -139,7 +139,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs inactive-color', async () => {
+  test('tabs inactive-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         inactiveColor: 'red',
@@ -151,7 +151,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs disabled-color', () => {
+  test('tabs disabled-color', () => {
     const wrapper = mount(Wrapper, {
       props: {
         disabledColor: 'red',
@@ -162,7 +162,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs indicator-color', async () => {
+  test('tabs indicator-color', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         indicatorColor: 'red',
@@ -176,7 +176,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs indicator-size', async () => {
+  test('tabs indicator-size', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         indicatorSize: '10px',
@@ -189,7 +189,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs elevation', async () => {
+  test('tabs elevation', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         elevation: true,
@@ -202,7 +202,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs safe-area', async () => {
+  test('tabs safe-area', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         safeArea: true,
@@ -215,7 +215,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs scrollable', async () => {
+  test('tabs scrollable', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         scrollable: 'auto',
@@ -229,7 +229,7 @@ describe('test tabs component props', () => {
     wrapper.unmount()
   })
 
-  test('test tabs indicator-position', async () => {
+  test('tabs indicator-position', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         indicatorPosition: 'reverse',
@@ -243,7 +243,7 @@ describe('test tabs component props', () => {
   })
 })
 
-test('test tabs items getSwipe method', async () => {
+test('tabs items getSwipe method', async () => {
   const onUpdateActive = vi.fn((active) => {
     wrapper.setProps({ active })
   })

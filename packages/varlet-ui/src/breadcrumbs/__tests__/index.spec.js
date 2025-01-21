@@ -17,12 +17,12 @@ function renderBasicUsage(props) {
   )
 }
 
-test('test breadcrumbs plugin', () => {
+test('breadcrumbs plugin', () => {
   const app = createApp({}).use(Breadcrumbs)
   expect(app.component(Breadcrumbs.name)).toBeTruthy()
 })
 
-test('test breadcrumbs basic usage', async () => {
+test('breadcrumbs basic usage', async () => {
   const wrapper = mount(VarBreadcrumbs, {
     slots: {
       default: () => renderBasicUsage(),
@@ -34,7 +34,7 @@ test('test breadcrumbs basic usage', async () => {
   wrapper.unmount()
 })
 
-test('test breadcrumbs parent separator', async () => {
+test('breadcrumbs parent separator', async () => {
   const wrapper = mount(VarBreadcrumbs, {
     props: {
       separator: '+',
@@ -49,7 +49,7 @@ test('test breadcrumbs parent separator', async () => {
   wrapper.unmount()
 })
 
-test('test breadcrumbs parent and child separator', async () => {
+test('breadcrumbs parent and child separator', async () => {
   const wrapper = mount(VarBreadcrumbs, {
     props: {
       separator: '+',
@@ -64,7 +64,7 @@ test('test breadcrumbs parent and child separator', async () => {
   wrapper.unmount()
 })
 
-test('test breadcrumbs events', async () => {
+test('breadcrumbs events', async () => {
   const onClick = vi.fn()
 
   const wrapper = mount(VarBreadcrumbs, {
@@ -83,7 +83,7 @@ test('test breadcrumbs events', async () => {
   wrapper.unmount()
 })
 
-test('test breadcrumbs slots', async () => {
+test('breadcrumbs slots', async () => {
   const wrapper = mount(VarBreadcrumbs, {
     slots: {
       default: () =>

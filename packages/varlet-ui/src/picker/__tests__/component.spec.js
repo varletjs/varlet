@@ -7,7 +7,7 @@ import VarPicker from '../Picker'
 
 mockTranslate()
 
-test('test picker component plugin', () => {
+test('picker component plugin', () => {
   const app = createApp({}).use(Picker.Component)
   expect(app.component(Picker.Component.name)).toBeTruthy()
 })
@@ -24,7 +24,7 @@ const triggerDrag = async (element, x, y) => {
   await trigger(element, 'touchend', x, y)
 }
 
-test('test scroll up & onConfirm', async () => {
+test('scroll up & onConfirm', async () => {
   const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
@@ -45,7 +45,7 @@ test('test scroll up & onConfirm', async () => {
   wrapper.unmount()
 })
 
-test('test click option & onConfirm', async () => {
+test('click option & onConfirm', async () => {
   const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
@@ -65,7 +65,7 @@ test('test click option & onConfirm', async () => {
   wrapper.unmount()
 })
 
-test('test scroll down & onCancel', async () => {
+test('scroll down & onCancel', async () => {
   const onCancel = vi.fn()
 
   const wrapper = mount(VarPicker, {
@@ -86,7 +86,7 @@ test('test scroll down & onCancel', async () => {
   wrapper.unmount()
 })
 
-test('test cascade mode', async () => {
+test('cascade mode', async () => {
   const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
@@ -173,7 +173,7 @@ test('test cascade mode', async () => {
   wrapper.unmount()
 })
 
-test('test custom key', async () => {
+test('custom key', async () => {
   const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
@@ -234,7 +234,7 @@ test('test custom key', async () => {
   wrapper.unmount()
 })
 
-test('test multiple column picker columnsCount', async () => {
+test('multiple column picker columnsCount', async () => {
   const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
@@ -282,7 +282,7 @@ test('test multiple column picker columnsCount', async () => {
   wrapper.unmount()
 })
 
-test('test cascade column picker columnsCount', async () => {
+test('cascade column picker columnsCount', async () => {
   const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
@@ -371,7 +371,7 @@ test('test cascade column picker columnsCount', async () => {
   wrapper.unmount()
 })
 
-test('test column option className', () => {
+test('column option className', () => {
   const wrapper = mount(VarPicker, {
     props: {
       columns: [

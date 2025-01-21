@@ -4,12 +4,12 @@ import { expect, test, vi } from 'vitest'
 import Paper from '..'
 import VarPaper from '../Paper'
 
-test('test paper use', () => {
+test('paper use', () => {
   const app = createApp({}).use(Paper)
   expect(app.component(Paper.name)).toBeTruthy()
 })
 
-test('test paper elevation', async () => {
+test('paper elevation', async () => {
   const wrapper = mount(VarPaper, {
     props: {
       elevation: 2,
@@ -25,7 +25,7 @@ test('test paper elevation', async () => {
   wrapper.unmount()
 })
 
-test('test paper size', async () => {
+test('paper size', async () => {
   const wrapper = mount(VarPaper, {
     props: {
       width: 100,
@@ -43,7 +43,7 @@ test('test paper size', async () => {
   wrapper.unmount()
 })
 
-test('test paper round', async () => {
+test('paper round', async () => {
   const wrapper = mount(VarPaper, {
     props: {
       round: false,
@@ -59,7 +59,7 @@ test('test paper round', async () => {
   wrapper.unmount()
 })
 
-test('test paper inline', async () => {
+test('paper inline', async () => {
   const wrapper = mount(VarPaper, {
     props: {
       inline: false,
@@ -75,7 +75,7 @@ test('test paper inline', async () => {
   wrapper.unmount()
 })
 
-test('test paper radius', async () => {
+test('paper radius', async () => {
   const wrapper = mount(VarPaper, {
     props: {
       radius: 10,
@@ -91,7 +91,7 @@ test('test paper radius', async () => {
   wrapper.unmount()
 })
 
-test('test paper onClick', () => {
+test('paper onClick', () => {
   const onClick = vi.fn()
 
   const wrapper = mount(VarPaper, {

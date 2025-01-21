@@ -18,13 +18,13 @@ afterAll(() => {
   Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth)
 })
 
-test('test slider plugin', () => {
+test('slider plugin', () => {
   const app = createApp({}).use(Slider)
   expect(app.component(Slider.name)).toBeTruthy()
 })
 
 describe('test slider props', () => {
-  test('test slider direction prop', async () => {
+  test('slider direction prop', async () => {
     const wrapper = mount(VarSlider)
 
     expect(wrapper.find('.var-slider__horizontal').exists()).toBe(true)
@@ -37,7 +37,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test step prop', async () => {
+  test('step prop', async () => {
     const { mockRestore } = mockConsole('warn')
 
     const wrapper = mount({
@@ -68,7 +68,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test range prop', () => {
+  test('range prop', () => {
     const wrapper = mount(VarSlider, {
       props: {
         range: true,
@@ -81,7 +81,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider labelVisible prop', async () => {
+  test('slider labelVisible prop', async () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: 20,
@@ -112,7 +112,7 @@ describe('test slider props', () => {
   })
 
   describe('test slider color props', () => {
-    test('test activeColor prop', () => {
+    test('activeColor prop', () => {
       const wrapper = mount(VarSlider, {
         props: {
           modelValue: 2,
@@ -125,7 +125,7 @@ describe('test slider props', () => {
       wrapper.unmount()
     })
 
-    test('test trackColor prop', () => {
+    test('trackColor prop', () => {
       const wrapper = mount(VarSlider, {
         props: {
           modelValue: 2,
@@ -138,7 +138,7 @@ describe('test slider props', () => {
       wrapper.unmount()
     })
 
-    test('test thumbColor prop', () => {
+    test('thumbColor prop', () => {
       const wrapper = mount(VarSlider, {
         props: {
           modelValue: 2,
@@ -151,7 +151,7 @@ describe('test slider props', () => {
       wrapper.unmount()
     })
 
-    test('test labelColor and labelTextColor prop', () => {
+    test('labelColor and labelTextColor prop', () => {
       const wrapper = mount(VarSlider, {
         props: {
           modelValue: 2,
@@ -167,7 +167,7 @@ describe('test slider props', () => {
     })
   })
 
-  test('test trackHeight prop', async () => {
+  test('trackHeight prop', async () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: 2,
@@ -185,7 +185,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider range', async () => {
+  test('slider range', async () => {
     const wrapper = mount({
       components: {
         [VarSlider.name]: VarSlider,
@@ -211,7 +211,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test thumbSize prop', () => {
+  test('thumbSize prop', () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: 2,
@@ -226,7 +226,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider not available', async () => {
+  test('slider not available', async () => {
     const changeFn = vi.fn()
     const startFn = vi.fn()
     const endFn = vi.fn()
@@ -283,7 +283,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider getValue function when the type of value is number', async () => {
+  test('slider getValue function when the type of value is number', async () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: 2,
@@ -307,7 +307,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider getValue function when the type of value is number', async () => {
+  test('slider getValue function when the type of value is array', async () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: [2, 4],
@@ -337,7 +337,7 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
-  test('test slider value legal', async () => {
+  test('slider value legal', async () => {
     const fn = vi.fn()
     const { mockRestore } = mockConsole('error', fn)
     const template = `<var-slider v-model="value" :range="range" /> `
@@ -360,7 +360,7 @@ describe('test slider props', () => {
     mockRestore()
   })
 
-  test('test slider rules prop', async () => {
+  test('slider rules prop', async () => {
     const wrapper = mount({
       components: {
         [VarSlider.name]: VarSlider,
@@ -389,7 +389,7 @@ describe('test slider props', () => {
   })
 })
 
-test('test slider events', async () => {
+test('slider events', async () => {
   const changeFn = vi.fn()
   const startFn = vi.fn()
   const endFn = vi.fn()
@@ -453,7 +453,7 @@ test('test slider events', async () => {
   wrapper.unmount()
 })
 
-test('test slider validation with zod', async () => {
+test('slider validation with zod', async () => {
   const wrapper = mount({
     components: {
       [VarSlider.name]: VarSlider,

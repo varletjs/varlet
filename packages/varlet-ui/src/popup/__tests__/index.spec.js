@@ -5,7 +5,7 @@ import Popup from '..'
 import { triggerKeyboard } from '../../utils/test'
 import VarPopup from '../Popup'
 
-test('test popup plugin', () => {
+test('popup plugin', () => {
   const app = createApp({}).use(Popup)
   expect(app.component(Popup.name)).toBeTruthy()
 })
@@ -25,7 +25,7 @@ const Wrapper = {
   `,
 }
 
-test('test popup show', async () => {
+test('popup show', async () => {
   const wrapper = mount(Wrapper)
   expect(wrapper.find('.var-popup').isVisible()).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
@@ -41,7 +41,7 @@ test('test popup show', async () => {
   wrapper.unmount()
 })
 
-test('test popup onOpen & onClose', async () => {
+test('popup onOpen & onClose', async () => {
   const onOpen = vi.fn()
   const onClose = vi.fn()
 
@@ -60,7 +60,7 @@ test('test popup onOpen & onClose', async () => {
   wrapper.unmount()
 })
 
-test('test popup zIndex', async () => {
+test('popup zIndex', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       zIndex: 40,
@@ -75,7 +75,7 @@ test('test popup zIndex', async () => {
   wrapper.unmount()
 })
 
-test('test popup close on clickOverlay', async () => {
+test('popup close on clickOverlay', async () => {
   const onClose = vi.fn()
   const onClickOverlay = vi.fn()
 
@@ -101,7 +101,7 @@ test('test popup close on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test popup default style', async () => {
+test('popup default style', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -121,7 +121,7 @@ test('test popup default style', async () => {
   wrapper.unmount()
 })
 
-test('test popup safeArea prop', async () => {
+test('popup safeArea prop', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -139,7 +139,7 @@ test('test popup safeArea prop', async () => {
   wrapper.unmount()
 })
 
-test('test popup safeAreaTop prop', async () => {
+test('popup safeAreaTop prop', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -157,7 +157,7 @@ test('test popup safeAreaTop prop', async () => {
   wrapper.unmount()
 })
 
-test('test popup overlayClass prop', () => {
+test('popup overlayClass prop', () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -170,7 +170,7 @@ test('test popup overlayClass prop', () => {
   wrapper.unmount()
 })
 
-test('test popup overlayStyle prop', () => {
+test('popup overlayStyle prop', () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -185,7 +185,7 @@ test('test popup overlayStyle prop', () => {
   wrapper.unmount()
 })
 
-test('test popup position prop', () => {
+test('popup position prop', () => {
   ;['top', 'bottom', 'right', 'left', 'center'].forEach((position) => {
     const wrapper = mount(Wrapper, {
       props: {
@@ -200,7 +200,7 @@ test('test popup position prop', () => {
   })
 })
 
-test('test popup keyboard escape', async () => {
+test('popup keyboard escape', async () => {
   const onKeyEscape = vi.fn()
   const onUpdateShow = vi.fn()
 
@@ -219,7 +219,7 @@ test('test popup keyboard escape', async () => {
   wrapper.unmount()
 })
 
-test('test popup keyboard escape and closeOnKeyEscape', async () => {
+test('popup keyboard escape and closeOnKeyEscape', async () => {
   const onKeyEscape = vi.fn()
   const onUpdateShow = vi.fn()
 

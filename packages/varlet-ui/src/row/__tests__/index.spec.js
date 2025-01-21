@@ -7,14 +7,14 @@ import VarCol from '../../col/Col'
 import { delay, mockConsole } from '../../utils/test'
 import VarRow from '../Row'
 
-test('test row and col use', () => {
+test('row and col use', () => {
   const app = createApp({}).use(Row).use(Col)
   expect(app.component(Row.name)).toBeTruthy()
   expect(app.component(Col.name)).toBeTruthy()
 })
 
 describe('test row and col component props', () => {
-  test('test row and col gutter', () => {
+  test('row and col gutter', () => {
     const wrapper = mount(VarRow, {
       props: {
         gutter: 20,
@@ -28,7 +28,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col gutter array', () => {
+  test('row and col gutter array', () => {
     const wrapper = mount(VarRow, {
       props: {
         gutter: [20, 20],
@@ -42,7 +42,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col gutter computed', async () => {
+  test('row and col gutter computed', async () => {
     const wrapper = mount(VarRow, {
       props: {
         gutter: [20, 20],
@@ -59,7 +59,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col justify', () => {
+  test('row and col justify', () => {
     ;['flex-start', 'flex-end', 'center', 'space-between', 'space-around'].forEach((justify) => {
       const wrapper = mount(VarRow, {
         props: {
@@ -75,7 +75,7 @@ describe('test row and col component props', () => {
     })
   })
 
-  test('test row and col align', () => {
+  test('row and col align', () => {
     ;['flex-start', 'flex-end', 'center'].forEach((align) => {
       const wrapper = mount(VarRow, {
         props: {
@@ -91,7 +91,7 @@ describe('test row and col component props', () => {
     })
   })
 
-  test('test row and col span', () => {
+  test('row and col span', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () => [6, 6, 6, 6].map((span) => h(VarCol, { span })),
@@ -102,7 +102,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col span 0', () => {
+  test('row and col span 0', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () => [0, 12, 12].map((span) => h(VarCol, { span })),
@@ -113,7 +113,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col offset', () => {
+  test('row and col offset', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () => [6, 6].map((span) => h(VarCol, { span, offset: 6 })),
@@ -124,7 +124,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test row and col responsive', () => {
+  test('row and col responsive', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () =>
@@ -147,7 +147,7 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
-  test('test col direction', () => {
+  test('col direction', () => {
     const wrapper = mount(VarRow, {
       slots: {
         default: () => [12, 12].map((span) => h(VarCol, { span, direction: 'column' })),
@@ -159,7 +159,7 @@ describe('test row and col component props', () => {
   })
 })
 
-test('test row and col responsive 0', () => {
+test('row and col responsive 0', () => {
   const wrapper = mount(VarRow, {
     slots: {
       default: () => [h(VarCol, { xs: 0, sm: 0, md: 0, lg: 0, xl: 0 })],
@@ -174,7 +174,7 @@ test('test row and col responsive 0', () => {
   wrapper.unmount()
 })
 
-test('test col is not used in row', () => {
+test('col is not used in row', () => {
   const { mockRestore } = mockConsole('warn', (text) => {
     expect(text).toBe('col must in row')
   })

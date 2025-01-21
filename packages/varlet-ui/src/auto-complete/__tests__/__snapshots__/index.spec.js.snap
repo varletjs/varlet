@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test auto-complete custom color 1`] = `
+exports[`auto-complete custom color 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -30,7 +30,7 @@ exports[`test auto-complete custom color 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete disabled 1`] = `
+exports[`auto-complete disabled 1`] = `
 "<div class="var-auto-complete">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -60,7 +60,7 @@ exports[`test auto-complete disabled 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete hint and line 1`] = `
+exports[`auto-complete hint and line 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -88,7 +88,7 @@ exports[`test auto-complete hint and line 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete modelValue 1`] = `
+exports[`auto-complete modelValue 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -118,7 +118,7 @@ exports[`test auto-complete modelValue 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete placeholder 1`] = `
+exports[`auto-complete placeholder 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -147,7 +147,7 @@ exports[`test auto-complete placeholder 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete readonly 1`] = `
+exports[`auto-complete readonly 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -177,7 +177,7 @@ exports[`test auto-complete readonly 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete size 1`] = `
+exports[`auto-complete size 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -207,7 +207,7 @@ exports[`test auto-complete size 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete slots 1`] = `
+exports[`auto-complete slots 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -237,7 +237,7 @@ exports[`test auto-complete slots 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete valiation with zod 1`] = `
+exports[`auto-complete valiation with zod 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -278,7 +278,7 @@ exports[`test auto-complete valiation with zod 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete valiation with zod 2`] = `
+exports[`auto-complete valiation with zod 2`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -308,7 +308,7 @@ exports[`test auto-complete valiation with zod 2`] = `
 </div>"
 `;
 
-exports[`test auto-complete validation 1`] = `
+exports[`auto-complete validation 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -349,7 +349,7 @@ exports[`test auto-complete validation 1`] = `
 </div>"
 `;
 
-exports[`test auto-complete validation 2`] = `
+exports[`auto-complete validation 2`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
@@ -379,7 +379,7 @@ exports[`test auto-complete validation 2`] = `
 </div>"
 `;
 
-exports[`test auto-complete variant 1`] = `
+exports[`auto-complete variant 1`] = `
 "<div class="var-auto-complete" tabindex="0">
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">

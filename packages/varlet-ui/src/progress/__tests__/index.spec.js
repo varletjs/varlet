@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import Progress from '..'
 import VarProgress from '../Progress'
 
-test('test progress use', () => {
+test('progress use', () => {
   const app = createApp({}).use(Progress)
   expect(app.component(Progress.name)).toBeTruthy()
 })
 
 describe('test progress component props', () => {
-  test('test progress mode', async () => {
+  test('progress mode', async () => {
     const wrapper = mount(VarProgress, {
       props: { mode: 'linear' },
     })
@@ -21,7 +21,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress value', () => {
+  test('progress value', () => {
     const wrapper = mount(VarProgress, {
       props: {
         value: 20,
@@ -32,7 +32,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress type', () => {
+  test('progress type', () => {
     ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
       const wrapper = mount(VarProgress, {
         props: { type, mode: 'linear' },
@@ -43,7 +43,7 @@ describe('test progress component props', () => {
     })
   })
 
-  test('test progress line-width', () => {
+  test('progress line-width', () => {
     const wrapper = mount(VarProgress, {
       props: {
         lineWidth: 5,
@@ -54,7 +54,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test linear progress color', () => {
+  test('linear progress color', () => {
     const wrapper = mount(VarProgress, {
       props: {
         color: 'red',
@@ -65,7 +65,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test circle progress color', () => {
+  test('circle progress color', () => {
     const wrapper = mount(VarProgress, {
       props: {
         color: {
@@ -80,7 +80,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress track-color', () => {
+  test('progress track-color', () => {
     const wrapper = mount(VarProgress, {
       props: {
         trackColor: 'red',
@@ -91,7 +91,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress label', async () => {
+  test('progress label', async () => {
     const wrapper = mount(VarProgress, {
       props: {
         label: true,
@@ -104,7 +104,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress track', async () => {
+  test('progress track', async () => {
     const wrapper = mount(VarProgress, {
       props: {
         track: true,
@@ -117,7 +117,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress size', () => {
+  test('progress size', () => {
     const wrapper = mount(VarProgress, {
       props: {
         size: 20,
@@ -129,7 +129,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress rotate', () => {
+  test('progress rotate', () => {
     const wrapper = mount(VarProgress, {
       props: {
         rotate: 10,
@@ -142,7 +142,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress indeterminate', async () => {
+  test('progress indeterminate', async () => {
     const wrapper = mount(VarProgress, {
       props: {
         mode: 'linear',
@@ -158,7 +158,7 @@ describe('test progress component props', () => {
   })
 })
 
-test('test progress component default slots', () => {
+test('progress component default slots', () => {
   const wrapper = mount(VarProgress, {
     props: {
       label: true,

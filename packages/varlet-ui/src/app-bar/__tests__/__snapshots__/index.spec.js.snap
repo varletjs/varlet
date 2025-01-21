@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test app bar component props > test app bar image and image-linear-gradient 1`] = `
+exports[`test app bar component props > app bar image and image-linear-gradient 1`] = `
 "<div class="var-app-bar var--box var-elevation--3" style="background-position: center center; background-size: cover; z-index: 1;">
   <div class="var-app-bar__toolbar">
     <div class="var-app-bar__left">
@@ -15,7 +15,7 @@ exports[`test app bar component props > test app bar image and image-linear-grad
 <!--v-if-->"
 `;
 
-exports[`test app bar slots > test app bar content slot 1`] = `
+exports[`test app bar slots > app bar content slot 1`] = `
 "<div class="var-app-bar var--box var-elevation--3" style="z-index: 1;">
   <div class="var-app-bar__toolbar">
     <div class="var-app-bar__left">

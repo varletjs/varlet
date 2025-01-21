@@ -36,7 +36,7 @@
     "*.{ts,tsx,js,vue}": "eslint --fix"
   },
   "devDependencies": {
-    "@configurajs/eslint": "^0.1.0",
+    "@configurajs/eslint": "^0.1.2",
     "@configurajs/prettier": "^0.1.1",
     "@varlet/cli": "workspace:*",
     "@varlet/icons": "workspace:*",

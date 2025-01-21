@@ -27,13 +27,13 @@ const expectTap = async (element, wrapper) => {
   expect(wrapper.find('.var-popup').isVisible()).toBe(false)
 }
 
-test('test image preview component plugin', () => {
+test('image preview component plugin', () => {
   const app = createApp({}).use(ImagePreview.Component)
   expect(app.component(ImagePreview.Component.name)).toBeTruthy()
 })
 
 describe('test image preview component props', () => {
-  test('test image preview show', async () => {
+  test('image preview show', async () => {
     const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
     const wrapper = mount(VarImagePreview, {
       props: {
@@ -52,7 +52,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview images', async () => {
+  test('image preview images', async () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
@@ -71,7 +71,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview imagePreventDefault', async () => {
+  test('image preview imagePreventDefault', async () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
@@ -88,7 +88,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview initialIndex', async () => {
+  test('image preview initialIndex', async () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
@@ -105,7 +105,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview closeable', async () => {
+  test('image preview closeable', async () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
@@ -124,7 +124,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview zoom', async () => {
+  test('image preview zoom', async () => {
     const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
     const wrapper = mount(VarImagePreview, {
       props: {
@@ -155,7 +155,7 @@ describe('test image preview component props', () => {
     wrapper.unmount()
   })
 
-  test('test image preview zoom move', async () => {
+  test('image preview zoom move', async () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
@@ -189,7 +189,7 @@ describe('test image preview component props', () => {
 })
 
 describe('test image preview component events', () => {
-  test('test image preview tap', async () => {
+  test('image preview tap', async () => {
     const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
     const wrapper = mount(VarImagePreview, {
       props: {
@@ -206,7 +206,7 @@ describe('test image preview component events', () => {
     wrapper.unmount()
   })
 
-  test('test image preview onLongPress', async () => {
+  test('image preview onLongPress', async () => {
     const onLongPress = vi.fn()
     const wrapper = mount(VarImagePreview, {
       props: {
@@ -229,7 +229,7 @@ describe('test image preview component events', () => {
 })
 
 describe('test image preview component methods', () => {
-  test('test image preview next & prev & to method', async () => {
+  test('image preview next & prev & to method', async () => {
     const Wrapper = {
       components: {
         [VarImagePreview.name]: VarImagePreview,
@@ -271,7 +271,7 @@ describe('test image preview component methods', () => {
     wrapper.unmount()
   })
 
-  test('test image preview zoom method', async () => {
+  test('image preview zoom method', async () => {
     const Wrapper = {
       components: {
         [VarImagePreview.name]: VarImagePreview,

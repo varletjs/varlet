@@ -11,13 +11,13 @@ const TARGET = '_blank'
 
 const TO = '/button'
 
-test('test link plugin', () => {
+test('link plugin', () => {
   const app = createApp({}).use(Link)
   expect(app.component(Link.name)).toBeTruthy()
 })
 
 describe('test link component props', () => {
-  test('test link type', () => {
+  test('link type', () => {
     ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
       const wrapper = mount(VarLink, {
         props: { type },
@@ -28,7 +28,7 @@ describe('test link component props', () => {
     })
   })
 
-  test('test link rel', () => {
+  test('link rel', () => {
     const wrapper = mount(VarLink, {
       props: {
         href: HREF,
@@ -42,7 +42,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link href target', () => {
+  test('link href target', () => {
     const wrapper = mount(VarLink, {
       props: {
         href: HREF,
@@ -57,7 +57,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link to replace', () => {
+  test('link to replace', () => {
     const wrapper = mount(VarLink, {
       props: {
         to: TO,
@@ -78,7 +78,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link underline', () => {
+  test('link underline', () => {
     ;['always', 'hover', 'none'].forEach((underline) => {
       const wrapper = mount(VarLink, {
         props: { underline },
@@ -94,7 +94,7 @@ describe('test link component props', () => {
     })
   })
 
-  test('test link disabled', async () => {
+  test('link disabled', async () => {
     const onClick = vi.fn()
 
     const wrapper = mount(VarLink, {
@@ -111,7 +111,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link text color', async () => {
+  test('link text color', async () => {
     const wrapper = mount(VarLink, {
       props: {
         textColor: '#000',
@@ -128,7 +128,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link text size', async () => {
+  test('link text size', async () => {
     const wrapper = mount(VarLink, {
       props: {
         textSize: '12',
@@ -147,7 +147,7 @@ describe('test link component props', () => {
 })
 
 describe('test link component events', () => {
-  test('test link onClick', async () => {
+  test('link onClick', async () => {
     const onClick = vi.fn()
 
     const wrapper = mount(VarLink, {
@@ -163,7 +163,7 @@ describe('test link component events', () => {
 })
 
 describe('test link component slots', () => {
-  test('test link default slot', () => {
+  test('link default slot', () => {
     const wrapper = mount(VarLink, {
       slots: {
         default: () => 'test',

@@ -5,12 +5,12 @@ import { expect, test } from 'vitest'
 import VarHighlighterProvider from '../HighlighterProvider'
 import HighlighterProvider from '../index'
 
-test('test highlighterProvider component plugin', () => {
+test('highlighterProvider component plugin', () => {
   const app = createApp({}).use(HighlighterProvider)
   expect(app.component(HighlighterProvider.name)).toBeTruthy()
 })
 
-test('test highlighterProvider highlighter', () => {
+test('highlighterProvider highlighter', () => {
   const wrapper = mount(VarHighlighterProvider, {
     props: {
       highlighter: {
@@ -23,7 +23,7 @@ test('test highlighterProvider highlighter', () => {
   wrapper.unmount()
 })
 
-test('test highlighterProvider tag', () => {
+test('highlighterProvider tag', () => {
   const wrapper = mount(VarHighlighterProvider, { props: { tag: 'span' } })
   expect(wrapper.html()).toMatchSnapshot()
 

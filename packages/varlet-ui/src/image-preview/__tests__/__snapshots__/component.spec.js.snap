@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test image preview component props > test image preview imagePreventDefault 1`] = `
+exports[`test image preview component props > image preview imagePreventDefault 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->
@@ -24,7 +24,7 @@ exports[`test image preview component props > test image preview imagePreventDef
 </transition-stub>"
 `;
 
-exports[`test image preview component props > test image preview initialIndex 1`] = `
+exports[`test image preview component props > image preview initialIndex 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->
@@ -51,7 +51,7 @@ exports[`test image preview component props > test image preview initialIndex 1`
 </transition-stub>"
 `;
 
-exports[`test image preview component props > test image preview show 1`] = `
+exports[`test image preview component props > image preview show 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998; display: none;">
     <!---->
@@ -64,7 +64,7 @@ exports[`test image preview component props > test image preview show 1`] = `
 </transition-stub>"
 `;
 
-exports[`test image preview component props > test image preview show 2`] = `
+exports[`test image preview component props > image preview show 2`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->

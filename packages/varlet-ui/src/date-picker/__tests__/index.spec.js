@@ -10,13 +10,13 @@ mockScrollIntoView()
 
 const [currentYear, currentMonth] = dayjs().format('YYYY-MM').split('-')
 
-test('test datePicker plugin', () => {
+test('datePicker plugin', () => {
   const app = createApp({}).use(DatePicker)
   expect(app.component(DatePicker.name)).toBeTruthy()
 })
 
 describe('test datePicker style and type', () => {
-  test('test datePicker style and date', async () => {
+  test('datePicker style and date', async () => {
     const template = `
     <var-date-picker
       v-model="date"
@@ -44,7 +44,7 @@ describe('test datePicker style and type', () => {
     wrapper.unmount()
   })
 
-  test('test datePicker style and month', async () => {
+  test('datePicker style and month', async () => {
     const template = `
     <var-date-picker
       v-model="date"
@@ -74,7 +74,7 @@ describe('test datePicker style and type', () => {
   })
 })
 
-test('test datePicker style and type', async () => {
+test('datePicker style and type', async () => {
   const template = `
     <var-date-picker
       :type="type"
@@ -108,7 +108,7 @@ test('test datePicker style and type', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker allowedDates', () => {
+test('datePicker allowedDates', () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       allowedDates: (val) => parseInt(val.split('-')[2], 10) % 2 === 1,
@@ -120,7 +120,7 @@ test('test datePicker allowedDates', () => {
   wrapper.unmount()
 })
 
-test('test datePicker firstDayOfWeek', async () => {
+test('datePicker firstDayOfWeek', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       firstDayOfWeek: '3',
@@ -134,7 +134,7 @@ test('test datePicker firstDayOfWeek', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker hint', async () => {
+test('datePicker hint', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       hint: '选择日期',
@@ -153,7 +153,7 @@ test('test datePicker hint', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker max and min', async () => {
+test('datePicker max and min', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       max: '2021-4-8',
@@ -178,7 +178,7 @@ test('test datePicker max and min', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker v-model', async () => {
+test('datePicker v-model', async () => {
   const template = `<var-date-picker :type="type" v-model="date" />`
 
   const wrapper = mount({
@@ -217,7 +217,7 @@ test('test datePicker v-model', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker multiple', async () => {
+test('datePicker multiple', async () => {
   const template = `<var-date-picker multiple v-model="date" :type="type"/>`
 
   const wrapper = mount({
@@ -271,7 +271,7 @@ test('test datePicker multiple', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker range', async () => {
+test('datePicker range', async () => {
   const fn = vi.fn()
   const { mockRestore } = mockConsole('error', fn)
 
@@ -320,7 +320,7 @@ test('test datePicker range', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker readonly', async () => {
+test('datePicker readonly', async () => {
   const template = `<var-date-picker v-model="date" readonly :type="type" />`
 
   const wrapper = mount({
@@ -349,7 +349,7 @@ test('test datePicker readonly', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker touchable', async () => {
+test('datePicker touchable', async () => {
   const wrapper = mount({
     components: {
       [VarDatePicker.name]: VarDatePicker,
@@ -376,7 +376,7 @@ test('test datePicker touchable', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker value legal', async () => {
+test('datePicker value legal', async () => {
   const fn = vi.fn()
   const { mockRestore } = mockConsole('error', fn)
   const template = `<var-date-picker v-model="date" :multiple="multiple" />`
@@ -404,7 +404,7 @@ test('test datePicker value legal', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker titleColor', async () => {
+test('datePicker titleColor', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       titleColor: 'red',
@@ -423,7 +423,7 @@ test('test datePicker titleColor', async () => {
   wrapper.unmount()
 })
 
-test('test datePicker rerender date panel when max or min changes', async () => {
+test('datePicker rerender date panel when max or min changes', async () => {
   const wrapper = mount({
     components: {
       [VarDatePicker.name]: VarDatePicker,

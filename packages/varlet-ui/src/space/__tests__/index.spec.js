@@ -5,13 +5,13 @@ import Space from '..'
 import { computeMargin } from '../margin'
 import VarSpace from '../Space'
 
-test('test space use', () => {
+test('space use', () => {
   const app = createApp({}).use(Space)
   expect(app.component(Space.name)).toBeTruthy()
 })
 
 describe('test space component props', () => {
-  test('test space align', () => {
+  test('space align', () => {
     ;['stretch', 'center', 'start', 'end', 'baseline'].forEach((align) => {
       const wrapper = mount(VarSpace, {
         props: { align },
@@ -24,7 +24,7 @@ describe('test space component props', () => {
     })
   })
 
-  test('test space justify', () => {
+  test('space justify', () => {
     ;['start', 'end', 'center', 'space-around', 'space-between'].forEach((justify) => {
       const wrapper = mount(VarSpace, {
         props: { justify },
@@ -40,7 +40,7 @@ describe('test space component props', () => {
     })
   })
 
-  test('test space wrap', async () => {
+  test('space wrap', async () => {
     const wrapper = mount(VarSpace, {
       props: {
         wrap: true,
@@ -53,7 +53,7 @@ describe('test space component props', () => {
     wrapper.unmount()
   })
 
-  test('test space direction', async () => {
+  test('space direction', async () => {
     const wrapper = mount(VarSpace, {
       props: {
         direction: 'row',
@@ -66,7 +66,7 @@ describe('test space component props', () => {
     wrapper.unmount()
   })
 
-  test('test space inline', async () => {
+  test('space inline', async () => {
     const wrapper = mount(VarSpace, {
       props: {
         inline: true,
@@ -80,7 +80,7 @@ describe('test space component props', () => {
   })
 })
 
-test('test space default slots', () => {
+test('space default slots', () => {
   const wrapper = mount(VarSpace, {
     slots: {
       default: 'This is default slots',
@@ -91,7 +91,7 @@ test('test space default slots', () => {
   wrapper.unmount()
 })
 
-test('test computeMargin func returns', () => {
+test('computeMargin func returns', () => {
   expect(
     computeMargin('var(--space-size-mini-y)', 'var(--space-size-mini-x)', {
       direction: 'row',

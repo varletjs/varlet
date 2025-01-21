@@ -7,13 +7,13 @@ import VarImage from '../Image'
 
 const SRC = 'https://varletjs.org/varlet/cat.png'
 
-test('test image plugin', () => {
+test('image plugin', () => {
   const app = createApp({}).use(Image)
   expect(app.component(Image.name)).toBeTruthy()
 })
 
 describe('test image component event', () => {
-  test('test image onLoad & onError', () => {
+  test('image onLoad & onError', () => {
     const onLoad = vi.fn()
     const onError = vi.fn()
     const wrapper = mount(VarImage, {
@@ -31,7 +31,7 @@ describe('test image component event', () => {
     wrapper.unmount()
   })
 
-  test('test image onLoad & onError in lazy mode', () => {
+  test('image onLoad & onError in lazy mode', () => {
     const onLoad = vi.fn()
     const onError = vi.fn()
     const wrapper = mount(VarImage, {
@@ -55,22 +55,28 @@ describe('test image component event', () => {
     wrapper.unmount()
   })
 
-  test('test image onLoad & onError null callback', async () => {
+  test('image onLoad & onError null callback', async () => {
+    const onLoad = vi.fn()
+    const onError = vi.fn()
+
     const wrapper = mount(VarImage)
     const img = wrapper.find('img')
     await img.trigger('load')
+    expect(onLoad).toHaveBeenCalledTimes(0)
 
     await wrapper.setProps({ lazy: true })
 
     const lazyImage = wrapper.find('img')
     lazyImage.element._lazy.state = 'success'
     await lazyImage.trigger('load')
+    expect(onLoad).toHaveBeenCalledTimes(0)
     lazyImage.element._lazy.state = 'error'
     await lazyImage.trigger('load')
+    expect(onError).toHaveBeenCalledTimes(0)
     wrapper.unmount()
   })
 
-  test('test image onClick', () => {
+  test('image onClick', () => {
     function expectOnClick(props = {}) {
       const onClick = vi.fn()
       const wrapper = mount(VarImage, {
@@ -91,7 +97,7 @@ describe('test image component event', () => {
 })
 
 describe('test image component props', () => {
-  test('test image src', () => {
+  test('image src', () => {
     const wrapper = mount(VarImage, {
       props: {
         src: SRC,
@@ -102,7 +108,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image fit', () => {
+  test('image fit', () => {
     ;['fill', 'contain', 'cover', 'none', 'scale-down'].forEach((fit) => {
       const wrapper = mount(VarImage, {
         props: { fit },
@@ -113,7 +119,7 @@ describe('test image component props', () => {
     })
   })
 
-  test('test image alt', () => {
+  test('image alt', () => {
     const wrapper = mount(VarImage, {
       props: {
         alt: 'This is alt',
@@ -124,7 +130,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image title', () => {
+  test('image title', () => {
     const wrapper = mount(VarImage, {
       props: {
         title: 'This is title',
@@ -135,7 +141,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image referrerpolicy', () => {
+  test('image referrerpolicy', () => {
     const wrapper = mount(VarImage, {
       props: {
         referrerpolicy: 'no-referrer',
@@ -146,7 +152,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image position', async () => {
+  test('image position', async () => {
     const wrapper = mount(VarImage)
 
     expect(wrapper.find('.var-image__image').attributes('style')).toContain('object-position: 50% 50%')
@@ -159,7 +165,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image width', async () => {
+  test('image width', async () => {
     const wrapper = mount(VarImage, {
       props: {
         width: '20px',
@@ -172,7 +178,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image height', async () => {
+  test('image height', async () => {
     const wrapper = mount(VarImage, {
       props: {
         height: '20px',
@@ -185,7 +191,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image radius', async () => {
+  test('image radius', async () => {
     const wrapper = mount(VarImage, {
       props: {
         radius: '20px',
@@ -198,7 +204,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image lazy', async () => {
+  test('image lazy', async () => {
     const wrapper = mount(VarImage, {
       props: {
         lazy: false,
@@ -212,7 +218,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image loading', () => {
+  test('image loading', () => {
     const wrapper = mount(VarImage, {
       props: {
         lazy: true,
@@ -224,7 +230,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image error', () => {
+  test('image error', () => {
     const wrapper = mount(VarImage, {
       props: {
         lazy: true,
@@ -236,7 +242,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image ripple', async () => {
+  test('image ripple', async () => {
     const wrapper = mount(VarImage, {
       props: {
         ripple: true,
@@ -260,7 +266,7 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
-  test('test image block', async () => {
+  test('image block', async () => {
     const wrapper = mount(VarImage, {
       props: {
         block: true,

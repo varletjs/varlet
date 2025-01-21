@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test radio group label is VNode 1`] = `
+exports[`radio group label is VNode 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -49,7 +49,7 @@ exports[`test radio group label is VNode 1`] = `
 </div>"
 `;
 
-exports[`test radio group label is function 1`] = `
+exports[`radio group label is function 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -92,7 +92,7 @@ exports[`test radio group label is function 1`] = `
 </div>"
 `;
 
-exports[`test radio group label is function 2`] = `
+exports[`radio group label is function 2`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -135,7 +135,7 @@ exports[`test radio group label is function 2`] = `
 </div>"
 `;
 
-exports[`test radio group label is function 3`] = `
+exports[`radio group label is function 3`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -178,7 +178,7 @@ exports[`test radio group label is function 3`] = `
 </div>"
 `;
 
-exports[`test radio group label-key 1`] = `
+exports[`radio group label-key 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -221,7 +221,7 @@ exports[`test radio group label-key 1`] = `
 </div>"
 `;
 
-exports[`test radio group layout direction 1`] = `
+exports[`radio group layout direction 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--vertical">
     <!--v-if-->
@@ -254,7 +254,7 @@ exports[`test radio group layout direction 1`] = `
 </div>"
 `;
 
-exports[`test radio group options 1`] = `
+exports[`radio group options 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -297,7 +297,7 @@ exports[`test radio group options 1`] = `
 </div>"
 `;
 
-exports[`test radio group validation 1`] = `
+exports[`radio group validation 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
@@ -341,7 +341,7 @@ exports[`test radio group validation 1`] = `
 </div>"
 `;
 
-exports[`test radio group validation 2`] = `
+exports[`radio group validation 2`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
@@ -374,7 +374,7 @@ exports[`test radio group validation 2`] = `
 </div>"
 `;
 
-exports[`test radio group value-key 1`] = `
+exports[`radio group value-key 1`] = `
 "<div class="var-radio-group__wrap">
   <div class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
@@ -417,7 +417,7 @@ exports[`test radio group value-key 1`] = `
 </div>"
 `;
 
-exports[`test radio validation 1`] = `
+exports[`radio validation 1`] = `
 "<div class="var-radio__wrap">
   <div class="var-radio">
     <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
@@ -442,7 +442,7 @@ exports[`test radio validation 1`] = `
 </div>"
 `;
 
-exports[`test radio validation 2`] = `
+exports[`radio validation 2`] = `
 "<div class="var-radio__wrap">
   <div class="var-radio">
     <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>

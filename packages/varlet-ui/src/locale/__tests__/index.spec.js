@@ -3,7 +3,7 @@ import { useLocale } from '..'
 import { mockConsole } from '../../utils/test'
 import enUS from '../en-US'
 
-test('test add lang', () => {
+test('add lang', () => {
   const { add, use, t, messages } = useLocale()
 
   const lang = 'custom'
@@ -18,7 +18,7 @@ test('test add lang', () => {
   expect(messages.value[lang]).toStrictEqual(message)
 })
 
-test('test merge lang', () => {
+test('merge lang', () => {
   const fn = vi.fn()
   const { mockRestore } = mockConsole('warn', fn)
   const { add, use, merge, t } = useLocale()

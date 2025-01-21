@@ -7,18 +7,18 @@ import VarButtonGroup from '../../button-group/ButtonGroup.vue'
 import { delay, trigger } from '../../utils/test'
 import VarButton from '../Button.vue'
 
-test('test button plugin', () => {
+test('button plugin', () => {
   const app = createApp({}).use(Button)
   expect(app.component(Button.name)).toBeTruthy()
 })
 
-test('test button group plugin', () => {
+test('button group plugin', () => {
   const app = createApp({}).use(ButtonGroup)
   expect(app.component(ButtonGroup.name)).toBeTruthy()
 })
 
 describe('test button component props', () => {
-  test('test button type', () => {
+  test('button type', () => {
     ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
       const wrapper = mount(VarButton, {
         props: { type },
@@ -29,7 +29,7 @@ describe('test button component props', () => {
     })
   })
 
-  test('test button size', () => {
+  test('button size', () => {
     ;['normal', 'mini', 'small', 'large'].forEach((size) => {
       const wrapper = mount(VarButton, {
         props: { size },
@@ -40,7 +40,7 @@ describe('test button component props', () => {
     })
   })
 
-  test('test button loading', async () => {
+  test('button loading', async () => {
     const onClick = vi.fn()
     const onTouchstart = vi.fn()
 
@@ -58,7 +58,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button loading type', () => {
+  test('button loading type', () => {
     ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach(async (type) => {
       const onClick = vi.fn()
       const onTouchstart = vi.fn()
@@ -78,7 +78,7 @@ describe('test button component props', () => {
     })
   })
 
-  test('test button loading size', () => {
+  test('button loading size', () => {
     ;['large', 'normal', 'small', 'mini'].forEach((size) => {
       ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach(async (type) => {
         const onClick = vi.fn()
@@ -101,7 +101,7 @@ describe('test button component props', () => {
     })
   })
 
-  test('test button auto loading', async () => {
+  test('button auto loading', async () => {
     const onClick = () =>
       new Promise((resolve) => {
         setTimeout(resolve, 100)
@@ -134,7 +134,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button round', async () => {
+  test('button round', async () => {
     const wrapper = mount(VarButton, {
       props: {
         round: true,
@@ -147,7 +147,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button block', async () => {
+  test('button block', async () => {
     const wrapper = mount(VarButton, {
       props: {
         block: true,
@@ -160,7 +160,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button text', async () => {
+  test('button text', async () => {
     const wrapper = mount(VarButton, {
       props: {
         text: true,
@@ -173,7 +173,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button icon container', async () => {
+  test('button icon container', async () => {
     const wrapper = mount(VarButton, {
       props: {
         iconContainer: true,
@@ -186,7 +186,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button outline', async () => {
+  test('button outline', async () => {
     const wrapper = mount(VarButton, {
       props: {
         outline: true,
@@ -199,7 +199,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button disabled', async () => {
+  test('button disabled', async () => {
     const onClick = vi.fn()
     const onTouchstart = vi.fn()
 
@@ -219,7 +219,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button ripple', async () => {
+  test('button ripple', async () => {
     const onTouchstart = vi.fn()
     const wrapper = mount(VarButton, {
       props: {
@@ -243,7 +243,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button focusable', () => {
+  test('button focusable', () => {
     const wrapper = mount(VarButton, {
       props: {
         focusable: false,
@@ -254,7 +254,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button text color', () => {
+  test('button text color', () => {
     const wrapper = mount(VarButton, {
       props: {
         textColor: '#000',
@@ -264,7 +264,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button color', () => {
+  test('button color', () => {
     const wrapper = mount(VarButton, {
       props: {
         color: '#000',
@@ -274,7 +274,7 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('test button elevation', () => {
+  test('button elevation', () => {
     const wrapper = mount(VarButton, {
       props: {
         elevation: 4,
@@ -286,14 +286,19 @@ describe('test button component props', () => {
 })
 
 describe('test button component events', () => {
-  test('test button onClick & onTouchstart null callback', async () => {
+  test('button onClick & onTouchstart null callback', async () => {
+    const onClick = vi.fn()
+    const onTouchstart = vi.fn()
+
     const wrapper = mount(VarButton)
     await trigger(wrapper, 'click')
     await trigger(wrapper, 'touchstart')
+    expect(onClick).toHaveBeenCalledTimes(0)
+    expect(onTouchstart).toHaveBeenCalledTimes(0)
     wrapper.unmount()
   })
 
-  test('test button onClick & onTouchstart', async () => {
+  test('button onClick & onTouchstart', async () => {
     const onClick = vi.fn()
     const onTouchstart = vi.fn()
 
@@ -313,7 +318,7 @@ describe('test button component events', () => {
 })
 
 describe('test button component slots', () => {
-  test('test button default slot', () => {
+  test('button default slot', () => {
     const wrapper = mount(VarButton, {
       slots: {
         default: () => 'test',
@@ -326,7 +331,7 @@ describe('test button component slots', () => {
 })
 
 describe('test button group component props', () => {
-  test('test button group color and text-color', () => {
+  test('button group color and text-color', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         color: 'yellow',
@@ -341,7 +346,7 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('test button group type and size', () => {
+  test('button group type and size', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         type: 'primary',
@@ -356,7 +361,7 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('test button group text mode', () => {
+  test('button group text mode', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         mode: 'text',
@@ -370,7 +375,7 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('test button group icon-container mode', () => {
+  test('button group icon-container mode', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         mode: 'icon-container',
@@ -384,7 +389,7 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('test button group outline mode', () => {
+  test('button group outline mode', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         mode: 'outline',
@@ -398,7 +403,7 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('test button group elevation', () => {
+  test('button group elevation', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         elevation: 10,
@@ -414,7 +419,7 @@ describe('test button group component props', () => {
 })
 
 describe('test button group component slots', () => {
-  test('test button group default slot', () => {
+  test('button group default slot', () => {
     const wrapper = mount(VarButtonGroup, {
       slots: {
         default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),

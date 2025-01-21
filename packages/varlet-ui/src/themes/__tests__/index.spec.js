@@ -1,19 +1,19 @@
 import { expect, test } from 'vitest'
 import Themes from '..'
 
-test('test dark theme', () => {
+test('dark theme', () => {
   expect(Themes.dark).toMatchSnapshot()
 })
 
-test('test md3Light theme', () => {
+test('md3Light theme', () => {
   expect(Themes.md3Light).toMatchSnapshot()
 })
 
-test('test md3Dark theme', () => {
+test('md3Dark theme', () => {
   expect(Themes.md3Dark).toMatchSnapshot()
 })
 
-test('test toViewport', () => {
+test('toViewport', () => {
   expect(
     Themes.toViewport({
       '--a': '30px',

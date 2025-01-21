@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test dialog component slots > test dialog actions slot 1`] = `
+exports[`test dialog component slots > dialog actions slot 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 1998;">
     <div class="var-popup__overlay" style="z-index: 1999;"></div>
@@ -25,7 +25,7 @@ exports[`test dialog component slots > test dialog actions slot 1`] = `
 </transition-stub>"
 `;
 
-exports[`test dialog component slots > test dialog default slot 1`] = `
+exports[`test dialog component slots > dialog default slot 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 1998;">
     <div class="var-popup__overlay" style="z-index: 1999;"></div>
@@ -50,7 +50,7 @@ exports[`test dialog component slots > test dialog default slot 1`] = `
 </transition-stub>"
 `;
 
-exports[`test dialog component slots > test dialog title slot 1`] = `
+exports[`test dialog component slots > dialog title slot 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 1998;">
     <div class="var-popup__overlay" style="z-index: 1999;"></div>

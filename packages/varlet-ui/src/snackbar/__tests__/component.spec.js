@@ -5,12 +5,12 @@ import Snackbar from '..'
 import { delay, mockStubs } from '../../utils/test'
 import VarSnackbar from '../Snackbar'
 
-test('test snackbar component plugin', () => {
+test('snackbar component plugin', () => {
   const app = createApp({}).use(Snackbar.Component)
   expect(app.component(Snackbar.Component.name)).toBeTruthy()
 })
 
-test('test snackbar style', async () => {
+test('snackbar style', async () => {
   const template = `
      <var-snackbar
       v-model:show="show"
@@ -48,7 +48,7 @@ test('test snackbar style', async () => {
   wrapper.unmount()
 })
 
-test('test snackbar event', async () => {
+test('snackbar event', async () => {
   const open = vi.fn()
   const opened = vi.fn()
   const close = vi.fn()

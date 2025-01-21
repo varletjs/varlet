@@ -1,5 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test highlighterProvider highlighter 1`] = `"<div class="var-highlighter-provider"></div>"`;
+exports[`highlighterProvider highlighter 1`] = `"<div class="var-highlighter-provider"></div>"`;
 
-exports[`test highlighterProvider tag 1`] = `"<span class="var-highlighter-provider"></span>"`;
+exports[`highlighterProvider tag 1`] = `"<span class="var-highlighter-provider"></span>"`;

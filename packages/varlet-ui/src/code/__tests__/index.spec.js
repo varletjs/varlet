@@ -7,13 +7,13 @@ import VarHighlighterProvider from '../../highlighter-provider'
 import { delay } from '../../utils/test'
 import VarCode from '../Code'
 
-test('test code use', () => {
+test('code use', () => {
   const app = createApp({}).use(Code)
   expect(app.component(Code.name)).toBeTruthy()
 })
 
 describe('test code component props', () => {
-  test('test code content', async () => {
+  test('code content', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
@@ -35,7 +35,7 @@ describe('test code component props', () => {
     wrapper.unmount()
   })
 
-  test('test code language', async () => {
+  test('code language', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
@@ -57,7 +57,7 @@ describe('test code component props', () => {
     wrapper.unmount()
   })
 
-  test('test code theme', async () => {
+  test('code theme', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
@@ -79,7 +79,7 @@ describe('test code component props', () => {
     wrapper.unmount()
   })
 
-  test('test code word-wrap', async () => {
+  test('code word-wrap', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
@@ -103,7 +103,7 @@ describe('test code component props', () => {
     wrapper.unmount()
   })
 
-  test('test code trim', async () => {
+  test('code trim', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
@@ -125,7 +125,7 @@ describe('test code component props', () => {
     wrapper.unmount()
   })
 
-  test('test code no trim', async () => {
+  test('code no trim', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {

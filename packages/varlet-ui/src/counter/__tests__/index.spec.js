@@ -6,7 +6,7 @@ import Counter from '..'
 import { delay, trigger } from '../../utils/test'
 import VarCounter from '../Counter'
 
-test('test counter plugin', () => {
+test('counter plugin', () => {
   const app = createApp({}).use(Counter)
   expect(app.component(Counter.name)).toBeTruthy()
 })
@@ -21,7 +21,7 @@ const Wrapper = {
   template: `<var-counter v-model="value" />`,
 }
 
-test('test counter increment & decrement', async () => {
+test('counter increment & decrement', async () => {
   const wrapper = mount(Wrapper)
 
   await wrapper.find('.var-counter__increment-button').trigger('click')
@@ -32,7 +32,7 @@ test('test counter increment & decrement', async () => {
   wrapper.unmount()
 })
 
-test('test counter initial value over max', () => {
+test('counter initial value over max', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -46,7 +46,7 @@ test('test counter initial value over max', () => {
   wrapper.unmount()
 })
 
-test('test counter initial value less min', () => {
+test('counter initial value less min', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
@@ -60,7 +60,7 @@ test('test counter initial value less min', () => {
   wrapper.unmount()
 })
 
-test('test counter press increment', async () => {
+test('counter press increment', async () => {
   const wrapper = mount(Wrapper)
 
   await trigger(wrapper.find('.var-counter__increment-button'), 'touchstart')
@@ -76,7 +76,7 @@ test('test counter press increment', async () => {
   wrapper.unmount()
 })
 
-test('test counter press decrement', async () => {
+test('counter press decrement', async () => {
   const wrapper = mount(Wrapper)
 
   await trigger(wrapper.find('.var-counter__decrement-button'), 'touchstart')
@@ -92,7 +92,7 @@ test('test counter press decrement', async () => {
   wrapper.unmount()
 })
 
-test('test counter lazy change', async () => {
+test('counter lazy change', async () => {
   const wrapper = mount({
     ...Wrapper,
     methods: {
@@ -113,7 +113,7 @@ test('test counter lazy change', async () => {
   wrapper.unmount()
 })
 
-test('test counter disabled', async () => {
+test('counter disabled', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter disabled v-model="value" />`,
@@ -130,7 +130,7 @@ test('test counter disabled', async () => {
   wrapper.unmount()
 })
 
-test('test counter readonly', async () => {
+test('counter readonly', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter readonly v-model="value" />`,
@@ -145,7 +145,7 @@ test('test counter readonly', async () => {
   wrapper.unmount()
 })
 
-test('test counter validation', async () => {
+test('counter validation', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter ref="counter" :rules="[v => v > 0 || 'The value must be more than zero']" v-model="value" />`,
@@ -170,7 +170,7 @@ test('test counter validation', async () => {
   wrapper.unmount()
 })
 
-test('test counter step', async () => {
+test('counter step', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter :step="2" v-model="value" />`,
@@ -191,7 +191,7 @@ test('test counter step', async () => {
   wrapper.unmount()
 })
 
-test('test counter disableIncrement', async () => {
+test('counter disableIncrement', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter disableIncrement v-model="value" />`,
@@ -210,7 +210,7 @@ test('test counter disableIncrement', async () => {
   wrapper.unmount()
 })
 
-test('test counter disableDecrement', async () => {
+test('counter disableDecrement', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter disableDecrement v-model="value" />`,
@@ -229,7 +229,7 @@ test('test counter disableDecrement', async () => {
   wrapper.unmount()
 })
 
-test('test counter color', async () => {
+test('counter color', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter color="red" v-model="value" />`,
@@ -245,7 +245,7 @@ test('test counter color', async () => {
   wrapper.unmount()
 })
 
-test('test counter elevation', async () => {
+test('counter elevation', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter v-model="value" />`,
@@ -261,7 +261,7 @@ test('test counter elevation', async () => {
   wrapper.unmount()
 })
 
-test('test counter decimalLength', async () => {
+test('counter decimalLength', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter v-model="value" />`,
@@ -282,7 +282,7 @@ test('test counter decimalLength', async () => {
   wrapper.unmount()
 })
 
-test('test counter disableInput', async () => {
+test('counter disableInput', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter v-model="value" :disableInput="false" />`,
@@ -303,7 +303,7 @@ test('test counter disableInput', async () => {
   wrapper.unmount()
 })
 
-test('test counter incrementButton', async () => {
+test('counter incrementButton', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter incrementButton v-model="value" />`,
@@ -319,7 +319,7 @@ test('test counter incrementButton', async () => {
   wrapper.unmount()
 })
 
-test('test counter decrementButton', async () => {
+test('counter decrementButton', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter decrementButton v-model="value" />`,
@@ -335,7 +335,7 @@ test('test counter decrementButton', async () => {
   wrapper.unmount()
 })
 
-test('test counter buttonSize', async () => {
+test('counter buttonSize', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter :button-size="36" v-model="value" />`,
@@ -353,7 +353,7 @@ test('test counter buttonSize', async () => {
   wrapper.unmount()
 })
 
-test('test counter inputWidth', async () => {
+test('counter inputWidth', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter :input-width="36" v-model="value" />`,
@@ -369,7 +369,7 @@ test('test counter inputWidth', async () => {
   wrapper.unmount()
 })
 
-test('test counter inputTextSize', async () => {
+test('counter inputTextSize', async () => {
   const wrapper = mount({
     ...Wrapper,
     template: `<var-counter :input-text-size="36" v-model="value" />`,
@@ -385,7 +385,7 @@ test('test counter inputTextSize', async () => {
   wrapper.unmount()
 })
 
-test('test counter onChange', async () => {
+test('counter onChange', async () => {
   const onChange = vi.fn()
 
   const wrapper = mount({
@@ -408,7 +408,7 @@ test('test counter onChange', async () => {
   wrapper.unmount()
 })
 
-test('test counter onIncrement & onDecrement', async () => {
+test('counter onIncrement & onDecrement', async () => {
   const onIncrement = vi.fn()
   const onDecrement = vi.fn()
 
@@ -439,7 +439,7 @@ test('test counter onIncrement & onDecrement', async () => {
 
   wrapper.unmount()
 })
-test('test counter validation with zod', async () => {
+test('counter validation with zod', async () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({

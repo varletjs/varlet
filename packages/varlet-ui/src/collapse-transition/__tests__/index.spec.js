@@ -6,7 +6,7 @@ import { delay } from '../../utils/test'
 import VarCollapseTransition from '../CollapseTransition'
 
 describe('test collapseTransition render', () => {
-  test('test collapseTransition use', () => {
+  test('collapseTransition use', () => {
     const app = createApp({}).use(CollapseTransition)
 
     expect(app.component(CollapseTransition.name)).toBeTruthy()
@@ -14,7 +14,7 @@ describe('test collapseTransition render', () => {
 })
 
 describe('test collapseTransition props', () => {
-  test('test collapseTransition expand', async () => {
+  test('collapseTransition expand', async () => {
     const expand = ref(true)
     const template = `
      <var-collapse-transition :expand="expand">

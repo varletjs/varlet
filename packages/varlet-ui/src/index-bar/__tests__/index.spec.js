@@ -85,7 +85,7 @@ const Wrapper2 = {
   },
 }
 
-test('test indexBar and indexAnchor use', () => {
+test('indexBar and indexAnchor use', () => {
   const app = createApp({}).use(IndexBar).use(IndexAnchor)
 
   expect(app.component(IndexBar.name)).toBeTruthy()
@@ -93,7 +93,7 @@ test('test indexBar and indexAnchor use', () => {
 })
 
 describe('test index-bar component props', () => {
-  test('test sticky prop and it is value equal false', async () => {
+  test('sticky prop and it is value equal false', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         sticky: false,
@@ -107,7 +107,7 @@ describe('test index-bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test index-bar stickyOffsetTop', async () => {
+  test('index-bar stickyOffsetTop', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         stickyOffsetTop: '36px',
@@ -123,7 +123,7 @@ describe('test index-bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test index-bar hideList', async () => {
+  test('index-bar hideList', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         hideList: true,
@@ -143,7 +143,7 @@ describe('test index-bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test index-bar zIndex', async () => {
+  test('index-bar zIndex', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         zIndex: 2,
@@ -162,7 +162,7 @@ describe('test index-bar component props', () => {
     wrapper.unmount()
   })
 
-  test('test index-bar highlightColor', async () => {
+  test('index-bar highlightColor', async () => {
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
     await delay(100)
@@ -174,7 +174,7 @@ describe('test index-bar component props', () => {
 })
 
 describe('test index-bar component events', () => {
-  test('test index-bar click event', async () => {
+  test('index-bar click event', async () => {
     vi.clearAllMocks()
 
     const wrapper = mount(Wrapper2, { attachTo: document.body })
@@ -193,7 +193,7 @@ describe('test index-bar component events', () => {
     wrapper.unmount()
   })
 
-  test('test indexBar scrollTo method', async () => {
+  test('indexBar scrollTo method', async () => {
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
     await delay(100)
@@ -207,7 +207,7 @@ describe('test index-bar component events', () => {
     wrapper.unmount()
   })
 
-  test('test indexBar scroll to trigger change event', async () => {
+  test('indexBar scroll to trigger change event', async () => {
     vi.clearAllMocks()
 
     const { mockRestore } = mockIndexAnchorOffsetTop()

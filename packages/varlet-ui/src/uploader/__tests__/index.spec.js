@@ -12,12 +12,12 @@ const createEvent = (filename, type) => ({
   },
 })
 
-test('test uploader plugin', () => {
+test('uploader plugin', () => {
   const app = createApp({}).use(Uploader)
   expect(app.component(Uploader.name)).toBeTruthy()
 })
 
-test('test uploader onAfterRead', async () => {
+test('uploader onAfterRead', async () => {
   const onAfterRead = vi.fn()
 
   const wrapper = mount(VarUploader, {
@@ -32,7 +32,7 @@ test('test uploader onAfterRead', async () => {
   wrapper.unmount()
 })
 
-test('test uploader onBeforeFilter', async () => {
+test('uploader onBeforeFilter', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const wrapper = mount(VarUploader, {
     props: {
@@ -73,7 +73,7 @@ test('test uploader onBeforeFilter', async () => {
   wrapper.unmount()
 })
 
-test('test uploader onBeforeRead', async () => {
+test('uploader onBeforeRead', async () => {
   const onAfterRead = vi.fn()
 
   const wrapper = mount(VarUploader, {
@@ -92,7 +92,7 @@ test('test uploader onBeforeRead', async () => {
   wrapper.unmount()
 })
 
-test('test uploader preview', async () => {
+test('uploader preview', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -120,7 +120,7 @@ test('test uploader preview', async () => {
   mockRestore()
 })
 
-test('test uploader preview event', async () => {
+test('uploader preview event', async () => {
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onPreview = vi.fn()
 
@@ -143,7 +143,7 @@ test('test uploader preview event', async () => {
   wrapper.unmount()
 })
 
-test('test uploader prevent default preview', async () => {
+test('uploader prevent default preview', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -171,7 +171,7 @@ test('test uploader prevent default preview', async () => {
   mockRestore()
 })
 
-test('test uploader onOversize', async () => {
+test('uploader onOversize', async () => {
   const onOversize = vi.fn()
 
   const wrapper = mount(VarUploader, {
@@ -187,7 +187,7 @@ test('test uploader onOversize', async () => {
   wrapper.unmount()
 })
 
-test('test uploader onRemove', async () => {
+test('uploader onRemove', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onRemove = vi.fn()
@@ -212,7 +212,7 @@ test('test uploader onRemove', async () => {
   mockRestore()
 })
 
-test('test uploader onBeforeRemove', async () => {
+test('uploader onBeforeRemove', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onBeforeRemove = vi.fn(() => false)
@@ -240,7 +240,7 @@ test('test uploader onBeforeRemove', async () => {
   mockRestore()
 })
 
-test('test uploader validation', async () => {
+test('uploader validation', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -271,7 +271,7 @@ test('test uploader validation', async () => {
   mockRestore()
 })
 
-test('test uploader disabled', async () => {
+test('uploader disabled', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onRemove = vi.fn()
@@ -302,7 +302,7 @@ test('test uploader disabled', async () => {
   mockRestore()
 })
 
-test('test uploader length over maxlength in multiple mode', async () => {
+test('uploader length over maxlength in multiple mode', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -329,7 +329,7 @@ test('test uploader length over maxlength in multiple mode', async () => {
   mockRestore()
 })
 
-test('test uploader hideList', async () => {
+test('uploader hideList', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -356,7 +356,7 @@ test('test uploader hideList', async () => {
   mockRestore()
 })
 
-test('test uploader file utils', () => {
+test('uploader file utils', () => {
   const modelValue = [
     {
       id: 1,
@@ -386,7 +386,7 @@ test('test uploader file utils', () => {
   expect(wrapper.vm.getError()).toStrictEqual([modelValue[2]])
 })
 
-test('test uploader progress', () => {
+test('uploader progress', () => {
   const modelValue = [
     {
       id: 1,
@@ -407,7 +407,7 @@ test('test uploader progress', () => {
   wrapper.unmount()
 })
 
-test('test uploader extra slot', async () => {
+test('uploader extra slot', async () => {
   const wrapper = mount(VarUploader, {
     slots: {
       'extra-message': () => 'There are three files rest to upload',
@@ -420,7 +420,7 @@ test('test uploader extra slot', async () => {
   wrapper.unmount()
 })
 
-test('test uploader resolve-type as default when file type is image', async () => {
+test('uploader resolve-type as default when file type is image', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -442,7 +442,7 @@ test('test uploader resolve-type as default when file type is image', async () =
   mockRestore()
 })
 
-test('test uploader resolve-type as default when file type is not image', async () => {
+test('uploader resolve-type as default when file type is not image', async () => {
   const { mockRestore } = mockFileReader('data:')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -464,7 +464,7 @@ test('test uploader resolve-type as default when file type is not image', async 
   mockRestore()
 })
 
-test('test uploader resolve-type as file when file type is image', async () => {
+test('uploader resolve-type as file when file type is image', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -486,7 +486,7 @@ test('test uploader resolve-type as file when file type is image', async () => {
   mockRestore()
 })
 
-test('test uploader resolve-type as data-url when file type is image', async () => {
+test('uploader resolve-type as data-url when file type is image', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -508,7 +508,7 @@ test('test uploader resolve-type as data-url when file type is image', async () 
   mockRestore()
 })
 
-test('test uploader resolve-type as data-url when file type is not image', async () => {
+test('uploader resolve-type as data-url when file type is not image', async () => {
   const { mockRestore } = mockFileReader('data:')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -530,7 +530,7 @@ test('test uploader resolve-type as data-url when file type is not image', async
   mockRestore()
 })
 
-test('test uploader onClickAction', async () => {
+test('uploader onClickAction', async () => {
   const onClickAction = vi.fn()
 
   const wrapper = mount(VarUploader, {
@@ -548,7 +548,7 @@ test('test uploader onClickAction', async () => {
   wrapper.unmount()
 })
 
-test('test uploader removable', async () => {
+test('uploader removable', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -576,7 +576,7 @@ test('test uploader removable', async () => {
   mockRestore()
 })
 
-test('test uploader keyboard enter for chooseFile', async () => {
+test('uploader keyboard enter for chooseFile', async () => {
   const click = vi.fn()
   const origin = HTMLInputElement.prototype.click
   HTMLInputElement.prototype.click = click
@@ -595,7 +595,7 @@ test('test uploader keyboard enter for chooseFile', async () => {
   wrapper.unmount()
 })
 
-test('test uploader keyboard space for chooseFile', async () => {
+test('uploader keyboard space for chooseFile', async () => {
   const click = vi.fn()
   const origin = HTMLInputElement.prototype.click
   HTMLInputElement.prototype.click = click
@@ -615,7 +615,7 @@ test('test uploader keyboard space for chooseFile', async () => {
   wrapper.unmount()
 })
 
-test('test uploader validation with zod', async () => {
+test('uploader validation with zod', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -646,7 +646,7 @@ test('test uploader validation with zod', async () => {
   mockRestore()
 })
 
-test('test uploader remove button slot', () => {
+test('uploader remove button slot', () => {
   const { mockRestore: mockRestoreStubs } = mockStubs()
 
   const wrapper = mount(VarUploader, {

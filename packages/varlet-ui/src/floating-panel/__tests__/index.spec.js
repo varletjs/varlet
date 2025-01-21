@@ -5,13 +5,13 @@ import FloatingPanel from '..'
 import { triggerDrag } from '../../utils/test'
 import VarFloatingPanel from '../FloatingPanel.vue'
 
-test('test floating-panel plugin', () => {
+test('floating-panel plugin', () => {
   const app = createApp({}).use(FloatingPanel)
   expect(app.component(FloatingPanel.name)).toBeTruthy()
 })
 
 describe('test floating-panel components props', () => {
-  test('test floating-panel anchor', async () => {
+  test('floating-panel anchor', async () => {
     const onUpdateAnchor = vi.fn()
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
@@ -47,7 +47,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel anchors changed', async () => {
+  test('floating-panel anchors changed', async () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -69,7 +69,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel contentDraggable', async () => {
+  test('floating-panel contentDraggable', async () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -96,7 +96,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel safeArea', async () => {
+  test('floating-panel safeArea', async () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -113,7 +113,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel elevation', async () => {
+  test('floating-panel elevation', async () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -133,7 +133,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel duration', () => {
+  test('floating-panel duration', () => {
     const wrapper = mount(VarFloatingPanel, {
       props: {
         duration: 0.4,
@@ -147,7 +147,7 @@ describe('test floating-panel components props', () => {
 })
 
 describe('test floating-panel component slots', () => {
-  test('test floating-panel component default slot', () => {
+  test('floating-panel component default slot', () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -161,7 +161,7 @@ describe('test floating-panel component slots', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel component header slot', () => {
+  test('floating-panel component header slot', () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
@@ -177,7 +177,7 @@ describe('test floating-panel component slots', () => {
 })
 
 describe('test floating-panel component events', () => {
-  test('test floating-panel component onAnchorChange', async () => {
+  test('floating-panel component onAnchorChange', async () => {
     const onAnchorChange = vi.fn()
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {

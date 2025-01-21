@@ -6,12 +6,12 @@ import Menu from '..'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import VarMenu from '../Menu'
 
-test('test menu plugin', () => {
+test('menu plugin', () => {
   const app = createApp({}).use(Menu)
   expect(app.component(Menu.name)).toBeTruthy()
 })
 
-test('test menu placement', () => {
+test('menu placement', () => {
   ;[
     'top',
     'top-start',
@@ -52,7 +52,7 @@ test('test menu placement', () => {
   })
 })
 
-test('test menu click trigger', async () => {
+test('menu click trigger', async () => {
   const { mockRestore } = mockStubs()
 
   const wrapper = mount(VarMenu, {
@@ -72,7 +72,7 @@ test('test menu click trigger', async () => {
   mockRestore()
 })
 
-test('test menu manual trigger', async () => {
+test('menu manual trigger', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -93,7 +93,7 @@ test('test menu manual trigger', async () => {
   mockRestore()
 })
 
-test('test menu hover trigger and events', async () => {
+test('menu hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
   const onOpen = vi.fn()
@@ -136,7 +136,7 @@ test('test menu hover trigger and events', async () => {
   mockRestore()
 })
 
-test('test menu close on escape', async () => {
+test('menu close on escape', async () => {
   const { mockRestore } = mockStubs()
 
   const onClose = vi.fn()
@@ -162,7 +162,7 @@ test('test menu close on escape', async () => {
   mockRestore()
 })
 
-test('test menu default style', async () => {
+test('menu default style', async () => {
   const root = document.createElement('div')
 
   mount(VarMenu, {
@@ -177,7 +177,7 @@ test('test menu default style', async () => {
   expect(root.innerHTML).toMatchSnapshot()
 })
 
-test('test menu offset', async () => {
+test('menu offset', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -197,7 +197,7 @@ test('test menu offset', async () => {
   mockRestore()
 })
 
-test('test menu hover the menu list', async () => {
+test('menu hover the menu list', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -219,7 +219,7 @@ test('test menu hover the menu list', async () => {
   mockRestore()
 })
 
-test('test menu same width', async () => {
+test('menu same width', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')
@@ -239,7 +239,7 @@ test('test menu same width', async () => {
   mockRestore()
 })
 
-test('test menu elevation', async () => {
+test('menu elevation', async () => {
   const { mockRestore } = mockStubs()
 
   const root = document.createElement('div')

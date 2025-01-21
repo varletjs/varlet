@@ -4,12 +4,12 @@ import { delay, trigger } from '../../utils/test'
 import VarActionSheet from '../ActionSheet'
 import ActionSheet from '../index'
 
-test('test action sheet plugin', () => {
+test('action sheet plugin', () => {
   const app = createApp({}).use(ActionSheet)
   expect(app.component(VarActionSheet.name)).toBeTruthy()
 })
 
-test('test action sheet functional show & close', async () => {
+test('action sheet functional show & close', async () => {
   const onOpen = vi.fn()
   const onOpened = vi.fn()
   const onClose = vi.fn()
@@ -38,7 +38,7 @@ test('test action sheet functional show & close', async () => {
   expect(document.querySelector('.var-popup')).toBeFalsy()
 })
 
-test('test action sheet functional onSelect', async () => {
+test('action sheet functional onSelect', async () => {
   const onSelect = vi.fn()
 
   ActionSheet({
@@ -53,7 +53,7 @@ test('test action sheet functional onSelect', async () => {
   ActionSheet.close()
 })
 
-test('test action sheet functional disabled', async () => {
+test('action sheet functional disabled', async () => {
   const onSelect = vi.fn()
 
   ActionSheet({
@@ -74,7 +74,7 @@ test('test action sheet functional disabled', async () => {
   await delay(300)
 })
 
-test('test setDefaultOptions and resetDefaultOptions', async () => {
+test('setDefaultOptions and resetDefaultOptions', async () => {
   const onSelect = vi.fn()
   ActionSheet.setDefaultOptions({ onSelect })
 
@@ -98,7 +98,7 @@ test('test setDefaultOptions and resetDefaultOptions', async () => {
   await delay(300)
 })
 
-test('test safe area', async () => {
+test('safe area', async () => {
   ActionSheet({
     actions: [{ name: 'Item 01' }],
     safeArea: true,

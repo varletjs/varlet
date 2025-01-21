@@ -5,12 +5,12 @@ import Icon from '..'
 import { delay } from '../../utils/test'
 import VarIcon from '../Icon'
 
-test('test icon plugin', () => {
+test('icon plugin', () => {
   const app = createApp({}).use(Icon)
   expect(app.component(Icon.name)).toBeTruthy()
 })
 
-test('test icon onClick', () => {
+test('icon onClick', () => {
   const onClick = vi.fn()
   const wrapper = mount(VarIcon, {
     props: {
@@ -24,7 +24,7 @@ test('test icon onClick', () => {
 })
 
 describe('test icon component props', () => {
-  test('test icon name', () => {
+  test('icon name', () => {
     const wrapper = mount(VarIcon, {
       props: {
         name: 'checkbox-marked-circle',
@@ -35,7 +35,7 @@ describe('test icon component props', () => {
     wrapper.unmount()
   })
 
-  test('test icon size', async () => {
+  test('icon size', async () => {
     const wrapper = mount(VarIcon, {
       props: {
         size: '20px',
@@ -48,7 +48,7 @@ describe('test icon component props', () => {
     wrapper.unmount()
   })
 
-  test('test icon color', () => {
+  test('icon color', () => {
     const wrapper = mount(VarIcon, {
       props: {
         color: 'red',
@@ -59,7 +59,7 @@ describe('test icon component props', () => {
     wrapper.unmount()
   })
 
-  test('test icon namespace', () => {
+  test('icon namespace', () => {
     const wrapper = mount(VarIcon, {
       props: {
         namespace: 'my-icons',
@@ -70,7 +70,7 @@ describe('test icon component props', () => {
     wrapper.unmount()
   })
 
-  test('test icon transition', async () => {
+  test('icon transition', async () => {
     const wrapper = mount(VarIcon, {
       props: {
         transition: 0,
