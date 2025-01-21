@@ -1,3 +1,12 @@
+## [3.8.4](https://github.com/varletjs/varlet/compare/v3.8.3...v3.8.4) (2025-01-21)
+
+
+### Features
+
+* **input:** add aria-label prop for accessibility and update tests ([#1844](https://github.com/varletjs/varlet/issues/1844)) ([359819a](https://github.com/varletjs/varlet/commit/359819a5997c7b7848f1cac988d4081e5bb994a6))
+
+
+
 ## [3.8.3](https://github.com/varletjs/varlet/compare/v3.8.2...v3.8.3) (2025-01-12)
 
 
