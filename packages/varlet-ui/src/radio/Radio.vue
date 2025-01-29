@@ -13,7 +13,7 @@
             [formDisabled || disabled, n('--disabled')],
           )
         "
-        :tabindex="formDisabled || disabled ? undefined : checked ? '0' : '-1'"
+        :tabindex="tabIndex"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
         @focus="isFocusing = true"
         @blur="isFocusing = false"
@@ -82,6 +82,14 @@ export default defineComponent({
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
+    const tabIndex = computed(() => {
+      console.log(radioGroup)
+      return form?.disabled.value || props.disabled
+        ? undefined
+        : checked.value || (!checked.value && !radioGroup)
+          ? '0'
+          : '-1'
+    })
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -216,6 +224,7 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
+      tabIndex,
       handleHovering,
       n,
       classes,
