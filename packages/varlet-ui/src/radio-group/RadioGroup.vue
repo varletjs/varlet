@@ -1,6 +1,6 @@
 <template>
   <div :class="n('wrap')">
-    <div :class="classes(n(), n(`--${direction}`))">
+    <ul :aria-label="ariaLabel" role="radiogroup" :class="classes(n(), n(`--${direction}`))">
       <template v-if="options.length">
         <var-radio
           v-for="option in options"
@@ -14,7 +14,7 @@
         </var-radio>
       </template>
       <slot />
-    </div>
+    </ul>
 
     <var-form-details :error-message="errorMessage" />
   </div>

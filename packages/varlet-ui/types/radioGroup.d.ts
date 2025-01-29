@@ -28,6 +28,7 @@ export interface RadioGroupProps extends BasicAttributes {
   modelValue?: any
   direction?: RadioGroupDirection
   options?: RadioGroupOption[]
+  ariaLabel?: string
   labelKey?: string
   valueKey?: string
   validateTrigger?: RadioGroupValidateTrigger[]
