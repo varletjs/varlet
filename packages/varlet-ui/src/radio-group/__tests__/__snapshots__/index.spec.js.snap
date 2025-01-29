@@ -420,7 +420,7 @@ exports[`radio group value-key 1`] = `
 exports[`radio validation 1`] = `
 "<li class="var-radio__wrap">
   <div role="radio" aria-checked="false" class="var-radio">
-    <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
     </div>
     <!--v-if-->
@@ -459,7 +459,7 @@ exports[`radio validation 2`] = `
 exports[`test validation with zod > radio 1`] = `
 "<li class="var-radio__wrap">
   <div role="radio" aria-checked="false" class="var-radio">
-    <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
     </div>
     <!--v-if-->
