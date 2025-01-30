@@ -4,6 +4,8 @@
 
 Used to take values within a given range.
 
+Note: This component is dependent on [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/main/packages/varlet-touch-emulator) for it's sliding instant-update effect.
+
 ### Basic Usage
 
 ```html
