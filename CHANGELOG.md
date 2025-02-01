@@ -1,3 +1,12 @@
+## [3.8.5](https://github.com/varletjs/varlet/compare/v3.8.4...v3.8.5) (2025-02-01)
+
+
+### Features
+
+* enhance radio group accessibility ([#1848](https://github.com/varletjs/varlet/issues/1848)) ([e3a1648](https://github.com/varletjs/varlet/commit/e3a1648bd33babc903df68c11b3c79bfcdf337dd))
+
+
+
 ## [3.8.4](https://github.com/varletjs/varlet/compare/v3.8.3...v3.8.4) (2025-01-21)
 
 
