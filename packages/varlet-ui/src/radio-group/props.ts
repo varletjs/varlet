@@ -28,6 +28,10 @@ export const props = {
     type: Array as PropType<RadioGroupOption[]>,
     default: () => [],
   },
+  ariaLabel: {
+    type: String,
+    default: '',
+  },
   labelKey: {
     type: String,
     default: 'label',

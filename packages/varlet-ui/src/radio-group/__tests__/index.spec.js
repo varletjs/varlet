@@ -310,6 +310,39 @@ test('radio group options', async () => {
   wrapper.unmount()
 })
 
+test('radio accessibility', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { label: 'eat', value: 0 },
+        { label: 'sleep', value: 1 },
+      ],
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options" aria-label="Radio Group">
+      </var-radio-group>
+    `,
+  })
+
+  const group = wrapper.find('.var-radio-group')
+  expect(group.attributes('role')).toBe('radiogroup')
+  expect(group.attributes('aria-label')).toBe('Radio Group')
+
+  const children = wrapper.findAll('.var-radio')
+  const option = children[0]
+
+  await trigger(option, 'click')
+
+  expect(option.attributes('aria-checked')).toBe('true')
+
+  wrapper.unmount()
+})
+
 test('radio group label-key', async () => {
   const wrapper = mount({
     components: {
