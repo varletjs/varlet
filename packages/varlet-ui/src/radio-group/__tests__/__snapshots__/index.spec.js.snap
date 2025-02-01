@@ -2,10 +2,10 @@
 
 exports[`radio group label is VNode 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text">
@@ -15,10 +15,10 @@ exports[`radio group label is VNode 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text">
@@ -28,8 +28,8 @@ exports[`radio group label is VNode 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -41,8 +41,8 @@ exports[`radio group label is VNode 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -51,10 +51,10 @@ exports[`radio group label is VNode 1`] = `
 
 exports[`radio group label is function 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>0-false</span></div>
@@ -62,10 +62,10 @@ exports[`radio group label is function 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>1-false</span></div>
@@ -73,8 +73,8 @@ exports[`radio group label is function 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -84,8 +84,8 @@ exports[`radio group label is function 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -94,10 +94,10 @@ exports[`radio group label is function 1`] = `
 
 exports[`radio group label is function 2`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>0-false</span></div>
@@ -105,10 +105,10 @@ exports[`radio group label is function 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>1-true</span></div>
@@ -116,8 +116,8 @@ exports[`radio group label is function 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -127,8 +127,8 @@ exports[`radio group label is function 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -137,10 +137,10 @@ exports[`radio group label is function 2`] = `
 
 exports[`radio group label is function 3`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>0-false</span></div>
@@ -148,10 +148,10 @@ exports[`radio group label is function 3`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>1-true</span></div>
@@ -159,8 +159,8 @@ exports[`radio group label is function 3`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -170,8 +170,8 @@ exports[`radio group label is function 3`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -180,10 +180,10 @@ exports[`radio group label is function 3`] = `
 
 exports[`radio group label-key 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>eat</span></div>
@@ -191,10 +191,10 @@ exports[`radio group label-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>sleep</span></div>
@@ -202,8 +202,8 @@ exports[`radio group label-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -213,8 +213,8 @@ exports[`radio group label-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -223,11 +223,11 @@ exports[`radio group label-key 1`] = `
 
 exports[`radio group layout direction 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--vertical">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--vertical">
     <!--v-if-->
-    <li class="var-radio__wrap">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -235,10 +235,10 @@ exports[`radio group layout direction 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -246,8 +246,8 @@ exports[`radio group layout direction 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -256,10 +256,10 @@ exports[`radio group layout direction 1`] = `
 
 exports[`radio group options 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>eat</span></div>
@@ -267,10 +267,10 @@ exports[`radio group options 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>sleep</span></div>
@@ -278,8 +278,8 @@ exports[`radio group options 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -289,8 +289,8 @@ exports[`radio group options 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -299,11 +299,11 @@ exports[`radio group options 1`] = `
 
 exports[`radio group validation 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
-    <li class="var-radio__wrap">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -311,10 +311,10 @@ exports[`radio group validation 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -322,8 +322,8 @@ exports[`radio group validation 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <div class="var-form-details">
       <div class="var-form-details__error-message">
@@ -343,11 +343,11 @@ exports[`radio group validation 1`] = `
 
 exports[`radio group validation 2`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
-    <li class="var-radio__wrap">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -355,10 +355,10 @@ exports[`radio group validation 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -366,8 +366,8 @@ exports[`radio group validation 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -376,10 +376,10 @@ exports[`radio group validation 2`] = `
 
 exports[`radio group value-key 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
-    <li class="var-radio__wrap">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>eat</span></div>
@@ -387,10 +387,10 @@ exports[`radio group value-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>sleep</span></div>
@@ -398,8 +398,8 @@ exports[`radio group value-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
         <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -409,8 +409,8 @@ exports[`radio group value-key 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -418,7 +418,7 @@ exports[`radio group value-key 1`] = `
 `;
 
 exports[`radio validation 1`] = `
-"<li class="var-radio__wrap">
+"<div class="var-radio__wrap">
   <div role="radio" aria-checked="false" class="var-radio">
     <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -439,11 +439,11 @@ exports[`radio validation 1`] = `
       </div>
     </div>
   </transition-stub>
-</li>"
+</div>"
 `;
 
 exports[`radio validation 2`] = `
-"<li class="var-radio__wrap">
+"<div class="var-radio__wrap">
   <div role="radio" aria-checked="true" class="var-radio">
     <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -453,11 +453,11 @@ exports[`radio validation 2`] = `
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-</li>"
+</div>"
 `;
 
 exports[`test validation with zod > radio 1`] = `
-"<li class="var-radio__wrap">
+"<div class="var-radio__wrap">
   <div role="radio" aria-checked="false" class="var-radio">
     <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -478,11 +478,11 @@ exports[`test validation with zod > radio 1`] = `
       </div>
     </div>
   </transition-stub>
-</li>"
+</div>"
 `;
 
 exports[`test validation with zod > radio 2`] = `
-"<li class="var-radio__wrap">
+"<div class="var-radio__wrap">
   <div role="radio" aria-checked="true" class="var-radio">
     <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -492,16 +492,16 @@ exports[`test validation with zod > radio 2`] = `
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-</li>"
+</div>"
 `;
 
 exports[`test validation with zod > radio group 1`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
-    <li class="var-radio__wrap">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -509,10 +509,10 @@ exports[`test validation with zod > radio group 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -520,8 +520,8 @@ exports[`test validation with zod > radio group 1`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <div class="var-form-details">
       <div class="var-form-details__error-message">
@@ -541,11 +541,11 @@ exports[`test validation with zod > radio group 1`] = `
 
 exports[`test validation with zod > radio group 2`] = `
 "<div class="var-radio-group__wrap">
-  <ul aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
+  <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <!--v-if-->
-    <li class="var-radio__wrap">
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -553,10 +553,10 @@ exports[`test validation with zod > radio group 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-    <li class="var-radio__wrap">
+    </div>
+    <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -564,8 +564,8 @@ exports[`test validation with zod > radio group 2`] = `
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
       </transition-stub>
-    </li>
-  </ul>
+    </div>
+  </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>

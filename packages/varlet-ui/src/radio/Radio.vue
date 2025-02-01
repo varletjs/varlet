@@ -1,5 +1,5 @@
 <template>
-  <li :class="n('wrap')">
+  <div :class="n('wrap')">
     <div role="radio" :aria-checked="checked" :class="n()" v-bind="$attrs" @click="handleClick">
       <div
         ref="action"
@@ -45,7 +45,7 @@
     </div>
 
     <var-form-details :error-message="errorMessage" />
-  </li>
+  </div>
 </template>
 
 <script lang="ts">
@@ -82,14 +82,9 @@ export default defineComponent({
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
-    const tabIndex = computed(() => {
-      console.log(radioGroup)
-      return form?.disabled.value || props.disabled
-        ? undefined
-        : checked.value || (!checked.value && !radioGroup)
-          ? '0'
-          : '-1'
-    })
+    const tabIndex = computed(() =>
+      form?.disabled.value || props.disabled || (checked.value && radioGroup) ? undefined : '0',
+    )
     const {
       errorMessage,
       validateWithTrigger: vt,
