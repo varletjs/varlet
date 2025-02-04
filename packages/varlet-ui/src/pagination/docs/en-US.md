@@ -8,36 +8,37 @@ You may need it when you need to process large amounts of data.
 
 ### Intro
 
-The default display mode is recommended for small-screen devices. See the mobile phone emulator on the right for a preview of the components.
+A default display mode, recommended for small-screen devices.
 
-### Basic Usage
+### Basic Use
 
 ```html
 <template>
-  <var-pagination :current="3" :total="120" />
+  <var-pagination :current="1" :total="20" />
 </template>
 ```
 
 ### Hide Size Changer
 
-Use `show-size-changer` prop to hide size changer.
+Use `show-size-changer` to control the display and hiding of the `size` controller.
 
 ```html
 <template>
-  <var-pagination :current="3" :total="120" :show-size-changer="false"/>
+  <var-pagination :current="1" :total="20" :show-size-changer="false" />
 </template>
 ```
 
 ### Show Total
 
-Use `showTatol` prop to show custom total text.
+Use the `showTotal` prop to customize the total display.
 
 ```html
 <template>
   <var-pagination
-    :current="3"
-    :total="66"
-    :show-total="total => `Total ${total} items`"
+    :current="1"
+    :total="20"
+    :show-size-changer="false"
+    :show-total="total => `${total} items`"
   />
 </template>
 ```
@@ -46,7 +47,7 @@ Use `showTatol` prop to show custom total text.
 
 ```html
 <template>
-  <var-pagination :current="3" :total="115" disabled />
+  <var-pagination :current="1" :total="20" disabled />
 </template>
 ```
 
@@ -54,74 +55,39 @@ Use `showTatol` prop to show custom total text.
 
 ### Intro
 
-Set `simple` to `false` when you use medium and large screen devices, preview see `playground`.
+When the `simple` property is `false`, we can enable the paging style designed specifically for wide screens.
 
-### Basic Usage
+### Basic Use
 
 ```html
 <template>
-  <var-pagination :current="6" :total="115" :simple="false"/>
+  <var-pagination :simple="false" :current="1" :total="20" />
 </template>
 ```
 
-### Enable Page Number To Jump Quickly
+### Hide Size Changer
 
-Use `show-quick-jumper` prop to enable page number to jump quickly.
-
-```html
-<template>
-  <var-pagination
-    :current="3"
-    :total="120"
-    :simple="false"
-    show-quick-jumper
-  />
-</template>
-```
-
-### Size Option
-
-Use `show-size-changer` hide size changer and use `size-option` prop set the number of `size` that can be chosen.
+Use `show-size-changer` to control the display and hiding of the `size` controller.
 
 ```html
 <template>
-  <var-space direction="column" :size="[14, 14]">
-    <var-pagination
-      :current="3"
-      :total="120"
-      :simple="false"
-      :show-size-changer="false"
-    />
-    <var-pagination
-      :current="3"
-      :total="120"
-      :simple="false"
-      :size-option="[10, 20, 30, 40]"
-    />
-  </var-space>
+  <var-pagination :current="1" :total="20" :simple="false" :show-size-changer="false" />
 </template>
 ```
 
 ### Show Total
 
+Use the `showTotal` prop to customize the total display.
+
 ```html
 <template>
-  <var-space direction="column" :size="[14, 14]">
-    <var-pagination
-      :current="3"
-      :size="10"
-      :total="120"
-      :simple="false"
-      :show-total="total => `Total ${total} items`"
-    />
-    <var-pagination
-      :current="3"
-      :size="10"
-      :total="120"
-      :simple="false"
-      :show-total="(total, range) => `Total ${total}, current ${range[0]}-${range[1]}`"
-    />
-  </var-space>
+  <var-pagination
+    :current="1"
+    :total="20"
+    :simple="false"
+    :show-size-changer="false"
+    :show-total="total => `${total} items`"
+  />
 </template>
 ```
 
@@ -129,7 +95,23 @@ Use `show-size-changer` hide size changer and use `size-option` prop set the num
 
 ```html
 <template>
-  <var-pagination :current="6" :total="120" :simple="false" disabled />
+  <var-pagination :simple="false" :current="1" :total="20" disabled />
+</template>
+```
+
+### Quick Jumper
+
+Use the `show-quick-jumper` property to enable quick page jumps.
+
+```html
+<template>
+  <var-pagination 
+    :simple="false" 
+    :current="1" 
+    :total="20" 
+    :show-size-changer="false" 
+    show-quick-jumper
+  />
 </template>
 ```
 
@@ -175,14 +157,18 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--pagination-active-color` | `var(--color-on-primary)` |
 | `--pagination-active-bg-color` | `var(--color-primary)` |
 | `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
-| `--pagination-total-margin` | `0 12px` |
+| `--pagination-total-margin` | `0 10px` |
 | `--pagination-total-line-height` | `24px` |
 | `--pagination-item-width` | `32px` |
 | `--pagination-item-height` | `32px` |
 | `--pagination-item-margin` | `0 6px` |
 | `--pagination-item-border-radius` | `4px` |
+| `--pagination-item-background` | `#fff` |
+| `--pagination-item-border-radius` | `4px` |
+| `--pagination-item-simple-border-radius` | `50%` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
 | `--pagination-size-line-height` | `24px` |
-| `--pagination-size-padding` | `0 6px` |
+| `--pagination-size-padding` | `0 4px` |
+| `--pagination-quick-jumper-margin` | `0 10px` |

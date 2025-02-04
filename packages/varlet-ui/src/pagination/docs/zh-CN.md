@@ -8,13 +8,13 @@
 
 ### 介绍
 
-默认的一种显示模式，推荐在小屏设备上使用，组件预览见右侧手机模拟器。
+默认的一种显示模式，推荐在小屏设备上使用。
 
 ### 基本使用
 
 ```html
 <template>
-  <var-pagination :current="3" :total="120" />
+  <var-pagination :current="1" :total="20" />
 </template>
 ```
 
@@ -24,19 +24,20 @@
 
 ```html
 <template>
-  <var-pagination :current="3" :total="120" :show-size-changer="false"/>
+  <var-pagination :current="1" :total="20" :show-size-changer="false" />
 </template>
 ```
 
 ### 显示总数
 
-使用 `showTatol` 属性自定义总数显示。
+使用 `showTotal` 属性自定义总数显示。
 
 ```html
 <template>
   <var-pagination
-    :current="3"
-    :total="66"
+    :current="1"
+    :total="20"
+    :show-size-changer="false"
     :show-total="total => `共 ${total} 条`"
   />
 </template>
@@ -46,23 +47,56 @@
 
 ```html
 <template>
-  <var-pagination :current="3" :total="115" disabled />
+  <var-pagination :current="1" :total="20" disabled />
 </template>
 ```
 
 ## 普通模式
 
-
 ### 介绍
 
-`simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格，预览效果见 `playground`。
-
+`simple` 属性为 `false` 时，可以开启我们专门为宽屏设计的分页风格
 
 ### 基本使用
 
 ```html
 <template>
-  <var-pagination :current="6" :total="115" :simple="false"/>
+  <var-pagination :simple="false" :current="1" :total="20" />
+</template>
+```
+
+### 隐藏 size 控制器
+
+使用 `show-size-changer` 可以控制 `size` 控制器的显示和隐藏。
+
+```html
+<template>
+  <var-pagination :current="1" :total="20" :simple="false" :show-size-changer="false" />
+</template>
+```
+
+
+### 显示总数
+
+使用 `showTotal` 属性自定义总数显示。
+
+```html
+<template>
+  <var-pagination
+    :current="1"
+    :total="20"
+    :simple="false"
+    :show-size-changer="false"
+    :show-total="total => `共 ${total} 条`"
+  />
+</template>
+```
+
+### 禁用
+
+```html
+<template>
+  <var-pagination :simple="false" :current="1" :total="20" disabled />
 </template>
 ```
 
@@ -72,67 +106,13 @@
 
 ```html
 <template>
-  <var-pagination
-    :current="3"
-    :total="120"
-    :simple="false"
+  <var-pagination 
+    :simple="false" 
+    :current="1" 
+    :total="20" 
+    :show-size-changer="false" 
     show-quick-jumper
   />
-</template>
-```
-
-### Size 配置
-
-使用 `show-size-changer` 可以隐藏 `size` 切换器。
-使用 `size-option` 指定可以显示的条数。
-
-```html
-<template>
-  <var-space direction="column" :size="[14, 14]">
-    <var-pagination 
-      :current="3" 
-      :total="120" 
-      :simple="false" 
-      :show-size-changer="false" 
-    />
-    <var-pagination 
-      :current="3" 
-      :total="120" 
-      :simple="false" 
-      :size-option="[10, 20, 30, 40]" 
-    />
-  </var-space>
-</template>
-```
-
-### 自定义显示总数
-
-```html
-<template>
-  <var-space direction="column" :size="[14, 14]">
-    <var-pagination
-      :current="3"
-      :size="10"
-      :total="120"
-      :simple="false"
-      :show-total="total => `共 ${total} 条`"
-    />
-    <var-pagination
-      :current="3"
-      :size="10"
-      :total="120"
-      :simple="false"
-      :show-total="(total, range) => `共 ${total}, 当前 ${range[0]}-${range[1]}`"
-    />
-  </var-space>
-</template>
-```
-
-### 禁用
-
-```html
-<template>
-  <var-pagination :current="6" :total="120" :simple="false" disabled />
 </template>
 ```
 
@@ -178,14 +158,18 @@
 | `--pagination-active-color` | `var(--color-on-primary)` |
 | `--pagination-active-bg-color` | `var(--color-primary)` |
 | `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
-| `--pagination-total-margin` | `0 12px` |
+| `--pagination-total-margin` | `0 10px` |
 | `--pagination-total-line-height` | `24px` |
 | `--pagination-item-width` | `32px` |
 | `--pagination-item-height` | `32px` |
 | `--pagination-item-margin` | `0 6px` |
 | `--pagination-item-border-radius` | `4px` |
+| `--pagination-item-background` | `#fff` |
+| `--pagination-item-border-radius` | `4px` |
+| `--pagination-item-simple-border-radius` | `50%` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
 | `--pagination-size-line-height` | `24px` |
-| `--pagination-size-padding` | `0 6px` |
+| `--pagination-size-padding` | `0 4px` |
+| `--pagination-quick-jumper-margin` | `0 10px` |

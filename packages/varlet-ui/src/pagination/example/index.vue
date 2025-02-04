@@ -7,26 +7,43 @@ onThemeChange()
 </script>
 
 <template>
+  <app-type>{{ t('simple') }}</app-type>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <div class="transformer">
-    <var-pagination :current="3" :total="120" />
-  </div>
-  <app-type>{{ t('hideSize') }}</app-type>
-  <div class="transformer">
-    <var-pagination :current="3" :total="120" :show-size-changer="false" />
-  </div>
-  <app-type>{{ t('showTotal') }}</app-type>
-  <div class="transformer">
-    <var-pagination :current="3" :total="120" :show-total="(total) => `${t('total')} ${total} ${t('item')}`" />
-  </div>
-  <app-type>{{ t('disabled') }}</app-type>
-  <div class="transformer">
-    <var-pagination :current="3" :total="120" disabled />
-  </div>
-</template>
+  <var-pagination :current="1" :total="20" />
 
-<style lang="less" scoped>
-.transformer {
-  transform: translateX(-10px);
-}
-</style>
+  <app-type>{{ t('hideSize') }}</app-type>
+  <var-pagination :current="1" :total="20" :show-size-changer="false" />
+
+  <app-type>{{ t('showTotal') }}</app-type>
+  <var-pagination
+    :current="1"
+    :total="20"
+    :show-size-changer="false"
+    :show-total="(total) => `${t('total')} ${total} ${t('item')}`"
+  />
+
+  <app-type>{{ t('disabled') }}</app-type>
+  <var-pagination :current="1" :total="20" disabled />
+
+  <app-type style="margin-top: 20px">{{ t('basic') }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-pagination :simple="false" :current="1" :total="20" />
+
+  <app-type>{{ t('hideSize') }}</app-type>
+  <var-pagination :current="1" :total="20" :simple="false" :show-size-changer="false" />
+
+  <app-type>{{ t('showTotal') }}</app-type>
+  <var-pagination
+    :current="1"
+    :total="20"
+    :simple="false"
+    :show-size-changer="false"
+    :show-total="(total) => `${t('total')} ${total} ${t('item')}`"
+  />
+
+  <app-type>{{ t('disabled') }}</app-type>
+  <var-pagination :simple="false" :current="1" :total="20" disabled />
+
+  <app-type>{{ t('quickJumper') }}</app-type>
+  <var-pagination :simple="false" :current="1" :total="20" :show-size-changer="false" show-quick-jumper />
+</template>

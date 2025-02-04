@@ -5,7 +5,7 @@ export default {
   '--pagination-font-size': 'var(--font-size-md)',
   '--pagination-active-color': 'var(--color-on-primary)',
   '--pagination-active-bg-color': 'var(--color-primary)',
-  '--pagination-total-margin': '0 12px',
+  '--pagination-total-margin': '0 10px',
   '--pagination-total-line-height': '24px',
   '--pagination-item-width': '32px',
   '--pagination-item-height': '32px',
@@ -16,5 +16,6 @@ export default {
   '--pagination-disabled-color': 'var(--color-text-disabled)',
   '--pagination-bg-disabled-color': 'var(--color-disabled)',
   '--pagination-size-line-height': '24px',
-  '--pagination-size-padding': '0 6px',
+  '--pagination-size-padding': '0 4px',
+  '--pagination-quick-jumper-margin': '0 10px',
 }

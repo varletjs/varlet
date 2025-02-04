@@ -482,11 +482,14 @@ interface BaseStyleVars {
   '--pagination-item-height'?: string
   '--pagination-item-margin'?: string
   '--pagination-item-border-radius'?: string
+  '--pagination-item-background'?: string
+  '--pagination-item-simple-border-radius'?: string
   '--pagination-input-width'?: string
   '--pagination-disabled-color'?: string
   '--pagination-bg-disabled-color'?: string
   '--pagination-size-line-height'?: string
   '--pagination-size-padding'?: string
+  '--pagination-quick-jumper-margin'?: string
   '--paper-background'?: string
   '--paper-border-radius'?: string
   '--picker-background'?: string

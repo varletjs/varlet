@@ -26,13 +26,13 @@ exports[`Size related props 1`] = `
     </div><span> / 6 <div class="var-pagination__simple-line"></div></span>
   </li>
   <li class="var-pagination__item var-pagination__next var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-  <li class="var-pagination__size">
-    <div class="var-menu var--box var-menu-select" tabindex="-1">
+  <div class="var-menu var--box var-menu-select" tabindex="-1">
+    <li class="var-pagination__size">
       <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>20条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-  </li>
+    </li>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
   <!--v-if-->
   <!--v-if-->
 </ul>"
@@ -74,13 +74,13 @@ exports[`basic mode > disabled prop 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-elevation--2"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__item var-pagination__next var-pagination__item--disabled var-elevation--2"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-  <li class="var-pagination__size var-pagination__item--disabled">
-    <div class="var-menu var--box var-menu-select" tabindex="-1">
+  <div class="var-menu var--box var-menu-select" tabindex="-1">
+    <li class="var-pagination__size var-pagination__item--disabled">
       <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-  </li>
+    </li>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
   <!--v-if-->
   <!--v-if-->
 </ul>"
@@ -97,13 +97,13 @@ exports[`basic mode > mount 1`] = `
   <li item-mode="tail" class="var-pagination__item var-elevation--2">...</li>
   <li item-mode="basic" class="var-pagination__item var-elevation--2">13</li>
   <li class="var-pagination__item var-pagination__next var-elevation--2"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-  <li class="var-pagination__size">
-    <div class="var-menu var--box var-menu-select" tabindex="-1">
+  <div class="var-menu var--box var-menu-select" tabindex="-1">
+    <li class="var-pagination__size">
       <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-  </li>
+    </li>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
   <li class="var-pagination__quickly">前往 <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
@@ -155,13 +155,13 @@ exports[`simple mode > disabled prop 1`] = `
     </div><span> / 0 <div class="var-pagination__simple-line"></div></span>
   </li>
   <li class="var-pagination__item var-pagination__next var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-  <li class="var-pagination__size var-pagination__item--disabled">
-    <div class="var-menu var--box var-menu-select" tabindex="-1">
+  <div class="var-menu var--box var-menu-select" tabindex="-1">
+    <li class="var-pagination__size var-pagination__item--disabled">
       <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-  </li>
+    </li>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
   <!--v-if-->
   <!--v-if-->
 </ul>"
@@ -193,13 +193,13 @@ exports[`simple mode > mount 1`] = `
     </div><span> / 13 <div class="var-pagination__simple-line"></div></span>
   </li>
   <li class="var-pagination__item var-pagination__next var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-  <li class="var-pagination__size">
-    <div class="var-menu var--box var-menu-select" tabindex="-1">
+  <div class="var-menu var--box var-menu-select" tabindex="-1">
+    <li class="var-pagination__size">
       <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-      <!--teleport start-->
-      <!--teleport end-->
-    </div>
-  </li>
+    </li>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
   <!--v-if-->
   <li class="var-pagination__total">1-10 of 123 items</li>
 </ul>"

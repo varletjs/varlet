@@ -67,20 +67,21 @@
       </slot>
     </li>
 
-    <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
-      <var-menu-select v-model="size" placement="cover-top" :disabled="disabled">
+    <var-menu-select v-if="showSizeChanger" v-model="size" placement="cover-top" :disabled="disabled">
+      <li :class="classes(n('size'), [disabled, n('item--disabled')])">
         <div :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])">
           <span>{{ size }}{{ (pt ? pt : t)('paginationItem') }} / {{ (pt ? pt : t)('paginationPage') }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
+      </li>
 
-        <template #options>
-          <var-menu-option v-for="(option, index) in sizeOption" :key="index" :value="option" @click="clickSize">
-            {{ option }}{{ (pt ? pt : t)('paginationItem') }} / {{ (pt ? pt : t)('paginationPage') }}
-          </var-menu-option>
-        </template>
-      </var-menu-select>
-    </li>
+      <template #options>
+        <var-menu-option v-for="(option, index) in sizeOption" :key="index" :value="option" @click="clickSize">
+          {{ option }}{{ (pt ? pt : t)('paginationItem') }} / {{ (pt ? pt : t)('paginationPage') }}
+        </var-menu-option>
+      </template>
+    </var-menu-select>
+
     <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, n('item--disabled')])">
       {{ (pt ? pt : t)('paginationJump') }}
       <var-input
@@ -171,7 +172,6 @@ export default defineComponent({
             }
           }
 
-          // 左边不需要出现省略符号占位
           if (newCurrent <= maxPagerCount && newCurrent < rEllipseSign) {
             list = []
 
@@ -182,7 +182,7 @@ export default defineComponent({
             isHideEllipsisHead.value = true
             isHideEllipsisTail.value = false
           }
-          // 两边都需要出现省略符号占位
+
           if (newCurrent > maxPagerCount && newCurrent < rEllipseSign) {
             list = []
 
@@ -190,11 +190,10 @@ export default defineComponent({
               list.push(newCurrent + i - activePosition.value)
             }
 
-            // 针对 maxPagerCount===1 的特殊处理
             isHideEllipsisHead.value = newCurrent === 2 && maxPagerCount === 1
             isHideEllipsisTail.value = false
           }
-          // 右边不需要出现省略符号占位
+
           if (newCurrent >= rEllipseSign) {
             list = []
 

@@ -5,6 +5,8 @@ export default {
   item: 'items',
   disabled: 'Disabled',
   hideSize: 'Hide Size Changer',
-  pcTotal: 'Total ',
   current: 'Current',
+  quickJumper: 'Quick Jumper',
+  simple: 'Simple Mode',
+  basic: 'Basic Mode',
 }
