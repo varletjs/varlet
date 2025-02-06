@@ -588,7 +588,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
 | `--select-label-font-size` | `16px` |
-| `--select-chip-margin` | `5px 5px 0` |
+| `--select-chips-margin` | `-5px 0 0 0` |
+| `--select-chips-padding` | `2px 0` |
+| `--select-chip-margin` | `5px 5px 0 0` |
 | `--select-arrow-size` | `20px` |
 | `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
