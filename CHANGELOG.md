@@ -1,3 +1,12 @@
+## [3.8.6](https://github.com/varletjs/varlet/compare/v3.8.5...v3.8.6) (2025-02-10)
+
+
+### Features
+
+* **pagination:** enhance styles ([f162978](https://github.com/varletjs/varlet/commit/f1629787621f8d0ae1bfd7e8a5b2b029a605f1c7))
+
+
+
 ## [3.8.5](https://github.com/varletjs/varlet/compare/v3.8.4...v3.8.5) (2025-02-01)
 
 

@@ -565,6 +565,8 @@ interface BaseStyleVars {
   '--select-scroller-max-height'?: string
   '--select-scroller-border-radius'?: string
   '--select-label-font-size'?: string
+  '--select-chips-margin'?: string
+  '--select-chips-padding'?: string
   '--select-chip-margin'?: string
   '--select-arrow-size'?: string
   '--select-standard-menu-margin'?: string
