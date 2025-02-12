@@ -16,7 +16,7 @@ export type SpaceSize = SpaceInternalSize | number | string | [number | string, 
 export interface SpaceProps extends BasicAttributes {
   align?: SpaceAlign
   size?: SpaceSize
-  warp?: boolean
+  wrap?: boolean
   direction?: SpaceDirection
   justify?: SpaceJustify
   inline?: boolean
