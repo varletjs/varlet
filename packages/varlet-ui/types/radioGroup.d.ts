@@ -12,7 +12,7 @@ export declare const radioGroupProps: Record<keyof RadioGroupProps, any>
 
 export type RadioGroupValidateTrigger = 'onChange'
 
-export type RadioGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
+export type RadioGroupOptionLabelRender = (option: RadioGroupOption, checked: boolean) => VNodeChild
 
 export interface RadioGroupOption {
   label?: string | VNode | RadioGroupOptionLabelRender
