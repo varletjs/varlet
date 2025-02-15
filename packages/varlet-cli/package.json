@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "3.8.6",
+  "version": "3.8.7",
   "description": "cli of varlet",
   "keywords": [
     "cli",
