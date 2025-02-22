@@ -138,6 +138,7 @@ export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConf
 
 export interface BundleBuildOptions {
   fileName: string
+  cssFileName: string
   output: string
   format: 'es' | 'cjs' | 'umd'
   removeEnv: boolean
@@ -148,13 +149,13 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
   const plugins = []
   const name = varletConfig?.name
   const { external = [], globals = {} } = varletConfig?.bundle || {}
-  const { fileName, output, format, emptyOutDir, removeEnv } = buildOptions
+  const { fileName, cssFileName, output, format, emptyOutDir, removeEnv } = buildOptions
 
   if (format === 'umd') {
     plugins.push(
       inlineCss({
         jsFile: resolve(output, fileName),
-        cssFile: resolve(output, 'style.css'),
+        cssFile: resolve(output, `${cssFileName}.css`),
       }),
     )
   }
@@ -178,6 +179,7 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
         name,
         formats: [format],
         fileName: () => fileName,
+        cssFileName,
         entry: resolve(ES_DIR, 'index.bundle.mjs'),
       },
       rollupOptions: {

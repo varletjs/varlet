@@ -32,8 +32,7 @@
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib",
-    "tsconfig.json"
+    "lib"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",

@@ -9,11 +9,10 @@
   "dependencies": {
     "@varlet/touch-emulator": "latest",
     "@varlet/ui": "latest",
-    "vue": "^3.4.21"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/compiler-sfc": "^3.4.21",
-    "vite": "^4.3.9"
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.1.1"
   }
 }
