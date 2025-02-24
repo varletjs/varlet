@@ -20,6 +20,7 @@
       <var-input
         v-model="simpleCurrentValue"
         var-pagination-cover
+        variant="standard"
         :hint="false"
         :disabled="disabled"
         @blur="setPage('simple', simpleCurrentValue, $event)"
@@ -88,6 +89,7 @@
         v-model="quickJumperValue"
         :disabled="disabled"
         :hint="false"
+        variant="standard"
         var-pagination-cover
         @blur="setPage('quick', quickJumperValue, $event)"
         @keydown.enter="setPage('quick', quickJumperValue, $event)"
