@@ -83,7 +83,11 @@ export default defineComponent({
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
     const tabIndex = computed(() =>
-      form?.disabled.value || props.disabled || (checked.value && radioGroup) ? undefined : '0',
+      form?.disabled.value || props.disabled
+        ? undefined
+        : checked.value || (!checked.value && !radioGroup)
+          ? '0'
+          : '-1',
     )
     const {
       errorMessage,
