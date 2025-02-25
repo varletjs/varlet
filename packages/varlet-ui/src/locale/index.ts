@@ -6,6 +6,7 @@ import faIR from './fa-IR'
 import zhCN from './zh-CN'
 import zhHK from './zh-HK'
 import zhTW from './zh-TW'
+import jaJP from './ja-JP'
 
 export type Message = {
   // Dialog
@@ -98,6 +99,7 @@ export const _LocaleComponent = {
   zhTW,
   zhHK,
   faIR,
+  jaJP,
   messages,
   currentMessage,
   add,
@@ -113,6 +115,7 @@ export default {
   zhTW,
   zhHK,
   faIR,
+  jaJP,
   messages,
   currentMessage,
   add,
