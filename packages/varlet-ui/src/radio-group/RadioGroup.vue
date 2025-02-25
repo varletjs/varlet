@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, watch } from 'vue'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { call, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import VarFormDetails from '../form-details'
@@ -48,12 +48,14 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
     const radioGroupErrorMessage = computed(() => errorMessage.value)
+    const hasChecked = ref(false)
 
     const radioGroupProvider: RadioGroupProvider = {
       onToggle,
       validate,
       reset,
       resetValidation,
+      hasChecked: computed(() => hasChecked.value),
       errorMessage: radioGroupErrorMessage,
     }
 
@@ -124,7 +126,11 @@ export default defineComponent({
     }
 
     function syncRadios() {
-      return radios.forEach(({ sync }) => sync(props.modelValue))
+      radios.forEach(({ sync }) => {
+        if (sync(props.modelValue)) {
+          hasChecked.value = true
+        }
+      })
     }
 
     function onToggle(changedValue: any) {

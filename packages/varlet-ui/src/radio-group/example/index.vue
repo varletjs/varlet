@@ -15,7 +15,7 @@ const values = reactive({
   value8: 0,
   value9: 0,
   value10: false,
-  value11: 0,
+  value11: undefined,
   optionValue: 0,
   fieldValue: 0,
 })

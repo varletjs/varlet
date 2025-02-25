@@ -5,6 +5,7 @@ import { RadioProvider } from '../radio/provide'
 
 export interface RadioGroupProvider extends Validation {
   errorMessage: ComputedRef<string>
+  hasChecked: ComputedRef<boolean>
   onToggle(value: any): void
 }
 
