@@ -72,6 +72,7 @@ function switchLocale() {
 | `Traditional Chinese (TW)` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `Traditional Chinese (HK)` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
 | `Farsi` | fa-IR | _Locale.faIR_ | `v2.22.0` |
+| `Japanese` | ja-JP | _Locale.jaJP_ | `` |
 
 ## API
 

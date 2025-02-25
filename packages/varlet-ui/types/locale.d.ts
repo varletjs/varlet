@@ -36,6 +36,7 @@ interface Locale {
   enUS: Message
   zhTW: Message
   zhHK: Message
+  jaJP: Message
   messages: Ref<Record<string, Partial<Message>>>
   currentMessage: Ref<Partial<Pack>>
   add(lang: string, message: Partial<Message>): void
