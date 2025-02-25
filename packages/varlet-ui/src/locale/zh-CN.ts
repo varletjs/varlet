@@ -104,4 +104,4 @@ export default {
   paginationJump: '前往',
   // time-picker
   timePickerHint: '选择时间',
-} as Message
+} satisfies Message

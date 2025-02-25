@@ -72,7 +72,7 @@ function switchLocale() {
 | `繁体中文(台)` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `繁体中文(港)` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
 | `波斯语` | fa-IR | _Locale.faIR_ | `v2.22.0` |
-| `日语` | ja-JP | _Locale.jaJP_ | `` |
+| `日语` | ja-JP | _Locale.jaJP_ | `v3.9.0` |
 
 ## API
 

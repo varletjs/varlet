@@ -104,4 +104,4 @@ export default {
   paginationJump: 'Go to',
   // time-picker
   timePickerHint: 'SELECT TIME',
-} as Message
+} satisfies Message

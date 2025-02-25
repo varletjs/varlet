@@ -23,10 +23,13 @@ export type Message = {
   datePickerMonthDict: Record<Month, { name: string; abbr: string }>
   datePickerWeekDict: Record<Week, { name: string; abbr: string }>
   datePickerSelected: string
+  datePickerHint: string
   // pagination
   paginationItem: string
   paginationPage: string
   paginationJump: string
+  // time-picker
+  timePickerHint: string
 
   [key: PropertyKey]: any
 }
