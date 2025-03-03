@@ -1,0 +1,45 @@
+@import '../styles/common';
+@import '../styles/elevation';
+
+:root {
+  --signature-background-color: #fff;
+  --signature-border-color: #e0e0e0;
+  --signature-border-radius: 4px;
+  --signature-actions-padding: 10px;
+  --signature-button-margin: 0 4px;
+  --signature-inner-height: 200px;
+}
+
+.var-signature {
+  width: 100%;
+  border: 1px solid var(--signature-border-color);
+  border-radius: var(--signature-border-radius);
+  background-color: var(--signature-background-color);
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: var(--signature-inner-height);
+  }
+
+  &__unsupport {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    color: var(--color-text-disabled);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--signature-actions-padding);
+    border-top: 1px solid var(--signature-border-color);
+  }
+
+  &__button {
+    margin: var(--signature-button-margin);
+  }
+}
