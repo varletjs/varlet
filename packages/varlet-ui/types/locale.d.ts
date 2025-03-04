@@ -23,10 +23,13 @@ export type Message = {
   datePickerMonthDict: Record<Month, { name: string; abbr: string }>
   datePickerWeekDict: Record<Week, { name: string; abbr: string }>
   datePickerSelected: string
+  datePickerHint: string
   // pagination
   paginationItem: string
   paginationPage: string
   paginationJump: string
+  // time-picker
+  timePickerHint: string
 
   [key: PropertyKey]: any
 }
@@ -36,6 +39,8 @@ interface Locale {
   enUS: Message
   zhTW: Message
   zhHK: Message
+  faIR: Message
+  jaJP: Message
   messages: Ref<Record<string, Partial<Message>>>
   currentMessage: Ref<Partial<Pack>>
   add(lang: string, message: Partial<Message>): void

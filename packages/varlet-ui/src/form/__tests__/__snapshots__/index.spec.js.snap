@@ -43,7 +43,7 @@ exports[`form events 2`] = `
       <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" value="">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -70,7 +70,7 @@ exports[`form with auto-complete 1`] = `
           <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__middle">
-              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
+              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" value="">
             </div>
             <!--v-if-->
             <div class="var-field-decorator__icon">
@@ -113,7 +113,7 @@ exports[`form with auto-complete 2`] = `
           <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__middle">
-              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
+              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" value="">
             </div>
             <!--v-if-->
             <div class="var-field-decorator__icon">
@@ -363,7 +363,7 @@ exports[`form with input 3`] = `
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" type="text" readonly="">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" type="text" readonly="" value="">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -399,7 +399,7 @@ exports[`form with input 4`] = `
       <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" readonly="">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" readonly="" value="">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">

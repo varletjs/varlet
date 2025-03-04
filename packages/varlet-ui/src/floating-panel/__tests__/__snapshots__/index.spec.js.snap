@@ -22,30 +22,4 @@ exports[`test floating-panel components props > floating-panel contentDraggable 
 
 exports[`test floating-panel components props > floating-panel contentDraggable 3`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 200px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
 
-exports[`test floating-panel components props > floating-panel duration 1`] = `
-<body
-  class=""
->
-  <div
-    class="var-floating-panel var-elevation--3"
-    style="height: 100px; transform: translateY(calc(100% - 100px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function), background-color 0.25s;"
-  >
-    
-    <div
-      class="var-floating-panel__header"
-    >
-      <div
-        class="var-floating-panel__header-toolbar"
-      />
-    </div>
-    
-    <div
-      class="var-floating-panel__content"
-    >
-      
-      
-    </div>
-  </div>
-  
-</body>
-`;
+exports[`test floating-panel components props > floating-panel duration 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 100px; transform: translateY(calc(100% - 100px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;

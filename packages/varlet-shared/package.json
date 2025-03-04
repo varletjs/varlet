@@ -1,6 +1,6 @@
 {
   "name": "@varlet/shared",
-  "version": "3.8.7",
+  "version": "3.9.0",
   "description": "shared utils of varlet",
   "keywords": [
     "shared",
@@ -29,8 +29,7 @@
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib",
-    "tsconfig.json"
+    "lib"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",

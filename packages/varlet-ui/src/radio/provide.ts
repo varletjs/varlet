@@ -5,7 +5,7 @@ import { RADIO_GROUP_BIND_RADIO_KEY, RadioGroupProvider } from '../radio-group/p
 
 export interface RadioProvider extends Validation {
   isFocusing: ComputedRef<boolean>
-  sync(value: any): void
+  sync(value: any): boolean
   move(): void
   moveable(): boolean
 }

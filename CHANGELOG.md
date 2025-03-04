@@ -1,3 +1,18 @@
+# [3.9.0](https://github.com/varletjs/varlet/compare/v3.8.7...v3.9.0) (2025-02-25)
+
+
+### Bug Fixes
+
+* **pagination:** ensure input variant are not affected by default customizations and close [#1857](https://github.com/varletjs/varlet/issues/1857) ([259230b](https://github.com/varletjs/varlet/commit/259230ba69ae084978457902b498105f3a0a9ee5))
+* **radio:** changed tabindex to so nav works ([#1859](https://github.com/varletjs/varlet/issues/1859)) ([349f239](https://github.com/varletjs/varlet/commit/349f23945332f04eed7751f05118b671b1b7fb19))
+
+
+### Features
+
+* **locale:** support Japanese language ([#1858](https://github.com/varletjs/varlet/issues/1858)) ([2c15c05](https://github.com/varletjs/varlet/commit/2c15c059900ada3a59266d010c248b9d9b50a075)), closes [#1423](https://github.com/varletjs/varlet/issues/1423)
+
+
+
 ## [3.8.7](https://github.com/varletjs/varlet/compare/v3.8.6...v3.8.7) (2025-02-15)
 
 

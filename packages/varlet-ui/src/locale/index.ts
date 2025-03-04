@@ -3,6 +3,7 @@ import { hasOwn } from '@varlet/shared'
 import { type Month, type Week } from '../date-picker/props'
 import enUS from './en-US'
 import faIR from './fa-IR'
+import jaJP from './ja-JP'
 import zhCN from './zh-CN'
 import zhHK from './zh-HK'
 import zhTW from './zh-TW'
@@ -98,6 +99,7 @@ export const _LocaleComponent = {
   zhTW,
   zhHK,
   faIR,
+  jaJP,
   messages,
   currentMessage,
   add,
@@ -113,6 +115,7 @@ export default {
   zhTW,
   zhHK,
   faIR,
+  jaJP,
   messages,
   currentMessage,
   add,

@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui-playground",
-  "version": "3.8.7",
+  "version": "3.9.0",
   "private": true,
   "description": "varlet ui playground",
   "keywords": [
@@ -21,7 +21,7 @@
     "@vue/repl": "^2.4.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
-    "vue": "3.4.21"
+    "vue": "3.5.13"
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
@@ -29,6 +29,6 @@
     "@varlet/cli": "workspace: *",
     "live-server": "^1.2.1",
     "typescript": "5.3.3",
-    "vite": "5.1.8"
+    "vite": "6.1.1"
   }
 }

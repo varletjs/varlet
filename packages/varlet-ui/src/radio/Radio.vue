@@ -82,9 +82,23 @@ export default defineComponent({
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
-    const tabIndex = computed(() =>
-      form?.disabled.value || props.disabled || (checked.value && radioGroup) ? undefined : '0',
-    )
+
+    const tabIndex = computed(() => {
+      const disabled = form?.disabled.value || props.disabled
+      const isChecked = checked.value
+      const hasCheckedInRadioGroup = radioGroup?.hasChecked.value
+
+      if (disabled) {
+        return
+      }
+
+      if (radioGroup && hasCheckedInRadioGroup && !isChecked) {
+        return '-1'
+      }
+
+      return '0'
+    })
+
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -184,7 +198,10 @@ export default defineComponent({
 
     function sync(v: any) {
       const { checkedValue, uncheckedValue } = props
-      value.value = v === checkedValue ? checkedValue : uncheckedValue
+      const checked = v === checkedValue
+      value.value = checked ? checkedValue : uncheckedValue
+
+      return checked
     }
 
     // expose

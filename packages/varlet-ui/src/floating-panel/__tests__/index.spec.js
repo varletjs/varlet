@@ -134,13 +134,15 @@ describe('test floating-panel components props', () => {
   })
 
   test('floating-panel duration', () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
+        teleport: root,
         duration: 0.4,
       },
     })
 
-    expect(document.body).toMatchSnapshot()
+    expect(root.innerHTML).toMatchSnapshot()
 
     wrapper.unmount()
   })

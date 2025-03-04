@@ -29,6 +29,7 @@ export async function compileBundle() {
     {
       format: 'es',
       fileName: `${name}.esm.js`,
+      cssFileName: name,
       output: ES_DIR,
       emptyOutDir: false,
       removeEnv: true,
@@ -36,6 +37,7 @@ export async function compileBundle() {
     {
       format: 'cjs',
       fileName: `${name}.cjs.js`,
+      cssFileName: name,
       output: LIB_DIR,
       emptyOutDir: false,
       removeEnv: false,
@@ -43,6 +45,7 @@ export async function compileBundle() {
     {
       format: 'umd',
       fileName: `${name}.js`,
+      cssFileName: name,
       output: UMD_DIR,
       emptyOutDir: true,
       removeEnv: true,

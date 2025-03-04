@@ -1,6 +1,6 @@
 {
   "name": "@varlet/import-resolver",
-  "version": "3.8.7",
+  "version": "3.9.0",
   "description": "varlet import resolver for unplugin-vue-components and unplugin-auto-import",
   "keywords": [
     "varlet",
@@ -32,8 +32,7 @@
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib",
-    "tsconfig.json"
+    "lib"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",

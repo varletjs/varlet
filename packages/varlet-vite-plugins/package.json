@@ -1,6 +1,6 @@
 {
   "name": "@varlet/vite-plugins",
-  "version": "3.8.7",
+  "version": "3.9.0",
   "description": "vite plugins of varlet",
   "keywords": [
     "vite",
@@ -20,6 +20,9 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean",
     "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
@@ -38,7 +41,9 @@
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.7.20",
     "tsup": "7.2.0",
-    "typescript": "5.3.3",
-    "vite": "5.4.6"
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "vite": "6.1.1"
   }
 }

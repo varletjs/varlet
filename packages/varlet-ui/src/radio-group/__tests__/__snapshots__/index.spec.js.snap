@@ -97,7 +97,7 @@ exports[`radio group label is function 2`] = `
   <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>0-false</span></div>
@@ -108,7 +108,7 @@ exports[`radio group label is function 2`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>1-true</span></div>
@@ -140,7 +140,7 @@ exports[`radio group label is function 3`] = `
   <div aria-label="" role="radiogroup" class="var-radio-group var-radio-group--horizontal">
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>0-false</span></div>
@@ -151,7 +151,7 @@ exports[`radio group label is function 3`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <div class="var-radio__text"><span>1-true</span></div>
@@ -303,7 +303,7 @@ exports[`radio group validation 1`] = `
     <!--v-if-->
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -314,7 +314,7 @@ exports[`radio group validation 1`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -347,7 +347,7 @@ exports[`radio group validation 2`] = `
     <!--v-if-->
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -358,7 +358,7 @@ exports[`radio group validation 2`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -501,7 +501,7 @@ exports[`test validation with zod > radio group 1`] = `
     <!--v-if-->
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -512,7 +512,7 @@ exports[`test validation with zod > radio group 1`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -545,7 +545,7 @@ exports[`test validation with zod > radio group 2`] = `
     <!--v-if-->
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="true" class="var-radio">
-        <div class="var-radio__action var-radio--checked"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-marked var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->
@@ -556,7 +556,7 @@ exports[`test validation with zod > radio group 2`] = `
     </div>
     <div class="var-radio__wrap">
       <div role="radio" aria-checked="false" class="var-radio">
-        <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-radio__action var-radio--unchecked" tabindex="-1"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
           <div class="var-hover-overlay"></div>
         </div>
         <!--v-if-->

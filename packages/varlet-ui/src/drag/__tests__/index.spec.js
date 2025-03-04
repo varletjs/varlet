@@ -17,15 +17,15 @@ test('drag direction', async () => {
     },
   })
 
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.setProps({ direction: 'x' })
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.setProps({ direction: 'y' })
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.unmount()
@@ -39,15 +39,15 @@ test('drag attraction', async () => {
       attraction: 'x',
     },
   })
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.setProps({ attraction: 'y' })
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.setProps({ attraction: 'xy' })
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.unmount()
@@ -62,7 +62,7 @@ test('drag disabled', async () => {
     },
   })
 
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.unmount()
@@ -80,7 +80,7 @@ test('drag boundary', async () => {
     },
   })
 
-  const el = container.childNodes[0]
+  const el = container.childNodes[1]
   await trigger(el, 'touchstart', 0, 0)
   await trigger(el, 'touchmove', 1, 1)
   await trigger(el, 'touchend', 1, 1)
@@ -97,7 +97,7 @@ test('drag reset', async () => {
     },
   })
 
-  await triggerDrag(container.childNodes[0], 10, 10)
+  await triggerDrag(container.childNodes[1], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.vm.reset()
@@ -118,7 +118,7 @@ test('drag click method', async () => {
     },
   })
 
-  await trigger(container.childNodes[0], 'click')
+  await trigger(container.childNodes[1], 'click')
   expect(onClick).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
