@@ -1,20 +1,14 @@
 <template>
   <div :class="classes">
-    <div ref="wrap" class="var-signature__inner">
+    <div ref="wrap" class="var-signature__inner" :class="{ 'var-signature--disabled': disabled }">
       <canvas v-show="isCanvasSupported" ref="canvas" :height="canvasHeight" :width="canvasWidth"></canvas>
       <p v-if="!isCanvasSupported" class="var-signature__unsupport">{{ unsupportText }}</p>
-    </div>
-
-    <div class="var-signature__actions">
-      <var-button class="var-signature__button" type="default" @click="clear">{{ translate('clear') }}</var-button>
-      <var-button class="var-signature__button" type="primary" @click="confirm">{{ translate('confirm') }}</var-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
-import VarButton from '../button'
 import { useLocale } from '../locale'
 import { createNamespace, useValidation } from '../utils/components'
 import { props } from './props'
@@ -23,9 +17,6 @@ const { n, classes } = createNamespace('signature')
 
 export default defineComponent({
   name: 'VarSignature',
-  components: {
-    VarButton,
-  },
   props,
   emits: ['start', 'end', 'signing', 'confirm', 'clear', 'update:modelValue'],
 
@@ -64,7 +55,7 @@ export default defineComponent({
 
     const startEventHandler = (event: MouseEvent | TouchEvent) => {
       event.preventDefault()
-      if (!state.ctx) {
+      if (!state.ctx || props.disabled) {
         return
       }
 
@@ -201,4 +192,12 @@ export default defineComponent({
 
 <style lang="less">
 @import './signature';
+
+.var-signature {
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
 </style>

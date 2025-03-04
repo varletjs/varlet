@@ -5,42 +5,53 @@ import { Snackbar } from '@varlet/ui'
 import { t, use } from './locale'
 
 const signature = ref('')
+const signatureRef = ref(null)
 
 watchLang(use)
 onThemeChange()
 
-const onSubmit = () => {
-  Snackbar.success(t('submitSuccess'))
+const clear = () => {
+  signatureRef.value?.clear()
+}
+
+const save = () => {
+  if (signatureRef.value?.isEmpty) {
+    Snackbar.warning(t('pleaseSignFirst'))
+    return
+  }
+  signatureRef.value?.confirm()
+  Snackbar.success(t('saveSuccess'))
 }
 </script>
 
 <template>
+  <!-- Basic Usage -->
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-signature v-model="signature" />
+  <var-signature ref="signatureRef" v-model="signature" />
+  <var-space class="signature-actions">
+    <var-button type="primary" size="small" @click="save">{{ t('save') }}</var-button>
+    <var-button size="small" @click="clear">{{ t('clear') }}</var-button>
+  </var-space>
+  <img v-if="signature" :src="signature" alt="Signature Preview" style="margin-top: 10px" />
 
-  <app-type>{{ t('customLineWidth') }}</app-type>
-  <var-signature v-model="signature" :line-width="4" />
+  <!-- Custom Style -->
+  <app-type>{{ t('customStyle') }}</app-type>
+  <var-signature v-model="signature" stroke-style="#2979ff" line-width="3" background="#f5f5f5" />
 
-  <app-type>{{ t('customStrokeStyle') }}</app-type>
-  <var-signature v-model="signature" stroke-style="#f44336" />
-
-  <app-type>{{ t('customHeight') }}</app-type>
-  <var-signature v-model="signature" :height="300" />
-
-  <app-type>{{ t('customOutputType') }}</app-type>
-  <var-signature v-model="signature" type="jpg" />
-
-  <app-type>{{ t('formValidation') }}</app-type>
-  <var-form @submit="onSubmit">
-    <var-signature v-model="signature" :rules="[(v) => !!v || t('signatureRequired')]" />
-    <var-button type="primary" native-type="submit">
-      {{ t('submit') }}
-    </var-button>
-  </var-form>
+  <!-- Disabled State -->
+  <app-type>{{ t('disabledState') }}</app-type>
+  <var-signature v-model="signature" disabled />
 </template>
 
 <style lang="less">
-.var-signature {
-  margin-bottom: 16px;
+.signature-actions {
+  display: flex;
+  justify-content: flex-end !important;
+  margin-top: 6px !important;
+
+  :deep(.var-button) {
+    padding: 0 16px;
+    height: 32px;
+  }
 }
 </style>

@@ -39,4 +39,8 @@ export const props = {
     type: [Number, String],
     default: 200,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 }

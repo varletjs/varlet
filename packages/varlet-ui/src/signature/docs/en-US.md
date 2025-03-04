@@ -6,19 +6,38 @@ A component for electronic signature that allows users to sign on the screen.
 
 ### Basic Usage
 
+Bind signature value through `v-model`.
+
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const signature = ref('')
+
+const clear = () => {
+  signature.value = ''
+}
+
+const save = () => {
+  console.log('Signature data:', signature.value)
+}
 </script>
 
 <template>
   <var-signature v-model="signature" />
+  
+  <var-space>
+    <var-button type="primary" @click="save">Save</var-button>
+    <var-button @click="clear">Clear</var-button>
+  </var-space>
+  
+  <img v-if="signature" :src="signature" alt="Signature Preview" style="margin-top: 10px" />
 </template>
+```
 
+### Custom Style
 
-### Custom Line Width
+Customize signature style through properties like `color`, `lineWidth`, etc.
 
 ```html
 <script setup>
@@ -28,48 +47,67 @@ const signature = ref('')
 </script>
 
 <template>
-  <var-signature v-model="signature" :line-width="4" />
+  <var-signature
+    v-model="signature"
+    color="#2979ff"
+    line-width="3"
+    background="#f5f5f5"
+  />
 </template>
+```
 
-### Custom Stroke Style
+### Disabled State
+
+Set disabled state through the `disabled` property.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const signature = ref('')
-</script>
-
 <template>
-  <var-signature v-model="signature" stroke-style="#f44336" />
+  <var-signature v-model="signature" disabled />
 </template>
+```
 
-### Custom Height
-```html
+## API
 
-<script setup>
-import { ref } from 'vue'
+### Props
 
-const signature = ref('')
-</script>
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `v-model` | Signature value (base64 format) | _string_ | `''` |
+| `color` | Pen color | _string_ | `#000` |
+| `line-width` | Line width | _string \| number_ | `2` |
+| `background` | Canvas background color | _string_ | `#fff` |
+| `width` | Canvas width | _string \| number_ | `100%` |
+| `height` | Canvas height | _string \| number_ | `200` |
+| `disabled` | Whether to disable signature | _boolean_ | `false` |
 
-<template>
-  <var-signature v-model="signature" :height="300" />
-</template>
+### Events
 
-###Custom Output Type
-```html
-<script setup>
-import { ref } from 'vue'
+| Event | Description | Arguments |
+| --- | --- | --- |
+| `start` | Triggered when starting to sign | `event: TouchEvent` |
+| `signing` | Triggered during signing | `event: TouchEvent` |
+| `end` | Triggered when ending signature | `event: TouchEvent` |
+| `change` | Triggered when signature content changes | `value: string` |
 
-const signature = ref('')
-</script>
+### Methods
 
-<template>
-  <var-signature v-model="signature" type="jpg" />
-</template>
+| Method | Description | Parameters |
+| --- | --- | --- |
+| `clear` | Clear signature | `-` |
+| `save` | Save signature, returns base64 format image data | `-` |
 
-### Form Validation
+### Style Variables
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+| Variable | Default |
+| --- | --- |
+| `--signature-background` | `#fff` |
+| `--signature-border-color` | `#e0e0e0` |
+| `--signature-border-radius` | `4px` |
+
+### Example
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -77,119 +115,51 @@ import { Snackbar } from '@varlet/ui'
 
 const signature = ref('')
 
-const onSubmit = () => {
-  Snackbar.success('Submit Success')
+const handleSave = async () => {
+  if (!signature.value) {
+    Snackbar.warning('Please sign first')
+    return
+  }
+  
+  // Here you can upload signature data to server
+  console.log('Signature data:', signature.value)
+  Snackbar.success('Save successful')
 }
 </script>
 
 <template>
-  <var-form @submit="onSubmit">
+  <var-card>
+    <template #title>
+      Please sign below
+    </template>
+    
     <var-signature
       v-model="signature"
-      :rules="[v => !!v || 'Signature is required']"
+      height="300"
+      color="#2979ff"
+      line-width="3"
     />
-    <var-button type="primary" native-type="submit">Submit</var-button>
-  </var-form>
+    
+    <template #footer>
+      <var-space>
+        <var-button type="primary" @click="handleSave">
+          Confirm
+        </var-button>
+        <var-button @click="signature = ''">
+          Reset
+        </var-button>
+      </var-space>
+    </template>
+  </var-card>
+  
+  <var-paper :elevation="2" style="margin-top: 16px" v-if="signature">
+    <img :src="signature" alt="Signature Preview" style="width: 100%" />
+  </var-paper>
 </template>
+```
 
-## API
-### Props Prop Description Type Default v-model
+## Notes
 
-Signature data URL
-
-string
-
-'' line-width
-
-Line width of the signature
-
-number
-
-2 stroke-style
-
-Stroke style of the signature
-
-string
-
-'#000' type
-
-Output image type
-
-'png' | 'jpg'
-
-'png' unsupport-text
-
-Text displayed when canvas is not supported
-
-string
-
-- custom-class
-
-Custom class name
-
-string
-
-'' height
-
-Height of the signature area
-
-number | string
-
-200 validate-trigger
-
-Trigger method for validation
-
-ValidateTriggers[]
-
-['onChange'] rules
-
-Validation rules
-
-Array | Object
-
--
-### Events Event Description Arguments start
-
-Triggered when starting to sign
-
-- signing
-
-Triggered during signing
-
-event: TouchEvent | MouseEvent end
-
-Triggered when ending the signature
-
-- confirm
-
-Triggered when confirming the signature
-
-canvas: HTMLCanvasElement, dataUrl: string clear
-
-Triggered when clearing the signature
-
-- update:model-value
-
-Triggered when the signature value changes
-
-value: string
-### Slots Name Description SlotProps default
-
-Custom content
-
--
-### Style Variables
-Here are the CSS variables used by the component. Styles can be customized using StyleProvider .
- Variable Default --signature-background-color
-
-#fff --signature-border-color
-
-#e0e0e0 --signature-border-radius
-
-4px --signature-actions-padding
-
-10px --signature-button-margin
-
-0 4px --signature-inner-height
-
-200px
+1. Signature data is stored in base64 format, which may occupy large space. It's recommended to compress before uploading to server.
+2. When using on mobile devices, it's recommended to set appropriate canvas size for better signature experience.
+3. Canvas border, border radius and other styles can be customized through CSS.
