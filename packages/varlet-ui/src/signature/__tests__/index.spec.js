@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
 import Signature from '..'
+import { trigger } from '../../utils/test'
 import VarSignature from '../Signature.vue'
 
 test('signature use', () => {
@@ -91,7 +92,7 @@ describe('test signature component props', () => {
 })
 
 describe('test signature component events', () => {
-  test('signature clear event', async () => {
+  test('signature clear event', () => {
     const onClear = vi.fn()
     const onUpdateModelValue = vi.fn()
 
@@ -102,13 +103,13 @@ describe('test signature component events', () => {
       },
     })
 
-    await wrapper.find('.var-signature__button').trigger('click')
+    wrapper.find('.var-signature__button').trigger('click')
     expect(onClear).toHaveBeenCalled()
     expect(onUpdateModelValue).toHaveBeenCalledWith('')
     wrapper.unmount()
   })
 
-  test('signature confirm event', async () => {
+  test('signature confirm event', () => {
     const onConfirm = vi.fn()
     const onUpdateModelValue = vi.fn()
 
@@ -119,7 +120,7 @@ describe('test signature component events', () => {
       },
     })
 
-    await wrapper.findAll('.var-signature__button')[1].trigger('click')
+    wrapper.findAll('.var-signature__button')[1].trigger('click')
     expect(onConfirm).toHaveBeenCalled()
     wrapper.unmount()
   })
@@ -159,4 +160,85 @@ test('signature canvas operations', async () => {
   canvas.getContext = originalGetContext
 
   wrapper.unmount()
+})
+
+test('signature base function', () => {
+  const wrapper = mount(Signature)
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  // 测试画布是否正确创建
+  expect(wrapper.find('canvas').exists()).toBe(true)
+})
+
+test('signature events', () => {
+  const wrapper = mount(Signature)
+  const canvas = wrapper.find('canvas')
+
+  const onStart = vi.fn()
+  const onSigning = vi.fn()
+  const onEnd = vi.fn()
+
+  wrapper.vm.$emit('start', onStart)
+  wrapper.vm.$emit('signing', onSigning)
+  wrapper.vm.$emit('end', onEnd)
+
+  trigger(canvas, 'touchstart')
+  expect(onStart).toHaveBeenCalled()
+
+  trigger(canvas, 'touchmove')
+  expect(onSigning).toHaveBeenCalled()
+
+  trigger(canvas, 'touchend')
+  expect(onEnd).toHaveBeenCalled()
+})
+
+test('signature clear and confirm', async () => {
+  const wrapper = mount(Signature)
+
+  const onClear = vi.fn()
+  const onConfirm = vi.fn()
+
+  wrapper.vm.$emit('clear', onClear)
+  wrapper.vm.$emit('confirm', onConfirm)
+
+  await wrapper.vm.clear()
+  expect(onClear).toHaveBeenCalled()
+  expect(wrapper.vm.isEmpty).toBe(true)
+
+  await wrapper.vm.confirm()
+  expect(onConfirm).toHaveBeenCalled()
+})
+
+test('signature disabled', async () => {
+  const wrapper = mount(Signature, {
+    props: {
+      disabled: true,
+    },
+  })
+
+  const canvas = wrapper.find('canvas')
+  expect(canvas.classes()).toContain('var-signature--disabled')
+
+  const onStart = vi.fn()
+  wrapper.vm.$emit('start', onStart)
+
+  await trigger(canvas, 'touchstart')
+  expect(onStart).not.toHaveBeenCalled()
+})
+
+test('signature props', () => {
+  const wrapper = mount(Signature, {
+    props: {
+      lineWidth: 4,
+      strokeStyle: '#ff0000',
+      type: 'jpg',
+      height: 300,
+    },
+  })
+
+  expect(wrapper.props('lineWidth')).toBe(4)
+  expect(wrapper.props('strokeStyle')).toBe('#ff0000')
+  expect(wrapper.props('type')).toBe('jpg')
+  expect(wrapper.props('height')).toBe(300)
 })
