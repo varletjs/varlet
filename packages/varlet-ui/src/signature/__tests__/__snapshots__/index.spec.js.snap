@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`signature base function 1`] = `
+"<div class="var-signature">
+  <div class="var-signature__inner"><canvas height="0" width="0" style="display: none;"></canvas>
+    <p class="var-signature__unsupport"></p>
+  </div>
+</div>"
+`;

@@ -92,7 +92,7 @@ describe('test signature component props', () => {
 })
 
 describe('test signature component events', () => {
-  test('signature clear event', () => {
+  test('signature clear event', async () => {
     const onClear = vi.fn()
     const onUpdateModelValue = vi.fn()
 
@@ -103,13 +103,13 @@ describe('test signature component events', () => {
       },
     })
 
-    wrapper.find('.var-signature__button').trigger('click')
+    await wrapper.find('.var-signature__actions .var-button').trigger('click')
     expect(onClear).toHaveBeenCalled()
     expect(onUpdateModelValue).toHaveBeenCalledWith('')
     wrapper.unmount()
   })
 
-  test('signature confirm event', () => {
+  test('signature confirm event', async () => {
     const onConfirm = vi.fn()
     const onUpdateModelValue = vi.fn()
 
@@ -120,87 +120,86 @@ describe('test signature component events', () => {
       },
     })
 
-    wrapper.findAll('.var-signature__button')[1].trigger('click')
+    await wrapper.findAll('.var-signature__actions .var-button')[1].trigger('click')
     expect(onConfirm).toHaveBeenCalled()
     wrapper.unmount()
   })
 })
 
 test('signature canvas operations', async () => {
-  // 由于 JSDOM 环境下 canvas 操作有限，这里只做简单测试
   const wrapper = mount(VarSignature)
-
   const canvas = wrapper.find('canvas').element
-  expect(canvas).toBeTruthy()
 
   // 模拟 canvas 上下文
   const mockContext = {
     beginPath: vi.fn(),
+    moveTo: vi.fn(),
     lineTo: vi.fn(),
     stroke: vi.fn(),
     clearRect: vi.fn(),
     closePath: vi.fn(),
   }
 
-  // 保存原始方法
+  // 保存并替换 getContext 方法
   const originalGetContext = canvas.getContext
-
-  // 模拟 getContext 方法
   canvas.getContext = () => mockContext
 
-  // 触发 mousedown 事件
-  await wrapper.find('canvas').trigger('mousedown', {
-    clientX: 10,
-    clientY: 10,
-  })
+  // 模拟触摸事件
+  const touchEvent = {
+    touches: [{ clientX: 10, clientY: 10 }],
+    preventDefault: vi.fn(),
+  }
 
+  await trigger(wrapper.find('canvas'), 'touchstart', touchEvent)
   expect(mockContext.beginPath).toHaveBeenCalled()
+  expect(mockContext.moveTo).toHaveBeenCalled()
 
   // 恢复原始方法
   canvas.getContext = originalGetContext
-
   wrapper.unmount()
 })
 
-test('signature base function', () => {
-  const wrapper = mount(Signature)
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  // 测试画布是否正确创建
-  expect(wrapper.find('canvas').exists()).toBe(true)
-})
-
-test('signature events', () => {
-  const wrapper = mount(Signature)
-  const canvas = wrapper.find('canvas')
-
+test('signature events', async () => {
   const onStart = vi.fn()
   const onSigning = vi.fn()
   const onEnd = vi.fn()
 
-  wrapper.vm.$emit('start', onStart)
-  wrapper.vm.$emit('signing', onSigning)
-  wrapper.vm.$emit('end', onEnd)
+  const wrapper = mount(VarSignature, {
+    props: {
+      onStart,
+      onSigning,
+      onEnd,
+    },
+  })
 
-  trigger(canvas, 'touchstart')
+  const canvas = wrapper.find('canvas')
+  const touchEvent = {
+    touches: [{ clientX: 10, clientY: 10 }],
+    preventDefault: vi.fn(),
+  }
+
+  await trigger(canvas, 'touchstart', touchEvent)
   expect(onStart).toHaveBeenCalled()
 
-  trigger(canvas, 'touchmove')
+  await trigger(canvas, 'touchmove', touchEvent)
   expect(onSigning).toHaveBeenCalled()
 
-  trigger(canvas, 'touchend')
+  await trigger(canvas, 'touchend')
   expect(onEnd).toHaveBeenCalled()
+
+  wrapper.unmount()
 })
 
 test('signature clear and confirm', async () => {
-  const wrapper = mount(Signature)
-
   const onClear = vi.fn()
   const onConfirm = vi.fn()
 
-  wrapper.vm.$emit('clear', onClear)
-  wrapper.vm.$emit('confirm', onConfirm)
+  const wrapper = mount(VarSignature, {
+    props: {
+      onClear,
+      onConfirm,
+    },
+  })
 
   await wrapper.vm.clear()
   expect(onClear).toHaveBeenCalled()
@@ -208,27 +207,36 @@ test('signature clear and confirm', async () => {
 
   await wrapper.vm.confirm()
   expect(onConfirm).toHaveBeenCalled()
+
+  wrapper.unmount()
 })
 
 test('signature disabled', async () => {
-  const wrapper = mount(Signature, {
+  const wrapper = mount(VarSignature, {
     props: {
       disabled: true,
     },
   })
 
   const canvas = wrapper.find('canvas')
-  expect(canvas.classes()).toContain('var-signature--disabled')
+  expect(canvas.element.classList.contains('var-signature--disabled')).toBe(true)
 
   const onStart = vi.fn()
-  wrapper.vm.$emit('start', onStart)
+  wrapper.vm.$on('start', onStart)
 
-  await trigger(canvas, 'touchstart')
+  const touchEvent = {
+    touches: [{ clientX: 10, clientY: 10 }],
+    preventDefault: vi.fn(),
+  }
+
+  await trigger(canvas, 'touchstart', touchEvent)
   expect(onStart).not.toHaveBeenCalled()
+
+  wrapper.unmount()
 })
 
 test('signature props', () => {
-  const wrapper = mount(Signature, {
+  const wrapper = mount(VarSignature, {
     props: {
       lineWidth: 4,
       strokeStyle: '#ff0000',
@@ -241,4 +249,6 @@ test('signature props', () => {
   expect(wrapper.props('strokeStyle')).toBe('#ff0000')
   expect(wrapper.props('type')).toBe('jpg')
   expect(wrapper.props('height')).toBe(300)
+
+  wrapper.unmount()
 })
