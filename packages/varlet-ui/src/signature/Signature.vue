@@ -27,10 +27,9 @@ export default defineComponent({
 
     const canvas = ref<HTMLCanvasElement | null>(null)
     const wrap = ref<HTMLElement | null>(null)
-    const isCanvasSupported = computed(() => {
-      const elem = document.createElement('canvas')
-      return !!(elem.getContext && elem.getContext('2d'))
-    })
+
+    const elem = document.createElement('canvas')
+    const isCanvasSupported = !!(elem.getContext && elem.getContext('2d'))
 
     const unsupportText = computed(() => props.unsupportText || translate('unsupportText'))
 
@@ -167,7 +166,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (isCanvasSupported.value && canvas.value && wrap.value) {
+      if (isCanvasSupported && canvas.value && wrap.value) {
         state.ctx = canvas.value.getContext('2d')
         state.canvasWidth = wrap.value.offsetWidth
         state.canvasHeight = wrap.value.offsetHeight
