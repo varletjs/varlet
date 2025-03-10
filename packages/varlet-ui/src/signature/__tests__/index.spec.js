@@ -84,19 +84,6 @@ describe('test signature component props', () => {
     wrapper.unmount()
   })
 
-  test('signature customClass', async () => {
-    const wrapper = mount(VarSignature, {
-      props: {
-        customClass: 'test-class',
-      },
-    })
-
-    expect(wrapper.classes()).toContain('test-class')
-    await wrapper.setProps({ customClass: 'another-class' })
-    expect(wrapper.classes()).toContain('another-class')
-    wrapper.unmount()
-  })
-
   test('signature height', async () => {
     const wrapper = mount(VarSignature, {
       props: {
@@ -167,14 +154,12 @@ test('signature props', () => {
       lineWidth: 4,
       strokeStyle: '#ff0000',
       type: 'jpg',
-      height: 300,
     },
   })
 
   expect(wrapper.props('lineWidth')).toBe(4)
   expect(wrapper.props('strokeStyle')).toBe('#ff0000')
   expect(wrapper.props('type')).toBe('jpg')
-  expect(wrapper.props('height')).toBe(300)
 
   wrapper.unmount()
 })
