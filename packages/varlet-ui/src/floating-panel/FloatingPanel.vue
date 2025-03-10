@@ -186,5 +186,5 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
-@import './floatingPanel.less';
+@import './floatingPanel';
 </style>
