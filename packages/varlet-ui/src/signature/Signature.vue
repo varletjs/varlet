@@ -176,6 +176,7 @@ export default defineComponent({
     expose({
       confirm,
       clear,
+      isEmpty: () => state.isEmpty, // 暴露 isEmpty
     })
 
     return {
