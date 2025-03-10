@@ -1,8 +1,8 @@
 <template>
-  <div :class="classes">
-    <div ref="wrap" class="var-signature__inner" :class="{ 'var-signature--disabled': disabled }">
+  <div :class="n()">
+    <div ref="wrap" :class="[n('inner'), { [n('--disabled')]: disabled }]">
       <canvas v-show="isCanvasSupported" ref="canvas" :height="canvasHeight" :width="canvasWidth"></canvas>
-      <p v-if="!isCanvasSupported" class="var-signature__unsupport">{{ unsupportText }}</p>
+      <p v-if="!isCanvasSupported" :class="n('unsupport')">{{ unsupportText }}</p>
     </div>
   </div>
 </template>
@@ -10,18 +10,17 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { useLocale } from '../locale'
-import { createNamespace, useValidation } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { n, classes } = createNamespace('signature')
+const { name, n } = createNamespace('signature')
 
 export default defineComponent({
-  name: 'VarSignature',
+  name,
   props,
   emits: ['start', 'end', 'signing', 'confirm', 'clear', 'update:modelValue'],
 
-  setup(props, { emit }) {
-    const { validateWithTrigger } = useValidation()
+  setup(props, { emit, expose }) {
     const { t } = useLocale()
     const translate = (key: string) => t(`signature.${key}`)
 
@@ -99,7 +98,7 @@ export default defineComponent({
       canvas.value.removeEventListener(state.events[1], moveEventHandler as EventListener, false)
       canvas.value.removeEventListener(state.events[2], endEventHandler as EventListener, false)
 
-      validateWithTrigger(props.validateTrigger, 'onChange', props.rules, props.modelValue)
+      // 移除验证相关代码
     }
 
     const leaveEventHandler = (event: MouseEvent | TouchEvent) => {
@@ -124,7 +123,6 @@ export default defineComponent({
 
       emit('clear')
       emit('update:modelValue', '')
-      validateWithTrigger(props.validateTrigger, 'onChange', props.rules, '')
     }
 
     const confirm = () => {
@@ -135,7 +133,7 @@ export default defineComponent({
       const dataUrl = getDataUrl(canvas.value)
       emit('confirm', canvas.value, dataUrl)
       emit('update:modelValue', dataUrl)
-      validateWithTrigger(props.validateTrigger, 'onChange', props.rules, dataUrl)
+      // 移除验证相关代码
     }
 
     const isCanvasBlank = (canvas: HTMLCanvasElement) => {
@@ -174,6 +172,12 @@ export default defineComponent({
       }
     })
 
+    // expose methods
+    expose({
+      confirm,
+      clear,
+    })
+
     return {
       ...toRefs(state),
       canvas,
@@ -181,9 +185,9 @@ export default defineComponent({
       isCanvasSupported,
       confirm,
       clear,
-      classes: computed(() => classes(n(), props.customClass ? props.customClass : null)),
       translate,
       unsupportText,
+      n,
     }
   },
 })
@@ -191,12 +195,4 @@ export default defineComponent({
 
 <style lang="less">
 @import './signature';
-
-.var-signature {
-  &--disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
 </style>
