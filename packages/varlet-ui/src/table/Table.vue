@@ -1,6 +1,6 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 1), n('$--box'))">
-    <div :class="n('main')" :style="{ height: toSizeUnit(scrollerHeight) }">
+    <div :class="n('main')" :style="{ 'max-height': toSizeUnit(scrollerHeight) }">
       <table :class="n('table')" :style="{ width: toSizeUnit(fullWidth) }">
         <slot />
       </table>
