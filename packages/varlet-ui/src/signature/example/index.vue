@@ -15,7 +15,8 @@ const clear = () => {
 }
 
 const save = () => {
-  if (signatureRef.value?.isEmpty) {
+  if (signatureRef.value?.isEmpty()) {
+    // 修改这里，添加括号调用函数
     Snackbar.warning(t('pleaseSignFirst'))
     return
   }

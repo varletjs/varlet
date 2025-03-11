@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
+import { useEventListener } from '@varlet/use'
 import { useLocale } from '../locale'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
@@ -42,44 +43,35 @@ export default defineComponent({
           ? ['touchstart', 'touchmove', 'touchend', 'touchleave']
           : ['mousedown', 'mousemove', 'mouseup', 'mouseleave'],
       isEmpty: true,
+      isDrawing: false, // 添加绘制状态控制
     })
 
-    const addEvent = () => {
-      if (!canvas.value) {
-        return
-      }
-      canvas.value.addEventListener(state.events[0], startEventHandler as EventListener, false)
-    }
-
-    const startEventHandler = (event: MouseEvent | TouchEvent) => {
-      event.preventDefault()
+    // 修改事件处理函数的类型声明
+    const startEventHandler: EventListener = (event: Event) => {
+      const e = event as MouseEvent | TouchEvent
+      e.preventDefault()
       if (!state.ctx || props.disabled) {
         return
       }
 
+      state.isDrawing = true
       state.ctx.beginPath()
       state.ctx.lineWidth = props.lineWidth
       state.ctx.strokeStyle = props.strokeStyle
       state.isEmpty = false
       emit('start')
-
-      if (!canvas.value) {
-        return
-      }
-      canvas.value.addEventListener(state.events[1], moveEventHandler as EventListener, false)
-      canvas.value.addEventListener(state.events[2], endEventHandler as EventListener, false)
-      canvas.value.addEventListener(state.events[3], leaveEventHandler as EventListener, false)
     }
 
-    const moveEventHandler = (event: MouseEvent | TouchEvent) => {
-      event.preventDefault()
-      if (!canvas.value || !state.ctx) {
+    const moveEventHandler: EventListener = (event: Event) => {
+      const e = event as MouseEvent | TouchEvent
+      e.preventDefault()
+      if (!canvas.value || !state.ctx || !state.isDrawing) {
         return
       }
 
-      const evt = state.isSupportTouch ? (event as TouchEvent).touches[0] : (event as MouseEvent)
-
+      const evt = state.isSupportTouch ? (e as TouchEvent).touches[0] : (e as MouseEvent)
       emit('signing', evt)
+
       const coverPos = canvas.value.getBoundingClientRect()
       const mouseX = evt.clientX - coverPos.left
       const mouseY = evt.clientY - coverPos.top
@@ -88,35 +80,36 @@ export default defineComponent({
       state.ctx.stroke()
     }
 
-    const endEventHandler = (event: MouseEvent | TouchEvent) => {
+    const endEventHandler: EventListener = (event: Event) => {
       event.preventDefault()
+      state.isDrawing = false
       emit('end')
-      if (!canvas.value) {
-        return
-      }
-
-      canvas.value.removeEventListener(state.events[1], moveEventHandler as EventListener, false)
-      canvas.value.removeEventListener(state.events[2], endEventHandler as EventListener, false)
-
-      // 移除验证相关代码
     }
 
-    const leaveEventHandler = (event: MouseEvent | TouchEvent) => {
+    const leaveEventHandler: EventListener = (event: Event) => {
       event.preventDefault()
-      if (!canvas.value) {
-        return
-      }
-
-      canvas.value.removeEventListener(state.events[1], moveEventHandler as EventListener, false)
-      canvas.value.removeEventListener(state.events[2], endEventHandler as EventListener, false)
+      state.isDrawing = false
     }
+
+    // 使用 useEventListener
+    useEventListener(canvas, state.events[0], startEventHandler)
+    useEventListener(canvas, state.events[1], moveEventHandler)
+    useEventListener(canvas, state.events[2], endEventHandler)
+    useEventListener(canvas, state.events[3], leaveEventHandler)
+
+    onMounted(() => {
+      if (isCanvasSupported && canvas.value && wrap.value) {
+        state.ctx = canvas.value.getContext('2d')
+        state.canvasWidth = wrap.value.offsetWidth
+        state.canvasHeight = wrap.value.offsetHeight
+      }
+    })
 
     const clear = () => {
       if (!canvas.value || !state.ctx) {
         return
       }
 
-      canvas.value.addEventListener(state.events[2], endEventHandler as EventListener, false)
       state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight)
       state.ctx.closePath()
       state.isEmpty = true
@@ -168,7 +161,6 @@ export default defineComponent({
         state.ctx = canvas.value.getContext('2d')
         state.canvasWidth = wrap.value.offsetWidth
         state.canvasHeight = wrap.value.offsetHeight
-        addEvent()
       }
     })
 
