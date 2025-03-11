@@ -37,7 +37,7 @@ const save = () => {
 
   <!-- Custom Style -->
   <app-type>{{ t('customStyle') }}</app-type>
-  <var-signature v-model="signature" stroke-style="#2979ff" line-width="3" background="#f5f5f5" />
+  <var-signature v-model="signature" stroke-style="#2979ff" :line-width="3" background="#f5f5f5" />
 
   <!-- Disabled State -->
   <app-type>{{ t('disabledState') }}</app-type>
