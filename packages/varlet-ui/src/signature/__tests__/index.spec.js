@@ -140,7 +140,7 @@ test('signature clear and confirm', async () => {
 
   await wrapper.vm.clear()
   expect(onClear).toHaveBeenCalled()
-  expect(wrapper.vm.isEmpty).toBe(true)
+  expect(wrapper.vm.isEmpty()).toBe(true)
 
   await wrapper.vm.confirm()
   expect(onConfirm).toHaveBeenCalled()
