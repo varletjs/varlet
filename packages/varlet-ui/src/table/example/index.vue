@@ -73,6 +73,30 @@ onThemeChange()
       </div>
     </template>
   </var-table>
+
+  <app-type>{{ t('fixedHeader') }}</app-type>
+  <var-table scroller-height="400px">
+    <thead style="position: sticky; top: 0">
+      <tr>
+        <th>{{ t('name') }}</th>
+        <th>{{ t('math') }}</th>
+        <th>{{ t('english') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="l in list" :key="l.name">
+        <td>{{ l.name }}</td>
+        <td>{{ l.math }}</td>
+        <td>{{ l.english }}</td>
+      </tr>
+    </tbody>
+
+    <template #footer>
+      <div class="footer">
+        <var-pagination :current="1" :total="100" :size-option="[5, 10]" @change="get" />
+      </div>
+    </template>
+  </var-table>
 </template>
 
 <style lang="less" scoped>
