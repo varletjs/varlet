@@ -1,3 +1,12 @@
+## [3.9.1](https://github.com/varletjs/varlet/compare/v3.9.0...v3.9.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **table:** scroll height replace with max height ([21ed93f](https://github.com/varletjs/varlet/commit/21ed93f5e577481b8d0fe84dc517245dbaa26762))
+
+
+
 # [3.9.0](https://github.com/varletjs/varlet/compare/v3.8.7...v3.9.0) (2025-02-25)
 
 
