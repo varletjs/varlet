@@ -156,14 +156,6 @@ export default defineComponent({
       }
     }
 
-    onMounted(() => {
-      if (isCanvasSupported && canvas.value && wrap.value) {
-        state.ctx = canvas.value.getContext('2d')
-        state.canvasWidth = wrap.value.offsetWidth
-        state.canvasHeight = wrap.value.offsetHeight
-      }
-    })
-
     // expose methods
     expose({
       confirm,
