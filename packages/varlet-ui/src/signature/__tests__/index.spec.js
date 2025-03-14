@@ -4,7 +4,6 @@ import { beforeAll, describe, expect, test, vi } from 'vitest'
 import Signature from '..'
 import VarSignature from '../Signature.vue'
 
-// 添加 canvas mock
 beforeAll(() => {
   const mockContext = {
     beginPath: vi.fn(),
@@ -57,12 +56,12 @@ describe('test signature component props', () => {
   test('signature type', async () => {
     const wrapper = mount(VarSignature, {
       props: {
-        type: 'png',
+        dataUrlType: 'png',
       },
     })
 
     expect(wrapper.find('.var-signature__inner').exists()).toBe(true)
-    await wrapper.setProps({ type: 'jpg' })
+    await wrapper.setProps({ dataUrlType: 'jpg' })
     wrapper.unmount()
   })
 
@@ -105,7 +104,7 @@ describe('test signature component events', () => {
 
 test('signature canvas operations', async () => {
   const wrapper = mount(VarSignature)
-  await wrapper.vm.clear() // 简单测试一下 canvas 相关操作
+  await wrapper.vm.clear()
   wrapper.unmount()
 })
 
@@ -135,7 +134,7 @@ test('signature props', () => {
     props: {
       lineWidth: 4,
       strokeStyle: '#ff0000',
-      type: 'jpg',
+      dataUrlType: 'jpg',
     },
   })
 
