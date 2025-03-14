@@ -141,7 +141,7 @@ test('signature props', () => {
 
   expect(wrapper.props('lineWidth')).toBe(4)
   expect(wrapper.props('strokeStyle')).toBe('#ff0000')
-  expect(wrapper.props('type')).toBe('jpg')
+  expect(wrapper.props('dataUrlType')).toBe('jpg')
 
   wrapper.unmount()
 })

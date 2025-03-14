@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
+import { call } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { useLocale } from '../locale'
 import { createNamespace } from '../utils/components'
@@ -16,9 +17,7 @@ const { name, n } = createNamespace('signature')
 export default defineComponent({
   name,
   props,
-  emits: ['start', 'end', 'signing', 'confirm', 'clear', 'update:modelValue'],
-
-  setup(props, { emit, expose }) {
+  setup(props, { expose }) {
     const { t } = useLocale()
     const translate = (key: string) => t(`signature.${key}`)
 
@@ -55,7 +54,7 @@ export default defineComponent({
       state.ctx.beginPath()
       state.ctx.lineWidth = props.lineWidth
       state.ctx.strokeStyle = props.strokeStyle
-      emit('start')
+      call(props.onStart)
     }
 
     const moveEventHandler: EventListener = (event: Event) => {
@@ -83,13 +82,14 @@ export default defineComponent({
       state.ctx.lineTo(mouseX, mouseY)
       state.ctx.stroke()
 
-      emit('signing', { clientX, clientY })
+      const payload = { clientX, clientY }
+      call(props.onSigning, payload)
     }
 
     const endEventHandler: EventListener = (event: Event) => {
       event.preventDefault()
       state.isDrawing = false
-      emit('end')
+      call(props.onEnd)
     }
 
     const leaveEventHandler: EventListener = (event: Event) => {
@@ -117,9 +117,8 @@ export default defineComponent({
 
       state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight)
       state.ctx.closePath()
-
-      emit('clear')
-      emit('update:modelValue', '')
+      call(props.onClear)
+      call(props['onUpdate:modelValue'], '')
     }
 
     const confirm = () => {
@@ -128,9 +127,8 @@ export default defineComponent({
       }
 
       const dataUrl = getDataUrl(canvas.value)
-      emit('confirm', canvas.value, dataUrl)
-      emit('update:modelValue', dataUrl)
-      // 移除验证相关代码
+      call(props.onConfirm, canvas.value, dataUrl)
+      call(props['onUpdate:modelValue'], dataUrl)
     }
 
     const isCanvasBlank = (canvas: HTMLCanvasElement) => {
