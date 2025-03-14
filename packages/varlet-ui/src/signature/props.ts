@@ -15,13 +15,9 @@ export const props = {
     type: String,
     default: '#000',
   },
-  type: {
+  dataUrlType: {
     type: String as PropType<SignatureType>,
     default: 'png',
-  },
-  unsupportText: {
-    type: String,
-    default: '',
   },
   disabled: {
     type: Boolean,

@@ -66,24 +66,6 @@ describe('test signature component props', () => {
     wrapper.unmount()
   })
 
-  test('signature unsupportText', () => {
-    // 模拟不支持 canvas 的环境
-    const originalGetContext = HTMLCanvasElement.prototype.getContext
-    HTMLCanvasElement.prototype.getContext = () => null
-
-    const wrapper = mount(VarSignature, {
-      props: {
-        unsupportText: '自定义不支持提示',
-      },
-    })
-
-    expect(wrapper.find('.var-signature__unsupport').text()).toBe('自定义不支持提示')
-
-    // 恢复原始方法
-    HTMLCanvasElement.prototype.getContext = originalGetContext
-    wrapper.unmount()
-  })
-
   test('signature height', async () => {
     const wrapper = mount(VarSignature, {
       props: {
