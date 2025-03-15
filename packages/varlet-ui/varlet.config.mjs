@@ -394,6 +394,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Signature 签名',
+          'en-US': 'Signature',
+        },
+        doc: 'Signature',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Code 代码块',
           'en-US': 'Code',
         },
