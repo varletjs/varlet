@@ -50,6 +50,7 @@ import rate from './rate'
 import result from './result'
 import ripple from './ripple'
 import select from './select'
+import signature from './signature'
 import skeleton from './skeleton'
 import slider from './slider'
 import snackbar from './snackbar'
@@ -209,4 +210,5 @@ export default {
   ...tooltip,
   ...select,
   ...code,
+  ...signature,
 } as StyleVars

@@ -1,14 +1,13 @@
 <template>
-  <div ref="wrap" :class="[n(), n('inner'), { [n('--disabled')]: disabled }]">
-    <canvas v-show="isCanvasSupported" ref="canvas" :height="canvasHeight" :width="canvasWidth"></canvas>
+  <div ref="root" :class="n()">
+    <canvas ref="canvas" :height="canvasHeight" :width="canvasWidth"></canvas>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
-import { call } from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
-import { useLocale } from '../locale'
+import { defineComponent, onMounted, ref } from 'vue'
+import { call, getRect, getStyle } from '@varlet/shared'
+import { onWindowResize, useEventListener } from '@varlet/use'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
@@ -17,166 +16,131 @@ const { name, n } = createNamespace('signature')
 export default defineComponent({
   name,
   props,
-  setup(props, { expose }) {
-    const { t } = useLocale()
-    const translate = (key: string) => t(`signature.${key}`)
+  setup(props) {
+    const root = ref<HTMLElement>()
+    const canvas = ref<HTMLCanvasElement>()
+    const canvasWidth = ref(0)
+    const canvasHeight = ref(0)
+    let isSigning = false
+    let ctx: CanvasRenderingContext2D | null = null
 
-    const canvas = ref<HTMLCanvasElement | null>(null)
-    const wrap = ref<HTMLElement | null>(null)
-    const isCanvasSupported = ref(true)
+    useEventListener(canvas, 'touchstart', handleTouchstart)
+    useEventListener(canvas, 'touchmove', handleTouchmove)
+    useEventListener(canvas, 'touchend', handleTouchend)
 
-    onMounted(() => {
-      const elem = document.createElement('canvas')
-      isCanvasSupported.value = !!(elem.getContext && elem.getContext('2d'))
+    onWindowResize(resize)
+    onMounted(resize)
 
-      if (isCanvasSupported.value && canvas.value && wrap.value) {
-        state.ctx = canvas.value.getContext('2d')
-        state.canvasWidth = wrap.value.offsetWidth
-        state.canvasHeight = wrap.value.offsetHeight
-      }
-    })
-
-    const state = reactive({
-      canvasHeight: 0,
-      canvasWidth: 0,
-      ctx: null as CanvasRenderingContext2D | null,
-      events: ['touchstart', 'touchmove', 'touchend', 'touchleave'],
-      isDrawing: false,
-    })
-    const startEventHandler: EventListener = (event: Event) => {
-      const e = event as MouseEvent | TouchEvent
-      e.preventDefault()
-      if (!state.ctx || props.disabled) {
+    function resize() {
+      if (!canvas.value || !root.value) {
         return
       }
 
-      state.isDrawing = true
-      state.ctx.beginPath()
-      state.ctx.lineWidth = props.lineWidth
-      state.ctx.strokeStyle = props.strokeStyle
+      ctx = canvas.value.getContext('2d')
+      canvasWidth.value = root.value.offsetWidth
+      canvasHeight.value = root.value.offsetHeight
+    }
+
+    function handleTouchstart(event: TouchEvent) {
+      if (!ctx || !root.value) {
+        return
+      }
+
+      event.preventDefault()
+      isSigning = true
+
+      ctx.beginPath()
+      ctx.lineWidth = props.lineWidth
+      ctx.strokeStyle = props.strokeStyle === 'currentColor' ? getStyle(root.value).color : props.strokeStyle
+
       call(props.onStart)
     }
 
-    const moveEventHandler: EventListener = (event: Event) => {
-      const e = event as MouseEvent | TouchEvent
-      e.preventDefault()
-      if (!canvas.value || !state.ctx || !state.isDrawing) {
+    function handleTouchmove(event: TouchEvent) {
+      event.preventDefault()
+      if (!canvas.value || !ctx || !isSigning) {
         return
       }
 
-      let clientX: number
-      let clientY: number
+      const clientX = event.touches[0].clientX
+      const clientY = event.touches[0].clientY
+      const rect = getRect(canvas.value)
+      const x = clientX - rect.left
+      const y = clientY - rect.top
 
-      if ('touches' in e) {
-        clientX = e.touches[0].clientX
-        clientY = e.touches[0].clientY
-      } else {
-        clientX = (e as MouseEvent).clientX
-        clientY = (e as MouseEvent).clientY
-      }
+      ctx.lineTo(x, y)
+      ctx.stroke()
 
-      const coverPos = canvas.value.getBoundingClientRect()
-      const mouseX = clientX - coverPos.left
-      const mouseY = clientY - coverPos.top
-
-      state.ctx.lineTo(mouseX, mouseY)
-      state.ctx.stroke()
-
-      const payload = { clientX, clientY }
-      call(props.onSigning, payload)
+      call(props.onSigning, { clientX, clientY, x, y })
     }
 
-    const endEventHandler: EventListener = (event: Event) => {
+    function handleTouchend(event: Event) {
       event.preventDefault()
-      state.isDrawing = false
+      isSigning = false
       call(props.onEnd)
     }
 
-    const leaveEventHandler: EventListener = (event: Event) => {
-      event.preventDefault()
-      state.isDrawing = false
-    }
-
-    useEventListener(canvas, state.events[0], startEventHandler)
-    useEventListener(canvas, state.events[1], moveEventHandler)
-    useEventListener(canvas, state.events[2], endEventHandler)
-    useEventListener(canvas, state.events[3], leaveEventHandler)
-
-    onMounted(() => {
-      if (isCanvasSupported.value && canvas.value && wrap.value) {
-        state.ctx = canvas.value.getContext('2d')
-        state.canvasWidth = wrap.value.offsetWidth
-        state.canvasHeight = wrap.value.offsetHeight
-      }
-    })
-
-    const clear = () => {
-      if (!canvas.value || !state.ctx) {
-        return
-      }
-
-      state.ctx.clearRect(0, 0, state.canvasWidth, state.canvasHeight)
-      state.ctx.closePath()
-      call(props.onClear)
-      call(props['onUpdate:modelValue'], '')
-    }
-
-    const confirm = () => {
-      if (!canvas.value) {
-        return
-      }
-
-      const dataUrl = getDataUrl(canvas.value)
-      call(props.onConfirm, canvas.value, dataUrl)
-      call(props['onUpdate:modelValue'], dataUrl)
-    }
-
-    const isCanvasBlank = (canvas: HTMLCanvasElement) => {
-      if (!canvas) {
-        return true
-      }
-
-      const blank = document.createElement('canvas')
-      blank.width = canvas.width
-      blank.height = canvas.height
-
-      return canvas.toDataURL() === blank.toDataURL()
-    }
-
-    const getDataUrl = (canvas: HTMLCanvasElement) => {
-      if (isCanvasBlank(canvas)) {
-        return ''
-      }
-
+    function getDataUrl(canvas: HTMLCanvasElement) {
       switch (props.dataUrlType) {
         case 'png':
           return canvas.toDataURL('image/png')
         case 'jpg':
-          return canvas.toDataURL('image/jpeg', 0.8)
+          return canvas.toDataURL('image/jpeg')
         default:
           return canvas.toDataURL('image/png')
       }
     }
-    expose({
-      confirm,
-      clear,
-      isEmpty: () => (canvas.value ? isCanvasBlank(canvas.value) : true),
-    })
+
+    function isCanvasEmpty(canvas: HTMLCanvasElement) {
+      if (!canvas) {
+        return true
+      }
+
+      const emptyCanvas = document.createElement('canvas')
+      emptyCanvas.width = canvas.width
+      emptyCanvas.height = canvas.height
+
+      return canvas.toDataURL() === emptyCanvas.toDataURL()
+    }
+
+    // expose
+    function reset() {
+      if (!ctx) {
+        return
+      }
+
+      isSigning = false
+      ctx.clearRect(0, 0, canvasWidth.value, canvasHeight.value)
+      ctx.closePath()
+    }
+
+    // expose
+    function confirm() {
+      if (!canvas.value) {
+        return
+      }
+
+      if (isCanvasEmpty(canvas.value)) {
+        return ''
+      }
+
+      return getDataUrl(canvas.value)
+    }
 
     return {
-      ...toRefs(state),
+      root,
       canvas,
-      wrap,
-      isCanvasSupported,
-      confirm,
-      clear,
-      translate,
+      canvasWidth,
+      canvasHeight,
       n,
+      confirm,
+      reset,
     }
   },
 })
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './signature';
 </style>
