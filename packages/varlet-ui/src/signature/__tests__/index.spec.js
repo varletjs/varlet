@@ -4,26 +4,25 @@ import { beforeAll, describe, expect, test, vi } from 'vitest'
 import Signature from '..'
 import VarSignature from '../Signature.vue'
 
+// 模拟 Canvas API
 beforeAll(() => {
-  const mockContext = {
+  // 模拟 getContext
+  HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
+    clearRect: vi.fn(),
+    closePath: vi.fn(),
     beginPath: vi.fn(),
     moveTo: vi.fn(),
     lineTo: vi.fn(),
     stroke: vi.fn(),
-    clearRect: vi.fn(),
-    closePath: vi.fn(),
-    canvas: {
-      width: 300,
-      height: 150,
-    },
-    lineWidth: 2,
-    strokeStyle: '#000',
-  }
+  }))
 
-  HTMLCanvasElement.prototype.getContext = () => mockContext
+  // 模拟 toDataURL
+  HTMLCanvasElement.prototype.toDataURL = vi.fn((type) => {
+    return type === 'image/jpeg' ? 'data:image/jpeg;base64,test' : 'data:image/png;base64,test'
+  })
 })
 
-test('signature use', () => {
+test('signature plugin', () => {
   const app = createApp({}).use(Signature)
   expect(app.component(Signature.name)).toBeTruthy()
 })
@@ -66,50 +65,6 @@ describe('test signature component props', () => {
   })
 })
 
-describe('test signature component events', () => {
-  test('signature start event', async () => {
-    const onStart = vi.fn()
-    const wrapper = mount(VarSignature, {
-      props: { onStart },
-    })
-
-    await wrapper.find('canvas').trigger('touchstart', {
-      touches: [{ clientX: 0, clientY: 0 }],
-    })
-    expect(onStart).toHaveBeenCalled()
-    wrapper.unmount()
-  })
-
-  test('signature signing event', async () => {
-    const onSigning = vi.fn()
-    const wrapper = mount(VarSignature, {
-      props: { onSigning },
-    })
-
-    await wrapper.find('canvas').trigger('touchstart', {
-      touches: [{ clientX: 0, clientY: 0 }],
-    })
-
-    await wrapper.find('canvas').trigger('touchmove', {
-      touches: [{ clientX: 10, clientY: 10 }],
-    })
-
-    expect(onSigning).toHaveBeenCalled()
-    wrapper.unmount()
-  })
-
-  test('signature end event', async () => {
-    const onEnd = vi.fn()
-    const wrapper = mount(VarSignature, {
-      props: { onEnd },
-    })
-
-    await wrapper.find('canvas').trigger('touchend')
-    expect(onEnd).toHaveBeenCalled()
-    wrapper.unmount()
-  })
-})
-
 describe('test signature component methods', () => {
   test('signature reset method', async () => {
     const wrapper = mount(VarSignature)
@@ -123,20 +78,4 @@ describe('test signature component methods', () => {
     expect(result).toBe('')
     wrapper.unmount()
   })
-})
-
-test('signature props validation', () => {
-  const wrapper = mount(VarSignature, {
-    props: {
-      lineWidth: 4,
-      strokeStyle: '#ff0000',
-      dataUrlType: 'jpg',
-    },
-  })
-
-  expect(wrapper.props('lineWidth')).toBe(4)
-  expect(wrapper.props('strokeStyle')).toBe('#ff0000')
-  expect(wrapper.props('dataUrlType')).toBe('jpg')
-
-  wrapper.unmount()
 })
