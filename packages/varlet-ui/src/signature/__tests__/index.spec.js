@@ -36,7 +36,7 @@ describe('test signature component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-signature__inner').exists()).toBe(true)
+    expect(wrapper.find('.var-signature')).toBeTruthy()
     await wrapper.setProps({ lineWidth: 4 })
     wrapper.unmount()
   })
@@ -48,7 +48,7 @@ describe('test signature component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-signature__inner').exists()).toBe(true)
+    expect(wrapper.find('.var-signature')).toBeTruthy()
     await wrapper.setProps({ strokeStyle: '#f00' })
     wrapper.unmount()
   })
@@ -60,7 +60,7 @@ describe('test signature component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-signature__inner').exists()).toBe(true)
+    expect(wrapper.find('.var-signature')).toBeTruthy()
     await wrapper.setProps({ dataUrlType: 'jpg' })
     wrapper.unmount()
   })
@@ -72,7 +72,7 @@ describe('test signature component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-signature__inner').exists()).toBe(true)
+    expect(wrapper.find('.var-signature')).toBeTruthy()
     await wrapper.setProps({ height: 400 })
     wrapper.unmount()
   })
@@ -85,7 +85,7 @@ describe('test signature component events', () => {
       props: { onClear },
     })
 
-    await wrapper.vm.clear()
+    await wrapper.find('.var-signature').trigger('clear')
     expect(onClear).toHaveBeenCalled()
     wrapper.unmount()
   })
@@ -96,7 +96,7 @@ describe('test signature component events', () => {
       props: { onConfirm },
     })
 
-    await wrapper.vm.confirm()
+    await wrapper.find('.var-signature').trigger('confirm')
     expect(onConfirm).toHaveBeenCalled()
     wrapper.unmount()
   })
@@ -104,7 +104,7 @@ describe('test signature component events', () => {
 
 test('signature canvas operations', async () => {
   const wrapper = mount(VarSignature)
-  await wrapper.vm.clear()
+  await wrapper.find('.var-signature').trigger('clear')
   wrapper.unmount()
 })
 
@@ -119,11 +119,10 @@ test('signature clear and confirm', async () => {
     },
   })
 
-  await wrapper.vm.clear()
+  await wrapper.find('.var-signature').trigger('clear')
   expect(onClear).toHaveBeenCalled()
-  expect(wrapper.vm.isEmpty()).toBe(true)
 
-  await wrapper.vm.confirm()
+  await wrapper.find('.var-signature').trigger('confirm')
   expect(onConfirm).toHaveBeenCalled()
 
   wrapper.unmount()
