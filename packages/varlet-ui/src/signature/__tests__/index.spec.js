@@ -53,7 +53,7 @@ describe('test signature component props', () => {
     wrapper.unmount()
   })
 
-  test('signature type', async () => {
+  test('signature dataUrlType', async () => {
     const wrapper = mount(VarSignature, {
       props: {
         dataUrlType: 'png',
@@ -64,71 +64,68 @@ describe('test signature component props', () => {
     await wrapper.setProps({ dataUrlType: 'jpg' })
     wrapper.unmount()
   })
-
-  test('signature height', async () => {
-    const wrapper = mount(VarSignature, {
-      props: {
-        height: 300,
-      },
-    })
-
-    expect(wrapper.find('.var-signature')).toBeTruthy()
-    await wrapper.setProps({ height: 400 })
-    wrapper.unmount()
-  })
 })
 
 describe('test signature component events', () => {
-  test('signature clear event', async () => {
-    const onClear = vi.fn()
+  test('signature start event', async () => {
+    const onStart = vi.fn()
     const wrapper = mount(VarSignature, {
-      props: { onClear },
+      props: { onStart },
     })
 
-    await wrapper.find('.var-signature').trigger('clear')
-    expect(onClear).toHaveBeenCalled()
+    await wrapper.find('canvas').trigger('touchstart', {
+      touches: [{ clientX: 0, clientY: 0 }],
+    })
+    expect(onStart).toHaveBeenCalled()
     wrapper.unmount()
   })
 
-  test('signature confirm event', async () => {
-    const onConfirm = vi.fn()
+  test('signature signing event', async () => {
+    const onSigning = vi.fn()
     const wrapper = mount(VarSignature, {
-      props: { onConfirm },
+      props: { onSigning },
     })
 
-    await wrapper.find('.var-signature').trigger('confirm')
-    expect(onConfirm).toHaveBeenCalled()
+    await wrapper.find('canvas').trigger('touchstart', {
+      touches: [{ clientX: 0, clientY: 0 }],
+    })
+
+    await wrapper.find('canvas').trigger('touchmove', {
+      touches: [{ clientX: 10, clientY: 10 }],
+    })
+
+    expect(onSigning).toHaveBeenCalled()
+    wrapper.unmount()
+  })
+
+  test('signature end event', async () => {
+    const onEnd = vi.fn()
+    const wrapper = mount(VarSignature, {
+      props: { onEnd },
+    })
+
+    await wrapper.find('canvas').trigger('touchend')
+    expect(onEnd).toHaveBeenCalled()
     wrapper.unmount()
   })
 })
 
-test('signature canvas operations', async () => {
-  const wrapper = mount(VarSignature)
-  await wrapper.find('.var-signature').trigger('clear')
-  wrapper.unmount()
-})
-
-test('signature clear and confirm', async () => {
-  const onClear = vi.fn()
-  const onConfirm = vi.fn()
-
-  const wrapper = mount(VarSignature, {
-    props: {
-      onClear,
-      onConfirm,
-    },
+describe('test signature component methods', () => {
+  test('signature reset method', async () => {
+    const wrapper = mount(VarSignature)
+    await wrapper.vm.reset()
+    wrapper.unmount()
   })
 
-  await wrapper.find('.var-signature').trigger('clear')
-  expect(onClear).toHaveBeenCalled()
-
-  await wrapper.find('.var-signature').trigger('confirm')
-  expect(onConfirm).toHaveBeenCalled()
-
-  wrapper.unmount()
+  test('signature confirm method', async () => {
+    const wrapper = mount(VarSignature)
+    const result = await wrapper.vm.confirm()
+    expect(result).toBe('')
+    wrapper.unmount()
+  })
 })
 
-test('signature props', () => {
+test('signature props validation', () => {
   const wrapper = mount(VarSignature, {
     props: {
       lineWidth: 4,

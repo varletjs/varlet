@@ -14,11 +14,11 @@ import { ref } from 'vue'
 
 const signature = ref('')
 
-const clear = () => {
+const reset = () => {
   signature.value = ''
 }
 
-const save = () => {
+const confirm = () => {
   console.log('Signature data:', signature.value)
 }
 </script>
@@ -27,8 +27,8 @@ const save = () => {
   <var-signature v-model="signature" />
   
   <var-space>
-    <var-button type="primary" @click="save">Save</var-button>
-    <var-button @click="clear">Clear</var-button>
+    <var-button type="primary" @click="confirm">Confirm</var-button>
+    <var-button @click="reset">Reset</var-button>
   </var-space>
   
   <img v-if="signature" :src="signature" alt="Signature Preview" style="margin-top: 10px" />
@@ -37,7 +37,7 @@ const save = () => {
 
 ### Custom Style
 
-Customize signature style through properties like `color`, `lineWidth`, etc.
+Customize signature style through properties like `stroke-style`, `line-width`, etc.
 
 ```html
 <script setup>
@@ -49,20 +49,22 @@ const signature = ref('')
 <template>
   <var-signature
     v-model="signature"
-    color="#2979ff"
-    line-width="3"
-    background="#f5f5f5"
+    stroke-style="#2979ff"
+    :line-width="3"
   />
 </template>
 ```
 
-### Disabled State
+### Specify Image Format
 
-Set disabled state through the `disabled` property.
+Specify the generated image format through `data-url-type`.
 
 ```html
 <template>
-  <var-signature v-model="signature" disabled />
+  <var-signature
+    v-model="signature"
+    data-url-type="jpg"
+  />
 </template>
 ```
 
@@ -73,28 +75,24 @@ Set disabled state through the `disabled` property.
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model` | Signature value (base64 format) | _string_ | `''` |
-| `color` | Pen color | _string_ | `#000` |
+| `stroke-style` | Pen color, supports `currentColor` | _string_ | `#000` |
 | `line-width` | Line width | _string \| number_ | `2` |
-| `background` | Canvas background color | _string_ | `#fff` |
-| `width` | Canvas width | _string \| number_ | `100%` |
-| `height` | Canvas height | _string \| number_ | `200` |
-| `disabled` | Whether to disable signature | _boolean_ | `false` |
+| `data-url-type` | Generated image format | _'png' \| 'jpg'_ | `'png'` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `start` | Triggered when starting to sign | `event: TouchEvent` |
-| `signing` | Triggered during signing | `event: TouchEvent` |
-| `end` | Triggered when ending signature | `event: TouchEvent` |
-| `change` | Triggered when signature content changes | `value: string` |
+| `signing` | Triggered during signing | `{ x: number, y: number, clientX: number, clientY: number }` |
+| `end` | Triggered when ending signature | `event: Event` |
 
 ### Methods
 
-| Method | Description | Parameters |
-| --- | --- | --- |
-| `clear` | Clear signature | `-` |
-| `save` | Save signature, returns base64 format image data | `-` |
+| Method | Description | Parameters | Return |
+| --- | --- | --- | --- |
+| `reset` | Clear signature and end current path | `-` | `void` |
+| `confirm` | Save signature, returns base64 format image data. Returns empty string if canvas is empty | `-` | `string` |
 
 ### Style Variables
 
@@ -102,9 +100,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--signature-background` | `#fff` |
-| `--signature-border-color` | `#e0e0e0` |
-| `--signature-border-radius` | `4px` |
+| `--signature-height` | `200px` |
+| `--signature-border-color` | `var(--color-surface-container-highest)` |
+| `--signature-stroke-color` | `#fff` |
 
 ### Example
 
@@ -115,7 +113,7 @@ import { Snackbar } from '@varlet/ui'
 
 const signature = ref('')
 
-const handleSave = async () => {
+const handleConfirm = async () => {
   if (!signature.value) {
     Snackbar.warning('Please sign first')
     return
@@ -135,14 +133,13 @@ const handleSave = async () => {
     
     <var-signature
       v-model="signature"
-      height="300"
-      color="#2979ff"
-      line-width="3"
+      stroke-style="#2979ff"
+      :line-width="3"
     />
     
     <template #footer>
       <var-space>
-        <var-button type="primary" @click="handleSave">
+        <var-button type="primary" @click="handleConfirm">
           Confirm
         </var-button>
         <var-button @click="signature = ''">
@@ -160,6 +157,9 @@ const handleSave = async () => {
 
 ## Notes
 
-1. Signature data is stored in base64 format, which may occupy large space. It's recommended to compress before uploading to server.
-2. When using on mobile devices, it's recommended to set appropriate canvas size for better signature experience.
-3. Canvas border, border radius and other styles can be customized through CSS.
+1. Signature data is stored in base64 format, which may occupy large space. It's recommended to compress before uploading to server
+2. When using on mobile devices, it's recommended to set appropriate canvas size for better signature experience
+3. Canvas border, border radius and other styles can be customized through CSS
+4. The component automatically adapts to container width and adjusts canvas size when window size changes
+5. When `stroke-style` is set to `'currentColor'`, it will inherit the text color of the parent element
+6. You can choose to generate PNG or JPG format signature images through the `data-url-type` property
