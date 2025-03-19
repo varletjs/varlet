@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`hover style binding 1`] = `"<div style="color: rgb(1, 1, 1);"></div>"`;
+
+exports[`hover style binding 2`] = `"<div style=""></div>"`;
+
+exports[`hover style binding on update 1`] = `"<div style="color: rgb(1, 1, 1);">2</div>"`;
+
+exports[`hover style binding restore 1`] = `"<div style="color: rgb(255, 255, 255);"></div>"`;
+
+exports[`hover style binding restore 2`] = `"<div style="color: rgb(1, 1, 1);"></div>"`;
+
+exports[`hover style binding restore 3`] = `"<div style="color: rgb(255, 255, 255);"></div>"`;

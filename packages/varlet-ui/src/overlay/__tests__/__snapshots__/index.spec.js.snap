@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`overlay show 1`] = `
+"<transition-stub name="var-overlay--fade" appear="false" persisted="false" css="true">
+  <div class="var-overlay" style="z-index: 1998;">
+    <div class="var-overlay__overlay" style="z-index: 1999;"></div>
+    <div class="var-overlay__content" style="z-index: 2000;"> default slot content </div>
+  </div>
+</transition-stub>"
+`;
