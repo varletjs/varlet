@@ -1,3 +1,12 @@
+## [3.10.1](https://github.com/varletjs/varlet/compare/v3.10.0...v3.10.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* **vscode-extension:** update componentsMap ([4f91a3e](https://github.com/varletjs/varlet/commit/4f91a3e918a312f90a0371de925c7ecfa3812dd2))
+
+
+
 # [3.10.0](https://github.com/varletjs/varlet/compare/v3.9.1...v3.10.0) (2025-03-20)
 
 
