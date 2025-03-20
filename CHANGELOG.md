@@ -1,3 +1,12 @@
+# [3.10.0](https://github.com/varletjs/varlet/compare/v3.9.1...v3.10.0) (2025-03-20)
+
+
+### Features
+
+* new component signature ([#1863](https://github.com/varletjs/varlet/issues/1863)) ([f9d8f31](https://github.com/varletjs/varlet/commit/f9d8f318909795654d80c3ba76554f19b32be8c9))
+
+
+
 ## [3.9.1](https://github.com/varletjs/varlet/compare/v3.9.0...v3.9.1) (2025-03-11)
 
 
