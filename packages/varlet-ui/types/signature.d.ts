@@ -3,12 +3,6 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 export declare const signatureProps: Record<keyof SignatureProps, any>
 
 export type SignatureDataUrlType = 'png' | 'jpg'
-export interface SignatureSigningData {
-  x: number
-  y: number
-  clientX: number
-  clientY: number
-}
 
 export interface SignatureProps extends BasicAttributes {
   lineWidth?: number
@@ -16,7 +10,7 @@ export interface SignatureProps extends BasicAttributes {
   dataUrlType?: SignatureDataUrlType
   onStart?: ListenerProp<() => void>
   onEnd?: ListenerProp<() => void>
-  onSigning?: ListenerProp<(data: SignatureSigningData) => void>
+  onSigning?: ListenerProp<() => void>
 }
 
 export class Signature extends VarComponent {
