@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { call, getRect, getStyle } from '@varlet/shared'
+import { call, getRect, getStyle, toNumber } from '@varlet/shared'
 import { onWindowResize, useEventListener } from '@varlet/use'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
@@ -50,7 +50,7 @@ export default defineComponent({
       isSigning = true
 
       ctx.beginPath()
-      ctx.lineWidth = props.lineWidth
+      ctx.lineWidth = toNumber(props.lineWidth)
       ctx.strokeStyle = props.strokeStyle === 'currentColor' ? getStyle(root.value).color : props.strokeStyle
 
       call(props.onStart)
