@@ -28,8 +28,8 @@ function resetSignature() {
 <template>
   <var-signature ref="signatureRef" />
   <var-space style="margin-top: 10px">
-    <var-button type="primary" @click="confirmSignature">确认</var-button>
-    <var-button type="primary" @click="resetSignature">重置</var-button>
+    <var-button type="primary" @click="confirmSignature">Confirm</var-button>
+    <var-button type="primary" @click="resetSignature">Reset</var-button>
   </var-space>
   <img v-if="signature" :src="signature" style="margin-top: 10px" />
 </template>
@@ -59,8 +59,8 @@ function resetSignature() {
 <template>
   <var-signature ref="signatureRef" style="color: var(--color-primary)" :line-width="4" />
   <var-space style="margin-top: 10px">
-    <var-button type="primary" @click="confirmSignature">确认</var-button>
-    <var-button type="primary" @click="resetSignature">重置</var-button>
+    <var-button type="primary" @click="confirmSignature">Confirm</var-button>
+    <var-button type="primary" @click="resetSignature">Reset</var-button>
   </var-space>
   <img v-if="signature" :src="signature" style="margin-top: 10px" />
 </template>
@@ -89,7 +89,7 @@ function resetSignature() {
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `reset` | Reset canvas | `-` | `-` |
-| `confirm` | Confirm the signature and return image data in data url format.Returns an empty string when the canvas is empty | `-` | `string` |
+| `confirm` | Confirm the signature and return image data in data url format. Returns an empty string when the canvas is empty | `-` | `string` |
 
 ### Style Variables
 
