@@ -1,3 +1,12 @@
+## [3.10.2](https://github.com/varletjs/varlet/compare/v3.10.1...v3.10.2) (2025-03-20)
+
+
+### Bug Fixes
+
+* fix playground css reference error ([c7edc92](https://github.com/varletjs/varlet/commit/c7edc92eda23f0018890503ca909de8c44b7ce41))
+
+
+
 ## [3.10.1](https://github.com/varletjs/varlet/compare/v3.10.0...v3.10.1) (2025-03-20)
 
 
