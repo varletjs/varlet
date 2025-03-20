@@ -394,14 +394,6 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Signature 签名',
-          'en-US': 'Signature',
-        },
-        doc: 'Signature',
-        type: 2,
-      },
-      {
-        text: {
           'zh-CN': 'Code 代码块',
           'en-US': 'Code',
         },
@@ -643,6 +635,14 @@ export default defineConfig({
           'en-US': 'TimePicker',
         },
         doc: 'time-picker',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Signature 签名',
+          'en-US': 'Signature',
+        },
+        doc: 'signature',
         type: 2,
       },
       {

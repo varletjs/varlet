@@ -4,8 +4,9 @@ import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
 
 const signature = ref('')
-const customStyleSignature = ref('')
 const signatureRef = ref()
+
+const customStyleSignature = ref('')
 const customStyleSignatureRef = ref()
 
 watchLang(use)
@@ -37,12 +38,12 @@ function clearCustomStyleSignature() {
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-signature ref="signatureRef" v-model="signature" />
+  <var-signature ref="signatureRef" />
   <var-space class="gap">
     <var-button type="primary" @click="confirmSignature">{{ t('confirm') }}</var-button>
     <var-button type="primary" @click="resetSignature">{{ t('reset') }}</var-button>
   </var-space>
-  <img v-if="signature" :src="signature" style="margin-top: 10px" />
+  <img v-if="signature" class="gap" :src="signature" />
 
   <app-type>{{ t('customStyle') }}</app-type>
   <var-signature ref="customStyleSignatureRef" style="color: var(--color-primary)" :line-width="4" />

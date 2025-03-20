@@ -575,8 +575,9 @@ interface BaseStyleVars {
   '--option-font-size'?: string
   '--option-selected-background'?: string
   '--option-text-color'?: string
-  '--signature-background'?: string
-  '--signature-border-color'?: string
+  '--signature-height'?: string
+  '--signature-background-color'?: string
+  '--signature-stroke-color'?: string
   '--signature-border-radius'?: string
   '--skeleton-content-padding'?: string
   '--skeleton-card-height'?: string

@@ -71,10 +71,14 @@ export default defineComponent({
       ctx.lineTo(x, y)
       ctx.stroke()
 
-      call(props.onSigning, { clientX, clientY, x, y })
+      call(props.onSigning)
     }
 
     function handleTouchend(event: Event) {
+      if (!isSigning) {
+        return
+      }
+
       event.preventDefault()
       isSigning = false
       call(props.onEnd)
@@ -82,8 +86,6 @@ export default defineComponent({
 
     function getDataUrl(canvas: HTMLCanvasElement) {
       switch (props.dataUrlType) {
-        case 'png':
-          return canvas.toDataURL('image/png')
         case 'jpg':
           return canvas.toDataURL('image/jpeg')
         default:
@@ -100,7 +102,7 @@ export default defineComponent({
       emptyCanvas.width = canvas.width
       emptyCanvas.height = canvas.height
 
-      return canvas.toDataURL() === emptyCanvas.toDataURL()
+      return getDataUrl(canvas) === getDataUrl(emptyCanvas)
     }
 
     // expose

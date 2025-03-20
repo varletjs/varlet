@@ -2,69 +2,67 @@
 
 ### Intro
 
-A component for electronic signature that allows users to sign on the screen.
+Signature component based on `Canvas`.
 
 ### Basic Usage
 
-Bind signature value through `v-model`.
+Get the data url of the canvas through the component method `confirm`. When the canvas is empty, you will get the `empty string`.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const signature = ref('')
+const signatureRef = ref()
 
-const reset = () => {
-  signature.value = ''
+function confirmSignature() {
+  signature.value = signatureRef.value.confirm()
 }
 
-const confirm = () => {
-  console.log('Signature data:', signature.value)
+function resetSignature() {
+  signature.value = ''
+  signatureRef.value.reset()
 }
 </script>
 
 <template>
-  <var-signature v-model="signature" />
-  
-  <var-space>
-    <var-button type="primary" @click="confirm">Confirm</var-button>
-    <var-button @click="reset">Reset</var-button>
+  <var-signature ref="signatureRef" />
+  <var-space style="margin-top: 10px">
+    <var-button type="primary" @click="confirmSignature">确认</var-button>
+    <var-button type="primary" @click="resetSignature">重置</var-button>
   </var-space>
-  
-  <img v-if="signature" :src="signature" alt="Signature Preview" style="margin-top: 10px" />
+  <img v-if="signature" :src="signature" style="margin-top: 10px" />
 </template>
 ```
 
 ### Custom Style
 
-Customize signature style through properties like `stroke-style`, `line-width`, etc.
+You can customize the signature style through `stroke-style` and `line-width`. The default `stroke-style` is `currentColor`, which will inherit the text color, so you can also set the color through `css color`.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const signature = ref('')
+const signatureRef = ref()
+
+function confirmSignature() {
+  signature.value = signatureRef.value.confirm()
+}
+
+function resetSignature() {
+  signature.value = ''
+  signatureRef.value.reset()
+}
 </script>
 
 <template>
-  <var-signature
-    v-model="signature"
-    stroke-style="#2979ff"
-    :line-width="3"
-  />
-</template>
-```
-
-### Specify Image Format
-
-Specify the generated image format through `data-url-type`.
-
-```html
-<template>
-  <var-signature
-    v-model="signature"
-    data-url-type="jpg"
-  />
+  <var-signature ref="signatureRef" style="color: var(--color-primary)" :line-width="4" />
+  <var-space style="margin-top: 10px">
+    <var-button type="primary" @click="confirmSignature">确认</var-button>
+    <var-button type="primary" @click="resetSignature">重置</var-button>
+  </var-space>
+  <img v-if="signature" :src="signature" style="margin-top: 10px" />
 </template>
 ```
 
@@ -72,27 +70,26 @@ Specify the generated image format through `data-url-type`.
 
 ### Props
 
-| Prop | Description | Type | Default |
+| Prop | Description  | Type | Default |
 | --- | --- | --- | --- |
-| `v-model` | Signature value (base64 format) | _string_ | `''` |
-| `stroke-style` | Pen color, supports `currentColor` | _string_ | `#000` |
-| `line-width` | Line width | _string \| number_ | `2` |
-| `data-url-type` | Generated image format | _'png' \| 'jpg'_ | `'png'` |
+| `stroke-style` | Canvas stroke style | _string_ | `currentColor` |
+| `line-width` | Canvas line width | _string \| number_ | `2` |
+| `data-url-type` | Data url type for generating image | _'png' \| 'jpg'_ | `'png'` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `start` | Triggered when starting to sign | `event: TouchEvent` |
-| `signing` | Triggered during signing | `{ x: number, y: number, clientX: number, clientY: number }` |
-| `end` | Triggered when ending signature | `event: Event` |
+| `start` | Triggered when signing begins | `-` |
+| `signing` | Triggered during signature | `-` |
+| `end` | Triggered when ending signature | `-` |
 
 ### Methods
 
-| Method | Description | Parameters | Return |
+| Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
-| `reset` | Clear signature and end current path | `-` | `void` |
-| `confirm` | Save signature, returns base64 format image data. Returns empty string if canvas is empty | `-` | `string` |
+| `reset` | Reset canvas | `-` | `-` |
+| `confirm` | Confirm the signature and return image data in data url format.Returns an empty string when the canvas is empty | `-` | `string` |
 
 ### Style Variables
 
@@ -101,65 +98,6 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--signature-height` | `200px` |
-| `--signature-border-color` | `var(--color-surface-container-highest)` |
-| `--signature-stroke-color` | `#fff` |
-
-### Example
-
-```html
-<script setup>
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-
-const signature = ref('')
-
-const handleConfirm = async () => {
-  if (!signature.value) {
-    Snackbar.warning('Please sign first')
-    return
-  }
-  
-  // Here you can upload signature data to server
-  console.log('Signature data:', signature.value)
-  Snackbar.success('Save successful')
-}
-</script>
-
-<template>
-  <var-card>
-    <template #title>
-      Please sign below
-    </template>
-    
-    <var-signature
-      v-model="signature"
-      stroke-style="#2979ff"
-      :line-width="3"
-    />
-    
-    <template #footer>
-      <var-space>
-        <var-button type="primary" @click="handleConfirm">
-          Confirm
-        </var-button>
-        <var-button @click="signature = ''">
-          Reset
-        </var-button>
-      </var-space>
-    </template>
-  </var-card>
-  
-  <var-paper :elevation="2" style="margin-top: 16px" v-if="signature">
-    <img :src="signature" alt="Signature Preview" style="width: 100%" />
-  </var-paper>
-</template>
-```
-
-## Notes
-
-1. Signature data is stored in base64 format, which may occupy large space. It's recommended to compress before uploading to server
-2. When using on mobile devices, it's recommended to set appropriate canvas size for better signature experience
-3. Canvas border, border radius and other styles can be customized through CSS
-4. The component automatically adapts to container width and adjusts canvas size when window size changes
-5. When `stroke-style` is set to `'currentColor'`, it will inherit the text color of the parent element
-6. You can choose to generate PNG or JPG format signature images through the `data-url-type` property
+| `--signature-background-color` | `var(--color-surface-container-highest)` |
+| `--signature-stroke-color` | `#333` |
+| `--signature-border-radius` | `4px` |
