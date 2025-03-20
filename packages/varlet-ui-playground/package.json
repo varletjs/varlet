@@ -16,8 +16,8 @@
     "preview": "varlet-cli preview"
   },
   "dependencies": {
-    "@varlet/touch-emulator": "workspace: *",
-    "@varlet/ui": "workspace: *",
+    "@varlet/touch-emulator": "workspace:*",
+    "@varlet/ui": "workspace:*",
     "@vue/repl": "^2.4.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
-    "@varlet/cli": "workspace: *",
+    "@varlet/cli": "workspace:*",
     "live-server": "^1.2.1",
     "typescript": "5.3.3",
     "vite": "6.1.1"

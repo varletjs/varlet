@@ -20,7 +20,7 @@ async function stub(varletConfig: Required<VarletConfig>) {
   const name = kebabCase(varletConfig?.name || '')
   // keep esm and css file for playground
   const esmFile = resolve(ES_DIR, `${name}.esm.js`)
-  const cssFile = resolve(ES_DIR, `style.css`)
+  const cssFile = resolve(ES_DIR, `${name}.css`)
   const esmContent = pathExistsSync(esmFile) ? readFileSync(esmFile, 'utf-8') : ''
   const cssContent = pathExistsSync(cssFile) ? readFileSync(cssFile, 'utf-8') : ''
 

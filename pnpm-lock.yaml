@@ -309,7 +309,7 @@ importers:
         specifier: workspace:*
         version: link:../varlet-touch-emulator
       '@varlet/ui':
-        specifier: 'workspace: *'
+        specifier: workspace:*
         version: 'link:'
       '@vitest/coverage-istanbul':
         specifier: 3.0.6
@@ -351,10 +351,10 @@ importers:
   packages/varlet-ui-playground:
     dependencies:
       '@varlet/touch-emulator':
-        specifier: 'workspace: *'
+        specifier: workspace:*
         version: link:../varlet-touch-emulator
       '@varlet/ui':
-        specifier: 'workspace: *'
+        specifier: workspace:*
         version: link:../varlet-ui
       '@vue/repl':
         specifier: ^2.4.0
@@ -376,7 +376,7 @@ importers:
         specifier: '*'
         version: 18.7.6
       '@varlet/cli':
-        specifier: 'workspace: *'
+        specifier: workspace:*
         version: link:../varlet-cli
       live-server:
         specifier: ^1.2.1
