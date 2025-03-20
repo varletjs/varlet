@@ -639,6 +639,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Signature 签名',
+          'en-US': 'Signature',
+        },
+        doc: 'signature',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '表单组件',
           'en-US': 'Form Components',
         },

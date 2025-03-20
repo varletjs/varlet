@@ -74,6 +74,7 @@ export * from './result'
 export * from './ripple'
 export * from './row'
 export * from './select'
+export * from './signature'
 export * from './skeleton'
 export * from './slider'
 export * from './snackbar'
@@ -169,6 +170,7 @@ declare module 'vue' {
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
+    VarSignature: typeof import('@varlet/ui')['_SignatureComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
     VarSlider: typeof import('@varlet/ui')['_SliderComponent']
     VarSnackbar: typeof import('@varlet/ui')['_SnackbarComponent']
