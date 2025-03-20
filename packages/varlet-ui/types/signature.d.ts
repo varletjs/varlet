@@ -17,6 +17,10 @@ export class Signature extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<SignatureProps>
 
   $props: SignatureProps
+
+  confirm(): string
+
+  reset(): void
 }
 
 export class _SignatureComponent extends Signature {}
