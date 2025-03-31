@@ -31,7 +31,7 @@ function StyleProvider(styleVars: StyleVars | null) {
   const content = Object.entries(styles).reduce((content, [key, value]) => {
     content += `${key}:${value};`
     return content
-  }, `:root:root {\n`)
+  }, `:root {\n`)
 
   removeStyle()
   insertStyle(`${content}\n}`)
