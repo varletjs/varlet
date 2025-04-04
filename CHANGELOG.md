@@ -1,3 +1,12 @@
+## [3.10.3](https://github.com/varletjs/varlet/compare/v3.10.2...v3.10.3) (2025-04-04)
+
+
+### Bug Fixes
+
+* now the change event is also triggered when closing and clearing, close [#1873](https://github.com/varletjs/varlet/issues/1873) ([5456120](https://github.com/varletjs/varlet/commit/54561206f6b9d9a33060ce3f27f0395d0019da19))
+
+
+
 ## [3.10.2](https://github.com/varletjs/varlet/compare/v3.10.1...v3.10.2) (2025-03-20)
 
 
