@@ -1,0 +1,122 @@
+:root {
+  --tour-width: 300px;
+  --tour-padding: 16px;
+  --tour-background: var(--color-surface-container-low);
+  --tour-border-radius: 4px;
+  --tour-indicator-background-color: #f5f5f5;
+}
+
+.var-tour {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__overlay svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__hollow {
+    fill: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s var(--cubic-bezier);
+  }
+
+  &__content {
+    width: var(--tour-width);
+    padding: var(--tour-padding);
+    background: var(--tour-background);
+    border-radius: var(--tour-border-radius);
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  &--primary &__content {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--tour-background);
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+
+  &--primary &__arrow {
+    background-color: var(--color-primary);
+  }
+
+  &__content[data-popper-placement='top'] &__arrow,
+  &__content[data-popper-placement='top-start'] &__arrow,
+  &__content[data-popper-placement='top-end'] &__arrow {
+    bottom: -5px;
+  }
+
+  &__content[data-popper-placement='bottom'] &__arrow,
+  &__content[data-popper-placement='bottom-start'] &__arrow,
+  &__content[data-popper-placement='bottom-end'] &__arrow {
+    top: -5px;
+  }
+
+  &__content[data-popper-placement='left'] &__arrow,
+  &__content[data-popper-placement='left-start'] &__arrow,
+  &__content[data-popper-placement='left-end'] &__arrow {
+    right: -5px;
+  }
+
+  &__content[data-popper-placement='right'] &__arrow,
+  &__content[data-popper-placement='right-start'] &__arrow,
+  &__content[data-popper-placement='right-end'] &__arrow {
+    left: -5px;
+  }
+
+  &__close-icon {
+    cursor: pointer;
+    position: absolute;
+    top: var(--tour-padding);
+    right: var(--tour-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__footer {
+    display: flex;
+    padding-top: var(--tour-padding);
+  }
+
+  &__indicator {
+    display: inline-block;
+    background-color: var(--tour-indicator-background-color);
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+  }
+
+  &__indicator&--active {
+    background-color: var(--color-primary);
+  }
+
+  &--primary &__indicator {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &--primary &__indicator&--active {
+    background-color: var(--color-on-primary);
+  }
+
+  &__buttons {
+    margin-left: auto;
+  }
+
+  &__previous-button {
+    margin-right: 6px;
+  }
+}

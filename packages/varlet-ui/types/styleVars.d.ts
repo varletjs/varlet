@@ -872,6 +872,11 @@ interface BaseStyleVars {
   '--tooltip-success-text-color'?: string
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
+  '--tour-width'?: string
+  '--tour-padding'?: string
+  '--tour-background'?: string
+  '--tour-border-radius'?: string
+  '--tour-indicator-background-color'?: string
   '--uploader-action-background'?: string
   '--uploader-action-icon-color'?: string
   '--uploader-action-icon-size'?: string
