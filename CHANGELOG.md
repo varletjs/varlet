@@ -1,3 +1,12 @@
+## [3.10.4](https://github.com/varletjs/varlet/compare/v3.10.3...v3.10.4) (2025-04-10)
+
+
+### Bug Fixes
+
+* **ui/collapse-item:** use correct css variable to control `divider` ([#1877](https://github.com/varletjs/varlet/issues/1877)) ([13c165d](https://github.com/varletjs/varlet/commit/13c165d51ad3b34fc218fe6b342b1db8499c17de))
+
+
+
 ## [3.10.3](https://github.com/varletjs/varlet/compare/v3.10.2...v3.10.3) (2025-04-04)
 
 
