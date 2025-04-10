@@ -1,0 +1,1 @@
+import{d as s,aL as t,a6 as a,ao as o,_ as n,b as c,e as r,f as p}from"./index-vwO9GBzB.js";const _=s({name:"TabsItemsExample",components:{TabsItems:t},setup(){a(o.dark)}});function d(m,f,i,l,u,b){const e=c("tabs-items");return r(),p(e)}const $=n(_,[["render",d]]);export{$ as default};
