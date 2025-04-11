@@ -104,4 +104,8 @@ export default {
   paginationJump: 'Go to',
   // time-picker
   timePickerHint: 'SELECT TIME',
+  // tour
+  tourPrevious: 'previous',
+  tourNext: 'next',
+  tourFinish: 'finish',
 } satisfies Message
