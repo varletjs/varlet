@@ -29,6 +29,6 @@
     "@varlet/cli": "workspace:*",
     "live-server": "^1.2.1",
     "typescript": "5.3.3",
-    "vite": "6.1.1"
+    "vite": "6.1.5"
   }
 }
