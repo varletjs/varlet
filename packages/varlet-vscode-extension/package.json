@@ -94,11 +94,11 @@
     "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "14.x",
+    "@types/node": "catalog:",
     "@types/vscode": "^1.56.0",
     "@varlet/cli": "workspace:*",
     "@vscode/vsce": "^3.2.1",
-    "typescript": "5.3.3"
+    "typescript": "catalog:"
   },
   "engines": {
     "vscode": "^1.56.0"

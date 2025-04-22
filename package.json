@@ -44,14 +44,14 @@
     "nano-staged": "0.8.0",
     "nanospinner": "^1.1.0",
     "prettier": "^3.4.2",
-    "rimraf": "^5.0.1",
+    "rimraf": "catalog:",
     "simple-git-hooks": "^2.8.0",
-    "tinyexec": "^0.3.0",
-    "typescript": "5.3.3"
+    "tinyexec": "catalog:",
+    "typescript": "catalog:"
   },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@10.8.1",
   "engines": {
-    "pnpm": ">=9.0"
+    "pnpm": ">=10.8.1"
   },
   "pnpm": {
     "overrides": {
