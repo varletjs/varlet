@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@configurajs/eslint": "^0.1.2",
-    "@configurajs/prettier": "^0.1.1",
+    "@configurajs/prettier": "^0.1.4",
     "@varlet/cli": "workspace:*",
     "@varlet/icons": "workspace:*",
     "eslint": "^9.17.0",
@@ -49,9 +49,9 @@
     "tinyexec": "catalog:",
     "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.8.1",
+  "packageManager": "pnpm@9.6.0",
   "engines": {
-    "pnpm": ">=10.8.1"
+    "pnpm": ">=9.6.0"
   },
   "pnpm": {
     "overrides": {
