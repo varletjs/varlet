@@ -23,6 +23,7 @@
                 v-for="(_, index) in total"
                 :key="index"
                 :class="classes(n('indicator'), [index === current, n('--active')])"
+                @click="clickStep(index)"
               ></span>
             </slot>
           </div>
@@ -197,6 +198,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import '../styles/elevation';
 @import './tour';
 </style>
