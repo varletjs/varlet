@@ -13,7 +13,7 @@
         <span v-if="mergedArrow" ref="arrowRef" :class="n('arrow')" :style="{ zIndex }"></span>
         <div v-if="mergedCloseable" :class="n('close-icon')" @click="close">
           <slot name="close-button">
-            <var-icon name="close-circle" />
+            <var-icon name="window-close" />
           </slot>
         </div>
         <div :class="n('footer')">
