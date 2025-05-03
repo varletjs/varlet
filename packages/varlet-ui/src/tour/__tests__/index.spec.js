@@ -4,7 +4,7 @@ import { describe, expect, test, vi } from 'vitest'
 import Tour from '..'
 import TourStep from '../../tour-step'
 import VarTourStep from '../../tour-step/TourStep'
-import { delay } from '../../utils/test'
+import { delay, triggerKeyboard } from '../../utils/test'
 import VarTour from '../Tour'
 
 const Wrapper = {
@@ -12,22 +12,35 @@ const Wrapper = {
     [VarTour.name]: VarTour,
     [VarTourStep.name]: VarTourStep,
   },
-  props: ['closeable', 'overlay', 'type', 'onClose', 'onFinish', 'onChange'],
+  props: [
+    'closeable',
+    'overlay',
+    'type',
+    'closeOnKeyEscape',
+    'closeOnClickOverlay',
+    'onClose',
+    'onFinish',
+    'onChange',
+    'onKeyEscape',
+    'onClickOverlay',
+  ],
   data: () => ({
     btnRef: null,
     open: true,
     current: 0,
   }),
   template: `
-    <button ref="btnRef">cover</button>
+    <template>
+      <button ref="btnRef">cover</button>
 
-    <var-tour v-model:open="open" v-model:current="current" :teleport="false" v-bind="$props">
-      <var-tour-step :target="btnRef?.el" title="first" description="cover description" />
-      <var-tour-step :target="btnRef?.el" title="second" description="cover description" />
-      <template #indicators="scope">
-        <slot name="indicators" v-bind="scope" />
-      </template>
-    </var-tour>
+      <var-tour v-model:open="open" v-model:current="current" :teleport="false" v-bind="$props">
+        <var-tour-step :target="btnRef?.el" title="first" description="cover description" v-bind="$attrs" />
+        <var-tour-step :target="btnRef?.el" title="second" description="cover description" v-bind="$attrs" />
+        <template #indicators="scope">
+          <slot name="indicators" v-bind="scope" />
+        </template>
+      </var-tour>
+    </template>
   `,
 }
 
@@ -101,11 +114,11 @@ test('tour no target', async () => {
   })
 
   await delay(50)
-  const style = wrapper.find('.var-tour__content').element.style
-  expect(style.position).toBe('fixed')
-  expect(style.top).toBe('50%')
-  expect(style.left).toBe('50%')
-  expect(style.transform).toBe('translate(-50%, -50%)')
+  const style = wrapper.find('.var-tour__content').attributes('style')
+  expect(style).toContain('position: fixed')
+  expect(style).toContain('top: 50%')
+  expect(style).toContain('left: 50%')
+  expect(style).toContain('transform: translate(-50%, -50%)')
   wrapper.unmount()
 })
 
@@ -134,6 +147,103 @@ test('tour previous and next and finish', async () => {
   await nextTick()
 
   expect(wrapper.vm.open).toBe(false)
+
+  wrapper.unmount()
+})
+
+test('tour step prevButtonText', async () => {
+  const wrapper = mount(Wrapper)
+
+  await delay(50)
+  wrapper.find('.var-tour__next-button').trigger('click')
+
+  await nextTick()
+
+  expect(wrapper.find('.var-tour__previous-button').text()).toBe('上一步')
+
+  await wrapper.setProps({
+    prevButtonText: 'prev',
+  })
+
+  expect(wrapper.find('.var-tour__previous-button').text()).toBe('prev')
+
+  wrapper.unmount()
+})
+
+test('tour step nextButtonText', async () => {
+  const wrapper = mount(Wrapper)
+
+  await delay(50)
+
+  expect(wrapper.find('.var-tour__next-button').text()).toBe('下一步')
+
+  await wrapper.setProps({
+    nextButtonText: 'next',
+  })
+
+  expect(wrapper.find('.var-tour__next-button').text()).toBe('next')
+
+  wrapper.unmount()
+})
+
+test('tour step prevButtonColor', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      prevButtonColor: 'blue',
+    },
+  })
+
+  await delay(50)
+  wrapper.find('.var-tour__next-button').trigger('click')
+
+  await nextTick()
+
+  expect(wrapper.find('.var-tour__previous-button').attributes('style')).toContain('background: blue')
+
+  wrapper.unmount()
+})
+
+test('tour step nextButtonColor', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      nextButtonColor: 'blue',
+    },
+  })
+
+  await delay(50)
+
+  expect(wrapper.find('.var-tour__next-button').attributes('style')).toContain('background: blue')
+
+  wrapper.unmount()
+})
+
+test('tour step prevButtonTextColor', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      prevButtonTextColor: 'blue',
+    },
+  })
+
+  await delay(50)
+  wrapper.find('.var-tour__next-button').trigger('click')
+
+  await nextTick()
+
+  expect(wrapper.find('.var-tour__previous-button').attributes('style')).toContain('color: blue')
+
+  wrapper.unmount()
+})
+
+test('tour step nextButtonTextColor', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      nextButtonTextColor: 'blue',
+    },
+  })
+
+  await delay(50)
+
+  expect(wrapper.find('.var-tour__next-button').attributes('style')).toContain('color: blue')
 
   wrapper.unmount()
 })
@@ -213,6 +323,52 @@ describe('tour events', () => {
     wrapper.find('.var-tour__next-button').trigger('click')
 
     expect(onFinish).toHaveBeenCalled()
+    wrapper.unmount()
+  })
+
+  test('tour click overlay and closeOnClickOverlay', async () => {
+    const onClickOverlay = vi.fn()
+    const wrapper = mount(Wrapper, {
+      props: {
+        onClickOverlay,
+        closeOnClickOverlay: false,
+      },
+    })
+
+    await delay(50)
+
+    await wrapper.find('.var-tour__overlay').trigger('click')
+    expect(onClickOverlay).toHaveBeenCalledTimes(1)
+    expect(wrapper.vm.open).toBe(true)
+
+    await wrapper.setProps({ closeOnClickOverlay: true })
+    await wrapper.find('.var-tour__overlay').trigger('click')
+    expect(onClickOverlay).toHaveBeenCalledTimes(2)
+    expect(wrapper.vm.open).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('tour keyboard escape and closeOnKeyEscape', async () => {
+    const onKeyEscape = vi.fn()
+    const wrapper = mount(Wrapper, {
+      props: {
+        onKeyEscape,
+        closeOnKeyEscape: false,
+      },
+    })
+
+    await delay(50)
+
+    await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+    expect(onKeyEscape).toBeCalledTimes(1)
+    expect(wrapper.vm.open).toBe(true)
+
+    await wrapper.setProps({ closeOnKeyEscape: true })
+    await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+    expect(onKeyEscape).toBeCalledTimes(2)
+    expect(wrapper.vm.open).toBe(false)
+
     wrapper.unmount()
   })
 })

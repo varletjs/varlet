@@ -15,7 +15,7 @@ import { injectTour } from '../tour/provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { name, n, classes } = createNamespace('tour-step')
+const { name, n } = createNamespace('tour-step')
 
 export default defineComponent({
   name,
@@ -33,7 +33,6 @@ export default defineComponent({
 
     return {
       n,
-      classes,
     }
   },
 })

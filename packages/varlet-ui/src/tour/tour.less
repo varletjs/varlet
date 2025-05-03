@@ -1,12 +1,41 @@
 :root {
-  --tour-width: 300px;
-  --tour-padding: 16px;
+  --tour-width: 280px;
   --tour-background: var(--color-surface-container-low);
-  --tour-border-radius: 4px;
-  --tour-indicator-background-color: #f5f5f5;
+  --tour-border-radius: 3px;
+  --tour-title-padding: 20px 20px 0;
+  --tour-title-color: #555;
+  --tour-title-font-size: var(--font-size-lg);
+  --tour-description-color: #888;
+  --tour-description-padding: 12px 20px;
+  --tour-description-font-size: var(--font-size-md);
+  --tour-description-line-height: 24px;
+  --tour-indicator-background-color: rgba(0, 0, 0, 0.15);
+  --tour-indicator-active-background-color: var(--color-primary);
+  --tour-actions-padding: 0 12px 12px 20px;
+  --tour-next-button-color: var(--color-primary);
+  --tour-prev-button-color: var(--color-primary);
+  --tour-close-button-right: 20px;
+  --tour-close-button-top: 20px;
+  --tour-primary-background: var(--color-primary);
+  --tour-primary-title-color: var(--color-on-primary);
+  --tour-primary-description-color: var(--color-on-info);
+  --tour-primary-indicator-background-color: rgba(255, 255, 255, 0.15);
+  --tour-primary-indicator-active-background-color: var(--color-on-primary);
+  --tour-primary-next-button-color: var(--color-on-primary);
+  --tour-primary-prev-button-color: var(--color-on-primary);
 }
 
 .var-tour {
+  &--primary {
+    --tour-background: var(--tour-primary-background);
+    --tour-title-color: var(--tour-primary-title-color);
+    --tour-description-color: var(--tour-primary-description-color);
+    --tour-indicator-background-color: var(--tour-primary-indicator-background-color);
+    --tour-indicator-active-background-color: var(--tour-primary-indicator-active-background-color);
+    --tour-next-button-color: var(--tour-primary-next-button-color);
+    --tour-prev-button-color: var(--tour-primary-prev-button-color);
+  }
+
   &__overlay {
     position: fixed;
     inset: 0;
@@ -27,29 +56,19 @@
 
   &__content {
     width: var(--tour-width);
-    padding: var(--tour-padding);
     background: var(--tour-background);
     border-radius: var(--tour-border-radius);
     max-width: 100%;
     overflow-wrap: break-word;
   }
 
-  &--primary &__content {
-    background: var(--color-primary);
-    color: var(--color-on-primary);
-  }
-
   &__arrow {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: var(--tour-background);
+    background-color: inherit;
     transform: rotate(45deg);
     transform-origin: center;
-  }
-
-  &--primary &__arrow {
-    background-color: var(--color-primary);
   }
 
   &__content[data-popper-placement='top'] &__arrow,
@@ -77,22 +96,27 @@
   }
 
   &__close-icon {
-    cursor: pointer;
     position: absolute;
-    top: var(--tour-padding);
-    right: var(--tour-padding);
+    top: var(--tour-close-button-top);
+    right: var(--tour-close-button-right);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--tour-title-color);
+    cursor: pointer;
   }
 
-  &__footer {
+  &__actions {
     display: flex;
-    padding-top: var(--tour-padding);
+    align-items: center;
+    padding: var(--tour-actions-padding);
+  }
+
+  &__indicators {
+    display: flex;
   }
 
   &__indicator {
-    display: inline-block;
     background-color: var(--tour-indicator-background-color);
     width: 6px;
     height: 6px;
@@ -101,15 +125,7 @@
   }
 
   &__indicator&--active {
-    background-color: var(--color-primary);
-  }
-
-  &--primary &__indicator {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
-  &--primary &__indicator&--active {
-    background-color: var(--color-on-primary);
+    background-color: var(--tour-indicator-active-background-color);
   }
 
   &__buttons {
@@ -118,5 +134,10 @@
 
   &__previous-button {
     margin-right: 6px;
+    color: var(--tour-prev-button-color);
+  }
+
+  &__next-button {
+    color: var(--tour-next-button-color);
   }
 }

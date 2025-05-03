@@ -37,7 +37,7 @@ export function usePopover(options: UsePopoverOptions) {
   })
 
   const { zIndex } = useZIndex(() => open.value, 1)
-  useStack(() => open.value, zIndex)
+  const { onStackTop } = useStack(() => open.value, zIndex)
 
   let popoverInstance: Instance | null = null
 
@@ -116,5 +116,6 @@ export function usePopover(options: UsePopoverOptions) {
     zIndex,
     host,
     resize,
+    onStackTop,
   }
 }

@@ -1,5 +1,6 @@
 import { type PropType, type TeleportProps } from 'vue'
-import { defineListenerProp } from '../utils/components'
+import { popupProps } from '../popup'
+import { defineListenerProp, pickProps } from '../utils/components'
 import type { NeededPopperPlacement } from './usePopover'
 
 export type Placement = NeededPopperPlacement
@@ -22,10 +23,6 @@ export const props = {
     type: String as PropType<TourType>,
     default: 'default',
   },
-  overlay: {
-    type: Boolean,
-    default: true,
-  },
   arrow: {
     type: Boolean,
     default: true,
@@ -41,7 +38,8 @@ export const props = {
       radius: 2,
     }),
   },
-
+  contentClass: String,
+  contentStyle: Object,
   teleport: {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
@@ -51,4 +49,13 @@ export const props = {
   onChange: defineListenerProp<(current: number) => void>(),
   'onUpdate:open': defineListenerProp<(open: boolean) => void>(),
   'onUpdate:current': defineListenerProp<(current: number) => void>(),
+  ...pickProps(popupProps, [
+    'overlay',
+    'overlayClass',
+    'overlayStyle',
+    'closeOnClickOverlay',
+    'closeOnKeyEscape',
+    'onClickOverlay',
+    'onKeyEscape',
+  ]),
 }

@@ -55,7 +55,7 @@ export default defineComponent({
 
       cacheTotal = total
 
-      return result.length ? result[props.current] : null
+      return total ? result[props.current] : null
     }
   },
 })

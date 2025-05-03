@@ -1,12 +1,21 @@
 <template>
   <Teleport :to="teleport === false ? undefined : teleport" :disabled="disabled || teleport === false">
     <div v-if="open" :class="classes(n(), n(`--${type}`))">
-      <div v-if="mergedOverlay" :class="n('overlay')" :style="{ zIndex }">
+      <div
+        v-if="mergedOverlay"
+        :class="classes(n('overlay'), overlayClass, stepProps?.overlayClass)"
+        :style="{ zIndex, ...overlayStyle, ...stepProps?.overlayStyle }"
+        @click="handleClickOverlay"
+      >
         <svg>
           <path :class="n('hollow')" :d="path"></path>
         </svg>
       </div>
-      <div ref="popover" :class="n('content')" :style="{ zIndex, ...contentStyle }">
+      <div
+        ref="popover"
+        :class="classes(n('content'), contentClass, stepProps?.contentClass)"
+        :style="{ zIndex, width: toSizeUnit(stepProps?.width), ...contentStyle, ...stepProps?.contentStyle }"
+      >
         <var-tour-steps :current="current" @update-total="updateTotal">
           <slot />
         </var-tour-steps>
@@ -16,7 +25,7 @@
             <var-icon name="window-close" />
           </slot>
         </div>
-        <div :class="n('footer')">
+        <div :class="n('actions')">
           <div :class="n('indicators')">
             <slot name="indicators" v-bind="{ current, total }">
               <span
@@ -31,21 +40,23 @@
             <var-button
               v-if="current > 0"
               :class="classes(n('button'), n('previous-button'))"
-              outline
               text
-              size="small"
+              :text-color="stepProps?.prevButtonTextColor"
+              :color="stepProps?.prevButtonColor"
               @click="clickStep(current - 1)"
             >
-              {{ (pt ? pt : t)('tourPrevious') }}
+              {{ stepProps?.prevButtonText ?? (pt ? pt : t)('tourPrevious') }}
             </var-button>
             <var-button
               v-if="current < total"
               :class="classes(n('button'), n('next-button'))"
+              text
               :type="type === 'default' ? 'primary' : 'default'"
-              size="small"
+              :text-color="stepProps?.nextButtonTextColor"
+              :color="stepProps?.nextButtonColor"
               @click="clickStep(current + 1)"
             >
-              {{ (pt ? pt : t)(isLastStep ? 'tourFinish' : 'tourNext') }}
+              {{ stepProps?.nextButtonText ?? (pt ? pt : t)(isLastStep ? 'tourFinish' : 'tourNext') }}
             </var-button>
           </div>
         </div>
@@ -56,15 +67,15 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { call, toNumber } from '@varlet/shared'
-import { useWindowSize } from '@varlet/use'
+import { call, preventDefault, toNumber } from '@varlet/shared'
+import { useEventListener, useWindowSize } from '@varlet/use'
 import VarButton from '../button'
 import { useLock } from '../context/lock'
 import VarIcon from '../icon'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import { createNamespace, useTeleport } from '../utils/components'
-import { getTarget } from '../utils/elements'
+import { getTarget, toSizeUnit } from '../utils/elements'
 import { props } from './props'
 import { provideTour, TourStepProps } from './provide'
 import VarTourSteps from './TourSteps'
@@ -90,7 +101,7 @@ export default defineComponent({
     const isLastStep = computed(() => current.value + 1 === total.value)
 
     const { disabled } = useTeleport()
-    const { host, popover, arrowRef, zIndex } = usePopover({
+    const { host, popover, arrowRef, zIndex, onStackTop } = usePopover({
       open,
       arrow: mergedArrow,
       gap,
@@ -136,6 +147,8 @@ export default defineComponent({
     const { t: pt } = injectLocaleProvider()
     useLock(() => open.value)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+
     function updateStepProps(step: TourStepProps) {
       const { target } = step
       stepProps.value = step
@@ -165,6 +178,33 @@ export default defineComponent({
       call(props.onFinish)
     }
 
+    function handleKeydown(event: KeyboardEvent) {
+      if (!onStackTop() || event.key !== 'Escape' || !open.value) {
+        return
+      }
+
+      call(props.onKeyEscape)
+
+      if (!props.closeOnKeyEscape) {
+        return
+      }
+
+      preventDefault(event)
+      close()
+    }
+
+    function handleClickOverlay() {
+      const { closeOnClickOverlay, onClickOverlay } = props
+
+      call(onClickOverlay)
+
+      if (!closeOnClickOverlay) {
+        return
+      }
+
+      close()
+    }
+
     provideTour({
       updateStepProps,
     })
@@ -177,6 +217,7 @@ export default defineComponent({
       path,
       popover,
       arrowRef,
+      stepProps,
       mergedArrow,
       mergedOverlay,
       mergedCloseable,
@@ -187,10 +228,12 @@ export default defineComponent({
       t,
       n,
       classes,
+      toSizeUnit,
       updateTotal,
       clickStep,
       close,
       finish,
+      handleClickOverlay,
     }
   },
 })
