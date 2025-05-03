@@ -151,6 +151,52 @@ test('tour previous and next and finish', async () => {
   wrapper.unmount()
 })
 
+test('tour step contentClass', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      contentClass: 'test-tour-class',
+    },
+  })
+
+  await delay(50)
+  expect(wrapper.find('.test-tour-class').exists()).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('tour step contentStyle', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      contentStyle: {
+        background: 'red',
+      },
+    },
+  })
+
+  await delay(50)
+  expect(wrapper.find('.var-tour__content').attributes('style')).toContain('background: red')
+
+  wrapper.unmount()
+})
+
+test('tour step width', async () => {
+  const wrapper = mount(Wrapper, {
+    attrs: {
+      width: 100,
+    },
+  })
+
+  await delay(50)
+  expect(wrapper.find('.var-tour__content').attributes('style')).toContain('width: 100px')
+
+  await wrapper.setProps({
+    width: '200',
+  })
+  expect(wrapper.find('.var-tour__content').attributes('style')).toContain('width: 200px')
+
+  wrapper.unmount()
+})
+
 test('tour step prevButtonText', async () => {
   const wrapper = mount(Wrapper)
 
