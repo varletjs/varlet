@@ -27,11 +27,11 @@ export default defineComponent({
   props,
   setup(props, { emit }) {
     const { length, bindInputOtpItem } = useInputOtpItems()
-    const activeInput = ref()
+    const activeInput = ref<number>(-1)
 
     const model = computed({
       get: () => props.modelValue,
-      set: (value) => {
+      set: (value: string) => {
         call(props.onChange, value)
         call(props['onUpdate:modelValue'], value)
         validateWithTrigger('onChange')
@@ -44,14 +44,14 @@ export default defineComponent({
       parentModel: model,
       activeInput,
       length,
-      disabled: ref(props.disabled),
-      readonly: ref(props.readonly),
-      variant: ref(props.variant),
-      size: ref(props.size),
-      textColor: ref(props.textColor),
-      focusColor: ref(props.focusColor),
-      blurColor: ref(props.blurColor),
-      autofocus: ref(props.autofocus),
+      disabled: computed(() => props.disabled),
+      readonly: computed(() => props.readonly),
+      variant: computed(() => props.variant),
+      size: computed(() => props.size),
+      textColor: computed(() => props.textColor),
+      focusColor: computed(() => props.focusColor),
+      blurColor: computed(() => props.blurColor),
+      autofocus: computed(() => props.autofocus),
       onItemChange,
       onItemFocus,
       onItemBlur,
@@ -75,14 +75,15 @@ export default defineComponent({
     function onItemChange(index: number, value?: string) {
       if (value == null) {
         activeInput.value = index
+        return
+      }
+
+      const currentValue = model.value || ''
+      if (index < length.value) {
+        activeInput.value = value ? index + 1 : index - 1
+        emit('update:modelValue', currentValue.slice(0, index) + value + currentValue.slice(index + 1))
       } else {
-        const currentValue = model.value || ''
-        if (index < length.value) {
-          activeInput.value = value ? index + 1 : index - 1
-          emit('update:modelValue', currentValue.slice(0, index) + value + currentValue.slice(index + 1))
-        } else {
-          emit('update:modelValue', currentValue + value)
-        }
+        emit('update:modelValue', currentValue + value)
       }
     }
 
