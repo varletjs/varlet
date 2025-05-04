@@ -26,7 +26,7 @@ export default defineComponent({
   name,
   props,
   setup(props, { emit }) {
-    const { length, inputOtpItems, bindInputOtpItem } = useInputOtpItems()
+    const { length, bindInputOtpItem } = useInputOtpItems()
     const activeInput = ref()
 
     const model = computed({
@@ -107,10 +107,9 @@ export default defineComponent({
 
     return {
       length,
-      inputOtpItems,
+      activeInput,
       errorMessage,
       n,
-      activeInput,
       reset,
       validate,
     }
