@@ -63,6 +63,7 @@ import table from './table'
 import tabs from './tabs'
 import timePicker from './timePicker'
 import tooltip from './tooltip'
+import tour from './tour'
 import uploader from './uploader'
 import watermark from './watermark'
 
@@ -211,4 +212,5 @@ export default {
   ...swipe,
   ...code,
   ...signature,
+  ...tour,
 } as StyleVars

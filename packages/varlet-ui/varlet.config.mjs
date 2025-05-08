@@ -402,6 +402,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Tour 漫游式引导',
+          'en-US': 'Tour',
+        },
+        doc: 'tour',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
