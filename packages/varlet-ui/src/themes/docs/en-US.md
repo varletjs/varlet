@@ -1,19 +1,33 @@
-# Theme System
+# Theme Customization
 
 ### Intro
 
-The component library organizes styles through [css variables](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties). Variables are divided into general style variables and component style variables. It is recommended to use the [StyleProvider](#/en-US/style-provider) component to load theme files and customize the theme. The themes supported by the component library are as follows.
+The component library organizes styles through [css variables](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties). It is recommended to use [StyleProvider](#/zh-CN/style-provider) to load and customize themes. The built-in themes of the component library are as follows.
 
-### Available Themes
+### Built-in themes
 
-| Available Themes | Theme Pack |
+| Theme name | Theme package |
 | --- | --- |
-| `Material Design 2 Light` | _CSS Default_ |
+| `Material Design 2 Light` | _Default theme, based on css file_ |
 | `Material Design 2 Dark` | _Themes.dark_ |
 | `Material Design 3 Light` | _Themes.md3Light_ |
 | `Material Design 3 Dark` | _Themes.md3Dark_ |
 
-### Toggle Theme
+### Set body variables
+
+Set some basic style variables recommended by the component library to control the basic style of the application.
+
+```css
+/* playground-ignore */
+body { 
+  transition: background-color .25s, color .25s; 
+  color: var(--color-text); 
+  background-color: var(--color-body); 
+  color-scheme: var(--color-scheme);
+}
+```
+
+### Switch Theme
 
 ```html
 <!-- playground-ignore -->
@@ -21,26 +35,32 @@ The component library organizes styles through [css variables](https://developer
 import { StyleProvider, Themes } from '@varlet/ui'
 </script>
 
-<template>
-  <var-space direction="column" size="large">
-    <var-button type="primary" block @click="StyleProvider(null)">Material Design 2 Light</var-button>
-    <var-button type="primary" block @click="StyleProvider(Themes.dark)">Material Design 2 Dark</var-button>
+<template> 
+  <var-space direction="column" size="large"> 
+    <var-button type="primary" block @click="StyleProvider(null)">Material Design 2 Light</var-button> 
+    <var-button type="primary" block @click="StyleProvider(Themes.dark)">Material Design 2 dark</var-button> 
     <var-button type="primary" block @click="StyleProvider(Themes.md3Light)">Material Design 3 Light</var-button>
     <var-button type="primary" block @click="StyleProvider(Themes.md3Dark)">Material Design 3 Dark</var-button>
   </var-space>
 </template>
 ```
 
-Inject the `text color` and `background color` variables recommended by the component library to control the overall color.
+### Theme Customization
 
-```css
-/* playground-ignore */
-body {
-  transition: background-color .25s, color .25s;
-  color: var(--color-text);
-  background-color: var(--color-body);
-  color-scheme: var(--color-scheme);
+Due to the huge workload of defining a theme, it is recommended to extend it based on the built-in theme.
+
+```html
+<!-- playground-ignore -->
+<script setup>
+import { StyleProvider, Themes } from '@varlet/ui'
+
+const customTheme = {
+  ...Themes.md3Light,
+  '--color-primary': 'red'
 }
+
+StyleProvider(customTheme)
+</script>
 ```
 
 ### Theme Builder

@@ -51,8 +51,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '主题系统',
-          'en-US': 'Theme System',
+          'zh-CN': '主题定制',
+          'en-US': 'Theme Customization',
         },
         doc: 'themes',
         type: 2,

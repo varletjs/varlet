@@ -50,28 +50,7 @@ function toggleTheme() {
 
 ### Function Call
 
-A functional call is to update variables directly on `:root`, which is suitable for situations where a global update style is required.
-
-```html
-<script setup>
-import { StyleProvider } from '@varlet/ui'
-
-let rootStyleVars = null
-
-const darkTheme = {
-  '--color-primary': 'var(--color-info)'
-}
-
-function toggleRootTheme() {
-  rootStyleVars = rootStyleVars ? null : darkTheme
-  StyleProvider(rootStyleVars)
-}
-</script>
-
-<template>
-  <var-button type="primary" block @click="toggleRootTheme">Toggle Root Theme</var-button>
-</template>
-```
+A functional call is to update variables directly on `:root`, which is suitable for situations where a global update style is required. Details see [Theme Customization](#/en-US/themes).
 
 ## API
 

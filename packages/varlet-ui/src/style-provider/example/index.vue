@@ -1,10 +1,7 @@
 <script setup>
-import { onUnmounted, reactive, ref } from 'vue'
-import { AppType, getBrowserTheme, getSiteStyleVars, onThemeChange, watchLang } from '@varlet/cli/client'
-import { StyleProvider, Themes } from '@varlet/ui'
+import { reactive, ref } from 'vue'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { t, use } from './locale'
-
-const VarStyleProvider = StyleProvider.Component
 
 const state = reactive({
   score: 5,
@@ -13,8 +10,6 @@ const state = reactive({
 
 const styleVars = ref(null)
 
-let isRootStyleChanged = false
-
 const successTheme = {
   '--rate-primary-color': 'var(--color-success)',
   '--button-primary-color': 'var(--color-success)',
@@ -22,40 +17,10 @@ const successTheme = {
   '--switch-track-active-background': 'var(--color-success)',
 }
 
-const themeMap = {
-  lightTheme: null,
-  darkTheme: Themes.dark,
-  md3LightTheme: Themes.md3Light,
-  md3DarkTheme: Themes.md3Dark,
-}
-
 watchLang(use)
-
-onThemeChange(() => {
-  isRootStyleChanged = false
-})
-
-onUnmounted(() => {
-  const siteTheme = getBrowserTheme()
-  StyleProvider({ ...getSiteStyleVars(siteTheme), ...themeMap[siteTheme] })
-})
 
 function toggleTheme() {
   styleVars.value = styleVars.value ? null : successTheme
-}
-
-function toggleRootTheme() {
-  const siteTheme = getBrowserTheme()
-  const styleVars = isRootStyleChanged
-    ? themeMap[siteTheme]
-    : {
-        ...themeMap[siteTheme],
-        ...{
-          '--color-primary': 'var(--color-info)',
-        },
-      }
-  StyleProvider({ ...getSiteStyleVars(siteTheme), ...styleVars })
-  isRootStyleChanged = !isRootStyleChanged
 }
 </script>
 
@@ -66,7 +31,4 @@ function toggleRootTheme() {
     <var-switch v-model="state.license" />
     <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ t('toggleTheme') }}</var-button>
   </var-style-provider>
-
-  <app-type>{{ t('functionCall') }}</app-type>
-  <var-button type="primary" block @click="toggleRootTheme">{{ t('toggleRootTheme') }}</var-button>
 </template>
