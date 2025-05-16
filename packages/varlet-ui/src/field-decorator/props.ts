@@ -36,9 +36,18 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  textColor: String,
-  focusColor: String,
-  blurColor: String,
+  textColor: {
+    type: String,
+    default: '',
+  },
+  focusColor: {
+    type: String,
+    default: '',
+  },
+  blurColor: {
+    type: String,
+    default: '',
+  },
   isError: Boolean,
   formDisabled: Boolean,
   disabled: Boolean,
