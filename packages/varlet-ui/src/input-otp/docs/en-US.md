@@ -1,10 +1,10 @@
-# Input
+# OTP Input
 
 ### Intro
 
 The OTP input is used to authenticate users with a one-time password.
 
-### Standard Usage
+### Basic Usage
 
 ```html
 <script setup>
@@ -71,7 +71,6 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="value" rules="[(v) => v.length === 6 || 'Must enter a 6-digit verification code.']" />
   <var-input-otp v-model="value" rules="[(v) => v.length === 4 || 'Must enter a 4-digit verification code.']">
     <var-input-otp-item />
     <var-input-otp-item />
@@ -100,7 +99,7 @@ const value = ref('')
 </template>
 ```
 
-### Smaller Size Variant Appearance
+### Small Size Variant Appearance
 
 ```html
 <script setup>
@@ -123,18 +122,18 @@ const value = ref('')
 
 ### Props
 
-| Prop | Description                                                                                                                            | Type | Default |
-| --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- |
-| `v-model` | The value of the binding                                                                                                               | _string\|number_ | `-` |
-| `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
-| `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
-| `text-color` | Text color                                                                                                                             | _string_ | `-` |
-| `focus-color` | The primary color in focus                                                                                                             | _string_ | `-` |
-| `blur-color` | The primary color in blur                                                                                                              | _string_ | `-` |
-| `readonly` | Whether the readonly                                                                                                                   | _boolean_ | `false` |
-| `disabled` | Whether the disabled                                                                                                                   | _boolean_ | `false` |
-| `autofocus` | Whether the autofocus the first input component                                                                                                                  | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onInput`                        | _ValidateTriggers[]_ | `['onInput']` |
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `v-model` | The value of the binding | _string\|number_ | `-` |
+| `size` | Input size, The optional value is `normal` `small` | _string_ | `normal` |
+| `variant` | Input variants, The optional value is `standard` `outlined` | _string_ | `standard` |
+| `text-color` | Text color | _string_ | `-` |
+| `focus-color` | The primary color in focus | _string_ | `-` |
+| `blur-color` | The primary color in blur | _string_ | `-` |
+| `readonly` | Whether the readonly | _boolean_ | `false` |
+| `disabled` | Whether the disabled | _boolean_ | `false` |
+| `autofocus` | Whether the autofocus the first input component | _boolean_ | `false` |
+| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onInput` | _ValidateTriggers[]_ | `['onInput']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 
 ### Methods
@@ -151,8 +150,8 @@ const value = ref('')
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Triggered while focusing | `event: Event` |
-| `blur` | Triggered when out of focus | `event: Event` |
+| `focus` | Triggered while focusing | `index: number` |
+| `blur` | Triggered when out of focus | `index: number` |
 | `click` | Triggered on Click | `index: number` |
 | `input` | Triggered on input | `value: string` |
 | `change` | Triggered on change | `value: string` |

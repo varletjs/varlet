@@ -1,4 +1,4 @@
-# 验证码输入框
+# OTP 输入框
 
 ### 介绍
 
@@ -122,19 +122,19 @@ const value = ref('')
 
 ### 属性
 
-| 参数 | 说明                                                                       | 类型 | 默认值 |
-| --- |--------------------------------------------------------------------------| --- | --- |
-| `v-model` | 绑定的值                                                                     | _string\|number_ | `-` |
-| `size` | 输入框尺寸，可选值 `normal` `small`                                                          | _string_ | `normal` |
-| `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
-| `text-color` | 文字颜色                                                                     | _string_ | `-` |
-| `focus-color` | 聚焦时的主要颜色                                                                 | _string_ | `-` |
-| `blur-color` | 失焦时的主要颜色                                                                 | _string_ | `-` |
-| `readonly` | 是否只读                                                                     | _boolean_ | `false` |
-| `disabled` | 是否禁用                                                                     | _boolean_ | `false` |
-| `autofocus` | 是否自动聚焦第一个输入框                                                                   | _boolean_ | `false` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `v-model` | 绑定的值 | _string\|number_ | `-` |
+| `size` | 输入框尺寸，可选值 `normal` `small` | _string_ | `normal` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined` | _string_ | `standard` |
+| `text-color` | 文字颜色 | _string_ | `-` |
+| `focus-color` | 聚焦时的主要颜色 | _string_ | `-` |
+| `blur-color` | 失焦时的主要颜色 | _string_ | `-` |
+| `readonly` | 是否只读 | _boolean_ | `false` |
+| `disabled` | 是否禁用 | _boolean_ | `false` |
+| `autofocus` | 是否自动聚焦第一个输入框 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onInput` | _ValidateTriggers[]_ | `['onInput']` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示                                   | _Array<(v: string) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string) => any>_ | `-` |
 
 ### 方法
 

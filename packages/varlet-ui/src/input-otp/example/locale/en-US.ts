@@ -7,4 +7,5 @@ export default {
   disabled: 'Disabled',
   readonly: 'Readonly',
   validate: 'Validate',
+  reset: 'Reset',
 }
