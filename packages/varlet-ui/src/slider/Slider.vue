@@ -29,6 +29,7 @@
         :aria-disabled="isDisabled"
         :aria-valuetext="`${item.text}`"
         @touchstart.stop="start($event, item.enumValue)"
+        @touchmove.stop="move"
         @focusin="handleFocus(item)"
         @focusout="handleBlur(item)"
       >
