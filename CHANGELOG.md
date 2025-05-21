@@ -1,3 +1,12 @@
+## [3.10.7](https://github.com/varletjs/varlet/compare/v3.10.6...v3.10.7) (2025-05-21)
+
+
+### Bug Fixes
+
+* **slider:** prevent triggering the scroll event of the parent element while sliding ([#1891](https://github.com/varletjs/varlet/issues/1891)) ([6837460](https://github.com/varletjs/varlet/commit/6837460393f712aa03bfa415820b968a72ab6ad5))
+
+
+
 ## [3.10.6](https://github.com/varletjs/varlet/compare/v3.10.5...v3.10.6) (2025-05-07)
 
 

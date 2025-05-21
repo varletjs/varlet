@@ -1,6 +1,6 @@
 {
   "name": "@varlet/import-resolver",
-  "version": "3.10.6",
+  "version": "3.10.7",
   "description": "varlet import resolver for unplugin-vue-components and unplugin-auto-import",
   "keywords": [
     "varlet",
