@@ -9,6 +9,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  animated: {
+    type: Boolean,
+    default: true,
+  },
   loop: Boolean,
   'onUpdate:active': defineListenerProp<(active: string | number) => void>(),
 }

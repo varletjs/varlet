@@ -355,6 +355,7 @@ const active = ref(0)
 | ---------------- | ------------------ | ------------------ | ------- |
 | `v-model:active` | 激活的选项卡的标识 | _string \| number_ | `-`     |
 | `can-swipe`      | 是否允许滑动切换   | _boolean_          | `true`  |
+| `animated`       | 是否启用内容切换动画 | _boolean_          | `true`  |
 | `loop`           | 是否允许循环切换   | _boolean_          | `false` |
 
 #### TabItem Props
