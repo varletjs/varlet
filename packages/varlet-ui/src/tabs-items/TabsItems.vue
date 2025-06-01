@@ -3,7 +3,7 @@
     ref="swipe"
     :class="n()"
     :loop="loop"
-    :duration="animated || canSwipe ? undefined : 0"
+    :duration="animated ? undefined : 0"
     :touchable="canSwipe"
     :indicator="false"
     @change="handleSwipeChange"
