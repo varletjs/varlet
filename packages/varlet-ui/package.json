@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "3.10.7",
+  "version": "3.10.8",
   "description": "A Vue3 component library based on Material Design 2 and 3, supporting mobile and desktop.",
   "keywords": [
     "Vue3",

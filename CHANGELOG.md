@@ -1,3 +1,12 @@
+## [3.10.8](https://github.com/varletjs/varlet/compare/v3.10.7...v3.10.8) (2025-06-01)
+
+
+### Features
+
+* **tabs-items:** support animated ([#1892](https://github.com/varletjs/varlet/issues/1892)) ([e0da4de](https://github.com/varletjs/varlet/commit/e0da4de02fd9cf3b414283d41281a84b6ca18e06))
+
+
+
 ## [3.10.7](https://github.com/varletjs/varlet/compare/v3.10.6...v3.10.7) (2025-05-21)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@varlet/vite-plugins",
-  "version": "3.10.7",
+  "version": "3.10.8",
   "description": "vite plugins of varlet",
   "keywords": [
     "vite",
