@@ -85,10 +85,6 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
-### AI Agent for documentation
-
-You can get more information about `varlet` by asking in [AI Agent for documentation](https://gpt.qilepan.com/chat/share?shareId=y3ytky9ifjgl6fxtva1ai16h). Thanks to [qile AI](https://ai.qilepan.com/auth?type=register&invite=MjM0) for providing service support.
-
 ### Official Ecosystem
 
 The following projects are maintained by the official team for a long time.

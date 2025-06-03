@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "3.9.1",
+  "version": "3.10.8",
   "description": "A Vue3 component library based on Material Design 2 and 3, supporting mobile and desktop.",
   "keywords": [
     "Vue3",
@@ -60,21 +60,21 @@
     "decimal.js": "^10.2.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.18",
+    "@types/node": "catalog:",
     "@varlet/cli": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@varlet/ui": "workspace: *",
-    "@vitest/coverage-istanbul": "3.0.6",
-    "@vue/runtime-core": "3.5.13",
-    "@vue/test-utils": "2.4.6",
+    "@varlet/ui": "workspace:*",
+    "@vitest/coverage-istanbul": "catalog:",
+    "@vue/runtime-core": "catalog:",
+    "@vue/test-utils": "catalog:",
     "clipboard": "^2.0.6",
-    "jsdom": "24.1.1",
-    "live-server": "^1.2.1",
+    "jsdom": "catalog:",
+    "live-server": "catalog:",
     "shiki": "^1.21.0",
-    "typescript": "5.3.3",
-    "vitest": "3.0.6",
-    "vue": "3.5.13",
-    "vue-router": "4.5.0",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:",
     "zod": "^3.23.8"
   },
   "peerDependencies": {

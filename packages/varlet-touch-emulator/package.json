@@ -1,6 +1,6 @@
 {
   "name": "@varlet/touch-emulator",
-  "version": "3.9.1",
+  "version": "3.10.8",
   "description": "touch-emulator",
   "keywords": [
     "emulator",
@@ -27,6 +27,6 @@
     "build": "tsup index.js --format iife --out-dir=. --globalName=VarletTouchEmulator && node build.js"
   },
   "devDependencies": {
-    "tsup": "7.2.0"
+    "tsup": "catalog:"
   }
 }

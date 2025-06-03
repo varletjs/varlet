@@ -6,7 +6,7 @@
 
 ### 组件式调用
 
-组件式调用范围性的定制组件样式，需要注意是有些使用 `teleport` 传送到  `StyleProvider` 外的元素将不会生效。
+局部的定制组件样式，需要注意的是使用 `teleport` 传送到  `StyleProvider` 外的元素将不会生效。
 
 ```html
 <script setup>
@@ -49,28 +49,7 @@ function toggleTheme() {
 
 ### 函数式调用
 
-函数式的调用直接更新 `:root` 上的变量，适合需要全局更新样式的情况。
-
-```html
-<script setup>
-import { StyleProvider } from '@varlet/ui'
-
-let rootStyleVars = null
-
-const darkTheme = {
-  '--color-primary': 'var(--color-info)'
-}
-
-function toggleRootTheme() {
-  rootStyleVars = rootStyleVars ? null : darkTheme
-  StyleProvider(rootStyleVars)
-}
-</script>
-
-<template>
-  <var-button type="primary" block @click="toggleRootTheme">切换根节点样式变量</var-button>
-</template>
-```
+直接更新 `:root` 上的样式变量，适合需要全局更新样式的情况，详情见[主题定制](#/zh-CN/themes)。
 
 ## API
 

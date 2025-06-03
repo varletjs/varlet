@@ -316,14 +316,20 @@ test('select readonly', async () => {
 })
 
 test('select clear', async () => {
+  const onClear = vi.fn()
+  const onChange = vi.fn()
   const wrapper = mount(
     {
       ...Wrapper,
       data: () => ({
         value: 'eat',
       }),
+      methods: {
+        onClear,
+        onChange,
+      },
       template: `
-      <var-select clearable v-model="value">
+      <var-select clearable v-model="value" @clear="onClear" @change="onChange">
         <var-option label="eat" />
         <var-option label="sleep" />
       </var-select>
@@ -334,6 +340,9 @@ test('select clear', async () => {
 
   await wrapper.find('.var-icon-close-circle').trigger('click')
   expect(wrapper.vm.value).toBe(undefined)
+
+  expect(onClear).toHaveBeenCalledTimes(1)
+  expect(onChange).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })
@@ -365,14 +374,20 @@ test('select multiple value', async () => {
 })
 
 test('select multiple value in chips', async () => {
+  const onClose = vi.fn()
+  const onChange = vi.fn()
   const wrapper = mount(
     {
       ...Wrapper,
       data: () => ({
         value: [],
       }),
+      methods: {
+        onClose,
+        onChange,
+      },
       template: `
-      <var-select multiple chip v-model="value">
+      <var-select multiple chip v-model="value" @close="onClose" @change="onChange">
         <var-option label="eat" />
         <var-option label="sleep" />
       </var-select>
@@ -385,10 +400,14 @@ test('select multiple value in chips', async () => {
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
   expect(wrapper.vm.value).toStrictEqual(['eat', 'sleep'])
+  expect(onChange).toHaveBeenCalledTimes(2)
   await delay(16)
 
   await wrapper.find('.var-chip--close').trigger('click')
   expect(wrapper.vm.value).toStrictEqual(['sleep'])
+
+  expect(onClose).toHaveBeenCalledTimes(1)
+  expect(onChange).toHaveBeenCalledTimes(3)
 
   wrapper.unmount()
   document.body.innerHTML = ''

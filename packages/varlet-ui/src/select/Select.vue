@@ -361,7 +361,7 @@ export default defineComponent({
     }
 
     function handleClear() {
-      const { disabled, readonly, multiple, clearable, onClear } = props
+      const { disabled, readonly, multiple, clearable, onClear, onChange } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {
         return
@@ -371,6 +371,8 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], changedModelValue)
       call(onClear, changedModelValue)
       validateWithTrigger('onClear')
+      call(onChange, changedModelValue)
+      validateWithTrigger('onChange')
     }
 
     function handleClick(e: Event) {
@@ -385,20 +387,22 @@ export default defineComponent({
     }
 
     function handleClose(text: any) {
-      const { disabled, readonly, modelValue, onClose } = props
+      const { disabled, readonly, modelValue, onClose, onChange } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
       const option = options.find(({ label }) => label.value === text)
-      const currentModelValue = (modelValue as unknown as any[]).filter(
+      const changedModelValue = (modelValue as unknown as any[]).filter(
         (value) => value !== (option!.value.value ?? option!.label.value),
       )
 
-      call(props['onUpdate:modelValue'], currentModelValue)
-      call(onClose, currentModelValue)
+      call(props['onUpdate:modelValue'], changedModelValue)
+      call(onClose, changedModelValue)
       validateWithTrigger('onClose')
+      call(onChange, changedModelValue)
+      validateWithTrigger('onChange')
     }
 
     // expose

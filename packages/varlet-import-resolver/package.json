@@ -1,6 +1,6 @@
 {
   "name": "@varlet/import-resolver",
-  "version": "3.9.1",
+  "version": "3.10.8",
   "description": "varlet import resolver for unplugin-vue-components and unplugin-auto-import",
   "keywords": [
     "varlet",
@@ -42,8 +42,8 @@
     "@varlet/shared": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^18.7.18",
-    "tsup": "7.2.0",
-    "typescript": "5.3.3"
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }

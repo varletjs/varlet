@@ -5,7 +5,7 @@ export type SignatureDataUrlType = 'png' | 'jpg'
 
 export const props = {
   lineWidth: {
-    type: Number,
+    type: [Number, String],
     default: 2,
   },
   strokeStyle: {

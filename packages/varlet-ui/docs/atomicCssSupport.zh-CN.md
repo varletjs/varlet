@@ -6,8 +6,6 @@
 
 ### UnoCSS
 
-预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts)。
-
 #### 安装
 
 ```shell
@@ -33,9 +31,11 @@ export default defineConfig({
 })
 ```
 
-### Tailwindcss
+#### 更多配置
 
-预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts)。
+预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts)。
+
+### Tailwindcss
 
 #### 安装
 
@@ -49,7 +49,7 @@ yarn add @varlet/preset-tailwindcss -D
 pnpm add @varlet/preset-tailwindcss -D
 ```
 
-#### 配置
+#### Tailwindcss V3 配置
 
 ```js
 // playground-ignore
@@ -64,6 +64,28 @@ export default {
   presets: [presetVarlet()]
 }
 ```
+
+#### Tailwindcss V4 配置
+
+```js
+// playground-ignore
+// tailwind.config.js
+import { presetVarlet } from '@varlet/preset-tailwindcss'
+
+export default {
+  presets: [presetVarlet()]
+}
+```
+
+```css
+/** src/style.css */
+@import "tailwindcss";
+@config "../tailwind.config.js";
+```
+
+#### 更多配置
+
+预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts)。
 
 ### 使用方式
 

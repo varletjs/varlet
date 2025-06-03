@@ -641,6 +641,7 @@ exports[`dark theme 1`] = `
   "--shadow-key-penumbra-opacity": "rgba(0, 0, 0, 0.14)",
   "--shadow-key-umbra-opacity": "rgba(0, 0, 0, 0.2)",
   "--signature-background-color": "var(--color-surface-container-highest)",
+  "--signature-border-radius": "4px",
   "--signature-height": "200px",
   "--signature-stroke-color": "#fff",
   "--skeleton-animation-background": "linear-gradient(
@@ -1538,6 +1539,7 @@ exports[`md3Dark theme 1`] = `
   "--shadow-key-penumbra-opacity": "rgba(0, 0, 0, 0.14)",
   "--shadow-key-umbra-opacity": "rgba(0, 0, 0, 0.2)",
   "--signature-background-color": "var(--color-surface-container-highest)",
+  "--signature-border-radius": "12px",
   "--signature-height": "200px",
   "--signature-stroke-color": "var(--color-inverse-surface)",
   "--skeleton-animation-background": "linear-gradient(
@@ -2419,6 +2421,7 @@ exports[`md3Light theme 1`] = `
   "--shadow-key-penumbra-opacity": "rgba(0, 0, 0, 0.14)",
   "--shadow-key-umbra-opacity": "rgba(0, 0, 0, 0.2)",
   "--signature-background-color": "var(--color-surface-container-low)",
+  "--signature-border-radius": "12px",
   "--signature-height": "200px",
   "--signature-stroke-color": "#1D1B20",
   "--skeleton-animation-background": "linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))",

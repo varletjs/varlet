@@ -85,10 +85,6 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
-### AI 文档助手
-
-在 [AI 文档助手](https://gpt.qilepan.com/chat/share?shareId=y3ytky9ifjgl6fxtva1ai16h) 中可通过问询的方式获得 `varlet` 的更多信息, 感谢 [qile AI](https://ai.qilepan.com/auth?type=register&invite=MjM0) 提供服务支持.
-
 ### 官方生态
 
 以下项目由官方团队长期维护。

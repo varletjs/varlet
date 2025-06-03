@@ -1,17 +1,31 @@
-# 主题系统
+# 主题定制
 
 ### 介绍
 
-组件库通过 [css 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 来组织样式，变量分为通用样式变量和组件样式变量。推荐使用 [StyleProvider](#/zh-CN/style-provider) 组件加载主题文件、对主题进行定制。组件库支持的主题如下。
+组件库通过 [css 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 组织样式。推荐使用 [StyleProvider](#/zh-CN/style-provider) 加载主题、对主题进行定制。组件库内置的主题如下。
 
-### 可用主题
+### 内置主题
 
 | 主题名称 | 主题包 |
 | --- | --- |
-| `Material Design 2 亮色` | _css 样式_ |
+| `Material Design 2 亮色` | _默认主题，基于 css 文件_ |
 | `Material Design 2 暗色` | _Themes.dark_ |
 | `Material Design 3 亮色` | _Themes.md3Light_ |
 | `Material Design 3 暗色` | _Themes.md3Dark_ |
+
+### 设置 body 变量
+
+给 body 设置组件库推荐的一些基础样式变量，以控制应用的基本样式。
+
+```css
+/* playground-ignore */
+body {
+  transition: background-color .25s, color .25s;
+  color: var(--color-text);
+  background-color: var(--color-body);
+  color-scheme: var(--color-scheme);
+}
+```
 
 ### 切换主题
 
@@ -31,16 +45,22 @@ import { StyleProvider, Themes } from '@varlet/ui'
 </template>
 ```
 
-注入组件库推荐的 `文字颜色` 和 `背景颜色` 变量来控制整体颜色。
+### 主题定制
 
-```css
-/* playground-ignore */
-body {
-  transition: background-color .25s, color .25s;
-  color: var(--color-text);
-  background-color: var(--color-body);
-  color-scheme: var(--color-scheme);
+由于定义一套主题的工作量巨大，推荐基于内置主题进行扩展。
+
+```html
+<!-- playground-ignore -->
+<script setup>
+import { StyleProvider, Themes } from '@varlet/ui'
+
+const customTheme = {
+  ...Themes.md3Light,
+  '--color-primary': 'red'
 }
+
+StyleProvider(customTheme)
+</script>
 ```
 
 ### 主题生成器

@@ -6,6 +6,9 @@ export declare const tabsItemsProps: Record<keyof TabsItemsProps, any>
 
 export interface TabsItemsProps extends BasicAttributes {
   active?: string | number
+  canSwipe?: boolean
+  animated?: boolean
+  loop?: boolean
   'onUpdate:active'?: ListenerProp<(active: string | number) => void>
 }
 

@@ -1,7 +1,7 @@
 import { reactive, watchEffect } from 'vue'
 import { Dialog, Snackbar } from '@varlet/ui'
-import { compileFile, File, StoreOptions } from '@vue/repl'
-import type { OutputModes, SFCOptions, Store, StoreState } from '@vue/repl'
+import { compileFile, File } from '@vue/repl'
+import type { OutputModes, SFCOptions, Store, StoreOptions, StoreState } from '@vue/repl'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import { atou, utoa } from './utils/encode'
 import { usePreviewVersion } from './utils/env'
@@ -62,13 +62,13 @@ function getVarletReplPluginCode(version: string | 'latest' | 'preview') {
   let varletTouchEmulator
 
   if (version === 'latest') {
-    varletCss = 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/style.css'
+    varletCss = 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.css'
     varletTouchEmulator = 'https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js'
   } else if (version === 'preview') {
     varletCss = './varlet.css'
     varletTouchEmulator = './varlet-touch-emulator.js'
   } else {
-    varletCss = `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/style.css`
+    varletCss = `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/varlet.css`
     varletTouchEmulator = `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator@${version}/iife.js`
   }
 

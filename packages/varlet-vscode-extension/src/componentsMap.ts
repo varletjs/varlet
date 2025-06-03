@@ -339,4 +339,25 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   'floating-panel': {
     path: '/floating-panel',
   },
+  alert: {
+    path: '/alert',
+    closeSelf: true,
+    characterDelta: -2,
+  },
+  'count-to': {
+    path: '/count-to',
+    attrs: [':to=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'auto-complete': {
+    path: '/auto-complete',
+    attrs: ['v-model=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  signature: {
+    path: '/signature',
+    closeSelf: true,
+  },
 }

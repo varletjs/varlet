@@ -1,7 +1,7 @@
 {
   "name": "varlet-vscode-extension",
   "displayName": "varlet-vscode-extension",
-  "version": "3.9.1",
+  "version": "3.10.8",
   "private": true,
   "description": "varlet extension for vscode",
   "categories": [
@@ -94,11 +94,11 @@
     "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "14.x",
+    "@types/node": "catalog:",
     "@types/vscode": "^1.56.0",
     "@varlet/cli": "workspace:*",
     "@vscode/vsce": "^3.2.1",
-    "typescript": "5.3.3"
+    "typescript": "catalog:"
   },
   "engines": {
     "vscode": "^1.56.0"

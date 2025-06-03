@@ -6,8 +6,6 @@ We've provided common CSS atomization framework presets, made it easier to acces
 
 ### UnoCSS
 
-Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts).
-
 #### Install
 
 ```shell
@@ -33,9 +31,11 @@ export default defineConfig({
 })
 ```
 
-### Tailwindcss
+#### More Options
 
-Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts).
+Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts).
+
+### Tailwindcss
 
 #### Install
 
@@ -49,7 +49,7 @@ yarn add @varlet/preset-tailwindcss -D
 pnpm add @varlet/preset-tailwindcss -D
 ```
 
-#### Configuration
+#### Tailwindcss V3 Configuration
 
 ```js
 // playground-ignore
@@ -64,6 +64,28 @@ export default {
   presets: [presetVarlet()]
 }
 ```
+
+#### Tailwindcss V4 Configuration
+
+```js
+// playground-ignore
+// tailwind.config.js
+import { presetVarlet } from '@varlet/preset-tailwindcss'
+
+export default {
+  presets: [presetVarlet()]
+}
+```
+
+```css
+/** src/style.css */
+@import "tailwindcss";
+@config "../tailwind.config.js";
+```
+
+### More Options
+
+Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts).
 
 ### Usage
 
@@ -84,4 +106,3 @@ We also support the HSL variables, which makes the transparency of adjusting the
   <div class="bg-hsl-primary/50 text-hsl-text/70">hello</div>
 </template>
 ```
-

@@ -1,3 +1,74 @@
+## [3.10.8](https://github.com/varletjs/varlet/compare/v3.10.7...v3.10.8) (2025-06-01)
+
+
+### Features
+
+* **tabs-items:** support animated ([#1892](https://github.com/varletjs/varlet/issues/1892)) ([e0da4de](https://github.com/varletjs/varlet/commit/e0da4de02fd9cf3b414283d41281a84b6ca18e06))
+
+
+
+## [3.10.7](https://github.com/varletjs/varlet/compare/v3.10.6...v3.10.7) (2025-05-21)
+
+
+### Bug Fixes
+
+* **slider:** prevent triggering the scroll event of the parent element while sliding ([#1891](https://github.com/varletjs/varlet/issues/1891)) ([6837460](https://github.com/varletjs/varlet/commit/6837460393f712aa03bfa415820b968a72ab6ad5))
+
+
+
+## [3.10.6](https://github.com/varletjs/varlet/compare/v3.10.5...v3.10.6) (2025-05-07)
+
+
+
+## [3.10.5](https://github.com/varletjs/varlet/compare/v3.10.4...v3.10.5) (2025-04-24)
+
+
+
+## [3.10.4](https://github.com/varletjs/varlet/compare/v3.10.3...v3.10.4) (2025-04-10)
+
+
+### Bug Fixes
+
+* **ui/collapse-item:** use correct css variable to control `divider` ([#1877](https://github.com/varletjs/varlet/issues/1877)) ([13c165d](https://github.com/varletjs/varlet/commit/13c165d51ad3b34fc218fe6b342b1db8499c17de))
+
+
+
+## [3.10.3](https://github.com/varletjs/varlet/compare/v3.10.2...v3.10.3) (2025-04-04)
+
+
+### Bug Fixes
+
+* now the change event is also triggered when closing and clearing, close [#1873](https://github.com/varletjs/varlet/issues/1873) ([5456120](https://github.com/varletjs/varlet/commit/54561206f6b9d9a33060ce3f27f0395d0019da19))
+
+
+
+## [3.10.2](https://github.com/varletjs/varlet/compare/v3.10.1...v3.10.2) (2025-03-20)
+
+
+### Bug Fixes
+
+* fix playground css reference error ([c7edc92](https://github.com/varletjs/varlet/commit/c7edc92eda23f0018890503ca909de8c44b7ce41))
+
+
+
+## [3.10.1](https://github.com/varletjs/varlet/compare/v3.10.0...v3.10.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* **vscode-extension:** update componentsMap ([4f91a3e](https://github.com/varletjs/varlet/commit/4f91a3e918a312f90a0371de925c7ecfa3812dd2))
+
+
+
+# [3.10.0](https://github.com/varletjs/varlet/compare/v3.9.1...v3.10.0) (2025-03-20)
+
+
+### Features
+
+* new component signature ([#1863](https://github.com/varletjs/varlet/issues/1863)) ([f9d8f31](https://github.com/varletjs/varlet/commit/f9d8f318909795654d80c3ba76554f19b32be8c9))
+
+
+
 ## [3.9.1](https://github.com/varletjs/varlet/compare/v3.9.0...v3.9.1) (2025-03-11)
 
 
