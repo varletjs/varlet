@@ -42,7 +42,7 @@ module.exports = {
 }
 ```
 
-#### 主题包单位适配
+#### 主题包单位适配 (Viewport)
 
 因为主题包是运行时挂载的，不受 postcss 影响，组件库提供了实用工具 `Themes.toViewport` 进行适配，函数返回的主题将默认使用 `375px -> 100vmin` 的规则。
 
@@ -62,6 +62,29 @@ const viewportTheme = Themes.toViewport(Themes.md3Dark, {
   viewportWidth: 750,
   // 默认值为 'vmin'
   viewportUnit: 'vw',
+  // 默认值为 6
+  unitPrecision: 4,
+})
+```
+
+####  主题包单位适配 (Rem)
+
+与 `Viewport` 方案类似
+
+```js
+import { Themes } from '@varlet/ui'
+
+const remTheme = Themes.toRem(Themes.md3Dark)
+```
+
+也支持自定义
+
+```js
+import { Themes } from '@varlet/ui'
+
+const viewportTheme = Themes.toRem(Themes.md3Dark, {
+  // 默认值为 16
+  rootFontSize: 32,
   // 默认值为 6
   unitPrecision: 4,
 })
