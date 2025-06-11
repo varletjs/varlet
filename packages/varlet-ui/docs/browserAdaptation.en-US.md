@@ -43,7 +43,7 @@ module.exports = {
 }
 ```
 
-#### Theme Unit Adaptation
+#### Theme Unit Adaptation (Viewport)
 
 Because the theme is mounted at runtime and is not affected by postcss, the component library provides a utility tool `Themes.toViewport` for adaptation. The theme returned by the function will use the `375px -> 100vmin` rule by default.
 
@@ -63,6 +63,29 @@ const viewportTheme = Themes.toViewport(Themes.md3Dark, {
   viewportWidth: 750,
   // defaults 'vmin'
   viewportUnit: 'vw',
+  // defaults 6
+  unitPrecision: 4,
+})
+```
+
+#### Theme Unit Adaptation (Rem)
+
+Similar to the Viewport solution
+
+```js
+import { Themes } from '@varlet/ui'
+
+const remTheme = Themes.toRem(Themes.md3Dark)
+```
+
+Or customize
+
+```js
+import { Themes } from '@varlet/ui'
+
+const viewportTheme = Themes.toRem(Themes.md3Dark, {
+  // defaults 16
+  rootFontSize: 32,
   // defaults 6
   unitPrecision: 4,
 })

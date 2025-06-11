@@ -61,3 +61,51 @@ test('toViewport', () => {
     '--g': 'calc(100% - 4vw)',
   })
 })
+
+test('toRem', () => {
+  expect(
+    Themes.toRem({
+      '--a': '30px',
+      '--b': '30px -30px',
+      '--c': '30px 30px 30px',
+      '--d': '30px 30px 30px 30px',
+      '--e': '10px',
+      '--f': '10.55px',
+      '--g': 'calc(100% - 30px)',
+    }),
+  ).toStrictEqual({
+    '--a': '1.875rem',
+    '--b': '1.875rem -1.875rem',
+    '--c': '1.875rem 1.875rem 1.875rem',
+    '--d': '1.875rem 1.875rem 1.875rem 1.875rem',
+    '--e': '0.625rem',
+    '--f': '0.659375rem',
+    '--g': 'calc(100% - 1.875rem)',
+  })
+
+  expect(
+    Themes.toRem(
+      {
+        '--a': '30px',
+        '--b': '30px -30px',
+        '--c': '30px 30px 30px',
+        '--d': '30px 30px 30px 30px',
+        '--e': '10px',
+        '--f': '10.55px',
+        '--g': 'calc(100% - 30px)',
+      },
+      {
+        rootFontSize: 30,
+        unitPrecision: 4,
+      },
+    ),
+  ).toStrictEqual({
+    '--a': '1rem',
+    '--b': '1rem -1rem',
+    '--c': '1rem 1rem 1rem',
+    '--d': '1rem 1rem 1rem 1rem',
+    '--e': '0.3333rem',
+    '--f': '0.3517rem',
+    '--g': 'calc(100% - 1rem)',
+  })
+})
