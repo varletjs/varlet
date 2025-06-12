@@ -104,4 +104,8 @@ export default {
   paginationJump: '前往',
   // time-picker
   timePickerHint: '选择时间',
+  // tour
+  tourPrevious: '上一步',
+  tourNext: '下一步',
+  tourFinish: '结束引导',
 } satisfies Message
