@@ -263,7 +263,6 @@ export default defineConfig({
         },
         type: 1,
       },
-
       {
         text: {
           'zh-CN': 'Skeleton 骨架屏',
@@ -666,6 +665,14 @@ export default defineConfig({
           'en-US': 'Input',
         },
         doc: 'input',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'InputOtp 一次性密码输入框',
+          'en-US': 'InputOtp',
+        },
+        doc: 'input-otp',
         type: 2,
       },
       {
