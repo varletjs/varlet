@@ -1,12 +1,14 @@
 <template>
-  <var-tooltip v-bind="tooltipProps">
-    <span
-      :class="
-        classes(n(), [lineClamp, n('--clamp'), n('--line')], [expandTrigger, n('--cursor')], [expanding, n('--expand')])
-      "
-      :style="rootStyles"
-      @click="handleClick"
-    >
+  <var-tooltip
+    :class="
+      classes(n(), [lineClamp, n('--clamp'), n('--line')], [expandTrigger, n('--cursor')], [expanding, n('--expand')])
+    "
+    var-ellipsis-cover
+    :style="rootStyles"
+    v-bind="tooltipProps"
+    @click="handleClick"
+  >
+    <span>
       <slot />
     </span>
 
