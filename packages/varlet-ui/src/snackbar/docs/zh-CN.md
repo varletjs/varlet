@@ -139,7 +139,7 @@ import { Snackbar } from '@varlet/ui'
 </script>
 
 <template>
-  <var-button type="warning" block @click="Snackbar("这是一个消息条！！")">基本使用</var-button>
+  <var-button type="warning" block @click="Snackbar('这是一个消息条！！')">基本使用</var-button>
 </template>
 ```
 
