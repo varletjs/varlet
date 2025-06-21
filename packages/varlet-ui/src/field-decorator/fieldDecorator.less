@@ -2,6 +2,7 @@
   --field-decorator-text-color: #555;
   --field-decorator-error-color: var(--color-danger);
   --field-decorator-blur-color: #888;
+  --field-decorator-filled-color: #0000000d;
   --field-decorator-focus-color: var(--color-primary);
   --field-decorator-placeholder-size: 16px;
   --field-decorator-icon-size: 20px;
@@ -194,8 +195,8 @@
   }
 
   &--filled {
-    background: #0000000d;
-    border-radius: 4px;
+    background: var(--field-decorator-filled-color);
+    border-radius: var(--field-decorator-line-border-radius);
 
     .var-field-decorator__controller {
       padding: 0 var(--field-decorator-outlined-normal-padding-right) 0
