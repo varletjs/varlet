@@ -126,6 +126,52 @@ onThemeChange()
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
   </var-space>
 
+  <app-type style="margin-top: 10vmin">{{ t('filled') }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
+    <var-input v-model="outlinedValue" variant="filled" :placeholder="t('placeholder')" />
+    <var-input v-model="outlinedValue13" variant="filled" :placeholder="t('numberPlaceholder')" type="number" />
+    <var-input v-model="outlinedValue2" variant="filled" :placeholder="t('readonly')" readonly />
+    <var-input v-model="outlinedValue3" variant="filled" :placeholder="t('disabled')" disabled />
+    <var-input v-model="outlinedValue4" variant="filled" :placeholder="t('clearable')" clearable />
+    <var-input v-model="outlinedValue5" variant="filled" :placeholder="t('clearIconSlot')" clearable>
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
+    <var-input
+      v-model="outlinedValue6"
+      variant="filled"
+      :placeholder="t('validate')"
+      :rules="(v) => v.length > 6 || t('maxMessage')"
+    />
+    <var-input
+      v-model="outlinedValue14"
+      variant="filled"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().min(7, t('maxMessage'))"
+    />
+    <var-input v-model="outlinedValue7" variant="filled" :placeholder="t('displayIcon')">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input v-model="outlinedValue8" variant="filled" :placeholder="t('customIconSize')">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vmin" />
+      </template>
+    </var-input>
+    <var-input v-model="outlinedValue9" variant="filled" :placeholder="t('maxlength')" :maxlength="10" />
+    <var-input v-model="outlinedValue10" variant="filled" :placeholder="t('textarea')" textarea />
+    <var-input v-model="outlinedValue11" variant="filled" :placeholder="t('smallSize')" size="small" />
+    <var-input v-model.trim="outlinedValue12" variant="filled" :placeholder="t('trim')" />
+  </var-space>
+
   <div style="height: 40px"></div>
 </template>
 
