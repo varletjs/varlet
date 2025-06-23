@@ -141,7 +141,7 @@ import { Snackbar } from '@varlet/ui'
 </script>
 
 <template>
-  <var-button type="warning" block @click="Snackbar('Hello, I'm a snackbar')">Basic Usage</var-button>
+  <var-button type="warning" block @click="Snackbar('Hello, I\'m a snackbar')">Basic Usage</var-button>
 </template>
 ```
 
