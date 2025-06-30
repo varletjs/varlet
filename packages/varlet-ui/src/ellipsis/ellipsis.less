@@ -1,25 +1,27 @@
 .var-ellipsis {
-  width: 100%;
-  overflow: hidden;
-  vertical-align: bottom;
-  -webkit-tap-highlight-color: transparent;
+  &[var-ellipsis-cover] {
+    width: 100%;
+    overflow: hidden;
+    vertical-align: bottom;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-  &--clamp {
+  &--clamp[var-ellipsis-cover] {
     display: -webkit-inline-box;
     -webkit-box-orient: vertical;
   }
 
-  &--line {
+  &--line[var-ellipsis-cover] {
     display: inline-block;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
-  &--cursor {
+  &--cursor[var-ellipsis-cover] {
     cursor: pointer;
   }
 
-  &--expand {
+  &--expand[var-ellipsis-cover] {
     display: inline-block;
     white-space: wrap;
     overflow: visible;
