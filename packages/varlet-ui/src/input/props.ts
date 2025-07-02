@@ -65,5 +65,6 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  inputmode: String as PropType<'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'>,
   // internal end
 }

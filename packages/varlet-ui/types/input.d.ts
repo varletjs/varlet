@@ -46,6 +46,7 @@ export interface InputProps extends BasicAttributes {
   onInput?: ListenerProp<(value: string, e: Event) => void>
   onChange?: ListenerProp<(value: string, e: Event) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
+  inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url'
 }
 
 export interface InputClearIconData {

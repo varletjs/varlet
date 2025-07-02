@@ -196,6 +196,7 @@ const value14 = ref('')
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | See [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `inputmode` | Native inputmode attribute, controls mobile keyboard type | _string_ | `-` |
 
 ### Methods
 
@@ -270,3 +271,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--input-input-height` | `24px` |
 | `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |
+
+### inputmode Demo
+
+```html
+<var-input inputmode="decimal" placeholder="inputmode=decimal" />
+<var-input inputmode="numeric" placeholder="inputmode=numeric" />
+<var-input inputmode="email" placeholder="inputmode=email" />
+```

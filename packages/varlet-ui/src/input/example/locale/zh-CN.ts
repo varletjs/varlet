@@ -18,4 +18,8 @@ export default {
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
+  inputmodeDemo: 'inputmode 演示',
+  inputmodeDecimal: 'inputmode=decimal（数字小数键盘）',
+  inputmodeNumeric: 'inputmode=numeric（纯数字键盘）',
+  inputmodeEmail: 'inputmode=email（邮箱键盘）',
 }

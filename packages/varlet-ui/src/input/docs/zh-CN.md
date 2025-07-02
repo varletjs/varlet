@@ -196,6 +196,7 @@ const value14 = ref('')
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `inputmode` | 原生 inputmode 属性，控制移动端键盘类型 | _string_ | `-` |
 
 ### 方法
 
@@ -269,3 +270,11 @@ const value14 = ref('')
 | `--input-input-height` | `24px` |
 | `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |
+
+### inputmode 演示
+
+```html
+<var-input inputmode="decimal" placeholder="inputmode=decimal" />
+<var-input inputmode="numeric" placeholder="inputmode=numeric" />
+<var-input inputmode="email" placeholder="inputmode=email" />
+```

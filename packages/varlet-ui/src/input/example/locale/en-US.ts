@@ -18,4 +18,8 @@ export default {
   numberPlaceholder: 'Please enter number',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
+  inputmodeDemo: 'inputmode Demo',
+  inputmodeDecimal: 'inputmode=decimal (decimal keyboard)',
+  inputmodeNumeric: 'inputmode=numeric (numeric keyboard)',
+  inputmodeEmail: 'inputmode=email (email keyboard)',
 }

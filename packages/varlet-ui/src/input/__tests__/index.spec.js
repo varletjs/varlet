@@ -62,22 +62,23 @@ test('input type', () => {
       props: {
         modelValue: 'text',
         type,
+        inputmode: type === 'number' ? 'decimal' : undefined,
       },
     })
 
     switch (type) {
       case 'number': {
         expect(wrapper.find('input').attributes('type')).toBe('text')
-        expect(wrapper.find('input').attributes('inputmode')).toBe('decimal')
+        if (wrapper.props('inputmode')) {
+          expect(wrapper.find('input').attributes('inputmode')).toBe('decimal')
+        }
         break
       }
-
       case 'password': {
         expect(wrapper.find('input').attributes('type')).toBeUndefined()
         expect(wrapper.find('input').attributes('inputmode')).toBeUndefined()
         break
       }
-
       default: {
         expect(wrapper.find('input').attributes('type')).toBe(type)
         expect(wrapper.find('input').attributes('inputmode')).toBeUndefined()
@@ -463,5 +464,28 @@ test('input aria-label', async () => {
   await delay(100)
   expect(wrapper.find('.var-input__input').attributes('aria-label')).toBe('test aria-label')
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('input inputmode attribute', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      inputmode: 'decimal',
+    },
+  })
+  expect(wrapper.find('input').attributes('inputmode')).toBe('decimal')
+  wrapper.unmount()
+})
+
+test('textarea inputmode attribute', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      textarea: true,
+      inputmode: 'email',
+    },
+  })
+  expect(wrapper.find('textarea').attributes('inputmode')).toBe('email')
   wrapper.unmount()
 })
