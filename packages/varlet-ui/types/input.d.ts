@@ -45,6 +45,9 @@ export interface InputProps extends BasicAttributes {
   onClear?: ListenerProp<(value: string) => void>
   onInput?: ListenerProp<(value: string, e: Event) => void>
   onChange?: ListenerProp<(value: string, e: Event) => void>
+  onKeydown?: ListenerProp<(e: KeyboardEvent) => void>
+  onKeyup?: ListenerProp<(e: KeyboardEvent) => void>
+  onEnter?: ListenerProp<(value: string, e: KeyboardEvent) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
 
@@ -67,6 +70,8 @@ export class Input extends VarComponent {
   focus(): void
 
   blur(): void
+
+  select(): void
 
   validate(): Promise<boolean>
 

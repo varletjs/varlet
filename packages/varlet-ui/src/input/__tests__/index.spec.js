@@ -465,3 +465,115 @@ test('input aria-label', async () => {
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
+
+test('input select method', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'hello world',
+    },
+  })
+
+  const input = wrapper.find('.var-input__input').element
+  const selectSpy = vi.spyOn(input, 'select')
+
+  wrapper.vm.select()
+  expect(selectSpy).toHaveBeenCalled()
+
+  wrapper.unmount()
+})
+
+test('input keyboard events', async () => {
+  const onKeydown = vi.fn()
+  const onKeyup = vi.fn()
+  const onEnter = vi.fn()
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'test',
+      onKeydown,
+      onKeyup,
+      onEnter,
+    },
+  })
+
+  const input = wrapper.find('.var-input__input')
+
+  // Test keydown event
+  await input.trigger('keydown', { key: 'a' })
+  expect(onKeydown).toHaveBeenCalledTimes(1)
+  expect(onKeydown).toHaveBeenCalledWith(expect.objectContaining({ key: 'a' }))
+
+  // Test keyup event
+  await input.trigger('keyup', { key: 'a' })
+  expect(onKeyup).toHaveBeenCalledTimes(1)
+  expect(onKeyup).toHaveBeenCalledWith(expect.objectContaining({ key: 'a' }))
+
+  // Test enter key event
+  await input.trigger('keydown', { key: 'Enter' })
+  expect(onEnter).toHaveBeenCalledTimes(1)
+  expect(onEnter).toHaveBeenCalledWith('test', expect.objectContaining({ key: 'Enter' }))
+
+  wrapper.unmount()
+})
+
+test('input textarea keyboard events', async () => {
+  const onKeydown = vi.fn()
+  const onKeyup = vi.fn()
+  const onEnter = vi.fn()
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'test',
+      textarea: true,
+      onKeydown,
+      onKeyup,
+      onEnter,
+    },
+  })
+
+  const textarea = wrapper.find('.var-input__input')
+
+  // Test keydown event
+  await textarea.trigger('keydown', { key: 'a' })
+  expect(onKeydown).toHaveBeenCalledTimes(1)
+
+  // Test keyup event
+  await textarea.trigger('keyup', { key: 'a' })
+  expect(onKeyup).toHaveBeenCalledTimes(1)
+
+  // Test enter key event
+  await textarea.trigger('keydown', { key: 'Enter' })
+  expect(onEnter).toHaveBeenCalledTimes(1)
+  expect(onEnter).toHaveBeenCalledWith('test', expect.objectContaining({ key: 'Enter' }))
+
+  wrapper.unmount()
+})
+
+test('input enter key not triggered during composition', async () => {
+  const onEnter = vi.fn()
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'test',
+      onEnter,
+    },
+  })
+
+  const input = wrapper.find('.var-input__input')
+
+  // Start composition
+  await input.trigger('compositionstart')
+
+  // Trigger enter during composition
+  await input.trigger('keydown', { key: 'Enter' })
+  expect(onEnter).toHaveBeenCalledTimes(0)
+
+  // End composition
+  await input.trigger('compositionend')
+
+  // Trigger enter after composition
+  await input.trigger('keydown', { key: 'Enter' })
+  expect(onEnter).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+})

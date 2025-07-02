@@ -10,6 +10,7 @@
 <script setup>
 import { ref } from 'vue'
 import { z } from 'zod'
+import { Snackbar } from '@varlet/ui'
 
 const value = ref('')
 const value2 = ref('')
@@ -25,6 +26,17 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const value16 = ref('')
+const inputRef = ref()
+
+const handleEnter = (value) => {
+  Snackbar.info(`回车键被按下，当前值：${value}`)
+}
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -69,6 +81,19 @@ const value14 = ref('')
     <var-input placeholder="文本域" textarea v-model="value10" />
     <var-input placeholder="小尺寸" size="small" v-model="value11" />
     <var-input placeholder="移除空白字符" v-model.trim="value12" />
+    <var-input 
+      placeholder="按下回车键试试" 
+      v-model="value15"
+      @enter="handleEnter"
+    />
+    <var-space>
+      <var-input 
+        ref="inputRef"
+        placeholder="输入文本后点击按钮全选" 
+        v-model="value16"
+      />
+      <var-button type="primary" @click="selectAll">全选</var-button>
+    </var-space>
   </var-space>
 </template>
 
@@ -203,6 +228,7 @@ const value14 = ref('')
 | --- | --- | --- | --- |
 | `focus` | 聚焦 | `-` | `-` |
 | `blur` | 失焦 | `-` | `-` |
+| `select` | 选中输入框中的所有文本 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值和校验信息 | `-` | `-` |
@@ -217,6 +243,9 @@ const value14 = ref('')
 | `clear` | 清除时触发 | `value: string` |
 | `input` | 输入时触发 | `value: string`, `event: Event` |
 | `change` | 更新时触发 | `value: string`, `event: Event` |
+| `keydown` | 键盘按下时触发 | `event: KeyboardEvent` |
+| `keyup` | 键盘释放时触发 | `event: KeyboardEvent` |
+| `enter` | 按下回车键时触发 | `value: string`, `event: KeyboardEvent` |
 
 ### 插槽
 

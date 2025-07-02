@@ -37,6 +37,9 @@ export const props = {
   onInput: defineListenerProp<(value: string, e: Event) => void>(),
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
+  onKeydown: defineListenerProp<(e: KeyboardEvent) => void>(),
+  onKeyup: defineListenerProp<(e: KeyboardEvent) => void>(),
+  onEnter: defineListenerProp<(value: string, e: KeyboardEvent) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   ...pickProps(fieldDecoratorProps, [
     'size',

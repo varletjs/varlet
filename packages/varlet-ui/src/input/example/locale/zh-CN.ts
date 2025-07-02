@@ -18,4 +18,7 @@ export default {
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
+  enterKey: '按下回车键试试',
+  selectAll: '输入文本后点击按钮全选',
+  selectAllButton: '全选',
 }

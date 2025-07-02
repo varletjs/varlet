@@ -203,6 +203,7 @@ const value14 = ref('')
 | --- | --- | --- | --- |
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
+| `select` | Select all text in the input | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding and validate messages | `-` | `-` |
@@ -217,6 +218,9 @@ const value14 = ref('')
 | `clear` | Triggered on Clearance | `value: string` |
 | `input` | Triggered on input | `value: string`, `event: Event` |
 | `change` | Triggered on change | `value: string`, `event: Event` |
+| `keydown` | Triggered on keydown | `event: KeyboardEvent` |
+| `keyup` | Triggered on keyup | `event: KeyboardEvent` |
+| `enter` | Triggered when Enter key is pressed | `value: string`, `event: KeyboardEvent` |
 
 ### Slots
 

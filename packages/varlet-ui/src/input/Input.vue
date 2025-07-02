@@ -74,6 +74,8 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
+        @keydown="handleKeydown"
+        @keyup="handleKeyup"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       />
@@ -108,6 +110,8 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
+        @keydown="handleKeydown"
+        @keyup="handleKeyup"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       />
@@ -368,6 +372,25 @@ export default defineComponent({
       ;(el.value as HTMLInputElement).blur()
     }
 
+    // expose
+    function select() {
+      ;(el.value as HTMLInputElement).select()
+    }
+
+    function handleKeydown(e: KeyboardEvent) {
+      call(props.onKeydown, e)
+
+      // 处理回车键事件
+      if (e.key === 'Enter' && !isComposing.value) {
+        const value = props.modelValue || ''
+        call(props.onEnter, value, e)
+      }
+    }
+
+    function handleKeyup(e: KeyboardEvent) {
+      call(props.onKeyup, e)
+    }
+
     return {
       el,
       id,
@@ -392,11 +415,14 @@ export default defineComponent({
       handleCompositionStart,
       handleCompositionEnd,
       handleMousedown,
+      handleKeydown,
+      handleKeyup,
       validate,
       resetValidation,
       reset,
       focus,
       blur,
+      select,
     }
   },
 })

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { AppType, onThemeChange, Snackbar, watchLang } from '@varlet/cli/client'
 import { z } from 'zod'
 import { t, use } from './locale'
 
@@ -18,6 +18,8 @@ const standardValue11 = ref('')
 const standardValue12 = ref('')
 const standardValue13 = ref('')
 const standardValue14 = ref('')
+const standardValue15 = ref('')
+const standardValue16 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -33,6 +35,20 @@ const outlinedValue11 = ref('')
 const outlinedValue12 = ref('')
 const outlinedValue13 = ref('')
 const outlinedValue14 = ref('')
+
+const inputRef = ref()
+
+const handleEnter = (value, e) => {
+  Snackbar.info(`回车键被按下，当前值：${value}`)
+}
+
+const handleKeydown = (e) => {
+  console.log('keydown:', e.key)
+}
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 
 watchLang(use)
 onThemeChange()
@@ -78,6 +94,11 @@ onThemeChange()
     <var-input v-model="standardValue10" :placeholder="t('textarea')" textarea />
     <var-input v-model="standardValue11" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="standardValue12" :placeholder="t('trim')" />
+    <var-input v-model="standardValue15" :placeholder="t('enterKey')" @enter="handleEnter" @keydown="handleKeydown" />
+    <var-space>
+      <var-input ref="inputRef" v-model="standardValue16" :placeholder="t('selectAll')" />
+      <var-button type="primary" @click="selectAll">{{ t('selectAllButton') }}</var-button>
+    </var-space>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
