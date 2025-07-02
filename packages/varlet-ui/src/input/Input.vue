@@ -74,8 +74,6 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
-        @keydown="handleKeydown"
-        @keyup="handleKeyup"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       />
