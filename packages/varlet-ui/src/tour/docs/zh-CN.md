@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -18,7 +18,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">开始引导</var-button>
+  <var-button type="primary" @click="show = true">开始引导</var-button>
 
   <var-divider />
 
@@ -28,10 +28,10 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step :target="ref1?.$el" title="上传文件" description="把你的文件放在这里。" />
-    <var-tour-step :target="ref2?.$el" title="保存" description="保存你的更改。" />
-    <var-tour-step :target="ref3?.$el" title="其他操作" description="点击查看其他。" />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step :target="ref1?.$el" title="上传文件" message="把你的文件放在这里。" />
+    <var-tour-step :target="ref2?.$el" title="保存" message="保存你的更改。" />
+    <var-tour-step :target="ref3?.$el" title="其他操作" message="点击查看其他。" />
   </var-tour>
 </template>
 ```
@@ -44,7 +44,7 @@ const ref3 = ref<HTMLElement>()
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -52,7 +52,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">开始引导</var-button>
+  <var-button type="primary" @click="show = true">开始引导</var-button>
 
   <var-divider />
 
@@ -63,15 +63,15 @@ const ref3 = ref<HTMLElement>()
   </var-space>
 
   <var-tour 
-    v-model:open="open" 
+    v-model:show="show" 
     v-model:current="current" 
     :overlay="false" 
     type="primary" 
     closeable
   >
-    <var-tour-step :target="ref1?.$el" title="上传文件" description="把你的文件放在这里。" />
-    <var-tour-step :target="ref2?.$el" title="保存" description="保存你的更改。" />
-    <var-tour-step :target="ref3?.$el" title="其他操作" description="点击查看其他。" />
+    <var-tour-step :target="ref1?.$el" title="上传文件" message="把你的文件放在这里。" />
+    <var-tour-step :target="ref2?.$el" title="保存" message="保存你的更改。" />
+    <var-tour-step :target="ref3?.$el" title="其他操作" message="点击查看其他。" />
   </var-tour>
 </template>
 ```
@@ -84,7 +84,7 @@ const ref3 = ref<HTMLElement>()
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -92,7 +92,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">开始引导</var-button>
+  <var-button type="primary" @click="show = true">开始引导</var-button>
 
   <var-divider />
 
@@ -102,18 +102,18 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step title="上传文件" description="把你的文件放在这里。" />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step title="上传文件" message="把你的文件放在这里。" />
     <var-tour-step 
       :target="ref2?.$el" 
       title="保存" 
-      description="保存你的更改。" 
+      message="保存你的更改。" 
       placement="bottom-start" 
     />
     <var-tour-step 
       :target="ref3?.$el" 
       title="其他操作" 
-      description="点击查看其他。" 
+      message="点击查看其他。" 
       placement="top" 
     />
   </var-tour>
@@ -126,7 +126,7 @@ const ref3 = ref<HTMLElement>()
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -134,7 +134,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">开始引导</var-button>
+  <var-button type="primary" @click="show = true">开始引导</var-button>
 
   <var-divider />
 
@@ -144,10 +144,10 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step :target="ref1?.$el" title="上传文件" description="把你的文件放在这里。" />
-    <var-tour-step :target="ref2?.$el" title="保存" description="保存你的更改。" />
-    <var-tour-step :target="ref3?.$el" title="其他操作" description="点击查看其他。" />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step :target="ref1?.$el" title="上传文件" message="把你的文件放在这里。" />
+    <var-tour-step :target="ref2?.$el" title="保存" message="保存你的更改。" />
+    <var-tour-step :target="ref3?.$el" title="其他操作" message="点击查看其他。" />
     <template #indicators="{ current, total }">
       <span>{{ current + 1 }} / {{ total }}</span>
     </template>
@@ -163,7 +163,7 @@ const ref3 = ref<HTMLElement>()
 
 | 参数                     | 说明                                                  | 类型                           | 默认值    |
 |--------------------------|-----------------------------------------------------|--------------------------------|-----------|
-| `v-model:open`           | 打开引导                                              | _boolean_                      | `-`       |
+| `v-model:show`           | 显示引导                                              | _boolean_                      | `-`       |
 | `v-model:current`        | 当前处于哪一步                                        | _number_                       | `0`       |
 | `closeable`              | 是否显示关闭按钮                                      | _boolean_                      | `-`       |
 | `type`                   | 类型，可选值为 `default` `primary`                     | _string_                       | `default` |
@@ -185,7 +185,7 @@ const ref3 = ref<HTMLElement>()
 |--------------------------|------------------------|-------------------------|-------------|
 | `target`                 | 引导卡片指向的元素       | _string \| HTMLElement_ | `-`         |
 | `title`                  | 标题                     | _string_                | `-`         |
-| `description`            | 描述                     | _string_                | `-`         |
+| `message`                | 内容                     | _string_                | `-`         |
 | `closeable`              | 是否显示关闭按钮         | _boolean_               | `undefined` |
 | `arrow`                  | 是否显示箭头             | _boolean_               | `undefined` |
 | `placement`              | 弹出位置                 | _Placement_             | `-`         |
@@ -246,7 +246,7 @@ const ref3 = ref<HTMLElement>()
 | 插槽名    | 说明 | 参数 |
 |-----------|----|------|
 | `title`   | 标题 | `-`  |
-| `default` | 描述 | `-`  |
+| `default` | 内容 | `-`  |
 
 ### 样式变量
 
@@ -262,10 +262,10 @@ const ref3 = ref<HTMLElement>()
 | `--tour-title-padding`                             | `20px 20px 0`                        |
 | `--tour-title-color`                               | `#555`                               |
 | `--tour-title-font-size`                           | `var(--font-size-lg)`                |
-| `--tour-description-color`                         | `#888`                               |
-| `--tour-description-padding`                       | `12px 20px`                          |
-| `--tour-description-font-size`                     | `var(--font-size-md)`                |
-| `--tour-description-line-height`                   | `24px`                               |
+| `--tour-message-color`                             | `#888`                               |
+| `--tour-message-padding`                           | `12px 20px`                          |
+| `--tour-message-font-size`                         | `var(--font-size-md)`                |
+| `--tour-message-line-height`                       | `24px`                               |
 | `--tour-indicator-background-color`                | `rgba(0, 0, 0, 0.15)`                |
 | `--tour-indicator-active-background-color`         | `var(--color-primary)`               |
 | `--tour-actions-padding`                           | `0 12px 12px 20px`                   |
@@ -275,7 +275,7 @@ const ref3 = ref<HTMLElement>()
 | `--tour-close-button-top`                          | `20px`                               |
 | `--tour-primary-background`                        | `var(--color-primary)`               |
 | `--tour-primary-title-color`                       | `var(--color-on-primary)`            |
-| `--tour-primary-description-color`                 | `var(--color-on-info)`               |
+| `--tour-primary-message-color`                     | `var(--color-on-info)`               |
 | `--tour-primary-indicator-background-color`        | `rgba(255, 255, 255, 0.15)`          |
 | `--tour-primary-indicator-active-background-color` | `var(--color-on-primary)`            |
 | `--tour-primary-next-button-color`                 | `var(--color-on-primary)`            |

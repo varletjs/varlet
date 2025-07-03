@@ -878,10 +878,10 @@ interface BaseStyleVars {
   '--tour-title-padding'?: string
   '--tour-title-color'?: string
   '--tour-title-font-size'?: string
-  '--tour-description-color'?: string
-  '--tour-description-padding'?: string
-  '--tour-description-font-size'?: string
-  '--tour-description-line-height'?: string
+  '--tour-message-color'?: string
+  '--tour-message-padding'?: string
+  '--tour-message-font-size'?: string
+  '--tour-message-line-height'?: string
   '--tour-indicator-background-color'?: string
   '--tour-indicator-active-background-color'?: string
   '--tour-actions-padding'?: string
@@ -891,7 +891,7 @@ interface BaseStyleVars {
   '--tour-close-button-top'?: string
   '--tour-primary-background'?: string
   '--tour-primary-title-color'?: string
-  '--tour-primary-description-color'?: string
+  '--tour-primary-message-color'?: string
   '--tour-primary-indicator-background-color'?: string
   '--tour-primary-indicator-active-background-color'?: string
   '--tour-primary-next-button-color'?: string

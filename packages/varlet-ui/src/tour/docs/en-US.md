@@ -10,7 +10,7 @@ A popup component for guiding users through a product.
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -18,7 +18,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">Begin Tour</var-button>
+  <var-button type="primary" @click="show = true">Begin Tour</var-button>
 
   <var-divider />
 
@@ -28,10 +28,10 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step :target="ref1?.$el" title="Upload File" description="Put your files here." />
-    <var-tour-step :target="ref2?.$el" title="Save" description="Save your changes." />
-    <var-tour-step :target="ref3?.$el" title="Other Actions " description="Click to see other actions." />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step :target="ref1?.$el" title="Upload File" message="Put your files here." />
+    <var-tour-step :target="ref2?.$el" title="Save" message="Save your changes." />
+    <var-tour-step :target="ref3?.$el" title="Other Actions " message="Click to see other actions." />
   </var-tour>
 </template>
 ```
@@ -44,7 +44,7 @@ Use `:overlay="false"` to make Tour non-modal. At the meantime it is recommended
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -52,7 +52,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">Begin Tour</var-button>
+  <var-button type="primary" @click="show = true">Begin Tour</var-button>
 
   <var-divider />
 
@@ -63,15 +63,15 @@ const ref3 = ref<HTMLElement>()
   </var-space>
 
   <var-tour 
-    v-model:open="open" 
+    v-model:show="show" 
     v-model:current="current" 
     :overlay="false" 
     type="primary" 
     closeable
   >
-    <var-tour-step :target="ref1?.$el" title="Upload File" description="Put your files here." />
-    <var-tour-step :target="ref2?.$el" title="Save" description="Save your changes." />
-    <var-tour-step :target="ref3?.$el" title="Other Actions" description="Click to see other actions." />
+    <var-tour-step :target="ref1?.$el" title="Upload File" message="Put your files here." />
+    <var-tour-step :target="ref2?.$el" title="Save" message="Save your changes." />
+    <var-tour-step :target="ref3?.$el" title="Other Actions" message="Click to see other actions." />
   </var-tour>
 </template>
 ```
@@ -84,7 +84,7 @@ Change the placement of the guide relative to the target, there are 12 placement
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -92,7 +92,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">Begin Tour</var-button>
+  <var-button type="primary" @click="show = true">Begin Tour</var-button>
 
   <var-divider />
 
@@ -102,18 +102,18 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step title="Upload File" description="Put your files here." />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step title="Upload File" message="Put your files here." />
     <var-tour-step 
       :target="ref2?.$el" 
       title="Save" 
-      description="Save your changes." 
+      message="Save your changes." 
       placement="bottom-start" 
     />
     <var-tour-step 
       :target="ref3?.$el" 
       title="Other Actions" 
-     description="Click to see other actions." 
+     message="Click to see other actions." 
       placement="top" 
     />
   </var-tour>
@@ -126,7 +126,7 @@ const ref3 = ref<HTMLElement>()
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const open = ref(false)
+const show = ref(false)
 const current = ref(0)
 const ref1 = ref<HTMLElement>()
 const ref2 = ref<HTMLElement>()
@@ -134,7 +134,7 @@ const ref3 = ref<HTMLElement>()
 </script>
 
 <template>
-  <var-button type="primary" @click="open = true">Begin Tour</var-button>
+  <var-button type="primary" @click="show = true">Begin Tour</var-button>
 
   <var-divider />
 
@@ -144,10 +144,10 @@ const ref3 = ref<HTMLElement>()
     <var-button ref="ref3"><var-icon name="dots-vertical" /></var-button>
   </var-space>
 
-  <var-tour v-model:open="open" v-model:current="current" closeable>
-    <var-tour-step :target="ref1?.$el" title="Upload File" description="Put your files here." />
-    <var-tour-step :target="ref2?.$el" title="Save" description="Save your changes." />
-    <var-tour-step :target="ref3?.$el" title="Other Actions" description="Click to see other actions." />
+  <var-tour v-model:show="show" v-model:current="current" closeable>
+    <var-tour-step :target="ref1?.$el" title="Upload File" message="Put your files here." />
+    <var-tour-step :target="ref2?.$el" title="Save" message="Save your changes." />
+    <var-tour-step :target="ref3?.$el" title="Other Actions" message="Click to see other actions." />
     <template #indicators="{ current, total }">
       <span>{{ current + 1 }} / {{ total }}</span>
     </template>
@@ -163,7 +163,7 @@ const ref3 = ref<HTMLElement>()
 
 | Prop                     | Description                                                                                                  | Type                           | Default   |
 |--------------------------|--------------------------------------------------------------------------------------------------------------|--------------------------------|-----------|
-| `v-model:open`           | Open tour                                                                                                    | _boolean_                      | `-`       |
+| `v-model:show`           | show tour                                                                                                    | _boolean_                      | `-`       |
 | `v-model:current`        | What is the current step                                                                                     | _number_                       | `0`       |
 | `closeable`              | Whether to show a close button                                                                               | _boolean_                      | `-`       |
 | `type`                   | Type，can be set to `default` `primary`                                                                       | _string_                       | `default` |
@@ -185,7 +185,7 @@ const ref3 = ref<HTMLElement>()
 |--------------------------|------------------------------------------|-------------------------|-------------|
 | `target`                 | Get the element the guide card points to | _string \| HTMLElement_ | `-`         |
 | `title`                  | Tour title                               | _string_                | `-`         |
-| `description`            | Tour Description                         | _string_                | `-`         |
+| `message`                | Tour message content                     | _string_                | `-`         |
 | `closeable`              | Whether to show a close button           | _boolean_               | `undefined` |
 | `arrow`                  | Whether to display the arrow             | _boolean_               | `undefined` |
 | `placement`              | Tour popup placement                     | _Placement_             | `-`         |
@@ -244,10 +244,10 @@ const ref3 = ref<HTMLElement>()
 
 #### TourStep Slots
 
-| Name      | Description | Prop |
-|-----------|-------------|------|
-| `title`   | Title       | `-`  |
-| `default` | Description | `-`  |
+| Name      | Description     | Prop |
+|-----------|-----------------|------|
+| `title`   | Title           | `-`  |
+| `default` | Message content | `-`  |
 
 ### Style Variables
 
@@ -263,10 +263,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tour-title-padding`                             | `20px 20px 0`                        |
 | `--tour-title-color`                               | `#555`                               |
 | `--tour-title-font-size`                           | `var(--font-size-lg)`                |
-| `--tour-description-color`                         | `#888`                               |
-| `--tour-description-padding`                       | `12px 20px`                          |
-| `--tour-description-font-size`                     | `var(--font-size-md)`                |
-| `--tour-description-line-height`                   | `24px`                               |
+| `--tour-message-color`                             | `#888`                               |
+| `--tour-message-padding`                           | `12px 20px`                          |
+| `--tour-message-font-size`                         | `var(--font-size-md)`                |
+| `--tour-message-line-height`                       | `24px`                               |
 | `--tour-indicator-background-color`                | `rgba(0, 0, 0, 0.15)`                |
 | `--tour-indicator-active-background-color`         | `var(--color-primary)`               |
 | `--tour-actions-padding`                           | `0 12px 12px 20px`                   |
@@ -276,7 +276,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tour-close-button-top`                          | `20px`                               |
 | `--tour-primary-background`                        | `var(--color-primary)`               |
 | `--tour-primary-title-color`                       | `var(--color-on-primary)`            |
-| `--tour-primary-description-color`                 | `var(--color-on-info)`               |
+| `--tour-primary-message-color`                     | `var(--color-on-info)`               |
 | `--tour-primary-indicator-background-color`        | `rgba(255, 255, 255, 0.15)`          |
 | `--tour-primary-indicator-active-background-color` | `var(--color-on-primary)`            |
 | `--tour-primary-next-button-color`                 | `var(--color-on-primary)`            |

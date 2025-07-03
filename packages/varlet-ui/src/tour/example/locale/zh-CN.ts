@@ -7,9 +7,9 @@ export default {
   upload: '上传',
   save: '保存',
   firstTitle: '上传文件',
-  firstDescription: '把你的文件放在这里。',
+  firstMessage: '把你的文件放在这里。',
   secondTitle: '保存',
-  secondDescription: '保存你的更改。',
+  secondMessage: '保存你的更改。',
   thirdTitle: '其他操作',
-  thirdDescription: '点击查看其他。',
+  thirdMessage: '点击查看其他。',
 }

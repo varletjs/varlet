@@ -18,14 +18,14 @@ export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-star
 export type Placement = NeededPopperPlacement
 
 export interface UsePopoverOptions {
-  open: ComputedRef<boolean>
+  show: ComputedRef<boolean>
   arrow: ComputedRef<boolean>
   gap: ComputedRef<TourGap>
   placement: ComputedRef<Placement>
 }
 
 export function usePopover(options: UsePopoverOptions) {
-  const { open, arrow, gap, placement } = options
+  const { show, arrow, gap, placement } = options
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
   const arrowRef: Ref<null | HTMLElement> = ref(null)
@@ -36,8 +36,8 @@ export function usePopover(options: UsePopoverOptions) {
     return 0
   })
 
-  const { zIndex } = useZIndex(() => open.value, 1)
-  const { onStackTop } = useStack(() => open.value, zIndex)
+  const { zIndex } = useZIndex(() => show.value, 1)
+  const { onStackTop } = useStack(() => show.value, zIndex)
 
   let popoverInstance: Instance | null = null
 
@@ -54,7 +54,7 @@ export function usePopover(options: UsePopoverOptions) {
       return
     }
 
-    popoverInstance = createPopper(host.value!, popover.value!, getPopperOptions())
+    popoverInstance = createPopper(host.value, popover.value, getPopperOptions())
   }
 
   function destroyPopperInstance() {
@@ -66,7 +66,7 @@ export function usePopover(options: UsePopoverOptions) {
     const modifiers: Modifier<any, any>[] = [
       {
         ...flip,
-        enabled: open.value,
+        enabled: show.value,
         options: {
           fallbackPlacements: ['bottom', 'right', 'left', 'top'],
         },
@@ -83,11 +83,11 @@ export function usePopover(options: UsePopoverOptions) {
           adaptive: false,
           gpuAcceleration: false,
         },
-        enabled: open.value,
+        enabled: show.value,
       },
       {
         ...preventOverflow,
-        enabled: open.value,
+        enabled: show.value,
       },
       {
         ...arrowModifier,
@@ -95,7 +95,7 @@ export function usePopover(options: UsePopoverOptions) {
           element: arrowRef.value,
           padding: gap.value.radius,
         },
-        enabled: open.value && arrow.value,
+        enabled: show.value && arrow.value,
       },
     ]
 

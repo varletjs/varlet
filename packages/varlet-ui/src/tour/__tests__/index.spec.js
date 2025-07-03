@@ -26,16 +26,16 @@ const Wrapper = {
   ],
   data: () => ({
     btnRef: null,
-    open: true,
+    show: true,
     current: 0,
   }),
   template: `
     <template>
       <button ref="btnRef">cover</button>
 
-      <var-tour v-model:open="open" v-model:current="current" :teleport="false" v-bind="$props">
-        <var-tour-step :target="btnRef?.el" title="first" description="cover description" v-bind="$attrs" />
-        <var-tour-step :target="btnRef?.el" title="second" description="cover description" v-bind="$attrs" />
+      <var-tour v-model:show="show" v-model:current="current" :teleport="false" v-bind="$props">
+        <var-tour-step :target="btnRef?.el" title="first" message="cover message" v-bind="$attrs" />
+        <var-tour-step :target="btnRef?.el" title="second" message="cover message" v-bind="$attrs" />
         <template #indicators="scope">
           <slot name="indicators" v-bind="scope" />
         </template>
@@ -57,10 +57,10 @@ test('tour step plugin', () => {
 test('tour basic', async () => {
   const wrapper = mount(Wrapper)
 
-  await delay(50)
+  await delay(150)
 
   expect(wrapper.find('.var-tour-step__title').text()).toEqual('first')
-  expect(wrapper.find('.var-tour-step__description').text()).toEqual('cover description')
+  expect(wrapper.find('.var-tour-step__message').text()).toEqual('cover message')
   wrapper.unmount()
 })
 
@@ -107,8 +107,8 @@ test('tour no target', async () => {
       [VarTourStep.name]: VarTourStep,
     },
     template: `
-      <var-tour :open="true" :teleport="false">
-        <var-tour-step title="cover title" description="cover description" />
+      <var-tour :show="true" :teleport="false">
+        <var-tour-step title="cover title" message="cover message" />
       </var-tour>
     `,
   })
@@ -146,7 +146,7 @@ test('tour previous and next and finish', async () => {
 
   await nextTick()
 
-  expect(wrapper.vm.open).toBe(false)
+  expect(wrapper.vm.show).toBe(false)
 
   wrapper.unmount()
 })
@@ -385,12 +385,12 @@ describe('tour events', () => {
 
     await wrapper.find('.var-tour__overlay').trigger('click')
     expect(onClickOverlay).toHaveBeenCalledTimes(1)
-    expect(wrapper.vm.open).toBe(true)
+    expect(wrapper.vm.show).toBe(true)
 
     await wrapper.setProps({ closeOnClickOverlay: true })
     await wrapper.find('.var-tour__overlay').trigger('click')
     expect(onClickOverlay).toHaveBeenCalledTimes(2)
-    expect(wrapper.vm.open).toBe(false)
+    expect(wrapper.vm.show).toBe(false)
 
     wrapper.unmount()
   })
@@ -408,12 +408,12 @@ describe('tour events', () => {
 
     await triggerKeyboard(window, 'keydown', { key: 'Escape' })
     expect(onKeyEscape).toBeCalledTimes(1)
-    expect(wrapper.vm.open).toBe(true)
+    expect(wrapper.vm.show).toBe(true)
 
     await wrapper.setProps({ closeOnKeyEscape: true })
     await triggerKeyboard(window, 'keydown', { key: 'Escape' })
     expect(onKeyEscape).toBeCalledTimes(2)
-    expect(wrapper.vm.open).toBe(false)
+    expect(wrapper.vm.show).toBe(false)
 
     wrapper.unmount()
   })

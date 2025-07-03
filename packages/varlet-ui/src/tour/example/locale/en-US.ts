@@ -7,9 +7,9 @@ export default {
   upload: 'Upload',
   save: 'Save',
   firstTitle: 'Upload File',
-  firstDescription: 'Put you files here.',
+  firstMessage: 'Put you files here.',
   secondTitle: 'Save',
-  secondDescription: 'Save your changes.',
+  secondMessage: 'Save your changes.',
   thirdTitle: 'Other Actions',
-  thirdDescription: 'Click to see other',
+  thirdMessage: 'Click to see other',
 }

@@ -1,6 +1,6 @@
 <template>
   <Teleport :to="teleport === false ? undefined : teleport" :disabled="disabled || teleport === false">
-    <div v-if="open" :class="classes(n(), n(`--${type}`))">
+    <div v-if="show" :class="classes(n(), n(`--${type}`))">
       <div
         v-if="mergedOverlay"
         :class="classes(n('overlay'), overlayClass, stepProps?.overlayClass)"
@@ -16,9 +16,7 @@
         :class="classes(n('content'), contentClass, stepProps?.contentClass)"
         :style="{ zIndex, width: toSizeUnit(stepProps?.width), ...contentStyle, ...stepProps?.contentStyle }"
       >
-        <var-tour-steps :current="current" @update-total="updateTotal">
-          <slot />
-        </var-tour-steps>
+        <slot />
         <span v-if="mergedArrow" ref="arrowRef" :class="n('arrow')" :style="{ zIndex }"></span>
         <div v-if="mergedCloseable" :class="n('close-icon')" @click="close">
           <slot name="close-button">
@@ -66,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { call, preventDefault, toNumber } from '@varlet/shared'
 import { useEventListener, useWindowSize } from '@varlet/use'
 import VarButton from '../button'
@@ -74,11 +72,11 @@ import { useLock } from '../context/lock'
 import VarIcon from '../icon'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
+import { TourStepProvider } from '../tour-step/provide'
 import { createNamespace, useTeleport } from '../utils/components'
 import { getTarget, toSizeUnit } from '../utils/elements'
 import { props } from './props'
-import { provideTour, TourStepProps } from './provide'
-import VarTourSteps from './TourSteps'
+import { useTourSteps } from './provide'
 import { usePopover } from './usePopover'
 import { usePosition } from './usePosition'
 
@@ -87,13 +85,13 @@ const { name, n, classes } = createNamespace('tour')
 export default defineComponent({
   name,
   props,
-  components: { VarButton, VarIcon, VarTourSteps },
+  components: { VarButton, VarIcon },
   setup(props) {
-    const total = ref(0)
-    const stepProps = ref<TourStepProps>()
-    const open = computed(() => props.open)
+    const stepProps = ref<TourStepProvider>()
+    const show = computed(() => props.show)
     const current = computed(() => props.current)
     const gap = computed(() => props.gap)
+
     const mergedOverlay = computed(() => stepProps.value?.overlay ?? props.overlay)
     const mergedArrow = computed(() => (stepProps.value?.arrow ?? props.arrow) && !!host.value)
     const mergedPlacement = computed(() => stepProps.value?.placement ?? props.placement)
@@ -101,13 +99,14 @@ export default defineComponent({
     const isLastStep = computed(() => current.value + 1 === total.value)
 
     const { disabled } = useTeleport()
+    const { length: total, tourSteps, bindTourStep } = useTourSteps()
     const { host, popover, arrowRef, zIndex, onStackTop } = usePopover({
-      open,
+      show,
       arrow: mergedArrow,
       gap,
       placement: mergedPlacement,
     })
-    const { posInfo } = usePosition(host, open, gap)
+    const { posInfo } = usePosition(host, show, gap)
     const { width: visualWidth, height: visualHeight } = useWindowSize()
     const path = computed(() => {
       const vw = visualWidth.value
@@ -144,20 +143,18 @@ export default defineComponent({
       }
     })
 
-    const { t: pt } = injectLocaleProvider()
-    useLock(() => open.value)
+    bindTourStep({ current })
 
+    const { t: pt } = injectLocaleProvider()
+    useLock(() => show.value)
     useEventListener(() => window, 'keydown', handleKeydown)
 
-    function updateStepProps(step: TourStepProps) {
-      const { target } = step
-      stepProps.value = step
-      host.value = target ? getTarget(target, name) : null
-    }
+    watch([total, current], () => {
+      stepProps.value = tourSteps[current.value]
 
-    function updateTotal(value: number) {
-      total.value = value
-    }
+      const target = stepProps.value?.target
+      host.value = target ? getTarget(target, name) : null
+    })
 
     function clickStep(index: number) {
       if (index >= total.value) {
@@ -169,7 +166,7 @@ export default defineComponent({
     }
 
     function close() {
-      call(props['onUpdate:open'], false)
+      call(props['onUpdate:show'], false)
       call(props['onClose'])
     }
 
@@ -179,7 +176,7 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!onStackTop() || event.key !== 'Escape' || !open.value) {
+      if (!onStackTop() || event.key !== 'Escape' || !show.value) {
         return
       }
 
@@ -205,14 +202,10 @@ export default defineComponent({
       close()
     }
 
-    provideTour({
-      updateStepProps,
-    })
-
     return {
       disabled,
       total,
-      open,
+      show,
       current,
       path,
       popover,
@@ -229,7 +222,6 @@ export default defineComponent({
       n,
       classes,
       toSizeUnit,
-      updateTotal,
       clickStep,
       close,
       finish,

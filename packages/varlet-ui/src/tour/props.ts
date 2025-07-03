@@ -13,7 +13,7 @@ export interface TourGap {
 }
 
 export const props = {
-  open: Boolean,
+  show: Boolean,
   closeable: Boolean,
   current: {
     type: Number,
@@ -47,7 +47,7 @@ export const props = {
   onClose: defineListenerProp<() => void>(),
   onFinish: defineListenerProp<() => void>(),
   onChange: defineListenerProp<(current: number) => void>(),
-  'onUpdate:open': defineListenerProp<(open: boolean) => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   'onUpdate:current': defineListenerProp<(current: number) => void>(),
   ...pickProps(popupProps, [
     'overlay',

@@ -6,7 +6,7 @@ import { pickProps } from '../utils/components'
 export const props = {
   target: [String, Object] as PropType<string | HTMLElement>,
   title: String,
-  description: String,
+  message: String,
   placement: String as PropType<Placement>,
   width: [Number, String],
   overlay: {
