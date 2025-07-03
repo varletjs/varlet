@@ -63,7 +63,7 @@
         :maxlength="maxlength"
         :rows="rows"
         :enterkeyhint="enterkeyhint"
-        :inputmode="inputmode"
+        :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -98,7 +98,7 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :enterkeyhint="enterkeyhint"
-        :inputmode="inputmode"
+        :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
