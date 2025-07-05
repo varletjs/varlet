@@ -11,7 +11,10 @@
   --field-decorator-line-border-radius: 4px;
   --field-decorator-disabled-color: var(--color-text-disabled);
   --field-decorator-standard-normal-margin-top: 22px;
+  --field-decorator-filled-normal-top: 4px;
+  --field-decorator-filled-normal-margin-top: 24px;
   --field-decorator-standard-normal-margin-bottom: 4px;
+  --field-decorator-filled-normal-margin-bottom: 8px;
   --field-decorator-standard-normal-icon-margin-top: 22px;
   --field-decorator-standard-normal-icon-margin-bottom: 4px;
   --field-decorator-standard-normal-non-hint-margin-top: 4px;
@@ -204,8 +207,8 @@
     }
 
     .var-field-decorator__middle {
-      margin-top: var(--field-decorator-standard-normal-margin-top);
-      margin-bottom: var(--field-decorator-standard-normal-margin-bottom);
+      margin-top: var(--field-decorator-filled-normal-margin-top);
+      margin-bottom: var(--field-decorator-filled-normal-margin-bottom);
     }
 
     .var-field-decorator__icon {
@@ -214,15 +217,16 @@
     }
 
     .var-field-decorator__placeholder {
-      transform: translate(
-        var(--field-decorator-middle-offset-left),
-        var(--field-decorator-standard-normal-margin-top)
-      );
+      // transform: translate(
+      //   var(--field-decorator-middle-offset-left),
+      //   var(--field-decorator-standard-normal-margin-top)
+      // );
     }
 
     .var-field-decorator--placeholder-hint {
       max-width: 133%;
-      transform: translate(var(--field-decorator-middle-offset-left), 0) scale(0.75) !important;
+      transform: translate(var(--field-decorator-middle-offset-left), var(--field-decorator-filled-normal-top))
+        scale(0.75) !important;
     }
 
     .var-field-decorator__line {
@@ -258,7 +262,7 @@
     .var-field-decorator--hint-center {
       transform: translate(
         var(--field-decorator-middle-offset-left),
-        calc(var(--field-decorator-standard-normal-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 75%)
+        calc(var(--field-decorator-filled-normal-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 75%)
       );
     }
 
