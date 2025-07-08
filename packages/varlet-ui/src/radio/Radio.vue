@@ -1,8 +1,18 @@
 <template>
   <div :class="n('wrap')">
-    <div role="radio" :aria-checked="checked" :class="n()" v-bind="$attrs" @click="handleClick">
+    <div
+      ref="action"
+      role="radio"
+      :tabindex="tabIndex"
+      :aria-checked="checked"
+      :aria-disabled="disabled || formDisabled"
+      :class="n()"
+      v-bind="$attrs"
+      @click="handleClick"
+      @focus="isFocusing = true"
+      @blur="isFocusing = false"
+    >
       <div
-        ref="action"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         v-hover:desktop="handleHovering"
         :class="
@@ -13,10 +23,7 @@
             [formDisabled || disabled, n('--disabled')],
           )
         "
-        :tabindex="tabIndex"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
-        @focus="isFocusing = true"
-        @blur="isFocusing = false"
       >
         <slot v-if="checked" name="checked-icon">
           <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
