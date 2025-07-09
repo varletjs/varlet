@@ -9,7 +9,7 @@ exports[`Size related props 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));" value="1">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
@@ -47,7 +47,7 @@ exports[`Size related props 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));" value="1">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
@@ -109,7 +109,7 @@ exports[`basic mode > mount 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));" value="">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
@@ -138,7 +138,7 @@ exports[`simple mode > disabled prop 1`] = `
         <div class="var-field-decorator__controller var-field-decorator--disabled" style="overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--disabled" autocomplete="new-password" disabled="" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));" value="1">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--disabled" autocomplete="new-password" disabled="" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
@@ -176,7 +176,7 @@ exports[`simple mode > mount 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
-            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));" value="1">
+            <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
