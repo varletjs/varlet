@@ -43,7 +43,7 @@ exports[`form events 2`] = `
       <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" value="">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -70,7 +70,7 @@ exports[`form with auto-complete 1`] = `
           <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__middle">
-              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" value="">
+              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
             </div>
             <!--v-if-->
             <div class="var-field-decorator__icon">
@@ -113,7 +113,7 @@ exports[`form with auto-complete 2`] = `
           <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__middle">
-              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" value="">
+              <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text">
             </div>
             <!--v-if-->
             <div class="var-field-decorator__icon">
@@ -363,7 +363,7 @@ exports[`form with input 3`] = `
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" type="text" readonly="" value="">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" type="text" readonly="">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -399,7 +399,7 @@ exports[`form with input 4`] = `
       <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" readonly="" value="">
+          <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="new-password" type="text" readonly="">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -420,7 +420,7 @@ exports[`form with input 4`] = `
 exports[`form with radio 1`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
+    <div role="radio" aria-checked="false" aria-disabled="true" class="var-radio">
       <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
@@ -436,8 +436,8 @@ exports[`form with radio 1`] = `
 exports[`form with radio 2`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" aria-checked="false" aria-disabled="false" class="var-radio" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -452,8 +452,8 @@ exports[`form with radio 2`] = `
 exports[`form with radio 3`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" aria-checked="false" aria-disabled="false" class="var-radio" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -479,8 +479,8 @@ exports[`form with radio 3`] = `
 exports[`form with radio 4`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" aria-checked="false" aria-disabled="false" class="var-radio" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
