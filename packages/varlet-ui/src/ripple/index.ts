@@ -22,7 +22,7 @@ interface RippleOptions {
   tasker?: number | null
 }
 
-interface RippleHTMLElement extends HTMLElement {
+export interface RippleHTMLElement extends HTMLElement {
   _ripple?: RippleOptions
 }
 

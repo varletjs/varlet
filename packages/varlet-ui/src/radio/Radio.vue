@@ -2,6 +2,7 @@
   <div :class="n('wrap')">
     <div
       ref="action"
+      v-hover:desktop="handleHovering"
       role="radio"
       :tabindex="tabIndex"
       :aria-checked="checked"
@@ -13,8 +14,8 @@
       @blur="isFocusing = false"
     >
       <div
+        ref="circleRef"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        v-hover:desktop="handleHovering"
         :class="
           classes(
             n('action'),
@@ -64,7 +65,7 @@ import { useForm } from '../form/provide'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
-import Ripple from '../ripple'
+import Ripple, { RippleHTMLElement } from '../ripple'
 import { createNamespace, useValidation } from '../utils/components'
 import { props, type RadioValidateTrigger } from './props'
 import { useRadioGroup, type RadioProvider } from './provide'
@@ -83,6 +84,7 @@ export default defineComponent({
   props,
   setup(props) {
     const action = ref<HTMLElement>()
+    const circleRef = ref<RippleHTMLElement>()
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const checked = computed(() => value.value === props.checkedValue)
@@ -200,6 +202,19 @@ export default defineComponent({
     }
 
     function handleTextClick() {
+      // Manually trigger the ripple effect on text click
+      if (circleRef.value) {
+        if (circleRef.value?._ripple && typeof circleRef.value?._ripple?.removeRipple === 'function') {
+          // Remove any existing ripple
+          circleRef.value._ripple?.removeRipple()
+        }
+
+        if (circleRef.value?._ripple && typeof circleRef.value?.dispatchEvent === 'function') {
+          // Create a fake keyboard event to trigger the ripple
+          const event = new Event('touchstart')
+          circleRef.value.dispatchEvent(event)
+        }
+      }
       action.value!.focus()
     }
 
@@ -236,6 +251,7 @@ export default defineComponent({
 
     return {
       action,
+      circleRef,
       isFocusing,
       checked,
       errorMessage,
