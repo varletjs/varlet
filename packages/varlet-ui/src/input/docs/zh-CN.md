@@ -167,6 +167,41 @@ const value14 = ref('')
 }
 </style>
 ```
+### inputmode 演示
+
+`inputmode` 属性用于控制移动端虚拟键盘的类型，提供更好的用户体验。
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { useTranslation } from '@varlet/ui'
+
+const { t } = useTranslation()
+const inputmodeDecimal = ref('')
+const inputmodeNumeric = ref('')
+const inputmodeEmail = ref('')
+</script>
+
+<template>
+  <app-type style="margin-top: 10vmin">{{ t('inputmodeDemo') }}</app-type>
+  <var-space direction="column" :size="['3vmin', 0]">
+    <var-input v-model="inputmodeDecimal" inputmode="decimal" :placeholder="t('inputmodeDecimal')" />
+    <var-input v-model="inputmodeNumeric" inputmode="numeric" :placeholder="t('inputmodeNumeric')" />
+    <var-input v-model="inputmodeEmail" inputmode="email" :placeholder="t('inputmodeEmail')" />
+  </var-space>
+</template>
+```
+
+#### inputmode 可选值
+
+- `decimal`: 显示包含小数点的数字键盘
+- `numeric`: 显示纯数字键盘
+- `email`: 显示适合输入邮箱地址的键盘
+- `tel`: 显示电话号码键盘
+- `url`: 显示适合输入URL的键盘
+- `search`: 显示搜索优化的键盘
+- `text`: 显示标准文本键盘（默认值）
+
 
 ## API
 
@@ -271,10 +306,3 @@ const value14 = ref('')
 | `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |
 
-### inputmode 演示
-
-```html
-<var-input inputmode="decimal" placeholder="inputmode=decimal" />
-<var-input inputmode="numeric" placeholder="inputmode=numeric" />
-<var-input inputmode="email" placeholder="inputmode=email" />
-```

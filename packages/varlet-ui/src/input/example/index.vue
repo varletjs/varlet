@@ -130,11 +130,11 @@ onThemeChange()
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
   </var-space>
 
-  <app-type style="margin-top: 10vmin">inputmode 演示</app-type>
+  <app-type style="margin-top: 10vmin">{{ t('inputmodeDemo') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
-    <var-input v-model="inputmodeDecimal" inputmode="decimal" placeholder="inputmode=decimal" />
-    <var-input v-model="inputmodeNumeric" inputmode="numeric" placeholder="inputmode=numeric" />
-    <var-input v-model="inputmodeEmail" inputmode="email" placeholder="inputmode=email" />
+    <var-input v-model="inputmodeDecimal" inputmode="decimal" :placeholder="t('inputmodeDecimal')" />
+    <var-input v-model="inputmodeNumeric" inputmode="numeric" :placeholder="t('inputmodeNumeric')" />
+    <var-input v-model="inputmodeEmail" inputmode="email" :placeholder="t('inputmodeEmail')" />
   </var-space>
 
   <div style="height: 40px"></div>

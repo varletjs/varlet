@@ -167,6 +167,41 @@ const value14 = ref('')
 }
 </style>
 ```
+### inputmode Demo
+
+The `inputmode` attribute is used to control the type of virtual keyboard on mobile devices, providing a better user experience.
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { useTranslation } from '@varlet/ui'
+
+const { t } = useTranslation()
+const inputmodeDecimal = ref('')
+const inputmodeNumeric = ref('')
+const inputmodeEmail = ref('')
+</script>
+
+<template>
+  <app-type style="margin-top: 10vmin">{{ t('inputmodeDemo') }}</app-type>
+  <var-space direction="column" :size="['3vmin', 0]">
+    <var-input v-model="inputmodeDecimal" inputmode="decimal" :placeholder="t('inputmodeDecimal')" />
+    <var-input v-model="inputmodeNumeric" inputmode="numeric" :placeholder="t('inputmodeNumeric')" />
+    <var-input v-model="inputmodeEmail" inputmode="email" :placeholder="t('inputmodeEmail')" />
+  </var-space>
+</template>
+```
+
+#### inputmode Options
+
+- `decimal`: Display a numeric keypad with decimal point
+- `numeric`: Display a pure numeric keypad
+- `email`: Display a keyboard optimized for email input
+- `tel`: Display a telephone number keypad
+- `url`: Display a keyboard optimized for URL input
+- `search`: Display a search-optimized keyboard
+- `text`: Display a standard text keyboard (default)
+
 
 ## API
 
@@ -272,10 +307,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |
 
-### inputmode Demo
 
-```html
-<var-input inputmode="decimal" placeholder="inputmode=decimal" />
-<var-input inputmode="numeric" placeholder="inputmode=numeric" />
-<var-input inputmode="email" placeholder="inputmode=email" />
-```
