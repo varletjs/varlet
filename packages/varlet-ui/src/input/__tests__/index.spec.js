@@ -62,7 +62,6 @@ test('input type', () => {
       props: {
         modelValue: 'text',
         type,
-        inputmode: type === 'number' ? 'decimal' : undefined,
       },
     })
 
