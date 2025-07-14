@@ -167,6 +167,41 @@ const value14 = ref('')
 }
 </style>
 ```
+### inputmode 演示
+
+`inputmode` 属性用于控制移动端虚拟键盘的类型，提供更好的用户体验。
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { useTranslation } from '@varlet/ui'
+
+const { t } = useTranslation()
+const inputmodeDecimal = ref('')
+const inputmodeNumeric = ref('')
+const inputmodeEmail = ref('')
+</script>
+
+<template>
+  <app-type style="margin-top: 10vmin">{{ t('inputmodeDemo') }}</app-type>
+  <var-space direction="column" :size="['3vmin', 0]">
+    <var-input v-model="inputmodeDecimal" inputmode="decimal" :placeholder="t('inputmodeDecimal')" />
+    <var-input v-model="inputmodeNumeric" inputmode="numeric" :placeholder="t('inputmodeNumeric')" />
+    <var-input v-model="inputmodeEmail" inputmode="email" :placeholder="t('inputmodeEmail')" />
+  </var-space>
+</template>
+```
+
+#### inputmode 可选值
+
+- `decimal`: 显示包含小数点的数字键盘
+- `numeric`: 显示纯数字键盘
+- `email`: 显示适合输入邮箱地址的键盘
+- `tel`: 显示电话号码键盘
+- `url`: 显示适合输入URL的键盘
+- `search`: 显示搜索优化的键盘
+- `text`: 显示标准文本键盘（默认值）
+
 
 ## API
 
@@ -196,6 +231,7 @@ const value14 = ref('')
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `inputmode` | 原生 inputmode 属性，控制移动端键盘类型 | _string_ | `-` |
 
 ### 方法
 
@@ -269,3 +305,4 @@ const value14 = ref('')
 | `--input-input-height` | `24px` |
 | `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |
+

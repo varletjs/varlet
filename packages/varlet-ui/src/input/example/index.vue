@@ -34,6 +34,10 @@ const outlinedValue12 = ref('')
 const outlinedValue13 = ref('')
 const outlinedValue14 = ref('')
 
+const inputmodeDecimal = ref('')
+const inputmodeNumeric = ref('')
+const inputmodeEmail = ref('')
+
 watchLang(use)
 onThemeChange()
 </script>
@@ -124,6 +128,13 @@ onThemeChange()
     <var-input v-model="outlinedValue10" variant="outlined" :placeholder="t('textarea')" textarea />
     <var-input v-model="outlinedValue11" variant="outlined" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
+  </var-space>
+
+  <app-type style="margin-top: 10vmin">{{ t('inputmodeDemo') }}</app-type>
+  <var-space direction="column" :size="['3vmin', 0]">
+    <var-input v-model="inputmodeDecimal" inputmode="decimal" :placeholder="t('inputmodeDecimal')" />
+    <var-input v-model="inputmodeNumeric" inputmode="numeric" :placeholder="t('inputmodeNumeric')" />
+    <var-input v-model="inputmodeEmail" inputmode="email" :placeholder="t('inputmodeEmail')" />
   </var-space>
 
   <div style="height: 40px"></div>
