@@ -168,6 +168,33 @@ const value14 = ref('')
 </style>
 ```
 
+### 用户名密码
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const username1 = ref('')
+const password1 = ref('')
+const username2 = ref('')
+const password2 = ref('')
+
+</script>
+<template>
+  <var-space direction="column" size="large">
+    <var-space direction="column" :size="['6vmin', 0]">
+      <var-input v-model="username1" variant="outlined" :placeholder="输入用户名"/>
+      <var-input v-model="password1" variant="outlined" :placeholder="输入密码" type="password" />
+    </var-space>
+
+    <var-space direction="column" :size="['6vmin', 0]">
+      <var-input v-model="username2" variant="outlined" :placeholder="输入用户名"/>
+      <var-input v-model="password2" variant="outlined" :placeholder="输入密码" type="password" :autoFill="true" />
+    </var-space>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -196,6 +223,7 @@ const value14 = ref('')
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `autoFill` | 是否自动填充用户名                                                                  | _boolean_ | `false` |
 
 ### 方法
 

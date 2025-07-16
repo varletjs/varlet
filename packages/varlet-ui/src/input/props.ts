@@ -53,6 +53,10 @@ export const props = {
   ]),
   // internal start
   autocomplete: String,
+  autoFill: {
+    type: Boolean,
+    default: false,
+  },
   isForceFocusingEffect: {
     type: Boolean,
     default: undefined,

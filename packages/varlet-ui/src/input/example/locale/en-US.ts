@@ -18,4 +18,8 @@ export default {
   numberPlaceholder: 'Please enter number',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
+  login: 'Login with a username and password',
+  autoFill: 'Automatically fill in the username and password',
+  username: 'Please enter username',
+  password: 'Please enter password',
 }
