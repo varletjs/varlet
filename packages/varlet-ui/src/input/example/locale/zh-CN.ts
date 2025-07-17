@@ -18,4 +18,6 @@ export default {
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
+  selectAll: '输入文本后点击按钮 全选',
+  selectAllButton: '全选',
 }
