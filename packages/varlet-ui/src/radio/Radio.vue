@@ -214,7 +214,11 @@ export default defineComponent({
           const event = new Event('touchstart')
           circleRef.value.dispatchEvent(event)
         }
+        nextTick(() => {
+          circleRef.value?.dispatchEvent(new Event('touchend'))
+        })
       }
+
       action.value!.focus()
     }
 
