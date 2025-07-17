@@ -75,14 +75,12 @@ const selectAll = () => {
     <var-input placeholder="Textarea" textarea v-model="value10" />
     <var-input placeholder="Small Size" size="small" v-model="value11" />
     <var-input placeholder="Removes whitespace from both ends of this string" v-model.trim="value12" />
-    <var-space>
-      <var-input 
-        ref="inputRef"
-        placeholder="Enter text and click the button to select all" 
-        v-model="value15"
-      />
-      <var-button type="primary" @click="selectAll">Select All</var-button>
-    </var-space>
+    <var-input 
+      ref="inputRef"
+      placeholder="Enter text and click the button to select all" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">Select All</var-button>
   </var-space>
 </template>
 
@@ -174,14 +172,13 @@ const selectAll = () => {
     <var-input variant="outlined" placeholder="Textarea" textarea v-model="value10" />
     <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value11" />
     <var-input variant="outlined" placeholder="Removes whitespace from both ends of this string" v-model.trim="value12" />
-    <var-space>
-      <var-input 
-        ref="inputRef"
-        placeholder="Enter text and click the button to select all" 
-        v-model="value15"
-      />
-      <var-button type="primary" @click="selectAll">Select All</var-button>
-    </var-space>
+    <var-input 
+      ref="inputRef"
+      variant="outlined"
+      placeholder="Enter text and click the button to select all" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">Select All</var-button>
   </var-space>
 </template>
 

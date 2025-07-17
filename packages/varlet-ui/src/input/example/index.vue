@@ -91,10 +91,8 @@ onThemeChange()
     <var-input v-model="standardValue10" :placeholder="t('textarea')" textarea />
     <var-input v-model="standardValue11" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="standardValue12" :placeholder="t('trim')" />
-    <var-space align="center">
-      <var-input ref="inputRef" v-model="standardValue15" :placeholder="t('selectAll')" />
-      <var-button type="primary" @click="selectAll">{{ t('selectAllButton') }}</var-button>
-    </var-space>
+    <var-input ref="inputRef" v-model="standardValue15" :placeholder="t('selectAll')" />
+    <var-button type="primary" @click="selectAll">{{ t('selectAllButton') }}</var-button>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
@@ -141,13 +139,12 @@ onThemeChange()
     <var-input v-model="outlinedValue10" variant="outlined" :placeholder="t('textarea')" textarea />
     <var-input v-model="outlinedValue11" variant="outlined" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
-    <var-space align="center">
-      <var-input ref="outlinedInputRef" v-model="outlinedValue15" variant="outlined" :placeholder="t('selectAll')" />
-      <var-button type="primary" @click="selectAllOutlined">{{ t('selectAllButton') }}</var-button>
-    </var-space>
+
+    <var-input ref="outlinedInputRef" v-model="outlinedValue15" variant="outlined" :placeholder="t('selectAll')" />
+    <var-button type="primary" @click="selectAllOutlined">{{ t('selectAllButton') }}</var-button>
   </var-space>
 
-  <div style="height: 40px"></div>
+  <div style="height: 20px"></div>
 </template>
 
 <style scoped lang="less">

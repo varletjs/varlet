@@ -76,14 +76,12 @@ const selectAll = () => {
     <var-input placeholder="文本域" textarea v-model="value10" />
     <var-input placeholder="小尺寸" size="small" v-model="value11" />
     <var-input placeholder="移除空白字符" v-model.trim="value12" />
-    <var-space>
-      <var-input 
-        ref="inputRef"
-        placeholder="输入文本后点击按钮全选" 
-        v-model="value15"
-      />
-      <var-button type="primary" @click="selectAll">全选</var-button>
-    </var-space>
+    <var-input 
+      ref="inputRef"
+      placeholder="输入文本后点击按钮全选" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">全选</var-button>
   </var-space>
 </template>
 
@@ -119,6 +117,12 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const inputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -169,6 +173,13 @@ const value14 = ref('')
     <var-input variant="outlined" placeholder="文本域" textarea v-model="value10" />
     <var-input variant="outlined" placeholder="小尺寸" size="small" v-model="value11" />
     <var-input variant="outlined" placeholder="移除空白字符" v-model.trim="value12" />
+    <var-input 
+      ref="inputRef"
+      variant="outlined"
+      placeholder="输入文本后点击按钮全选" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">全选</var-button>
   </var-space>
 </template>
 

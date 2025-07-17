@@ -11,7 +11,7 @@ export default {
   clearable: 'Clearable',
   clearIconSlot: 'Use the clear icon slot',
   displayIcon: 'Display Icon',
-  customIconSize: 'Custom Clear Icon',
+  customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   validateWithZod: 'Validate With Zod',
   placeholder: 'Please enter text',
