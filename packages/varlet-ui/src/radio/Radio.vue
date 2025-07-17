@@ -1,10 +1,21 @@
 <template>
   <div :class="n('wrap')">
-    <div role="radio" :aria-checked="checked" :class="n()" v-bind="$attrs" @click="handleClick">
+    <div
+      ref="action"
+      v-hover:desktop="handleHovering"
+      role="radio"
+      :tabindex="tabIndex"
+      :aria-checked="checked"
+      :aria-disabled="disabled || formDisabled"
+      :class="n()"
+      v-bind="$attrs"
+      @click="handleClick"
+      @focus="isFocusing = true"
+      @blur="isFocusing = false"
+    >
       <div
-        ref="action"
+        ref="circleRef"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        v-hover:desktop="handleHovering"
         :class="
           classes(
             n('action'),
@@ -13,10 +24,7 @@
             [formDisabled || disabled, n('--disabled')],
           )
         "
-        :tabindex="tabIndex"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
-        @focus="isFocusing = true"
-        @blur="isFocusing = false"
       >
         <slot v-if="checked" name="checked-icon">
           <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
@@ -57,7 +65,7 @@ import { useForm } from '../form/provide'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
-import Ripple from '../ripple'
+import Ripple, { RippleHTMLElement } from '../ripple'
 import { createNamespace, useValidation } from '../utils/components'
 import { props, type RadioValidateTrigger } from './props'
 import { useRadioGroup, type RadioProvider } from './provide'
@@ -82,6 +90,7 @@ export default defineComponent({
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
+    const circleRef = ref<RippleHTMLElement>()
 
     const tabIndex = computed(() => {
       const disabled = form?.disabled.value || props.disabled
@@ -193,6 +202,21 @@ export default defineComponent({
     }
 
     function handleTextClick() {
+      // Manually trigger the ripple effect on text click
+      if (circleRef.value) {
+        if (circleRef.value?._ripple && typeof circleRef.value?._ripple?.removeRipple === 'function') {
+          // Remove any existing ripple
+          circleRef.value._ripple?.removeRipple()
+        }
+        if (circleRef.value?._ripple && typeof circleRef.value?.dispatchEvent === 'function') {
+          // Create a fake keyboard event to trigger the ripple
+          const event = new KeyboardEvent('keydown', { key: ' ' })
+          circleRef.value.dispatchEvent(event)
+        }
+        nextTick(() => {
+          circleRef.value?.dispatchEvent(new KeyboardEvent('keyup', { key: ' ' }))
+        })
+      }
       action.value!.focus()
     }
 
@@ -229,6 +253,7 @@ export default defineComponent({
 
     return {
       action,
+      circleRef,
       isFocusing,
       checked,
       errorMessage,
