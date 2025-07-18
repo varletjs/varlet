@@ -18,8 +18,10 @@ export default {
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
+  selectAll: '输入文本并点击按钮全选',
+  selectAllButton: '全选',
   login: '用户名密码登录',
   autoFill: '自动填充用户名与密码',
   username: '输入用户名',
-  password: '输入密码',
+  password: '输入密码'
 }

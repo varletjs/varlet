@@ -367,6 +367,11 @@ export default defineComponent({
       ;(el.value as HTMLInputElement).blur()
     }
 
+    // expose
+    function select() {
+      ;(el.value as HTMLInputElement).select()
+    }
+
     return {
       el,
       id,
@@ -396,6 +401,7 @@ export default defineComponent({
       reset,
       focus,
       blur,
+      select,
     }
   },
 })

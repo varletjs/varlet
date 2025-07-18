@@ -18,6 +18,8 @@ const standardValue11 = ref('')
 const standardValue12 = ref('')
 const standardValue13 = ref('')
 const standardValue14 = ref('')
+const standardValue15 = ref('')
+
 const username1 = ref('')
 const password1 = ref('')
 const username2 = ref('')
@@ -37,6 +39,18 @@ const outlinedValue11 = ref('')
 const outlinedValue12 = ref('')
 const outlinedValue13 = ref('')
 const outlinedValue14 = ref('')
+const outlinedValue15 = ref('')
+
+const inputRef = ref()
+const outlinedInputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
+
+const selectAllOutlined = () => {
+  outlinedInputRef.value?.select()
+}
 
 watchLang(use)
 onThemeChange()
@@ -82,6 +96,8 @@ onThemeChange()
     <var-input v-model="standardValue10" :placeholder="t('textarea')" textarea />
     <var-input v-model="standardValue11" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="standardValue12" :placeholder="t('trim')" />
+    <var-input ref="inputRef" v-model="standardValue15" :placeholder="t('selectAll')" />
+    <var-button type="primary" @click="selectAll">{{ t('selectAllButton') }}</var-button>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
@@ -128,7 +144,11 @@ onThemeChange()
     <var-input v-model="outlinedValue10" variant="outlined" :placeholder="t('textarea')" textarea />
     <var-input v-model="outlinedValue11" variant="outlined" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
+
+    <var-input ref="outlinedInputRef" v-model="outlinedValue15" variant="outlined" :placeholder="t('selectAll')" />
+    <var-button type="primary" @click="selectAllOutlined">{{ t('selectAllButton') }}</var-button>
   </var-space>
+
 
   <app-type style="margin-top: 10vmin">{{ t('login') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
@@ -141,7 +161,8 @@ onThemeChange()
     <var-input v-model="username2" variant="outlined" :placeholder="t('username')" />
     <var-input v-model="password2" variant="outlined" :placeholder="t('password')" :autoFill="true" type="password" />
   </var-space>
-  <div style="height: 40px"></div>
+  <div style="height: 20px"></div>
+
 </template>
 
 <style scoped lang="less">

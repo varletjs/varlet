@@ -68,6 +68,8 @@ export class Input extends VarComponent {
 
   blur(): void
 
+  select(): void
+
   validate(): Promise<boolean>
 
   resetValidation(): void
