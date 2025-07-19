@@ -102,6 +102,7 @@ const selectAll = () => {
 <script setup>
 import { ref } from 'vue'
 import { z } from 'zod'
+import { Snackbar } from '@varlet/ui'
 
 const value = ref('')
 const value2 = ref('')
