@@ -33,4 +33,6 @@ export default {
   '--field-decorator-outlined-small-placeholder-space': '2px',
   '--field-decorator-outlined-small-icon-margin-top': '8px',
   '--field-decorator-outlined-small-icon-margin-bottom': '8px',
+  '--field-decorator-filled-color': '#2f2e33',
+  '--field-decorator-filled-hover-color': '#3c3a40',
 }
