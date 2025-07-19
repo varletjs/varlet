@@ -34,6 +34,21 @@ const outlinedValue12 = ref('')
 const outlinedValue13 = ref('')
 const outlinedValue14 = ref('')
 
+const filledValue = ref('')
+const filledValue2 = ref('')
+const filledValue3 = ref('')
+const filledValue4 = ref('')
+const filledValue5 = ref('')
+const filledValue6 = ref('')
+const filledValue7 = ref('')
+const filledValue8 = ref('')
+const filledValue9 = ref('')
+const filledValue10 = ref('')
+const filledValue11 = ref('')
+const filledValue12 = ref('')
+const filledValue13 = ref('')
+const filledValue14 = ref('')
+
 watchLang(use)
 onThemeChange()
 </script>
@@ -65,7 +80,6 @@ onThemeChange()
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-
     <var-input v-model="standardValue8" :placeholder="t('customIconSize')">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
@@ -124,6 +138,52 @@ onThemeChange()
     <var-input v-model="outlinedValue10" variant="outlined" :placeholder="t('textarea')" textarea />
     <var-input v-model="outlinedValue11" variant="outlined" :placeholder="t('smallSize')" size="small" />
     <var-input v-model.trim="outlinedValue12" variant="outlined" :placeholder="t('trim')" />
+  </var-space>
+
+  <app-type style="margin-top: 10vmin">{{ t('filled') }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
+    <var-input v-model="filledValue" variant="filled" :placeholder="t('placeholder')" />
+    <var-input v-model="filledValue13" variant="filled" :placeholder="t('numberPlaceholder')" type="number" />
+    <var-input v-model="filledValue2" variant="filled" :placeholder="t('readonly')" readonly />
+    <var-input v-model="filledValue3" variant="filled" :placeholder="t('disabled')" disabled />
+    <var-input v-model="filledValue4" variant="filled" :placeholder="t('clearable')" clearable />
+    <var-input v-model="filledValue5" variant="filled" :placeholder="t('clearIconSlot')" clearable>
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
+    <var-input
+      v-model="filledValue6"
+      variant="filled"
+      :placeholder="t('validate')"
+      :rules="(v) => v.length > 6 || t('maxMessage')"
+    />
+    <var-input
+      v-model="filledValue14"
+      variant="filled"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().min(7, t('maxMessage'))"
+    />
+    <var-input v-model="filledValue7" variant="filled" :placeholder="t('displayIcon')">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input v-model="filledValue8" variant="filled" :placeholder="t('customIconSize')">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vmin" />
+      </template>
+    </var-input>
+    <var-input v-model="filledValue9" variant="filled" :placeholder="t('maxlength')" :maxlength="10" />
+    <var-input v-model="filledValue10" variant="filled" :placeholder="t('textarea')" textarea />
+    <var-input v-model="filledValue11" variant="filled" :placeholder="t('smallSize')" size="small" />
+    <var-input v-model.trim="filledValue12" variant="filled" :placeholder="t('trim')" />
   </var-space>
 
   <div style="height: 40px"></div>

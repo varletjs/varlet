@@ -3,7 +3,7 @@ import { defineListenerProp } from '../utils/components'
 
 export type FieldDecoratorSize = 'small' | 'normal'
 
-export type FieldDecoratorVariant = 'outlined' | 'standard'
+export type FieldDecoratorVariant = 'outlined' | 'filled' | 'standard'
 
 export const props = {
   value: {

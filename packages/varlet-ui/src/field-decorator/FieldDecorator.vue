@@ -89,6 +89,24 @@
       </fieldset>
 
       <div
+        v-else-if="variant === 'filled'"
+        :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [isError, n('--line-error')])"
+        :style="{ background: !isError ? blurColor : undefined }"
+      >
+        <div
+          :class="
+            classes(
+              n('dot'),
+              [isFocusing, n('--line-focus')],
+              [formDisabled || disabled, n('--line-disabled')],
+              [isError, n('--line-error')],
+            )
+          "
+          :style="{ background: !isError ? focusColor : undefined }"
+        />
+      </div>
+
+      <div
         v-else
         :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [isError, n('--line-error')])"
         :style="{ background: !isError ? blurColor : undefined }"
