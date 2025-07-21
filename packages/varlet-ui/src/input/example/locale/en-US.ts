@@ -21,7 +21,7 @@ export default {
   selectAll: 'Type text and click button to select all',
   selectAllButton: 'Select All',
   login: 'Login with a username and password',
-  preventAutoFill: 'Prevent automatically fill in the username',
+  preventAutoFill: 'Prevent automatic username autofill',
   username: 'Please enter username',
   password: 'Please enter password',
 }
