@@ -149,20 +149,24 @@ onThemeChange()
     <var-button type="primary" @click="selectAllOutlined">{{ t('selectAllButton') }}</var-button>
   </var-space>
 
-
   <app-type style="margin-top: 10vmin">{{ t('login') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
     <var-input v-model="username1" variant="outlined" :placeholder="t('username')" />
     <var-input v-model="password1" variant="outlined" :placeholder="t('password')" type="password" />
   </var-space>
 
-  <app-type>{{ t('autoFill') }}</app-type>
+  <app-type>{{ t('preventAutoFill') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
     <var-input v-model="username2" variant="outlined" :placeholder="t('username')" />
-    <var-input v-model="password2" variant="outlined" :placeholder="t('password')" :autoFill="true" type="password" />
+    <var-input
+      v-model="password2"
+      variant="outlined"
+      :placeholder="t('password')"
+      :preventAutoFill="false"
+      type="password"
+    />
   </var-space>
   <div style="height: 20px"></div>
-
 </template>
 
 <style scoped lang="less">

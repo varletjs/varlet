@@ -29,7 +29,7 @@
         <slot name="prepend-icon" />
       </template>
       <input
-        v-if="normalizedType === 'password' && !autoFill"
+        v-if="normalizedType === 'password' && preventAutoFill"
         tabindex="-1"
         :aria-label="ariaLabel"
         :class="n('autocomplete')"

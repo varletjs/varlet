@@ -214,7 +214,7 @@ const password2 = ref('')
 
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username2" variant="outlined" :placeholder="Please enter username"/>
-      <var-input v-model="password2" variant="outlined" :placeholder="Please enter password" type="password" :autoFill="true" />
+      <var-input v-model="password2" variant="outlined" :placeholder="Please enter password" type="password" :prevent-auto-fill="true" />
     </var-space>
   </var-space>
 </template>
@@ -249,7 +249,7 @@ const password2 = ref('')
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | See [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
-| `autoFill` | Whether to automatically fill in the username                                                                  | _boolean_ | `false` |
+| `prevent-auto-fill` | Whether to automatically fill in the username                                                                  | _boolean_ | `true` |
 
 ### Methods
 
