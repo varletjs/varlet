@@ -36,7 +36,6 @@ export interface InputProps extends BasicAttributes {
   clearable?: boolean
   resize?: boolean
   autofocus?: boolean
-  preventAutoFill?: boolean
   autocomplete?: boolean
   validateTrigger?: InputValidateTrigger[]
   rules?: InputRules
