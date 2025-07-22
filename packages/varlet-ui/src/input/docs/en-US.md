@@ -209,12 +209,12 @@ const password2 = ref('')
   <var-space direction="column" size="large">
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username1" variant="outlined" :placeholder="Please enter username"/>
-      <var-input v-model="password1" variant="outlined" :placeholder="Please enter password" type="password" />
+      <var-input v-model="password1" variant="outlined" :placeholder="Please enter password" type="password" :preventAutoFill="false" />
     </var-space>
 
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username2" variant="outlined" :placeholder="Please enter username"/>
-      <var-input v-model="password2" variant="outlined" :placeholder="Please enter password" type="password" :prevent-auto-fill="true" />
+      <var-input v-model="password2" variant="outlined" :placeholder="Please enter password" type="password" />
     </var-space>
   </var-space>
 </template>

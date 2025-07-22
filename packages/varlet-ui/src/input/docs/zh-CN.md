@@ -210,12 +210,12 @@ const password2 = ref('')
   <var-space direction="column" size="large">
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username1" variant="outlined" :placeholder="输入用户名"/>
-      <var-input v-model="password1" variant="outlined" :placeholder="输入密码" type="password" />
+      <var-input v-model="password1" variant="outlined" :placeholder="输入密码" type="password" :preventAutoFill="false" />
     </var-space>
 
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username2" variant="outlined" :placeholder="输入用户名"/>
-      <var-input v-model="password2" variant="outlined" :placeholder="输入密码" type="password" :autoFill="true" />
+      <var-input v-model="password2" variant="outlined" :placeholder="输入密码" type="password" />
     </var-space>
   </var-space>
 </template>

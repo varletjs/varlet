@@ -152,19 +152,19 @@ onThemeChange()
   <app-type style="margin-top: 10vmin">{{ t('login') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
     <var-input v-model="username1" variant="outlined" :placeholder="t('username')" />
-    <var-input v-model="password1" variant="outlined" :placeholder="t('password')" type="password" />
-  </var-space>
-
-  <app-type>{{ t('preventAutoFill') }}</app-type>
-  <var-space direction="column" :size="['6vmin', 0]">
-    <var-input v-model="username2" variant="outlined" :placeholder="t('username')" />
     <var-input
-      v-model="password2"
+      v-model="password1"
       variant="outlined"
       :placeholder="t('password')"
       :preventAutoFill="false"
       type="password"
     />
+  </var-space>
+
+  <app-type>{{ t('preventAutoFill') }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
+    <var-input v-model="username2" variant="outlined" :placeholder="t('username')" />
+    <var-input v-model="password2" variant="outlined" :placeholder="t('password')" type="password" />
   </var-space>
   <div style="height: 20px"></div>
 </template>
