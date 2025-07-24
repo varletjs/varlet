@@ -210,7 +210,7 @@ const password2 = ref('')
   <var-space direction="column" size="large">
     <var-space direction="column" :size="['6vmin', 0]">
       <var-input v-model="username1" variant="outlined" :placeholder="输入用户名"/>
-      <var-input v-model="password1" variant="outlined" :placeholder="输入密码" type="password" :preventAutoFill="false" />
+      <var-input v-model="password1" variant="outlined" :placeholder="输入密码" type="password" :prevent-auto-fill="false" />
     </var-space>
 
     <var-space direction="column" :size="['6vmin', 0]">
@@ -249,7 +249,7 @@ const password2 = ref('')
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
-| `prevent-auto-fill` | 防止自动填充用户名                                                                  | _boolean_ | `true` |
+| `prevent-auto-fill` ***3.11.1*** | 防止自动填充用户名                                                                  | _boolean_ | `true` |
 
 ### 方法
 

@@ -156,7 +156,7 @@ onThemeChange()
       v-model="password1"
       variant="outlined"
       :placeholder="t('password')"
-      :preventAutoFill="false"
+      :prevent-auto-fill="false"
       type="password"
     />
   </var-space>
