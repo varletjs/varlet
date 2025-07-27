@@ -1,3 +1,12 @@
+## [3.11.1](https://github.com/varletjs/varlet/compare/v3.11.0...v3.11.1) (2025-07-27)
+
+
+### Features
+
+* **input:** support select method([#1915](https://github.com/varletjs/varlet/issues/1915)) ([c9b91ef](https://github.com/varletjs/varlet/commit/c9b91effbc4d7920819f9693440158682e520309)), closes [#1905](https://github.com/varletjs/varlet/issues/1905) [#1909](https://github.com/varletjs/varlet/issues/1909) [#1912](https://github.com/varletjs/varlet/issues/1912)
+
+
+
 # [3.11.0](https://github.com/varletjs/varlet/compare/v3.10.9...v3.11.0) (2025-06-22)
 
 
