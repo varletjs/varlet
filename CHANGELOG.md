@@ -1,3 +1,12 @@
+## [3.11.2](https://github.com/varletjs/varlet/compare/v3.11.1...v3.11.2) (2025-08-12)
+
+
+### Features
+
+* improve radio and checkbox a11y ([78596e0](https://github.com/varletjs/varlet/commit/78596e02922ebc6bb0ce81bb4d4cdee263e96027))
+
+
+
 ## [3.11.1](https://github.com/varletjs/varlet/compare/v3.11.0...v3.11.1) (2025-07-27)
 
 
