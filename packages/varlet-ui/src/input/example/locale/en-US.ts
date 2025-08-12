@@ -17,7 +17,11 @@ export default {
   placeholder: 'Please enter text',
   numberPlaceholder: 'Please enter number',
   maxMessage: 'Text length must be greater than 6',
-  clearableText: 'Clearable text',
+  clearableText: 'Clearable Text',
   selectAll: 'Type text and click button to select all',
   selectAllButton: 'Select All',
+  login: 'Login with a username and password',
+  preventAutoFill: 'Prevent automatic username autofill',
+  username: 'Please enter username',
+  password: 'Please enter password',
 }

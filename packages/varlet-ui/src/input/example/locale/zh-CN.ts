@@ -20,4 +20,8 @@ export default {
   clearableText: '可清除文本',
   selectAll: '输入文本并点击按钮全选',
   selectAllButton: '全选',
+  login: '用户名密码登录',
+  preventAutoFill: '防止自动填充用户名',
+  username: '输入用户名',
+  password: '输入密码',
 }
