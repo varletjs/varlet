@@ -1,3 +1,12 @@
+## [3.11.3](https://github.com/varletjs/varlet/compare/v3.11.2...v3.11.3) (2025-08-12)
+
+
+### Bug Fixes
+
+* **skeleton:** use correct component type ([#1924](https://github.com/varletjs/varlet/issues/1924)) ([dc5fc1a](https://github.com/varletjs/varlet/commit/dc5fc1af787df53d005f63c63e99cdf1d1832d3c))
+
+
+
 ## [3.11.2](https://github.com/varletjs/varlet/compare/v3.11.1...v3.11.2) (2025-08-12)
 
 
