@@ -1,0 +1,15 @@
+export default {
+  basicUsage: '基本使用',
+  nonModel: '非模态',
+  placement: '弹出位置',
+  indicator: '自定义指示器',
+  beginTour: '开始引导',
+  upload: '上传',
+  save: '保存',
+  firstTitle: '上传文件',
+  firstMessage: '把你的文件放在这里。',
+  secondTitle: '保存',
+  secondMessage: '保存你的更改。',
+  thirdTitle: '其他操作',
+  thirdMessage: '点击查看其他。',
+}
