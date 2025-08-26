@@ -36,6 +36,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  inputmode: String as PropType<InputHTMLAttributes['inputmode']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),

@@ -222,6 +222,7 @@ const selectAll = () => {
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | See [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
 | `prevent-auto-fill` ***3.11.4***  | Prevent browser autofill behavior | _boolean_ | `true` |
+| `inputmode` ***3.11.4*** | Consistent with the inputmode property of native input  | _string_ | `-` |
 
 ### Methods
 
