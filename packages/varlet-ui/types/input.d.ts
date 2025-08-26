@@ -36,7 +36,7 @@ export interface InputProps extends BasicAttributes {
   clearable?: boolean
   resize?: boolean
   autofocus?: boolean
-  autocomplete?: boolean
+  preventAutoFill?: boolean
   validateTrigger?: InputValidateTrigger[]
   rules?: InputRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']

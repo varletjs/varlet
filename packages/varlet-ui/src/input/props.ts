@@ -32,6 +32,10 @@ export const props = {
   },
   rules: [Array, Function, Object] as PropType<any>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
+  preventAutoFill: {
+    type: Boolean,
+    default: true,
+  },
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),
@@ -53,10 +57,6 @@ export const props = {
   ]),
   // internal start
   autocomplete: String,
-  preventAutoFill: {
-    type: Boolean,
-    default: true,
-  },
   isForceFocusingEffect: {
     type: Boolean,
     default: undefined,
