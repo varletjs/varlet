@@ -1,3 +1,13 @@
+## [3.11.4](https://github.com/varletjs/varlet/compare/v3.11.3...v3.11.4) (2025-08-27)
+
+
+### Features
+
+* **input:** support inputmode ([9bf0121](https://github.com/varletjs/varlet/commit/9bf0121350c756de67d512a5a25ca91287d870c1))
+* **ui/input:** support prevent-auto-fill ([#1920](https://github.com/varletjs/varlet/issues/1920)) ([2630894](https://github.com/varletjs/varlet/commit/2630894c9717e4c3afaee536fe6eb53b32c77a83))
+
+
+
 ## [3.11.3](https://github.com/varletjs/varlet/compare/v3.11.2...v3.11.3) (2025-08-12)
 
 
