@@ -816,7 +816,7 @@ exports[`form with switch 1`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block var-switch--disabled">
       <div style="filter: brightness(0.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: currentColor;">
+      <div class="var-switch__ripple" style="color: currentcolor;">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>
@@ -835,7 +835,7 @@ exports[`form with switch 2`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block">
       <div style="" class="var-switch__track var-switch__track--error"></div>
-      <div class="var-switch__ripple" style="color: currentColor;" tabindex="0">
+      <div class="var-switch__ripple" style="color: currentcolor;" tabindex="0">
         <div class="var-switch__handle var-elevation--2 var-switch__handle--error">
           <!--v-if-->
         </div>
@@ -865,7 +865,7 @@ exports[`form with switch 3`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block">
       <div style="filter: brightness(0.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: currentColor;" tabindex="0">
+      <div class="var-switch__ripple" style="color: currentcolor;" tabindex="0">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>
