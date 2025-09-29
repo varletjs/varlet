@@ -153,17 +153,40 @@ import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
 
-const actions = {
-  confirm: () => Snackbar.success('confirm'),
-  cancel: () => Snackbar.error('cancel'),
-  close: () => Snackbar.info('close'),
-}
+function onBeforeClose(action, done, { 
+  confirmButtonLoading, 
+  cancelButtonLoading, 
+  confirmButtonDisabled, 
+  cancelButtonDisabled 
+}) {
+  if (action === 'confirm') {
+    confirmButtonLoading.value = true
+    cancelButtonDisabled.value = true
+  }
 
-function onBeforeClose(action, done) {
-  Snackbar.loading('Asynchronous shutdown in progress')
+  if (action === 'cancel') {
+    cancelButtonLoading.value = true
+    confirmButtonDisabled.value = true
+  }
 
   setTimeout(() => {
-    actions[action]()
+    confirmButtonLoading.value = false
+    cancelButtonLoading.value = false
+    confirmButtonDisabled.value = false
+    cancelButtonDisabled.value = false
+
+    if (action === 'confirm') {
+      Snackbar.success('confirm')
+    }
+
+    if (action === 'cancel') {
+      Snackbar.error('cancel')
+    }
+
+    if (action === 'close') {
+      Snackbar.info('close')
+    }
+
     done()
    }, 1000)
 }
@@ -222,6 +245,10 @@ const show = ref(false)
 | `cancel-button-text-color` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirm-button-color` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancel-button-color` | 取消按钮背景颜色 | _string_ | `-` |
+| `confirm-button-loading`  ***3.12.0***   | 确认按钮加载状态      | _boolean_             | `false`   |
+| `cancel-button-loading`   ***3.12.0***   | 取消按钮加载状态        | _boolean_             | `false`   |
+| `confirm-button-disabled` ***3.12.0***    | 确认按钮禁用状态       | _boolean_             | `false`   |
+| `cancel-button-disabled`  ***3.12.0***   | 取消按钮禁用状态       | _boolean_             | `false`   |
 | `dialog-class` | 对话框主体区域的 class | _string_ | `-` |
 | `dialog-style` | 对话框主体区域的 style | _object_ | `-` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
@@ -273,6 +300,10 @@ const show = ref(false)
 | `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirmButtonColor` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancelButtonColor` | 取消按钮背景颜色 | _string_ | `-` |
+| `confirmButtonLoading`  ***3.12.0***   | 确认按钮加载状态      | _boolean_             | `false`   |
+| `cancelButtonLoading`   ***3.12.0***   | 取消按钮加载状态        | _boolean_             | `false`   |
+| `confirmButtonDisabled` ***3.12.0***    | 确认按钮禁用状态       | _boolean_             | `false`   |
+| `cancelButtonDisabled`  ***3.12.0***   | 取消按钮禁用状态       | _boolean_             | `false`   |
 | `dialogClass` | 对话框主体区域的 class | _string_ | `-` |
 | `dialogStyle` | 对话框主体区域的 style | _object_ | `-` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
