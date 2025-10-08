@@ -136,9 +136,7 @@ export function flatFragment(vNodes: any) {
     }
 
     if (vNode.type === Fragment && isArray(vNode.children)) {
-      vNode.children.forEach((item: VNode) => {
-        result.push(item)
-      })
+      result.push(...flatFragment(vNode.children))
       return
     }
 
