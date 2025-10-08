@@ -1,3 +1,17 @@
+# [3.12.0](https://github.com/varletjs/varlet/compare/v3.11.4...v3.12.0) (2025-10-08)
+
+
+### Bug Fixes
+
+* **space:** fix comment vnode filter error ([eaf58ab](https://github.com/varletjs/varlet/commit/eaf58ab4b11e1c069728e28610e6a1858f86110a))
+
+
+### Features
+
+* **dialog:** support props of button related state ([a363f11](https://github.com/varletjs/varlet/commit/a363f11cd0171bed0ccc352bd31db6f4872c0b4a))
+
+
+
 ## [3.11.4](https://github.com/varletjs/varlet/compare/v3.11.3...v3.11.4) (2025-08-27)
 
 
