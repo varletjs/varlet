@@ -37,6 +37,7 @@ export const props = {
     default: true,
   },
   inputmode: String as PropType<InputHTMLAttributes['inputmode']>,
+  tabindex: String as PropType<InputHTMLAttributes['tabindex']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),

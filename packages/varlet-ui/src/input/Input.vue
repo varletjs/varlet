@@ -63,6 +63,7 @@
         :rows="rows"
         :enterkeyhint="enterkeyhint"
         :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
+        :tabindex="tabindex"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -97,6 +98,7 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :enterkeyhint="enterkeyhint"
+        :tabindex="tabindex"
         :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,

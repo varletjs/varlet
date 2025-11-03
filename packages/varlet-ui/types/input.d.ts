@@ -38,6 +38,7 @@ export interface InputProps extends BasicAttributes {
   autofocus?: boolean
   preventAutoFill?: boolean
   inputmode?: InputHTMLAttributes['inputmode']
+  tabindex?: InputHTMLAttributes['tabindex']
   validateTrigger?: InputValidateTrigger[]
   rules?: InputRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']

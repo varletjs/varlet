@@ -47,6 +47,7 @@ export interface AutoCompleteProps extends BasicAttributes {
   getShow?: (v: string) => boolean
   rules?: AutoCompleteRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
+  tabindex?: InputHTMLAttributes['tabindex']
   onFocus?: ListenerProp<() => void>
   onBlur?: ListenerProp<() => void>
   onClick?: ListenerProp<(e: Event) => void>

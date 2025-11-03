@@ -223,6 +223,7 @@ const selectAll = () => {
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
 | `prevent-auto-fill` ***3.11.4*** | 阻止浏览器的自动填充行为  | _boolean_ | `true` |
 | `inputmode` ***3.11.4*** | 与原生 input 的 inputmode 属性一致  | _string_ | `-` |
+| `tabindex` ***3.12.1*** | 与原生 input 的 tabindex 属性一致  | _string_ | `-` |
 
 ### 方法
 

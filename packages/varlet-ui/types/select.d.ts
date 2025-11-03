@@ -1,4 +1,4 @@
-import { VNode } from 'vue'
+import { SelectHTMLAttributes, VNode } from 'vue'
 import {
   BasicAttributes,
   ListenerProp,
@@ -51,6 +51,7 @@ export interface SelectProps extends BasicAttributes {
   textAlign?: SelectTextAlign
   validateTrigger?: Array<SelectValidateTrigger>
   rules?: SelectRules
+  tabindex?: SelectHTMLAttributes['tabindex']
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>
