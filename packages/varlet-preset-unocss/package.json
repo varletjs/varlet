@@ -1,6 +1,6 @@
 {
   "name": "@varlet/preset-unocss",
-  "version": "3.12.0",
+  "version": "3.12.1",
   "description": "unocss preset of varlet",
   "keywords": [
     "unocss",

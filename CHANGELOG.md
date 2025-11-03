@@ -1,3 +1,12 @@
+## [3.12.1](https://github.com/varletjs/varlet/compare/v3.12.0...v3.12.1) (2025-11-03)
+
+
+### Features
+
+* **field:** support tabindex ([2d0c6f4](https://github.com/varletjs/varlet/commit/2d0c6f4df00dd3fce2354e74b0f1f970faa396bf))
+
+
+
 # [3.12.0](https://github.com/varletjs/varlet/compare/v3.11.4...v3.12.0) (2025-10-08)
 
 
