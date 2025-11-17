@@ -1,7 +1,7 @@
 {
   "name": "varlet-vscode-extension",
   "displayName": "varlet-vscode-extension",
-  "version": "3.12.1",
+  "version": "3.12.2",
   "private": true,
   "description": "varlet extension for vscode",
   "categories": [

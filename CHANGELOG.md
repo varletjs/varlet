@@ -1,3 +1,12 @@
+## [3.12.2](https://github.com/varletjs/varlet/compare/v3.12.1...v3.12.2) (2025-11-17)
+
+
+### Features
+
+* **radio, checkbox, switch:** support tabindex ([2a3f86c](https://github.com/varletjs/varlet/commit/2a3f86c1cdaa1d3a43dfdf547e2bf1b25a8da4bb))
+
+
+
 ## [3.12.1](https://github.com/varletjs/varlet/compare/v3.12.0...v3.12.1) (2025-11-03)
 
 
