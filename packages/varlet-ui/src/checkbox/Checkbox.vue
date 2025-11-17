@@ -6,7 +6,7 @@
       :aria-checked="isIndeterminate ? 'mixed' : checked"
       :aria-disabled="formDisabled || disabled"
       :class="n()"
-      :tabindex="disabled || formDisabled ? undefined : '0'"
+      :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
       @focus="isFocusing = true"
       @blur="isFocusing = false"
       @click="handleClick"

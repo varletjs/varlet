@@ -348,6 +348,7 @@ const value = ref([])
 | `indeterminate` | 是否为不确定状态（样式优先级最高） | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `tabindex` ***3.12.2*** | 与原生 input 的 tabindex 属性一致  | _string_ | `-` |
 
 ### 方法
 

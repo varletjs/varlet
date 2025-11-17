@@ -174,6 +174,7 @@ const value = ref(true)
 | `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _SwitchValidateTrigger[]_ | `['onChange', 'onLazyChange']` |
 | `variant` ***3.2.3*** | 变体模式 | _boolean_ | `false` |
+| `tabindex` ***3.12.2*** | 与原生 input 的 tabindex 属性一致  | _string_ | `-` |
 
 ### 事件
 

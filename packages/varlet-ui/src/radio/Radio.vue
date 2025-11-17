@@ -95,6 +95,10 @@ export default defineComponent({
       const isChecked = checked.value
       const hasCheckedInRadioGroup = radioGroup?.hasChecked.value
 
+      if (props.tabindex != null) {
+        return props.tabindex
+      }
+
       if (disabled) {
         return
       }

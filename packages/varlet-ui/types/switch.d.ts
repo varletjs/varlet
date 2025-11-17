@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'vue'
 import { BasicAttributes, ListenerProp, SetPropsDefaults, Rules as SwitchRules, VarComponent } from './varComponent'
 
 export declare const switchProps: Record<keyof SwitchProps, any>
@@ -21,6 +22,7 @@ export interface SwitchProps extends BasicAttributes {
   validateTrigger?: Array<SwitchValidateTrigger>
   variant?: boolean
   rules?: SwitchRules
+  tabindex?: InputHTMLAttributes['tabindex']
   onClick?: ListenerProp<(event: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
