@@ -1,6 +1,6 @@
 {
   "name": "@varlet/preset-tailwindcss",
-  "version": "3.12.2",
+  "version": "3.12.3",
   "description": "tailwindcss preset of varlet",
   "keywords": [
     "tailwindcss",
