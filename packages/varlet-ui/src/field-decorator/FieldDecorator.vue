@@ -76,7 +76,7 @@
           :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
           :style="{ width: legendWidth }"
         >
-          <teleport v-if="placeholder && hint" to="body">
+          <teleport v-if="placeholder && hint" :to="teleport">
             <span
               ref="placeholderTextEl"
               :class="
@@ -136,7 +136,6 @@ export default defineComponent({
     const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocusing))
     const { popup, bindPopup } = usePopup()
     const { bindSwipeResizeDispatcher } = useSwipeResizeDispatcher()
-
     const color = computed<string | undefined>(() =>
       !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined,
     )

@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type PropType, type TeleportProps } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type FieldDecoratorSize = 'small' | 'normal'
@@ -47,4 +47,8 @@ export const props = {
   composing: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: Event) => void>(),
+  teleport: {
+    type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
+    default: 'body',
+  },
 }

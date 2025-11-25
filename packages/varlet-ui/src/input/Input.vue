@@ -19,6 +19,7 @@
         disabled,
         clearable,
         cursor,
+        teleport,
         composing: isComposing,
         hintCenter: !textarea,
         onClick: handleClick,

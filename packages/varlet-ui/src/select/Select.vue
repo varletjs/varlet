@@ -37,6 +37,7 @@
           disabled,
           clearable,
           cursor,
+          teleport,
           onClick: handleClick,
           onClear: handleClear,
         }"

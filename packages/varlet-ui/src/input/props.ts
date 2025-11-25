@@ -56,6 +56,7 @@ export const props = {
     'disabled',
     'clearable',
     'onClick',
+    'teleport',
   ]),
   // internal start
   autocomplete: String,

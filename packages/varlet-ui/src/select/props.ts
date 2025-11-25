@@ -74,5 +74,6 @@ export const props = {
     'disabled',
     'clearable',
     'onClick',
+    'teleport',
   ]),
 }
