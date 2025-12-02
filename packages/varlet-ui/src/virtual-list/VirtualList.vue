@@ -4,7 +4,7 @@
     <div :class="n('phantom')" :style="{ height: `${phantomHeight}px` }" />
     <!-- Content layer for actual rendering -->
     <div ref="contentRef" :class="n('content')" :style="{ transform: getTransform() }">
-      <div v-for="(item, index) in visibleData" :key="index" :class="n('item')">
+      <div v-for="(item, index) in visibleData" :key="start + index" :class="n('item')">
         <slot :item="item" :index="start + index" />
       </div>
     </div>
@@ -84,12 +84,14 @@ export default defineComponent({
       return {}
     })
 
+    const itemHeight = computed(() => toNumber(props.itemHeight))
+
     // Number of visible items
     const visibleCount = computed(() => {
       if (!containerRef.value) {
         return 0
       }
-      return Math.ceil(containerRef.value.clientHeight / toNumber(props.itemHeight))
+      return Math.ceil(containerRef.value.clientHeight / itemHeight.value)
     })
 
     // End index (start + visible + buffer)
@@ -110,17 +112,17 @@ export default defineComponent({
     // Initialize cached positions
     function initCachedPosition() {
       state.cachePositions = []
-      const itemHeight = toNumber(props.itemHeight)
+      const height = itemHeight.value
       for (let i = 0; i < props.data.length; ++i) {
         state.cachePositions[i] = {
           index: i,
-          height: itemHeight,
-          top: i * itemHeight,
-          bottom: (i + 1) * itemHeight,
+          height,
+          top: i * height,
+          bottom: (i + 1) * height,
           dValue: 0,
         }
       }
-      state.phantomHeight = props.data.length * itemHeight
+      state.phantomHeight = props.data.length * height
     }
 
     // Update cached positions based on actual DOM height
@@ -214,20 +216,17 @@ export default defineComponent({
       if (state.cachePositions[index]) {
         containerRef.value.scrollTop = state.cachePositions[index].top
       } else {
-        const itemHeight = toNumber(props.itemHeight)
-        containerRef.value.scrollTop = index * itemHeight
+        const height = itemHeight.value
+        containerRef.value.scrollTop = index * height
       }
     }
 
     // Watch data changes, reset virtual params
     watch(
-      () => props.data,
-      (newVal, oldVal) => {
-        if (newVal.length !== oldVal.length) {
-          resetAllVirtualParam()
-        }
+      () => props.data.length,
+      () => {
+        resetAllVirtualParam()
       },
-      { deep: true },
     )
 
     // Watch start index, update cached positions
