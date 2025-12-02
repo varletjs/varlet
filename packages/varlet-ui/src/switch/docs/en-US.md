@@ -174,6 +174,7 @@ const value = ref(true)
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _SwitchValidateTrigger[]_ | `['onChange', 'onLazyChange']` |
 | `variant` ***3.2.3*** | Variant mode | _boolean_ | `false` |
+| `tabindex` ***3.12.2*** | Consistent with the tabindex property of native input  | _string_ | `-` |
 
 ### Events
 

@@ -56,11 +56,11 @@
     }
   }
 
-  &__confirm-button[var-dialog-cover] {
+  &__confirm-button[var-dialog-cover]:not(.var-button--disabled) {
     color: var(--dialog-confirm-button-color);
   }
 
-  &__cancel-button[var-dialog-cover] {
+  &__cancel-button[var-dialog-cover]:not(.var-button--disabled) {
     color: var(--dialog-cancel-button-color);
   }
 }

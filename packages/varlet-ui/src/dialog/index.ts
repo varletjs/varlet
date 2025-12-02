@@ -18,6 +18,10 @@ export interface DialogOptions {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonLoading?: boolean
+  cancelButtonLoading?: boolean
+  confirmButtonDisabled?: boolean
+  cancelButtonDisabled?: boolean
   dialogClass?: string
   dialogStyle?: Record<string, any>
   overlay?: boolean

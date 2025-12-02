@@ -2,7 +2,7 @@
   <div
     ref="root"
     :class="n()"
-    :tabindex="disabled || formDisabled ? undefined : '0'"
+    :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
     @focus="handleFocus"
     @blur="handleRootBlur"
   >

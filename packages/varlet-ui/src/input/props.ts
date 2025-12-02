@@ -32,6 +32,12 @@ export const props = {
   },
   rules: [Array, Function, Object] as PropType<any>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
+  preventAutoFill: {
+    type: Boolean,
+    default: true,
+  },
+  inputmode: String as PropType<InputHTMLAttributes['inputmode']>,
+  tabindex: String as PropType<InputHTMLAttributes['tabindex']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),

@@ -2,7 +2,7 @@
 
 exports[`test card component slots > card description slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
       <!--v-if-->
@@ -19,7 +19,7 @@ exports[`test card component slots > card description slot 1`] = `
 
 exports[`test card component slots > card extra slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
       <!--v-if-->
@@ -37,7 +37,7 @@ exports[`test card component slots > card extra slot 1`] = `
 
 exports[`test card component slots > card floating-content slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
       <!--v-if-->
@@ -55,7 +55,7 @@ exports[`test card component slots > card floating-content slot 1`] = `
 
 exports[`test card component slots > card floating-content slot 2`] = `
 "<div class="var-card var-card--layout-row var-elevation--1">
-  <div class="var-card__floater" style="width: auto; height: auto; overflow: hidden;">
+  <div class="var-card__floater" style="width: auto; height: auto; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
       <!--v-if-->
@@ -73,7 +73,7 @@ exports[`test card component slots > card floating-content slot 2`] = `
 
 exports[`test card component slots > card image slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;"><img src="https://varletjs.org/varlet/cat.jpg" alt="cat">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;"><img src="https://varletjs.org/varlet/cat.jpg" alt="cat">
     <div class="var-card__container">
       <!--v-if-->
       <!--v-if-->
@@ -90,7 +90,7 @@ exports[`test card component slots > card image slot 1`] = `
 
 exports[`test card component slots > card subtitle slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
       <!--v-if--><span class="var-card__subtitle">subtitle</span>
@@ -107,7 +107,7 @@ exports[`test card component slots > card subtitle slot 1`] = `
 
 exports[`test card component slots > card title slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+  <div class="var-card__floater" style="width: 100%; height: 100%; top: auto; left: auto; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container"><span class="var-card__title">title</span>
       <!--v-if-->

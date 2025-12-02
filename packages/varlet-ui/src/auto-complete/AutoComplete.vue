@@ -2,7 +2,7 @@
   <div
     ref="root"
     :class="n()"
-    :tabindex="disabled || formDisabled ? undefined : '0'"
+    :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
     @focusin="focus"
     @click="handleClick"
   >
@@ -41,6 +41,7 @@
         :is-force-focusing-effect="isFocusing"
         :is-force-error-effect="!!errorMessage"
         :is-show-form-details="false"
+        :tabindex="tabindex"
         @input="handleInput"
         @blur="handleBlur"
         @clear="handleClear"

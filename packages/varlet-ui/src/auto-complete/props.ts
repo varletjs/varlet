@@ -51,6 +51,7 @@ export const props = {
     'variant',
     'placeholder',
     'enterkeyhint',
+    'tabindex',
     'line',
     'hint',
     'textColor',

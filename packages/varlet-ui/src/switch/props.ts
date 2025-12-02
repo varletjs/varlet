@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type InputHTMLAttributes, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type SwitchValidateTrigger = 'onChange' | 'onLazyChange'
@@ -23,6 +23,7 @@ export const props = {
   size: [String, Number],
   variant: Boolean,
   rules: [Array, Function, Object] as PropType<any>,
+  tabindex: String as PropType<InputHTMLAttributes['tabindex']>,
   ripple: {
     type: Boolean,
     default: true,

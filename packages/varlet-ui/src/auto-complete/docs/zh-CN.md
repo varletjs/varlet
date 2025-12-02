@@ -257,6 +257,7 @@ function useAutoComplete() {
 | `focus-color` | 聚焦时的主要颜色                  | _string_ | `-` |
 | `blur-color` | 失焦时的主要颜色               | _string_ | `-` |
 | `get-show` | 根据输入值决定是否显示菜单 | _(v: string) => boolean_ | `-` |
+| `tabindex` ***3.12.1*** | 与原生 input 的 tabindex 属性一致  | _string_ | `-` |
 
 #### AutoCompleteOption
 

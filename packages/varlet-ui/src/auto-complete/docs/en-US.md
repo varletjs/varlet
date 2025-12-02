@@ -255,6 +255,7 @@ function useAutoComplete() {
 | `focus-color` | The primary color in focus  | _string_ | `-` |
 | `blur-color` | The primary color in blur      | _string_ | `-` |
 | `get-show` | Determine whether the menu is displayed according to the input value | _(v: string) => boolean_ | `-` |
+| `tabindex` ***3.12.1*** | Consistent with the tabindex property of native input  | _string_ | `-` |
 
 #### AutoCompleteOption
 

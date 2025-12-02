@@ -11,6 +11,7 @@
 .var-checkbox {
   display: flex;
   align-items: center;
+  outline: none;
   transform: translateX(calc(-1 * var(--checkbox-action-padding)));
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -31,7 +32,6 @@
     transition:
       background-color 0.25s,
       color 0.25s;
-    outline: none;
   }
 
   &__icon[var-checkbox-cover] {

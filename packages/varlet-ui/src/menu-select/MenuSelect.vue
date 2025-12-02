@@ -309,8 +309,8 @@ export default defineComponent({
         return activeElement.parentNode?.parentNode
       }
 
-      if (activeElement.classList.contains('var-checkbox__action')) {
-        const optionElement = activeElement.parentNode?.parentNode?.parentNode
+      if (activeElement.classList.contains('var-checkbox')) {
+        const optionElement = activeElement.parentNode?.parentNode
 
         if (optionElement) {
           return getActiveElementParent(optionElement as HTMLElement)

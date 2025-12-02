@@ -3,10 +3,10 @@
 exports[`watermark font 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <foreignObject x="0" y="0" width="100" height="100">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="transform: translate(0px, 0px) rotate(-22deg); transform-origin: center;"><span style="font-size: 15px; font-weight: 700;">Varlet</span></div>
+          <div xmlns="http://www.w3.org/1999/xhtml" style="transform: translate(0px, 0px) rotate(-22deg); transform-origin: center;"><span style="font-size: 15px; font-weight: 700; color: canvastext;">Varlet</span></div>
         </foreignObject>
         <!--v-if-->
       </svg></div>
@@ -18,7 +18,7 @@ exports[`watermark font 1`] = `
 exports[`watermark height 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 150" width="100" height="150" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->
@@ -31,7 +31,7 @@ exports[`watermark height 1`] = `
 exports[`watermark height 2`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(undefined); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;undefined&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 200" width="100" height="200" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->
@@ -44,7 +44,7 @@ exports[`watermark height 2`] = `
 exports[`watermark image 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <image href="" xlink:href="" x="0" y="0" width="100" height="100" style="transform: rotate(-22deg); transform-origin: center;"></image>
@@ -57,7 +57,7 @@ exports[`watermark image 1`] = `
 exports[`watermark image offsetX 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <image href="" xlink:href="" x="20" y="0" width="100" height="100" style="transform: rotate(-22deg); transform-origin: center;"></image>
@@ -70,7 +70,7 @@ exports[`watermark image offsetX 1`] = `
 exports[`watermark image offsetX 2`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <image href="" xlink:href="" x="30" y="0" width="100" height="100" style="transform: rotate(-22deg); transform-origin: center;"></image>
@@ -83,7 +83,7 @@ exports[`watermark image offsetX 2`] = `
 exports[`watermark image offsetY 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <image href="" xlink:href="" x="0" y="20" width="100" height="100" style="transform: rotate(-22deg); transform-origin: center;"></image>
@@ -96,7 +96,7 @@ exports[`watermark image offsetY 1`] = `
 exports[`watermark image offsetY 2`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" width="100" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <image href="" xlink:href="" x="0" y="30" width="100" height="100" style="transform: rotate(-22deg); transform-origin: center;"></image>
@@ -109,7 +109,7 @@ exports[`watermark image offsetY 2`] = `
 exports[`watermark width 1`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 100" width="150" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->
@@ -122,7 +122,7 @@ exports[`watermark width 1`] = `
 exports[`watermark width 2`] = `
 "<div class="var-watermark">
   <!--teleport start-->
-  <div class="var-watermark__container" style="background-image: url(undefined); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(&quot;undefined&quot;); z-index: 10;">
     <div style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 100" width="200" height="100" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->

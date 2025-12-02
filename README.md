@@ -112,7 +112,7 @@ The following projects are maintained by community personnel, welcome to add.
 | [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
 | [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
 | [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | `A VS Code extension that provides better intellisense to Varlet developers` |
-| [vue3-varlet-mobile](https://github.com/easy-temps/vue3-varlet-mobile) | `A mobile template based on Vue 3 and Varlet Component Library` |
+| [vue3-varlet-mobile](https://github.com/vue-zone/vue3-varlet-mobile) | `A mobile template based on Vue 3 and Varlet Component Library` |
 
 ### Playground
 

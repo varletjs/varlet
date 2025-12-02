@@ -153,17 +153,40 @@ import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
 
-const actions = {
-  confirm: () => Snackbar.success('confirm'),
-  cancel: () => Snackbar.error('cancel'),
-  close: () => Snackbar.info('close'),
-}
+function onBeforeClose(action, done, { 
+  confirmButtonLoading, 
+  cancelButtonLoading, 
+  confirmButtonDisabled, 
+  cancelButtonDisabled 
+}) {
+  if (action === 'confirm') {
+    confirmButtonLoading.value = true
+    cancelButtonDisabled.value = true
+  }
 
-function onBeforeClose(action, done) {
-  Snackbar.loading('Asynchronous shutdown in progress')
+  if (action === 'cancel') {
+    cancelButtonLoading.value = true
+    confirmButtonDisabled.value = true
+  }
 
   setTimeout(() => {
-    actions[action]()
+    confirmButtonLoading.value = false
+    cancelButtonLoading.value = false
+    confirmButtonDisabled.value = false
+    cancelButtonDisabled.value = false
+
+    if (action === 'confirm') {
+      Snackbar.success('confirm')
+    }
+
+    if (action === 'cancel') {
+      Snackbar.error('cancel')
+    }
+
+    if (action === 'close') {
+      Snackbar.info('close')
+    }
+
     done()
    }, 1000)
 }
@@ -222,6 +245,10 @@ const show = ref(false)
 | `cancel-button-text-color`  | Cancel button text color                                                                                       | _string_              | `-`       |
 | `confirm-button-color`      | Confirm button background color                                                                                | _string_              | `-`       |
 | `cancel-button-color`       | Cancel button background color                                                                                 | _string_              | `-`       |
+| `confirm-button-loading`  ***3.12.0***  | Confirm button loading state                                                                                | _boolean_             | `false`   |
+| `cancel-button-loading`   ***3.12.0***  | Cancel button loading state                                                                                  | _boolean_             | `false`   |
+| `confirm-button-disabled` ***3.12.0***   | Confirm button disabled state                                                                                 | _boolean_             | `false`   |
+| `cancel-button-disabled`  ***3.12.0***  | Cancel button disabled state                                                                                 | _boolean_             | `false`   |
 | `dialog-class`              | Dialog body class                                                                                              | _string_              | `-`       |
 | `dialog-style`              | Dialog body style                                                                                              | _object_              | `-`       |
 | `overlay`                   | Whether to display the overlay                                                                                 | _boolean_             | `true`    |
@@ -273,6 +300,10 @@ const show = ref(false)
 | `cancelButtonTextColor`  | Cancel button text color                                                                                       | _string_                                                       | `-`     |
 | `confirmButtonColor`     | Confirm button background color                                                                                | _string_                                                       | `-`     |
 | `cancelButtonColor`      | Cancel button background color                                                                                 | _string_                                                       | `-`     |
+| `confirmButtonLoading`  ***3.12.0***   | Confirm button loading state      | _boolean_             | `false`   |
+| `cancelButtonLoading`   ***3.12.0***   | Cancel button loading state        | _boolean_             | `false`   |
+| `confirmButtonDisabled` ***3.12.0***    | Confirm button disabled state       | _boolean_             | `false`   |
+| `cancelButtonDisabled`  ***3.12.0***   | Cancel button disabled state       | _boolean_             | `false`   |
 | `dialogClass`            | Dialog body class                                                                                              | _string_                                                       | `-`     |
 | `dialogStyle`            | Dialog body style                                                                                              | _object_                                                       | `-`     |
 | `overlay`                | Whether to display the overlay                                                                                 | _boolean_                                                      | `true`  |

@@ -465,3 +465,35 @@ test('input aria-label', async () => {
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
+
+test('input inputmode', () => {
+  const inputWrapper = mount(VarInput, {
+    props: {
+      inputmode: 'tel',
+    },
+  })
+
+  expect(inputWrapper.html()).toMatchSnapshot()
+
+  const textareaWrapper = mount(VarInput, {
+    props: {
+      type: 'textarea',
+      inputmode: 'tel',
+    },
+  })
+
+  expect(textareaWrapper.html()).toMatchSnapshot()
+
+  const inputNumberWrapper = mount(VarInput, {
+    props: {
+      type: 'number',
+      inputmode: 'tel',
+    },
+  })
+
+  expect(inputNumberWrapper.html()).toMatchSnapshot()
+
+  inputWrapper.unmount()
+  textareaWrapper.unmount()
+  inputNumberWrapper.unmount()
+})

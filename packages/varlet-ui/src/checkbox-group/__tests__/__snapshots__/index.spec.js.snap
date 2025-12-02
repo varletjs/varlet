@@ -4,7 +4,7 @@ exports[`checkbox group label is VNode 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -19,8 +19,8 @@ exports[`checkbox group label is VNode 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -34,8 +34,8 @@ exports[`checkbox group label is VNode 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -59,7 +59,7 @@ exports[`checkbox group label is function 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -72,8 +72,8 @@ exports[`checkbox group label is function 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -85,8 +85,8 @@ exports[`checkbox group label is function 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -108,7 +108,7 @@ exports[`checkbox group label is function 2`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -121,8 +121,8 @@ exports[`checkbox group label is function 2`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -134,8 +134,8 @@ exports[`checkbox group label is function 2`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -157,7 +157,7 @@ exports[`checkbox group label is function 3`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -170,8 +170,8 @@ exports[`checkbox group label is function 3`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -183,8 +183,8 @@ exports[`checkbox group label is function 3`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -206,7 +206,7 @@ exports[`checkbox group label is function 4`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -219,8 +219,8 @@ exports[`checkbox group label is function 4`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -232,8 +232,8 @@ exports[`checkbox group label is function 4`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -255,7 +255,7 @@ exports[`checkbox group label-key 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -268,8 +268,8 @@ exports[`checkbox group label-key 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -281,8 +281,8 @@ exports[`checkbox group label-key 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -305,8 +305,8 @@ exports[`checkbox group layout direction 1`] = `
   <div class="var-checkbox-group var-checkbox-group--vertical">
     <!--v-if-->
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -318,8 +318,8 @@ exports[`checkbox group layout direction 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -341,7 +341,7 @@ exports[`checkbox group options 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -354,8 +354,8 @@ exports[`checkbox group options 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -367,8 +367,8 @@ exports[`checkbox group options 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -391,8 +391,8 @@ exports[`checkbox group validation 1`] = `
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -404,8 +404,8 @@ exports[`checkbox group validation 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -439,8 +439,8 @@ exports[`checkbox group validation 2`] = `
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -452,8 +452,8 @@ exports[`checkbox group validation 2`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -475,7 +475,7 @@ exports[`checkbox group value-key 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
+      <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -488,8 +488,8 @@ exports[`checkbox group value-key 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -501,8 +501,8 @@ exports[`checkbox group value-key 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -522,8 +522,8 @@ exports[`checkbox group value-key 1`] = `
 
 exports[`checkbox indeterminate 1`] = `
 "<div class="var-checkbox__wrap">
-  <div class="var-checkbox">
-    <div class="var-checkbox__action var-checkbox--checked" tabindex="0"><i class="var-icon var-icon--set var-icon-minus-box var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+  <div role="checkbox" aria-checked="mixed" aria-disabled="false" class="var-checkbox" tabindex="0">
+    <div class="var-checkbox__action var-checkbox--checked"><i class="var-icon var-icon--set var-icon-minus-box var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
       <!--v-if-->
       <div class="var-hover-overlay"></div>
@@ -538,8 +538,8 @@ exports[`checkbox indeterminate 1`] = `
 
 exports[`checkbox validation 1`] = `
 "<div class="var-checkbox__wrap">
-  <div class="var-checkbox">
-    <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+  <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+    <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
       <!--v-if-->
       <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -565,8 +565,8 @@ exports[`checkbox validation 1`] = `
 
 exports[`checkbox validation 2`] = `
 "<div class="var-checkbox__wrap">
-  <div class="var-checkbox">
-    <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+  <div role="checkbox" aria-checked="true" aria-disabled="false" class="var-checkbox" tabindex="0">
+    <div class="var-checkbox__action var-checkbox--checked">
       <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
       <div class="var-hover-overlay"></div>
@@ -581,8 +581,8 @@ exports[`checkbox validation 2`] = `
 
 exports[`validation with zod > checkbox 1`] = `
 "<div class="var-checkbox__wrap">
-  <div class="var-checkbox">
-    <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+  <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+    <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
       <!--v-if-->
       <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -608,8 +608,8 @@ exports[`validation with zod > checkbox 1`] = `
 
 exports[`validation with zod > checkbox 2`] = `
 "<div class="var-checkbox__wrap">
-  <div class="var-checkbox">
-    <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+  <div role="checkbox" aria-checked="true" aria-disabled="false" class="var-checkbox" tabindex="0">
+    <div class="var-checkbox__action var-checkbox--checked">
       <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
       <div class="var-hover-overlay"></div>
@@ -627,8 +627,8 @@ exports[`validation with zod > checkbox group 1`] = `
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -640,8 +640,8 @@ exports[`validation with zod > checkbox group 1`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>
@@ -675,8 +675,8 @@ exports[`validation with zod > checkbox group 2`] = `
   <div class="var-checkbox-group var-checkbox-group--horizontal">
     <!--v-if-->
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
+      <div role="checkbox" aria-checked="true" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <!--v-if-->
           <div class="var-hover-overlay"></div>
@@ -688,8 +688,8 @@ exports[`validation with zod > checkbox group 2`] = `
       </transition-stub>
     </div>
     <div class="var-checkbox__wrap">
-      <div class="var-checkbox">
-        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+      <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+        <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
           <div class="var-hover-overlay"></div>

@@ -480,6 +480,7 @@ const keyOptions = ref([
 | `value-key` ***3.3.4*** | As the key that uniquely identifies value | _string_ | `value` |
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _SelectValidateTrigger[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
+| `tabindex` ***3.12.1*** | Consistent with the tabindex property of native select  | _string_ | `-` |
 
 #### SelectOption
 
