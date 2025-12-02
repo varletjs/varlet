@@ -15,6 +15,7 @@
 import { computed, defineComponent, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { call, toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
 
 const { name, n, classes } = createNamespace('virtual-list')
@@ -77,7 +78,7 @@ export default defineComponent({
     const containerStyle = computed(() => {
       if (props.containerHeight) {
         return {
-          height: typeof props.containerHeight === 'number' ? `${props.containerHeight}px` : props.containerHeight,
+          height: toSizeUnit(props.containerHeight),
         }
       }
       return {}
@@ -127,7 +128,9 @@ export default defineComponent({
       if (!contentRef.value) {
         return
       }
-      const nodes = Array.from(contentRef.value.childNodes).filter((node: Node) => node.nodeType === 1) as HTMLElement[]
+      const nodes = Array.from(contentRef.value.childNodes).filter(
+        (node: Node) => node.nodeType === Node.ELEMENT_NODE,
+      ) as HTMLElement[]
       nodes.forEach((node, index) => {
         const height = node.offsetHeight
         const pos = state.cachePositions[index + state.start]
