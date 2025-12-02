@@ -36,6 +36,9 @@ export interface InputProps extends BasicAttributes {
   clearable?: boolean
   resize?: boolean
   autofocus?: boolean
+  preventAutoFill?: boolean
+  inputmode?: InputHTMLAttributes['inputmode']
+  tabindex?: InputHTMLAttributes['tabindex']
   validateTrigger?: InputValidateTrigger[]
   rules?: InputRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
@@ -67,6 +70,8 @@ export class Input extends VarComponent {
   focus(): void
 
   blur(): void
+
+  select(): void
 
   validate(): Promise<boolean>
 

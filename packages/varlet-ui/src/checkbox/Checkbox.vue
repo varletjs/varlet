@@ -1,8 +1,17 @@
 <template>
   <div :class="n('wrap')">
-    <div :class="n()" @click="handleClick">
+    <div
+      ref="checkbox"
+      role="checkbox"
+      :aria-checked="isIndeterminate ? 'mixed' : checked"
+      :aria-disabled="formDisabled || disabled"
+      :class="n()"
+      :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
+      @focus="isFocusing = true"
+      @blur="isFocusing = false"
+      @click="handleClick"
+    >
       <div
-        ref="action"
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         :class="
@@ -14,9 +23,6 @@
           )
         "
         :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
-        :tabindex="disabled || formDisabled ? undefined : '0'"
-        @focus="isFocusing = true"
-        @blur="isFocusing = false"
       >
         <slot v-if="isIndeterminate" name="indeterminate-icon">
           <var-icon :class="n('icon')" name="minus-box" :size="iconSize" var-checkbox-cover />
@@ -78,7 +84,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const action = ref<HTMLElement | null>(null)
+    const checkbox = ref<HTMLElement | null>(null)
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
@@ -156,7 +162,7 @@ export default defineComponent({
     }
 
     function handleTextClick() {
-      action.value!.focus()
+      checkbox.value!.focus()
     }
 
     function sync(values: Array<any>) {
@@ -194,7 +200,7 @@ export default defineComponent({
       }
 
       if (key === 'Enter') {
-        action.value!.click()
+        checkbox.value!.click()
       }
     }
 
@@ -205,7 +211,7 @@ export default defineComponent({
 
       if (event.key === ' ') {
         preventDefault(event)
-        action.value!.click()
+        checkbox.value!.click()
       }
     }
 
@@ -215,7 +221,7 @@ export default defineComponent({
     }
 
     return {
-      action,
+      checkbox,
       isFocusing,
       isIndeterminate,
       checked,

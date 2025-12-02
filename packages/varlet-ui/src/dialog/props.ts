@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type PropType, type Ref } from 'vue'
 import { popupProps } from '../popup'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { DialogActions } from './index'
@@ -28,9 +28,24 @@ export const props = {
   cancelButtonTextColor: String,
   confirmButtonColor: String,
   cancelButtonColor: String,
+  confirmButtonLoading: Boolean,
+  cancelButtonLoading: Boolean,
+  confirmButtonDisabled: Boolean,
+  cancelButtonDisabled: Boolean,
   dialogClass: String,
   dialogStyle: Object,
-  onBeforeClose: defineListenerProp<(action: DialogActions, done: () => void) => void>(),
+  onBeforeClose: defineListenerProp<
+    (
+      action: DialogActions,
+      done: () => void,
+      refs: {
+        confirmButtonLoading: Ref<boolean>
+        cancelButtonLoading: Ref<boolean>
+        confirmButtonDisabled: Ref<boolean>
+        cancelButtonDisabled: Ref<boolean>
+      },
+    ) => void
+  >(),
   onConfirm: defineListenerProp<() => void>(),
   onCancel: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),

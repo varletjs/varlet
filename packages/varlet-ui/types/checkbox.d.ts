@@ -1,4 +1,4 @@
-import { VNode } from 'vue'
+import { InputHTMLAttributes, VNode } from 'vue'
 import { BasicAttributes, Rules as CheckboxRules, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const checkboxProps: Record<keyof CheckboxProps, any>
@@ -18,6 +18,7 @@ export interface CheckboxProps extends BasicAttributes {
   ripple?: boolean
   validateTrigger?: Array<CheckboxValidateTrigger>
   rules?: CheckboxRules
+  tabindex?: InputHTMLAttributes['tabindex']
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any, indeterminate: boolean) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>

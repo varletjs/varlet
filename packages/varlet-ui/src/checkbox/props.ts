@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { InputHTMLAttributes, PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type CheckboxValidateTrigger = 'onChange'
@@ -21,6 +21,7 @@ export const props = {
   disabled: Boolean,
   readonly: Boolean,
   indeterminate: Boolean,
+  tabindex: String as PropType<InputHTMLAttributes['tabindex']>,
   iconSize: [String, Number],
   ripple: {
     type: Boolean,

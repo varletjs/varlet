@@ -1,8 +1,18 @@
 <template>
   <div :class="n('wrap')">
-    <div role="radio" :aria-checked="checked" :class="n()" v-bind="$attrs" @click="handleClick">
+    <div
+      ref="radio"
+      role="radio"
+      :class="n()"
+      :aria-checked="checked"
+      :aria-disabled="formDisabled || disabled"
+      v-bind="$attrs"
+      :tabindex="tabIndex"
+      @click="handleClick"
+      @focus="isFocusing = true"
+      @blur="isFocusing = false"
+    >
       <div
-        ref="action"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         v-hover:desktop="handleHovering"
         :class="
@@ -13,10 +23,7 @@
             [formDisabled || disabled, n('--disabled')],
           )
         "
-        :tabindex="tabIndex"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
-        @focus="isFocusing = true"
-        @blur="isFocusing = false"
       >
         <slot v-if="checked" name="checked-icon">
           <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
@@ -75,7 +82,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const action = ref<HTMLElement>()
+    const radio = ref<HTMLElement>()
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const checked = computed(() => value.value === props.checkedValue)
@@ -87,6 +94,10 @@ export default defineComponent({
       const disabled = form?.disabled.value || props.disabled
       const isChecked = checked.value
       const hasCheckedInRadioGroup = radioGroup?.hasChecked.value
+
+      if (props.tabindex != null) {
+        return props.tabindex
+      }
 
       if (disabled) {
         return
@@ -115,8 +126,8 @@ export default defineComponent({
       isFocusing: computed(() => isFocusing.value),
       // keyboard arrow move
       move() {
-        action.value!.focus()
-        action.value!.click()
+        radio.value!.focus()
+        radio.value!.click()
       },
       moveable() {
         return !form?.disabled.value && !props.disabled && !form?.readonly.value && !props.readonly
@@ -141,7 +152,7 @@ export default defineComponent({
       }
 
       if (key === 'Enter') {
-        action.value!.click()
+        radio.value!.click()
       }
     }
 
@@ -152,7 +163,7 @@ export default defineComponent({
 
       if (event.key === ' ') {
         preventDefault(event)
-        action.value!.click()
+        radio.value!.click()
       }
     }
 
@@ -193,7 +204,7 @@ export default defineComponent({
     }
 
     function handleTextClick() {
-      action.value!.focus()
+      radio.value!.focus()
     }
 
     function sync(v: any) {
@@ -228,7 +239,7 @@ export default defineComponent({
     }
 
     return {
-      action,
+      radio,
       isFocusing,
       checked,
       errorMessage,

@@ -139,7 +139,7 @@ exports[`form with auto-complete 2`] = `
 exports[`form with checkbox 1`] = `
 "<form class="var-form">
   <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
+    <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
       <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -157,8 +157,8 @@ exports[`form with checkbox 1`] = `
 exports[`form with checkbox 2`] = `
 "<form class="var-form">
   <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+    <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+      <div class="var-checkbox__action var-checkbox--unchecked">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
@@ -175,8 +175,8 @@ exports[`form with checkbox 2`] = `
 exports[`form with checkbox 3`] = `
 "<form class="var-form">
   <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
+    <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
@@ -204,8 +204,8 @@ exports[`form with checkbox 3`] = `
 exports[`form with checkbox 4`] = `
 "<form class="var-form">
   <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+    <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
+      <div class="var-checkbox__action var-checkbox--unchecked">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
@@ -420,7 +420,7 @@ exports[`form with input 4`] = `
 exports[`form with radio 1`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
+    <div role="radio" class="var-radio" aria-checked="false" aria-disabled="true">
       <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
@@ -436,8 +436,8 @@ exports[`form with radio 1`] = `
 exports[`form with radio 2`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" class="var-radio" aria-checked="false" aria-disabled="false" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -452,8 +452,8 @@ exports[`form with radio 2`] = `
 exports[`form with radio 3`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked var-radio--error" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" class="var-radio" aria-checked="false" aria-disabled="false" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -479,8 +479,8 @@ exports[`form with radio 3`] = `
 exports[`form with radio 4`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
-    <div role="radio" aria-checked="false" class="var-radio">
-      <div class="var-radio__action var-radio--unchecked" tabindex="0"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+    <div role="radio" class="var-radio" aria-checked="false" aria-disabled="false" tabindex="0">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -816,7 +816,7 @@ exports[`form with switch 1`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block var-switch--disabled">
       <div style="filter: brightness(0.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: currentColor;">
+      <div class="var-switch__ripple" style="color: currentcolor;">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>
@@ -835,7 +835,7 @@ exports[`form with switch 2`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block">
       <div style="" class="var-switch__track var-switch__track--error"></div>
-      <div class="var-switch__ripple" style="color: currentColor;" tabindex="0">
+      <div class="var-switch__ripple" style="color: currentcolor;" tabindex="0">
         <div class="var-switch__handle var-elevation--2 var-switch__handle--error">
           <!--v-if-->
         </div>
@@ -865,7 +865,7 @@ exports[`form with switch 3`] = `
   <div class="var-switch" role="switch" aria-checked="false">
     <div class="var-switch__block">
       <div style="filter: brightness(0.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: currentColor;" tabindex="0">
+      <div class="var-switch__ripple" style="color: currentcolor;" tabindex="0">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>

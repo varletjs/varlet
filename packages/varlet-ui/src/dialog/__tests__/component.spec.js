@@ -245,6 +245,58 @@ describe('test dialog component props', () => {
 
     wrapper.unmount()
   })
+
+  test('dialog component cancelButtonDisabled', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        cancelButtonDisabled: true,
+      },
+    })
+
+    expect(wrapper.find('.var-dialog__cancel-button[var-dialog-cover]').classes('var-button--disabled')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dialog component confirmButtonDisabled', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        confirmButtonDisabled: true,
+      },
+    })
+
+    expect(wrapper.find('.var-dialog__confirm-button[var-dialog-cover]').classes('var-button--disabled')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dialog component cancelButtonLoading', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        cancelButtonLoading: true,
+      },
+    })
+
+    expect(wrapper.find('.var-dialog__cancel-button[var-dialog-cover]').classes('var-button--loading')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dialog component confirmButtonLoading', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        confirmButtonLoading: true,
+      },
+    })
+
+    expect(wrapper.find('.var-dialog__confirm-button[var-dialog-cover]').classes('var-button--loading')).toBe(true)
+
+    wrapper.unmount()
+  })
 })
 
 describe('test dialog component events', () => {

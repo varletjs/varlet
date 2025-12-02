@@ -25,6 +25,12 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const inputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -69,6 +75,12 @@ const value14 = ref('')
     <var-input placeholder="Textarea" textarea v-model="value10" />
     <var-input placeholder="Small Size" size="small" v-model="value11" />
     <var-input placeholder="Removes whitespace from both ends of this string" v-model.trim="value12" />
+    <var-input 
+      ref="inputRef"
+      placeholder="Enter text and click the button to select all" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">Select All</var-button>
   </var-space>
 </template>
 
@@ -104,6 +116,12 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const inputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -154,6 +172,13 @@ const value14 = ref('')
     <var-input variant="outlined" placeholder="Textarea" textarea v-model="value10" />
     <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value11" />
     <var-input variant="outlined" placeholder="Removes whitespace from both ends of this string" v-model.trim="value12" />
+    <var-input 
+      ref="inputRef"
+      variant="outlined"
+      placeholder="Enter text and click the button to select all" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">Select All</var-button>
   </var-space>
 </template>
 
@@ -196,6 +221,9 @@ const value14 = ref('')
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | See [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `prevent-auto-fill` ***3.11.4***  | Prevent browser autofill behavior | _boolean_ | `true` |
+| `inputmode` ***3.11.4*** | Consistent with the inputmode property of native input  | _string_ | `-` |
+| `tabindex` ***3.12.1*** | Consistent with the tabindex property of native input  | _string_ | `-` |
 
 ### Methods
 
@@ -203,6 +231,7 @@ const value14 = ref('')
 | --- | --- | --- | --- |
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
+| `select` | Select all text in the input | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding and validate messages | `-` | `-` |
@@ -217,6 +246,7 @@ const value14 = ref('')
 | `clear` | Triggered on Clearance | `value: string` |
 | `input` | Triggered on input | `value: string`, `event: Event` |
 | `change` | Triggered on change | `value: string`, `event: Event` |
+
 
 ### Slots
 

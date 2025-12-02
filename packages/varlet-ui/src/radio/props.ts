@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { InputHTMLAttributes, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type RadioValidateTrigger = 'onChange'
@@ -20,6 +20,7 @@ export const props = {
   readonly: Boolean,
   checkedColor: String,
   uncheckedColor: String,
+  tabindex: String as PropType<InputHTMLAttributes['tabindex']>,
   iconSize: [String, Number],
   ripple: {
     type: Boolean,

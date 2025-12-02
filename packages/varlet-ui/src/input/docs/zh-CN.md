@@ -25,6 +25,12 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const inputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -69,6 +75,12 @@ const value14 = ref('')
     <var-input placeholder="文本域" textarea v-model="value10" />
     <var-input placeholder="小尺寸" size="small" v-model="value11" />
     <var-input placeholder="移除空白字符" v-model.trim="value12" />
+    <var-input 
+      ref="inputRef"
+      placeholder="输入文本后点击按钮全选" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">全选</var-button>
   </var-space>
 </template>
 
@@ -104,6 +116,12 @@ const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
 const value14 = ref('')
+const value15 = ref('')
+const inputRef = ref()
+
+const selectAll = () => {
+  inputRef.value?.select()
+}
 </script>
 
 <template>
@@ -154,6 +172,13 @@ const value14 = ref('')
     <var-input variant="outlined" placeholder="文本域" textarea v-model="value10" />
     <var-input variant="outlined" placeholder="小尺寸" size="small" v-model="value11" />
     <var-input variant="outlined" placeholder="移除空白字符" v-model.trim="value12" />
+    <var-input 
+      ref="inputRef"
+      variant="outlined"
+      placeholder="输入文本后点击按钮全选" 
+      v-model="value15"
+    />
+    <var-button type="primary" @click="selectAll">全选</var-button>
   </var-space>
 </template>
 
@@ -196,6 +221,9 @@ const value14 = ref('')
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `aria-label` ***3.8.4*** | 参见 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-label) | _string_ | `-` |
+| `prevent-auto-fill` ***3.11.4*** | 阻止浏览器的自动填充行为  | _boolean_ | `true` |
+| `inputmode` ***3.11.4*** | 与原生 input 的 inputmode 属性一致  | _string_ | `-` |
+| `tabindex` ***3.12.1*** | 与原生 input 的 tabindex 属性一致  | _string_ | `-` |
 
 ### 方法
 
@@ -203,6 +231,7 @@ const value14 = ref('')
 | --- | --- | --- | --- |
 | `focus` | 聚焦 | `-` | `-` |
 | `blur` | 失焦 | `-` | `-` |
+| `select` | 选中输入框中的所有文本 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值和校验信息 | `-` | `-` |
@@ -217,6 +246,7 @@ const value14 = ref('')
 | `clear` | 清除时触发 | `value: string` |
 | `input` | 输入时触发 | `value: string`, `event: Event` |
 | `change` | 更新时触发 | `value: string`, `event: Event` |
+
 
 ### 插槽
 

@@ -21,7 +21,7 @@
         }"
         :class="classes(n('ripple'), [isActive, n('ripple--active')])"
         :style="styleComputed.ripple"
-        :tabindex="disabled || formDisabled ? undefined : '0'"
+        :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
         @focus="isFocusing = true"
         @blur="isFocusing = false"
       >

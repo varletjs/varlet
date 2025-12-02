@@ -1,3 +1,89 @@
+## [3.12.3](https://github.com/varletjs/varlet/compare/v3.12.2...v3.12.3) (2025-11-17)
+
+
+
+## [3.12.2](https://github.com/varletjs/varlet/compare/v3.12.1...v3.12.2) (2025-11-17)
+
+
+### Features
+
+* **radio, checkbox, switch:** support tabindex ([2a3f86c](https://github.com/varletjs/varlet/commit/2a3f86c1cdaa1d3a43dfdf547e2bf1b25a8da4bb))
+
+
+
+## [3.12.1](https://github.com/varletjs/varlet/compare/v3.12.0...v3.12.1) (2025-11-03)
+
+
+### Features
+
+* **field:** support tabindex ([2d0c6f4](https://github.com/varletjs/varlet/commit/2d0c6f4df00dd3fce2354e74b0f1f970faa396bf))
+
+
+
+# [3.12.0](https://github.com/varletjs/varlet/compare/v3.11.4...v3.12.0) (2025-10-08)
+
+
+### Bug Fixes
+
+* **space:** fix comment vnode filter error ([eaf58ab](https://github.com/varletjs/varlet/commit/eaf58ab4b11e1c069728e28610e6a1858f86110a))
+
+
+### Features
+
+* **dialog:** support props of button related state ([a363f11](https://github.com/varletjs/varlet/commit/a363f11cd0171bed0ccc352bd31db6f4872c0b4a))
+
+
+
+## [3.11.4](https://github.com/varletjs/varlet/compare/v3.11.3...v3.11.4) (2025-08-27)
+
+
+### Features
+
+* **input:** support inputmode ([9bf0121](https://github.com/varletjs/varlet/commit/9bf0121350c756de67d512a5a25ca91287d870c1))
+* **ui/input:** support prevent-auto-fill ([#1920](https://github.com/varletjs/varlet/issues/1920)) ([2630894](https://github.com/varletjs/varlet/commit/2630894c9717e4c3afaee536fe6eb53b32c77a83))
+
+
+
+## [3.11.3](https://github.com/varletjs/varlet/compare/v3.11.2...v3.11.3) (2025-08-12)
+
+
+### Bug Fixes
+
+* **skeleton:** use correct component type ([#1924](https://github.com/varletjs/varlet/issues/1924)) ([dc5fc1a](https://github.com/varletjs/varlet/commit/dc5fc1af787df53d005f63c63e99cdf1d1832d3c))
+
+
+
+## [3.11.2](https://github.com/varletjs/varlet/compare/v3.11.1...v3.11.2) (2025-08-12)
+
+
+### Features
+
+* improve radio and checkbox a11y ([78596e0](https://github.com/varletjs/varlet/commit/78596e02922ebc6bb0ce81bb4d4cdee263e96027))
+
+
+
+## [3.11.1](https://github.com/varletjs/varlet/compare/v3.11.0...v3.11.1) (2025-07-27)
+
+
+### Features
+
+* **input:** support select method([#1915](https://github.com/varletjs/varlet/issues/1915)) ([c9b91ef](https://github.com/varletjs/varlet/commit/c9b91effbc4d7920819f9693440158682e520309)), closes [#1905](https://github.com/varletjs/varlet/issues/1905) [#1909](https://github.com/varletjs/varlet/issues/1909) [#1912](https://github.com/varletjs/varlet/issues/1912)
+
+
+
+# [3.11.0](https://github.com/varletjs/varlet/compare/v3.10.9...v3.11.0) (2025-06-22)
+
+
+
+## [3.10.9](https://github.com/varletjs/varlet/compare/v3.10.8...v3.10.9) (2025-06-12)
+
+
+### Features
+
+* **theme:** support toRem and convert ([61870de](https://github.com/varletjs/varlet/commit/61870de5109fd897c359f58fca26130e2df2236e))
+
+
+
 ## [3.10.8](https://github.com/varletjs/varlet/compare/v3.10.7...v3.10.8) (2025-06-01)
 
 

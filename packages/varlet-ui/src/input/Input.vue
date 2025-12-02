@@ -28,9 +28,8 @@
       <template v-if="$slots['prepend-icon']" #prepend-icon>
         <slot name="prepend-icon" />
       </template>
-
       <input
-        v-if="normalizedType === 'password'"
+        v-if="normalizedType === 'password' && preventAutoFill"
         tabindex="-1"
         :aria-label="ariaLabel"
         :class="n('autocomplete')"
@@ -63,7 +62,8 @@
         :maxlength="maxlength"
         :rows="rows"
         :enterkeyhint="enterkeyhint"
-        :inputmode="type === 'number' ? 'decimal' : undefined"
+        :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
+        :tabindex="tabindex"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -98,7 +98,8 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :enterkeyhint="enterkeyhint"
-        :inputmode="type === 'number' ? 'decimal' : undefined"
+        :tabindex="tabindex"
+        :inputmode="inputmode != null ? inputmode : type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -368,6 +369,11 @@ export default defineComponent({
       ;(el.value as HTMLInputElement).blur()
     }
 
+    // expose
+    function select() {
+      ;(el.value as HTMLInputElement).select()
+    }
+
     return {
       el,
       id,
@@ -397,6 +403,7 @@ export default defineComponent({
       reset,
       focus,
       blur,
+      select,
     }
   },
 })

@@ -40,11 +40,27 @@ function hideButton() {
   })
 }
 
-function onBeforeClose(action, done) {
-  Snackbar.loading(t('asyncCloseProgress'))
+function onBeforeClose(
+  action,
+  done,
+  { confirmButtonLoading, cancelButtonLoading, confirmButtonDisabled, cancelButtonDisabled },
+) {
+  if (action === 'confirm') {
+    confirmButtonLoading.value = true
+    cancelButtonDisabled.value = true
+  }
+
+  if (action === 'cancel') {
+    cancelButtonLoading.value = true
+    confirmButtonDisabled.value = true
+  }
 
   setTimeout(() => {
     actions[action]()
+    confirmButtonLoading.value = false
+    cancelButtonLoading.value = false
+    confirmButtonDisabled.value = false
+    cancelButtonDisabled.value = false
     done()
   }, 1000)
 }

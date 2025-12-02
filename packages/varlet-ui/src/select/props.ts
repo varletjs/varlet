@@ -1,4 +1,4 @@
-import { VNode, VNodeChild, type PropType } from 'vue'
+import { SelectHTMLAttributes, VNode, VNodeChild, type PropType } from 'vue'
 import { fieldDecoratorProps } from '../field-decorator'
 import { defineListenerProp, pickProps } from '../utils/components'
 
@@ -55,6 +55,7 @@ export const props = {
     default: () => ['onChange', 'onClear', 'onClose'],
   },
   rules: [Array, Function, Object] as PropType<any>,
+  tabindex: String as PropType<SelectHTMLAttributes['tabindex']>,
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onClose: defineListenerProp<(value: any) => void>(),

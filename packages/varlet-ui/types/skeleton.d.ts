@@ -1,33 +1,30 @@
 import { VNode } from 'vue'
 import { BasicAttributes, SetPropsDefaults, VarComponent } from './varComponent'
 
-export type SignatureType = 'png' | 'jpg'
+export declare const skeletonProps: Record<keyof SkeletonProps, any>
 
-export declare const signatureProps: Record<keyof SignatureProps, any>
-
-export interface SignatureProps extends BasicAttributes {
-  modelValue?: string
-  lineWidth?: number
-  strokeStyle?: string
-  type?: SignatureType
-  unsupportText?: string
-  customClass?: string
-  height?: number | string
-  validateTrigger?: string[]
-  rules?: Array<(v: string) => any>
+export interface SkeletonProps extends BasicAttributes {
+  loading?: boolean
+  title?: boolean
+  avatar?: boolean
+  card?: boolean
+  fullscreen?: boolean
+  fullscreenZIndex?: string | number
+  titleWidth?: string | number
+  avatarSize?: string | number
+  cardHeight?: string | number
+  rows?: string | number
+  rowsWidth?: (string | number)[]
 }
 
-export class Signature extends VarComponent {
-  static setPropsDefaults: SetPropsDefaults<SignatureProps>
+export class Skeleton extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SkeletonProps>
 
-  $props: SignatureProps
+  $props: SkeletonProps
 
   $slots: {
     default(): VNode[]
   }
-
-  clear(): void
-  confirm(): void
 }
 
-export class _SignatureComponent extends Signature {}
+export class _SkeletonComponent extends Skeleton {}

@@ -19,6 +19,10 @@ export interface DialogProps extends BasicAttributes {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonLoading?: boolean
+  cancelButtonLoading?: boolean
+  confirmButtonDisabled?: boolean
+  cancelButtonDisabled?: boolean
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>
@@ -71,6 +75,10 @@ export interface DialogOptions {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonLoading?: boolean
+  cancelButtonLoading?: boolean
+  confirmButtonDisabled?: boolean
+  cancelButtonDisabled?: boolean
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: Record<string, any>

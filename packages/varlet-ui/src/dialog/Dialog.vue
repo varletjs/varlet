@@ -41,6 +41,8 @@
             text
             :text-color="cancelButtonTextColor"
             :color="cancelButtonColor"
+            :loading="cancelButtonLoading"
+            :disabled="cancelButtonDisabled"
             @click="cancel"
           >
             {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
@@ -52,6 +54,8 @@
             text
             :text-color="confirmButtonTextColor"
             :color="confirmButtonColor"
+            :loading="confirmButtonLoading"
+            :disabled="confirmButtonDisabled"
             @click="confirm"
           >
             {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
@@ -65,6 +69,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 import VarButton from '../button'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
@@ -84,9 +89,20 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
+    const { t: pt } = injectLocaleProvider()
+
     const popupShow = ref(false)
     const popupCloseOnClickOverlay = ref(false)
-    const { t: pt } = injectLocaleProvider()
+    const confirmButtonLoading = useVModel(props, 'confirmButtonLoading')
+    const cancelButtonLoading = useVModel(props, 'cancelButtonLoading')
+    const confirmButtonDisabled = useVModel(props, 'confirmButtonDisabled')
+    const cancelButtonDisabled = useVModel(props, 'cancelButtonDisabled')
+    const exposedRefs = {
+      confirmButtonLoading,
+      cancelButtonLoading,
+      confirmButtonDisabled,
+      cancelButtonDisabled,
+    }
 
     watch(
       () => props.show,
@@ -123,7 +139,7 @@ export default defineComponent({
       }
 
       if (onBeforeClose != null) {
-        call(onBeforeClose, 'close', done)
+        call(onBeforeClose, 'close', done, exposedRefs)
         return
       }
 
@@ -136,7 +152,7 @@ export default defineComponent({
       call(onConfirm)
 
       if (onBeforeClose != null) {
-        call(onBeforeClose, 'confirm', done)
+        call(onBeforeClose, 'confirm', done, exposedRefs)
         return
       }
 
@@ -149,7 +165,7 @@ export default defineComponent({
       call(onCancel)
 
       if (onBeforeClose != null) {
-        call(onBeforeClose, 'cancel', done)
+        call(onBeforeClose, 'cancel', done, exposedRefs)
         return
       }
 
@@ -169,6 +185,10 @@ export default defineComponent({
     return {
       popupShow,
       popupCloseOnClickOverlay,
+      confirmButtonLoading,
+      cancelButtonLoading,
+      confirmButtonDisabled,
+      cancelButtonDisabled,
       pt,
       t,
       n,

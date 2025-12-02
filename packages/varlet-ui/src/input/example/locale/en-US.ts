@@ -18,4 +18,6 @@ export default {
   numberPlaceholder: 'Please enter number',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
+  selectAll: 'Type text and click button to select all',
+  selectAllButton: 'Select All',
 }
