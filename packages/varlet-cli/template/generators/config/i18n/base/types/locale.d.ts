@@ -23,6 +23,6 @@ interface Locale {
   }
 }
 
-export const Locale: Locale
+export declare const Locale: Locale
 
 export class _LocaleComponent {}
