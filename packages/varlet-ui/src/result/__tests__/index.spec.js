@@ -35,8 +35,8 @@ describe('test result component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('width: calc(90px)')
-    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('height: calc(90px)')
+    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('width: calc(100px * 0.9)')
+    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('height: calc(100px * 0.9)')
 
     wrapper.unmount()
   })

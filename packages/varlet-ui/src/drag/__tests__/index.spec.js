@@ -118,7 +118,9 @@ test('drag click method', async () => {
     },
   })
 
-  await trigger(container.childNodes[1], 'click')
+  await delay(16)
+  const dragElement = container.querySelector('.var-drag')
+  await trigger(dragElement, 'click')
   expect(onClick).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
