@@ -365,7 +365,7 @@ exports[`timePicker style and format 1`] = `
     <div class="var-time-picker__clock-container">
       <transition-stub name="var-time-picker-panel-fade" appear="false" persisted="false" css="true">
         <div class="var-time-picker__clock">
-          <div class="var-time-picker__clock-hand" style="transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: rgb(123, 184, 114);"></div>
+          <div class="var-time-picker__clock-hand" style="transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;"></div>
           <div class="var-time-picker__clock-item" style="left: 50%; top: 0%;">12</div>
           <div class="var-time-picker__clock-item" style="left: 75%; top: 6.698729810778064%;">1</div>
           <div class="var-time-picker__clock-item" style="left: 93.30127018922192%; top: 25%;">2</div>
@@ -405,7 +405,7 @@ exports[`timePicker style and format 2`] = `
     <div class="var-time-picker__clock-container">
       <transition-stub name="var-time-picker-panel-fade" appear="false" persisted="false" css="true">
         <div class="var-time-picker__clock">
-          <div class="var-time-picker__clock-hand" style="transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: rgb(123, 184, 114);"></div>
+          <div class="var-time-picker__clock-hand" style="transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;"></div>
           <div class="var-time-picker__clock-item" style="left: 50%; top: 0%;">12</div>
           <div class="var-time-picker__clock-item" style="left: 75%; top: 6.698729810778064%;">1</div>
           <div class="var-time-picker__clock-item" style="left: 93.30127018922192%; top: 25%;">2</div>

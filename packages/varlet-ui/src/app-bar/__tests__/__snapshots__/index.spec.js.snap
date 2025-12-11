@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test app bar component props > app bar image and image-linear-gradient 1`] = `
-"<div class="var-app-bar var--box var-elevation--3" style="background-image: linear-gradient(to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%), url(&quot;https://1.png&quot;); background-position: center center; background-size: cover; z-index: 1;">
+"<div class="var-app-bar var--box var-elevation--3" style="background-position: center center; background-size: cover; z-index: 1;">
   <div class="var-app-bar__toolbar">
     <div class="var-app-bar__left">
       <div class="var-app-bar__title"></div>
