@@ -1,0 +1,44 @@
+name: Update Snapshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to update snapshots on'
+        required: true
+        default: 'dev-fix'
+
+jobs:
+  update-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        run: npm i -g --force corepack && corepack enable
+
+      - name: Set node version to 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.19.5'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile && node scripts/bootstrap.mjs
+
+      - name: Update snapshots
+        run: |
+          cd packages/varlet-ui
+          pnpm exec vitest run --config ../varlet-cli/lib/node/config/vitest.config.js -u
+
+      - name: Commit updated snapshots
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "chore: update test snapshots [skip ci]"
+          git push
