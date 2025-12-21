@@ -6,6 +6,7 @@ export default {
   '--select-chips-margin': '-5px 0 0 0',
   '--select-chips-padding': '2px 0',
   '--select-chip-margin': '5px 5px 0 0',
+  '--select-chip-background-color': 'var(--color-surface-container-highest)',
   '--select-arrow-size': '20px',
   '--select-standard-menu-margin': `calc(var(--field-decorator-placeholder-size) * 0.75 + 12px) 0 0 0`,
   '--select-label-font-size': '16px',
