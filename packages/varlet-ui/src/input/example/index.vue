@@ -11,7 +11,6 @@ const standardValue4 = ref('')
 const standardValue5 = ref('')
 const standardValue6 = ref('')
 const standardValue7 = ref('')
-const standardValue8 = ref('')
 const standardValue9 = ref('')
 const standardValue10 = ref('')
 const standardValue11 = ref('')
@@ -27,7 +26,6 @@ const outlinedValue4 = ref('')
 const outlinedValue5 = ref('')
 const outlinedValue6 = ref('')
 const outlinedValue7 = ref('')
-const outlinedValue8 = ref('')
 const outlinedValue9 = ref('')
 const outlinedValue10 = ref('')
 const outlinedValue11 = ref('')
@@ -36,8 +34,24 @@ const outlinedValue13 = ref('')
 const outlinedValue14 = ref('')
 const outlinedValue15 = ref('')
 
+const filledValue = ref('')
+const filledValue2 = ref('')
+const filledValue3 = ref('')
+const filledValue4 = ref('')
+const filledValue5 = ref('')
+const filledValue6 = ref('')
+const filledValue7 = ref('')
+const filledValue9 = ref('')
+const filledValue10 = ref('')
+const filledValue11 = ref('')
+const filledValue12 = ref('')
+const filledValue13 = ref('')
+const filledValue14 = ref('')
+const filledValue15 = ref('')
+
 const inputRef = ref()
 const outlinedInputRef = ref()
+const filledInputRef = ref()
 
 const selectAll = () => {
   inputRef.value?.select()
@@ -45,6 +59,10 @@ const selectAll = () => {
 
 const selectAllOutlined = () => {
   outlinedInputRef.value?.select()
+}
+
+const selectAllFilled = () => {
+  filledInputRef.value?.select()
 }
 
 watchLang(use)
@@ -79,14 +97,6 @@ onThemeChange()
       </template>
     </var-input>
 
-    <var-input v-model="standardValue8" :placeholder="t('customIconSize')">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vmin" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vmin" />
-      </template>
-    </var-input>
     <var-input v-model="standardValue9" :placeholder="t('maxlength')" :maxlength="10" />
     <var-input v-model="standardValue10" :placeholder="t('textarea')" textarea />
     <var-input v-model="standardValue11" :placeholder="t('smallSize')" size="small" />
@@ -127,14 +137,6 @@ onThemeChange()
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input v-model="outlinedValue8" variant="outlined" :placeholder="t('customIconSize')">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vmin" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vmin" />
-      </template>
-    </var-input>
     <var-input v-model="outlinedValue9" variant="outlined" :placeholder="t('maxlength')" :maxlength="10" />
     <var-input v-model="outlinedValue10" variant="outlined" :placeholder="t('textarea')" textarea />
     <var-input v-model="outlinedValue11" variant="outlined" :placeholder="t('smallSize')" size="small" />
@@ -142,6 +144,47 @@ onThemeChange()
 
     <var-input ref="outlinedInputRef" v-model="outlinedValue15" variant="outlined" :placeholder="t('selectAll')" />
     <var-button type="primary" @click="selectAllOutlined">{{ t('selectAllButton') }}</var-button>
+  </var-space>
+
+  <app-type style="margin-top: 10vmin">{{ t('filled') }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
+    <var-input v-model="filledValue" variant="filled" :placeholder="t('placeholder')" />
+    <var-input v-model="filledValue13" variant="filled" :placeholder="t('numberPlaceholder')" type="number" />
+    <var-input v-model="filledValue2" variant="filled" :placeholder="t('readonly')" readonly />
+    <var-input v-model="filledValue3" variant="filled" :placeholder="t('disabled')" disabled />
+    <var-input v-model="filledValue4" variant="filled" :placeholder="t('clearable')" clearable />
+    <var-input v-model="filledValue5" variant="filled" :placeholder="t('clearIconSlot')" clearable>
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
+    <var-input
+      v-model="filledValue6"
+      variant="filled"
+      :placeholder="t('validate')"
+      :rules="(v) => v.length > 6 || t('maxMessage')"
+    />
+    <var-input
+      v-model="filledValue14"
+      variant="filled"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().min(7, t('maxMessage'))"
+    />
+    <var-input v-model="filledValue7" variant="filled" :placeholder="t('displayIcon')">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input v-model="filledValue9" variant="filled" :placeholder="t('maxlength')" :maxlength="10" />
+    <var-input v-model="filledValue10" variant="filled" :placeholder="t('textarea')" textarea />
+    <var-input v-model="filledValue11" variant="filled" :placeholder="t('smallSize')" size="small" />
+    <var-input v-model.trim="filledValue12" variant="filled" :placeholder="t('trim')" />
+
+    <var-input ref="filledInputRef" v-model="filledValue15" variant="filled" :placeholder="t('selectAll')" />
+    <var-button type="primary" @click="selectAllFilled">{{ t('selectAllButton') }}</var-button>
   </var-space>
 
   <div style="height: 20px"></div>

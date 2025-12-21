@@ -3,7 +3,7 @@ import { defineListenerProp } from '../utils/components'
 
 export type FieldDecoratorSize = 'small' | 'normal'
 
-export type FieldDecoratorVariant = 'outlined' | 'standard'
+export type FieldDecoratorVariant = 'outlined' | 'standard' | 'filled'
 
 export const props = {
   value: {
@@ -36,6 +36,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  textarea: Boolean,
   textColor: String,
   focusColor: String,
   blurColor: String,
