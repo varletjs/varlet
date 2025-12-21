@@ -90,7 +90,13 @@
           >
             {{ placeholder }}
           </span>
+        </div>
 
+        <template #clear-icon="{ clear }">
+          <slot name="clear-icon" :clear="clear" />
+        </template>
+
+        <template #append-icon>
           <slot name="arrow-icon" :focus="isFocusing" :menu-open="showMenu">
             <var-icon
               :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
@@ -99,13 +105,7 @@
               :transition="300"
             />
           </slot>
-        </div>
 
-        <template #clear-icon="{ clear }">
-          <slot name="clear-icon" :clear="clear" />
-        </template>
-
-        <template #append-icon>
           <slot name="append-icon" />
         </template>
       </var-field-decorator>
