@@ -1,6 +1,7 @@
 export default {
   standard: 'Standard Variant',
   outlined: 'Outlined Variant',
+  filled: 'Filled Variant',
   smallSize: 'Small Size',
   disabled: 'Disabled',
   readonly: 'Readonly',

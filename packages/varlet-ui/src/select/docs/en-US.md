@@ -8,93 +8,70 @@ Display and select the content through the drop-down menu.
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { z } from 'zod'
 
-const value = ref()
-const value2 = ref()
-const value3 = ref()
-const value4 = ref()
-const value5 = ref()
-const value6 = ref()
-const value7 = ref()
-const value8 = ref()
-const value9 = ref([])
-const value10 = ref([])
-const value11 = ref()
-const value12 = ref([])
-const value13 = ref()
-const value14 = ref()
-const value15 = ref([])
-const value16 = ref()
-const value17 = ref()
-const value18 = ref([])
+const standardValue = ref()
+const standardValue2 = ref()
+const standardValue3 = ref()
+const standardValue4 = ref()
+const standardValue5 = ref()
+const standardValue6 = ref()
+const standardValue7 = ref()
+const standardValue8 = ref([])
+const standardValue9 = ref([])
+const standardValue10 = ref()
+const standardValue11 = ref([])
+const standardValue12 = ref()
+const standardValue13 = ref()
+const standardValue14 = ref()
+const standardValue15 = ref()
+const standardValue16 = ref([])
 
-const options = ref([
-  {
-    label: 'Eat',
-    value: 1,
-  },
-  {
-    label: 'Sleep',
-    value: 2,
-  },
-  {
-    label: 'Play game',
-    value: 3,
-    disabled: true,
-  },
+const options = computed(() => [
+  { label: 'Eat', value: 1 },
+  { label: 'Sleep', value: 2 },
+  { label: 'Play game', value: 3, disabled: true },
 ])
 
-const keyOptions = ref([
-  {
-    name: 'Eat',
-    id: 1,
-  },
-  {
-    name: 'Sleep',
-    id: 2,
-  },
-  {
-    name: 'Play game',
-    id: 3,
-    disabled: true,
-  },
+const keyOptions = computed(() => [
+  { name: 'Eat', id: 1 },
+  { name: 'Sleep', id: 2 },
+  { name: 'Play game', id: 3, disabled: true },
 ])
 </script>
 
 <template>
   <var-space direction="column" size="large">
-    <var-select placeholder="Please select one the options" v-model="value">
+    <var-select v-model="standardValue" placeholder="Please select one the options">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select placeholder="Label relation value" v-model="value2">
+    <var-select v-model="standardValue2" placeholder="Label relation value">
       <var-option label="Eat" :value="1" />
       <var-option label="Sleep" :value="2" />
     </var-select>
-    <div class="relation">The current selection is: {{ value2 }}</div>
-    <var-select placeholder="Readonly" readonly v-model="value3">
+    <div class="relation">The current selection is: {{ standardValue2 }}</div>
+    <var-select v-model="standardValue3" placeholder="Readonly" readonly>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select placeholder="Disabled" disabled v-model="value4">
+    <var-select v-model="standardValue4" placeholder="Disabled" disabled>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select placeholder="Clearable" clearable v-model="value5">
+    <var-select v-model="standardValue5" placeholder="Clearable" clearable>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select placeholder="Use the clear icon slot" clearable v-model="value6">
+    <var-select v-model="standardValue6" placeholder="Use the clear icon slot" clearable>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <template #clear-icon="{ clear }">
         <var-icon class="clear-icon" name="github" @click="clear" />
       </template>
     </var-select>
-
-    <var-select placeholder="Custom Icon" v-model="value7">
+    <var-select v-model="standardValue7" placeholder="Custom Icon">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -106,8 +83,8 @@ const keyOptions = ref([
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :name="standardValue7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ standardValue7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -119,67 +96,32 @@ const keyOptions = ref([
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select placeholder="Custom Icon Size" v-model="value8">
-      <template #default>
-        <var-option label="Eat">
-          <var-icon class="selected-icon" name="cake-variant" />
-          <span>Eat</span>
-        </var-option>
-        <var-option label="Sleep">
-          <var-icon class="selected-icon" name="weather-night" />
-          <span>Sleep</span>
-        </var-option>
-      </template>
-      <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value8 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value8 }}</span>
-      </template>
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
-      </template>
-      <template #arrow-icon="{ focus }">
-        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
-      </template>
-    </var-select>
-
-    <var-select placeholder="Multiple Selection" multiple v-model="value9">
+    <var-select v-model="standardValue8" placeholder="Multiple Selection" multiple>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value10">
+    <var-select v-model="standardValue9" placeholder="Multiple choice of paper style" chip multiple>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
     <var-select
+      v-model="standardValue10"
       placeholder="Validate"
       :rules="v => v === 'Rest' || 'You must choose to rest'"
-      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Rest" />
     </var-select>
     <var-select
-      placeholder="Validate With Zod"
-      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
-      v-model="value17"
-    >
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-      <var-option label="Rest" />
-    </var-select>
-    <var-select
+      v-model="standardValue11"
       multiple
       placeholder="Multiple Validate"
       :rules="v => v.length >= 2 || 'You select at least two options'"
-      v-model="value12"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -187,23 +129,37 @@ const keyOptions = ref([
       <var-option label="Coding" />
     </var-select>
     <var-select
-      multiple
+      v-model="standardValue12"
+      placeholder="Validate With Zod"
+      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select v-model="standardValue13" placeholder="Options API" :options="options" />
+    <var-select
+      v-model="standardValue14"
+      placeholder="Custom Fields"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    />
+    <var-select v-model="standardValue15" placeholder="Small Size" size="small">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select
+      v-model="standardValue16"
       placeholder="Multiple Validate With Zod"
+      multiple
       :rules="z.array(z.string()).min(2, 'You select at least two options')"
-      v-model="value18"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select size="small" placeholder="Small Size" v-model="value13">
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-    </var-select>
-    <var-select placeholder="Options API" v-model="value14" :options="options" />
-    <var-select placeholder="Options API" v-model="value15" :options="options" multiple />
-    <var-select placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 
@@ -230,93 +186,70 @@ const keyOptions = ref([
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { z } from 'zod'
 
-const value = ref()
-const value2 = ref()
-const value3 = ref()
-const value4 = ref()
-const value5 = ref()
-const value6 = ref()
-const value7 = ref()
-const value8 = ref()
-const value9 = ref([])
-const value10 = ref([])
-const value11 = ref()
-const value12 = ref([])
-const value13 = ref()
-const value14 = ref()
-const value15 = ref([])
-const value16 = ref()
-const value17 = ref()
-const value18 = ref([])
+const outlinedValue = ref()
+const outlinedValue2 = ref()
+const outlinedValue3 = ref()
+const outlinedValue4 = ref()
+const outlinedValue5 = ref()
+const outlinedValue6 = ref()
+const outlinedValue7 = ref()
+const outlinedValue8 = ref([])
+const outlinedValue9 = ref([])
+const outlinedValue10 = ref()
+const outlinedValue11 = ref([])
+const outlinedValue12 = ref()
+const outlinedValue13 = ref()
+const outlinedValue14 = ref()
+const outlinedValue15 = ref()
+const outlinedValue16 = ref([])
 
-const options = ref([
-  {
-    label: 'Eat',
-    value: 1,
-  },
-  {
-    label: 'Sleep',
-    value: 2,
-  },
-  {
-    label: 'Play game',
-    value: 3,
-    disabled: true,
-  },
+const options = computed(() => [
+  { label: 'Eat', value: 1 },
+  { label: 'Sleep', value: 2 },
+  { label: 'Play game', value: 3, disabled: true },
 ])
 
-const keyOptions = ref([
-  {
-    name: 'Eat',
-    id: 1,
-  },
-  {
-    name: 'Sleep',
-    id: 2,
-  },
-  {
-    name: 'Play game',
-    id: 3,
-    disabled: true,
-  },
+const keyOptions = computed(() => [
+  { name: 'Eat', id: 1 },
+  { name: 'Sleep', id: 2 },
+  { name: 'Play game', id: 3, disabled: true },
 ])
 </script>
 
 <template>
   <var-space direction="column" size="large">
-    <var-select variant="outlined" placeholder="Please select one the options" v-model="value">
+    <var-select v-model="outlinedValue" variant="outlined" placeholder="Please select one the options">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select variant="outlined" placeholder="Label relation value" v-model="value2">
+    <var-select v-model="outlinedValue2" variant="outlined" placeholder="Label relation value">
       <var-option label="Eat" :value="1" />
       <var-option label="Sleep" :value="2" />
     </var-select>
-    <div class="relation">The current selection is: {{ value2 }}</div>
-    <var-select variant="outlined" placeholder="Readonly" readonly v-model="value3">
+    <div class="relation">The current selection is: {{ outlinedValue2 }}</div>
+    <var-select v-model="outlinedValue3" variant="outlined" placeholder="Readonly" readonly>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select variant="outlined" placeholder="Disabled" disabled v-model="value4">
+    <var-select v-model="outlinedValue4" variant="outlined" placeholder="Disabled" disabled>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select variant="outlined" placeholder="Clearable" clearable v-model="value5">
+    <var-select v-model="outlinedValue5" variant="outlined" placeholder="Clearable" clearable>
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select variant="outlined" placeholder="Use the clear icon slot" clearable v-model="value6">
+    <var-select v-model="outlinedValue6" variant="outlined" placeholder="Use the clear icon slot" clearable>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <template #clear-icon="{ clear }">
         <var-icon class="clear-icon" name="github" @click="clear" />
       </template>
     </var-select>
-
-    <var-select variant="outlined" placeholder="Custom Icon" v-model="value7">
+    <var-select v-model="outlinedValue7" variant="outlined" placeholder="Custom Icon">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -328,8 +261,8 @@ const keyOptions = ref([
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :name="outlinedValue7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ outlinedValue7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -341,7 +274,164 @@ const keyOptions = ref([
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="Custom Icon Size" v-model="value8">
+    <var-select v-model="outlinedValue8" variant="outlined" placeholder="Multiple Selection" multiple>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select v-model="outlinedValue9" variant="outlined" placeholder="Multiple choice of paper style" chip multiple>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select
+      v-model="outlinedValue10"
+      variant="outlined"
+      placeholder="Validate"
+      :rules="v => v === 'Rest' || 'You must choose to rest'"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
+      v-model="outlinedValue11"
+      variant="outlined"
+      multiple
+      placeholder="Multiple Validate"
+      :rules="v => v.length >= 2 || 'You select at least two options'"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select
+      v-model="outlinedValue12"
+      variant="outlined"
+      placeholder="Validate With Zod"
+      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select v-model="outlinedValue13" variant="outlined" placeholder="Options API" :options="options" />
+    <var-select
+      v-model="outlinedValue14"
+      variant="outlined"
+      placeholder="Custom Fields"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    />
+    <var-select v-model="outlinedValue15" variant="outlined" placeholder="Small Size" size="small">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select
+      v-model="outlinedValue16"
+      variant="outlined"
+      placeholder="Multiple Validate With Zod"
+      multiple
+      :rules="z.array(z.string()).min(2, 'You select at least two options')"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+  </var-space>
+</template>
+
+<style>
+.selected-icon {
+  margin-right: 6px;
+}
+
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+
+.arrow-icon-rotate {
+  transform: rotate(180deg);
+}
+</style>
+```
+### Filled Variant
+
+```html
+<script setup>
+import { ref, computed } from 'vue'
+import { z } from 'zod'
+
+const filledValue = ref()
+const filledValue2 = ref()
+const filledValue3 = ref()
+const filledValue4 = ref()
+const filledValue5 = ref()
+const filledValue6 = ref()
+const filledValue7 = ref()
+const filledValue8 = ref([])
+const filledValue9 = ref([])
+const filledValue10 = ref()
+const filledValue11 = ref([])
+const filledValue12 = ref()
+const filledValue13 = ref()
+const filledValue14 = ref()
+const filledValue15 = ref()
+const filledValue16 = ref([])
+
+const options = computed(() => [
+  { label: 'Eat', value: 1 },
+  { label: 'Sleep', value: 2 },
+  { label: 'Play game', value: 3, disabled: true },
+])
+
+const keyOptions = computed(() => [
+  { name: 'Eat', id: 1 },
+  { name: 'Sleep', id: 2 },
+  { name: 'Play game', id: 3, disabled: true },
+])
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-select v-model="filledValue" variant="filled" placeholder="Please select one the options">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select v-model="filledValue2" variant="filled" placeholder="Label relation value">
+      <var-option label="Eat" :value="1" />
+      <var-option label="Sleep" :value="2" />
+    </var-select>
+    <div class="relation">The current selection is: {{ filledValue2 }}</div>
+    <var-select v-model="filledValue3" variant="filled" placeholder="Readonly" readonly>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select v-model="filledValue4" variant="filled" placeholder="Disabled" disabled>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select v-model="filledValue5" variant="filled" placeholder="Clearable" clearable>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select v-model="filledValue6" variant="filled" placeholder="Use the clear icon slot" clearable>
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
+    <var-select v-model="filledValue7" variant="filled" placeholder="Custom Icon">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -353,58 +443,47 @@ const keyOptions = ref([
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value8 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value8 }}</span>
+        <var-icon class="selected-icon" :name="filledValue7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ filledValue7 }}</span>
       </template>
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
+        <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
+        <var-icon class="append-icon" name="github" />
       </template>
       <template #arrow-icon="{ focus }">
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-
-    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value9">
+    <var-select v-model="filledValue8" variant="filled" placeholder="Multiple Selection" multiple>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value10">
+    <var-select v-model="filledValue9" variant="filled" placeholder="Multiple choice of paper style" chip multiple>
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
     <var-select
-      variant="outlined"
+      v-model="filledValue10"
+      variant="filled"
       placeholder="Validate"
       :rules="v => v === 'Rest' || 'You must choose to rest'"
-      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Rest" />
     </var-select>
     <var-select
-      variant="outlined"
-      placeholder="Validate With Zod"
-      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
-      v-model="value17"
-    >
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-      <var-option label="Rest" />
-    </var-select>
-    <var-select
-      variant="outlined"
+      v-model="filledValue11"
+      variant="filled"
       multiple
       placeholder="Multiple Validate"
       :rules="v => v.length >= 2 || 'You select at least two options'"
-      v-model="value12"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -412,24 +491,40 @@ const keyOptions = ref([
       <var-option label="Coding" />
     </var-select>
     <var-select
-      variant="outlined"
-      multiple
+      v-model="filledValue12"
+      variant="filled"
+      placeholder="Validate With Zod"
+      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select v-model="filledValue13" variant="filled" placeholder="Options API" :options="options" />
+    <var-select
+      v-model="filledValue14"
+      variant="filled"
+      placeholder="Custom Fields"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    />
+    <var-select v-model="filledValue15" variant="filled" placeholder="Small Size" size="small">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select
+      v-model="filledValue16"
+      variant="filled"
       placeholder="Multiple Validate With Zod"
+      multiple
       :rules="z.array(z.string()).min(2, 'You select at least two options')"
-      v-model="value18"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value13">
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-    </var-select>
-    <var-select variant="outlined" placeholder="Options API" v-model="value14" :options="options" />
-    <var-select variant="outlined" placeholder="Options API" v-model="value15" :options="options" multiple />
-    <var-select variant="outlined" placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 
@@ -462,7 +557,7 @@ const keyOptions = ref([
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
 | `size` | Select size, The optional value is `normal` `small`                | _string_ | `normal` |
-| `variant` | Select variant, The optional value is `standard` `outlined` | _string_ | `standard` |
+| `variant` | Select variant, The optional value is `standard` `outlined` `filled` | _string_ | `standard` |
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `0` |
@@ -550,40 +645,6 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--field-decorator-text-color` | `#555` |
-| `--field-decorator-error-color` | `var(--color-danger)` |
-| `--field-decorator-blur-color` | `#888` |
-| `--field-decorator-focus-color` | `var(--color-primary)` |
-| `--field-decorator-placeholder-size` | `16px` |
-| `--field-decorator-icon-size` | `20px` |
-| `--field-decorator-line-size` | `1px` |
-| `--field-decorator-line-focus-size` | `2px` |
-| `--field-decorator-line-border-radius` | `4px` |
-| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-margin-top` | `22px` |
-| `--field-decorator-standard-normal-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
-| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
-| `--field-decorator-standard-small-margin-top` | `18px` |
-| `--field-decorator-standard-small-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-margin-top` | `18px` |
-| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
-| `--field-decorator-outlined-normal-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
-| `--field-decorator-outlined-normal-padding-left` | `16px` |
-| `--field-decorator-outlined-normal-padding-right` | `16px` |
-| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
-| `--field-decorator-outlined-small-margin-top` | `8px` |
-| `--field-decorator-outlined-small-margin-bottom` | `8px` |
-| `--field-decorator-outlined-small-padding-left` | `12px` |
-| `--field-decorator-outlined-small-padding-right` | `12px` |
-| `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
-| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
 | `--select-scroller-background` | `var(--color-surface-container-high)` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |

@@ -1,6 +1,7 @@
 export default {
   standard: '标准外观',
   outlined: '外边框外观',
+  filled: '填充外观',
   smallSize: '小尺寸',
   disabled: '禁用',
   readonly: '只读',
