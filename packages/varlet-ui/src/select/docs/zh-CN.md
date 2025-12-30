@@ -668,3 +668,7 @@ const keyOptions = computed(() => [
 | `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
 | `--option-text-color` | `#555` |
+
+#### Variant Variables
+
+外观相关的样式变量请参考 [Input 组件](#/zh-CN/input#yang4shi4bian4liang4) 的样式变量

@@ -665,3 +665,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
 | `--option-text-color` | `#555` |
+
+#### Variant Variables
+
+For style variables related to variant, please refer to the style variables of the [Input component](#/en-US/input#yang4shi4bian4liang4).
