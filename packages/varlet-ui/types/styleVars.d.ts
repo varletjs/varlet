@@ -424,6 +424,32 @@ interface BaseStyleVars {
   '--field-decorator-outlined-small-placeholder-space'?: string
   '--field-decorator-outlined-small-icon-margin-top'?: string
   '--field-decorator-outlined-small-icon-margin-bottom'?: string
+  '--field-decorator-filled-background-color'?: string
+  '--field-decorator-filled-border-radius'?: string
+  '--field-decorator-filled-normal-placeholder-hint-top'?: string
+  '--field-decorator-filled-normal-margin-top'?: string
+  '--field-decorator-filled-normal-margin-bottom'?: string
+  '--field-decorator-filled-normal-hint-center-margin-top'?: string
+  '--field-decorator-filled-normal-hint-margin-top'?: string
+  '--field-decorator-filled-normal-non-hint-margin-top'?: string
+  '--field-decorator-filled-normal-non-hint-margin-bottom'?: string
+  '--field-decorator-filled-normal-padding-left'?: string
+  '--field-decorator-filled-normal-padding-right'?: string
+  '--field-decorator-filled-normal-placeholder-space'?: string
+  '--field-decorator-filled-normal-icon-margin-top'?: string
+  '--field-decorator-filled-normal-icon-margin-bottom'?: string
+  '--field-decorator-filled-small-placeholder-hint-top'?: string
+  '--field-decorator-filled-small-margin-top'?: string
+  '--field-decorator-filled-small-margin-bottom'?: string
+  '--field-decorator-filled-small-hint-center-margin-top'?: string
+  '--field-decorator-filled-small-hint-margin-top'?: string
+  '--field-decorator-filled-small-padding-left'?: string
+  '--field-decorator-filled-small-padding-right'?: string
+  '--field-decorator-filled-small-placeholder-space'?: string
+  '--field-decorator-filled-small-icon-margin-top'?: string
+  '--field-decorator-filled-small-icon-margin-bottom'?: string
+  '--field-decorator-filled-small-non-hint-margin-top'?: string
+  '--field-decorator-filled-small-non-hint-margin-bottom'?: string
   '--input-input-height'?: string
   '--input-input-font-size'?: string
   '--input-textarea-height'?: string
