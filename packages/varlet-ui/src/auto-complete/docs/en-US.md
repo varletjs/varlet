@@ -9,6 +9,7 @@ Autocomplete function of input field.
 ```html
 <script setup>
 import { ref, computed } from 'vue'
+import { z } from 'zod'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
@@ -21,7 +22,6 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
-const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -60,25 +60,17 @@ function useAutoComplete() {
       v-model="value6"
     />
     <var-auto-complete
-      placeholder="validate With Zod"
-      :options="options12"
+      placeholder="Validate With Zod"
+      :options="options7"
       :rules="z.string().min(7, 'Text length must be greater than 6')"
-      v-model="value12"
+      v-model="value7"
     />
-    <var-auto-complete placeholder="Display Icon" :options="options7" v-model="value7">
+    <var-auto-complete placeholder="Display Icon" :options="options8" v-model="value8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
-      </template>
-    </var-auto-complete>  
-    <var-auto-complete placeholder="Custom Icon Size" :options="options8" v-model="value8">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-auto-complete>  
     <var-auto-complete
@@ -118,6 +110,7 @@ function useAutoComplete() {
 ```html
 <script setup>
 import { ref, computed } from 'vue'
+import { z } from 'zod'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
@@ -130,7 +123,6 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
-const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -171,25 +163,17 @@ function useAutoComplete() {
     />
     <var-auto-complete
       variant="outlined"
-      placeholder="validate With Zod"
-      :options="options12"
+      placeholder="Validate With Zod"
+      :options="options7"
       :rules="z.string().min(7, 'Text length must be greater than 6')"
-      v-model="value12"
+      v-model="value7"
     />
-    <var-auto-complete variant="outlined" placeholder="Display Icon" :options="options7" v-model="value7">
+    <var-auto-complete variant="outlined" placeholder="Display Icon" :options="options8" v-model="value8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
-      </template>
-    </var-auto-complete>  
-    <var-auto-complete variant="outlined" placeholder="Custom Icon Size" :options="options8" v-model="value8">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-auto-complete>  
     <var-auto-complete
@@ -227,6 +211,112 @@ function useAutoComplete() {
 </style>
 ```
 
+### Filled Variant
+
+```html
+<script setup>
+import { ref, computed } from 'vue'
+import { z } from 'zod'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  retu drn {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete variant="filled" placeholder="Please enter text" :options="options" v-model="value" />
+    <var-auto-complete variant="filled" readonly placeholder="Readonly" :options="options2" v-model="value2" />
+    <var-auto-complete variant="filled" disabled placeholder="Disabled" :options="options3" v-model="value3" />
+    <var-auto-complete variant="filled" clearable placeholder="Clearable" :options="options4" v-model="value4" />
+    <var-auto-complete variant="filled" clearable placeholder="Use the clear icon slot" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="filled"
+      placeholder="Validate"
+      :options="options6"
+      :rules="v => v.length > 6 || 'Text length must be greater than 6'"
+      v-model="value6"
+    />
+    <var-auto-complete
+      variant="filled"
+      placeholder="Validate With Zod"
+      :options="options7"
+      :rules="z.string().min(7, 'Text length must be greater than 6')"
+      v-model="value7"
+    />
+    <var-auto-complete variant="filled" placeholder="Display Icon" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      variant="filled"
+      placeholder="Maxlength"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      variant="filled"
+      placeholder="Custom Menu Show Timing"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      variant="filled"
+      size="small"
+      placeholder="Small Size"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
 ## API
 
 ### Props
@@ -236,7 +326,7 @@ function useAutoComplete() {
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
 | `v-model` | The value of the binding                   | _string_ | `-` |
-| `variant` | Input variants, The optional value is `standard` `outlined`    | _string_ | `standard` |
+| `variant` | Input variants, The optional value is `standard` `outlined` `filled`   | _string_ | `standard` |
 | `size` | Input size, The optional value is `normal` `small`     | _string_ | `normal` |
 | `placeholder` | placeholder          | _string_ | `-` |
 | `options`  | Specifies options | _AutoCompleteOption[]_ | `[]` |
@@ -299,6 +389,12 @@ function useAutoComplete() {
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
+#### AutoComplete Variables
+
 | Variable | Default |
 | --- | --- |
 | `--auto-complete-options-padding` | `6px 0`  |
+
+#### Variant Variables
+
+For style variables related to variant, please refer to the style variables of the [Input component](#/en-US/input#yang4shi4bian4liang4).

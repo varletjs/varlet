@@ -8,7 +8,6 @@ export default {
   clearable: 'Clearable',
   clearIconSlot: 'Use the clear icon slot',
   customIcon: 'Custom Icon',
-  customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   validateWithZod: 'Validate With Zod',
   multipleValidate: 'Multiple Validate',

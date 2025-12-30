@@ -8,7 +8,6 @@ export default {
   clearable: '可清除',
   clearIconSlot: '使用插槽自定义清除图标',
   customIcon: '自定义图标',
-  customIconSize: '自定义图标尺寸',
   validate: '单选值校验',
   validateWithZod: '使用 Zod 校验单选值',
   multipleValidate: '多选值校验',
