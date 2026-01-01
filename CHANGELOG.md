@@ -1,3 +1,16 @@
+# [3.13.0](https://github.com/varletjs/varlet/compare/v3.12.3...v3.13.0) (2026-01-01)
+
+
+### Features
+
+* **field-decorator:** add filled variant style variables ([0b3b387](https://github.com/varletjs/varlet/commit/0b3b387c61f8a5904a79efcfd74bfaa98c069b53))
+* **filled-variant:** support filled variant for field ([f530aba](https://github.com/varletjs/varlet/commit/f530aba7388c19bf85631b72f1e5ea54cf83aad0))
+* **input:** add filled variant and update examples ([201a391](https://github.com/varletjs/varlet/commit/201a39133d26ddddc398d337fc0ceac503ccaf71))
+* **select:** support chip css var ([92f1e12](https://github.com/varletjs/varlet/commit/92f1e12feb61fc7cc2d4e578207f1bc7a730ad4e))
+* update docs ([847cdcc](https://github.com/varletjs/varlet/commit/847cdcc4145655aa10b4264533a6873895d00050))
+
+
+
 ## [3.12.3](https://github.com/varletjs/varlet/compare/v3.12.2...v3.12.3) (2025-11-17)
 
 
