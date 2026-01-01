@@ -289,6 +289,7 @@ test('fab events and fragment default slots and click outside close', async () =
     },
   })
 
+  await delay(16)
   const button = container.querySelector('.var-button')
   expect(container.innerHTML).toMatchSnapshot()
   await trigger(button, 'click')
