@@ -1,0 +1,143 @@
+:root {
+  --tour-width: 280px;
+  --tour-background: var(--color-surface-container-low);
+  --tour-border-radius: 3px;
+  --tour-title-padding: 20px 20px 0;
+  --tour-title-color: #555;
+  --tour-title-font-size: var(--font-size-lg);
+  --tour-message-color: #888;
+  --tour-message-padding: 12px 20px;
+  --tour-message-font-size: var(--font-size-md);
+  --tour-message-line-height: 24px;
+  --tour-indicator-background-color: rgba(0, 0, 0, 0.15);
+  --tour-indicator-active-background-color: var(--color-primary);
+  --tour-actions-padding: 0 12px 12px 20px;
+  --tour-next-button-color: var(--color-primary);
+  --tour-prev-button-color: var(--color-primary);
+  --tour-close-button-right: 20px;
+  --tour-close-button-top: 20px;
+  --tour-primary-background: var(--color-primary);
+  --tour-primary-title-color: var(--color-on-primary);
+  --tour-primary-message-color: var(--color-on-info);
+  --tour-primary-indicator-background-color: rgba(255, 255, 255, 0.15);
+  --tour-primary-indicator-active-background-color: var(--color-on-primary);
+  --tour-primary-next-button-color: var(--color-on-primary);
+  --tour-primary-prev-button-color: var(--color-on-primary);
+}
+
+.var-tour {
+  &--primary {
+    --tour-background: var(--tour-primary-background);
+    --tour-title-color: var(--tour-primary-title-color);
+    --tour-message-color: var(--tour-primary-message-color);
+    --tour-indicator-background-color: var(--tour-primary-indicator-background-color);
+    --tour-indicator-active-background-color: var(--tour-primary-indicator-active-background-color);
+    --tour-next-button-color: var(--tour-primary-next-button-color);
+    --tour-prev-button-color: var(--tour-primary-prev-button-color);
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__overlay svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__hollow {
+    fill: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s var(--cubic-bezier);
+  }
+
+  &__content {
+    width: var(--tour-width);
+    background: var(--tour-background);
+    border-radius: var(--tour-border-radius);
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: inherit;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+
+  &__content[data-popper-placement='top'] &__arrow,
+  &__content[data-popper-placement='top-start'] &__arrow,
+  &__content[data-popper-placement='top-end'] &__arrow {
+    bottom: -5px;
+  }
+
+  &__content[data-popper-placement='bottom'] &__arrow,
+  &__content[data-popper-placement='bottom-start'] &__arrow,
+  &__content[data-popper-placement='bottom-end'] &__arrow {
+    top: -5px;
+  }
+
+  &__content[data-popper-placement='left'] &__arrow,
+  &__content[data-popper-placement='left-start'] &__arrow,
+  &__content[data-popper-placement='left-end'] &__arrow {
+    right: -5px;
+  }
+
+  &__content[data-popper-placement='right'] &__arrow,
+  &__content[data-popper-placement='right-start'] &__arrow,
+  &__content[data-popper-placement='right-end'] &__arrow {
+    left: -5px;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: var(--tour-close-button-top);
+    right: var(--tour-close-button-right);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tour-title-color);
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    padding: var(--tour-actions-padding);
+  }
+
+  &__indicators {
+    display: flex;
+  }
+
+  &__indicator {
+    background-color: var(--tour-indicator-background-color);
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+  }
+
+  &__indicator&--active {
+    background-color: var(--tour-indicator-active-background-color);
+  }
+
+  &__buttons {
+    margin-left: auto;
+  }
+
+  &__previous-button {
+    margin-right: 6px;
+    color: var(--tour-prev-button-color);
+  }
+
+  &__next-button {
+    color: var(--tour-next-button-color);
+  }
+}
