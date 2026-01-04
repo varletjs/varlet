@@ -1,0 +1,34 @@
+:root {
+  --virtual-list-height: 100%;
+}
+
+.var-virtual-list {
+  /* 基础样式 */
+  height: var(--virtual-list-height);
+  overflow-y: auto;
+  position: relative;
+
+  /* 幽灵层 - 撑开滚动区域 */
+  &__phantom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  /* 内容层 - 实际渲染的可视区域 */
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  /* 列表项容器 */
+  &__item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

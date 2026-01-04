@@ -926,6 +926,7 @@ interface BaseStyleVars {
   '--uploader-disabled-color'?: string
   '--uploader-disabled-text-color'?: string
   '--uploader-loading-background'?: string
+  '--virtual-list-height'?: string
   '--watermark-content-color'?: string
   [key: PropertyKey]: string
 }
