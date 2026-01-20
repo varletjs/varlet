@@ -11,6 +11,10 @@ export const props = {
     type: [Number, String] as PropType<number | string>,
     default: 1,
   },
+  animated: {
+    type: Boolean,
+    default: true,
+  },
   fixed: Boolean,
   border: Boolean,
   variant: Boolean,
