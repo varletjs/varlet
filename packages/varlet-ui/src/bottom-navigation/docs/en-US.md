@@ -204,6 +204,7 @@ const active = ref(0)
 | `placeholder` ***3.2.11***  | Whether to generate placeholder elements of the same height at the bottom (`fixed` required)  | _boolean_ | `false` |
 | `fab-props`     | Fab button props                                    | _ButtonProps_ | `{ type: 'primary' }` |
 | `variant` ***3.2.0***      | Variant mode | _boolean_ | `false` |
+| `animated` ***3.13.1*** | Whether to enable content switching animation | _boolean_ | `true` |
 
 #### BottomNavigationItem Props
 

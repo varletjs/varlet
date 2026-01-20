@@ -206,6 +206,7 @@ const active = ref(0)
 | `placeholder`  ***3.2.11***   | 是否在底部生成相同高度的占位元素(需设置 `fixed`)  | _boolean_ | `false` |
 | `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{ type: 'primary' }` |
 | `variant` ***3.2.0***      | 变体模式          | _boolean_ | `false` |
+| `animated` ***3.13.1*** | 是否启用内容切换动画 | _boolean_ | `true` |
 
 #### BottomNavigationItem Props
 
