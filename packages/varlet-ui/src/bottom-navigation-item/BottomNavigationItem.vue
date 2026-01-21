@@ -1,7 +1,15 @@
 <template>
   <button
     v-ripple
-    :class="classes(n(), n('$--box'), [variant, n('--variant-padding')], [isActive && !variant, n('--active')])"
+    :class="
+      classes(
+        n(),
+        n('$--box'),
+        [variant, n('--variant-padding')],
+        [isActive && !variant, n('--active')],
+        [animated, n('--animated')],
+      )
+    "
     :style="{
       color: isActive ? activeColor : inactiveColor,
     }"
@@ -69,7 +77,7 @@ export default defineComponent({
     const isActive = computed<boolean>(() => [name.value, index.value].includes(active.value))
     const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
-    const { active, activeColor, inactiveColor, variant } = bottomNavigation
+    const { animated, active, activeColor, inactiveColor, variant } = bottomNavigation
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,
       index,
@@ -85,6 +93,7 @@ export default defineComponent({
     }
 
     return {
+      animated,
       activeColor,
       inactiveColor,
       badgeProps,
