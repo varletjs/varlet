@@ -1,3 +1,12 @@
+## [3.13.1](https://github.com/varletjs/varlet/compare/v3.13.0...v3.13.1) (2026-01-22)
+
+
+### Features
+
+* **bottom-navigation:** support animated ([#1939](https://github.com/varletjs/varlet/issues/1939)) ([2f2bdf1](https://github.com/varletjs/varlet/commit/2f2bdf161915e88a2c18afe1668b1e5696225208))
+
+
+
 # [3.13.0](https://github.com/varletjs/varlet/compare/v3.12.3...v3.13.0) (2026-01-01)
 
 
