@@ -40,8 +40,5 @@
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
-  },
-  "peerDependencies": {
-    "tailwindcss": "^3.4.1"
   }
 }
