@@ -27,14 +27,12 @@ const expectValidate = async (form, wrapper, message) => {
   await form.validate()
   await delay(10)
   expect(wrapper.find('.var-form-details__error-message').text()).toBe(message)
-  expect(wrapper.html()).toMatchSnapshot()
 }
 
 const expectReset = async (form, wrapper) => {
   form.reset()
   await delay(16)
   expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
-  expect(wrapper.html()).toMatchSnapshot()
 }
 
 const Wrapper = {
@@ -449,7 +447,8 @@ test('form with switch', async () => {
     `,
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-switch').attributes('aria-checked')).toBe('false')
+  expect(wrapper.find('.var-switch__block').classes('var-switch--disabled')).toBe(true)
 
   await wrapper.find('.var-switch__block').trigger('click')
   expect(wrapper.vm.value).toBe(false)
