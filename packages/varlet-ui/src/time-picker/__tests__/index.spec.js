@@ -34,10 +34,14 @@ test('timePicker style and format', async () => {
   })
 
   await delay(0)
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-time-picker__title').attributes('style')).toContain('background: purple')
+  expect(wrapper.find('.var-time-picker__title-ampm').exists()).toBe(true)
+  const handStyle = wrapper.find('.var-time-picker__clock-hand').attributes('style')
+  expect(handStyle).toContain('background-color: rgb(123, 184, 114)')
+  expect(handStyle).toMatch(/border-color: (rgb\(123, 184, 114\)|#7bb872)/)
 
   await wrapper.setData({ format: '24hr' })
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-time-picker__title-ampm').exists()).toBe(false)
   wrapper.unmount()
 })
 

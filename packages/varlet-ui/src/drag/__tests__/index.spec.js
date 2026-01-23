@@ -18,15 +18,16 @@ test('drag direction', async () => {
   })
 
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  const drag = container.querySelector('.var-drag')
+  expect(drag.getAttribute('style')).toContain('transform: translate(10px, 10px)')
 
   wrapper.setProps({ direction: 'x' })
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  expect(drag.getAttribute('style')).toContain('transform: translate(10px, 0px)')
 
   wrapper.setProps({ direction: 'y' })
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  expect(drag.getAttribute('style')).toContain('transform: translate(0px, 10px)')
 
   wrapper.unmount()
 })
@@ -40,15 +41,16 @@ test('drag attraction', async () => {
     },
   })
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  const drag = container.querySelector('.var-drag')
+  expect(drag.getAttribute('style')).toContain('transform: translate(0px, 10px)')
 
   wrapper.setProps({ attraction: 'y' })
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  expect(drag.getAttribute('style')).toContain('transform: translate(10px, 0px)')
 
   wrapper.setProps({ attraction: 'xy' })
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  expect(drag.getAttribute('style')).toContain('transform: translate(0px, 0px)')
 
   wrapper.unmount()
 })
@@ -63,7 +65,9 @@ test('drag disabled', async () => {
   })
 
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  const drag = container.querySelector('.var-drag')
+  expect(drag.getAttribute('style')).toContain('z-index: 90')
+  expect(drag.getAttribute('style')).not.toContain('transform:')
 
   wrapper.unmount()
 })
@@ -84,7 +88,8 @@ test('drag boundary', async () => {
   await trigger(el, 'touchstart', 0, 0)
   await trigger(el, 'touchmove', 1, 1)
   await trigger(el, 'touchend', 1, 1)
-  expect(container.innerHTML).toMatchSnapshot()
+  const drag = container.querySelector('.var-drag')
+  expect(drag.getAttribute('style')).toContain('transform: translate(10px, 10px)')
 
   wrapper.unmount()
 })
@@ -98,11 +103,12 @@ test('drag reset', async () => {
   })
 
   await triggerDrag(container.childNodes[1], 10, 10)
-  expect(container.innerHTML).toMatchSnapshot()
+  const drag = container.querySelector('.var-drag')
+  expect(drag.getAttribute('style')).toContain('transform: translate(10px, 10px)')
 
   wrapper.vm.reset()
   await delay()
-  expect(container.innerHTML).toMatchSnapshot()
+  expect(drag.getAttribute('style')).not.toContain('transform:')
 
   wrapper.unmount()
 })
