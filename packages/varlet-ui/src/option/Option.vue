@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="visible"
     ref="root"
     v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
@@ -47,6 +48,7 @@ import VarCheckbox from '../checkbox'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Ripple from '../ripple'
+import { SelectOption } from '../select/props'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
 import { OptionProvider, useSelect } from './provide'
@@ -66,26 +68,25 @@ export default defineComponent({
     const root = ref<HTMLElement>()
     const isFocusing = ref(false)
     const optionSelected = ref(false)
+    const option = computed(
+      () =>
+        props.option ??
+        ({
+          label: props.label,
+          value: props.value,
+          disabled: props.disabled,
+        } as SelectOption),
+    )
     const selected = computed(() => optionSelected.value)
     const value = computed<any>(() => props.value)
     const disabled = computed(() => props.disabled)
     const ripple = computed(() => props.ripple)
     const { select, bindSelect } = useSelect()
-    const { multiple, focusColor, onSelect, computeLabel } = select
+    const { query, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
     const { hovering, handleHovering } = useHoverOverlay()
 
-    const labelVNode = computed(() =>
-      isFunction(props.label)
-        ? props.label(
-            props.option ?? {
-              label: props.label,
-              value: props.value,
-              disabled: props.disabled,
-            },
-            optionSelected.value,
-          )
-        : props.label,
-    )
+    const labelVNode = computed<any>(() => (isFunction(props.label) ? option.value : props.label))
+    const visible = computed(() => !filterable.value || !query.value || filter.value(query.value, option.value))
 
     const optionProvider: OptionProvider = {
       label: labelVNode,
@@ -151,6 +152,7 @@ export default defineComponent({
     return {
       root,
       optionSelected,
+      visible,
       multiple,
       focusColor,
       hovering,

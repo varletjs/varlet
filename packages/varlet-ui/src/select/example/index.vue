@@ -20,6 +20,7 @@ const standardValue13 = ref()
 const standardValue14 = ref()
 const standardValue15 = ref()
 const standardValue16 = ref([])
+const standardValue17 = ref()
 
 const outlinedValue = ref()
 const outlinedValue2 = ref()
@@ -37,6 +38,7 @@ const outlinedValue13 = ref()
 const outlinedValue14 = ref()
 const outlinedValue15 = ref()
 const outlinedValue16 = ref([])
+const outlinedValue17 = ref()
 
 // 填充
 const filledValue = ref()
@@ -55,6 +57,7 @@ const filledValue13 = ref()
 const filledValue14 = ref()
 const filledValue15 = ref()
 const filledValue16 = ref([])
+const filledValue17 = ref()
 
 const options = computed(() => [
   { label: t('eat'), value: 1 },
@@ -85,6 +88,7 @@ watchLang((lang) => {
   standardValue14.value = undefined
   standardValue15.value = undefined
   standardValue16.value = []
+  standardValue17.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -102,6 +106,7 @@ watchLang((lang) => {
   outlinedValue14.value = undefined
   outlinedValue15.value = undefined
   outlinedValue16.value = []
+  outlinedValue17.value = undefined
 
   filledValue.value = undefined
   filledValue2.value = undefined
@@ -119,6 +124,7 @@ watchLang((lang) => {
   filledValue14.value = undefined
   filledValue15.value = undefined
   filledValue16.value = []
+  filledValue17.value = undefined
 
   use(lang)
 })
@@ -238,8 +244,15 @@ onThemeChange()
       v-model="standardValue16"
       :placeholder="t('multipleValidateWithZod')"
       multiple
+      filterable
       :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
     >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
+    </var-select>
+    <var-select v-model="standardValue17" :placeholder="t('filterable')" filterable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
@@ -371,6 +384,12 @@ onThemeChange()
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
+    <var-select v-model="outlinedValue17" variant="outlined" :placeholder="t('filterable')" filterable>
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
+    </var-select>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('filled') }}</app-type>
@@ -492,6 +511,12 @@ onThemeChange()
       multiple
       :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
     >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
+    </var-select>
+    <var-select v-model="filledValue17" variant="filled" :placeholder="t('filterable')" filterable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
