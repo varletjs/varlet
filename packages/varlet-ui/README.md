@@ -122,16 +122,6 @@ See [Varlet UI Playground](https://varletjs.org/playground).
 
 See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
 
-### Community
-
-We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
-
-* Wechat group 
-
-<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/community.png" />
-
-* Join the [Discord](https://discord.gg/Dmb8ydBHkw)
-
 ### Thanks to contributors
 
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
