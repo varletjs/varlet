@@ -1,0 +1,15 @@
+export default {
+  basicUsage: 'Basic Usage',
+  nonModal: 'Non Modal',
+  placement: 'Placement',
+  indicator: 'Custom Indicator',
+  beginTour: 'Begin Tour',
+  upload: 'Upload',
+  save: 'Save',
+  firstTitle: 'Upload File',
+  firstMessage: 'Put you files here.',
+  secondTitle: 'Save',
+  secondMessage: 'Save your changes.',
+  thirdTitle: 'Other Actions',
+  thirdMessage: 'Click to see other',
+}

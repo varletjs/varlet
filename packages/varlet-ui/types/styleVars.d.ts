@@ -898,6 +898,30 @@ interface BaseStyleVars {
   '--tooltip-success-text-color'?: string
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
+  '--tour-width'?: string
+  '--tour-background'?: string
+  '--tour-border-radius'?: string
+  '--tour-title-padding'?: string
+  '--tour-title-color'?: string
+  '--tour-title-font-size'?: string
+  '--tour-message-color'?: string
+  '--tour-message-padding'?: string
+  '--tour-message-font-size'?: string
+  '--tour-message-line-height'?: string
+  '--tour-indicator-background-color'?: string
+  '--tour-indicator-active-background-color'?: string
+  '--tour-actions-padding'?: string
+  '--tour-next-button-color'?: string
+  '--tour-prev-button-color'?: string
+  '--tour-close-button-right'?: string
+  '--tour-close-button-top'?: string
+  '--tour-primary-background'?: string
+  '--tour-primary-title-color'?: string
+  '--tour-primary-message-color'?: string
+  '--tour-primary-indicator-background-color'?: string
+  '--tour-primary-indicator-active-background-color'?: string
+  '--tour-primary-next-button-color'?: string
+  '--tour-primary-prev-button-color'?: string
   '--uploader-action-background'?: string
   '--uploader-action-icon-color'?: string
   '--uploader-action-icon-size'?: string
