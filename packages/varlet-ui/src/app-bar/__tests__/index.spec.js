@@ -113,7 +113,15 @@ describe('test app bar component props', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.vm.rootStyles).toMatchObject({
+      'background-image':
+        'linear-gradient(to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%), url(https://1.png)',
+      'background-position': 'center center',
+      'background-size': 'cover',
+      'z-index': 1,
+    })
+
+    wrapper.unmount()
   })
 
   test('app bar fixed', async () => {

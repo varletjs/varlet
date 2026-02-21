@@ -269,7 +269,12 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varletjs.org/varlet/cat.jpg')
 
     wrapper.unmount()
   })
@@ -293,7 +298,12 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
+    expect(wrapper.find('.var-card__title').text()).toBe('title')
 
     wrapper.unmount()
   })
@@ -305,7 +315,12 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
+    expect(wrapper.find('.var-card__subtitle').text()).toBe('subtitle')
 
     wrapper.unmount()
   })
@@ -317,7 +332,12 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
+    expect(wrapper.find('.var-card__description').text()).toBe('description')
 
     wrapper.unmount()
   })
@@ -329,7 +349,12 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
+    expect(wrapper.find('.var-card__footer').text()).toBe('extra')
 
     wrapper.unmount()
   })
@@ -341,12 +366,20 @@ describe('test card component slots', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const floater = wrapper.find('.var-card__floater')
+    const style = floater.attributes('style') ?? ''
+    expect(style).toContain('width: 100%')
+    expect(style).toContain('height: 100%')
+    expect(style).toContain('overflow: hidden')
 
     await wrapper.setProps({
       layout: 'row',
     })
-    expect(wrapper.html()).toMatchSnapshot()
+    const rowFloater = wrapper.find('.var-card__floater')
+    const rowStyle = rowFloater.attributes('style') ?? ''
+    expect(rowStyle).toContain('width: auto')
+    expect(rowStyle).toContain('height: auto')
+    expect(rowStyle).toContain('overflow: hidden')
 
     wrapper.unmount()
   })

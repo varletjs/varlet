@@ -41,7 +41,10 @@ test('watermark font', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  const span = wrapper.find('svg span')
+  expect(span.text()).toBe('Varlet')
+  expect(span.attributes('style')).toContain('font-size: 15px')
+  expect(span.attributes('style')).toContain('font-weight: 700')
   wrapper.unmount()
 })
 
@@ -92,7 +95,7 @@ test('watermark image', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg image').exists()).toBe(true)
   wrapper.unmount()
 })
 
@@ -144,14 +147,16 @@ test('watermark width', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg').attributes('width')).toBe('150')
+  expect(wrapper.find('svg').attributes('viewBox')).toBe('0 0 150 100')
   await wrapper.setProps({
     width: 200,
   })
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg').attributes('width')).toBe('200')
+  expect(wrapper.find('svg').attributes('viewBox')).toBe('0 0 200 100')
   wrapper.unmount()
 })
 
@@ -164,13 +169,15 @@ test('watermark height', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg').attributes('height')).toBe('150')
+  expect(wrapper.find('svg').attributes('viewBox')).toBe('0 0 100 150')
   await wrapper.setProps({
     height: 200,
   })
 
   await wrapper.vm.$nextTick()
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg').attributes('height')).toBe('200')
+  expect(wrapper.find('svg').attributes('viewBox')).toBe('0 0 100 200')
   wrapper.unmount()
 })
 
@@ -262,13 +269,13 @@ test('watermark image offsetX', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg image').attributes('x')).toBe('20')
   await wrapper.setProps({
     offsetX: 30,
   })
 
   await wrapper.vm.$nextTick()
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg image').attributes('x')).toBe('30')
   wrapper.unmount()
 })
 
@@ -282,13 +289,13 @@ test('watermark image offsetY', async () => {
 
   await wrapper.vm.$nextTick()
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg image').attributes('y')).toBe('20')
   await wrapper.setProps({
     offsetY: 30,
   })
 
   await wrapper.vm.$nextTick()
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('svg image').attributes('y')).toBe('30')
   wrapper.unmount()
 })
 
