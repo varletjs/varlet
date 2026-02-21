@@ -1,9 +1,9 @@
-import { computed, ComputedRef, ref, shallowRef } from 'vue'
-import { useResizeObserver } from '@varlet/use'
+import { computed, nextTick, ref, shallowRef, unref, watch } from 'vue'
+import type { MaybeRef } from 'vue'
 
 const MINIMUM_INPUT_WIDTH = 11
 
-export function useCalcInputWidth(filterable: ComputedRef<boolean>) {
+export function useCalcInputWidth(value: MaybeRef) {
   const calculatorRef = shallowRef<HTMLElement>()
   const calculatorWidth = ref(0)
 
@@ -11,15 +11,21 @@ export function useCalcInputWidth(filterable: ComputedRef<boolean>) {
     minWidth: `${Math.max(calculatorWidth.value, MINIMUM_INPUT_WIDTH)}px`,
   }))
 
-  const resetCalculatorWidth = () => {
+  const calculate = () => {
     calculatorWidth.value = calculatorRef.value?.getBoundingClientRect().width ?? 0
   }
 
-  useResizeObserver(calculatorRef, resetCalculatorWidth)
+  watch(
+    () => unref(value),
+    () => {
+      nextTick(calculate)
+    },
+  )
 
   return {
     calculatorRef,
     calculatorWidth,
     inputStyle,
+    calculate,
   }
 }

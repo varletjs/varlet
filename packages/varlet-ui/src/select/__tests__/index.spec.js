@@ -803,3 +803,78 @@ describe('test select validation with zod', () => {
     wrapper.unmount()
   })
 })
+
+test('select filterable', async () => {
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        value: '',
+      }),
+      template: `
+      <var-select v-model="value" filterable>
+        <var-option label="eat" />
+        <var-option label="sleep" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body },
+  )
+
+  await wrapper.trigger('click')
+  await delay(100)
+
+  const input = wrapper.find('input')
+  expect(input.exists()).toBeTruthy()
+
+  await input.setValue('ea')
+  await delay(100)
+
+  const options = document.querySelectorAll('.var-option')
+  expect(options[0].style.display).not.toBe('none')
+  expect(options[1].style.display).toBe('none')
+
+  wrapper.unmount()
+})
+
+test('select custom filter', async () => {
+  const filter = (pattern, option) => option.label === pattern
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        value: '',
+      }),
+      methods: {
+        filter,
+      },
+      template: `
+      <var-select v-model="value" filterable :filter="filter">
+        <var-option label="eat" />
+        <var-option label="sleep" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body },
+  )
+
+  await wrapper.trigger('click')
+  await delay(100)
+
+  const input = wrapper.find('input')
+  expect(input.exists()).toBeTruthy()
+
+  await input.setValue('ea')
+  await delay(100)
+
+  const options = document.querySelectorAll('.var-option')
+  expect(options[0].style.display).toBe('none')
+  expect(options[1].style.display).toBe('none')
+
+  await input.setValue('eat')
+  await delay(100)
+  expect(options[0].style.display).not.toBe('none')
+  expect(options[1].style.display).toBe('none')
+
+  wrapper.unmount()
+})

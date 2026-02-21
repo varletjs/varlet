@@ -51,7 +51,7 @@
           <div :class="classes(n('label'), [filterable && showMenu, n('label-focusing')])">
             <slot v-if="!isEmptyModelValue" name="selected">
               <template v-if="multiple">
-                <div v-if="chip" ref="inputHost" :class="n('chips')">
+                <div v-if="chip" :class="n('chips')">
                   <var-chip
                     v-for="l in labels"
                     :key="l"
@@ -65,11 +65,35 @@
                   >
                     <maybe-v-node :is="l" />
                   </var-chip>
+                  <var-select-input
+                    v-if="showInput"
+                    ref="inputRef"
+                    v-model="query"
+                    :style="inputStyle"
+                    multiple
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
-                <div v-else ref="inputHost" :class="n('values')">
+                <div v-else :class="n('values')">
                   <template v-for="(l, labelIndex) in labels" :key="l">
                     <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
+                  <var-select-input
+                    v-if="showInput"
+                    ref="inputRef"
+                    v-model="query"
+                    :style="inputStyle"
+                    multiple
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
               </template>
 
@@ -77,19 +101,17 @@
             </slot>
           </div>
 
-          <teleport v-if="filterable && !readonly && !disabled" :to="inputHost" :disabled="!inputHost">
-            <input
-              ref="inputRef"
-              v-model="query"
-              type="text"
-              :class="classes(n('input'), [multiple, n('input--multiple')])"
-              @input="handleInput"
-              @focus="handleFocus"
-              @blur="handleRootBlur"
-              @compositionstart="handleCompositionStart"
-              @compositionend="handleCompositionEnd"
-            />
-          </teleport>
+          <var-select-input
+            v-if="showInput && (!multiple || isEmptyModelValue)"
+            ref="inputRef"
+            v-model="query"
+            :style="inputStyle"
+            @focus="handleFocus"
+            @blur="handleRootBlur"
+            @input="handleInput"
+            @compositionstart="handleCompositionStart"
+            @compositionend="handleCompositionEnd"
+          />
           <span
             v-if="enableCustomPlaceholder && !query"
             :class="classes(n('placeholder'), n('$--ellipsis'))"
@@ -159,6 +181,7 @@ import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
+import VarSelectInput from './SelectInput.vue'
 import { useCalcInputWidth } from './useCalcInputWidth'
 import { useSelectController } from './useSelectController'
 
@@ -173,6 +196,7 @@ export default defineComponent({
     VarOption,
     VarFieldDecorator,
     VarFormDetails,
+    VarSelectInput,
     MaybeVNode,
   },
   props,
@@ -180,8 +204,7 @@ export default defineComponent({
     const isFocusing = ref(false)
     const showMenu = ref(false)
     const root = ref<HTMLElement | null>(null)
-    const inputRef = ref<HTMLInputElement | null>(null)
-    const inputHost = ref()
+    const inputRef = ref<InstanceType<typeof VarSelectInput> | null>(null)
     const query = ref('')
     const isComposing = ref(false)
     const filterable = computed(() => props.filterable)
@@ -237,7 +260,8 @@ export default defineComponent({
       }
       return props.tabindex ?? '0'
     })
-    const { calculatorRef, inputStyle } = useCalcInputWidth(filterable)
+    const showInput = computed(() => filterable.value && !readonly.value && !disabled.value)
+    const { calculatorRef, inputStyle } = useCalcInputWidth(query)
 
     const selectProvider: SelectProvider = {
       query: computed(() => query.value),
@@ -359,10 +383,13 @@ export default defineComponent({
     }
 
     function handleRootFocus(e: FocusEvent) {
-      if (inputRef.value?.contains(e.relatedTarget as Element | null)) {
+      const el = inputRef.value?.$el
+
+      if (el?.contains(e.relatedTarget as Element | null)) {
         inputRef.value?.focus()
         return
       }
+
       handleFocus()
     }
 
@@ -491,7 +518,6 @@ export default defineComponent({
     return {
       root,
       inputRef,
-      inputHost,
       calculatorRef,
       isComposing,
       inputStyle,
@@ -502,6 +528,7 @@ export default defineComponent({
       offsetY,
       isFocusing,
       showMenu,
+      showInput,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,

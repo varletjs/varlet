@@ -244,7 +244,6 @@ onThemeChange()
       v-model="standardValue16"
       :placeholder="t('multipleValidateWithZod')"
       multiple
-      filterable
       :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
     >
       <var-option :label="t('eat')" />

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="visible"
+    v-show="visible"
     ref="root"
     v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
