@@ -1,5 +1,10 @@
 <template>
-  <input ref="inputRef" v-model="value" type="text" :class="classes(n('input'), [multiple, n('input--multiple')])" />
+  <input
+    ref="filterInputRef"
+    v-model="value"
+    type="text"
+    :class="classes(n('filter'), [multiple, n('filter--multiple')])"
+  />
 </template>
 
 <script lang="ts">
@@ -10,7 +15,7 @@ import { createNamespace, defineListenerProp } from '../utils/components'
 const { n, classes } = createNamespace('select')
 
 export default defineComponent({
-  name: 'VarSelectInput',
+  name: 'VarSelectFilter',
   props: {
     modelValue: {
       type: String,
@@ -20,7 +25,7 @@ export default defineComponent({
     'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   },
   setup(props) {
-    const inputRef = ref<HTMLInputElement>()
+    const filterInputRef = ref<HTMLInputElement>()
 
     const value = computed({
       get: () => props.modelValue,
@@ -28,18 +33,18 @@ export default defineComponent({
     })
 
     const focus = () => {
-      inputRef.value?.focus()
+      filterInputRef.value?.focus()
     }
 
     const blur = () => {
-      inputRef.value?.blur()
+      filterInputRef.value?.blur()
     }
 
     return {
       n,
       classes,
       value,
-      inputRef,
+      filterInputRef,
 
       // expose
       focus,

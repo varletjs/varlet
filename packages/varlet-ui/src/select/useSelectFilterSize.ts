@@ -1,14 +1,14 @@
 import { computed, nextTick, ref, shallowRef, unref, watch } from 'vue'
 import type { MaybeRef } from 'vue'
 
-const MINIMUM_INPUT_WIDTH = 11
+const MINIMUM_FILTER_WIDTH = 11
 
-export function useSelectInputSize(value: MaybeRef) {
+export function useSelectFilterSize(value: MaybeRef) {
   const calculatorRef = shallowRef<HTMLElement>()
   const calculatorWidth = ref(0)
 
-  const inputStyle = computed(() => ({
-    minWidth: `${Math.max(calculatorWidth.value, MINIMUM_INPUT_WIDTH)}px`,
+  const filterStyle = computed(() => ({
+    minWidth: `${Math.max(calculatorWidth.value, MINIMUM_FILTER_WIDTH)}px`,
   }))
 
   const resize = () => {
@@ -24,7 +24,7 @@ export function useSelectInputSize(value: MaybeRef) {
 
   return {
     calculatorRef,
-    inputStyle,
+    filterStyle,
     resize,
   }
 }

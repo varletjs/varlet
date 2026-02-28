@@ -66,11 +66,11 @@
                     <maybe-v-node :is="l" />
                   </var-chip>
 
-                  <var-select-input
-                    v-if="isShowMultipleInput()"
-                    ref="inputRef"
+                  <var-select-filter
+                    v-if="isShowMultipleFilter()"
+                    ref="filterRef"
                     v-model="pattern"
-                    :style="inputStyle"
+                    :style="filterStyle"
                     :multiple="multiple"
                     @focus="handleFocus"
                     @blur="handleRootBlur"
@@ -84,11 +84,11 @@
                     <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
 
-                  <var-select-input
-                    v-if="isShowMultipleInput()"
-                    ref="inputRef"
+                  <var-select-filter
+                    v-if="isShowMultipleFilter()"
+                    ref="filterRef"
                     v-model="pattern"
-                    :style="{ ...inputStyle, paddingLeft: labels.length ? '4px' : 0 }"
+                    :style="{ ...filterStyle, paddingLeft: labels.length ? '4px' : 0 }"
                     :multiple="multiple"
                     @focus="handleFocus"
                     @blur="handleRootBlur"
@@ -111,11 +111,11 @@
             {{ placeholder }}
           </span>
 
-          <var-select-input
-            v-if="isShowSingleInput()"
-            ref="inputRef"
+          <var-select-filter
+            v-if="isShowSingleFilter()"
+            ref="filterRef"
             v-model="pattern"
-            :style="inputStyle"
+            :style="filterStyle"
             @focus="handleFocus"
             @blur="handleRootBlur"
             @input="handleInput"
@@ -123,7 +123,7 @@
             @compositionend="handleCompositionEnd"
           />
 
-          <span v-if="filterable" ref="calculatorRef" :class="n('input-calculator')">
+          <span v-if="filterable" ref="calculatorRef" :class="n('filter-calculator')">
             {{ pattern }}
           </span>
         </div>
@@ -184,9 +184,9 @@ import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
-import VarSelectInput from './SelectInput.vue'
+import VarSelectFilter from './SelectFilter.vue'
 import { useSelectController } from './useSelectController'
-import { useSelectInputSize } from './useSelectInputSize'
+import { useSelectFilterSize } from './useSelectFilterSize'
 
 const { name, n, classes } = createNamespace('select')
 
@@ -199,7 +199,7 @@ export default defineComponent({
     VarOption,
     VarFieldDecorator,
     VarFormDetails,
-    VarSelectInput,
+    VarSelectFilter,
     MaybeVNode,
   },
   props,
@@ -207,11 +207,10 @@ export default defineComponent({
     const isFocusing = ref(false)
     const showMenu = ref(false)
     const root = ref<HTMLElement | null>(null)
-    const inputRef = ref<InstanceType<typeof VarSelectInput> | null>(null)
+    const filterRef = ref<InstanceType<typeof VarSelectFilter> | null>(null)
     const pattern = ref('')
     const isComposing = ref(false)
     const filterable = computed(() => props.filterable)
-    const filter = computed(() => props.filter)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
@@ -236,16 +235,16 @@ export default defineComponent({
     const menuEl = ref<HTMLElement | null>(null)
     const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
 
-    let _offsetY = 0
+    const _offsetY = ref(0)
 
     const offsetY = computed({
       get() {
         // adaptive to the 1px line of standard variant when filterable is true
-        return _offsetY + (props.filterable && props.variant === 'standard' ? 1 : 0)
+        return _offsetY.value + (props.filterable && props.variant === 'standard' ? 1 : 0)
       },
 
       set(v) {
-        _offsetY = v
+        _offsetY.value = v
       },
     })
 
@@ -279,14 +278,14 @@ export default defineComponent({
 
       return props.tabindex ?? '0'
     })
-    const { calculatorRef, inputStyle } = useSelectInputSize(pattern)
+    const { calculatorRef, filterStyle } = useSelectFilterSize(pattern)
 
     const selectProvider: SelectProvider = {
       pattern: computed(() => pattern.value),
       showMenu: computed(() => showMenu.value),
       multiple,
       filterable,
-      filter,
+      filter: props.filter,
       focusColor,
       computeLabel,
       onSelect,
@@ -322,11 +321,11 @@ export default defineComponent({
 
     call(bindForm, selectProvider)
 
-    function isShowSingleInput() {
+    function isShowSingleFilter() {
       return filterable.value && !readonly.value && !disabled.value && !multiple.value
     }
 
-    function isShowMultipleInput() {
+    function isShowMultipleFilter() {
       return filterable.value && !readonly.value && !disabled.value && multiple.value
     }
 
@@ -431,10 +430,10 @@ export default defineComponent({
     }
 
     function handleRootFocus(e: FocusEvent) {
-      const el = inputRef.value?.$el
+      const el = filterRef.value?.$el
 
       if (el?.contains(e.relatedTarget as Element | null)) {
-        inputRef.value?.focus()
+        filterRef.value?.focus()
         return
       }
 
@@ -468,7 +467,7 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], selectedValue)
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
-      nextTick(() => inputRef.value?.focus())
+      nextTick(() => filterRef.value?.focus())
 
       if (!multiple) {
         root.value!.focus()
@@ -538,14 +537,14 @@ export default defineComponent({
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
       isFocusing.value = true
-      inputRef.value?.focus()
+      filterRef.value?.focus()
     }
 
     // expose
     function blur() {
       isFocusing.value = false
       showMenu.value = false
-      inputRef.value?.blur()
+      filterRef.value?.blur()
     }
 
     // expose
@@ -561,10 +560,10 @@ export default defineComponent({
 
     return {
       root,
-      inputRef,
+      filterRef,
       calculatorRef,
       isComposing,
-      inputStyle,
+      filterStyle,
       pattern,
       tabindex,
       readonly,
@@ -588,8 +587,8 @@ export default defineComponent({
       n,
       classes,
       isShowSelected,
-      isShowSingleInput,
-      isShowMultipleInput,
+      isShowSingleFilter,
+      isShowMultipleFilter,
       handleFocus,
       handleBlur,
       handleClickOutside,

@@ -86,9 +86,13 @@ export default defineComponent({
     const { hovering, handleHovering } = useHoverOverlay()
     const labelVNode = computed<any>(() => (isFunction(props.label) ? option.value : props.label))
     const frozenVisible = ref(true)
-    const visibleByFilter = computed(
-      () => !filterable.value || !pattern.value || filter.value(pattern.value, option.value),
-    )
+    const visibleByFilter = computed(() => {
+      if (!filterable.value || !pattern.value) {
+        return true
+      }
+
+      return filter(pattern.value, option.value)
+    })
     const visible = computed(() => (showMenu.value ? visibleByFilter.value : frozenVisible.value))
 
     const optionProvider: OptionProvider = {
