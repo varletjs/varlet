@@ -88,7 +88,7 @@
                     v-if="isShowMultipleInput()"
                     ref="inputRef"
                     v-model="pattern"
-                    :style="inputStyle"
+                    :style="{ ...inputStyle, paddingLeft: labels.length ? '4px' : 0 }"
                     :multiple="multiple"
                     @focus="handleFocus"
                     @blur="handleRootBlur"
@@ -216,7 +216,6 @@ export default defineComponent({
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
-    const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
     const { label, labels, computeLabel, getSelectedValue } = useSelectController({
@@ -236,6 +235,20 @@ export default defineComponent({
     const disabled = computed(() => form?.disabled.value || props.disabled)
     const menuEl = ref<HTMLElement | null>(null)
     const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
+
+    let _offsetY = 0
+
+    const offsetY = computed({
+      get() {
+        // adaptive to the 1px line of standard variant when filterable is true
+        return _offsetY + (props.filterable && props.variant === 'standard' ? 1 : 0)
+      },
+
+      set(v) {
+        _offsetY = v
+      },
+    })
+
     const placement = computed(() => (props.variant === 'outlined' || props.filterable ? 'bottom' : 'cover-top'))
     const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props

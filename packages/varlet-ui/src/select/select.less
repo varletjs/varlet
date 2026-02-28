@@ -56,7 +56,12 @@
     transition: color 0.25s;
   }
 
-  &__values,
+  &__values {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   &__chips {
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +84,6 @@
 
     &--multiple {
       position: unset;
-      padding-left: 4px;
     }
   }
 
