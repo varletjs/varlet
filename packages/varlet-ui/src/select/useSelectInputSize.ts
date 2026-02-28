@@ -3,7 +3,7 @@ import type { MaybeRef } from 'vue'
 
 const MINIMUM_INPUT_WIDTH = 11
 
-export function useCalcInputWidth(value: MaybeRef) {
+export function useSelectInputSize(value: MaybeRef) {
   const calculatorRef = shallowRef<HTMLElement>()
   const calculatorWidth = ref(0)
 
@@ -11,21 +11,20 @@ export function useCalcInputWidth(value: MaybeRef) {
     minWidth: `${Math.max(calculatorWidth.value, MINIMUM_INPUT_WIDTH)}px`,
   }))
 
-  const calculate = () => {
+  const resize = () => {
     calculatorWidth.value = calculatorRef.value?.getBoundingClientRect().width ?? 0
   }
 
   watch(
     () => unref(value),
     () => {
-      nextTick(calculate)
+      nextTick(resize)
     },
   )
 
   return {
     calculatorRef,
-    calculatorWidth,
     inputStyle,
-    calculate,
+    resize,
   }
 }

@@ -82,11 +82,11 @@ export default defineComponent({
     const disabled = computed(() => props.disabled)
     const ripple = computed(() => props.ripple)
     const { select, bindSelect } = useSelect()
-    const { query, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
+    const { pattern, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
     const { hovering, handleHovering } = useHoverOverlay()
 
     const labelVNode = computed<any>(() => (isFunction(props.label) ? option.value : props.label))
-    const visible = computed(() => !filterable.value || !query.value || filter.value(query.value, option.value))
+    const visible = computed(() => !filterable.value || !pattern.value || filter.value(pattern.value, option.value))
 
     const optionProvider: OptionProvider = {
       label: labelVNode,

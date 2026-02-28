@@ -7,7 +7,7 @@ import { type FilterMethod } from './props'
 export const SELECT_BIND_OPTION_KEY = Symbol('SELECT_BIND_OPTION_KEY')
 
 export interface SelectProvider extends Validation {
-  query: ComputedRef<string>
+  pattern: ComputedRef<string>
   multiple: ComputedRef<boolean>
   filterable: ComputedRef<boolean>
   filter: ComputedRef<FilterMethod>

@@ -162,7 +162,7 @@ onThemeChange()
         <var-icon class="clear-icon" name="github" @click="clear" />
       </template>
     </var-select>
-    <var-select v-model="standardValue7" :placeholder="t('customIcon')">
+    <var-select v-model="standardValue7" :placeholder="t('customIcon')" filterable>
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -187,13 +187,13 @@ onThemeChange()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select v-model="standardValue8" :placeholder="t('multiple')" multiple>
+    <var-select v-model="standardValue8" :placeholder="t('multiple')" multiple filterable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select v-model="standardValue9" :placeholder="t('chipMultiple')" chip multiple>
+    <var-select v-model="standardValue9" :placeholder="t('chipMultiple')" chip multiple filterable>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
