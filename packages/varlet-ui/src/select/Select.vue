@@ -328,11 +328,12 @@ export default defineComponent({
 
     watch(
       () => showMenu.value,
-      () => {
+      async () => {
         if (!showMenu.value) {
           return
         }
 
+        await nextTick()
         updateShowEmpty()
       },
       { immediate: true },
@@ -459,6 +460,7 @@ export default defineComponent({
       blur()
       call(onBlur)
       validateWithTrigger('onBlur')
+      pattern.value = ''
     }
 
     function handleRootBlur() {
