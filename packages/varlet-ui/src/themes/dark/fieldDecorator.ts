@@ -15,7 +15,7 @@ export default {
   '--field-decorator-standard-normal-icon-margin-bottom': '4px',
   '--field-decorator-standard-normal-non-hint-margin-top': '4px',
   '--field-decorator-standard-small-margin-top': '18px',
-  '--field-decorator-standard-small-margin-bottom': '4px',
+  '--field-decorator-standard-small-margin-bottom': '0',
   '--field-decorator-standard-small-icon-margin-top': '18px',
   '--field-decorator-standard-small-icon-margin-bottom': '4px',
   '--field-decorator-standard-small-non-hint-margin-top': '2px',
