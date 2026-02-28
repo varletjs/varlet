@@ -29,4 +29,5 @@ export default {
   currentSelect: 'The current selection is:',
   mustSelectRest: 'You must choose to rest',
   mustSelectMoreThan: 'You select at least two options',
+  filterable: 'Filterable Selection',
 }

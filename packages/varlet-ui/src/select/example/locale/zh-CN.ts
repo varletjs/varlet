@@ -29,4 +29,5 @@ export default {
   currentSelect: '当前选择的是:',
   mustSelectRest: '您一定得选择摸鱼',
   mustSelectMoreThan: '您至少选择两个选项',
+  filterable: '筛选',
 }

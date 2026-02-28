@@ -10,6 +10,8 @@ export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) =
 
 export type SelectOptionLabel = string | VNode | SelectOptionLabelRender
 
+export type FilterMethod = (pattern: string, option: SelectOption) => boolean
+
 export interface SelectOption {
   label?: SelectOptionLabel
   value?: any
@@ -56,6 +58,15 @@ export const props = {
   },
   rules: [Array, Function, Object] as PropType<any>,
   tabindex: String as PropType<SelectHTMLAttributes['tabindex']>,
+  filterable: Boolean,
+  filter: {
+    type: Function as PropType<FilterMethod>,
+    default: (pattern: string, { label, value }: SelectOption) => {
+      return String(label ?? value)
+        .toLocaleLowerCase()
+        .includes(pattern)
+    },
+  },
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onClose: defineListenerProp<(value: any) => void>(),

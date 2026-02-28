@@ -1,11 +1,5 @@
 <template>
-  <div
-    ref="root"
-    :class="n()"
-    :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
-    @focus="handleFocus"
-    @blur="handleRootBlur"
-  >
+  <div ref="root" :class="n()" :tabindex="tabindex" @focus="handleRootFocus" @blur="handleRootBlur">
     <var-menu
       v-model:show="showMenu"
       var-select-cover
@@ -13,16 +7,17 @@
       close-on-click-reference
       :close-on-key-escape="false"
       :class="n('menu')"
-      :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
+      :popover-class="variant === 'standard' && hint && !filterable ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
       @click-outside="handleClickOutside"
+      @closed="handleClosed"
     >
       <var-field-decorator
         v-bind="{
-          value: modelValue,
+          value: query || modelValue,
           size,
           variant,
           placeholder,
@@ -34,8 +29,9 @@
           isFocusing,
           isError: !!errorMessage,
           formDisabled,
+          composing: isComposing,
           disabled,
-          clearable,
+          clearable: clearable ? !filterable || !query : false,
           cursor,
           onClick: handleClick,
           onClear: handleClear,
@@ -52,7 +48,7 @@
             color: textColor,
           }"
         >
-          <div :class="n('label')">
+          <div :class="classes(n('label'), [filterable && showMenu, n('label-focusing')])">
             <slot v-if="!isEmptyModelValue" name="selected">
               <template v-if="multiple">
                 <div v-if="chip" :class="n('chips')">
@@ -69,20 +65,55 @@
                   >
                     <maybe-v-node :is="l" />
                   </var-chip>
+                  <var-select-input
+                    v-if="showInput"
+                    ref="inputRef"
+                    v-model="query"
+                    :style="inputStyle"
+                    multiple
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
                 <div v-else :class="n('values')">
                   <template v-for="(l, labelIndex) in labels" :key="l">
                     <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
+                  <var-select-input
+                    v-if="showInput"
+                    ref="inputRef"
+                    v-model="query"
+                    :style="inputStyle"
+                    multiple
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
               </template>
 
-              <maybe-v-node :is="label" v-else />
+              <maybe-v-node :is="label" v-else-if="!query && !isComposing" />
             </slot>
           </div>
 
+          <var-select-input
+            v-if="showInput && (!multiple || isEmptyModelValue)"
+            ref="inputRef"
+            v-model="query"
+            :style="inputStyle"
+            @focus="handleFocus"
+            @blur="handleRootBlur"
+            @input="handleInput"
+            @compositionstart="handleCompositionStart"
+            @compositionend="handleCompositionEnd"
+          />
           <span
-            v-if="enableCustomPlaceholder"
+            v-if="enableCustomPlaceholder && !query"
             :class="classes(n('placeholder'), n('$--ellipsis'))"
             :style="{
               color: placeholderColor,
@@ -90,9 +121,11 @@
           >
             {{ placeholder }}
           </span>
+
+          <span v-if="filterable" ref="calculatorRef" :class="n('input--calculator')" v-text="query" />
         </div>
 
-        <template #clear-icon="{ clear }">
+        <template v-if="!query" #clear-icon="{ clear }">
           <slot name="clear-icon" :clear="clear" />
         </template>
 
@@ -148,6 +181,8 @@ import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
+import VarSelectInput from './SelectInput.vue'
+import { useCalcInputWidth } from './useCalcInputWidth'
 import { useSelectController } from './useSelectController'
 
 const { name, n, classes } = createNamespace('select')
@@ -161,6 +196,7 @@ export default defineComponent({
     VarOption,
     VarFieldDecorator,
     VarFormDetails,
+    VarSelectInput,
     MaybeVNode,
   },
   props,
@@ -168,6 +204,11 @@ export default defineComponent({
     const isFocusing = ref(false)
     const showMenu = ref(false)
     const root = ref<HTMLElement | null>(null)
+    const inputRef = ref<InstanceType<typeof VarSelectInput> | null>(null)
+    const query = ref('')
+    const isComposing = ref(false)
+    const filterable = computed(() => props.filterable)
+    const filter = computed(() => props.filter)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
@@ -188,8 +229,10 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const readonly = computed(() => form?.readonly.value || props.readonly)
+    const disabled = computed(() => form?.disabled.value || props.disabled)
     const menuEl = ref<HTMLElement | null>(null)
-    const placement = computed(() => (props.variant === 'outlined' ? 'bottom' : 'cover-top'))
+    const placement = computed(() => (props.variant === 'outlined' || props.filterable ? 'bottom' : 'cover-top'))
     const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props
 
@@ -208,9 +251,23 @@ export default defineComponent({
       return blurColor || 'var(--field-decorator-placeholder-color, var(--field-decorator-blur-color))'
     })
     const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
+    const tabindex = computed(() => {
+      if (disabled.value) {
+        return undefined
+      }
+      if (filterable.value && isFocusing.value) {
+        return '-1'
+      }
+      return props.tabindex ?? '0'
+    })
+    const showInput = computed(() => filterable.value && !readonly.value && !disabled.value)
+    const { calculatorRef, inputStyle } = useCalcInputWidth(query)
 
     const selectProvider: SelectProvider = {
+      query: computed(() => query.value),
       multiple,
+      filterable,
+      filter,
       focusColor,
       computeLabel,
       onSelect,
@@ -238,9 +295,7 @@ export default defineComponent({
     call(bindForm, selectProvider)
 
     function handleKeydown(event: KeyboardEvent) {
-      const { disabled, readonly } = props
-
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !isFocusing.value) {
+      if (disabled.value || readonly.value || !isFocusing.value) {
         return
       }
 
@@ -278,9 +333,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      const { disabled, readonly } = props
-
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || showMenu.value || !isFocusing.value) {
+      if (disabled.value || readonly.value || showMenu.value || !isFocusing.value) {
         return
       }
 
@@ -300,9 +353,9 @@ export default defineComponent({
     }
 
     function handleFocus() {
-      const { disabled, readonly, onFocus } = props
+      const { onFocus } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      if (disabled.value || readonly.value || isFocusing.value) {
         return
       }
 
@@ -313,9 +366,14 @@ export default defineComponent({
       validateWithTrigger('onFocus')
     }
 
-    function handleBlur() {
-      const { disabled, readonly, onBlur } = props
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+    function handleBlur(e?: FocusEvent) {
+      const { onBlur } = props
+      if (
+        disabled.value ||
+        readonly.value ||
+        !isFocusing.value ||
+        root.value?.contains(e?.relatedTarget as Element | null)
+      ) {
         return
       }
 
@@ -324,12 +382,22 @@ export default defineComponent({
       validateWithTrigger('onBlur')
     }
 
-    function handleRootBlur() {
-      if (showMenu.value) {
+    function handleRootFocus(e: FocusEvent) {
+      const el = inputRef.value?.$el
+
+      if (el?.contains(e.relatedTarget as Element | null)) {
+        inputRef.value?.focus()
         return
       }
 
-      handleBlur()
+      handleFocus()
+    }
+
+    function handleRootBlur(e: FocusEvent) {
+      if (showMenu.value || root.value?.contains(e.relatedTarget as Element | null)) {
+        return
+      }
+      handleBlur(e)
     }
 
     function handleClickOutside() {
@@ -351,6 +419,7 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], selectedValue)
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
+      nextTick(() => inputRef.value?.focus())
 
       if (!multiple) {
         root.value!.focus()
@@ -405,16 +474,34 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
+    function handleInput() {
+      showMenu.value = true
+    }
+
+    function handleCompositionStart() {
+      isComposing.value = true
+    }
+
+    function handleCompositionEnd() {
+      isComposing.value = false
+    }
+
+    function handleClosed() {
+      query.value = ''
+    }
+
     // expose
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
       isFocusing.value = true
+      inputRef.value?.focus()
     }
 
     // expose
     function blur() {
       isFocusing.value = false
       showMenu.value = false
+      inputRef.value?.blur()
     }
 
     // expose
@@ -430,9 +517,18 @@ export default defineComponent({
 
     return {
       root,
+      inputRef,
+      calculatorRef,
+      isComposing,
+      inputStyle,
+      query,
+      tabindex,
+      readonly,
+      disabled,
       offsetY,
       isFocusing,
       showMenu,
+      showInput,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
@@ -453,7 +549,12 @@ export default defineComponent({
       handleClear,
       handleClick,
       handleClose,
+      handleRootFocus,
       handleRootBlur,
+      handleInput,
+      handleCompositionStart,
+      handleCompositionEnd,
+      handleClosed,
       reset,
       validate,
       resetValidation,

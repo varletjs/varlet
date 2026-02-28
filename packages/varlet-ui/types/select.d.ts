@@ -20,6 +20,8 @@ export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) =
 
 export type SelectOptionLabel = string | VNode | SelectOptionLabelRender
 
+export type FilterMethod = (pattern: string, option: SelectOption) => boolean
+
 export interface SelectOption {
   label?: SelectOptionLabel
   value?: any
@@ -52,6 +54,8 @@ export interface SelectProps extends BasicAttributes {
   validateTrigger?: Array<SelectValidateTrigger>
   rules?: SelectRules
   tabindex?: SelectHTMLAttributes['tabindex']
+  filterable?: boolean
+  filter?: FilterMethod
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>
