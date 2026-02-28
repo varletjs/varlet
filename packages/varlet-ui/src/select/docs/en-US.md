@@ -576,8 +576,8 @@ const keyOptions = computed(() => [
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _SelectValidateTrigger[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `tabindex` ***3.12.1*** | Consistent with the tabindex property of native select  | _string_ | `-` |
-| `filterable` ***3.12.2*** | Whether to filter options | _boolean_ | `false` |
-| `filter` ***3.12.2*** | Custom filter method | _(pattern: string, option: SelectOption) => boolean_ | `-` |
+| `filterable` ***3.13.0*** | Whether to filter options | _boolean_ | `false` |
+| `filter` ***3.13.0*** | Custom filter method | _(pattern: string, option: SelectOption) => boolean_ | `-` |
 
 #### SelectOption
 
@@ -632,7 +632,7 @@ const keyOptions = computed(() => [
 | `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
-| `empty` | Content when there are no options or no filter results; allows full customization of the empty state container; when not used, shows default empty state with i18n text | `-` |
+| `empty` ***3.13.0*** | Content when there are no options or no filter results; allows full customization of the empty state container; when not used, shows default empty state with i18n text | `-` |
 
 #### Option Slots
 
