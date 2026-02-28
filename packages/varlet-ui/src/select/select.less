@@ -10,6 +10,9 @@
   --select-arrow-size: 20px;
   --select-standard-menu-margin: calc(var(--field-decorator-placeholder-size) * 0.75 + 12px) 0 0 0;
   --select-label-font-size: 16px;
+  --select-empty-text-color: rgba(0, 0, 0, 0.6);
+  --select-empty-height: 38px;
+  --select-empty-font-size: 14px;
 }
 
 .var-select {
@@ -120,6 +123,16 @@
     color: var(--field-decorator-blur-color);
     pointer-events: none;
     cursor: inherit;
+  }
+
+  &__empty {
+    color: var(--select-empty-text-color);
+    text-align: center;
+    height: var(--select-empty-height);
+    font-size: var(--select-empty-font-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__arrow[var-select-cover] {

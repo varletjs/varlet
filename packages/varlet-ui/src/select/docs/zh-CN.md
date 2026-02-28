@@ -633,6 +633,7 @@ const keyOptions = computed(() => [
 | `clear-icon` | 清除图标 | `clear: (e: Event) => void` 清除函数(在使用插槽时, 可用于清除选择框内容) |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
+| `empty` | 无选项或过滤无结果时展示的内容，可完全定制整个空状态容器；未使用时为带国际化默认文案的默认空状态 | `-` |
 
 #### Option Slots
 
@@ -658,6 +659,9 @@ const keyOptions = computed(() => [
 | `--select-chip-margin` | `5px 5px 0 0` |
 | `--select-arrow-size` | `20px` |
 | `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
+| `--select-empty-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--select-empty-height` | `38px` |
+| `--select-empty-font-size` | `14px` |
 
 #### Option Variables
 

@@ -632,6 +632,7 @@ const keyOptions = computed(() => [
 | `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
+| `empty` | Content when there are no options or no filter results; allows full customization of the empty state container; when not used, shows default empty state with i18n text | `-` |
 
 #### Option Slots
 
@@ -657,6 +658,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--select-chip-margin` | `5px 5px 0 0` |
 | `--select-arrow-size` | `20px` |
 | `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
+| `--select-empty-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--select-empty-height` | `38px` |
+| `--select-empty-font-size` | `14px` |
 
 #### Option Variables
 

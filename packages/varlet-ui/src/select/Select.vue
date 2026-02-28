@@ -148,6 +148,11 @@
 
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+          <template v-if="showEmpty">
+            <slot name="empty">
+              <div :class="n('empty')">{{ (pt ? pt : t)('selectEmptyText') }}</div>
+            </slot>
+          </template>
           <template v-if="options.length">
             <var-option
               v-for="option in options"
@@ -170,13 +175,15 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { assert, call, doubleRaf, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
+import { assert, call, doubleRaf, getStyle, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import VarIcon from '../icon'
+import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
 import VarMenu from '../menu'
 import VarOption from '../option'
 import { type OptionProvider } from '../option/provide'
@@ -235,11 +242,13 @@ export default defineComponent({
     const menuEl = ref<HTMLElement | null>(null)
     const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
     const placement = computed(() => (props.variant === 'standard' && !props.filterable ? 'cover-top' : 'bottom'))
+    const showEmpty = ref(false)
+    const { t: pt } = injectLocaleProvider()
     const _offsetY = ref(0)
     const offsetY = computed({
       get() {
         // adaptive to the 1px line of standard variant when filterable is true
-        return _offsetY.value + (placement.value === 'bottom' ? 1 : 0)
+        return _offsetY.value + (placement.value === 'bottom' ? 2 : 0)
       },
 
       set(v) {
@@ -306,11 +315,27 @@ export default defineComponent({
 
     watch(
       () => pattern.value,
-      () => {
-        if (showMenu.value) {
-          nextTick(() => menuRef.value?.resize())
+      async () => {
+        if (!showMenu.value) {
+          return
         }
+
+        await nextTick()
+        menuRef.value?.resize()
+        updateShowEmpty()
       },
+    )
+
+    watch(
+      () => showMenu.value,
+      () => {
+        if (!showMenu.value) {
+          return
+        }
+
+        updateShowEmpty()
+      },
+      { immediate: true },
     )
 
     bindOptions(selectProvider)
@@ -319,6 +344,17 @@ export default defineComponent({
     useEventListener(() => window, 'keyup', handleKeyup)
 
     call(bindForm, selectProvider)
+
+    function updateShowEmpty() {
+      const options = menuEl.value?.querySelectorAll('.var-option')
+
+      if (!options) {
+        return
+      }
+
+      showEmpty.value =
+        options.length === 0 || Array.from(options).every((option) => getStyle(option).display === 'none')
+    }
 
     function isShowSingleFilter() {
       return filterable.value && !readonly.value && !disabled.value && !multiple.value
@@ -409,6 +445,7 @@ export default defineComponent({
       offsetY.value = toPxNum(props.offsetY)
 
       focus()
+      filterRef.value?.focus()
       call(onFocus)
       validateWithTrigger('onFocus')
     }
@@ -567,6 +604,9 @@ export default defineComponent({
       cursor,
       placeholderColor,
       enableCustomPlaceholder,
+      showEmpty,
+      t,
+      pt,
       isFunction,
       n,
       classes,

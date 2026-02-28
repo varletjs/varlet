@@ -10,4 +10,7 @@ export default {
   '--select-arrow-size': '20px',
   '--select-standard-menu-margin': `calc(var(--field-decorator-placeholder-size) * 0.75 + 12px) 0 0 0`,
   '--select-label-font-size': '16px',
+  '--select-empty-text-color': '#aaaaaa',
+  '--select-empty-height': '38px',
+  '--select-empty-font-size': '14px',
 }
