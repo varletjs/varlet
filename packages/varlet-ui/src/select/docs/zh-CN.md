@@ -577,8 +577,8 @@ const keyOptions = computed(() => [
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _SelectValidateTrigger[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `tabindex` ***3.12.1*** | 与原生 select 的 tabindex 属性一致  | _string_ | `-` |
-| `filterable` ***3.13.0*** | 是否可以过滤 | _boolean_ |
-| `filter` ***3.13.0*** | 自定义过滤方法 | _(pattern: string, option: SelectOption) => boolean_ | `-` |
+| `filterable` ***3.14.0*** | 是否可以过滤 | _boolean_ |
+| `filter` ***3.14.0*** | 自定义过滤方法 | _(pattern: string, option: SelectOption) => boolean_ | `-` |
 
 #### SelectOption
 
@@ -633,7 +633,7 @@ const keyOptions = computed(() => [
 | `clear-icon` | 清除图标 | `clear: (e: Event) => void` 清除函数(在使用插槽时, 可用于清除选择框内容) |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
-| `empty` ***3.13.0*** | 无选项或过滤无结果时展示的内容，可完全定制整个空状态容器；未使用时为带国际化默认文案的默认空状态 | `-` |
+| `empty` ***3.14.0*** | 无选项或过滤无结果时展示的内容，可完全定制整个空状态容器；未使用时为带国际化默认文案的默认空状态 | `-` |
 
 #### Option Slots
 
