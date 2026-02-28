@@ -187,13 +187,13 @@ onThemeChange()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select v-model="standardValue8" :placeholder="t('multiple')" multiple filterable>
+    <var-select v-model="standardValue8" :placeholder="t('multiple')" multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select v-model="standardValue9" :placeholder="t('chipMultiple')" chip multiple filterable>
+    <var-select v-model="standardValue9" :placeholder="t('chipMultiple')" chip multiple>
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
