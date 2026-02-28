@@ -596,6 +596,9 @@ interface BaseStyleVars {
   '--select-chip-margin'?: string
   '--select-arrow-size'?: string
   '--select-standard-menu-margin'?: string
+  '--select-empty-text-color'?: string
+  '--select-empty-height'?: string
+  '--select-empty-font-size'?: string
   '--option-height'?: string
   '--option-padding'?: string
   '--option-font-size'?: string
