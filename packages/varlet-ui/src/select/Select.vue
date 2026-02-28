@@ -170,7 +170,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { assert, call, doubleRaf, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
+import { assert, call, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
@@ -283,6 +283,7 @@ export default defineComponent({
 
     const selectProvider: SelectProvider = {
       pattern: computed(() => pattern.value),
+      showMenu: computed(() => showMenu.value),
       multiple,
       filterable,
       filter,
@@ -471,10 +472,8 @@ export default defineComponent({
 
       if (!multiple) {
         root.value!.focus()
-        doubleRaf().then(() => {
-          showMenu.value = false
-          pattern.value = ''
-        })
+        showMenu.value = false
+        pattern.value = ''
       }
     }
 

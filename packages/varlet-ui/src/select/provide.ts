@@ -8,6 +8,7 @@ export const SELECT_BIND_OPTION_KEY = Symbol('SELECT_BIND_OPTION_KEY')
 
 export interface SelectProvider extends Validation {
   pattern: ComputedRef<string>
+  showMenu: ComputedRef<boolean>
   multiple: ComputedRef<boolean>
   filterable: ComputedRef<boolean>
   filter: ComputedRef<FilterMethod>

@@ -82,11 +82,14 @@ export default defineComponent({
     const disabled = computed(() => props.disabled)
     const ripple = computed(() => props.ripple)
     const { select, bindSelect } = useSelect()
-    const { pattern, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
+    const { pattern, showMenu, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
     const { hovering, handleHovering } = useHoverOverlay()
-
     const labelVNode = computed<any>(() => (isFunction(props.label) ? option.value : props.label))
-    const visible = computed(() => !filterable.value || !pattern.value || filter.value(pattern.value, option.value))
+    const frozenVisible = ref(true)
+    const visibleByFilter = computed(
+      () => !filterable.value || !pattern.value || filter.value(pattern.value, option.value),
+    )
+    const visible = computed(() => (showMenu.value ? visibleByFilter.value : frozenVisible.value))
 
     const optionProvider: OptionProvider = {
       label: labelVNode,
@@ -98,6 +101,16 @@ export default defineComponent({
     }
 
     watch([() => props.label, () => props.value], computeLabel)
+
+    watch(
+      () => [showMenu.value, visibleByFilter.value] as const,
+      () => {
+        if (showMenu.value) {
+          frozenVisible.value = visibleByFilter.value
+        }
+      },
+      { immediate: true },
+    )
 
     bindSelect(optionProvider)
 
