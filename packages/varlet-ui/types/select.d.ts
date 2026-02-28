@@ -85,6 +85,7 @@ export class Select extends VarComponent {
     'clear-icon'(data: SelectClearIconData): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]
+    'empty'(): VNode[]
   }
 
   focus(): void
