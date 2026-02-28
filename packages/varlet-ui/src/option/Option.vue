@@ -82,9 +82,21 @@ export default defineComponent({
     const disabled = computed(() => props.disabled)
     const ripple = computed(() => props.ripple)
     const { select, bindSelect } = useSelect()
-    const { pattern, showMenu, filter, filterable, multiple, focusColor, onSelect, computeLabel } = select
+    const { pattern, showMenu, filterable, multiple, focusColor, onSelect, computeLabel, filter } = select
     const { hovering, handleHovering } = useHoverOverlay()
-    const labelVNode = computed<any>(() => (isFunction(props.label) ? option.value : props.label))
+    const labelVNode = computed(() =>
+      isFunction(props.label)
+        ? props.label(
+            props.option ?? {
+              label: props.label,
+              value: props.value,
+              disabled: props.disabled,
+            },
+            optionSelected.value,
+          )
+        : props.label,
+    )
+
     const frozenVisible = ref(true)
     const visibleByFilter = computed(() => {
       if (!filterable.value || !pattern.value) {

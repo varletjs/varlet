@@ -1,5 +1,5 @@
 <template>
-  <div ref="root" :class="n()" :tabindex="tabindex" @focus="handleRootFocus" @blur="handleRootBlur">
+  <div ref="root" :class="n()" :tabindex="tabindex" @focus="handleFocus" @blur="handleRootBlur">
     <var-menu
       ref="menuRef"
       v-model:show="showMenu"
@@ -170,7 +170,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { assert, call, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
+import { assert, call, doubleRaf, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
@@ -234,21 +234,18 @@ export default defineComponent({
     const disabled = computed(() => form?.disabled.value || props.disabled)
     const menuEl = ref<HTMLElement | null>(null)
     const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
-
+    const placement = computed(() => (props.variant === 'standard' && !props.filterable ? 'cover-top' : 'bottom'))
     const _offsetY = ref(0)
-
     const offsetY = computed({
       get() {
         // adaptive to the 1px line of standard variant when filterable is true
-        return _offsetY.value + (props.filterable && props.variant === 'standard' ? 1 : 0)
+        return _offsetY.value + (placement.value === 'bottom' ? 1 : 0)
       },
 
       set(v) {
         _offsetY.value = v
       },
     })
-
-    const placement = computed(() => (props.variant === 'outlined' || props.filterable ? 'bottom' : 'cover-top'))
     const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props
 
@@ -285,7 +282,9 @@ export default defineComponent({
       showMenu: computed(() => showMenu.value),
       multiple,
       filterable,
-      filter: props.filter,
+      filter:
+        props.filter ??
+        ((pattern, option) => String(option[props.labelKey]).toLocaleLowerCase().includes(pattern.toLocaleLowerCase())),
       focusColor,
       computeLabel,
       onSelect,
@@ -370,6 +369,7 @@ export default defineComponent({
       if (key === 'Enter' && !showMenu.value) {
         preventDefault(event)
         showMenu.value = true
+        filterRef.value?.focus()
         return
       }
 
@@ -400,9 +400,9 @@ export default defineComponent({
     }
 
     function handleFocus() {
-      const { onFocus } = props
+      const { disabled, readonly, onFocus } = props
 
-      if (disabled.value || readonly.value || isFocusing.value) {
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
@@ -413,14 +413,9 @@ export default defineComponent({
       validateWithTrigger('onFocus')
     }
 
-    function handleBlur(e?: FocusEvent) {
-      const { onBlur } = props
-      if (
-        disabled.value ||
-        readonly.value ||
-        !isFocusing.value ||
-        root.value?.contains(e?.relatedTarget as Element | null)
-      ) {
+    function handleBlur() {
+      const { disabled, readonly, onBlur } = props
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
@@ -429,23 +424,12 @@ export default defineComponent({
       validateWithTrigger('onBlur')
     }
 
-    function handleRootFocus(e: FocusEvent) {
-      const el = filterRef.value?.$el
-
-      if (el?.contains(e.relatedTarget as Element | null)) {
-        filterRef.value?.focus()
+    function handleRootBlur() {
+      if (showMenu.value) {
         return
       }
 
-      handleFocus()
-    }
-
-    function handleRootBlur(e: FocusEvent) {
-      if (showMenu.value || root.value?.contains(e.relatedTarget as Element | null)) {
-        return
-      }
-
-      handleBlur(e)
+      handleBlur()
     }
 
     function handleClickOutside() {
@@ -471,8 +455,10 @@ export default defineComponent({
 
       if (!multiple) {
         root.value!.focus()
-        showMenu.value = false
-        pattern.value = ''
+        doubleRaf().then(() => {
+          showMenu.value = false
+          pattern.value = ''
+        })
       }
     }
 
@@ -537,14 +523,12 @@ export default defineComponent({
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
       isFocusing.value = true
-      filterRef.value?.focus()
     }
 
     // expose
     function blur() {
       isFocusing.value = false
       showMenu.value = false
-      filterRef.value?.blur()
     }
 
     // expose
@@ -595,7 +579,6 @@ export default defineComponent({
       handleClear,
       handleClick,
       handleClose,
-      handleRootFocus,
       handleRootBlur,
       handleInput,
       handleCompositionStart,

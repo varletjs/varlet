@@ -61,11 +61,6 @@ export const props = {
   filterable: Boolean,
   filter: {
     type: Function as PropType<SelectFilterMethod>,
-    default: (pattern: string, option: SelectOption) => {
-      return String(option.label ?? option.value ?? '')
-        .toLocaleLowerCase()
-        .includes(pattern.toLocaleLowerCase())
-    },
   },
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
