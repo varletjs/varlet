@@ -192,8 +192,8 @@ import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
 import VarSelectFilter from './SelectFilter.vue'
+import { useOptionsMutationObserver } from './useOptionsMutationObserver'
 import { useSelectController } from './useSelectController'
-import { useSelectEmptyObserver } from './useSelectEmptyObserver'
 import { useSelectFilterSize } from './useSelectFilterSize'
 
 const { name, n, classes } = createNamespace('select')
@@ -303,7 +303,7 @@ export default defineComponent({
       resetValidation,
     }
 
-    const { showEmpty } = useSelectEmptyObserver(menuEl, showMenu, {
+    const { showEmpty } = useOptionsMutationObserver(menuEl, showMenu, {
       onAfterUpdate: () => menuRef.value?.resize(),
     })
 

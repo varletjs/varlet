@@ -3,14 +3,14 @@ import { nextTick, ref, watch } from 'vue'
 import { getStyle } from '@varlet/shared'
 import { onSmartUnmounted } from '@varlet/use'
 
-export interface UseSelectEmptyObserverOptions {
+export interface UseOptionsMutationObserverOptions {
   onAfterUpdate?: () => void
 }
 
-export function useSelectEmptyObserver(
-  menuEl: Ref<HTMLElement | null>,
+export function useOptionsMutationObserver(
+  container: Ref<HTMLElement | null>,
   showMenu: Ref<boolean>,
-  options?: UseSelectEmptyObserverOptions,
+  options?: UseOptionsMutationObserverOptions,
 ) {
   const showEmpty = ref(false)
   let observer: MutationObserver | null = null
@@ -26,15 +26,15 @@ export function useSelectEmptyObserver(
 
       await nextTick()
       connectObserver()
-      updateShowEmpty()
+      handler()
     },
     { immediate: true },
   )
 
   onSmartUnmounted(disconnectObserver)
 
-  function updateShowEmpty() {
-    const el = menuEl.value
+  function handler() {
+    const el = container.value
     const optionEls = el?.querySelectorAll('.var-option')
 
     showEmpty.value = !optionEls?.length
@@ -45,16 +45,16 @@ export function useSelectEmptyObserver(
   }
 
   function connectObserver() {
-    if (!menuEl.value) {
+    if (!container.value) {
       return
     }
 
     observer = new MutationObserver(async () => {
       await nextTick()
-      updateShowEmpty()
+      handler()
     })
 
-    observer.observe(menuEl.value, {
+    observer.observe(container.value, {
       childList: true,
       subtree: true,
       attributes: true,
@@ -69,6 +69,5 @@ export function useSelectEmptyObserver(
 
   return {
     showEmpty,
-    updateShowEmpty,
   }
 }
