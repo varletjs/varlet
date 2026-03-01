@@ -175,7 +175,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { assert, call, doubleRaf, getStyle, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
+import { assert, call, doubleRaf, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
@@ -193,6 +193,7 @@ import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
 import VarSelectFilter from './SelectFilter.vue'
 import { useSelectController } from './useSelectController'
+import { useSelectEmptyObserver } from './useSelectEmptyObserver'
 import { useSelectFilterSize } from './useSelectFilterSize'
 
 const { name, n, classes } = createNamespace('select')
@@ -230,6 +231,7 @@ export default defineComponent({
       optionProviders: () => options,
       optionProvidersLength: () => length.value,
     })
+
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -242,7 +244,6 @@ export default defineComponent({
     const menuEl = ref<HTMLElement | null>(null)
     const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
     const placement = computed(() => (props.variant === 'standard' && !props.filterable ? 'cover-top' : 'bottom'))
-    const showEmpty = ref(false)
     const { t: pt } = injectLocaleProvider()
     const _offsetY = ref(0)
     const offsetY = computed({
@@ -302,6 +303,10 @@ export default defineComponent({
       resetValidation,
     }
 
+    const { showEmpty } = useSelectEmptyObserver(menuEl, showMenu, {
+      onAfterUpdate: () => menuRef.value?.resize(),
+    })
+
     watch(
       () => props.multiple,
       () => {
@@ -313,49 +318,10 @@ export default defineComponent({
       },
     )
 
-    watch(
-      () => pattern.value,
-      async () => {
-        if (!showMenu.value) {
-          return
-        }
-
-        await nextTick()
-        menuRef.value?.resize()
-        updateShowEmpty()
-      },
-    )
-
-    watch(
-      () => showMenu.value,
-      async () => {
-        if (!showMenu.value) {
-          return
-        }
-
-        await nextTick()
-        updateShowEmpty()
-      },
-      { immediate: true },
-    )
-
     bindOptions(selectProvider)
-
     useEventListener(() => window, 'keydown', handleKeydown)
     useEventListener(() => window, 'keyup', handleKeyup)
-
     call(bindForm, selectProvider)
-
-    function updateShowEmpty() {
-      const options = menuEl.value?.querySelectorAll('.var-option')
-
-      if (!options) {
-        return
-      }
-
-      showEmpty.value =
-        options.length === 0 || Array.from(options).every((option) => getStyle(option).display === 'none')
-    }
 
     function isShowSingleFilter() {
       return filterable.value && !readonly.value && !disabled.value && !multiple.value
