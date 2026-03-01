@@ -9,18 +9,18 @@ export interface UseOptionsMutationObserverOptions {
 
 export function useOptionsMutationObserver(
   container: Ref<HTMLElement | null>,
-  showMenu: Ref<boolean>,
+  showContainer: Ref<boolean>,
   options?: UseOptionsMutationObserverOptions,
 ) {
   const showEmpty = ref(false)
   let observer: MutationObserver | null = null
 
   watch(
-    () => showMenu.value,
+    () => showContainer.value,
     async () => {
       disconnectObserver()
 
-      if (!showMenu.value) {
+      if (!showContainer.value) {
         return
       }
 
