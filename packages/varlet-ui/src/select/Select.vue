@@ -307,6 +307,8 @@ export default defineComponent({
       onAfterUpdate: () => menuRef.value?.resize(),
     })
 
+    let focusTransferToFilter = false
+
     watch(
       () => props.multiple,
       () => {
@@ -409,10 +411,19 @@ export default defineComponent({
         return
       }
 
-      offsetY.value = toPxNum(props.offsetY)
+      if (focusTransferToFilter) {
+        focusTransferToFilter = false
+        return
+      }
 
+      offsetY.value = toPxNum(props.offsetY)
       focus()
-      filterRef.value?.focus()
+
+      if (isShowMultipleFilter() || isShowSingleFilter()) {
+        focusTransferToFilter = true
+        filterRef.value?.focus()
+      }
+
       call(onFocus)
       validateWithTrigger('onFocus')
     }
@@ -429,7 +440,13 @@ export default defineComponent({
       pattern.value = ''
     }
 
-    function handleRootBlur() {
+    async function handleRootBlur() {
+      if (focusTransferToFilter) {
+        await nextTick()
+        focusTransferToFilter = false
+        return
+      }
+
       if (showMenu.value) {
         return
       }
