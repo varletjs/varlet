@@ -1,3 +1,33 @@
+# [3.14.0](https://github.com/varletjs/varlet/compare/v3.13.1...v3.14.0) (2026-03-12)
+
+
+### Bug Fixes
+
+* **field-decorator:** update small margin bottom to 0 for consistency ([bfe8264](https://github.com/varletjs/varlet/commit/bfe8264fff9a812aa994e14ff81d031afcc1c852))
+* **select:** add showMenu to SelectProvider and update visibility logic ([497e909](https://github.com/varletjs/varlet/commit/497e909de14902055e0a5aa6a602261797a7d655))
+* **select:** adjust padding and layout for better alignment ([4d20db0](https://github.com/varletjs/varlet/commit/4d20db026534196fc275eaa77ee34146bf3e35da))
+* **select:** ensure empty state updates correctly on menu visibility change ([a4fec50](https://github.com/varletjs/varlet/commit/a4fec501b1073ec99ebb2e7877a24cec76c6b1ef))
+* **select:** fix filter api ([e68b397](https://github.com/varletjs/varlet/commit/e68b397fec1a5d0aa5284573b995f10b435594c9))
+* **select:** remove filterable prop from multiple select examples ([20106da](https://github.com/varletjs/varlet/commit/20106da0197811dcdee91dfc11e3f8464319f3d0))
+* **select:** rename showMenu to showContainer for consistency in useOptionsMutationObserver ([1525c1a](https://github.com/varletjs/varlet/commit/1525c1ade7670adf354f7922fddde1756f6f4c11))
+* **select:** set default value for filterable prop in documentation ([0c97e0c](https://github.com/varletjs/varlet/commit/0c97e0cce692a8a22508ffa1c30c8b0bbd1ee5c0))
+* **select:** update filter logic and improve focus handling in Select component ([ba0ea3c](https://github.com/varletjs/varlet/commit/ba0ea3c3211ad40b52f0f6a6c95b3525a740506f))
+* **types:** use declare const in d.ts ([#1943](https://github.com/varletjs/varlet/issues/1943)) ([7b5ebae](https://github.com/varletjs/varlet/commit/7b5ebae182ba4ecb327e54054114845ce46efccd))
+
+
+### Features
+
+* **select:** add 'empty' slot to Select component for customizable empty state rendering ([a874893](https://github.com/varletjs/varlet/commit/a874893d4b62eb82756b61398c1fd78d1f0cd64e))
+* **select:** add customizable empty state styles for dark and light themes ([ff1fcc4](https://github.com/varletjs/varlet/commit/ff1fcc466b939fbd506dfcac3fb6d7e078a3e765))
+* **select:** add focus and blur event handlers for improved user interaction ([785a3cd](https://github.com/varletjs/varlet/commit/785a3cd7cc23b9e5d6e8c170223dabc04589c7c9))
+* **select:** add style variables for customizable empty state in Select component ([64356ed](https://github.com/varletjs/varlet/commit/64356ed34143b54932fd5d682f46726d70851a38))
+* **select:** add support for empty state in Select component with customizable text and styles ([f78bdd9](https://github.com/varletjs/varlet/commit/f78bdd9220734c65a8901d074a3718b755f75a67))
+* **select:** implement SelectFilter component and update filtering logic ([6bb1141](https://github.com/varletjs/varlet/commit/6bb1141af3b8c4edfcbb7c1cfcfb90168bdbd7e4))
+* **select:** implement useSelectEmptyObserver for managing empty state visibility ([70347e6](https://github.com/varletjs/varlet/commit/70347e62f6539151d3527f7e9cb731dbbcdd9df1))
+* **select:** support filterable ([#1945](https://github.com/varletjs/varlet/issues/1945)) ([846a2a6](https://github.com/varletjs/varlet/commit/846a2a6a0d77133ea4851e46db9e4981308c4b2f))
+
+
+
 ## [3.13.1](https://github.com/varletjs/varlet/compare/v3.13.0...v3.13.1) (2026-01-22)
 
 
