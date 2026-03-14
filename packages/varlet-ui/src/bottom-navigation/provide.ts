@@ -3,6 +3,7 @@ import { useChildren } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
 export interface BottomNavigationProvider {
+  animated: ComputedRef<boolean>
   active: ComputedRef<number | string | undefined>
   activeColor: ComputedRef<string | undefined>
   inactiveColor: ComputedRef<string | undefined>

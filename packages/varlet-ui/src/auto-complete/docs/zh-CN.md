@@ -22,7 +22,6 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
-const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -62,24 +61,16 @@ function useAutoComplete() {
     />
     <var-auto-complete
       placeholder="使用 Zod 进行校验"
-      :options="options12"
+      :options="options7"
       :rules="z.string().min(7, '文本长度必须大于6')"
-      v-model="value12"
+      v-model="value7"
     />
-    <var-auto-complete placeholder="显示图标" :options="options7" v-model="value7">
+    <var-auto-complete placeholder="显示图标" :options="options8" v-model="value8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
-      </template>
-    </var-auto-complete>  
-    <var-auto-complete placeholder="自定义图标尺寸" :options="options8" v-model="value8">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-auto-complete>  
     <var-auto-complete
@@ -90,7 +81,7 @@ function useAutoComplete() {
     />
     <var-auto-complete
       placeholder="自定义菜单显示时机"
-      :get-show="(value) => value.length > 3"
+      :get-show="(value) => value10.length > 3"
       :options="options10"
       v-model="value10"
     />  
@@ -132,7 +123,6 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
-const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -174,24 +164,16 @@ function useAutoComplete() {
     <var-auto-complete
       variant="outlined"
       placeholder="使用 Zod 进行校验"
-      :options="options12"
+      :options="options7"
       :rules="z.string().min(7, '文本长度必须大于6')"
-      v-model="value12"
+      v-model="value7"
     />
-    <var-auto-complete variant="outlined" placeholder="显示图标" :options="options7" v-model="value7">
+    <var-auto-complete variant="outlined" placeholder="显示图标" :options="options8" v-model="value8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
-      </template>
-    </var-auto-complete>  
-    <var-auto-complete variant="outlined" placeholder="自定义图标尺寸" :options="options8" v-model="value8">
-      <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" :size="28" />
-      </template>
-      <template #append-icon>
-        <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-auto-complete>  
     <var-auto-complete
@@ -229,6 +211,112 @@ function useAutoComplete() {
 </style>
 ```
 
+### 填充外观
+
+```html
+<script setup>
+import { ref, computed } from 'vue'
+import { z } from 'zod'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  return {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete variant="filled" placeholder="请输入文本" :options="options" v-model="value" />
+    <var-auto-complete variant="filled" readonly placeholder="只读" :options="options2" v-model="value2" />
+    <var-auto-complete variant="filled" disabled placeholder="禁用" :options="options3" v-model="value3" />
+    <var-auto-complete variant="filled" clearable placeholder="可清除" :options="options4" v-model="value4" />
+    <var-auto-complete variant="filled" clearable placeholder="使用插槽自定义清除图标" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="filled"
+      placeholder="字段校验"
+      :options="options6"
+      :rules="v => v.length > 6 || '文本长度必须大于6'"
+      v-model="value6"
+    />
+    <var-auto-complete
+      variant="filled"
+      placeholder="使用 Zod 进行校验"
+      :options="options7"
+      :rules="z.string().min(7, '文本长度必须大于6')"
+      v-model="value7"
+    />
+    <var-auto-complete variant="filled" placeholder="显示图标" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      variant="filled"
+      placeholder="最大长度"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      variant="filled"
+      placeholder="自定义菜单显示时机"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      variant="filled"
+      size="small"
+      placeholder="小尺寸"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
 ## API
 
 ### 属性
@@ -238,7 +326,7 @@ function useAutoComplete() {
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
 | `v-model` | 绑定的值 | _string_ | `-` |
-| `variant` | 输入框风格, 可选值为 `standard` `outlined`    | _string_ | `standard` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined` `filled`   | _string_ | `standard` |
 | `size` | 输入框尺寸，可选值 `normal` `small`              | _string_ | `normal` |
 | `placeholder` | 占位符                      | _string_ | `-` |
 | `options`  | 指定可选项 | _AutoCompleteOption[]_ | `[]` |
@@ -301,6 +389,12 @@ function useAutoComplete() {
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
+#### AutoComplete Variables
+
 | 变量名                      | 默认值           |
 | --------------------------- | ---------------- |
 | `--auto-complete-options-padding` | `6px 0`  |
+
+#### Variant Variables
+
+外观相关的样式变量请参考 [Input 组件](#/zh-CN/input#yang4shi4bian4liang4) 的样式变量

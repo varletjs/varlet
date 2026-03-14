@@ -15,7 +15,9 @@
       placement="bottom"
       :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
-      :popover-class="variant === 'standard' ? n('--standard-menu-margin') : undefined"
+      :popover-class="
+        variant === 'standard' ? n('--standard-menu-margin') : variant === 'filled' ? n('--filled-menu-margin') : ''
+      "
       @update:model-value="handleAutoComplete"
       @key-escape="handleKeyEscape"
     >

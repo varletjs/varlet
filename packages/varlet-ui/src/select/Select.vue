@@ -1,19 +1,14 @@
 <template>
-  <div
-    ref="root"
-    :class="n()"
-    :tabindex="tabindex == null ? (disabled || formDisabled ? undefined : '0') : tabindex"
-    @focus="handleFocus"
-    @blur="handleRootBlur"
-  >
+  <div ref="root" :class="n()" :tabindex="tabindex" @focus="handleFocus" @blur="handleRootBlur">
     <var-menu
+      ref="menuRef"
       v-model:show="showMenu"
       var-select-cover
       same-width
       close-on-click-reference
       :close-on-key-escape="false"
       :class="n('menu')"
-      :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
+      :popover-class="variant === 'standard' && hint && !filterable ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
@@ -22,7 +17,7 @@
     >
       <var-field-decorator
         v-bind="{
-          value: modelValue,
+          value: pattern || modelValue,
           size,
           variant,
           placeholder,
@@ -34,8 +29,9 @@
           isFocusing,
           isError: !!errorMessage,
           formDisabled,
+          composing: isComposing,
           disabled,
-          clearable,
+          clearable: clearable ? !filterable || !pattern : false,
           cursor,
           onClick: handleClick,
           onClear: handleClear,
@@ -52,8 +48,8 @@
             color: textColor,
           }"
         >
-          <div :class="n('label')">
-            <slot v-if="!isEmptyModelValue" name="selected">
+          <div :class="classes(n('label'), [filterable && showMenu, n('--label-focusing')])">
+            <slot v-if="isShowSelected()" name="selected">
               <template v-if="multiple">
                 <div v-if="chip" :class="n('chips')">
                   <var-chip
@@ -69,11 +65,37 @@
                   >
                     <maybe-v-node :is="l" />
                   </var-chip>
+
+                  <var-select-filter
+                    v-if="isShowMultipleFilter()"
+                    ref="filterRef"
+                    v-model="pattern"
+                    :style="filterStyle"
+                    :multiple="multiple"
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
                 <div v-else :class="n('values')">
                   <template v-for="(l, labelIndex) in labels" :key="l">
                     <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
+
+                  <var-select-filter
+                    v-if="isShowMultipleFilter()"
+                    ref="filterRef"
+                    v-model="pattern"
+                    :style="{ ...filterStyle, paddingLeft: labels.length ? '4px' : 0 }"
+                    :multiple="multiple"
+                    @focus="handleFocus"
+                    @blur="handleRootBlur"
+                    @input="handleInput"
+                    @compositionstart="handleCompositionStart"
+                    @compositionend="handleCompositionEnd"
+                  />
                 </div>
               </template>
 
@@ -82,15 +104,35 @@
           </div>
 
           <span
-            v-if="enableCustomPlaceholder"
+            v-if="enableCustomPlaceholder && !pattern"
             :class="classes(n('placeholder'), n('$--ellipsis'))"
-            :style="{
-              color: placeholderColor,
-            }"
+            :style="{ color: placeholderColor }"
           >
             {{ placeholder }}
           </span>
 
+          <var-select-filter
+            v-if="isShowSingleFilter()"
+            ref="filterRef"
+            v-model="pattern"
+            :style="filterStyle"
+            @focus="handleFocus"
+            @blur="handleRootBlur"
+            @input="handleInput"
+            @compositionstart="handleCompositionStart"
+            @compositionend="handleCompositionEnd"
+          />
+
+          <span v-if="filterable" ref="calculatorRef" :class="n('filter-calculator')">
+            {{ pattern }}
+          </span>
+        </div>
+
+        <template v-if="!pattern" #clear-icon="{ clear }">
+          <slot name="clear-icon" :clear="clear" />
+        </template>
+
+        <template #append-icon>
           <slot name="arrow-icon" :focus="isFocusing" :menu-open="showMenu">
             <var-icon
               :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
@@ -99,19 +141,18 @@
               :transition="300"
             />
           </slot>
-        </div>
 
-        <template #clear-icon="{ clear }">
-          <slot name="clear-icon" :clear="clear" />
-        </template>
-
-        <template #append-icon>
           <slot name="append-icon" />
         </template>
       </var-field-decorator>
 
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+          <template v-if="showEmpty">
+            <slot name="empty">
+              <div :class="n('empty')">{{ (pt ? pt : t)('selectEmptyText') }}</div>
+            </slot>
+          </template>
           <template v-if="options.length">
             <var-option
               v-for="option in options"
@@ -141,6 +182,8 @@ import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import VarIcon from '../icon'
+import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
 import VarMenu from '../menu'
 import VarOption from '../option'
 import { type OptionProvider } from '../option/provide'
@@ -148,7 +191,10 @@ import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
+import VarSelectFilter from './SelectFilter.vue'
+import { useOptionsMutationObserver } from './useOptionsMutationObserver'
 import { useSelectController } from './useSelectController'
+import { useSelectFilterSize } from './useSelectFilterSize'
 
 const { name, n, classes } = createNamespace('select')
 
@@ -161,6 +207,7 @@ export default defineComponent({
     VarOption,
     VarFieldDecorator,
     VarFormDetails,
+    VarSelectFilter,
     MaybeVNode,
   },
   props,
@@ -168,11 +215,14 @@ export default defineComponent({
     const isFocusing = ref(false)
     const showMenu = ref(false)
     const root = ref<HTMLElement | null>(null)
+    const filterRef = ref<InstanceType<typeof VarSelectFilter> | null>(null)
+    const pattern = ref('')
+    const isComposing = ref(false)
+    const filterable = computed(() => props.filterable)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
-    const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
     const { label, labels, computeLabel, getSelectedValue } = useSelectController({
@@ -181,6 +231,7 @@ export default defineComponent({
       optionProviders: () => options,
       optionProvidersLength: () => length.value,
     })
+
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -188,8 +239,23 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const readonly = computed(() => form?.readonly.value || props.readonly)
+    const disabled = computed(() => form?.disabled.value || props.disabled)
     const menuEl = ref<HTMLElement | null>(null)
-    const placement = computed(() => (props.variant === 'outlined' ? 'bottom' : 'cover-top'))
+    const menuRef = ref<InstanceType<typeof VarMenu> | null>(null)
+    const placement = computed(() => (props.variant === 'standard' && !props.filterable ? 'cover-top' : 'bottom'))
+    const { t: pt } = injectLocaleProvider()
+    const _offsetY = ref(0)
+    const offsetY = computed({
+      get() {
+        // adaptive to the 1px line of standard variant when filterable is true
+        return _offsetY.value + (placement.value === 'bottom' ? 2 : 0)
+      },
+
+      set(v) {
+        _offsetY.value = v
+      },
+    })
     const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props
 
@@ -208,9 +274,27 @@ export default defineComponent({
       return blurColor || 'var(--field-decorator-placeholder-color, var(--field-decorator-blur-color))'
     })
     const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
+    const tabindex = computed(() => {
+      if (disabled.value) {
+        return undefined
+      }
+
+      if (filterable.value && isFocusing.value) {
+        return '-1'
+      }
+
+      return props.tabindex ?? '0'
+    })
+    const { calculatorRef, filterStyle } = useSelectFilterSize(pattern)
 
     const selectProvider: SelectProvider = {
+      pattern: computed(() => pattern.value),
+      showMenu: computed(() => showMenu.value),
       multiple,
+      filterable,
+      filter:
+        props.filter ??
+        ((pattern, option) => String(option[props.labelKey]).toLocaleLowerCase().includes(pattern.toLocaleLowerCase())),
       focusColor,
       computeLabel,
       onSelect,
@@ -218,6 +302,12 @@ export default defineComponent({
       validate,
       resetValidation,
     }
+
+    const { showEmpty } = useOptionsMutationObserver(menuEl, showMenu, {
+      onAfterUpdate: () => menuRef.value?.resize(),
+    })
+
+    let focusTransferToFilter = false
 
     watch(
       () => props.multiple,
@@ -231,16 +321,32 @@ export default defineComponent({
     )
 
     bindOptions(selectProvider)
-
     useEventListener(() => window, 'keydown', handleKeydown)
     useEventListener(() => window, 'keyup', handleKeyup)
-
     call(bindForm, selectProvider)
 
-    function handleKeydown(event: KeyboardEvent) {
-      const { disabled, readonly } = props
+    function isShowSingleFilter() {
+      return filterable.value && !readonly.value && !disabled.value && !multiple.value
+    }
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !isFocusing.value) {
+    function isShowMultipleFilter() {
+      return filterable.value && !readonly.value && !disabled.value && multiple.value
+    }
+
+    function isShowSelected() {
+      if (isEmptyModelValue.value && !multiple.value) {
+        return false
+      }
+
+      if (!multiple.value && (pattern.value || isComposing.value)) {
+        return false
+      }
+
+      return true
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (disabled.value || readonly.value || !isFocusing.value) {
         return
       }
 
@@ -268,6 +374,7 @@ export default defineComponent({
       if (key === 'Enter' && !showMenu.value) {
         preventDefault(event)
         showMenu.value = true
+        filterRef.value?.focus()
         return
       }
 
@@ -278,9 +385,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      const { disabled, readonly } = props
-
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || showMenu.value || !isFocusing.value) {
+      if (disabled.value || readonly.value || showMenu.value || !isFocusing.value) {
         return
       }
 
@@ -306,9 +411,19 @@ export default defineComponent({
         return
       }
 
-      offsetY.value = toPxNum(props.offsetY)
+      if (focusTransferToFilter) {
+        focusTransferToFilter = false
+        return
+      }
 
+      offsetY.value = toPxNum(props.offsetY)
       focus()
+
+      if (isShowMultipleFilter() || isShowSingleFilter()) {
+        focusTransferToFilter = true
+        filterRef.value?.focus()
+      }
+
       call(onFocus)
       validateWithTrigger('onFocus')
     }
@@ -322,9 +437,16 @@ export default defineComponent({
       blur()
       call(onBlur)
       validateWithTrigger('onBlur')
+      pattern.value = ''
     }
 
-    function handleRootBlur() {
+    async function handleRootBlur() {
+      if (focusTransferToFilter) {
+        await nextTick()
+        focusTransferToFilter = false
+        return
+      }
+
       if (showMenu.value) {
         return
       }
@@ -351,11 +473,13 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], selectedValue)
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
+      nextTick(() => filterRef.value?.focus())
 
       if (!multiple) {
         root.value!.focus()
         doubleRaf().then(() => {
           showMenu.value = false
+          pattern.value = ''
         })
       }
     }
@@ -405,6 +529,18 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
+    function handleInput() {
+      showMenu.value = true
+    }
+
+    function handleCompositionStart() {
+      isComposing.value = true
+    }
+
+    function handleCompositionEnd() {
+      isComposing.value = false
+    }
+
     // expose
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
@@ -430,6 +566,14 @@ export default defineComponent({
 
     return {
       root,
+      filterRef,
+      calculatorRef,
+      isComposing,
+      filterStyle,
+      pattern,
+      tabindex,
+      readonly,
+      disabled,
       offsetY,
       isFocusing,
       showMenu,
@@ -440,13 +584,20 @@ export default defineComponent({
       labels,
       isEmptyModelValue,
       menuEl,
+      menuRef,
       placement,
       cursor,
       placeholderColor,
       enableCustomPlaceholder,
+      showEmpty,
+      t,
+      pt,
       isFunction,
       n,
       classes,
+      isShowSelected,
+      isShowSingleFilter,
+      isShowMultipleFilter,
       handleFocus,
       handleBlur,
       handleClickOutside,
@@ -454,6 +605,9 @@ export default defineComponent({
       handleClick,
       handleClose,
       handleRootBlur,
+      handleInput,
+      handleCompositionStart,
+      handleCompositionEnd,
       reset,
       validate,
       resetValidation,

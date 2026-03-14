@@ -104,4 +104,6 @@ export default {
   paginationJump: 'Go to',
   // time-picker
   timePickerHint: 'SELECT TIME',
+  // select
+  selectEmptyText: 'No Data',
 } satisfies Message

@@ -104,4 +104,6 @@ export default {
   paginationJump: '前往',
   // time-picker
   timePickerHint: '選擇時間',
+  // select
+  selectEmptyText: '暫無數據',
 } satisfies Message

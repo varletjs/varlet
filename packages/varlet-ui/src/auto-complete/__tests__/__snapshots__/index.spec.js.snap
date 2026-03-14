@@ -65,7 +65,7 @@ exports[`auto-complete hint and line 1`] = `
   <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
     <div class="var-input var--box">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+        <div class="var-field-decorator__controller var-field-decorator--bottom-border-radius" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
             <!--v-if--><input id="var-input-mock-id" class="var-input__input" autocomplete="off" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">

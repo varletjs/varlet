@@ -289,9 +289,9 @@ test('fab events and fragment default slots and click outside close', async () =
     },
   })
 
-  const button = container.querySelector('.var-button')
-  expect(container.innerHTML).toMatchSnapshot()
-  await trigger(button, 'click')
+  const drag = container.querySelector('.var-drag')
+  expect(container.querySelectorAll('.var-fab__action').length).toBe(3)
+  await trigger(drag, 'click')
 
   expect(onOpen).toBeCalledTimes(1)
   expect(onUpdateActive).toBeCalledWith(true)

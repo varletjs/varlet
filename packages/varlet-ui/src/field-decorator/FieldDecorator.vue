@@ -10,6 +10,7 @@
           [isFocusing, n('--focus')],
           [isError, n('--error')],
           [formDisabled || disabled, n('--disabled')],
+          [!line, n('--bottom-border-radius')],
         )
       "
       :style="{
@@ -43,9 +44,7 @@
             computePlaceholderState(),
           )
         "
-        :style="{
-          color,
-        }"
+        :style="{ color }"
         :for="id"
       >
         <span>{{ placeholder }}</span>

@@ -1,6 +1,7 @@
 export default {
   standard: 'Standard Variant',
   outlined: 'Outlined Variant',
+  filled: 'Filled Variant',
   smallSize: 'Small Size',
   maxlength: 'Maxlength',
   disabled: 'Disabled',
@@ -8,7 +9,6 @@ export default {
   clearable: 'Clearable',
   clearIconSlot: 'Use the clear icon slot',
   displayIcon: 'Display Icon',
-  customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   validateWithZod: 'Validate with Zod',
   placeholder: 'Please enter text',

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-show="visible"
     ref="root"
     v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
@@ -47,6 +48,7 @@ import VarCheckbox from '../checkbox'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Ripple from '../ripple'
+import { SelectOption } from '../select/props'
 import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
 import { OptionProvider, useSelect } from './provide'
@@ -66,14 +68,22 @@ export default defineComponent({
     const root = ref<HTMLElement>()
     const isFocusing = ref(false)
     const optionSelected = ref(false)
+    const option = computed(
+      () =>
+        props.option ??
+        ({
+          label: props.label,
+          value: props.value,
+          disabled: props.disabled,
+        } as SelectOption),
+    )
     const selected = computed(() => optionSelected.value)
     const value = computed<any>(() => props.value)
     const disabled = computed(() => props.disabled)
     const ripple = computed(() => props.ripple)
     const { select, bindSelect } = useSelect()
-    const { multiple, focusColor, onSelect, computeLabel } = select
+    const { pattern, showMenu, filterable, multiple, focusColor, onSelect, computeLabel, filter } = select
     const { hovering, handleHovering } = useHoverOverlay()
-
     const labelVNode = computed(() =>
       isFunction(props.label)
         ? props.label(
@@ -87,6 +97,16 @@ export default defineComponent({
         : props.label,
     )
 
+    const frozenVisible = ref(true)
+    const visibleByFilter = computed(() => {
+      if (!filterable.value || !pattern.value) {
+        return true
+      }
+
+      return filter(pattern.value, option.value)
+    })
+    const visible = computed(() => (showMenu.value ? visibleByFilter.value : frozenVisible.value))
+
     const optionProvider: OptionProvider = {
       label: labelVNode,
       value,
@@ -97,6 +117,16 @@ export default defineComponent({
     }
 
     watch([() => props.label, () => props.value], computeLabel)
+
+    watch(
+      () => [showMenu.value, visibleByFilter.value] as const,
+      () => {
+        if (showMenu.value) {
+          frozenVisible.value = visibleByFilter.value
+        }
+      },
+      { immediate: true },
+    )
 
     bindSelect(optionProvider)
 
@@ -151,6 +181,7 @@ export default defineComponent({
     return {
       root,
       optionSelected,
+      visible,
       multiple,
       focusColor,
       hovering,

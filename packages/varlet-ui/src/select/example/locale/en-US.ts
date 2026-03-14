@@ -1,13 +1,13 @@
 export default {
   standard: 'Standard Variant',
   outlined: 'Outlined Variant',
+  filled: 'Filled Variant',
   smallSize: 'Small Size',
   disabled: 'Disabled',
   readonly: 'Readonly',
   clearable: 'Clearable',
   clearIconSlot: 'Use the clear icon slot',
   customIcon: 'Custom Icon',
-  customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   validateWithZod: 'Validate With Zod',
   multipleValidate: 'Multiple Validate',
@@ -29,4 +29,5 @@ export default {
   currentSelect: 'The current selection is:',
   mustSelectRest: 'You must choose to rest',
   mustSelectMoreThan: 'You select at least two options',
+  filterable: 'Filterable Selection',
 }

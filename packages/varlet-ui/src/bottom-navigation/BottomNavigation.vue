@@ -57,6 +57,7 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const bottomNavigationDom = ref<HTMLElement | null>(null)
+    const animated = computed<boolean>(() => props.animated)
     const active = computed<number | string | undefined>(() => props.active)
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
@@ -66,6 +67,7 @@ export default defineComponent({
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
     const bottomNavigationProvider: BottomNavigationProvider = {
+      animated,
       active,
       activeColor,
       inactiveColor,

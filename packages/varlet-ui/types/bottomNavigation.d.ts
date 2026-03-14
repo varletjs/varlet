@@ -5,6 +5,7 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 export declare const bottomNavigationProps: Record<keyof BottomNavigationProps, any>
 
 export interface BottomNavigationProps extends BasicAttributes {
+  animated?: boolean
   active?: number | string
   fixed?: boolean
   border?: boolean

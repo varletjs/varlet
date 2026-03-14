@@ -14,7 +14,7 @@ export type Size = 'normal' | 'mini' | 'small' | 'large'
 
 export type Direction = 'horizontal' | 'vertical'
 
-export type Variant = 'outlined' | 'standard'
+export type Variant = 'outlined' | 'standard' | 'filled'
 
 export type ListenerProp<F> = F | F[]
 

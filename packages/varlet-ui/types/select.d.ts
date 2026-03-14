@@ -20,6 +20,8 @@ export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) =
 
 export type SelectOptionLabel = string | VNode | SelectOptionLabelRender
 
+export type SelectFilterMethod = (pattern: string, option: SelectOption) => boolean
+
 export interface SelectOption {
   label?: SelectOptionLabel
   value?: any
@@ -52,6 +54,8 @@ export interface SelectProps extends BasicAttributes {
   validateTrigger?: Array<SelectValidateTrigger>
   rules?: SelectRules
   tabindex?: SelectHTMLAttributes['tabindex']
+  filterable?: boolean
+  filter?: SelectFilterMethod
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>
@@ -81,6 +85,7 @@ export class Select extends VarComponent {
     'clear-icon'(data: SelectClearIconData): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]
+    'empty'(): VNode[]
   }
 
   focus(): void

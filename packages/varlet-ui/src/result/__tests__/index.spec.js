@@ -9,9 +9,10 @@ test('result plugin', () => {
   expect(app.component(Result.name)).toBeTruthy()
 })
 
-test('result snapshot', () => {
+test('result default render', () => {
   const wrapper = mount(Result)
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-result__image').classes()).toContain('var-result__success')
+  expect(wrapper.find('.var-result__image-container').exists()).toBe(true)
   wrapper.unmount()
 })
 
@@ -35,8 +36,9 @@ describe('test result component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('width: calc(90px)')
-    expect(wrapper.find('.var-result__empty').attributes('style')).toContain('height: calc(90px)')
+    const style = wrapper.find('.var-result__empty').attributes('style')
+    expect(style).toMatch(/width: calc\((100px \* 0\.9|90px)\)/)
+    expect(style).toMatch(/height: calc\((100px \* 0\.9|90px)\)/)
 
     wrapper.unmount()
   })

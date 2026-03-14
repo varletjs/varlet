@@ -1,13 +1,13 @@
 export default {
   standard: '标准外观',
   outlined: '外边框外观',
+  filled: '填充外观',
   smallSize: '小尺寸',
   disabled: '禁用',
   readonly: '只读',
   clearable: '可清除',
   clearIconSlot: '使用插槽自定义清除图标',
   customIcon: '自定义图标',
-  customIconSize: '自定义图标尺寸',
   validate: '单选值校验',
   validateWithZod: '使用 Zod 校验单选值',
   multipleValidate: '多选值校验',
@@ -29,4 +29,5 @@ export default {
   currentSelect: '当前选择的是:',
   mustSelectRest: '您一定得选择摸鱼',
   mustSelectMoreThan: '您至少选择两个选项',
+  filterable: '筛选',
 }

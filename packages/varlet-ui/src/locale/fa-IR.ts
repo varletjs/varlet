@@ -104,4 +104,6 @@ export default {
   paginationJump: 'برو به',
   // time-picker
   timePickerHint: 'انتخاب زمان',
+  // select
+  selectEmptyText: 'داده‌ای وجود ندارد',
 } satisfies Message

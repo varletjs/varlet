@@ -34,6 +34,8 @@ export type Message = {
   paginationJump: string
   // time-picker
   timePickerHint: string
+  // select
+  selectEmptyText: string
   // internal
   lang?: string
   [key: PropertyKey]: any

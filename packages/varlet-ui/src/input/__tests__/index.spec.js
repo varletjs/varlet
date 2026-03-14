@@ -12,7 +12,7 @@ test('input plugin', () => {
 })
 
 test('input variant', () => {
-  ;['standard', 'outlined'].forEach((variant) => {
+  ;['standard', 'outlined', 'filled'].forEach((variant) => {
     const wrapper = mount(VarInput, {
       props: {
         modelValue: 'text',
@@ -23,6 +23,13 @@ test('input variant', () => {
     expect(wrapper.find(`var-field-decorator--${variant}`)).toBeTruthy()
     switch (variant) {
       case 'standard': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot'),
+        ).toBeTruthy()
+        break
+      }
+
+      case 'filled': {
         expect(
           wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot'),
         ).toBeTruthy()
