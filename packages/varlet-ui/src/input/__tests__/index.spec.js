@@ -290,11 +290,15 @@ test('input readonly', async () => {
     },
   })
 
-  await triggerEvents(wrapper)
+  expect(wrapper.find('.var-field-decorator__clear-icon').exists()).toBeFalsy()
+
+  await wrapper.find('.var-input__input').trigger('input')
+  await wrapper.find('.var-input__input').trigger('change')
+  await wrapper.find('.var-field-decorator').trigger('click')
 
   expect(onInput).toHaveBeenCalledTimes(1)
   expect(onClear).toHaveBeenCalledTimes(0)
-  expect(onClick).toHaveBeenCalledTimes(2)
+  expect(onClick).toHaveBeenCalledTimes(1)
   expect(onChange).toHaveBeenCalledTimes(1)
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 

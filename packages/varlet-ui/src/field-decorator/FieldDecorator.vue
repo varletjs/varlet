@@ -51,7 +51,7 @@
       </label>
 
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
-        <slot v-if="clearable && !isEmpty(value)" name="clear-icon" :clear="handleClear">
+        <slot v-if="clearable && !isEmpty(value) && !readonly && !formReadonly" name="clear-icon" :clear="handleClear">
           <var-icon :class="n('clear-icon')" var-field-decorator-cover name="close-circle" @click="handleClear" />
         </slot>
         <slot name="append-icon" />
