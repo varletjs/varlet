@@ -302,7 +302,9 @@ exports[`form with select 2`] = `
             </div>
           </div>
           <!--v-if-->
-          <div class="var-field-decorator__icon"><!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i></div>
+          <div class="var-field-decorator__icon">
+            <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+          </div>
         </div>
         <div class="var-field-decorator__line">
           <div class="var-field-decorator__dot"></div>
