@@ -8,6 +8,7 @@ import { createNamespace, useRouteListener, useTeleport } from '../utils/compone
 import { props } from './props'
 import { usePopupItems } from './provide'
 import '../styles/common.less'
+import '../styles/elevation.less'
 import './popup.less'
 
 const { name, n, classes } = createNamespace('popup')
