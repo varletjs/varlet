@@ -1,3 +1,12 @@
+## [3.14.1](https://github.com/varletjs/varlet/compare/v3.14.0...v3.14.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* **popup:** fix missing elevation styles ([00aa27d](https://github.com/varletjs/varlet/commit/00aa27da98effdae42ddc29a2e00c179590b9f05))
+
+
+
 # [3.14.0](https://github.com/varletjs/varlet/compare/v3.13.1...v3.14.0) (2026-03-12)
 
 
