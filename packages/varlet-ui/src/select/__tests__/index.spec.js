@@ -308,8 +308,7 @@ test('select readonly', async () => {
   await trigger(document.querySelector('.var-option'), 'click')
   expect(wrapper.vm.value).toBe('sleep')
 
-  await wrapper.find('.var-icon-close-circle').trigger('click')
-  expect(wrapper.vm.value).toBe('sleep')
+  expect(wrapper.find('.var-icon-close-circle').exists()).toBeFalsy()
 
   wrapper.unmount()
   document.body.innerHTML = ''
