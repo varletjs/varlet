@@ -25,7 +25,7 @@
       background: states.color,
     }"
     :type="nativeType"
-    :disabled="disabled"
+    :disabled="disabled || loading || pending"
     @click="handleClick"
     @touchstart="handleTouchstart"
     @focus="handleFocus"
