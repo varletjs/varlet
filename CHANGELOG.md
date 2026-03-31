@@ -1,3 +1,14 @@
+## [3.14.2](https://github.com/varletjs/varlet/compare/v3.14.1...v3.14.2) (2026-03-31)
+
+
+### Bug Fixes
+
+* **button:** disable button when loading or pending and close [#1952](https://github.com/varletjs/varlet/issues/1952) ([cb4bf8c](https://github.com/varletjs/varlet/commit/cb4bf8cd5df4c2cc88e245f6ae83469f1f8cf350))
+* **field-decorator:** hide clear icon when readonly ([#1948](https://github.com/varletjs/varlet/issues/1948)) ([e79303b](https://github.com/varletjs/varlet/commit/e79303b473165f10af62c8435fc88ce3bf3fb4d8)), closes [#1946](https://github.com/varletjs/varlet/issues/1946)
+* **snackbar:** update content styles ([#1949](https://github.com/varletjs/varlet/issues/1949)) ([9c0c7e6](https://github.com/varletjs/varlet/commit/9c0c7e60fb2bc4da776bf959502b690c71981868))
+
+
+
 ## [3.14.1](https://github.com/varletjs/varlet/compare/v3.14.0...v3.14.1) (2026-03-24)
 
 
