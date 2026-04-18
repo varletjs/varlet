@@ -176,9 +176,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { assert, call, doubleRaf, isArray, isEmpty, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'

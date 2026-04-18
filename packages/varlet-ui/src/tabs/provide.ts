@@ -1,5 +1,5 @@
-import type { ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import type { ComputedRef } from 'vue'
 import type { TabProvider } from '../tab/provide'
 
 export interface TabsProvider {

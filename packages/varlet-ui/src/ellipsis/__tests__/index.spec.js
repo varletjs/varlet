@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Ellipsis from '..'
 import VarEllipsis from '../Ellipsis.vue'
 

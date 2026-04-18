@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue'
 import config from '@config'
 import { watchLang, watchPlatform } from '@varlet/cli/client'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { inIframe, isPhone } from '../utils'
 

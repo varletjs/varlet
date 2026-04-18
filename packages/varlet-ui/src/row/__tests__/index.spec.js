@@ -1,6 +1,6 @@
-import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
+import { createApp, h } from 'vue'
 import Row from '..'
 import Col from '../../col'
 import VarCol from '../../col/Col'

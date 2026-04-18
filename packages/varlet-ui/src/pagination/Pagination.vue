@@ -103,8 +103,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import { call, isNumber, toNumber } from '@varlet/shared'
+import { computed, defineComponent, ref, watch } from 'vue'
 import VarIcon from '../icon'
 import VarInput from '../input'
 import { t } from '../locale'

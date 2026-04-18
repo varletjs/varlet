@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onActivated, onBeforeUnmount, onDeactivated, ref, watch } from 'vue'
 import {
   call,
   doubleRaf,
@@ -30,6 +29,7 @@ import {
   toNumber,
 } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
+import { computed, defineComponent, onActivated, onBeforeUnmount, onDeactivated, ref, watch } from 'vue'
 import { type IndexAnchorProvider } from '../index-anchor/provide'
 import { createNamespace } from '../utils/components'
 import { getParentScroller, toPxNum, scrollTo as varScrollTo } from '../utils/elements'

@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type ComputedRef } from 'vue'
 import { toNumber } from '@varlet/shared'
+import { computed, defineComponent, type ComputedRef } from 'vue'
 import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import { props } from './props'

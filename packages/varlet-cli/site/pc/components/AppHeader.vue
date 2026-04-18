@@ -114,10 +114,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
 import config from '@config'
 import { getBrowserTheme, getPCLocationInfo, setTheme, Theme, watchTheme } from '@varlet/cli/client'
+import { computed, defineComponent, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { removeEmpty } from '../../utils'
 

@@ -1,6 +1,6 @@
-import { TeleportProps, VNode } from 'vue'
 import { PositioningStrategy } from '@popperjs/core'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
+import { TeleportProps, VNode } from 'vue'
 import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const tooltipProps: Record<keyof TooltipProps, any>

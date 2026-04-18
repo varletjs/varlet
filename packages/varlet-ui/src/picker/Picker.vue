@@ -96,9 +96,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, Transition, watch, type ComponentPublicInstance } from 'vue'
 import { call, clamp, clampArrayRange, toNumber } from '@varlet/shared'
 import { useTouch, useVModel } from '@varlet/use'
+import { computed, defineComponent, ref, Transition, watch, type ComponentPublicInstance } from 'vue'
 import VarButton from '../button'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'

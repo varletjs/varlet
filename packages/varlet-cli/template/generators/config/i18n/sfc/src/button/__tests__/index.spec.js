@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
 import { expect, test } from 'vitest'
+import { createApp } from 'vue'
 import Button from '../index'
 
 test('test button use', () => {

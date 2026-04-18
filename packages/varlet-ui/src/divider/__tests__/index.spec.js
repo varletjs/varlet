@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
+import { createApp } from 'vue'
 import Divider from '..'
 import VarDivider from '../Divider'
 

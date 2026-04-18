@@ -1,6 +1,6 @@
-import { createApp, h, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp, h, nextTick } from 'vue'
 import { z } from 'zod'
 import AutoComplete from '..'
 import { trigger, triggerKeyboard } from '../../utils/test'

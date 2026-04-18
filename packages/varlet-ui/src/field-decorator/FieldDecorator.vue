@@ -109,9 +109,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, onUpdated, ref, watch } from 'vue'
 import { call, doubleRaf, getStyle, isEmpty } from '@varlet/shared'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { computed, defineComponent, nextTick, onUpdated, ref, watch } from 'vue'
 import VarIcon from '../icon'
 import { usePopup } from '../popup/provide'
 import { useSwipeResizeDispatcher } from '../swipe/provide'

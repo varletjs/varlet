@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
 import { expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
 import VarActionSheet from '../ActionSheet'
 import ActionSheet from '../index'

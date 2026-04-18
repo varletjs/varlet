@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent, ref } from 'vue'
 import { createNamespace, defineListenerProp } from '../utils/components'
 
 const { n, classes } = createNamespace('select')

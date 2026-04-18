@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call, find, preventDefault } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'

@@ -1,7 +1,7 @@
-import type { Ref } from 'vue'
-import { nextTick, ref, watch } from 'vue'
 import { getStyle } from '@varlet/shared'
 import { onSmartUnmounted } from '@varlet/use'
+import type { Ref } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 
 export interface UseOptionsMutationObserverOptions {
   onAfterUpdate?: () => void

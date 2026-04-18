@@ -29,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, ref } from 'vue'
 import { call, toNumber } from '@varlet/shared'
+import { defineComponent, nextTick, ref } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import Hover from '../hover'

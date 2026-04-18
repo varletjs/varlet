@@ -40,12 +40,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted, ref, type Ref } from 'vue'
 import config from '@config'
 import { getBrowserTheme, getPCLocationInfo } from '@varlet/cli/client'
 import { doubleRaf } from '@varlet/shared'
 import { Context, Snackbar } from '@varlet/ui'
 import Clipboard from 'clipboard'
+import { defineComponent, nextTick, onMounted, ref, type Ref } from 'vue'
 import { type SiteContext } from '../../../types'
 import { utoa } from '../../../utils'
 

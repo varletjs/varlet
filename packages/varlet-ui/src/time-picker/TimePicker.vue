@@ -64,9 +64,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, watch, type DefineComponent } from 'vue'
 import { call, getRect, preventDefault, toNumber } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
+import { computed, defineComponent, reactive, ref, watch, type DefineComponent } from 'vue'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import { createNamespace, formatElevation } from '../utils/components'

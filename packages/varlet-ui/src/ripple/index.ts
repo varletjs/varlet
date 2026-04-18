@@ -1,5 +1,5 @@
-import { type App, type Directive, type DirectiveBinding, type Plugin } from 'vue'
 import { getRect, getStyle, supportTouch } from '@varlet/shared'
+import { type App, type Directive, type DirectiveBinding, type Plugin } from 'vue'
 import context from '../context'
 import { createNamespace } from '../utils/components'
 import '../styles/common.less'

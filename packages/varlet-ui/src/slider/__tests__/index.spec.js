@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import { z } from 'zod'
 import Slider from '..'
 import { delay, mockConsole, trigger } from '../../utils/test'

@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onActivated, onMounted, ref, type TeleportProps } from 'vue'
 import { call, getScrollLeft, getScrollTop, throttle } from '@varlet/shared'
 import { onSmartUnmounted } from '@varlet/use'
+import { defineComponent, onActivated, onMounted, ref, type TeleportProps } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'

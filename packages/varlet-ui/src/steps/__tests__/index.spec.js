@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Steps from '..'
 import Step from '../../step'
 import VarStep from '../../step/Step'

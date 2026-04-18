@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
 import config from '@config'
 import { getMobileIndex, getPCLocationInfo } from '@varlet/cli/client'
+import { defineComponent, onMounted, ref } from 'vue'
 import { isPhone } from '../utils'
 
 export default defineComponent({

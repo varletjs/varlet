@@ -61,9 +61,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
+import { computed, defineComponent, ref } from 'vue'
 import VarMenu from '../menu'
 import VarMenuOption from '../menu-option'
 import { type MenuOptionProvider } from '../menu-option/provide'

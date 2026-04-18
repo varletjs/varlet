@@ -1,6 +1,6 @@
 <script setup>
-import { computed, ref } from 'vue'
 import { AppType, watchLang } from '@varlet/cli/client'
+import { computed, ref } from 'vue'
 import { z } from 'zod'
 import { t, use } from './locale'
 

@@ -1,6 +1,6 @@
 <script setup>
-import { reactive } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { reactive } from 'vue'
 import { z } from 'zod'
 import { t, use } from './locale'
 

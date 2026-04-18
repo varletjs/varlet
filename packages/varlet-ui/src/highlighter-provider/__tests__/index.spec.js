@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { codeToHtml } from 'shiki'
 import { expect, test } from 'vitest'
+import { createApp } from 'vue'
 import VarHighlighterProvider from '../HighlighterProvider'
 import HighlighterProvider from '../index'
 

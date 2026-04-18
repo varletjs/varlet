@@ -1,6 +1,6 @@
-import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp, h } from 'vue'
 import { z } from 'zod'
 import RadioGroup from '..'
 import Radio from '../../radio'

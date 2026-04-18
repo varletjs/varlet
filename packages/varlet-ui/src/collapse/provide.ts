@@ -1,5 +1,5 @@
-import { type ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { CollapseItemProvider } from '../collapse-item/provide'
 
 export interface CollapseProvider {

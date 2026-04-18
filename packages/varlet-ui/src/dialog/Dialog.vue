@@ -67,9 +67,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
+import { defineComponent, ref, watch } from 'vue'
 import VarButton from '../button'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'

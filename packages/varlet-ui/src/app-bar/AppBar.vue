@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, onUpdated, ref } from 'vue'
 import { getRect } from '@varlet/shared'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { computed, CSSProperties, defineComponent, onUpdated, ref } from 'vue'
 import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'

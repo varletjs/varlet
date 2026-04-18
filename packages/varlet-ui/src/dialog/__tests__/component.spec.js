@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Dialog from '..'
 import VarButton from '../../button'
 import VarIcon from '../../icon'

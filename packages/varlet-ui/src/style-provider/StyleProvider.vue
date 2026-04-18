@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent, h } from 'vue'
 import { call } from '@varlet/shared'
+import { defineComponent, h } from 'vue'
 import { createNamespace } from '../utils/components'
 import { formatStyleVars } from '../utils/elements'
 import { props } from './props'

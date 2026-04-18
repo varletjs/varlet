@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
 import { Repl } from '@vue/repl'
 // @ts-expect-error no types
 import Monaco from '@vue/repl/monaco-editor'
+import { ref, watchEffect } from 'vue'
 import Header from './Header.vue'
 import { ReplStore } from './store'
 
@@ -42,8 +42,9 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
   margin: 0;
 
   --base: #444;

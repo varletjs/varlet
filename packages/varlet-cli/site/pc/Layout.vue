@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { nextTick, onMounted, ref, watch, type Ref } from 'vue'
 import config from '@config'
 import { getPCLocationInfo } from '@varlet/cli/client'
 import { Context } from '@varlet/ui'
+import { nextTick, onMounted, ref, watch, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { type SiteContext } from '../types'
 import { MenuTypes, type Menu } from '../utils'

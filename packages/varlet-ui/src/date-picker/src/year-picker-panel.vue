@@ -34,6 +34,9 @@
 </template>
 
 <script lang="ts">
+import { toNumber } from '@varlet/shared'
+import { onSmartMounted } from '@varlet/use'
+import dayjs from 'dayjs/esm/index.js'
 import {
   computed,
   defineComponent,
@@ -46,9 +49,6 @@ import {
   type RendererNode,
   type UnwrapRef,
 } from 'vue'
-import { toNumber } from '@varlet/shared'
-import { onSmartMounted } from '@varlet/use'
-import dayjs from 'dayjs/esm/index.js'
 import VarButton from '../../button'
 import VarSticky from '../../sticky'
 import { createNamespace } from '../../utils/components'

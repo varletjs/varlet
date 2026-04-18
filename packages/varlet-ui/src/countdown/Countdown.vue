@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onActivated, onDeactivated, onMounted, onUnmounted, ref, watch } from 'vue'
 import { call, cancelAnimationFrame, requestAnimationFrame, toNumber } from '@varlet/shared'
+import { defineComponent, onActivated, onDeactivated, onMounted, onUnmounted, ref, watch } from 'vue'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { props, type TimeData } from './props'

@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
+import { createApp } from 'vue'
 import Result from '..'
 import VarResult from '../Result'
 

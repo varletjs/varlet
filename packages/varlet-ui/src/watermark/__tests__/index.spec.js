@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Watermark from '..'
 import { mockCanvas } from '../../utils/test'
 import VarWatermark from '../Watermark'

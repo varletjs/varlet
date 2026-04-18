@@ -1,5 +1,5 @@
-import { nextTick, reactive, type TeleportProps } from 'vue'
 import { call, inBrowser, isArray, isString } from '@varlet/shared'
+import { nextTick, reactive, type TeleportProps } from 'vue'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import VarImagePreview from './ImagePreview.vue'
 import { props as imagePreviewProps } from './props'

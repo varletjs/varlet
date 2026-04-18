@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, watch, type Ref } from 'vue'
 import config from '@config'
 import { getBrowserTheme, getPCLocationInfo, onThemeChange, setTheme, watchTheme, type Theme } from '@varlet/cli/client'
+import { ref, watch, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import AppAd from '../../components/AppAd.vue'
 import AppHeader from '../../components/AppHeader.vue'

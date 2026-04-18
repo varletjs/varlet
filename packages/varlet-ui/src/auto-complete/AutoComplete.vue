@@ -85,9 +85,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { call, isEmpty, preventDefault, raf, toNumber } from '@varlet/shared'
 import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import VarInput from '../input'

@@ -52,8 +52,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
 import { call, normalizeToArray } from '@varlet/shared'
+import { computed, defineComponent, ref } from 'vue'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarLoading from '../loading'

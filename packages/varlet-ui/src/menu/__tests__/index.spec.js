@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
 import { doubleRaf } from '@varlet/shared'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Menu from '..'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import VarMenu from '../Menu'

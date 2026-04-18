@@ -75,9 +75,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, onBeforeUnmount, reactive, ref, watch, type CSSProperties } from 'vue'
 import { call, clamp, error, getRect, hasOwn, isArray, isNumber, preventDefault, toNumber, warn } from '@varlet/shared'
 import { onSmartMounted, onWindowResize, useEventListener } from '@varlet/use'
+import { computed, defineComponent, nextTick, onBeforeUnmount, reactive, ref, watch, type CSSProperties } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import Hover from '../hover'

@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import FloatingPanel from '..'
 import { triggerDrag } from '../../utils/test'
 import VarFloatingPanel from '../FloatingPanel.vue'

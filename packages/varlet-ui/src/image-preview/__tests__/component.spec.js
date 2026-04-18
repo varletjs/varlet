@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/test'
 import VarImagePreview from '../ImagePreview.vue'
 import ImagePreview from '../index'

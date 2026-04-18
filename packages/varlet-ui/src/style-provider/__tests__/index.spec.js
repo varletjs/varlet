@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test } from 'vitest'
+import { createApp } from 'vue'
 import { delay } from '../../utils/test'
 import StyleProvider from '../index'
 import VarStyleProvider from '../StyleProvider'

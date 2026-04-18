@@ -1,6 +1,6 @@
+import { call, isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { App, Component, TeleportProps, VNode } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
-import { call, isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
 import context from '../context'
 import type { LoadingSize, LoadingType } from '../loading/props'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'

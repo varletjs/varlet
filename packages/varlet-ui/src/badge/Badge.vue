@@ -28,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type CSSProperties } from 'vue'
 import { toNumber } from '@varlet/shared'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'

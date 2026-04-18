@@ -34,9 +34,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, type ComputedRef, type Ref } from 'vue'
 import { call } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
+import { computed, defineComponent, ref, watch, type ComputedRef, type Ref } from 'vue'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
 import VarIcon from '../icon'

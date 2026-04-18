@@ -1,6 +1,6 @@
-import { type ComputedRef } from 'vue'
 import { assert } from '@varlet/shared'
 import { useParent } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { SWIPE_BIND_SWIPE_ITEM_KEY, type SwipeProvider } from '../swipe/provide'
 
 export interface SwipeItemProvider {

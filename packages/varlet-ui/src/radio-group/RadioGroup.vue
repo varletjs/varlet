@@ -21,9 +21,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { call, isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import VarRadio from '../radio'

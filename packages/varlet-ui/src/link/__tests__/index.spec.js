@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Link from '..'
 import { trigger } from '../../utils/test'
 import VarLink from '../Link'

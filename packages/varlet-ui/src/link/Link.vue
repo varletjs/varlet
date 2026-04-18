@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
 import { call, inMobile } from '@varlet/shared'
+import { computed, defineComponent, ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'

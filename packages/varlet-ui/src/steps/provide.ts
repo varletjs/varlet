@@ -1,5 +1,5 @@
-import { type ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { type StepProvider } from '../step/provide'
 
 export interface StepsProvider {

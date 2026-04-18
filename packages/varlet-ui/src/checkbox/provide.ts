@@ -1,5 +1,5 @@
-import { type ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { CHECKBOX_GROUP_BIND_CHECKBOX_KEY, CheckboxGroupProvider } from '../checkbox-group/provide'
 import { Validation } from '../form/provide'
 

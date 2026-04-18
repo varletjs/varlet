@@ -69,9 +69,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
 import { call, clamp, preventDefault, toNumber } from '@varlet/shared'
 import { useEventListener, useTouch, useVModel } from '@varlet/use'
+import { computed, defineComponent, ref } from 'vue'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import VarSwipe from '../swipe'

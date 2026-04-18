@@ -1,6 +1,6 @@
+import { keyInProvides } from '@varlet/use'
 import { inject, provide } from 'vue'
 import type { ComputedRef } from 'vue'
-import { keyInProvides } from '@varlet/use'
 import type { Highlighter } from './props'
 
 export interface HighlighterProvider {

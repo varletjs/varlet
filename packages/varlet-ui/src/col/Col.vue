@@ -29,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call, isPlainObject, toNumber } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { props } from './props'

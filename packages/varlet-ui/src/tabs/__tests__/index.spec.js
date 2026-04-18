@@ -1,6 +1,6 @@
-import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vitest'
+import { createApp, h } from 'vue'
 import Tabs from '..'
 import Tab from '../../tab'
 import TabItem from '../../tab-item'

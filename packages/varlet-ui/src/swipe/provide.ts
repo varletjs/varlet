@@ -1,5 +1,5 @@
-import type { ComputedRef, Ref } from 'vue'
 import { useChildren, useParent } from '@varlet/use'
+import type { ComputedRef, Ref } from 'vue'
 import { type SwipeItemProvider } from '../swipe-item/provide'
 
 export interface SwipeProvider {

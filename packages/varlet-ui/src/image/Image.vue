@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
+import { defineComponent, ref, watch } from 'vue'
 import Lazy, { type LazyHTMLElement } from '../lazy'
 import Ripple from '../ripple'
 import { createNamespace } from '../utils/components'

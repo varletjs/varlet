@@ -1,5 +1,5 @@
-import { getCurrentInstance, onMounted, ref } from 'vue'
 import { kebabCase } from '@varlet/shared'
+import { getCurrentInstance, onMounted, ref } from 'vue'
 
 export function useClientId() {
   const instance = getCurrentInstance()!

@@ -104,8 +104,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { call, doubleRaf, getRect } from '@varlet/shared'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarButton from '../button'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'

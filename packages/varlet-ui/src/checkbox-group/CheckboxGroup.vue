@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, watch } from 'vue'
 import { call, isFunction, uniq } from '@varlet/shared'
+import { computed, defineComponent, nextTick, watch } from 'vue'
 import VarCheckbox from '../checkbox'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'

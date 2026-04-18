@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
 import Varlet, { Locale } from '@varlet/ui'
+import { createApp } from 'vue'
 import App from './App.vue'
 import '@vue/repl/style.css'
 import '@varlet/ui/es/style'

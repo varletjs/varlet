@@ -1,6 +1,6 @@
-import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp, Fragment, h } from 'vue'
 import MenuSelect from '..'
 import MenuOption from '../../menu-option'
 import VarMenuOption from '../../menu-option/MenuOption'

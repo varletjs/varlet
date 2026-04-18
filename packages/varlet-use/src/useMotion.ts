@@ -1,5 +1,5 @@
-import { ref } from 'vue'
 import { isFunction, motion, MotionState } from '@varlet/shared'
+import { ref } from 'vue'
 
 export interface UseMotionOptions {
   from: number | (() => number)

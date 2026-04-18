@@ -1,6 +1,6 @@
-import type { ComputedRef } from 'vue'
 import { assert } from '@varlet/shared'
 import { useParent } from '@varlet/use'
+import type { ComputedRef } from 'vue'
 import { INDEX_BAR_BIND_INDEX_ANCHOR_KEY, type IndexBarProvider } from '../index-bar/provide'
 
 export interface IndexAnchorProvider {

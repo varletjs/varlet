@@ -1,9 +1,9 @@
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import icons from '@varlet/icons'
 import { Snackbar } from '@varlet/ui'
 import Clipboard from 'clipboard'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { t, use } from './locale'
 
 const iconNames = reactive(icons)

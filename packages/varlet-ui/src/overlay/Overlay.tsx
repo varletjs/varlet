@@ -1,6 +1,6 @@
-import { defineComponent, Teleport, Transition } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { defineComponent, Teleport, Transition } from 'vue'
 import { useLock } from '../context/lock'
 import { useStack } from '../context/stack'
 import { useZIndex } from '../context/zIndex'

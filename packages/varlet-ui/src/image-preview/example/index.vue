@@ -1,7 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { ActionSheet, ImagePreview, Snackbar } from '@varlet/ui'
+import { computed, ref } from 'vue'
 import { t, use } from './locale'
 
 const VarImagePreview = ImagePreview.Component

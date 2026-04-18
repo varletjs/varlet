@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
+import { createApp } from 'vue'
 import Overlay from '..'
 import { triggerKeyboard } from '../../utils/test'
 import VarOverlay from '../Overlay'

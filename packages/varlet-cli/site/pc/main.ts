@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
 import config from '@config'
 import routes from '@pc-routes'
 import Varlet, { Snackbar } from '@varlet/ui'
+import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import CodeExample from './components/code-example'

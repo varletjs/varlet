@@ -1,6 +1,6 @@
 <script setup>
-import { reactive, toRefs } from 'vue'
 import { onThemeChange, watchLang } from '@varlet/cli/client'
+import { reactive, toRefs } from 'vue'
 import { t, use } from './locale'
 
 const values = reactive({

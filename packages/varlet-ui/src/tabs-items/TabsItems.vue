@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
 import { call, doubleRaf } from '@varlet/shared'
+import { defineComponent, ref, watch } from 'vue'
 import VarSwipe from '../swipe'
 import { type TabItemProvider } from '../tab-item/provide'
 import { createNamespace } from '../utils/components'

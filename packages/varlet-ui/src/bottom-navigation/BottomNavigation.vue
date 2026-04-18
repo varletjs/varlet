@@ -31,9 +31,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onUpdated, ref, watch } from 'vue'
 import { call, getRect, isNumber, normalizeToArray } from '@varlet/shared'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { computed, defineComponent, onUpdated, ref, watch } from 'vue'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import VarButton from '../button'
 import { createNamespace } from '../utils/components'

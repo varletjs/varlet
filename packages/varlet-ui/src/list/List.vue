@@ -24,9 +24,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, ref, watch } from 'vue'
 import { call, getRect, isNumber } from '@varlet/shared'
 import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
+import { defineComponent, nextTick, ref, watch } from 'vue'
 import VarLoading from '../loading'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'

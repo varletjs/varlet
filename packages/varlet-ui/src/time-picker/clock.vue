@@ -35,9 +35,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import { getRect, toNumber } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
+import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { hours24, hoursAmpm, minSec, type AllowedTime, type AmPm, type Format, type Time } from './props'

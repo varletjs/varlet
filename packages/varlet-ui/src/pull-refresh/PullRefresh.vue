@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { call, getRect, getScrollTop, isNumber, isString, preventDefault, toNumber } from '@varlet/shared'
 import { onSmartMounted, useEventListener, useTouch } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import { getParentScroller, getTarget } from '../utils/elements'

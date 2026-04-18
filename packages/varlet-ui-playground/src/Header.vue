@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from 'vue'
 import { Snackbar, StyleProvider, Themes } from '@varlet/ui'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { downloadProject } from './download/download'
 import Close from './icons/Close.vue'
 import Download from './icons/Download.vue'

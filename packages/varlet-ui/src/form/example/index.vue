@@ -1,6 +1,6 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { computed, reactive, ref } from 'vue'
 import VarCustomFormComponent from './CustomFormComponent'
 import { t, use } from './locale'
 
