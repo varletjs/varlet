@@ -40,8 +40,8 @@ catalogs:
       specifier: ^1.2.1
       version: 1.2.2
     rattail:
-      specifier: ^2.0.3
-      version: 2.0.3
+      specifier: ^2.0.5
+      version: 2.0.5
     rimraf:
       specifier: ^5.0.1
       version: 5.0.10
@@ -77,7 +77,7 @@ importers:
         version: 1.2.2
       rattail:
         specifier: 'catalog:'
-        version: 2.0.3(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
+        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
       tinyexec:
         specifier: 'catalog:'
         version: 0.3.2
@@ -287,7 +287,7 @@ importers:
     dependencies:
       rattail:
         specifier: 'catalog:'
-        version: 2.0.3(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
+        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -712,8 +712,8 @@ packages:
     resolution: {integrity: sha512-xbofjcEGGbzWpiB7me03U/wJ0yC8RO6NIsgfPfiOK4pXlsO3gfutvnnri4NDn1vPErDjl9YBk1qRiLIOP4cB9Q==}
     engines: {node: '>=22.12.0', pnpm: '>=10.0'}
 
-  '@configurajs/vite-plus@0.2.4':
-    resolution: {integrity: sha512-uR8BaR28XjiJB+eY/HBSfP7s0+2QHtXX7NbqA+k9pXtGhzq+2nRPbGKLjY78Ejsfzp3QjAyI5EgzKxAKqP2xPw==}
+  '@configurajs/vite-plus@0.2.5':
+    resolution: {integrity: sha512-FhORvNGWhijuMUfmFB+7HmLb35oKs4hASzNnGG9Si40p+46nJVoDDHyp+oEu/OvhQDuDrr9rSIqFnuffE7it1g==}
     engines: {node: '>=22.12.0', pnpm: '>=10.0'}
 
   '@conventional-changelog/git-client@2.7.0':
@@ -4366,8 +4366,8 @@ packages:
     resolution: {integrity: sha512-K/1EKe7TP0Y49ALwq1jeWKGcVDqGjwQQ9V3tFxGeMvCO/ab9P4PpgtE8tmBk1kMrXzloDaG4/3RJnQWq0V3A1A==}
     engines: {pnpm: '>=10.0.0'}
 
-  rattail@2.0.3:
-    resolution: {integrity: sha512-YB6dK7rM+Mf6lInUGAbDm64Ov0zWoWw/bL7uYaGD+5eQnS+IaLLg9waULUsG2awlPAOMmcSblZSdVX6sxYjXuA==}
+  rattail@2.0.5:
+    resolution: {integrity: sha512-z4eAoaKKOCw1E/aO0W1svEW13zsx1VNaHTcJl85MvKqJpGVDlORpK7Nd1vOCW6n3U7jBB52yQEJx8KpRHQcmRg==}
     engines: {pnpm: '>=10.0.0'}
     hasBin: true
     peerDependencies:
@@ -5646,7 +5646,7 @@ snapshots:
 
   '@configurajs/vite-plus@0.2.2': {}
 
-  '@configurajs/vite-plus@0.2.4': {}
+  '@configurajs/vite-plus@0.2.5': {}
 
   '@conventional-changelog/git-client@2.7.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)':
     dependencies:
@@ -9570,9 +9570,9 @@ snapshots:
       - debug
       - vue
 
-  rattail@2.0.3(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
+  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
     dependencies:
-      '@configurajs/vite-plus': 0.2.4
+      '@configurajs/vite-plus': 0.2.5
       '@varlet/axle': 1.0.2(vue@3.5.21(typescript@5.6.3))
       '@varlet/release': 2.2.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
       api-farmer: 0.1.5(typescript@5.6.3)(vue@3.5.21(typescript@5.6.3))
@@ -9595,9 +9595,9 @@ snapshots:
       - typescript
       - vue
 
-  rattail@2.0.3(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
+  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
     dependencies:
-      '@configurajs/vite-plus': 0.2.4
+      '@configurajs/vite-plus': 0.2.5
       '@varlet/axle': 1.0.2(vue@3.5.21(typescript@5.6.3))
       '@varlet/release': 2.2.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.4.0)
       api-farmer: 0.1.5(typescript@5.6.3)(vue@3.5.21(typescript@5.6.3))
