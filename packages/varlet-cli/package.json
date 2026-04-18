@@ -61,7 +61,6 @@
     "tinyexec": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {

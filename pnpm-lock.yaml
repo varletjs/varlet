@@ -119,7 +119,7 @@ importers:
         version: 5.1.5(vue@3.5.21(typescript@5.6.3))
       '@vitest/coverage-istanbul':
         specifier: 'catalog:'
-        version: 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
+        version: 4.1.4
       '@vue/babel-plugin-jsx':
         specifier: 'catalog:'
         version: 1.5.0(@babel/core@7.29.0)
@@ -188,10 +188,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      vitest:
-        specifier: npm:@voidzero-dev/vite-plus-test@0.1.18
-        version: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       vue:
         specifier: 'catalog:'
         version: 3.5.21(typescript@5.6.3)
@@ -6701,7 +6698,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-rc.13
       vue: 3.5.21(typescript@5.6.3)
 
-  '@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18)':
+  '@vitest/coverage-istanbul@4.1.4':
     dependencies:
       '@babel/core': 7.29.0
       '@istanbuljs/schema': 0.1.6
@@ -6713,7 +6710,6 @@ snapshots:
       magicast: 0.5.2
       obug: 2.1.1
       tinyrainbow: 3.1.0
-      vitest: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
     transitivePeerDependencies:
       - supports-color
 
@@ -6784,7 +6780,7 @@ snapshots:
   '@voidzero-dev/vite-plus-linux-x64-musl@0.1.18':
     optional: true
 
-  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
+  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@types/chai': 5.2.3
@@ -6798,10 +6794,11 @@ snapshots:
       tinybench: 2.9.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
+      vite: '@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 20.19.39
-      '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
+      '@vitest/coverage-istanbul': 4.1.4
       jsdom: 26.1.0
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
@@ -6824,7 +6821,7 @@ snapshots:
       - utf-8-validate
       - yaml
 
-  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
+  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@types/chai': 5.2.3
@@ -6838,11 +6835,10 @@ snapshots:
       tinybench: 2.9.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
-      vite: '@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 20.19.39
-      '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
+      '@vitest/coverage-istanbul': 4.1.4
       jsdom: 26.1.0
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
@@ -6882,7 +6878,7 @@ snapshots:
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 22.19.17
-      '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
+      '@vitest/coverage-istanbul': 4.1.4
       jsdom: 26.1.0
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
@@ -6922,7 +6918,7 @@ snapshots:
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 22.19.17
-      '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
+      '@vitest/coverage-istanbul': 4.1.4
       jsdom: 26.1.0
     transitivePeerDependencies:
       - '@arethetypeswrong/core'
@@ -10458,11 +10454,11 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
+  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
     dependencies:
       '@oxc-project/types': 0.124.0
       '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4(@voidzero-dev/vite-plus-test@0.1.18))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       oxfmt: 0.45.0
       oxlint: 1.60.0(oxlint-tsgolint@0.20.0)
       oxlint-tsgolint: 0.20.0
@@ -10505,11 +10501,11 @@ snapshots:
       - vite
       - yaml
 
-  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
+  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
     dependencies:
       '@oxc-project/types': 0.124.0
       '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       oxfmt: 0.45.0
       oxlint: 1.60.0(oxlint-tsgolint@0.20.0)
       oxlint-tsgolint: 0.20.0
