@@ -33,13 +33,13 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",
-    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
+    "build": "vp pack",
+    "dev": "vp pack --watch"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "unocss": "^0.58.5"
