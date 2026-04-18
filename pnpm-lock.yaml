@@ -77,9 +77,6 @@ importers:
       '@varlet/cli':
         specifier: workspace:*
         version: link:packages/varlet-cli
-      '@varlet/icons':
-        specifier: workspace:*
-        version: link:packages/varlet-icons
       nanospinner:
         specifier: ^1.1.0
         version: 1.1.0
