@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { expect, test } from 'vitest'
+import { expect, test } from 'vite-plus/test'
 import { createApp, h } from 'vue'
 import DatePicker from '../../date-picker'
 import Dialog from '../../dialog/Dialog.vue'

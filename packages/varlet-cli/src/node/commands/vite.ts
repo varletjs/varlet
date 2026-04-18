@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { build, createServer, type ViteDevServer } from 'vite'
+import { build, createServer, type ViteDevServer } from 'vite-plus'
 
 export type ViteCommandMode = 'dev' | 'build'
 

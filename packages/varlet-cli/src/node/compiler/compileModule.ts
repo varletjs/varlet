@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { kebabCase } from '@varlet/shared'
 import fse from 'fs-extra'
-import { build } from 'vite'
+import { build } from 'vite-plus'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { BundleBuildOptions, getBundleConfig } from '../config/vite.config.js'
 import {

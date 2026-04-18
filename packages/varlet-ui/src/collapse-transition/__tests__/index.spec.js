@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vite-plus/test'
 import { createApp, ref } from 'vue'
 import CollapseTransition from '..'
 import { delay } from '../../utils/test'

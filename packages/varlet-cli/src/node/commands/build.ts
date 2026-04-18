@@ -1,5 +1,5 @@
 import fse from 'fs-extra'
-import { build as buildVite } from 'vite'
+import { build as buildVite } from 'vite-plus'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { getBuildConfig } from '../config/vite.config.js'

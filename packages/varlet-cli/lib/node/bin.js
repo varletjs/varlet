@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { getCliVersion } from './shared/fsUtils.js';
+import { logDeprecated } from './shared/logger.js';
 const program = new Command();
 program.version(`varlet-cli ${getCliVersion()}`).usage('<command> [options]');
 program
@@ -21,29 +22,33 @@ program
 });
 program
     .command('dev:vite')
-    .description('Use vite start server for development')
+    .description('[Deprecated] Use vite start server for development. Use `vp dev` instead.')
     .action(async () => {
+    logDeprecated('dev:vite', 'Use `vp dev` instead.');
     const { vite } = await import('./commands/vite.js');
     return vite('dev');
 });
 program
     .command('build:vite')
-    .description('Use vite build app for production')
+    .description('[Deprecated] Use vite build app for production. Use `vp build` instead.')
     .action(async () => {
+    logDeprecated('build:vite', 'Use `vp build` instead.');
     const { vite } = await import('./commands/vite.js');
     return vite('build');
 });
 program
     .command('dev:extension')
-    .description('Run VSCode extension development environment')
+    .description('[Deprecated] Run VSCode extension development environment. Use `vp pack --watch` (or `tsdown --watch`) instead.')
     .action(async () => {
+    logDeprecated('dev:extension', 'Use `vp pack --watch` (or `tsdown --watch`) instead.');
     const { extension } = await import('./commands/extension.js');
     return extension('dev');
 });
 program
     .command('build:extension')
-    .description('Build VSCode extension for production')
+    .description('[Deprecated] Build VSCode extension for production. Use `vp pack` (or `tsdown`) instead.')
     .action(async () => {
+    logDeprecated('build:extension', 'Use `vp pack` (or `tsdown`) instead.');
     const { extension } = await import('./commands/extension.js');
     return extension('build');
 });
@@ -57,7 +62,7 @@ program
 });
 program
     .command('preview')
-    .description('Preview varlet site for production')
+    .description('Preview varlet site for production.')
     .option('-p, --port <port>', 'port number')
     .action(async (options) => {
     const { preview } = await import('./commands/preview.js');
@@ -114,16 +119,18 @@ program
     .command('changelog')
     .option('-rc --releaseCount <releaseCount>', 'Release count')
     .option('-f --file <file>', 'Changelog filename')
-    .description('Generate changelog')
+    .description('[Deprecated] Generate changelog. Use `rt changelog` instead.')
     .action(async (options) => {
+    logDeprecated('changelog', 'Use `rt changelog` instead.');
     const { changelog } = await import('@varlet/release');
     return changelog(options);
 });
 program
     .command('release')
     .option('-r --remote <remote>', 'Remote name')
-    .description('Release all packages and generate changelogs')
+    .description('[Deprecated] Release all packages and generate changelogs. Use `rt release` instead.')
     .action(async (options) => {
+    logDeprecated('release', 'Use `rt release` instead.');
     const { release } = await import('@varlet/release');
     return release(options);
 });
@@ -133,15 +140,17 @@ program
     .option('-r --commitMessageRe <reg>', 'Validate the regular of whether the commit message passes')
     .option('-e --errorMessage <message>', 'Validation failed to display error messages')
     .option('-w --warningMessage <message>', 'Validation failed to display warning messages')
-    .description('Lint commit message')
+    .description('[Deprecated] Lint commit message. Use `rt commit-lint` instead.')
     .action(async (options) => {
+    logDeprecated('commit-lint', 'Use `rt commit-lint` instead.');
     const { commitLint } = await import('@varlet/release');
     return commitLint(options);
 });
 program
     .command('checklist <gitParams>')
-    .description('Display a checklist for confirmation')
+    .description('[Deprecated] Display a checklist for confirmation. No direct replacement; will be removed in the next major.')
     .action(async (options) => {
+    logDeprecated('checklist', 'No direct replacement; will be removed in the next major.');
     const { checklist } = await import('./commands/checklist.js');
     return checklist(options);
 });

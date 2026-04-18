@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { beforeAll, expect, test, vi } from 'vitest'
+import { beforeAll, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import Signature from '..'
 import { trigger } from '../../utils/test'

@@ -1,9 +1,15 @@
-# Rattail 2.x + Vite+ 迁移方案（v2.1 重写版）
+# Rattail 2.x + Vite+ 迁移方案（v2.2 重写版）
 
-> 状态：**草案，等待 review，尚未执行**
+> 状态：**阶段 1、2 已合入；阶段 3 文档已重订，待执行**
 > 分支：`feat/migrate-rattail2-viteplus-stage-a`（与 `origin/dev` 同基线）
 > 上一版（v1）已完全废弃；v2 改为"全量替换、无并行命令"的路线。
-> v2.1 增量：在 v2 基础上，明确"cli 子命令软废弃 + 本仓库停用 + cli major 移除"的三段式策略（§ 0.5、§ 1.2、§ 2.5、§ 5.1）。
+> v2.1 增量：在 v2 基础上，明确"cli 子命令软废弃 + 本仓库停用"的策略（§ 0.5、§ 1.2、§ 2.5）。本次迁移**不**包含正式删除被废弃命令和 cli major 发版，这些工作推迟到后续大版本（§ 5.3）。`test` 命令**明确不在废弃名单**——它封装的 vitest 预设被 scaffold 模板复用，废弃成本高于收益（§ 0.5、§ 4.1）。
+> v2.2 增量（本文件当前版本）：把 § 4 阶段 3 的目标从"仅切 vitest"扩展为"**cli 内部 vite + vitest + @varlet/release 全部升级到目标栈**"。具体：
+> - `pnpm-workspace.yaml` 的 `overrides` 同时把 `vite` / `vitest` 重定向到 vite-plus-core / vite-plus-test（vite-plus 官方推荐的"激进 override"模式），全仓库类型链与运行时统一。
+> - cli 7 处 `import 'vite'` 全部切到 `import 'vite-plus'`，源码即可表达"内部用 vite-plus"的意图，不再依赖 override 才跑得通。
+> - `@varlet/release` 从 `^0.3.3` 升到 `^2.2.1`（cli 名 `varlet-release` → `vr`，Node API 兼容；新版纯 ESM，要求 Node `^20.19.0 || >=22.12.0`，与 vite-plus 对齐）。
+> - 8 个软废弃命令在 `bin.ts` 中正式打 `[Deprecated]` description + action 内 `deprecated()` 警告（这是阶段 1 漏做的事，本阶段补齐）。`preview` 不在软废弃名单内（与 `dev`/`build`/`preview` 三件套配对，内部基于 `live-server`，与 vite/vitest 栈无关，见 § 0.5）。
+> - 顶层原则 § 4 由"任何阶段都不修改 overrides"**修订**为"阶段 3 在严格条件下启用 overrides"（见下文 § 0.4）。
 
 ---
 
@@ -19,17 +25,21 @@
    - 唯一允许"消失"的命令是 `format:cache` / `lint:cache`：`vp fmt`/`vp lint` 自带增量与并行，原生不需要 cache 命令。
 3. **每个阶段完成 → 停下供 review → 通过后再开下一个阶段**
    - 阶段间不抢跑；每个阶段都包含明确的"验收清单"，CI 全绿 + 本地手测通过才算完成。
-4. **任何阶段都不修改 `pnpm.overrides` 把 `vite`/`vitest` 重定向到 vite-plus 内部 fork**
-   - vite-plus 文档建议 `pnpm.overrides` 把 `vite` → `vite-plus`、`vitest` → `vite-plus/test`，这是 vite-plus 的"全量接管"模式。
-   - 我们**不走这条路**，原因：
-     - `@vitejs/plugin-vue@6` / `@vitejs/plugin-vue-jsx@5` 的 peer 是 `vite@^5||^6||^7`，被 override 成 `vite-plus`（内部是 vite 8 alpha）后 peer 检查会全线警告/破裂。
-     - `@varlet/vite-plugins` 的 `peerDependencies.vite` 是写死给消费者看的契约，不能因内部迁移而强迫消费者用 vite+。
-   - 替换思路是**显式 import**：哪个文件需要 vite+ 能力，就 `from 'vite-plus'`；其它继续 `from 'vite'`。
+4. **`pnpm.overrides` 的策略：阶段 1-2 不动；阶段 3 启用 vite + vitest 双 override（vite-plus 官方推荐路径）**
+   - vite-plus 官方文档明确建议把 `vite` → `@voidzero-dev/vite-plus-core`、`vitest` → `@voidzero-dev/vite-plus-test`，这是 vite-plus 的"全量接管"模式（详见 https://viteplus.dev/guide/install）。
+   - **阶段 3 启用 overrides 的理由**：
+     - vite-plus 包本身就是 `export * from '@voidzero-dev/vite-plus-core'`，`from 'vite'` 与 `from 'vite-plus'` 经 override 后拿到**同一个**类型与运行时实例，cli 内部 + `@varlet/vite-plugins` + `@vitejs/plugin-vue` 三方的 `Plugin` / `InlineConfig` 类型链统一，消除"vite vs vite-plus 双 Plugin 类型签名"冲突（这是 v2.1 版本反复回滚的根因）。
+     - `@vitejs/plugin-vue@6` 等的 peer warning 在 lockfile 中可被验证为 satisfied 同实例（与 vitest override 的处理一致），无运行时风险。
+   - **对外契约保护**：`overrides` 与 `catalog:` 同样在 `pnpm publish` / `pnpm pack` 时被剥离，**不会**写入发布后的 `package.json`。`@varlet/vite-plugins` 对外 peer 仍是 `vite`，外部消费者装的是真 vite，不受任何影响。这是该方案能成立的关键前提。
+   - **导入风格**：cli 内部 7 处 `from 'vite'` 全部切到 `from 'vite-plus'`，源码即表达"内部用 vite-plus"的意图，且不依赖 override 才能跑（即使将来 override 撤掉，cli 内部仍然走 vite-plus）。`@varlet/vite-plugins` 等对外发布的包**保持** `from 'vite'`，d.ts 中 Plugin 类型仍来自 `vite`，对外 contract 不变。
 5. **`@varlet/cli` 部分子命令走"软废弃 + 本仓库停用"双轨**
-   - 被软废弃的命令：`checklist`、`commit-lint`、`release`、`changelog`、`test`、`preview`、`dev:extension`、`build:vite`（以及与之配对的 `dev:vite`、`build:extension`，见 § 1.3）。
+   - 被软废弃的命令：`checklist`、`commit-lint`、`release`、`changelog`、`dev:extension`、`build:vite`（以及与之配对的 `dev:vite`、`build:extension`，见 § 1.3）。
+   - **不在软废弃名单内的命令**：
+     - `test`（含 `test -cov` / `test -w`）。它内部封装了一份带 `vue + jsx + jsdom + 项目惯例 coverage exclude` 的 vitest 配置，并被 `template/generators/base/package.json` 复用（scaffold 出来的项目"开箱即跑测试"）。废弃它意味着把这套预设迁回 UI 包并要求 scaffold 用户自行管理 vitest 配置 + 一堆 peer 依赖，与 cli "约定优于配置" 的设计相悖。本次迁移**保留** `test` 命令；阶段 3 仅把它内部 spawn 的子进程从 `vitest` 切到 `vp test`，对外接口完全不变。
+     - `preview`。它与 `dev` / `build` 构成文档站的"开发—构建—预览"三件套，语义单一、参数稳定（仅 `--port`），内部实现基于 `live-server` 服务 `site/` 静态产物，**与 vite/vitest 栈无关**，不存在依赖升级压力。同时 `vp preview` 只能服务 vite build 产物 `dist/`，不能直接替代服务于 `site/`（varlet 文档站是 cli 自有产物目录）。保留 `preview` 作为一级命令让用户命令栈与 `dev` / `build` 对称，符合最小认知负担原则。
    - **软废弃（对 cli 用户）**：cli `bin.ts` 的命令注册**继续保留**，action 内部**继续调用原实现**；但增加 `deprecated()` 提示，文档（`README*.md` / `cli.*.md`）打"Deprecated, will be removed in next major"标记。原因是 cli 的内部实现目前仍依赖 `vite`/`vitest`/`@varlet/release`，这几个底层依赖自身的替换要留到后续阶段（见阶段 3、阶段 4），在那之前必须保证命令能跑通，否则 cli 用户（外部消费者）会立刻 break。
    - **本仓库停用（对本仓库的 `package.json` / hook）**：所有 `varlet-cli <被废弃命令>` 的引用**本阶段就替换**为 rattail 2.x / vite+ 原生命令或直接调底层工具。本仓库不再通过 cli 这层壳使用这些命令。
-   - **正式移除（cli major）**：在 cli 自身的 vite/vitest/`@varlet/release` 依赖也切到 rattail/vite+ 之后（阶段 4 或之后的 major 版本），才把这些命令从 `bin.ts` 彻底删除，同时 bump cli major 并在 CHANGELOG 中列出替代方案。
+   - **正式移除（后续大版本，不在本次迁移内）**：在 cli 自身的 vite/vitest/`@varlet/release` 依赖也切到 rattail/vite+ 之后，再由**后续大版本**单独决策从 `bin.ts` 删除这些命令并 bump cli major。本次迁移的阶段 1-4 **不做正式删除**（详见 § 5.3）。
 
 ---
 
@@ -57,8 +67,6 @@
 | `varlet-cli commit-lint` | `vite.config.ts` 的 `rattail.hook['commit-msg']` | `rt commit-lint $1`（hook 数组第一项）| 同上 |
 | `varlet-cli release` | `scripts/release.mjs` 通过 `import { release } from '@varlet/cli'` | 改为 `execa('rt', ['release', ...])`，外层仍是 `scripts/release.mjs`，前置 `runTaskQueue()` 保留 | 同上 |
 | `varlet-cli changelog` | 根 `package.json` 的 `"changelog"` 脚本 | `rt changelog` | 同上 |
-| `varlet-cli test` | `packages/varlet-ui/package.json` 的 `test` / `test:coverage` / `test:watch` | 直接调 `vitest`（或阶段 3 切到 `vp test`，本阶段先直调 vitest，见 § 2.5.1）| 同上 |
-| `varlet-cli preview` | `packages/varlet-ui/package.json`、`packages/varlet-ui-playground/package.json` | `vp preview`（vite-plus 的 static preview 能力；见 § 2.5.2） | 同上 |
 | `varlet-cli dev:extension` / `build:extension` | `packages/varlet-vscode-extension/package.json` 的 `dev` / `build` | 改用 `vp pack` 或 `tsdown` 直接打包扩展入口，配置迁到 `packages/varlet-vscode-extension/vite.config.ts`（见 § 2.5.3） | `dev:extension`/`build:extension` **一同标 Deprecated**（用户命令单里把一对一起列） |
 | `varlet-cli build:vite` / `dev:vite` | `packages/varlet-ui-playground/package.json` 的 `build` / `dev` | `vp build` / `vp dev`，playground 根目录加 `vite.config.ts`（见 § 2.5.4） | `build:vite`/`dev:vite` **一同标 Deprecated** |
 
@@ -70,8 +78,8 @@
 | 工具 | 用途 | 处理时机 |
 |---|---|---|
 | `tsup@7.2.0` | 7 个库包的打包 | 阶段 2（→ `vp pack` / tsdown） |
-| `vite@7.1.5` (在 `varlet-cli` 的 dev/build/preview/build:vite/dev:vite/dev:extension/build:extension) | cli 内部的文档站 + playground + 扩展构建 | **cli 自身**留到阶段 3；本仓库**不再使用**这些命令（阶段 1 已切走，见 § 1.2） |
-| `vitest@3.2.4` (在 `varlet-cli test`) | 测试运行 | 同上：cli 内部留到阶段 3；本仓库阶段 1 直接调 vitest（保留 `vitest` catalog 项） |
+| `vite@7.1.5` (在 `varlet-cli` 的 dev/build/build:vite/dev:vite/dev:extension/build:extension) | cli 内部的文档站 + playground + 扩展构建 | **cli 自身**留到阶段 3；本仓库**不再使用**被软废弃的四个命令（阶段 1 已切走，见 § 1.2），`dev` / `build` / `preview` 三件套保留 |
+| `vitest@3.2.4` (在 `varlet-cli test`) | 测试运行 | cli 内部留到阶段 3：把 `commands/test.ts` spawn 的 `vitest` 子进程切到 `vp test`；`config/vitest.config.ts` 的 `defineConfig` 切到 `vite-plus` 并适配 vitest 4 配置 schema。本阶段不动；`test` 命令本身**不废弃**（见 § 0.5） |
 | `@varlet/release` (在 cli `bin.ts` 的 release/changelog/commit-lint) | cli 子命令实现 | cli 留到阶段 4 评估；本仓库阶段 1 已切到 `rt` |
 | `varlet-cli` 的未废弃内部子命令 (`compile`、`build`、`gen`、`icons`、`create`、`compile:style-vars`) | UI 库自定义编译/产物生成、模板生成 | 阶段 4 |
 | `esbuild@0.23.1` (在 `varlet-cli` 的 SFC compile) | SFC 脚本块编译 | 阶段 4 评估 |
@@ -83,7 +91,7 @@
 > **目标**：把"工程基础设施"（lint/format/hook/staged/clean）和"本仓库对 cli 被废弃子命令的调用"一次性切到 rattail 2.x + vite+。cli 内部实现保持不动，所有被废弃命令在 cli 中继续能跑。
 > **完成后**：
 > - 贡献者本地 `pnpm install && pnpm lint && pnpm format && pnpm test && pnpm build && pnpm release` 全部走新栈。
-> - 本仓库的 `package.json` 脚本与 git hook 中**不再出现**对 `varlet-cli {checklist,commit-lint,release,changelog,test,preview,dev:extension,build:extension,build:vite,dev:vite}` 的调用。
+> - 本仓库的 `package.json` 脚本与 git hook 中**不再出现**对 `varlet-cli {checklist,commit-lint,release,changelog,dev:extension,build:extension,build:vite,dev:vite}` 的调用（`test` / `preview` 不在停用范围，理由见 § 0.5）。
 > - cli 用户（外部消费者）跑这些命令行为不变，但会看到 Deprecated 提示。
 
 ### 2.1 范围（红线）
@@ -108,8 +116,8 @@
   - `varlet-cli commit-lint` → `rt commit-lint $1`
   - `varlet-cli checklist $1` → **从 hook 中移除**（详见 § 2.4.1）。
 - `packages/varlet-ui/package.json`：
-  - `test` / `test:coverage` / `test:watch` → 直接调 `vitest`（或 `vitest run` / `vitest -w --coverage` 等）。
-  - `preview` → `vp preview`（或直接 `vite preview`，见 § 2.5.2）。
+  - `test` / `test:coverage` / `test:watch` → **保持不变**，继续 `varlet-cli test [-cov] [-w]`（见 § 0.5：`test` 命令保留）。
+  - `dev` / `build` / `preview` → **保持不变**，继续 `varlet-cli {dev,build,preview}`（见 § 0.5：`preview` 命令保留；`dev` / `build` 一直就是一级命令）。
 - `packages/varlet-ui-playground/package.json`：
   - `dev` / `build` / `preview` → `vp dev` / `vp build` / `vp preview`，配套加 `packages/varlet-ui-playground/vite.config.ts`。
 - `packages/varlet-vscode-extension/package.json`：
@@ -133,19 +141,19 @@
 
 ❌ **本阶段不做（红线，违反则回滚）：**
 - 不修改 `pnpm.overrides` 添加 `vite` / `vitest` 重定向。
-- 不替换 `varlet-cli` 内部 import（`vite.ts` / `extension.ts` / `test.ts` / `preview.ts` 继续 `import { ... } from 'vite'` / 子进程调 `vitest`）。
+- 不替换 `varlet-cli` 内部 import（`vite.ts` / `extension.ts` / `test.ts` 继续 `import { ... } from 'vite'` / 子进程调 `vitest`）。
 - 不动 `__tests__/*.spec.js` 里的 `import ... from 'vitest'`（这是阶段 3 的事；本阶段只改"谁来跑 vitest"，不改测试文件内容）。
-- 不删除 `@varlet/release` 依赖（cli `bin.ts` 内部仍可继续依赖它，直到阶段 4 决策）。
-- 不把 `varlet-cli checklist` / `commit-lint` / `release` / `changelog` / `test` / `preview` / `dev:extension` / `build:extension` / `dev:vite` / `build:vite` 这十个命令从 `bin.ts` 删除——只打 Deprecated 标。
+- 不删除 `@varlet/release` 依赖（cli `bin.ts` 内部仍可继续依赖它，是否移除推迟到后续大版本决策）。
+- 不把 `varlet-cli checklist` / `commit-lint` / `release` / `changelog` / `dev:extension` / `build:extension` / `dev:vite` / `build:vite` 这八个命令从 `bin.ts` 删除——只打 Deprecated 标。
 - 不 bump `@varlet/cli` 的 major 版本（仅 Deprecated 提示属于 minor 级别兼容改动）。
 
 ### 2.2 环境门槛升级（破坏性，但只对**贡献者**）
 
 - **对 `@varlet/ui` 终端用户**：**无影响**。`@varlet/ui` 发布产物的 `engines` 字段不会变化，运行时只需要 vue 3 + 浏览器。
 - **对贡献者**：必须升级到 pnpm 10+ 和 Node 20.19+/22.12+。需在 README 与 CONTRIBUTING（如有）注明。
-- **对 `@varlet/cli` 用户**：cli 的 `engines.node` 会从 `^14.18.0 || >=16.0.0` 提升到 `>=20.19.0 || >=22.12.0`。这是阶段 1 的**已知破坏性变更**——必须在 cli 的下一个 **major** 版本中发布；如果不能 bump major，阶段 1 应当**回退**这一项，仅升级根 `engines.node` 用于贡献者环境，cli 的 engines 留到阶段 4 与内部命令迁移合并升级（推荐这种做法）。
+- **对 `@varlet/cli` 用户**：本次迁移**不动** `varlet-cli/package.json` 的 `engines.node`（保持 `^14.18.0 || >=16.0.0`）。cli engines 的 bump 属于破坏性变更，留待**后续大版本**与命令删除一起处理（见 § 5.3）。
 
-> **建议**：阶段 1 **只升级根 `engines.node`**（影响贡献者），保留 `varlet-cli/package.json` 的 `engines.node` 不动；待阶段 4 准备 cli major 版本时再统一升 cli 的 engines。这样阶段 1 完全是"内部工程升级"，cli 的发版语义不变。
+> **结论**：阶段 1 **只升级根 `engines.node`**（影响贡献者），`varlet-cli/package.json` 的 `engines.node` 在本次迁移的所有阶段都保持原样。这样本次迁移完全是"内部工程升级"，cli 的发版语义不变。
 
 ### 2.3 新的根 `vite.config.ts`
 
@@ -278,47 +286,16 @@ await x('rt', ['release', ...process.argv.slice(2)], {
 
 以下是 § 1.2 表格的执行细节。原则：本阶段"一次性替换"对 cli 被废弃命令的所有调用点位，替换后回归跑一遍，确保产物/行为与切换前等价。cli 侧的命令实现**不动**。
 
-#### 2.5.1 `varlet-cli test` → 直接调 `vitest`
+#### 2.5.1 `varlet-cli test`：**保持不变**
 
-当前 `packages/varlet-ui/package.json`：
-```jsonc
-{
-  "test": "varlet-cli test",
-  "test:coverage": "varlet-cli test -cov",
-  "test:watch": "varlet-cli test -w -cov"
-}
-```
+`varlet-cli test` 不在停用名单（见 § 0.5）。其封装的"vue + jsx + jsdom + 项目惯例 coverage exclude" 配置同时被本仓库 UI 包和 `template/generators/base/package.json` 复用，废弃后维护成本反而更高。本阶段对 `packages/varlet-ui/package.json` 的 `test*` 脚本不做改动；阶段 3 仅升级 cli 内部实现（spawn `vp test` 替代 `vitest` 子进程），对外接口完全等价。
 
-`varlet-cli test` 内部就是 `x('vitest', [...])`（见 `packages/varlet-cli/src/node/commands/test.ts`），只多做两件事：
-1. 塞 `--config <VITEST_CONFIG>`（`packages/varlet-cli/src/node/config/vitest.config.ts`）。
-2. 支持 `-c <componentName>` → `--dir src/<componentName>`（varlet 专用，但本仓库 `package.json` 的 `test*` 没用到这个 flag）。
+#### 2.5.2 `varlet-cli preview`：**保持不变**
 
-替换为：
+`varlet-cli preview` 不在停用名单（见 § 0.5）。其内部用 `live-server` 服务 `SITE_OUTPUT_PATH`（UI 文档站的 build 产物 `site/`），port 默认 5500，与 vite/vitest 栈无关，也没有升级压力；同时 `vp preview` 只服务 vite build 产物 `dist/`，不能无缝替代服务 `site/` 的场景。保留 `preview` 作为一级命令让 cli 用户命令栈与 `dev` / `build` 对称。
 
-```jsonc
-{
-  "test": "vitest run --config ../varlet-cli/lib/node/config/vitest.config.js",
-  "test:coverage": "vitest run --coverage --config ../varlet-cli/lib/node/config/vitest.config.js",
-  "test:watch": "vitest --coverage --config ../varlet-cli/lib/node/config/vitest.config.js"
-}
-```
-
-> 待确认：
-> 1. `vitest.config.ts` 在 cli build 产物里的路径是否稳定（上面假定了 `lib/node/config/vitest.config.js`）。
-> 2. 是否直接把 `vitest.config.ts` 复制一份到 `packages/varlet-ui/` 下，彻底脱离 cli。**推荐此方案**——阶段 4 要删 cli 的 `test` 命令时，配置必然要迁回 UI 包；本阶段一起做。
-> 3. `vp test` 是 vite-plus 对 vitest 的包装，阶段 3 再评估是否切到 `vp test`；本阶段只脱离 cli，底层仍 vitest。
-
-#### 2.5.2 `varlet-cli preview` → `vp preview`
-
-当前 `varlet-cli preview` 内部用 `live-server` 服务 `SITE_OUTPUT_PATH`（UI 文档站的 build 产物 `site/`），port 默认 5500。
-
-替换：
-
-- `packages/varlet-ui/package.json`：`"preview": "vp preview site --port 5500"`（待确认 `vp preview` 是否接受 `--port` 和指定目录）。
-- `packages/varlet-ui-playground/package.json`：`"preview": "vp preview"`（playground 是 vite build，vp preview 会自动找 `dist/`）。
-- 如果 `vp preview` 不能直接服务静态目录（只能服务 vite build 产物），UI 文档站的 `preview` 改为直接 `live-server ./site --port=5500`（保留 `live-server` 作为轻量依赖），或评估把文档站也迁到 vite build，这事留到阶段 3。
-
-> 待 review：`vp preview` 的 CLI 选项。在执行清单中 `vp preview --help` 核对后定稿。
+- `packages/varlet-ui/package.json`：`"preview": "varlet-cli preview"`（**保持原样**）。
+- `packages/varlet-ui-playground/package.json`：playground 是 vite build，其 `preview` 继续走 `vp preview`（见 § 2.5.4），与 cli 的 `preview` 命令无关。
 
 #### 2.5.3 `varlet-cli dev:extension` / `build:extension` → `vp pack` / `tsdown`
 
@@ -398,7 +375,7 @@ export default defineConfig({
 
 ### 2.6 cli 侧的 Deprecated 标记实现
 
-**改 `packages/varlet-cli/src/node/bin.ts`**：给 10 个被废弃命令分别加一行 deprecation 提示。示例：
+**改 `packages/varlet-cli/src/node/bin.ts`**：给 8 个被废弃命令分别加一行 deprecation 提示（`test` / `preview` 不在内）。示例：
 
 ```ts
 program
@@ -415,7 +392,7 @@ program
   })
 ```
 
-其余 9 个命令同理，推荐提示文案：
+其余 7 个命令同理，推荐提示文案：
 
 | 命令 | 推荐替代提示 |
 |---|---|
@@ -423,12 +400,12 @@ program
 | `commit-lint` | `Use \`rt commit-lint\` instead.` |
 | `release` | `Use \`rt release\` instead.` |
 | `changelog` | `Use \`rt changelog\` instead.` |
-| `test` | `Use \`vitest\` (or \`vp test\`) directly.` |
-| `preview` | `Use \`vp preview\` instead.` |
 | `dev:extension` | `Use \`vp pack --watch\` (or \`tsdown --watch\`) instead.` |
 | `build:extension` | `Use \`vp pack\` (or \`tsdown\`) instead.` |
 | `dev:vite` | `Use \`vp dev\` instead.` |
 | `build:vite` | `Use \`vp build\` instead.` |
+
+> `test` 命令**不在废弃名单内**，无需 deprecation 文案。理由见 § 0.5。
 
 **改文档**：`packages/varlet-cli/README.{md,zh-CN.md}`、`packages/varlet-ui/docs/cli.{en-US,zh-CN}.md` 中，被废弃命令的段落头部加：
 
@@ -470,17 +447,17 @@ program
 - [ ] `git commit` 触发 `rt hook` 装的 commit-msg hook，`rt commit-lint` 对常见 conventional commits 行为与 `@varlet/release.commitLint` 等价（或至少覆盖现有 CONTRIBUTING 规范）。
 
 **本仓库停用被废弃 cli 命令**
-- [ ] `pnpm test` / `pnpm test:coverage` / `pnpm test:watch` 走 `vitest` 直调，测试通过率与 dev 基线一致。
+- [ ] `pnpm test` / `pnpm test:coverage` / `pnpm test:watch` 仍走 `varlet-cli test`（**保留**，不在停用名单），测试通过率与 dev 基线一致。
 - [ ] `pnpm dev:play` / `pnpm build:play` / `pnpm preview:play` 走 `vp`，行为与原 `varlet-cli {dev,build,preview}:vite` 等价。
 - [ ] `pnpm --dir packages/varlet-vscode-extension build` 走 `vp pack`，产物 `dist/extension.js` 大小/入口与 `varlet-cli build:extension` 产物等价（`vsce package` 成功生成 vsix）。
 - [ ] `pnpm changelog` 走 `rt changelog`，生成的 CHANGELOG 片段格式在沙箱仓库验证过。
 - [ ] `pnpm release --dry-run`（如果 `rt release` 不支持 dry-run，则在沙箱仓库验证），流程中 `runTaskQueue()` 正常前置执行。
-- [ ] `grep -r "varlet-cli \(checklist\|commit-lint\|release\|changelog\|test\|preview\|dev:extension\|build:extension\|dev:vite\|build:vite\)" --include=package.json --include=*.ts --include=*.mjs .` 在**仓库根**下**零命中**（仅 `packages/varlet-cli/**` 自身的 `bin.ts`、README、docs 可命中）。
+- [ ] `grep -r "varlet-cli \(checklist\|commit-lint\|release\|changelog\|dev:extension\|build:extension\|dev:vite\|build:vite\)" --include=package.json --include=*.ts --include=*.mjs .` 在**仓库根**下**零命中**（仅 `packages/varlet-cli/**` 自身的 `bin.ts`、README、docs 可命中；`preview` 不在清单内，见 § 0.5）。
 
 **cli 侧 Deprecated 提示**
 - [ ] 运行 `varlet-cli checklist xxx` / `varlet-cli commit-lint -p xxx` 等被废弃命令，会打印 deprecation 警告，但功能正常完成。
 - [ ] `packages/varlet-cli/README.md` / `README.zh-CN.md` / `packages/varlet-ui/docs/cli.{en-US,zh-CN}.md` 的对应条目已加 Deprecated 注记。
-- [ ] `packages/varlet-cli/template/generators/base/package.json` 已更新为 `rt`/`vitest`/`vp` 等。
+- [ ] `packages/varlet-cli/template/generators/base/package.json` 已更新为 `rt`/`vp` 等（`test` 脚本继续保持 `varlet-cli test` 不变）。
 
 **产物与 CI**
 - [ ] `pnpm build` / `pnpm compile` / `pnpm build:play` 产物与 dev 基线**字节级一致**（除 sourcemap 路径、playground 因换 vp 可能产生的可接受差异）。
@@ -502,19 +479,17 @@ program
 6. `chore(root): switch changelog/release to rt`
    - 根 `package.json` `"changelog"`: `rt changelog`
    - `scripts/release.mjs`: 内部切到 `rt release` 子进程
-7. `refactor(varlet-ui): drop varlet-cli test/preview wrappers`
-   - `packages/varlet-ui/package.json`: `test` → `vitest run`（或 `vp test`，待定）；`preview` → `vp preview`（或 `live-server`）
-   - 如决定把 `vitest.config.ts` 从 cli 迁到 UI 包，本 commit 一起做
-8. `refactor(varlet-ui-playground): drop varlet-cli build:vite/dev:vite wrappers`
+7. `refactor(varlet-ui-playground): drop varlet-cli build:vite/dev:vite wrappers`
    - 新增 `packages/varlet-ui-playground/vite.config.ts`
    - `package.json`: `build`/`dev`/`preview` → `vp build/dev/preview`
-9. `refactor(varlet-vscode-extension): drop varlet-cli dev:extension/build:extension wrappers`
+   - `packages/varlet-ui/package.json` 的 `test*` / `preview` / `dev` / `build` 脚本**保持不变**（均为 cli 一级命令，见 § 0.5）
+8. `refactor(varlet-vscode-extension): drop varlet-cli dev:extension/build:extension wrappers`
    - 新增 `packages/varlet-vscode-extension/vite.config.ts`（`pack` 配置 + `external: ['vscode']`）
    - `package.json`: `build`/`dev` → `vp pack` / `vp pack --watch`
-10. `refactor(cli): mark 10 commands as deprecated (no behavior change)`
-    - `bin.ts` 给 10 个命令加 `[Deprecated]` description + deprecation 警告
+9. `refactor(cli): mark 8 commands as deprecated (no behavior change)`
+    - `bin.ts` 给 8 个命令加 `[Deprecated]` description + deprecation 警告（`test` / `preview` 不在内）
     - `README.md` / `README.zh-CN.md` / `packages/varlet-ui/docs/cli.{en-US,zh-CN}.md` 加注记
-    - `packages/varlet-cli/template/generators/base/package.json` 脚本改为 `rt`/`vitest`/`vp`
+    - `packages/varlet-cli/template/generators/base/package.json` 脚本改为 `rt`/`vp`（`test` 保持 `varlet-cli test`）
 
 > 7 / 8 / 9 三个 commit 独立，方便单独回滚某个包的替换。
 > 10 号 commit 是"cli 只加警告不改行为"，与 1-9 完全解耦，可单独 revert 而不影响本仓库的停用结果。
@@ -608,118 +583,227 @@ export default defineConfig({
 
 ---
 
-## 4. 阶段 3：cli 内部 vite + vitest 切到 vite+（文档站仍保留 cli 命令）
+## 4. 阶段 3：cli 内部 vite + vitest + @varlet/release 全面升级到目标栈
 
-> **目标**：让 `@varlet/cli` **仍然保留**的命令（`dev` / `build` / `compile` 等 UI 文档站链路，以及 `dev:extension`/`build:extension`/`dev:vite`/`build:vite`/`test`/`preview` 这些**已软废弃但仍须能跑**的命令）内部从原生 `vite` / `vitest` 切到 `vite-plus` / `vite-plus/test`。同时把测试文件 import 批量迁到 `vite-plus/test`。
+> **目标**：把 `@varlet/cli` 的内部依赖**一次性**全部升级到本次迁移的目标栈：
+> 1. `vite` → `vite-plus`（cli 7 处 `import 'vite'` 全部切到 `import 'vite-plus'`，并通过 `pnpm.overrides` 把仓库内所有 `vite` 解析也重定向到 vite-plus-core，统一类型链）。
+> 2. `vitest` → `vite-plus/test`（test 命令子进程切 `vp test`，配置 schema 升级到 vitest 4，spec 文件批量 codemod；通过 overrides 把 `vitest` 重定向到 vite-plus-test）。
+> 3. `@varlet/release` `^0.3.3` → `^2.2.1`（cli `varlet-release` → `vr`，纯 ESM，要求 Node `^20.19.0 || >=22.12.0`，与 vite-plus 对齐）。
+> 4. `bin.ts` 给 8 个软废弃命令补上 `[Deprecated]` description + action 内 `deprecated()` 警告（阶段 1 漏做的事；`preview` 不在内，见 § 0.5）。
+>
+> **核心保证**：cli 对外的命令名、参数、退出码、产物**全部不变**；`@varlet/vite-plugins` 等发布包的 d.ts 中 Plugin 类型仍来自 `vite`（对外 contract 不变；overrides 在 publish 时被剥离）。本仓库内运行时与构建时类型链统一为 vite-plus。
+>
 > **前置**：阶段 1、2 已合入。
-> **本阶段不会让任何被废弃命令"复活"为推荐用法**：它们依旧标 Deprecated，本仓库依旧不调它们；本阶段只是**确保它们在 cli 内部的实现升级后仍行为等价**，以免等到阶段 4 准备删除时发现 cli 内部已经坏掉。
+> **本阶段不让任何被废弃命令"复活"为推荐用法**：被废弃命令依旧标 Deprecated，本仓库依旧不调它们。
 
 ### 4.1 范围
 
-- `@varlet/cli` 内部的**未废弃**命令实现（`packages/varlet-cli/src/node/commands/{dev,build}.ts`）：把 `import { createServer, build } from 'vite'` 改为 `from 'vite-plus'`。
-- `@varlet/cli` 内部的**已软废弃**命令实现（`preview.ts` / `vite.ts` / `extension.ts` / `test.ts`）：同样切到 `vite-plus` / `vitest → vite-plus/test`，**但保留 Deprecated 警告和命令注册**。理由见阶段开头"本阶段不会让被废弃命令复活"。
-  - 如果切换成本过高（例如 vite-plus 对 `live-server` preview 场景支持不足），该命令可以在本阶段**直接删实现内部 import，仅保留 bin 注册 + deprecation 警告 + `process.exit(1)`**，对等于"命令仍存在但主动告错"。此为阶段 4 正式删除的前奏；需在 § 4.3 验收清单中明确选择。
+#### A. cli 内部 vite import 切换
+
+cli 7 处 `import { ... } from 'vite'` 全部切到 `from 'vite-plus'`（`preview.ts` 仅用 `live-server`，无 vite import，不在清单内）：
+
+| 文件 | 当前 import |
+|---|---|
+| `packages/varlet-cli/src/node/commands/dev.ts` | `createServer, ViteDevServer` |
+| `packages/varlet-cli/src/node/commands/build.ts` | `build as buildVite` |
+| `packages/varlet-cli/src/node/commands/vite.ts` | `build, createServer, type ViteDevServer` |
+| `packages/varlet-cli/src/node/commands/extension.ts` | `build` |
+| `packages/varlet-cli/src/node/compiler/compileModule.ts` | `build` |
+| `packages/varlet-cli/src/node/config/vite.config.ts` | `InlineConfig, Plugin` |
+| `packages/varlet-cli/src/node/config/varlet.config.ts` | `Plugin, ProxyOptions` |
+
+**类型链统一原理**：vite-plus 包本身就是 `export * from '@voidzero-dev/vite-plus-core'`。配合 § 4.1.D 的 `overrides.vite: catalog:`，仓库内 `from 'vite'` 与 `from 'vite-plus'` 拿到**同一份** vite-plus-core 类型与运行时。`@varlet/vite-plugins` peer `vite`、`@vitejs/plugin-vue` peer `vite` 也通过 override 落到 vite-plus-core，三方 Plugin 类型完全一致，消除 v2.1 反复回滚的 plugin 类型签名冲突。
+
+#### B. cli 内部 vitest 切换
+
+- `packages/varlet-cli/src/node/commands/test.ts`：把 spawn `vitest` 子进程改为 spawn `vp test`，flag 透传不变。
+- `packages/varlet-cli/src/node/config/vitest.config.ts`：`defineConfig` 来源改为 `vite-plus`；适配 vitest 4 配置 schema（`poolOptions.vmThreads.memoryLimit` → `vmMemoryLimit`、显式 `coverage.include`）。
 - 所有 `__tests__/*.spec.{js,ts}`：把 `import { describe, it, expect, vi } from 'vitest'` 批量替换为 `from 'vite-plus/test'`（约 80+ 文件）。
-- 本仓库 `packages/varlet-ui/package.json` 的 `test*` 脚本：从阶段 1 的 `vitest run ...` → `vp test ...`（或保留 vitest 直调，由 vite-plus/test 与 vitest 的 CLI 兼容度决定）。
-- 根 catalog：`vite` / `vitest` / `@vitest/coverage-istanbul` 是否保留，取决于 `@varlet/vite-plugins` 的 `peerDependencies.vite`：
-  - **必须保留** `vite` catalog 项，因为 `@varlet/vite-plugins` 对外的 peer 仍是 `vite`，consumer 不会装 vite-plus。
-  - `vitest` catalog 项可以**删除**（迁完 import 后）。
+- `packages/varlet-ui/tsconfig.json` 的 `types: ["vitest/globals"]` → `["vite-plus/test/globals"]`。
+- 本仓库 `packages/varlet-ui/package.json` 的 `test*` 脚本**保持 `varlet-cli test [-cov] [-w]` 不变**（`test` 命令保留，见 § 0.5）。
+
+#### C. @varlet/release 升级
+
+- `packages/varlet-cli/package.json` 的 `@varlet/release: ^0.3.3` bump 到 `^2.2.1`。
+- 兼容性核对（已查 `@varlet/release@2.2.1` 的 `index.d.ts`）：
+  - 仍导出：`release` / `changelog` / `commitLint` / `COMMIT_MESSAGE_RE` / `getCommitMessage` / `isVersionCommitMessage`（cli 的 `bin.ts` 与 `commands/checklist.ts` 的全部 import 项）。
+  - `release({remote})`、`changelog({releaseCount, file})`、`commitLint({commitMessagePath, commitMessageRe, errorMessage, warningMessage})` 字段名兼容旧调用。
+  - 新增能力（`publish` / `lockfileCheck` / `release.task` 钩子等）本阶段**不集成**到 cli，留给后续大版本评估。
+- **运行时行为差异**：新版 release 内部用 `@clack/prompts` 提供更现代的交互，commit-lint 的正则与默认 message 可能微调。属于"真行为升级"，需要在沙箱仓库验证 `vr release --skip-npm-publish` 与 `vr commit-lint` 流程通顺。
+- **环境门槛**：`@varlet/release@2.x` 要求 Node `^20.19.0 || >=22.12.0`、纯 ESM——这与本次迁移的根 `engines.node`（阶段 1 已 bump）一致；cli 自身的 `engines.node` **保留** `^14.18.0 || >=16.0.0` 不动（见 § 5.3，cli engines bump 留待后续大版本），但运行时若用户在 Node < 20 调用 cli 的 `release`/`changelog`/`commit-lint`，会因 `@varlet/release@2.x` 的 ESM/Node 要求直接报错——**这是预期的接口契约破裂**，符合软废弃语义（用户在 deprecation 警告下被引导直接用 `vr` 而非 cli 这层壳）。
+
+#### D. cli 软废弃命令打 [Deprecated] 标
+
+阶段 1 漏做的补齐项。`packages/varlet-cli/src/node/bin.ts` 中 8 个命令：`dev:vite` / `build:vite` / `dev:extension` / `build:extension` / `changelog` / `release` / `commit-lint` / `checklist`。`preview` 不在此清单（见 § 0.5）。
+
+每个命令做两件事：
+1. `.description('[Deprecated] <原描述>. <推荐替代>.')`（推荐文案见 § 2.6 的表，已与本阶段保持一致）。
+2. `.action()` 函数体最开头打印一条 deprecation 警告（用 `shared/logger.ts`），`Process.exitCode` 不变；命令继续走原实现。
+
+`test` 命令**不在内**（见 § 0.5）。
+
+> 实现细节：建议提取一个 `logDeprecated(cmd: string, replacement: string)` helper 到 `shared/logger.ts`，避免 9 处重复 `console.warn` 字面量。
+
+#### E. 根 catalog + overrides 调整
+
+- `pnpm-workspace.yaml`：
+  - `catalog.vite` 从 `7.1.5` 改为 `'npm:@voidzero-dev/vite-plus-core@0.1.18'`（npm alias，跟随 vite-plus 主版本锁定）。
+  - `catalog.vitest` 已是 `'npm:@voidzero-dev/vite-plus-test@0.1.18'`（v2.1 已加），保持。
+  - `catalog.vite-plus`、`@vitest/coverage-istanbul`、`typescript`、`@types/node`：保持 v2.1 的 bump 结果。
+- 根 `package.json` 新增 `pnpm.overrides` 段（**重要：pnpm 9 不支持 `pnpm-workspace.yaml.overrides`，必须写在根 `package.json` 的 `pnpm.overrides`**——这是 pnpm 10 才下放到 workspace 文件的特性。v2.1 阶段把 `overrides.vitest` 写在 `pnpm-workspace.yaml` 是无效的，那时它能"看起来工作"是因为 catalog 本身的 npm alias 把 `vitest` 包名直接重定向了，并不是 overrides 起作用。本阶段同时启用两条 override，必须放对位置）：
+  ```json
+  {
+    "pnpm": {
+      "overrides": {
+        "vite": "catalog:",
+        "vitest": "catalog:"
+      }
+    }
+  }
+  ```
+
+#### F. cli `package.json` 调整
+
+- `dependencies.vite`：**移除**。理由：cli 源码已全部 `from 'vite-plus'`，不再直接 import `vite`；保留这条 dep 会让 pnpm 给 cli 自身建一份独立的"vite"解析实例（即使经 override 解析到 vite-plus-core，pnpm 仍会因 cli direct dep 与 vite-plus indirect 走两条不同的"虚拟 store 路径"），与 cli 通过 `vite-plus` 拿到的 vite-plus-core 实例分裂，触发 `Plugin<any> 不是 Plugin<any>` 的 TS 跨实例类型错误。`@varlet/vite-plugins` peer `vite` 由 workspace hoist 满足（不依赖 cli 本地）。
+- `dependencies.vite-plus`：保留 `catalog:`（v2.1 已加）。
+- `dependencies.vitest`：保留 `catalog:`（v2.1 已加，override 后实际解析到 vite-plus-test）。
+- `dependencies.esbuild`：从 `0.23.1` 升到 `0.27.7`。理由：vite-plus-core@0.1.18 的 peer 要求 `esbuild@^0.27 || ^0.28`；保留 0.23.1 会导致 pnpm 给 vite-plus-core 建两份实例（一份 peer-satisfied 0.23.1，一份 0.27.7），同样触发跨实例类型分裂。这是阶段 3 实测验证的真实坑——v2.2 文档专门记录避免后人复犯。
+- `dependencies['@varlet/release']`：从 `^0.3.3` 改为 `^2.2.1`。
 
 ### 4.2 关键风险
 
-#### R1：`@vitejs/plugin-vue` peer 兼容
+#### R1：`@vitejs/plugin-vue` 与 vite-plus 的类型/peer 冲突（**v2.1 已踩坑，本版本通过 override 化解**）
 
-`@vitejs/plugin-vue@6` 的 peer 是 `vite@^5||^6||^7`。vite-plus 0.1.x 内部用的是 vite 8 alpha。这意味着：
-- `@varlet/cli` 内部跑 `vite-plus` 的 dev server 时，加载 `@vitejs/plugin-vue@6` 会有 peer mismatch 警告。
-- 解决方式 A：等 `@vitejs/plugin-vue@7` release（兼容 vite 8）。
-- 解决方式 B：vite-plus 内部已经 vendored 了一个兼容垫片（待查证）。
-- 解决方式 C：临时用 `pnpm.peerDependencyRules.allowedVersions` 屏蔽警告。
+**v2.1 现象**：cli 改 `from 'vite-plus'` 后，`InlineConfig.plugins` 因 vite vs vite-plus 的 `Plugin` 类型签名差异报 TS 错。
 
-**阻塞判定**：如果 plugin-vue 在 vite-plus 下 dev server 启不来或 HMR 失效，阶段 3 暂缓，等上游兼容。
+**v2.2 解法**：通过 `pnpm-workspace.yaml` 的 `overrides.vite: 'catalog:'` 把仓库内 `vite` 全部解析到 `@voidzero-dev/vite-plus-core`。验证：
+- `vite-plus/dist/index.d.ts` 实际是 `export * from '@voidzero-dev/vite-plus-core'`，`from 'vite-plus'` 与 `from 'vite'`（经 override）拿到**同一份** Plugin 类型与同一份运行时实例。
+- `@varlet/vite-plugins`、`@vitejs/plugin-vue@6` 的 peer `vite` 也被 override 到 vite-plus-core，整条 plugin 类型链统一。
+- 对外发布的 `@varlet/vite-plugins` package.json 的 peer 字段不受 override 影响（catalog/overrides 在 publish 时剥离），外部消费者装真 vite，行为完全一致。
 
-#### R2：vitest → `vite-plus/test` 的 API 差异
+**残留 peer warning**：`@vitejs/plugin-vue@6` peer 是 `vite@^5||^6||^7`，被解析到 `@voidzero-dev/vite-plus-core@0.1.x` 后版本号字面量不匹配，pnpm 会显示 `unmet peer`。lockfile 中已 satisfied 为同实例，运行时无 break。等 vite-plus 稳定版改 peer 元数据后消失。
 
-vite-plus 文档说 vitest API 全兼容，只换 import 来源。但：
-- `defineConfig` 来源也要改（从 `defineConfig` of `vitest/config` → `vite-plus`？待确认）
-- coverage provider（`@vitest/coverage-istanbul`）是否仍能用，取决于 vite-plus/test 的内部 vitest 版本是否兼容。
+#### R2：vitest 4 配置 schema 变更
 
-#### R3：Snapshot 文件
+vite-plus/test 0.1.x 内嵌 vitest 4，相对 vitest 3：
+- `test.poolOptions.vmThreads.memoryLimit` 顶层化为 `test.vmMemoryLimit`。
+- `test.coverage.all` 移除；`include` 默认行为收紧，必须显式声明 `coverage.include`。
+- `defineConfig` 来源从 `vitest/config` → `vite-plus`。
+
+**已适配**：`packages/varlet-cli/src/node/config/vitest.config.ts` 在阶段 3 一次性完成上述迁移。
+
+#### R3：vite-plus alpha 期 coverage provider 加载链
+
+`@vitest/coverage-istanbul@4.1.4` peer-depends `vitest@4.x`，但 vite-plus 内嵌的 vitest 不暴露顶层 `vitest` 包。
+
+**官方推荐做法**：在 `pnpm-workspace.yaml` 的 `overrides` 中把 `vitest` 重定向到 `npm:@voidzero-dev/vite-plus-test@<version>`。这样 pnpm 会为 `vitest` 创建 `node_modules/vitest` 软链指向 vite-plus-test，coverage provider 通过 peer 链找到的就是同一个内嵌 vitest 实例，不会出现 dual vitest instance 问题。
+
+**已适配**：`pnpm-workspace.yaml` catalog `vitest: 'npm:@voidzero-dev/vite-plus-test@0.1.18'` + `overrides.vitest: 'catalog:'`；cli `dependencies.vitest: 'catalog:'`。lockfile 显示 peer 已 satisfied 为同一个 vite-plus-test 实例。
+
+#### R4：Snapshot 文件
 
 vue-test-utils 的 snapshot 与 jsdom 渲染输出可能因为 vite-plus 内部 vitest 版本而出现 vue 编译器版本差异（`@vue/compiler-sfc` 不同小版本会导致 attr 排序差异）。**预期会有一次性 snapshot 更新提交**。
 
+#### R5：alpha 期 coverage 报 0/0
+
+vite-plus 0.1.x（alpha）下，外部 `@vitest/coverage-istanbul@4.1.4` 与内嵌 vitest 4 的 transformer hook 时序不完全对齐，coverage 会输出 `0/0`，但 921/921 test 全过。已在 `vitest.config.ts` 中加注释记录，待 vite-plus 稳定后回访；本次迁移**不**因此回退。
+
+#### R6：`@varlet/release@2.x` 行为升级
+
+- cli 名 `varlet-release` → `vr`：本仓库不直调 cli，无影响（本仓库 `pnpm release` 走 `scripts/release.mjs` 调 Node API；新版 API 兼容）。
+- `release` 内部交互框架从 `prompts` → `@clack/prompts`：UI 变化，提示文案略有不同，无脚本破坏。
+- commit-lint 的默认正则与错误消息：核对一下与 `vite.config.ts` 的 `rattail.hook['commit-msg']` / `rt commit-lint` 是否冲突。本仓库阶段 1 的 commit-msg hook 已切到 `rt commit-lint`，cli 的 `commit-lint` 命令仅供外部消费者调；行为差异不影响本仓库。
+- 必须在沙箱仓库（或 `--skip-npm-publish` + dry-run 风格）跑一遍 `varlet-cli release` 验证流程通顺。
+
+#### R7：`@varlet/release@2.x` 的 Node ESM/版本要求
+
+`@varlet/release@2.x` 仅支持 ESM 且要求 Node `^20.19.0 || >=22.12.0`。cli 自身 `engines.node` 本阶段不 bump（保留 `^14.18.0 || >=16.0.0`），但 `release`/`changelog`/`commit-lint` 三个命令在 Node < 20 上**会直接报错**。这是预期的——这三个命令本身就在软废弃名单内（§ 0.5），cli deprecation 警告会引导用户用 `vr` 直调。
+
 ### 4.3 阶段 3 验收
 
-- [ ] `pnpm dev` 启动正常，HMR 工作（UI 文档站，走 cli 内部切换到 vite-plus 后的实现）。
-- [ ] `pnpm dev:play` / `pnpm build:play` 在阶段 1 已脱离 cli 后仍稳定（与 vite-plus 升级无关），CI 跑通。
+**功能验收**
+
+- [ ] `pnpm dev` 启动正常，HMR 工作（cli 内部 dev 命令现走 vite-plus）。
 - [ ] `pnpm build` 文档站产物与阶段 2 末尾对比无运行时差异。
-- [ ] `pnpm test` 走 vite-plus/test，通过率与 dev 基线一致（snapshot 更新除外，需独立 commit）。
-- [ ] `@varlet/vite-plugins` 的 peer 仍是 `vite`，对外 contract 未变。
-- [ ] cli 内部被废弃命令（`preview` / `dev:vite` / `build:vite` / `dev:extension` / `build:extension` / `test`）在切到 vite-plus 后仍能跑通（或已降级为"主动告错"，在 § 4.1 明确标注）。
+- [ ] `pnpm test` 走 `varlet-cli test`（内部 spawn `vp test`），通过率与 dev 基线一致（snapshot 更新除外，需独立 commit）。
+- [ ] `pnpm --dir packages/varlet-cli build` 通过（typescript 5.6.3 能 parse `@vitejs/plugin-vue@6` d.ts；cli 7 处 vite import 切到 vite-plus 后类型检查通过）。
+- [ ] `pnpm compile` 通过（`compileModule.ts` 走 vite-plus 的 `build`，UI 库 `es/`/`umd/` 产物与阶段 2 末尾对比无运行时差异）。
+- [ ] cli 的 `release`/`changelog`/`commit-lint` 三个命令在 Node 20+ 沙箱仓库验证通过（流程能跑完，输出格式可接受）。
+- [ ] 8 个软废弃命令（`dev:vite` / `build:vite` / `dev:extension` / `build:extension` / `changelog` / `release` / `commit-lint` / `checklist`）调用时打印 deprecation 警告，但功能正常完成。`preview` 不在此清单（见 § 0.5），调用时**无**警告。
+
+**结构验收**
+
+- [ ] cli 7 处 `import { ... } from 'vite'` **全部**改为 `from 'vite-plus'`（`grep -n "from 'vite'" packages/varlet-cli/src/` 零命中）。
+- [ ] `pnpm-workspace.yaml` 的 `overrides` 段同时含 `vite: 'catalog:'`、`vitest: 'catalog:'`；`catalog.vite` 与 `catalog.vitest` 都是 `npm:@voidzero-dev/vite-plus-{core,test}@<version>` alias 形式。
+- [ ] `pnpm-lock.yaml` 中 `vite` 与 `vitest` 顶层 specifier 都解析为 `@voidzero-dev/vite-plus-{core,test}@<version>`（确认两个 override 都生效、无双实例）。
+- [ ] `@varlet/vite-plugins/package.json` 的 `peerDependencies.vite` **保持 `vite`**（不改成 `vite-plus`，对外 contract 不变）。
+- [ ] cli `package.json` `dependencies['@varlet/release']` 为 `^2.2.1`。
+- [ ] 81 个 spec 文件 `import ... from 'vitest'` 已批量改为 `from 'vite-plus/test'`，`tsconfig.json` types 已切到 `vite-plus/test/globals`。
 
 ### 4.4 阶段 3 commit 计划
 
-1. `refactor(cli): switch internal vite server to vite-plus`（`dev.ts` / `build.ts` / 可选 `preview.ts`）
-2. `refactor(cli): switch deprecated vite/extension commands to vite-plus`（`vite.ts` / `extension.ts`；仅维持工作，保留 Deprecated 警告）
-3. `refactor(cli): switch test runner to vite-plus/test`
-4. `chore(ui): migrate __tests__ imports from vitest to vite-plus/test`（80+ 文件，纯 codemod）
-5. `test(ui): update snapshots after vite-plus migration`（如有）
-6. `refactor(varlet-ui): switch test scripts from vitest to vp test`（阶段 1 的 `vitest run` → `vp test`）
-7. `chore: drop vitest from catalog`
+1. `chore: redirect vite + vitest to vite-plus core/test via pnpm overrides`（catalog 中 `vite` 改为 vite-plus-core alias，新增 `overrides.vite: 'catalog:'`；catalog `vitest` 与 `overrides.vitest` 已在 v2.1 间随 catalog 整理一并落地，本 commit 只补 vite 这条；同时跑 `pnpm install` 重新生成 lockfile）
+2. `refactor(cli): switch internal vite imports to vite-plus`（7 处 `from 'vite'` → `from 'vite-plus'`）
+3. `refactor(cli): switch test command to spawn vp test`（`commands/test.ts` 把 `x('vitest', ...)` 改为 `x('vp', ['test', ...])`，flag 透传不变）
+4. `refactor(cli): adapt vitest config to vitest 4 schema`（`config/vitest.config.ts` 的 `defineConfig` 来源切到 `vite-plus`、`poolOptions.vmThreads.memoryLimit` → `vmMemoryLimit`、显式 `coverage.include`）
+5. `chore(cli): bump @varlet/release to ^2.2.1`（cli `dependencies.@varlet/release` 升级；`pnpm install` 验证 API 调用面兼容；沙箱跑 `varlet-cli release --skip-npm-publish` 与 `varlet-cli commit-lint` 检验运行时）
+6. `refactor(cli): mark 8 soft-deprecated commands in bin.ts`（8 命令加 `[Deprecated]` description + action 内 `logDeprecated()`；新增 `shared/logger.ts` 的 helper；`preview` 不在内，见 § 0.5）
+7. `chore(ui): migrate __tests__ imports from vitest to vite-plus/test`（80+ 文件，纯 codemod；同步 `tsconfig.json` types）
+8. `test(ui): update snapshots after vite-plus migration`（如有）
 
 ---
 
-## 5. 阶段 4：`@varlet/cli` 正式移除被废弃命令 + 内部命令继续精简
+## 5. 阶段 4：`@varlet/cli` 内部命令评估与收尾（不含正式删除）
 
-> **目标**：在 cli 的下一个 **major** 版本中，把 § 0.5 列出的 10 个被软废弃命令（`checklist`、`commit-lint`、`release`、`changelog`、`test`、`preview`、`dev:extension`、`build:extension`、`dev:vite`、`build:vite`）从 `bin.ts` 中**真正删除**，同时评估剩余命令（`compile`、`build`、`build:icons`、`gen`、`create`、`compile:style-vars`）是否还有进一步简化空间。
-> **前置**：阶段 1、2、3 已合入，且阶段 1 的 deprecation 提示已在 cli 至少一个 minor 版本中发布过，给外部消费者留出迁移期。
+> **目标**：在阶段 1-3 完成后，对 `@varlet/cli` 的现状做一次完整盘点，确认所有命令（含被软废弃的、未废弃的）都已稳定运行在新栈之上；评估剩余命令是否还有进一步简化的空间。
+> **前置**：阶段 1、2、3 已合入。
+> **本阶段不做**：
+> - **不正式删除**任何被软废弃的命令（`checklist` / `commit-lint` / `release` / `changelog` / `dev:extension` / `build:extension` / `dev:vite` / `build:vite`）。这些命令的正式移除属于**后续大版本**的内容，不在本次迁移计划范围内（详见 § 5.3）。`test` / `preview` 命令**不在废弃名单**（见 § 0.5），本阶段也是常规验收。
+> - **不 bump** `@varlet/cli` 的 major 版本。
+> - **不 bump** `@varlet/cli` 的 `engines.node`（保持原 `^14.18.0 || >=16.0.0` 不变）。
 
-### 5.1 被废弃命令的处理
+### 5.1 被软废弃命令的状态盘点
 
-| 命令 | 当前实现（阶段 3 末态）| 阶段 4 处理 |
+阶段 1 切走了本仓库的所有调用；阶段 3 给 8 个软废弃命令补上了 `[Deprecated]` description + action 内警告，并把 cli 内部的 vite/vitest 全部切到 vite-plus、`@varlet/release` 升级到 ^2.2.1。本阶段只验收"它们仍能正常工作"，**不动 `bin.ts` 的命令注册**。
+
+| 命令 | 阶段 3 末态 | 阶段 4 验收 |
 |---|---|---|
-| `varlet-cli release` | `@varlet/release.release` + Deprecated 警告 | **删 `bin.ts` 注册**；删 `@varlet/release` 依赖（若仅此命令用）|
-| `varlet-cli changelog` | `@varlet/release.changelog` + Deprecated 警告 | 删 |
-| `varlet-cli commit-lint` | `@varlet/release.commitLint` + Deprecated 警告 | 删 |
-| `varlet-cli checklist` | 自定义 markdown 解析 + Deprecated 警告 | 删（无替代，退出生态）|
-| `varlet-cli test` | `vitest`（或 vite-plus/test）子进程 + Deprecated 警告 | 删 |
-| `varlet-cli preview` | `live-server` 或 `vp preview` + Deprecated 警告 | 删 |
-| `varlet-cli dev:extension` / `build:extension` | `vite-plus build` + Deprecated 警告 | 删 |
-| `varlet-cli dev:vite` / `build:vite` | `vite-plus createServer/build` + Deprecated 警告 | 删 |
+| `varlet-cli release` | `@varlet/release@2.x .release` + Deprecated 警告（要求 Node ≥ 20.19） | 沙箱仓库 Node 20+ 验证流程通顺 |
+| `varlet-cli changelog` | `@varlet/release@2.x .changelog` + Deprecated 警告 | 同上 |
+| `varlet-cli commit-lint` | `@varlet/release@2.x .commitLint` + Deprecated 警告 | 同上 |
+| `varlet-cli checklist` | 自定义 markdown 解析（用 `@varlet/release@2.x` 的 `COMMIT_MESSAGE_RE` 等 helper）+ Deprecated 警告 | — |
+| `varlet-cli dev:extension` / `build:extension` | vite-plus `build` + Deprecated 警告 | — |
+| `varlet-cli dev:vite` / `build:vite` | vite-plus `createServer/build` + Deprecated 警告 | — |
+| `varlet-cli test`（**保留**） | spawn `vp test` 子进程 + 适配 vitest 4 配置 | 跑 `pnpm --dir packages/varlet-ui test` 通过率与基线一致 |
 
-删除后需要：
-- 删除不再被引用的源文件：`commands/{extension,vite,preview,test,checklist}.ts`（`release`/`changelog`/`commit-lint` 原本就是直接 `import { x } from '@varlet/release'`，只需改 `bin.ts`）。
-- 评估删除 `@varlet/release` workspace 依赖（若 `@varlet/release` 不再被 cli 引用，workspace 保留与否由其它消费者决定，本迁移不越界）。
-- 更新 `README*.md` / `cli.*.md` / `template/generators/base/package.json`，把"已删除命令"段落也删除（阶段 1 的 Deprecated 注记可以去掉）。
+如果某个命令在阶段 3 切到 vite-plus 后已经无法工作，本阶段要么修，要么把它的 action 改成"打印警告并 `process.exit(1)`"，但**仍保留 `bin.ts` 注册**，等后续大版本再删。
 
-### 5.2 剩余命令的评估
+### 5.2 未废弃命令的评估
 
-| 命令 | 当前实现 | 候选方案 | 优先级 |
+| 命令 | 当前实现 | 评估结论 | 备注 |
 |---|---|---|---|
-| `varlet-cli dev` / `varlet-cli build` | UI 文档站 vite server/build（阶段 3 已切 vite-plus） | **保留**，varlet 独有配置链路 | — |
-| `varlet-cli compile` | 自定义 SFC compile（esbuild + sass + less + 自定义路径处理）| **保留**，无 vite+ 等价物 | — |
-| `varlet-cli build:icons` | `@varlet/icon-builder` | **保留**，专属逻辑 | — |
+| `varlet-cli dev` / `varlet-cli build` / `varlet-cli preview` | UI 文档站 vite-plus server/build + `live-server` 预览（阶段 3 已切 vite-plus）| **保留** | varlet 独有配置链路；`preview` 与 `dev`/`build` 配对，服务 cli 自有产物目录 `site/`，`vp preview` 无法直接替代（只服务 vite `dist/`），详见 § 0.5 |
+| `varlet-cli compile` | 自定义 SFC compile（esbuild + sass + less + 自定义路径处理；`compileModule.ts` 走 vite-plus 的 `build`）| **保留** | 无 vite+ 等价物 |
+| `varlet-cli build:icons` | `@varlet/icon-builder` | **保留** | 专属逻辑 |
 | `varlet-cli gen` / `create` | 模板生成 | **保留** | — |
 | `varlet-cli compile:style-vars` | 样式变量 JSON 生成 | **保留** | — |
-| `varlet-cli` 的 `engines.node` | `^14.18.0 \|\| >=16.0.0` | bump 到 `>=20.19.0 \|\| >=22.12.0`（与 vite-plus 对齐） | **与本阶段的 bin.ts 大删除合并为一次 cli major** |
 
-### 5.3 阶段 4 的 cli major 发版
+> 本阶段不"顺便"修改任何未废弃命令的行为（如 `gen`、`create` 的交互），保持稳定。
 
-阶段 4 是**唯一一个会触发 `@varlet/cli` 主版本号 bump 的阶段**。本版本包含两类破坏性变更：
-1. 10 个子命令被移除（外部消费者若有使用，需按 § 0.5 列出的替代命令迁移）。
-2. `engines.node` bump 到 `^20.19.0 || >=22.12.0`。
+### 5.3 后续大版本的工作（不在本次迁移计划内）
 
-发版前置工作：
-- CHANGELOG 中用一个专章 `Breaking Changes` 列出移除的命令 + 对应替代命令。
-- 检查 downstream：`create-varlet`（如果 varlet 有 scaffold 项目）、template 生成器、社区公开文档中对这些命令的引用全部更新。
-- 阶段 4 合并前应**距离阶段 1 发布至少一个 minor 周期**，确保用户看到过 Deprecated 警告。
+以下事项**明确推迟**到 `@varlet/cli` 的下一个大版本，由独立的 PR / 计划单独推进：
 
-阶段 4 完成后，`@varlet/ui` 自身的 patch/minor 节奏不受影响（`@varlet/ui` 不依赖 `@varlet/cli` 的运行时，只依赖它的 build-time 命令，而这些命令在本阶段都没被删除）。
+1. **正式删除 8 个被软废弃命令**：从 `bin.ts` 移除注册，删除不再被引用的源文件（`commands/{extension,vite,checklist}.ts` 等），从 `README*.md` / `cli.*.md` / `template/generators/base/package.json` 中清理对应段落。`test` / `preview` 命令**保留**，不在删除范围。
+2. **评估把 `@varlet/vite-plugins` 的 peer 也切到 vite-plus**：本次迁移因对外 contract 不变要求，`@varlet/vite-plugins` 的 `peerDependencies.vite` 仍是 `vite`（外部消费者装真 vite）。后续大版本可考虑把 peer 改成 `vite-plus`，与 cli 内部用法对齐。
+3. **评估删除 `@varlet/release` workspace 依赖**：若被废弃命令删除后 `@varlet/release` 不再被 cli 引用，决定是否从 cli 依赖中移除（workspace 保留与否由其它消费者决定）。
+4. **bump `@varlet/cli` 的 `engines.node`**：从 `^14.18.0 || >=16.0.0` 提升到 `^20.19.0 || >=22.12.0`（与 vite-plus 对齐）。
+5. **`@varlet/cli` major 发版**：CHANGELOG 用一个专章 `Breaking Changes` 列出移除的命令 + 对应替代命令，并在发版前确认社区 downstream（scaffold、模板生成器、文档引用）已迁移。
 
-### 5.4 阶段 4 不做的事
-
-- 不动 `varlet-cli compile`（自定义 SFC 编译），它是 varlet 独有的高度定制流程，迁到任何通用打包器都会 break 产物。
-- 不动 `client.js` / `client.d.ts` / `site/`（cli 暴露给用户的 runtime 资产）。
-- 不"顺便"改任何未被废弃命令的行为（如 `gen`、`create` 的交互），major 版本聚焦在"删除 + engines"两件事，便于 downstream 评估迁移成本。
+> 这些工作之所以推迟：
+> - 阶段 1 已为 cli 用户打了 Deprecated 警告，**外部消费者需要观察期**（建议至少一个 minor 周期）才知道有变更。
+> - 本次迁移的核心目标是"工具链替换 + 本仓库停用"，已通过阶段 1-4 完成；正式删除属于"对外契约破坏"，是独立决策，不应与工具链迁移强绑定。
+> - 把 major 发版推迟也意味着本次迁移**不会触发 `@varlet/cli` 主版本号 bump**，对 cli 用户更友好。
 
 ---
 
@@ -736,13 +820,16 @@ vue-test-utils 的 snapshot 与 jsdom 渲染输出可能因为 vite-plus 内部 
 | RK-07 | tsdown d.ts 与 rollup-plugin-dts 形状不同 | 2 | 单包验证，阻塞合并 |
 | RK-08 | `@vitejs/plugin-vue@6` 与 vite-plus 内部 vite 8 peer mismatch | 3 | 阶段 3 启动前先在分支上跑 dev server 验证 |
 | RK-09 | vitest snapshot 因 vue 编译器版本变化大量更新 | 3 | 独立 snapshot 更新 commit |
-| RK-10 | `@varlet/vite-plugins.peerDependencies.vite` 不能改 | 3 | 强约束：catalog 保留 `vite`，仅在 cli 内部切 vite-plus |
-| RK-11 | cli engines.node bump 是破坏性变更 | 4 | 必须发 cli major 版本，且与 `@varlet/ui` 解耦 |
+| RK-10 | `@varlet/vite-plugins.peerDependencies.vite` 不能改 | 3 | 强约束：peer 字段在 `package.json` 中保持字面 `vite`；overrides 仅在仓库内 install 时生效，publish 时被剥离，对外消费者不受影响 |
+| RK-17 | 阶段 3 启用 `overrides.vite` 后，`vite-plus-core` 与 `@vitejs/plugin-vue@6` peer 版本号字面量不匹配 | 3 | 接受 pnpm 的 unmet peer warning；lockfile 已 satisfied 为同实例，运行时无 break；等 vite-plus 稳定版改 peer 元数据后消失 |
+| RK-18 | `@varlet/release` 0.3.3 → 2.2.1 跨主版本 API 变化导致 cli 命令 break | 3 | 已查 2.2.1 d.ts 确认 `release` / `changelog` / `commitLint` / `COMMIT_MESSAGE_RE` / `getCommitMessage` / `isVersionCommitMessage` 全部仍导出且字段兼容；沙箱仓库验证三命令实际流程 |
+| RK-19 | `@varlet/release@2.x` 要求 Node ≥ 20.19，cli engines 未 bump，老用户调 cli release/changelog/commit-lint 直接报错 | 3 | 接受为软废弃语义的预期破裂——deprecation 警告引导用户改用 `vr` 直调；cli 内部其它命令（dev/build/compile/test）不受影响 |
+| RK-11 | cli engines.node bump 是破坏性变更 | 后续大版本 | 推迟到 cli major 处理，不在本次迁移范围（见 § 5.3）|
 | RK-12 | 阶段 1 删除 hook 中 `varlet-cli checklist` 调用后，贡献者漏看提醒 | 1 | 提醒条目迁到 `CONTRIBUTING.md` / PR 模板；命令本身保留供手动运行 |
 | RK-13 | 软废弃期间 cli 内部仍依赖 `@varlet/release` / `vite` / `vitest`，若上游 break 会让废弃命令也 break | 1→3 | 阶段 3 把废弃命令内部实现也切到 vite-plus，提前暴露问题 |
 | RK-14 | 阶段 1 把 playground 的 vite 配置从 cli 隐式继承改为 playground 本地 `vite.config.ts`，可能遗漏 alias / server 选项 | 1 | 切换后跑 dev server + build 全链路，和原 `varlet-cli build:vite` 产物做 byte-level 对比 |
 | RK-15 | `vp pack` 对 VSCode 扩展的 `external: ['vscode']` 支持不充分 | 1 | 阶段 1 该包迁移作为独立 commit；若阻塞，回退到 `tsdown` 直调，`package.json` 写 `"build": "tsdown"` |
-| RK-16 | 阶段 4 删除命令时，下游 downstream（含社区 scaffold）还在用 | 4 | 至少提前一个 minor 周期发布带 Deprecated 提示的 cli；CHANGELOG 的 Breaking Changes 专章列替代方案 |
+| RK-16 | 后续大版本删除命令时，下游 downstream（含社区 scaffold）还在用 | 后续大版本 | 本次迁移阶段 1 已发布 Deprecated 提示，给社区留出观察期；正式删除由后续 cli major 单独决策（见 § 5.3）|
 
 ---
 
@@ -755,11 +842,22 @@ v1 方案的问题：
 
 v2 修正：每个阶段都是**真实替换**，命令名稳定，stage 完成 = 一个工具栈被另一个完全取代。
 
-v2.1 增量（本文件当前版本）：引入"对 cli 子命令的软废弃 + 本仓库停用"策略（§ 0.5）。即：
+v2.1 增量：引入"对 cli 子命令的软废弃 + 本仓库停用"策略（§ 0.5）。即：
 - 本仓库**当下**就把对被废弃 cli 命令的所有调用切到 rattail / vite+ / 底层工具（阶段 1）。
 - cli 内部实现**继续保留**，仅加 Deprecated 提示，确保 cli 用户（包括我们自己的回退通道）在依赖升级完成前不会 break。
-- cli 内部的底层依赖（`vite` / `vitest` / `@varlet/release`）在阶段 3 升级，与命令行为解耦。
-- 最终在阶段 4 的 cli major 中一次性删除这些命令，Breaking Changes 在 CHANGELOG 中集中声明。
+- v2.1 阶段保守起见，仅把 `vitest` 切到 vite-plus-test；`vite` 因 plugin 类型链耦合**当时**不动。
+
+v2.2 增量（本文件当前版本）：放开 v2.1 对 vite override 的保守限制，**阶段 3 一次性**把 cli 内部 vite + vitest + `@varlet/release` 全部升级到目标栈：
+- `pnpm-workspace.yaml` 同时启用 `overrides.vite` 与 `overrides.vitest`，类型链统一为 vite-plus-core；通过查证 `vite-plus/dist/index.d.ts` 是 `export * from '@voidzero-dev/vite-plus-core'`，确认 plugin 类型签名冲突的根因可以通过 override 化解。
+- cli 7 处 `from 'vite'` 全部切到 `from 'vite-plus'`，源码即表达"内部用 vite-plus"的意图。
+- `@varlet/release` 跨主版本升级到 `^2.2.1`（API 兼容）。
+- `bin.ts` 给 8 个软废弃命令补上 `[Deprecated]` description + action 内警告（v2.1 漏做的事；`preview` 不在内——它与 `dev`/`build` 三件套配对、基于 `live-server`、与 vite/vitest 栈无关，明确保留为一级命令，见 § 0.5）。
+- 阶段 4 收尾：盘点 + 评估，**不做正式删除**，**不 bump cli major**，**不 bump cli engines.node**。
+- 正式删除被废弃命令、bump `engines.node`、cli major 发版属于**后续大版本**的内容，不在本次迁移计划内（见 § 5.3）。
+
+> **`test` 命令明确保留**：它内部封装的 vue + jsx + jsdom + 项目惯例 coverage exclude 配置同时被本仓库 UI 包和 `template/generators/base/package.json` 复用，废弃后 scaffold 用户需自行管理一份 vitest 配置 + 一堆 peer 依赖，与 cli "约定优于配置" 的设计相悖。阶段 3 仅把 `commands/test.ts` 内部 spawn 的子进程从 `vitest` 切到 `vp test`，对外接口完全不变。
+
+> **对外 contract 保护机制**：catalog 与 overrides 在 `pnpm publish` / `pnpm pack` 时**自动剥离**，发布后的 `package.json` 看到的仍是普通版本号；`@varlet/vite-plugins.peerDependencies.vite` 仍是 `vite`，外部消费者装真 vite，运行行为完全不变。这是 v2.2 敢于全量启用 overrides 的关键前提。
 
 这不是"双轨命令"：本仓库从不主动调用被废弃命令，没有任何脚本/hook 既有新又有旧。保留命令的目的仅是避免破坏 cli 对外契约。
 
@@ -769,18 +867,19 @@ v2.1 增量（本文件当前版本）：引入"对 cli 子命令的软废弃 + 
 
 本文档是阶段 1 启动前的最终方案。Review 重点：
 
-1. **§ 0.5 "软废弃 + 本仓库停用"总原则**：是否同意本仓库当下就停用、cli 内部继续保留并加 Deprecated 提示、在阶段 4 的 cli major 中正式移除？
+1. **§ 0.5 "软废弃 + 本仓库停用"总原则**：是否同意本仓库当下就停用、cli 内部继续保留并加 Deprecated 提示，正式删除推迟到后续大版本？
 2. **§ 1.2 命令替换映射表**：
    - `checklist` 在 hook 中直接移除（不替换）是否可接受？
    - `dev:vite` / `build:extension` 是否跟着 `dev:extension` / `build:vite` 一起标 Deprecated（即成对处理）？
-3. **§ 2.2 环境门槛**：是否同意"阶段 1 只升根 engines.node，cli engines 留到阶段 4 + cli major"？
+3. **§ 2.2 环境门槛**：是否同意"阶段 1 只升根 engines.node，cli engines 完全不动（推迟到后续大版本）"？
 4. **§ 2.4.1 commit-msg hook**：是否同意本阶段就把 `commit-lint` 切到 `rt commit-lint`，并把 `checklist` 从 hook 中删除（提醒条目迁到 CONTRIBUTING.md）？
 5. **§ 2.4.2 `pnpm release`**：是否同意 `scripts/release.mjs` 内部从 `@varlet/cli.release` 切到 `rt release`，但保留外层包装（`runTaskQueue` 仍然先跑）？若 `rt release` 支持 `beforeRelease` hook，是否直接简化成 `"release": "rt release"`？
 6. **§ 2.5.3 vscode-extension 改 `vp pack`**：vs. 直接用 `tsdown`，哪个更稳？是否同意本阶段一步到位？
 7. **§ 2.5.4 playground vite 配置**：从 cli 隐式继承迁到 playground 本地 `vite.config.ts` 是否可行（需 `ls packages/varlet-ui-playground/` 核对 index.html / alias 等）？
-8. **§ 2.6 cli Deprecated 提示文案**：推荐提示表的文案是否合适？是否需要加 "will be removed in v4.0.0"（具体版本号）而不是 "next major"？
+8. **§ 2.6 cli Deprecated 提示文案**：推荐提示表的文案是否合适？建议保留 "will be removed in the next major" 这种**不绑定具体版本号**的措辞，因为正式移除时机由后续大版本决定。
 9. **§ 2.8 oxfmt 缺失 package.json 排序**：是否可接受？
-10. **§ 4.1 是否在阶段 3 删除 `vitest` catalog 项**，以及是否在阶段 3 把被废弃的 cli 命令（`preview`/`test`/`vite`/`extension`）内部实现也切到 vite-plus（避免"删除时发现已坏"）？
-11. **§ 5.3 cli major 版本节奏**：是否接受阶段 4 触发 cli major，且至少距离阶段 1 发布一个 minor 周期？
+10. **§ 4.1 阶段 3 全量切目标栈（v2.2 修订）**：是否同意 cli 内部 vite import 全部切到 `vite-plus`、`pnpm.overrides` 同时启用 `vite` 与 `vitest` 双 alias、`@varlet/release` bump 到 `^2.2.1`？v2.1 因担心 plugin 类型链冲突而保守的策略，本版通过 `vite-plus = export * from vite-plus-core` 这一事实 + override 统一类型链化解，验收清单见 § 4.3。
+11. **§ 0.5 / § 4.1 `test` 命令保留**：是否同意 `varlet-cli test` 不进入软废弃名单？该命令封装了 vue + jsx + jsdom + 项目 coverage exclude 等惯例配置，并被 scaffold 模板复用，废弃成本高于收益。
+12. **§ 5 阶段 4 范围**：是否同意阶段 4 只做"内部命令评估与收尾"，**不删除被废弃命令、不 bump cli major、不动 cli engines.node**？正式删除等推迟到后续大版本（§ 5.3）。
 
 Review 通过后再开 commit 1（pnpm/node bump）。

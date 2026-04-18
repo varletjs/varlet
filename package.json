@@ -6,7 +6,7 @@
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "build": "pnpm --dir ./packages/varlet-ui build",
     "build:play": "pnpm --dir ./packages/varlet-ui-playground build",
-    "changelog": "varlet-cli changelog",
+    "changelog": "rt changelog",
     "clean": "rt clean",
     "compile": "pnpm --dir ./packages/varlet-ui compile",
     "compile:style-vars": "pnpm --dir ./packages/varlet-ui compile:style-vars",
@@ -37,5 +37,11 @@
     "node": "^20.19.0 || >=22.12.0",
     "pnpm": ">=9.0.0"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@9.15.9",
+  "pnpm": {
+    "overrides": {
+      "vite": "catalog:",
+      "vitest": "catalog:"
+    }
+  }
 }

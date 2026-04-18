@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, ref } from 'vue'
 import Collapse from '..'
 import CollapseItem from '../../collapse-item'

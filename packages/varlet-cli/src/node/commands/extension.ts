@@ -1,4 +1,4 @@
-import { build } from 'vite'
+import { build } from 'vite-plus'
 import { getExtensionConfig, type ExtensionMode } from '../config/vite.config.js'
 
 export type ExtensionCommandMode = ExtensionMode

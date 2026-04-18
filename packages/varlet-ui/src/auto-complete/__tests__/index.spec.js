@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp, h, nextTick } from 'vue'
 import { z } from 'zod'
 import AutoComplete from '..'

@@ -1,4 +1,4 @@
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi } from 'vite-plus/test'
 import { useLocale } from '..'
 import { mockConsole } from '../../utils/test'
 import enUS from '../en-US'

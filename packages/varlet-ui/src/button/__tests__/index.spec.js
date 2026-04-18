@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, Fragment, h } from 'vue'
 import Button from '..'
 import ButtonGroup from '../../button-group'

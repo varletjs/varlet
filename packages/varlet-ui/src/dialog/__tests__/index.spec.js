@@ -1,4 +1,4 @@
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
 import VarDialog from '../Dialog'

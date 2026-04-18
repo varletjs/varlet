@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import { z } from 'zod'
 import Slider from '..'

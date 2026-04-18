@@ -2,23 +2,24 @@ packages:
   - 'packages/*'
 
 catalog:
-  typescript: 5.3.3
+  typescript: 5.6.3
   vue: 3.5.21
   vue-router: 4.5.1
-  vite: 7.1.5
-  vitest: 3.2.4
+  vite: 'npm:@voidzero-dev/vite-plus-core@0.1.18'
+  vitest: 'npm:@voidzero-dev/vite-plus-test@0.1.18'
   jsdom: 26.1.0
   fs-extra: ^9.0.1
   live-server: ^1.2.1
   rimraf: ^5.0.1
   tinyexec: ^0.3.0
   rattail: ^2.0.3
-  vite-plus: ^0.1.18
-  '@types/node': ^18.7.20
-  '@vitest/coverage-istanbul': 3.2.4
+  vite-plus: 0.1.18
+  '@types/node': ^20.19.0
+  '@vitest/coverage-istanbul': 4.1.4
   '@vue/runtime-core': 3.5.21
   '@vue/compiler-sfc': 3.5.21
-  '@vitejs/plugin-vue': 6.0.1
-  '@vitejs/plugin-vue-jsx': 5.1.1
+  '@vitejs/plugin-vue': 6.0.6
+  '@vitejs/plugin-vue-jsx': 5.1.5
   '@vue/babel-plugin-jsx': 1.5.0
   '@vue/test-utils': 2.4.6
+

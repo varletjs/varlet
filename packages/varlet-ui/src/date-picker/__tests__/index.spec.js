@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import dayjs from 'dayjs/esm'
-import { describe, expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import DatePicker from '..'
 import { delay, mockConsole, mockScrollIntoView, triggerDrag } from '../../utils/test'
