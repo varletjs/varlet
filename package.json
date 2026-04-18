@@ -27,7 +27,6 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
-    "@varlet/icons": "workspace:*",
     "nanospinner": "^1.1.0",
     "rattail": "catalog:",
     "tinyexec": "catalog:",
