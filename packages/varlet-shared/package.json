@@ -36,7 +36,7 @@
     "dev": "vp pack --watch"
   },
   "dependencies": {
-    "rattail": "1.0.17"
+    "rattail": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

@@ -11,9 +11,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "varlet-cli build:vite",
-    "dev": "varlet-cli dev:vite",
-    "preview": "varlet-cli preview"
+    "build": "vp build",
+    "dev": "vp dev",
+    "preview": "vp preview --outDir site"
   },
   "dependencies": {
     "@varlet/touch-emulator": "workspace:*",
@@ -26,9 +26,9 @@
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
     "@types/node": "catalog:",
-    "@varlet/cli": "workspace:*",
-    "live-server": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite-plus": "catalog:"
   }
 }

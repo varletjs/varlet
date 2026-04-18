@@ -2,8 +2,18 @@
 
 ### Reference
 
-[@varlet/cli 中文文档](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/README.md)
-[@varlet/cli documentation](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/README.en-US.md)
+[@varlet/cli 中文文档](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/README.zh-CN.md)
+[@varlet/cli documentation](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/README.md)
+
+### Recommended stack
+
+This template is aligned with the **Varlet + vite-plus + rattail** setup:
+
+- **`@varlet/cli`** — first-party Varlet workflows (`dev`, `build`, `preview`, `compile`, `test`, `create`, …).
+- **`vite-plus` (`vp`)** — lint, format, and other toolchain entrypoints (see root `vite.config.ts`).
+- **`rattail` (`rt`)** — hooks, `clean`, `changelog`, `release`, etc.
+
+To refresh generated files from the latest built-in template after upgrading `@varlet/cli`, run **`varlet-cli gen`** from the parent directory (use git or a backup first; `gen` may overwrite generated scaffolding).
 
 ### Quickstart
 
@@ -56,11 +66,9 @@ pnpm test:watch
 pnpm test:coverage 
 ```
 
-#### Mount Git Hooks
+#### Git hooks
 
-```shell
-npx simple-git-hooks
-```
+Hooks are installed via `pnpm install` (`prepare` runs `vp config` + `rt hook`). Use `rt commit-lint` through the configured `commit-msg` hook.
 
 #### Generate changelog
 
@@ -70,7 +78,7 @@ pnpm changelog
 
 #### Release
 
-tips: 
+tips:
 - 1.The registry of npm must be the official source of npm
 - 2.The npm must be logged in
 

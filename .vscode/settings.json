@@ -1,8 +1,5 @@
 {
   "eslint.enable": false,
-  "prettier.enable": true,
-  "editor.defaultFormatter": "oxc.oxc-vscode",
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "prettier.enable": false,
+  "editor.defaultFormatter": "oxc.oxc-vscode"
 }

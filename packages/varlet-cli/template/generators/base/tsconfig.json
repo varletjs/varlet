@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "downlevelIteration": true,
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -10,7 +9,6 @@
     "allowSyntheticDefaultImports": true,
     "jsxImportSource": "vue",
     "jsx": "preserve",
-    "types": ["vitest/globals"]
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+    "types": ["vite-plus/test/globals"]
+  }
 }

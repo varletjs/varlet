@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "types": ["vite/client"]
-  }
+    "isolatedModules": true
+  },
+  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"]
 }

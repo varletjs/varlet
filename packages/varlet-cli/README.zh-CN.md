@@ -20,6 +20,33 @@
 - 🌍 &nbsp;支持 `国际化`
 - 🚀 &nbsp;基于 `pnpm`
 
+### 推荐技术栈
+
+在全新的 **Varlet 组件库工具链**体系下，我们建议将 **`@varlet/cli`**、**[vite-plus](https://viteplus.dev/)**（`vp`）与 **rattail**（`rt`，npm 包 `rattail`）组合使用：前者覆盖组件库文档站与编译等一等能力，后两者承接与 Ox / Rolldown 栈一致的 lint、format、打包入口，以及 `clean`、Git 钩子、`changelog`、`release`、`commit-lint` 等工程自动化。无论是从零搭建新库，还是升级旧脚手架、需要与模板对齐时，都推荐沿用这一组合。
+
+| 部分 | 作用 |
+| --- | --- |
+| **`@varlet/cli`** | Varlet 一等能力：`create`、`gen`、`dev`、`build`、`preview`、`compile`、`compile:style-vars`、`build:icons`、`test` 等 |
+| **[vite-plus](https://viteplus.dev/)**（`vp`） | 与 Ox / Rolldown 栈一致的 lint、format、应用/扩展的 `build`/`dev`/`preview` 等入口 |
+| **rattail**（`rt`，npm 包 `rattail`） | `clean`、Git 钩子、`changelog`、`release`、`commit-lint` 等工程自动化 |
+
+升级 `@varlet/cli` 后，可在上级目录再次执行 **`varlet-cli gen`**，将已有工程与**当前内置的最新模板**对齐（请先提交或备份；`gen` 可能覆盖生成型文件）。
+
+### 不建议继续使用的子命令
+
+以下子命令**仍可执行**（会给出废弃相关提示），但**不应在新脚本或新工程中再依赖**，请优先改用 `vp` / `rt`（或文档中的 `vr`）。具体时间表以后续发布说明为准。
+
+| 命令 | 请改用 |
+| --- | --- |
+| `varlet-cli dev:vite` | `vp dev` |
+| `varlet-cli build:vite` | `vp build` |
+| `varlet-cli dev:extension` | `vp pack --watch`（扩展包内需有本地 `vite.config.ts`） |
+| `varlet-cli build:extension` | `vp pack` |
+| `varlet-cli commit-lint` | `rt commit-lint` |
+| `varlet-cli checklist` | 无直接替代；见贡献文档中的提交前说明 |
+| `varlet-cli changelog` | `rt changelog` |
+| `varlet-cli release` | `rt release`（或 `@varlet/release` 提供的 `vr release`） |
+
 ### 快速开始
 
 `@varlet/cli` 内置了 `sfc` 和 `tsx` 两种风格的组件库项目模板，可以通过 `gen` 命令直接生成。
@@ -156,20 +183,6 @@ varlet-cli compile
 varlet-cli compile:style-vars
 ```
 
-#### 启动 VSCode 插件开发环境
-
-```shell
-# playground-ignore
-varlet-cli dev:extension
-```
-
-#### 构建 VSCode 插件
-
-```shell
-# playground-ignore
-varlet-cli build:extension
-```
-
 #### 打包字体图标
 
 ```shell
@@ -204,34 +217,6 @@ varlet-cli test -w
 ```shell
 # playground-ignore
 varlet-cli test -cov
-```
-
-#### 校验提交信息
-
-```shell
-# playground-ignore
-varlet-cli commit-lint
-```
-
-#### 显示检查清单
-
-```shell
-# playground-ignore
-varlet-cli checklist
-```
-
-#### 生成更新日志
-
-```shell
-# playground-ignore
-varlet-cli changelog
-```
-
-#### 发布组件库
-
-```shell
-# playground-ignore
-varlet-cli release
 ```
 
 #### 生成一个项目模板
