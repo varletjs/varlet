@@ -77,7 +77,7 @@ importers:
         version: 1.2.2
       rattail:
         specifier: 'catalog:'
-        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
+        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
       tinyexec:
         specifier: 'catalog:'
         version: 0.3.2
@@ -86,7 +86,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-cli:
     dependencies:
@@ -253,7 +253,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-preset-tailwindcss:
     devDependencies:
@@ -265,7 +265,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-preset-unocss:
     dependencies:
@@ -281,13 +281,13 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-shared:
     dependencies:
       rattail:
         specifier: 'catalog:'
-        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
+        version: 2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -297,7 +297,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-touch-emulator:
     devDependencies:
@@ -364,7 +364,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: npm:@voidzero-dev/vite-plus-test@0.1.18
-        version: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
+        version: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
       vue:
         specifier: 'catalog:'
         version: 3.5.21(typescript@5.6.3)
@@ -413,7 +413,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-use:
     dependencies:
@@ -429,7 +429,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       vue:
         specifier: 'catalog:'
         version: 3.5.21(typescript@5.6.3)
@@ -475,7 +475,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
   packages/varlet-vscode-extension:
     dependencies:
@@ -503,7 +503,7 @@ importers:
         version: 5.6.3
       vite-plus:
         specifier: 'catalog:'
-        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+        version: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
 
 packages:
 
@@ -6716,9 +6716,25 @@ snapshots:
       magicast: 0.5.2
       obug: 2.1.1
       tinyrainbow: 3.1.0
-      vitest: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
+      vitest: '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
     transitivePeerDependencies:
       - supports-color
+
+  '@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
+    dependencies:
+      '@oxc-project/runtime': 0.124.0
+      '@oxc-project/types': 0.124.0
+      lightningcss: 1.32.0
+      postcss: 8.5.10
+    optionalDependencies:
+      '@types/node': 20.19.39
+      esbuild: 0.23.1
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      sass: 1.99.0
+      tsx: 4.21.0
+      typescript: 5.6.3
+      yaml: 2.8.3
 
   '@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
     dependencies:
@@ -6732,22 +6748,6 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       less: 3.13.1
-      sass: 1.99.0
-      tsx: 4.21.0
-      typescript: 5.6.3
-      yaml: 2.8.3
-
-  '@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
-    dependencies:
-      '@oxc-project/runtime': 0.124.0
-      '@oxc-project/types': 0.124.0
-      lightningcss: 1.32.0
-      postcss: 8.5.10
-    optionalDependencies:
-      '@types/node': 22.19.17
-      esbuild: 0.23.1
-      fsevents: 2.3.3
-      jiti: 2.6.1
       sass: 1.99.0
       tsx: 4.21.0
       typescript: 5.6.3
@@ -6787,11 +6787,11 @@ snapshots:
   '@voidzero-dev/vite-plus-linux-x64-musl@0.1.18':
     optional: true
 
-  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
+  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@types/chai': 5.2.3
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       es-module-lexer: 1.7.0
       obug: 2.1.1
       pixelmatch: 7.1.0
@@ -6801,7 +6801,6 @@ snapshots:
       tinybench: 2.9.0
       tinyexec: 1.1.1
       tinyglobby: 0.2.16
-      vite: '@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)'
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 20.19.39
@@ -6845,46 +6844,6 @@ snapshots:
       ws: 8.20.0
     optionalDependencies:
       '@types/node': 20.19.39
-      '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
-      jsdom: 26.1.0
-    transitivePeerDependencies:
-      - '@arethetypeswrong/core'
-      - '@tsdown/css'
-      - '@tsdown/exe'
-      - '@vitejs/devtools'
-      - bufferutil
-      - esbuild
-      - jiti
-      - less
-      - publint
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - typescript
-      - unplugin-unused
-      - utf-8-validate
-      - yaml
-
-  '@voidzero-dev/vite-plus-test@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)':
-    dependencies:
-      '@standard-schema/spec': 1.1.0
-      '@types/chai': 5.2.3
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      es-module-lexer: 1.7.0
-      obug: 2.1.1
-      pixelmatch: 7.1.0
-      pngjs: 7.0.0
-      sirv: 3.0.2
-      std-env: 4.1.0
-      tinybench: 2.9.0
-      tinyexec: 1.1.1
-      tinyglobby: 0.2.16
-      ws: 8.20.0
-    optionalDependencies:
-      '@types/node': 22.19.17
       '@vitest/coverage-istanbul': 4.1.4(@voidzero-dev/vite-plus-test@0.1.18)
       jsdom: 26.1.0
     transitivePeerDependencies:
@@ -9570,7 +9529,7 @@ snapshots:
       - debug
       - vue
 
-  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
+  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
     dependencies:
       '@configurajs/vite-plus': 0.2.5
       '@varlet/axle': 1.0.2(vue@3.5.21(typescript@5.6.3))
@@ -9584,8 +9543,8 @@ snapshots:
       unconfig: 7.5.0
       uuid: 13.0.0
     optionalDependencies:
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      vite-plus: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      vite-plus: 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
     transitivePeerDependencies:
       - conventional-commits-filter
       - conventional-commits-parser
@@ -9595,7 +9554,7 @@ snapshots:
       - typescript
       - vue
 
-  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
+  rattail@2.0.5(@voidzero-dev/vite-plus-core@0.1.18(@types/node@22.19.17)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(typescript@5.6.3)(vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(vue@3.5.21(typescript@5.6.3)):
     dependencies:
       '@configurajs/vite-plus': 0.2.5
       '@varlet/axle': 1.0.2(vue@3.5.21(typescript@5.6.3))
@@ -9609,8 +9568,8 @@ snapshots:
       unconfig: 7.5.0
       uuid: 13.0.0
     optionalDependencies:
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      vite-plus: 0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@22.19.17)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      vite-plus: 0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
     transitivePeerDependencies:
       - conventional-commits-filter
       - conventional-commits-parser
@@ -10486,11 +10445,11 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
+  vite-plus@0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
     dependencies:
       '@oxc-project/types': 0.124.0
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(@voidzero-dev/vite-plus-core@0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3))(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
+      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       oxfmt: 0.45.0
       oxlint: 1.60.0(oxlint-tsgolint@0.20.0)
       oxlint-tsgolint: 0.20.0
@@ -10538,53 +10497,6 @@ snapshots:
       '@oxc-project/types': 0.124.0
       '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@20.19.39)(esbuild@0.27.7)(jiti@2.6.1)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@20.19.39)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.27.7)(jiti@2.6.1)(jsdom@26.1.0)(less@3.13.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      oxfmt: 0.45.0
-      oxlint: 1.60.0(oxlint-tsgolint@0.20.0)
-      oxlint-tsgolint: 0.20.0
-    optionalDependencies:
-      '@voidzero-dev/vite-plus-darwin-arm64': 0.1.18
-      '@voidzero-dev/vite-plus-darwin-x64': 0.1.18
-      '@voidzero-dev/vite-plus-linux-arm64-gnu': 0.1.18
-      '@voidzero-dev/vite-plus-linux-arm64-musl': 0.1.18
-      '@voidzero-dev/vite-plus-linux-x64-gnu': 0.1.18
-      '@voidzero-dev/vite-plus-linux-x64-musl': 0.1.18
-      '@voidzero-dev/vite-plus-win32-arm64-msvc': 0.1.18
-      '@voidzero-dev/vite-plus-win32-x64-msvc': 0.1.18
-    transitivePeerDependencies:
-      - '@arethetypeswrong/core'
-      - '@edge-runtime/vm'
-      - '@opentelemetry/api'
-      - '@tsdown/css'
-      - '@tsdown/exe'
-      - '@types/node'
-      - '@vitejs/devtools'
-      - '@vitest/coverage-istanbul'
-      - '@vitest/coverage-v8'
-      - '@vitest/ui'
-      - bufferutil
-      - esbuild
-      - happy-dom
-      - jiti
-      - jsdom
-      - less
-      - publint
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - typescript
-      - unplugin-unused
-      - utf-8-validate
-      - vite
-      - yaml
-
-  vite-plus@0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3):
-    dependencies:
-      '@oxc-project/types': 0.124.0
-      '@voidzero-dev/vite-plus-core': 0.1.18(@types/node@22.19.17)(esbuild@0.23.1)(jiti@2.6.1)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
-      '@voidzero-dev/vite-plus-test': 0.1.18(@types/node@22.19.17)(@vitest/coverage-istanbul@4.1.4)(esbuild@0.23.1)(jiti@2.6.1)(jsdom@26.1.0)(sass@1.99.0)(tsx@4.21.0)(typescript@5.6.3)(yaml@2.8.3)
       oxfmt: 0.45.0
       oxlint: 1.60.0(oxlint-tsgolint@0.20.0)
       oxlint-tsgolint: 0.20.0
