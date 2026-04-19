@@ -1,0 +1,16 @@
+import{L as e,N as t,W as n,c as r,d as i,g as a,h as o}from"./runtime-core.esm-bundler-BYGWF7Zw.js";import{t as s}from"./_plugin-vue_export-helper-V-yks4gF.js";var c={components:{}},l={class:`varlet-site-doc`},u={class:`card`},d={id:`Intro`},f={class:`card`},p={id:`BasicUsage`};function m(s,c,m,h,g,_){let v=e(`router-link`),y=e(`var-site-code-example`);return t(),i(`div`,l,[c[10]||=r(`h1`,null,`Defaults Customization`,-1),r(`div`,u,[r(`h3`,d,[a(v,{to:`#Intro`},{default:n(()=>[...c[0]||=[o(`#`,-1)]]),_:1}),c[1]||=o(`Intro`,-1)]),c[2]||=r(`p`,null,`The component library provides the ability to customize the default values of component props.`,-1)]),r(`div`,f,[r(`h3`,p,[a(v,{to:`#BasicUsage`},{default:n(()=>[...c[3]||=[o(`#`,-1)]]),_:1}),c[4]||=o(`Basic Usage`,-1)]),c[8]||=r(`p`,null,[o(`Customize the component's property definition through the static method `),r(`code`,null,`setPropsDefaults`),o(` provided by the component. It should be noted that attribute customization only takes effect for declarative components, and the customized behavior should be before the component is initialized.`)],-1),a(y,{"playground-ignore":``},{default:n(()=>[...c[5]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-comment`},`// main.ts`),o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { Button } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'@varlet/ui'`),o(`
+
+Button.setPropsDefaults({
+  `),r(`span`,{class:`hljs-attr`},`type`),o(`: `),r(`span`,{class:`hljs-string`},`'primary'`),o(`,
+  `),r(`span`,{class:`hljs-attr`},`elevation`),o(`: `),r(`span`,{class:`hljs-number`},`10`),o(`
+})
+`)])],-1)]]),_:1}),c[9]||=r(`p`,null,`After customization, the following two writing methods will be equivalent.`,-1),a(y,{"playground-ignore":``},{default:n(()=>[...c[6]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-comment`},`<!-- App.vue -->`),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`Hello`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1}),a(y,{"playground-ignore":``},{default:n(()=>[...c[7]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-comment`},`<!-- App.vue -->`),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"primary"`),o(),r(`span`,{class:`hljs-attr`},`:elevation`),o(`=`),r(`span`,{class:`hljs-string`},`"10"`),o(`>`)]),o(`Hello`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})])])}var h=s(c,[[`render`,m]]);export{h as default};
