@@ -1,4 +1,17 @@
-# [3.15.0](https://github.com/varletjs/varlet/compare/v3.14.2...v3.15.0) (2026-04-19)
+## [3.15.1](https://github.com/varletjs/varlet/compare/v3.15.0...v3.15.1) (2026-04-19)
+
+
+### Bug Fixes
+
+* **release:** update import path for release function ([2e25bb0](https://github.com/varletjs/varlet/commit/2e25bb03b792b4be0e92cd0b54e1fd381794492f))
+* **tsconfig:** add vite-plus/client type to tsconfig template ([9a3f541](https://github.com/varletjs/varlet/commit/9a3f541ef95ed8e30a02ce599918a6adf40b801f))
+
+
+### Refactoring
+
+* rattail + vite+ ([#1956](https://github.com/varletjs/varlet/issues/1956)) ([8e6ee00](https://github.com/varletjs/varlet/commit/8e6ee008bece4a76758fa888417a66bcc21375e9))
+
+## [3.14.2](https://github.com/varletjs/varlet/compare/v3.14.1...v3.14.2) (2026-03-31)
 
 
 ### Bug Fixes
@@ -6,11 +19,6 @@
 * **button:** disable button when loading or pending and close [#1952](https://github.com/varletjs/varlet/issues/1952) ([cb4bf8c](https://github.com/varletjs/varlet/commit/cb4bf8cd5df4c2cc88e245f6ae83469f1f8cf350))
 * **field-decorator:** hide clear icon when readonly ([#1948](https://github.com/varletjs/varlet/issues/1948)) ([e79303b](https://github.com/varletjs/varlet/commit/e79303b473165f10af62c8435fc88ce3bf3fb4d8)), closes [#1946](https://github.com/varletjs/varlet/issues/1946)
 * **snackbar:** update content styles ([#1949](https://github.com/varletjs/varlet/issues/1949)) ([9c0c7e6](https://github.com/varletjs/varlet/commit/9c0c7e60fb2bc4da776bf959502b690c71981868))
-
-
-### Refactoring
-
-* rattail + vite+ ([#1956](https://github.com/varletjs/varlet/issues/1956)) ([8e6ee00](https://github.com/varletjs/varlet/commit/8e6ee008bece4a76758fa888417a66bcc21375e9))
 
 ## [3.14.1](https://github.com/varletjs/varlet/compare/v3.14.0...v3.14.1) (2026-03-24)
 
