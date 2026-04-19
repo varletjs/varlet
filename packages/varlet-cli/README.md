@@ -22,19 +22,17 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 
 ### Recommended toolchain
 
-Under Varlet’s current `component-library toolchain`, we recommend combining `@varlet/cli`, [`vite-plus`](https://viteplus.dev/) (`vp`), and `rattail` (`rt`, npm package `rattail`): `@varlet/cli` covers first-party library workflows (docs, compile, tests, …), `vp` covers lint/format and app/extension build entrypoints aligned with the Ox/Rolldown stack, and `rt` covers `clean`, git hooks, `changelog`, `release`, `commit-lint`, and similar automation. Use this trio for new libraries, scaffold upgrades, or whenever you re-run `varlet-cli gen` to match the built-in template.
+Under Varlet’s current `component-library toolchain`, we recommend combining `@varlet/cli`, [`vite-plus`](https://viteplus.dev/) (`vp`), and [`rattail`](https://rattail.varletjs.org/) (`rt`): `@varlet/cli` covers first-party library workflows (docs, compile, tests, …), `vp` covers lint/format and app/extension build entrypoints aligned with the Oxc/Rolldown stack, and `rattail` covers `clean`, git hooks, `changelog`, `release`, `commit-lint`, and similar automation. Use this trio for new libraries and scaffold upgrades.
 
 | Piece | Role |
 | --- | --- |
 | `@varlet/cli` | First-party Varlet workflows: `create`, `gen`, `dev`, `build`, `preview`, `compile`, `compile:style-vars`, `build:icons`, `test`, … |
-| [`vite-plus`](https://viteplus.dev/) (`vp`) | Lint, format, app/extension `build`/`dev`/`preview`, and other toolchain entrypoints aligned with the Ox/Rolldown stack |
-| `rattail` (`rt`, npm package `rattail`) | `clean`, git hooks, `changelog`, `release`, `commit-lint`, and other repo automation |
+| [`vite-plus`](https://viteplus.dev/) (`vp`) | Lint, format, app/extension `build`/`dev`/`preview`, and other toolchain entrypoints aligned with the Oxc/Rolldown stack |
+| [`rattail`](https://rattail.varletjs.org/) (`rt`) | `clean`, git hooks, `changelog`, `release`, `commit-lint`, and other repo automation |
 
-After upgrading `@varlet/cli`, you can align an existing app with the built-in template by running `varlet-cli gen` again from the parent directory (commit or back up first; `gen` may overwrite generated files).
+### Commands pending deprecation
 
-### Legacy subcommands (prefer alternatives)
-
-These subcommands still run for backward compatibility and may print a deprecation notice. Do not rely on them in new scripts or new projects — prefer `vp` / `rt` (or `vr` where documented). Any future changes will be called out in release notes.
+These commands still run for backward compatibility and may print a deprecation notice. Do not rely on them in new scripts or new projects — prefer `vp` / `rt` (or `vr` where documented). Any future changes will be called out in release notes.
 
 | Command | Use instead |
 | --- | --- |
@@ -45,7 +43,7 @@ These subcommands still run for backward compatibility and may print a deprecati
 | `varlet-cli commit-lint` | `rt commit-lint` |
 | `varlet-cli checklist` | Minimal value; deprecated without replacement |
 | `varlet-cli changelog` | `rt changelog` |
-| `varlet-cli release` | `rt release` (or `vr release` from `@varlet/release`) |
+| `varlet-cli release` | `rt release` |
 
 ### Quickstart
 

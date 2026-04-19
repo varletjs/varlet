@@ -22,19 +22,17 @@
 
 ### 推荐技术栈
 
-在全新的 `Varlet 组件库工具链` 体系下，我们建议将 `@varlet/cli`、[`vite-plus`](https://viteplus.dev/)（`vp`）与 `rattail`（`rt`，npm 包 `rattail`）组合使用：前者覆盖组件库文档站与编译等一等能力，后两者承接与 Ox / Rolldown 栈一致的 lint、format、打包入口，以及 `clean`、Git 钩子、`changelog`、`release`、`commit-lint` 等工程自动化。无论是从零搭建新库，还是升级旧脚手架、需要与模板对齐时，都推荐沿用这一组合。
+在全新的 `Varlet 组件库工具链` 体系下，我们建议将 `@varlet/cli`、[`vite-plus`](https://viteplus.dev/)（`vp`）与 [`rattail`](https://rattail.varletjs.org/)（`rt`）组合使用：前者覆盖组件库文档站与编译等一等能力，后两者承接与 Oxc / Rolldown 栈一致的 lint、format、打包入口，以及 `clean`、git hooks、`changelog`、`release`、`commit-lint` 等工程自动化。无论是从零搭建新库，还是升级旧脚手架、需要与模板对齐时，都推荐沿用这一组合。
 
 | 部分 | 作用 |
 | --- | --- |
 | `@varlet/cli` | Varlet 一等能力：`create`、`gen`、`dev`、`build`、`preview`、`compile`、`compile:style-vars`、`build:icons`、`test` 等 |
-| [`vite-plus`](https://viteplus.dev/)（`vp`） | 与 Ox / Rolldown 栈一致的 lint、format、应用/扩展的 `build`/`dev`/`preview` 等入口 |
-| `rattail`（`rt`，npm 包 `rattail`） | `clean`、Git 钩子、`changelog`、`release`、`commit-lint` 等工程自动化 |
+| [`vite-plus`](https://viteplus.dev/)（`vp`） | 与 Oxc / Rolldown 栈一致的 lint、format、应用/扩展的 `build`/`dev`/`preview` 等入口 |
+| [`rattail`](https://rattail.varletjs.org/)（`rt`） | `clean`、git hooks、`changelog`、`release`、`commit-lint` 等工程自动化 |
 
-升级 `@varlet/cli` 后，可在上级目录再次执行 `varlet-cli gen`，将已有工程与内置模板对齐（请先提交或备份；`gen` 可能覆盖生成型文件）。
+### 以下命令即将废弃
 
-### 不建议继续使用的子命令
-
-以下子命令仍可执行（会给出废弃相关提示），但不应在新脚本或新工程中再依赖，请优先改用 `vp` / `rt`（或文档中的 `vr`）。具体时间表以后续发布说明为准。
+以下命令仍可执行（会给出废弃相关提示），但不应在新脚本或新工程中再依赖，请优先改用 `vp` / `rt`（或文档中的 `vr`）。具体时间表以后续发布说明为准。
 
 | 命令 | 请改用 |
 | --- | --- |
@@ -45,7 +43,7 @@
 | `varlet-cli commit-lint` | `rt commit-lint` |
 | `varlet-cli checklist` | 用处极小，直接废弃 |
 | `varlet-cli changelog` | `rt changelog` |
-| `varlet-cli release` | `rt release`（或 `@varlet/release` 提供的 `vr release`） |
+| `varlet-cli release` | `rt release` |
 
 ### 快速开始
 
