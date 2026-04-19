@@ -1,5 +1,5 @@
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
-import { expect, test, vi } from 'vitest'
 import { delay, trigger } from '../../utils/test'
 import VarDialog from '../Dialog'
 import Dialog from '../index'

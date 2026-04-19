@@ -1,7 +1,7 @@
-import { reactive, watchEffect } from 'vue'
 import { Dialog, Snackbar } from '@varlet/ui'
 import { compileFile, File } from '@vue/repl'
 import type { OutputModes, SFCOptions, Store, StoreOptions, StoreState } from '@vue/repl'
+import { reactive, watchEffect } from 'vue'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import { atou, utoa } from './utils/encode'
 import { usePreviewVersion } from './utils/env'
@@ -164,12 +164,15 @@ export class ReplStore implements Store {
 
   private pendingCompiler: Promise<any> | null = null
 
+  customElement: Store['customElement'] = false
+
   constructor({
     serializedState = '',
     defaultVueRuntimeURL = `https://cdn.jsdelivr.net/npm/@vue/runtime-dom/dist/runtime-dom.esm-browser.js`,
     defaultVueServerRendererURL = `https://cdn.jsdelivr.net/npm/@vue/server-renderer/dist/server-renderer.esm-browser.js`,
     showOutput = false,
     outputMode = 'preview',
+    customElement = false,
   }: StoreOptions = {}) {
     const files: StoreState['files'] = {}
 
@@ -205,6 +208,7 @@ export class ReplStore implements Store {
     this.defaultVueServerRendererURL = defaultVueServerRendererURL
     this.initialShowOutput = showOutput
     this.initialOutputMode = outputMode as OutputModes
+    this.customElement = customElement
 
     this.state = reactive({
       files,
@@ -213,6 +217,7 @@ export class ReplStore implements Store {
       errors: [],
       vueRuntimeURL: this.defaultVueRuntimeURL,
       vueServerRendererURL: this.defaultVueServerRendererURL,
+      typescriptVersion: '5.6.3',
       resetFlip: true,
     })
 

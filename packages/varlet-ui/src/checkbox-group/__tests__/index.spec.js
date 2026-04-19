@@ -1,6 +1,6 @@
-import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { describe, expect, test, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vite-plus/test'
+import { createApp, h } from 'vue'
 import { z } from 'zod'
 import CheckboxGroup from '..'
 import Checkbox from '../../checkbox'

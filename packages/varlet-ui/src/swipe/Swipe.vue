@@ -108,9 +108,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onActivated, ref, watch } from 'vue'
 import { call, clamp, doubleRaf, isNumber, preventDefault, toNumber } from '@varlet/shared'
 import { onSmartUnmounted, onWindowResize, useEventListener, useTouch } from '@varlet/use'
+import { computed, defineComponent, onActivated, ref, watch } from 'vue'
 import VarButton from '../button'
 import Hover from '../hover'
 import VarIcon from '../icon'

@@ -80,9 +80,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { clamp, isPlainObject, toNumber } from '@varlet/shared'
 import { useClientId } from '@varlet/use'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toPxNum, toSizeUnit } from '../utils/elements'
 import { props } from './props'

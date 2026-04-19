@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
 import { t, use } from './locale/index'
 
 const show = ref(false)

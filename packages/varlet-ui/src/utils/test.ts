@@ -1,6 +1,6 @@
-import { nextTick, type ComponentPublicInstance } from 'vue'
 import { getStyle, isPlainObject } from '@varlet/shared'
 import { config, type DOMWrapper, type VueWrapper } from '@vue/test-utils'
+import { nextTick, type ComponentPublicInstance } from 'vue'
 
 export const delay = (time: number) =>
   new Promise((resolve) => {

@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
 import { call, getRect, getStyle, toNumber } from '@varlet/shared'
 import { onWindowResize, useEventListener } from '@varlet/use'
+import { defineComponent, onMounted, ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 

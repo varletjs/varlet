@@ -2,7 +2,6 @@ node_modules
 
 .varlet
 .idea
-.vscode
 .history
 *.log
 .DS_Store
@@ -60,3 +59,5 @@ packages/varlet-preset-tailwindcss/lib
 packages/varlet-touch-emulator/iife.js
 
 .eslintcache
+
+.vite-hooks

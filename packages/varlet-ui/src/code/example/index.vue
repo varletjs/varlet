@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { codeToHtml } from 'shiki'
+import { ref } from 'vue'
 import { t, use } from './locale'
 
 const rootTheme = ref('vitesse-light')

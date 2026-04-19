@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { ref } from 'vue'
 import VarAlert from '..'
 import { t, use } from './locale'
 

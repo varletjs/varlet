@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
 import { onThemeChange, watchLang } from '@varlet/cli/client'
+import { ref } from 'vue'
 import { t, use } from './locale'
 
 const tabsRef = ref(null)

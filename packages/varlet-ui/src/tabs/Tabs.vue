@@ -52,9 +52,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onActivated, ref, Transition, watch } from 'vue'
 import { call, clamp, doubleRaf, isNumber } from '@varlet/shared'
 import { onWindowResize } from '@varlet/use'
+import { computed, defineComponent, onActivated, ref, Transition, watch } from 'vue'
 import VarSticky from '../sticky'
 import { type TabProvider } from '../tab/provide'
 import { createNamespace, formatElevation } from '../utils/components'

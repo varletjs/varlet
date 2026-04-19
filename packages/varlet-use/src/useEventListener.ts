@@ -1,5 +1,5 @@
-import { isRef, onBeforeUnmount, onDeactivated, unref, watch, type Ref, type WatchStopHandle } from 'vue'
 import { inBrowser, isFunction } from '@varlet/shared'
+import { isRef, onBeforeUnmount, onDeactivated, unref, watch, type Ref, type WatchStopHandle } from 'vue'
 import { onSmartMounted } from './onSmartMounted.js'
 
 export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null> | (() => EventTarget)

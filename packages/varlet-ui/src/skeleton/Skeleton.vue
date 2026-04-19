@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { toNumber } from '@varlet/shared'
+import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'

@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi } from 'vite-plus/test'
+import { createApp } from 'vue'
 import CountTo from '..'
 import { delay } from '../../utils/test'
 

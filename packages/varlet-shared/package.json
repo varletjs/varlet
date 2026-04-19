@@ -32,15 +32,15 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean",
-    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
+    "build": "vp pack",
+    "dev": "vp pack --watch"
   },
   "dependencies": {
-    "rattail": "1.0.17"
+    "rattail": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

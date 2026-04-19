@@ -24,8 +24,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean",
-    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts"
+    "build": "vp pack",
+    "dev": "vp pack --watch"
   },
   "dependencies": {
     "@varlet/shared": "workspace:*",
@@ -40,8 +40,8 @@
     "@types/fs-extra": "^9.0.2",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "vite": "catalog:"

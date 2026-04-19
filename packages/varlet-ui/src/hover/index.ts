@@ -1,5 +1,5 @@
-import { type App, type Directive, type DirectiveBinding, type Plugin } from 'vue'
 import { camelize, inMobile, isFunction } from '@varlet/shared'
+import { type App, type Directive, type DirectiveBinding, type Plugin } from 'vue'
 
 export type HoverValue = Record<string, any> | ((isHovering: boolean) => void)
 

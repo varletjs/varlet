@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, watch } from 'vue'
 import { call, floor, toNumber } from '@varlet/shared'
 import { useMotion } from '@varlet/use'
+import { computed, defineComponent, onMounted, watch } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 

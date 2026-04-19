@@ -41,9 +41,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import { isFunction, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { computed, defineComponent, ref, watch } from 'vue'
 import VarCheckbox from '../checkbox'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'

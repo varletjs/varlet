@@ -1,7 +1,7 @@
 <script setup>
-import { h, onBeforeUnmount, reactive, toRefs } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Button, Icon, Snackbar } from '@varlet/ui'
+import { h, onBeforeUnmount, reactive, toRefs } from 'vue'
 import { t, use } from './locale'
 
 const shows = reactive({

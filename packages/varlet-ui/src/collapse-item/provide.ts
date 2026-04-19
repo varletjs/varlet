@@ -1,6 +1,6 @@
-import { type ComputedRef } from 'vue'
 import { assert } from '@varlet/shared'
 import { useParent } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { COLLAPSE_BIND_COLLAPSE_ITEM_KEY, CollapseProvider } from '../collapse/provide'
 
 export interface CollapseItemProvider {

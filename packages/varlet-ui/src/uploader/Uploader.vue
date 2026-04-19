@@ -110,9 +110,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, reactive, ref, watch } from 'vue'
 import { call, isNumber, normalizeToArray, toDataURL, toNumber } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { computed, defineComponent, nextTick, reactive, ref, watch } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import Hover from '../hover'

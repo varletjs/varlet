@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test } from 'vitest'
+import { expect, test } from 'vite-plus/test'
+import { createApp } from 'vue'
 import VarActionSheet from '../ActionSheet'
 import ActionSheet from '../index'
 

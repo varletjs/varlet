@@ -56,8 +56,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { getStyle } from '@varlet/shared'
+import { defineComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 

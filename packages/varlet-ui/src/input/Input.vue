@@ -133,9 +133,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref } from 'vue'
 import { call, isEmpty, preventDefault, toNumber } from '@varlet/shared'
 import { onSmartMounted, useClientId } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'

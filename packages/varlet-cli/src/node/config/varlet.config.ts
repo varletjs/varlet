@@ -3,7 +3,7 @@ import { type VIConfig } from '@varlet/icon-builder'
 import { isArray, mergeWith } from '@varlet/shared'
 import { type CopyOptions } from '@varlet/vite-plugins'
 import fse from 'fs-extra'
-import { Plugin, ProxyOptions } from 'vite'
+import { Plugin, ProxyOptions } from 'vite-plus'
 import { SITE_CONFIG, VARLET_CONFIG } from '../shared/constant.js'
 import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 

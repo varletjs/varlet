@@ -79,6 +79,12 @@ export async function gen(options: GenCommandOptions) {
   await copy(configBase, dest)
   await copy(code, dest)
   await rename(resolve(dest, '_gitignore'), resolve(dest, '.gitignore'))
+
+  const scaffoldTsconfigPath = resolve(dest, 'tsconfig.template.json')
+  if (pathExistsSync(scaffoldTsconfigPath)) {
+    await rename(scaffoldTsconfigPath, resolve(dest, 'tsconfig.json'))
+  }
+
   syncVersion(name)
 
   logger.success('✨ Application generated successfully!')

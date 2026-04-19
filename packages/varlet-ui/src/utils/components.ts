@@ -1,4 +1,14 @@
 import {
+  createNamespaceFn,
+  hasOwn,
+  isArray,
+  isFunction,
+  isPlainObject,
+  isString,
+  normalizeToArray,
+} from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
+import {
   Comment,
   createApp,
   defineComponent,
@@ -16,16 +26,6 @@ import {
   type Ref,
   type VNode,
 } from 'vue'
-import {
-  createNamespaceFn,
-  hasOwn,
-  isArray,
-  isFunction,
-  isPlainObject,
-  isString,
-  normalizeToArray,
-} from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
 import type { SafeParseReturnType, ZodType } from 'zod'
 
 export type ListenerProp<F> = F | F[]

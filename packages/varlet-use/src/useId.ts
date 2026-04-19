@@ -1,5 +1,5 @@
-import { getCurrentInstance, ref } from 'vue'
 import { kebabCase } from '@varlet/shared'
+import { getCurrentInstance, ref } from 'vue'
 
 export function useId() {
   const id = ref<string>()

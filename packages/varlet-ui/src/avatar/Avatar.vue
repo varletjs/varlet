@@ -52,9 +52,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onUpdated, ref, type Ref } from 'vue'
 import { call } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
+import { defineComponent, onUpdated, ref, type Ref } from 'vue'
 import Lazy, { type LazyHTMLElement } from '../lazy'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'

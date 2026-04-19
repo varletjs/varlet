@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import VarIcon from '../icon'
 import { createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'

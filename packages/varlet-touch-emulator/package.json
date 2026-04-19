@@ -24,9 +24,9 @@
     "index.js"
   ],
   "scripts": {
-    "build": "tsup index.js --format iife --out-dir=. --globalName=VarletTouchEmulator && node build.js"
+    "build": "vp pack && node build.js"
   },
   "devDependencies": {
-    "tsup": "catalog:"
+    "vite-plus": "catalog:"
   }
 }

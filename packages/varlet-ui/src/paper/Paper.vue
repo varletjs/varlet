@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { defineComponent } from 'vue'
 import Ripple from '../ripple'
 import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'

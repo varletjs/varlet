@@ -20,6 +20,31 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 🌍 &nbsp;Support `Internationalization`
 - 🚀 &nbsp;Based on `pnpm`
 
+### Recommended toolchain
+
+Under Varlet’s current `component-library toolchain`, we recommend combining `@varlet/cli`, [`vite-plus`](https://viteplus.dev/) (`vp`), and [`rattail`](https://rattail.varletjs.org/) (`rt`): `@varlet/cli` covers first-party library workflows (docs, compile, tests, …), `vp` covers lint/format and app/extension build entrypoints aligned with the Oxc/Rolldown stack, and `rattail` covers `clean`, git hooks, `changelog`, `release`, `commit-lint`, and similar automation. Use this trio for new libraries and scaffold upgrades.
+
+| Piece | Role |
+| --- | --- |
+| `@varlet/cli` | First-party Varlet workflows: `create`, `gen`, `dev`, `build`, `preview`, `compile`, `compile:style-vars`, `build:icons`, `test`, … |
+| [`vite-plus`](https://viteplus.dev/) (`vp`) | Lint, format, app/extension `build`/`dev`/`preview`, and other toolchain entrypoints aligned with the Oxc/Rolldown stack |
+| [`rattail`](https://rattail.varletjs.org/) (`rt`) | `clean`, git hooks, `changelog`, `release`, `commit-lint`, and other repo automation |
+
+### Commands pending deprecation
+
+These commands still run for backward compatibility and may print a deprecation notice. Do not rely on them in new scripts or new projects — prefer `vp` / `rt` (or `vr` where documented). Any future changes will be called out in release notes.
+
+| Command | Use instead |
+| --- | --- |
+| `varlet-cli dev:vite` | `vp dev` |
+| `varlet-cli build:vite` | `vp build` |
+| `varlet-cli dev:extension` | `vp pack --watch` (with a local `vite.config.ts` for the extension) |
+| `varlet-cli build:extension` | `vp pack` |
+| `varlet-cli commit-lint` | `rt commit-lint` |
+| `varlet-cli checklist` | Minimal value; deprecated without replacement |
+| `varlet-cli changelog` | `rt changelog` |
+| `varlet-cli release` | `rt release` |
+
 ### Quickstart
 
 `@varlet/cli` has built-in `sfc` and `tsx` style component library project templates, which can be generated directly by the `gen` command.
@@ -157,20 +182,6 @@ varlet-cli compile
 varlet-cli compile:style-vars
 ```
 
-#### Run VSCode extension development environment
-
-```shell
-# playground-ignore
-varlet-cli dev:extension
-```
-
-#### Build VSCode extension for production
-
-```shell
-# playground-ignore
-varlet-cli build:extension
-```
-
 #### Build svg to web fonts
 
 ```shell
@@ -205,34 +216,6 @@ varlet-cli test -w
 ```shell
 # playground-ignore
 varlet-cli test -cov
-```
-
-#### Lint git commit message
-
-```shell
-# playground-ignore
-varlet-cli commit-lint
-```
-
-#### Show checklist
-
-```shell
-# playground-ignore
-varlet-cli checklist
-```
-
-#### Generate changelog
-
-```shell
-# playground-ignore
-varlet-cli changelog
-```
-
-#### Release component library
-
-```shell
-# playground-ignore
-varlet-cli release
 ```
 
 #### Generate a project template

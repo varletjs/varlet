@@ -1,5 +1,5 @@
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
-import { expect, test, vi } from 'vitest'
 import { delay, trigger, triggerDrag } from '../../utils/test'
 import VarImagePreview from '../ImagePreview.vue'
 import ImagePreview from '../index'

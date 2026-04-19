@@ -1,6 +1,6 @@
-import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, test, vi } from 'vitest'
+import { expect, test, vi } from 'vite-plus/test'
+import { createApp, Fragment, h } from 'vue'
 import Breadcrumbs from '..'
 import VarBreadcrumb from '../../breadcrumb/Breadcrumb.vue'
 import { delay } from '../../utils/test'

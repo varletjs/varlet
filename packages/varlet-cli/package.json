@@ -37,7 +37,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@inquirer/prompts": "^6.0.1",
     "@varlet/icon-builder": "0.2.14",
-    "@varlet/release": "^0.3.3",
+    "@varlet/release": "^2.2.1",
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue": "catalog:",
@@ -48,7 +48,7 @@
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
     "ejs": "^3.1.8",
-    "esbuild": "0.23.1",
+    "esbuild": "0.27.7",
     "fs-extra": "catalog:",
     "glob": "^7.2.0",
     "hash-sum": "^2.0.0",
@@ -60,8 +60,7 @@
     "sharp": "0.31.1",
     "tinyexec": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vitest": "catalog:",
+    "vite-plus": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {

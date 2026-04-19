@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
 import { onThemeChange } from '@varlet/cli/client'
+import { ref } from 'vue'
 
 const data1 = Array(30).fill('List Item')
 const data2 = Array(30).fill('This is new List Item')

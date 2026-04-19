@@ -1,5 +1,5 @@
-import type { ComputedRef, Ref } from 'vue'
 import { useChildren } from '@varlet/use'
+import type { ComputedRef, Ref } from 'vue'
 import { type IndexAnchorProvider } from '../index-anchor/provide'
 
 export interface IndexBarProvider {

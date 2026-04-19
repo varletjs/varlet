@@ -27,9 +27,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import { call, doubleRaf, getRect, raf, toNumber } from '@varlet/shared'
 import { onSmartMounted, onSmartUnmounted, onWindowResize, useEventListener } from '@varlet/use'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { createNamespace } from '../utils/components'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'

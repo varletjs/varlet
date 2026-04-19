@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useStep, type StepsProvider } from './provide'

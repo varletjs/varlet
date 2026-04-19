@@ -1,5 +1,5 @@
-import { nextTick, reactive, type TeleportProps } from 'vue'
 import { call, inBrowser, isString } from '@varlet/shared'
+import { nextTick, reactive, type TeleportProps } from 'vue'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import VarDialog from './Dialog.vue'
 import { props as dialogProps } from './props'

@@ -1,5 +1,5 @@
-import type { ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import type { ComputedRef } from 'vue'
 
 export interface BreadcrumbsProvider {
   length: ComputedRef<number>

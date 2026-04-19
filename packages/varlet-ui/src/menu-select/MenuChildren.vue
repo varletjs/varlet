@@ -56,8 +56,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, type PropType } from 'vue'
 import { call, raf } from '@varlet/shared'
+import { defineComponent, ref, watch, type PropType } from 'vue'
 import VarMenuOption from '../menu-option/MenuOption.vue'
 import { type MenuOptionKeyArrowX } from '../menu-option/props'
 import VarMenu from '../menu/Menu.vue'

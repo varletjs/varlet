@@ -29,9 +29,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import { call, isEmpty, preventDefault, toNumber } from '@varlet/shared'
 import { useTouch, useVModel, useWindowSize } from '@varlet/use'
+import { computed, defineComponent, ref, watch } from 'vue'
 import { useLock } from '../context/lock'
 import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'

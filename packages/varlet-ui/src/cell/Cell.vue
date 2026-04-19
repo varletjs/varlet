@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { createNamespace } from '../utils/components'

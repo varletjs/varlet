@@ -14,10 +14,10 @@ jobs:
       - name: Install pnpm
         run: npm i -g --force corepack && corepack enable
 
-      - name: Set node version to 20
+      - name: Set node version to 22
         uses: actions/setup-node@v3
         with:
-          node-version: '20.19.5'
+          node-version: '22.x'
           cache: 'pnpm'
 
       - name: Install dependencies

@@ -1,6 +1,6 @@
-import { type ComputedRef } from 'vue'
 import { assert } from '@varlet/shared'
 import { useParent } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import {
   BOTTOM_NAVIGATION_BIND_BOTTOM_NAVIGATION_ITEM_KEY,
   type BottomNavigationProvider,

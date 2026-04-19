@@ -1,5 +1,5 @@
-import { ref } from 'vue'
 import { inBrowser } from '@varlet/shared'
+import { ref } from 'vue'
 import { onSmartMounted } from './onSmartMounted'
 import { onWindowResize } from './onWindowResize'
 

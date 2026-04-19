@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type CSSProperties } from 'vue'
 import { useVModel } from '@varlet/use'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import VarTooltip, { tooltipProps as _tooltipProps } from '../tooltip'
 import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'

@@ -1,5 +1,5 @@
-import { type ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { type Validation } from '../form/provide'
 import { type OptionProvider } from '../option/provide'
 import { type SelectFilterMethod } from './props'

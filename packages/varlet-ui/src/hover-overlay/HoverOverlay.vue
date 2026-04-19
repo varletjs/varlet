@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { inMobile } from '@varlet/shared'
+import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 

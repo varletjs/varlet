@@ -21,9 +21,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onUpdated, ref } from 'vue'
 import { isBoolean, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
+import { computed, defineComponent, onUpdated, ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'

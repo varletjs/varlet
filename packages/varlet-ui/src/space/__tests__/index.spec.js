@@ -1,6 +1,6 @@
-import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vite-plus/test'
+import { createApp, Fragment, h } from 'vue'
 import Space from '..'
 import { computeMargin } from '../margin'
 import VarSpace from '../Space'

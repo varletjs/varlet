@@ -1,6 +1,8 @@
 import fs from 'fs'
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig, Plugin } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import jsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig, Plugin } from 'vite-plus'
 
 function toPath(path: string) {
   return fileURLToPath(new URL(path, import.meta.url))
@@ -42,5 +44,5 @@ export default defineConfig({
     __APP_ENABLE_PREVIEW__: process.env.ENABLE_PREVIEW,
   },
 
-  plugins: [copyVarletDependencies()],
+  plugins: [vue(), jsx(), copyVarletDependencies()],
 })

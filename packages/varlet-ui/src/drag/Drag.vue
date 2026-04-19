@@ -19,9 +19,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch } from 'vue'
 import { call, clamp, getRect, preventDefault } from '@varlet/shared'
 import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
+import { defineComponent, reactive, ref, watch } from 'vue'
 import { createNamespace, useTeleport } from '../utils/components'
 import { toPxNum } from '../utils/elements'
 import { props } from './props'

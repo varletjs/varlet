@@ -1,6 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, h } from 'vue'
 import { call, hasOwn } from '@varlet/shared'
+import { computed, defineComponent, h } from 'vue'
 import { type Message } from '../locale'
 import { createNamespace } from '../utils/components'
 import { props } from './props'

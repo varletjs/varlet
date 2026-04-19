@@ -29,9 +29,9 @@
 </template>
 
 <script lang="ts">
+import { toNumber } from '@varlet/shared'
 import { computed, defineComponent, ref, watch } from 'vue'
 import type { ComputedRef, PropType, Ref } from 'vue'
-import { toNumber } from '@varlet/shared'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
 import { t } from '../../locale'

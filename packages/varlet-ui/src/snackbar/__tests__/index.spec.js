@@ -1,5 +1,5 @@
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
-import { expect, test, vi } from 'vitest'
 import { delay } from '../../utils/test'
 import Snackbar from '../index'
 import VarSnackbar from '../Snackbar'

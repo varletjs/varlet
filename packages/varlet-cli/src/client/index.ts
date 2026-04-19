@@ -1,6 +1,6 @@
-import { onMounted, onUnmounted } from 'vue'
 import config from '@config'
 import { StyleProvider, Themes } from '@varlet/ui'
+import { onMounted, onUnmounted } from 'vue'
 import AppType from './appType'
 
 interface PCLocationInfo {

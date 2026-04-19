@@ -1,6 +1,6 @@
-import { type ComputedRef } from 'vue'
 import { assert } from '@varlet/shared'
 import { useParent } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { STEPS_BIND_STEP_KEY, type StepsProvider } from '../steps/provide'
 
 export interface StepProvider {

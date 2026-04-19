@@ -17,3 +17,11 @@ export default {
     console.log(pico.cyan(text))
   },
 }
+
+export function logDeprecated(command: string, replacement: string) {
+  console.warn(
+    pico.yellow(
+      `[Deprecated] \`varlet-cli ${command}\` is deprecated and will be removed in the next major version. ${replacement}`,
+    ),
+  )
+}

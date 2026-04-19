@@ -1,5 +1,5 @@
+import { expect, test } from 'vite-plus/test'
 import { createApp } from 'vue'
-import { expect, test } from 'vitest'
 import Button from '..'
 
 test('test button use', () => {

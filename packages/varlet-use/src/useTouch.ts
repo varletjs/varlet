@@ -1,5 +1,5 @@
-import { ref } from 'vue'
 import { getScrollTop } from '@varlet/shared'
+import { ref } from 'vue'
 
 export type TouchDirection = 'horizontal' | 'vertical'
 

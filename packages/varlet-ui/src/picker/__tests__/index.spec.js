@@ -1,5 +1,5 @@
+import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
-import { expect, test, vi } from 'vitest'
 import Picker from '..'
 import { delay, mockTranslate, trigger } from '../../utils/test'
 import VarPicker from '../Picker'

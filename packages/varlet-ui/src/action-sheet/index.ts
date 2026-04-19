@@ -1,5 +1,5 @@
-import { nextTick, reactive, type TeleportProps } from 'vue'
 import { call, inBrowser } from '@varlet/shared'
+import { nextTick, reactive, type TeleportProps } from 'vue'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import VarActionSheet from './ActionSheet.vue'
 import { props as actionSheetProps } from './props'

@@ -47,8 +47,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { type BadgeProps } from '../../types'
 import VarBadge from '../badge'
 import VarIcon from '../icon'

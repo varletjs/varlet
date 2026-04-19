@@ -1,5 +1,5 @@
-import { type ComputedRef } from 'vue'
 import { useChildren } from '@varlet/use'
+import { type ComputedRef } from 'vue'
 import { type MenuOptionProvider } from '../menu-option/provide'
 import { type MenuSelectSize } from './props'
 

@@ -56,9 +56,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref } from 'vue'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import Hover from '../hover'

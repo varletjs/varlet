@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { Picker, Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
 import area from '../../../json/area.json'
 import { t, use } from './locale'
 

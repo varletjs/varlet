@@ -19,20 +19,20 @@
     "*.css"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
+    "prepare": "vp config --hooks-dir .vite-hooks && rt hook",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
-    "lint": "eslint . --fix",
-    "format": "prettier --write .",
-    "changelog": "varlet-cli changelog",
-    "release": "pnpm compile && varlet-cli release",
+    "lint": "vp lint --fix",
+    "format": "vp fmt",
+    "changelog": "rt changelog",
+    "release": "pnpm compile && rt release",
     "test": "varlet-cli test",
     "test:watch": "varlet-cli test -w",
     "test:coverage": "varlet-cli test -cov",
-    "create": "varlet-cli create"
+    "create": "varlet-cli create",
+    "clean": "rt clean"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
@@ -44,32 +44,21 @@
     "@varlet/shared": "workspace:*",
     "@varlet/ui": "workspace:*",
     "@vue/test-utils": "2.4.6",
-    "@vue/runtime-core": "3.5.13",
-    "@vitest/coverage-istanbul": "3.0.6",
-    "@configurajs/eslint": "*",
-    "@configurajs/prettier": "*",
-    "jsdom": "24.1.1",
-    "vitest": "3.0.6",
+    "@vue/runtime-core": "3.5.21",
+    "@vitest/coverage-istanbul": "4.1.4",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.18",
     "clipboard": "^2.0.6",
-    "eslint": "^9.17.0",
-    "lint-staged": "^10.5.0",
+    "jsdom": "26.1.0",
     "live-server": "^1.2.1",
-    "prettier": "^3.5.2",
-    "simple-git-hooks": "^2.8.0",
-    "typescript": "5.3.3",
-    "vue": "3.5.13",
-    "vue-router": "4.5.0"
+    "rattail": "^2.0.3",
+    "typescript": "5.6.3",
+    "vite-plus": "0.1.18",
+    "vue": "3.5.21",
+    "vue-router": "4.5.1"
   },
-  "lint-staged": {
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "pnpm exec varlet-cli commit-lint -p $1"
-  },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.15.9",
   "engines": {
-    "pnpm": ">=9.0"
+    "node": "^20.19.0 || >=22.12.0",
+    "pnpm": ">=9.0.0"
   }
 }

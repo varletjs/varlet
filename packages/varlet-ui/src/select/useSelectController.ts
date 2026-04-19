@@ -1,5 +1,5 @@
-import { ref, watch } from 'vue'
 import { isEmpty } from '@varlet/shared'
+import { ref, watch } from 'vue'
 import { type OptionProvider } from '../option/provide'
 
 export interface UseSelectControllerOptions {

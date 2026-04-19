@@ -6,19 +6,17 @@
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "build": "pnpm --dir ./packages/varlet-ui build",
     "build:play": "pnpm --dir ./packages/varlet-ui-playground build",
-    "changelog": "varlet-cli changelog",
-    "clean": "rimraf ./node_modules ./packages/*/node_modules",
+    "changelog": "rt changelog",
+    "clean": "rt clean",
     "compile": "pnpm --dir ./packages/varlet-ui compile",
     "compile:style-vars": "pnpm --dir ./packages/varlet-ui compile:style-vars",
     "create": "pnpm --dir ./packages/varlet-ui run create",
     "dev": "pnpm --dir ./packages/varlet-ui dev",
     "dev:play": "pnpm --dir ./packages/varlet-ui-playground dev",
-    "format": "prettier --write .",
-    "format:cache": "prettier --write --cache .",
+    "format": "vp fmt",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
-    "lint": "eslint --fix .",
-    "lint:cache": "eslint --fix --cache .",
+    "prepare": "vp config --hooks-dir .vite-hooks && rt hook",
+    "lint": "vp lint --fix",
     "preview": "pnpm --dir ./packages/varlet-ui preview",
     "preview:play": "pnpm --dir ./packages/varlet-ui-playground preview",
     "release": "node scripts/release.mjs",
@@ -27,41 +25,23 @@
     "test:coverage": "pnpm --dir ./packages/varlet-ui test:coverage",
     "test:watch": "pnpm --dir ./packages/varlet-ui test:watch"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec nano-staged --allow-empty",
-    "commit-msg": "pnpm exec varlet-cli commit-lint -p $1 && pnpm exec varlet-cli checklist $1"
-  },
-  "nano-staged": {
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix"
-  },
   "devDependencies": {
-    "@configurajs/eslint": "^0.1.2",
-    "@configurajs/prettier": "^0.1.4",
     "@varlet/cli": "workspace:*",
-    "@varlet/icons": "workspace:*",
-    "eslint": "^9.17.0",
-    "nano-staged": "0.8.0",
     "nanospinner": "^1.1.0",
-    "prettier": "^3.4.2",
-    "rimraf": "catalog:",
-    "simple-git-hooks": "^2.8.0",
+    "rattail": "catalog:",
     "tinyexec": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@9.6.0",
   "engines": {
-    "pnpm": ">=9.6.0"
+    "node": "^20.19.0 || >=22.12.0",
+    "pnpm": ">=9.0.0"
   },
+  "packageManager": "pnpm@9.15.9",
   "pnpm": {
     "overrides": {
-      "array-includes": "npm:@nolyfill/array-includes@latest",
-      "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
-      "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
-      "object.assign": "npm:@nolyfill/object.assign@latest",
-      "object.entries": "npm:@nolyfill/object.entries@latest",
-      "object.values": "npm:@nolyfill/object.values@latest",
-      "tinyexec": "npm:tinyexec@^0.3.0"
+      "vite": "catalog:",
+      "vitest": "catalog:"
     }
   }
 }

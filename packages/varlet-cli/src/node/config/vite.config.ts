@@ -3,7 +3,7 @@ import { isArray } from '@varlet/shared'
 import { copy, html, inlineCss, markdown } from '@varlet/vite-plugins'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { InlineConfig, Plugin } from 'vite'
+import { InlineConfig, Plugin } from 'vite-plus'
 import {
   ES_DIR,
   EXTENSION_ENTRY,

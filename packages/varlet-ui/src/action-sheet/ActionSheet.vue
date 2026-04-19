@@ -41,9 +41,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
+import { defineComponent } from 'vue'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import VarPopup from '../popup'

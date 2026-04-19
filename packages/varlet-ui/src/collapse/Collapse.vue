@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, watch } from 'vue'
 import { call, normalizeToArray, removeArrayBlank } from '@varlet/shared'
+import { computed, defineComponent, nextTick, watch } from 'vue'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 import { createNamespace } from '../utils/components'
 import { props, type CollapseModelValue } from './props'

@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, ref, watch } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
+import { defineComponent, nextTick, ref, watch } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'

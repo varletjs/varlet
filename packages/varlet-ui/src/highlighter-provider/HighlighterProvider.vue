@@ -1,6 +1,6 @@
 <script lang="ts">
-import { computed, defineComponent, h } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent, h } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { provideHighlighterProvider } from './provide'

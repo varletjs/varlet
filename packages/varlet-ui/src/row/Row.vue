@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call, isArray } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { padStartFlex, toPxNum } from '../utils/elements'
 import { props } from './props'

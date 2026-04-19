@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent, ref, watch } from 'vue'
 import Ripple from '../ripple'
 import { createNamespace } from '../utils/components'
 import { props } from './props'

@@ -1,8 +1,8 @@
 import { defineComponent, PropType } from 'vue'
-import { createNamespace } from '../utils/components'
-import './button.less'
 // i18n for component's internal
 import { t } from '../locale'
+import './button.less'
+import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('button')
 

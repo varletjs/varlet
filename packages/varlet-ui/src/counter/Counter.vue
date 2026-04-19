@@ -95,9 +95,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, watch, type ComputedRef } from 'vue'
 import { call, toNumber } from '@varlet/shared'
 import { Decimal } from 'decimal.js'
+import { computed, defineComponent, nextTick, ref, watch, type ComputedRef } from 'vue'
 import VarButton from '../button'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'

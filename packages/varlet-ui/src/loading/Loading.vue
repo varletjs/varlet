@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
 import { call } from '@varlet/shared'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { props } from './props'

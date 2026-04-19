@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "declaration": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "lib": ["esnext", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "vue",
+    "jsx": "preserve",
+    "types": ["vite-plus/test/globals"],
+    "moduleResolution": "bundler"
+  },
+  "include": ["src", "types", "shims", "vite.config.mts", "varlet.config.mjs"],
+  "exclude": ["node_modules", "es", "lib", "umd", "site", "coverage", "highlight", ".varlet", ".vite-hooks"]
+}

@@ -1,6 +1,6 @@
 <script setup>
-import { reactive, ref } from 'vue'
 import { AppType, watchLang } from '@varlet/cli/client'
+import { reactive, ref } from 'vue'
 import { t, use } from './locale'
 
 const state = reactive({
