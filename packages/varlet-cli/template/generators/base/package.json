@@ -19,7 +19,6 @@
     "*.css"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "prepare": "vp config --hooks-dir .vite-hooks && rt hook",
     "dev": "varlet-cli dev",
     "build": "varlet-cli build",
