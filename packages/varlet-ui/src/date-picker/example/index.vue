@@ -16,11 +16,15 @@ watchLang(use)
 onThemeChange()
 
 const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
+
+function handlePreview(...args) {
+  console.log('preview', args)
+}
 </script>
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-date-picker v-model="dates.date1" />
+  <var-date-picker v-model="dates.date1" @preview="handlePreview" />
 
   <app-type>{{ t('monthPicker') }}</app-type>
   <var-date-picker v-model="dates.date" type="month" />

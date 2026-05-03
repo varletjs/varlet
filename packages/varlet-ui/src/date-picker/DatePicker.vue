@@ -8,8 +8,8 @@
           :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
           @click="clickEl('year')"
         >
-          <slot name="year" :year="chooseYear">
-            {{ chooseYear }}
+          <slot name="year" :year="displayYear">
+            {{ displayYear }}
           </slot>
         </div>
       </div>
@@ -185,6 +185,7 @@ export default defineComponent({
       previewMonth: previewMonth.value,
       previewYear: previewYear.value,
     }))
+    const displayYear = computed<string>(() => previewYear.value || chooseYear.value || '')
 
     const getYearTitle = computed<string>(() => {
       const { multiple, range } = props
@@ -600,6 +601,7 @@ export default defineComponent({
       chooseYear,
       chooseDay,
       previewYear,
+      displayYear,
       isYearPanel,
       isMonthPanel,
       getMonthTitle,

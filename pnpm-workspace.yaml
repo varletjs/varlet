@@ -12,7 +12,7 @@ catalog:
   live-server: ^1.2.1
   rimraf: ^5.0.1
   tinyexec: ^0.3.0
-  rattail: ^2.0.5
+  rattail: ^2.0.7
   vite-plus: 0.1.18
   '@types/node': ^20.19.0
   '@vitest/coverage-istanbul': 4.1.4

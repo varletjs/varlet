@@ -217,6 +217,47 @@ test('datePicker v-model', async () => {
   wrapper.unmount()
 })
 
+test('datePicker should update title year on year preview change', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-05-19',
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2021')
+
+  await wrapper.find('.var-date-picker__title-year').trigger('click')
+  await delay(200)
+  await wrapper.find('.var-year-picker').find('li').find('button').trigger('click')
+  await delay(200)
+
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2000')
+  expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('datePicker should update title year when month preview crosses year', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      type: 'month',
+      modelValue: '2021-01',
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2021')
+
+  await wrapper.find('.var-date-picker-header').find('button').trigger('click')
+  await delay(200)
+
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2020')
+  expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
+
+  wrapper.unmount()
+})
+
 test('datePicker multiple', async () => {
   const template = `<var-date-picker multiple v-model="date" :type="type"/>`
 
