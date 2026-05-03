@@ -1,0 +1,72 @@
+import{L as e,N as t,W as n,c as r,d as i,g as a,h as o,m as s}from"./runtime-core.esm-bundler-BYGWF7Zw.js";import{t as c}from"./_plugin-vue_export-helper-V-yks4gF.js";var l={components:{}},u={class:`varlet-site-doc`},d={class:`card`},f={id:`jie4shao4`},p={class:`card`},m={id:`biao1ti2`},h={class:`card`},g={id:`xin4xi1`},_={class:`card`},v={id:`lei4xing2`},y={class:`card`},b={id:`bian4ti3`},x={class:`card`},S={id:`zi4ding4yi4tu2biao1`},C={class:`card`},w={id:`yun3xu3guan1bi4`},T={class:`card`},E={id:`shu3xing4`},D={class:`card`},O={id:`cha1cao2`},k={class:`card`},A={id:`shi4jian4`},j={class:`card`},M={id:`yang4shi4bian4liang4`};function N(c,l,N,P,F,I){let L=e(`router-link`),R=e(`var-site-code-example`);return t(),i(`div`,u,[l[33]||=r(`h1`,null,`警告信息`,-1),r(`div`,d,[r(`h3`,f,[a(L,{to:`#jie4shao4`},{default:n(()=>[...l[0]||=[o(`#`,-1)]]),_:1}),l[1]||=o(`介绍`,-1)]),l[2]||=r(`p`,null,`警告信息组件会向用户显示简短的消息，但不会中断他们的使用。`,-1)]),r(`div`,p,[r(`h3`,m,[a(L,{to:`#biao1ti2`},{default:n(()=>[...l[3]||=[o(`#`,-1)]]),_:1}),l[4]||=o(`标题`,-1)]),a(R,null,{default:n(()=>[...l[5]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,h,[r(`h3`,g,[a(L,{to:`#xin4xi1`},{default:n(()=>[...l[6]||=[o(`#`,-1)]]),_:1}),l[7]||=o(`信息`,-1)]),a(R,null,{default:n(()=>[...l[8]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,_,[r(`h3`,v,[a(L,{to:`#lei4xing2`},{default:n(()=>[...l[9]||=[o(`#`,-1)]]),_:1}),l[10]||=o(`类型`,-1)]),a(R,null,{default:n(()=>[...l[11]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"success"`),o(`
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"warning"`),o(`
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(`
+      `),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"danger"`),o(`
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,y,[r(`h3`,b,[a(L,{to:`#bian4ti3`},{default:n(()=>[...l[12]||=[o(`#`,-1)]]),_:1}),l[13]||=o(`变体`,-1)]),a(R,null,{default:n(()=>[...l[14]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"tonal"`),o(`
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"outlined"`),o(`
+      `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+      `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    />`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,x,[r(`h3`,S,[a(L,{to:`#zi4ding4yi4tu2biao1`},{default:n(()=>[...l[15]||=[o(`#`,-1)]]),_:1}),l[16]||=o(`自定义图标`,-1)]),a(R,null,{default:n(()=>[...l[17]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+    `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+    `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+  >`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(` #`),r(`span`,{class:`hljs-attr`},`icon`),o(`>`)]),o(`
+      `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-icon`),o(),r(`span`,{class:`hljs-attr`},`name`),o(`=`),r(`span`,{class:`hljs-string`},`"heart"`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-alert`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,C,[r(`h3`,w,[a(L,{to:`#yun3xu3guan1bi4`},{default:n(()=>[...l[18]||=[o(`#`,-1)]]),_:1}),l[19]||=o(`允许关闭`,-1)]),a(R,null,{default:n(()=>[...l[20]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` show = ref(`),r(`span`,{class:`hljs-literal`},`true`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-alert`),o(` 
+    `),r(`span`,{class:`hljs-attr`},`title`),o(`=`),r(`span`,{class:`hljs-string`},`"傲慢与偏见"`),o(` 
+    `),r(`span`,{class:`hljs-attr`},`message`),o(`=`),r(`span`,{class:`hljs-string`},`"我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"`),o(`
+    `),r(`span`,{class:`hljs-attr`},`closeable`),o(`
+    @`),r(`span`,{class:`hljs-attr`},`close`),o(`=`),r(`span`,{class:`hljs-string`},`"show = false"`),o(`
+  />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),l[34]||=r(`h2`,null,`API`,-1),r(`div`,T,[r(`h3`,E,[a(L,{to:`#shu3xing4`},{default:n(()=>[...l[21]||=[o(`#`,-1)]]),_:1}),l[22]||=o(`属性`,-1)]),l[23]||=s(`<table><thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>type</code></td><td>类型，可选值为 <code>info</code> <code>success</code> <code>warning</code> <code>danger</code></td><td><em>string</em></td><td><code>info</code></td></tr><tr><td><code>variant</code></td><td>变体，可选值为 <code>standard</code> <code>outlined</code> <code>tonal</code></td><td><em>string</em></td><td><code>standard</code></td></tr><tr><td><code>color</code></td><td>背景色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>title</code></td><td>标题</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>message</code></td><td>信息</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>elevation</code></td><td>海拔高度，可选值为 <code>true</code>、<code>false</code> 和 <code>0-24</code> 的等级</td><td><em>string | number | boolean</em></td><td><code>false</code></td></tr><tr><td><code>closeable</code></td><td>是否为可关闭警告</td><td><em>boolean</em></td><td><code>false</code></td></tr></tbody></table>`,1)]),r(`div`,D,[r(`h3`,O,[a(L,{to:`#cha1cao2`},{default:n(()=>[...l[24]||=[o(`#`,-1)]]),_:1}),l[25]||=o(`插槽`,-1)]),l[26]||=s(`<table><thead><tr><th>名称</th><th>说明</th><th>参数</th></tr></thead><tbody><tr><td><code>default</code></td><td>警告信息</td><td><code>-</code></td></tr><tr><td><code>content</code></td><td>警告内容</td><td><code>-</code></td></tr><tr><td><code>title</code></td><td>警告标题</td><td><code>-</code></td></tr><tr><td><code>icon</code></td><td>警告的前置图标</td><td><code>-</code></td></tr><tr><td><code>close-icon</code></td><td>警告的关闭图标</td><td><code>-</code></td></tr></tbody></table>`,1)]),r(`div`,k,[r(`h3`,A,[a(L,{to:`#shi4jian4`},{default:n(()=>[...l[27]||=[o(`#`,-1)]]),_:1}),l[28]||=o(`事件`,-1)]),l[29]||=r(`table`,null,[r(`thead`,null,[r(`tr`,null,[r(`th`,null,`事件名`),r(`th`,null,`说明`),r(`th`,null,`回调参数`)])]),r(`tbody`,null,[r(`tr`,null,[r(`td`,null,[r(`code`,null,`close`)]),r(`td`,null,`点击关闭按钮时触发，只有在显示关闭按钮的时候才能使用`),r(`td`,null,[r(`code`,null,`event: Event`)])])])],-1)]),r(`div`,j,[r(`h3`,M,[a(L,{to:`#yang4shi4bian4liang4`},{default:n(()=>[...l[30]||=[o(`#`,-1)]]),_:1}),l[31]||=o(`样式变量`,-1)]),l[32]||=s(`<p>以下为组件使用的 css 变量，可以使用 <a href="#/zh-CN/style-provider">StyleProvider 组件</a> 进行样式定制。</p><table><thead><tr><th>变量名</th><th>默认值</th></tr></thead><tbody><tr><td><code>--alert-padding</code></td><td><code>16px</code></td></tr><tr><td><code>--alert-border-radius</code></td><td><code>4px</code></td></tr><tr><td><code>--alert-icon-size</code></td><td><code>22px</code></td></tr><tr><td><code>--alert-icon-margin</code></td><td><code>0 12px 0 0</code></td></tr><tr><td><code>--alert-close-icon-size</code></td><td><code>22px</code></td></tr><tr><td><code>--alert-close-icon-margin</code></td><td><code>2px 0 0 12px</code></td></tr><tr><td><code>--alert-standard-info-text-color</code></td><td><code>var(--color-on-info)</code></td></tr><tr><td><code>--alert-standard-danger-text-color</code></td><td><code>var(--color-on-danger)</code></td></tr><tr><td><code>--alert-standard-success-text-color</code></td><td><code>var(--color-on-success)</code></td></tr><tr><td><code>--alert-standard-warning-text-color</code></td><td><code>var(--color-on-warning)</code></td></tr><tr><td><code>--alert-danger-background</code></td><td><code>var(--color-danger)</code></td></tr><tr><td><code>--alert-success-background</code></td><td><code>var(--color-success)</code></td></tr><tr><td><code>--alert-warning-background</code></td><td><code>var(--color-warning)</code></td></tr><tr><td><code>--alert-info-background</code></td><td><code>var(--color-info)</code></td></tr><tr><td><code>--alert-tonal-danger-background</code></td><td><code>hsla(var(--hsl-danger), 0.12)</code></td></tr><tr><td><code>--alert-tonal-success-background</code></td><td><code>hsla(var(--hsl-success), 0.12)</code></td></tr><tr><td><code>--alert-tonal-warning-background</code></td><td><code>hsla(var(--hsl-warning), 0.12)</code></td></tr><tr><td><code>--alert-tonal-info-background</code></td><td><code>hsla(var(--hsl-info), 0.12)</code></td></tr><tr><td><code>--alert-tonal-danger-text-color</code></td><td><code>var(--color-danger)</code></td></tr><tr><td><code>--alert-tonal-success-text-color</code></td><td><code>var(--color-success)</code></td></tr><tr><td><code>--alert-tonal-warning-text-color</code></td><td><code>var(--color-warning)</code></td></tr><tr><td><code>--alert-tonal-info-text-color</code></td><td><code>var(--color-info)</code></td></tr><tr><td><code>--alert-message-font-size</code></td><td><code>14px</code></td></tr><tr><td><code>--alert-title-font-size</code></td><td><code>16px</code></td></tr><tr><td><code>--alert-title-font-weight</code></td><td><code>500</code></td></tr><tr><td><code>--alert-message-margin-top</code></td><td><code>4px</code></td></tr><tr><td><code>--alert-message-line-height</code></td><td><code>1.5</code></td></tr><tr><td><code>--alert-title-line-height</code></td><td><code>1.5</code></td></tr></tbody></table>`,2)])])}var P=c(l,[[`render`,N]]);export{P as default};

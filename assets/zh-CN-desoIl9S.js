@@ -1,0 +1,37 @@
+import{L as e,N as t,W as n,c as r,d as i,g as a,h as o,m as s}from"./runtime-core.esm-bundler-BYGWF7Zw.js";import{t as c}from"./_plugin-vue_export-helper-V-yks4gF.js";var l={components:{}},u={class:`varlet-site-doc`},d={class:`card`},f={id:`jie4shao4`},p={class:`card`},m={id:`ji1ben3shi3yong4`},h={class:`card`},g={id:`fang1fa3`},_={class:`card`},v={id:`LoadingBarOptions`},y={class:`card`},b={id:`yang4shi4bian4liang4`};function x(c,l,x,S,C,w){let T=e(`router-link`),E=e(`var-site-code-example`);return t(),i(`div`,u,[l[15]||=r(`h1`,null,`加载条`,-1),r(`div`,d,[r(`h3`,f,[a(T,{to:`#jie4shao4`},{default:n(()=>[...l[0]||=[o(`#`,-1)]]),_:1}),l[1]||=o(`介绍`,-1)]),l[2]||=r(`p`,null,`页面顶部显示加载进度。`,-1)]),r(`div`,p,[r(`h3`,m,[a(T,{to:`#ji1ben3shi3yong4`},{default:n(()=>[...l[3]||=[o(`#`,-1)]]),_:1}),l[4]||=o(`基本使用`,-1)]),a(E,null,{default:n(()=>[...l[5]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { LoadingBar } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'@varlet/ui'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` hasCustomStyle = ref(`),r(`span`,{class:`hljs-literal`},`false`),o(`)
+
+`),r(`span`,{class:`hljs-function`},[r(`span`,{class:`hljs-keyword`},`function`),o(),r(`span`,{class:`hljs-title`},`setStyle`),o(`(`),r(`span`,{class:`hljs-params`}),o(`) `)]),o(`{
+  `),r(`span`,{class:`hljs-keyword`},`if`),o(` (hasCustomStyle.value) {
+    LoadingBar.resetDefaultOptions()
+  } `),r(`span`,{class:`hljs-keyword`},`else`),o(` {
+    LoadingBar.setDefaultOptions({
+      `),r(`span`,{class:`hljs-attr`},`errorColor`),o(`: `),r(`span`,{class:`hljs-string`},`'#ff8800'`),o(`,
+      `),r(`span`,{class:`hljs-attr`},`color`),o(`: `),r(`span`,{class:`hljs-string`},`'#10afef'`),o(`,
+      `),r(`span`,{class:`hljs-attr`},`height`),o(`: `),r(`span`,{class:`hljs-string`},`'5px'`),o(`,
+    })
+  }
+
+  hasCustomStyle.value = !hasCustomStyle.value
+}
+
+`),r(`span`,{class:`hljs-comment`},`// 移动端案例设置了偏移`),o(`
+`),r(`span`,{class:`hljs-comment`},`// LoadingBar.setDefaultOptions({`),o(`
+`),r(`span`,{class:`hljs-comment`},`//   top: '54px'`),o(`
+`),r(`span`,{class:`hljs-comment`},`// })`),o(`
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"primary"`),o(),r(`span`,{class:`hljs-attr`},`block`),o(` @`),r(`span`,{class:`hljs-attr`},`click`),o(`=`),r(`span`,{class:`hljs-string`},`"LoadingBar.start()"`),o(`>`)]),o(`开始`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"primary"`),o(),r(`span`,{class:`hljs-attr`},`block`),o(` @`),r(`span`,{class:`hljs-attr`},`click`),o(`=`),r(`span`,{class:`hljs-string`},`"LoadingBar.finish()"`),o(`>`)]),o(`结束`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"primary"`),o(),r(`span`,{class:`hljs-attr`},`block`),o(` @`),r(`span`,{class:`hljs-attr`},`click`),o(`=`),r(`span`,{class:`hljs-string`},`"LoadingBar.error()"`),o(`>`)]),o(`错误`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-button`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"primary"`),o(),r(`span`,{class:`hljs-attr`},`block`),o(` @`),r(`span`,{class:`hljs-attr`},`click`),o(`=`),r(`span`,{class:`hljs-string`},`"setStyle"`),o(`>`)]),o(`
+      {{ hasCustomStyle ? '清除样式' : '设置样式' }}
+    `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-button`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),l[16]||=r(`h2`,null,`API`,-1),r(`div`,h,[r(`h3`,g,[a(T,{to:`#fang1fa3`},{default:n(()=>[...l[6]||=[o(`#`,-1)]]),_:1}),l[7]||=o(`方法`,-1)]),l[8]||=s(`<table><thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>返回值</th></tr></thead><tbody><tr><td><code>LoadingBar.start</code></td><td>开始加载</td><td><code>-</code></td><td><code>-</code></td></tr><tr><td><code>LoadingBar.finish</code></td><td>结束加载</td><td><code>-</code></td><td><code>-</code></td></tr><tr><td><code>LoadingBar.error</code></td><td>加载失败</td><td><code>-</code></td><td><code>-</code></td></tr><tr><td><code>LoadingBar.setDefaultOptions</code></td><td>设置默认的选项配置</td><td><em>options: LoadingBarOptions</em></td><td><code>-</code></td></tr><tr><td><code>LoadingBar.resetDefaultOptions</code></td><td>重置默认的选项配置</td><td><em>-</em></td><td><code>-</code></td></tr></tbody></table>`,1)]),r(`div`,_,[r(`h3`,v,[a(T,{to:`#LoadingBarOptions`},{default:n(()=>[...l[9]||=[o(`#`,-1)]]),_:1}),l[10]||=o(`LoadingBar Options`,-1)]),l[11]||=s(`<table><thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>color</code></td><td>加载条颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>errorColor</code></td><td>加载失败时的颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>height</code></td><td>加载条的高度</td><td><em>string | number</em></td><td><code>-</code></td></tr><tr><td><code>top</code></td><td>加载条距离页面顶部的距离</td><td><em>string | number</em></td><td><code>-</code></td></tr><tr><td><code>height</code></td><td>加载条的高度</td><td><em>string | number</em></td><td><code>-</code></td></tr><tr><td><code>finishDelay</code> <em><strong>3.3.13</strong></em></td><td>结束加载的延时时间(单位 ms)，可用于增加加载动画的持续时间</td><td><em>number</em></td><td><code>-</code></td></tr></tbody></table>`,1)]),r(`div`,y,[r(`h3`,b,[a(T,{to:`#yang4shi4bian4liang4`},{default:n(()=>[...l[12]||=[o(`#`,-1)]]),_:1}),l[13]||=o(`样式变量`,-1)]),l[14]||=s(`<p>以下为组件使用的 css 变量，可以使用 <a href="#/zh-CN/style-provider">StyleProvider 组件</a> 进行样式定制。</p><table><thead><tr><th>变量名</th><th>默认值</th></tr></thead><tbody><tr><td><code>--loading-bar-color</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--loading-bar-error-color</code></td><td><code>var(--color-danger)</code></td></tr><tr><td><code>--loading-bar-height</code></td><td><code>3px</code></td></tr></tbody></table>`,2)])])}var S=c(l,[[`render`,x]]);export{S as default};
