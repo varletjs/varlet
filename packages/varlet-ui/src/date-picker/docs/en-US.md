@@ -108,6 +108,7 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 | `multiple` | Allow the selection of multiple dates                                                                             | _boolean_ | `false` |
 | `range` | Allow the selection of date range                                                                                 | _boolean_ | `false` |
 | `touchable`  | Allow switch panel by touch                                                                                       | _boolean_ | `true` |
+| `fallback-view-date` ***3.15.2*** | Controls the panel view fallback date when there is no usable selected value. It does not update `v-model`. | _string_ | `-` |
 
 ### Events
 

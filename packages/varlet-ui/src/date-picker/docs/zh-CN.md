@@ -111,6 +111,7 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 | `multiple`          | 是否支持选择多个日期                                   | _boolean_ | `false` |
 | `range`             | 是否支持选择一个范围                                   | _boolean_ | `false` |
 | `touchable`         | 是否支持拖动切换面板                                   | _boolean_ | `true` |
+| `fallback-view-date` ***3.15.2***      | 在没有可用选中值时，控制面板视图回退到的日期（不会写回 `v-model`） | _string_ | `-` |
 
 ### 事件
 

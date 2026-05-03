@@ -8,7 +8,7 @@ import VarDatePicker from '../DatePicker'
 
 mockScrollIntoView()
 
-const [currentYear, currentMonth] = dayjs().format('YYYY-MM').split('-')
+const [currentYear] = dayjs().format('YYYY-MM').split('-')
 
 test('datePicker plugin', () => {
   const app = createApp({}).use(DatePicker)
@@ -258,6 +258,67 @@ test('datePicker should update title year when month preview crosses year', asyn
   wrapper.unmount()
 })
 
+test('datePicker fallbackViewDate should control initial panel when modelValue is empty', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      fallbackViewDate: '2026-04-01',
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2026')
+  expect(wrapper.find('.var-date-picker-header__value').text()).toBe('2026 四月')
+  expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('datePicker fallbackViewDate should not override modelValue', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-05-19',
+      fallbackViewDate: '2026-04-01',
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.find('.var-date-picker__title-year').text()).toBe('2021')
+  expect(wrapper.find('.var-date-picker-header__value').text()).toBe('2021 五月')
+
+  wrapper.unmount()
+})
+
+test('datePicker fallbackViewDate should control initial panel for empty multiple and range value', async () => {
+  const multipleWrapper = mount(VarDatePicker, {
+    props: {
+      multiple: true,
+      modelValue: [],
+      fallbackViewDate: '2026-04-01',
+    },
+  })
+
+  await delay(0)
+  expect(multipleWrapper.find('.var-date-picker__title-year').text()).toBe('2026')
+  expect(multipleWrapper.find('.var-date-picker-header__value').text()).toBe('2026 四月')
+  expect(multipleWrapper.emitted()['update:modelValue']).toBeFalsy()
+  multipleWrapper.unmount()
+
+  const rangeWrapper = mount(VarDatePicker, {
+    props: {
+      range: true,
+      modelValue: [],
+      fallbackViewDate: '2026-04-01',
+    },
+  })
+
+  await delay(0)
+  expect(rangeWrapper.find('.var-date-picker__title-year').text()).toBe('2026')
+  expect(rangeWrapper.find('.var-date-picker-header__value').text()).toBe('2026 四月')
+  expect(rangeWrapper.emitted()['update:modelValue']).toBeFalsy()
+
+  rangeWrapper.unmount()
+})
+
 test('datePicker multiple', async () => {
   const template = `<var-date-picker multiple v-model="date" :type="type"/>`
 
@@ -280,26 +341,17 @@ test('datePicker multiple', async () => {
   await elements[1].trigger('click')
   await elements[2].trigger('click')
 
-  expect(wrapper.vm.date).toEqual([
-    '2021-05-19',
-    `${currentYear}-${currentMonth}-01`,
-    `${currentYear}-${currentMonth}-02`,
-    `${currentYear}-${currentMonth}-03`,
-  ])
+  expect(wrapper.vm.date).toEqual(['2021-05-19', '2021-05-01', '2021-05-02', '2021-05-03'])
 
   await elements[0].trigger('click')
-  expect(wrapper.vm.date).toEqual([
-    '2021-05-19',
-    `${currentYear}-${currentMonth}-02`,
-    `${currentYear}-${currentMonth}-03`,
-  ])
+  expect(wrapper.vm.date).toEqual(['2021-05-19', '2021-05-02', '2021-05-03'])
 
   await wrapper.setData({ type: 'month', date: ['2021-05'] })
   await delay(0)
 
   const btn = wrapper.find('ul').find('button')
   await btn.trigger('click')
-  expect(wrapper.vm.date).toEqual(['2021-05', `${currentYear}-01`])
+  expect(wrapper.vm.date).toEqual(['2021-05', '2021-01'])
 
   await wrapper.setData({ type: 'year', date: ['2021'] })
   await delay(0)
@@ -336,7 +388,7 @@ test('datePicker range', async () => {
   await elements[0].trigger('click')
   await elements[2].trigger('click')
 
-  expect(wrapper.vm.date).toEqual([`${currentYear}-${currentMonth}-01`, `${currentYear}-${currentMonth}-03`])
+  expect(wrapper.vm.date).toEqual(['2021-05-01', '2021-05-03'])
 
   await wrapper.setData({ type: 'month', date: null })
   await wrapper.setData({ type: 'month', date: ['2021-05', '2021-06'] })
@@ -345,7 +397,7 @@ test('datePicker range', async () => {
   const lis = wrapper.find('.var-month-picker__content').find('ul').findAll('li').slice(0, 3)
   await lis[0].find('button').trigger('click')
   await lis[2].find('button').trigger('click')
-  expect(wrapper.vm.date).toEqual([`${currentYear}-01`, `${currentYear}-03`])
+  expect(wrapper.vm.date).toEqual(['2021-01', '2021-03'])
   expect(fn).toHaveBeenCalledTimes(1)
 
   await wrapper.setData({ type: 'year', date: [currentYear, `${+currentYear + 2}`] })

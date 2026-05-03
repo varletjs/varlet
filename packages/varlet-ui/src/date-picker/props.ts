@@ -57,6 +57,7 @@ export const props = {
     default: 'date',
   },
   hint: String,
+  fallbackViewDate: String,
   allowedDates: Function as PropType<AllowedDates>,
   color: String,
   titleColor: String,

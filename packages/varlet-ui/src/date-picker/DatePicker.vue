@@ -280,7 +280,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (value) => {
-        if (!checkValue() || invalidFormatDate(value)) {
+        if (!checkValue()) {
           return
         }
 
@@ -298,7 +298,7 @@ export default defineComponent({
 
           multipleInit(value, props.type)
         } else {
-          dateInit(value as string)
+          dateInit(getSingleDate(value as string | undefined))
         }
       },
       { immediate: true },
@@ -537,15 +537,39 @@ export default defineComponent({
       return false
     }
 
+    function getFallbackDate() {
+      if (props.fallbackViewDate) {
+        const formatDate = dayjs(props.fallbackViewDate).format('YYYY-MM-D')
+
+        if (formatDate !== 'Invalid Date') {
+          return props.fallbackViewDate
+        }
+      }
+
+      return dayjs().format('YYYY-MM-D')
+    }
+
+    function getSingleDate(value: string | undefined) {
+      if (value && !invalidFormatDate(dayjs(value).format('YYYY-MM-D'))) {
+        return value
+      }
+
+      return getFallbackDate()
+    }
+
+    function getFirstValidDate(value: Array<string>, type: string) {
+      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+
+      return value.find((choose) => !invalidFormatDate(dayjs(choose).format(formatType)))
+    }
+
     function rangeInit(value: Array<string>, type: string) {
       const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
       const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
-      const formatDateList = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
-
-      const isValid = rangeDate.value.some((date) => invalidFormatDate(date))
-      if (isValid) {
-        return
-      }
+      const formatDateList = value
+        .map((choose) => dayjs(choose).format(formatType))
+        .filter((date) => !invalidFormatDate(date))
+        .slice(0, 2)
 
       rangeDate.value = formatDateList
 
@@ -554,6 +578,8 @@ export default defineComponent({
       if (rangeDate.value.length === 2 && isChangeOrder) {
         rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
       }
+
+      previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
     }
 
     function multipleInit(value: Array<string>, type: string) {
@@ -563,10 +589,12 @@ export default defineComponent({
       // need uniq
       const formatDateList = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
       rangeDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
+
+      previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
     }
 
     function dateInit(value: string | undefined) {
-      const handleValue = value ? dayjs(value) : dayjs()
+      const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
       const formatDate = handleValue.format('YYYY-MM-D')
 
       if (invalidFormatDate(formatDate)) {
@@ -580,6 +608,20 @@ export default defineComponent({
       chooseMonth.value = monthDes
       chooseYear.value = yearValue
       chooseDay.value = dayValue
+      previewInit(formatDate)
+    }
+
+    function previewInit(value: string | undefined) {
+      const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
+      const formatDate = handleValue.format('YYYY-MM-D')
+
+      if (invalidFormatDate(formatDate)) {
+        return
+      }
+
+      const [yearValue, monthValue] = formatDate.split('-')
+      const monthDes: Month = MONTH_LIST.find((month) => month === monthValue) as Month
+
       previewMonth.value = monthDes
       previewYear.value = yearValue
     }
