@@ -1,10 +1,18 @@
-## [3.15.1](https://github.com/varletjs/varlet/compare/v3.15.0...v3.15.1) (2026-04-19)
+## [3.15.2](https://github.com/varletjs/varlet/compare/v3.15.1...v3.15.2) (2026-05-03)
 
 
 ### Bug Fixes
 
+* **date-picker:** Fixed the issue of inconsistent years in preview mode and close [#1959](https://github.com/varletjs/varlet/issues/1959) ([54a23eb](https://github.com/varletjs/varlet/commit/54a23eb14c6ca0695c0264952de46822c74d7025))
 * **release:** update import path for release function ([2e25bb0](https://github.com/varletjs/varlet/commit/2e25bb03b792b4be0e92cd0b54e1fd381794492f))
 * **tsconfig:** add vite-plus/client type to tsconfig template ([9a3f541](https://github.com/varletjs/varlet/commit/9a3f541ef95ed8e30a02ce599918a6adf40b801f))
+
+
+### Features
+
+* **date-picker:** add fallbackViewDate prop to control panel view date and close [#1951](https://github.com/varletjs/varlet/issues/1951) ([686edcf](https://github.com/varletjs/varlet/commit/686edcf58f09162ecda8d062308249caf29bb01d))
+
+# [3.15.0](https://github.com/varletjs/varlet/compare/v3.14.2...v3.15.0) (2026-04-19)
 
 
 ### Refactoring
