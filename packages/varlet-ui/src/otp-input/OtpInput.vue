@@ -490,5 +490,9 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../icon/icon';
+@import '../field-decorator/fieldDecorator';
+@import '../form-details/formDetails';
+@import '../input/input';
 @import './otpInput';
 </style>
