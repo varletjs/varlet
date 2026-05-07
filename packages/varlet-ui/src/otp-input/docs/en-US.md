@@ -154,11 +154,6 @@ const value = ref('')
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `update:modelValue` | Emitted when the OTP value changes | `value: string` |
-| `input` | Emitted on any input change | `value: string`, `payload: { index: number; source: 'input' \| 'delete' \| 'paste' }` |
-| `change` | Emitted after a stable value update | `value: string` |
-| `focus` | Emitted when a cell gets focus | `index: number`, `event: FocusEvent` |
-| `blur` | Emitted when a cell loses focus | `index: number`, `event: FocusEvent` |
 | `paste` | Emitted on paste | `value: string`, `event: ClipboardEvent` |
 | `complete` | Emitted when input reaches `length` | `value: string` |
 

@@ -154,11 +154,6 @@ const value = ref('')
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `update:modelValue` | 验证码值变化时触发 | `value: string` |
-| `input` | 任意输入变化时触发 | `value: string`, `payload: { index: number; source: 'input' \| 'delete' \| 'paste' }` |
-| `change` | 值完成一次稳定更新后触发 | `value: string` |
-| `focus` | 某一格聚焦时触发 | `index: number`, `event: FocusEvent` |
-| `blur` | 某一格失焦时触发 | `index: number`, `event: FocusEvent` |
 | `paste` | 粘贴时触发 | `value: string`, `event: ClipboardEvent` |
 | `complete` | 输入满 `length` 时触发 | `value: string` |
 

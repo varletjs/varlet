@@ -32,8 +32,8 @@
             :is-force-focusing-effect="activeIndex === index"
             :is-force-error-effect="!!errorMessage"
             :is-show-form-details="false"
-            @focus="(event) => handleFocus(index, event)"
-            @blur="(event) => handleBlur(index, event)"
+            @focus="() => handleFocus(index)"
+            @blur="(event) => handleBlur(event)"
             @input="(value) => handleCellInput(index, value)"
           />
         </div>
@@ -165,11 +165,6 @@ export default defineComponent({
       })
     }
 
-    function emitStableChange(value = normalizedValue.value) {
-      call(props.onChange, value)
-      validateWithTrigger('onChange', value)
-    }
-
     function maybeEmitComplete(value: string) {
       if (splitChars(value).length !== normalizedLength.value) {
         return
@@ -179,20 +174,15 @@ export default defineComponent({
       validateWithTrigger('onComplete', value)
     }
 
-    function updateValue(value: string, source: OtpInputSource, index: number, emitChange = false) {
+    function updateValue(value: string, index: number) {
       if (value === normalizedValue.value) {
         syncCellInput(index)
         return
       }
 
       call(props['onUpdate:modelValue'], value)
-      call(props.onInput as any, value, { index, source })
       validateWithTrigger('onInput', value)
       maybeEmitComplete(value)
-
-      if (emitChange) {
-        emitStableChange(value)
-      }
     }
 
     function focus(index = getFocusIndex()) {
@@ -211,10 +201,8 @@ export default defineComponent({
       }
 
       call(props['onUpdate:modelValue'], '')
-      call(props.onInput as any, '', { index: 0, source: 'delete' })
       validateWithTrigger('onInput', '')
       validateWithTrigger('onClear', '')
-      emitStableChange('')
     }
 
     function validate() {
@@ -244,7 +232,7 @@ export default defineComponent({
       })
     }
 
-    function replaceFrom(index: number, charsToInsert: string[], source: OtpInputSource, emitChange = false) {
+    function replaceFrom(index: number, charsToInsert: string[]) {
       const currentInteractionVersion = ++interactionVersion.value
       const valueChars = getValueChars()
       const targetIndex = clamp(index, 0, valueChars.length)
@@ -263,7 +251,7 @@ export default defineComponent({
       })
 
       const nextValue = nextChars.join('').slice(0, normalizedLength.value)
-      updateValue(nextValue, source, targetIndex, emitChange)
+      updateValue(nextValue, targetIndex)
 
       nextTick(() => {
         if (currentInteractionVersion !== interactionVersion.value) {
@@ -284,7 +272,7 @@ export default defineComponent({
       })
     }
 
-    function removeAt(index: number, emitChange = false) {
+    function removeAt(index: number) {
       const currentInteractionVersion = ++interactionVersion.value
       const valueChars = getValueChars()
 
@@ -295,7 +283,7 @@ export default defineComponent({
 
       valueChars.splice(index, 1)
       const nextValue = valueChars.join('')
-      updateValue(nextValue, 'delete', index, emitChange)
+      updateValue(nextValue, index)
 
       nextTick(() => {
         if (currentInteractionVersion !== interactionVersion.value) {
@@ -347,12 +335,11 @@ export default defineComponent({
       validateWithTrigger('onClick')
     }
 
-    function handleFocus(index: number, event: FocusEvent) {
+    function handleFocus(index: number) {
       const valueChars = getValueChars()
 
       interactionVersion.value += 1
       activeIndex.value = index
-      call(props.onFocus as any, index, event)
       validateWithTrigger('onFocus')
 
       if (valueChars[index]) {
@@ -362,16 +349,14 @@ export default defineComponent({
       }
     }
 
-    function handleBlur(index: number, event: FocusEvent) {
+    function handleBlur(event: FocusEvent) {
       const relatedTarget = event.relatedTarget as Node | null
       const isLeavingComponent = !relatedTarget || !rootEl.value?.contains(relatedTarget)
 
       if (isLeavingComponent) {
         activeIndex.value = -1
-        emitStableChange()
       }
 
-      call(props.onBlur as any, index, event)
       validateWithTrigger('onBlur')
     }
 
@@ -391,7 +376,7 @@ export default defineComponent({
           return
         }
 
-        replaceFrom(valueChars.length, filtered, 'input')
+        replaceFrom(valueChars.length, filtered)
         return
       }
 
@@ -405,7 +390,7 @@ export default defineComponent({
         return
       }
 
-      replaceFrom(index, filtered, 'input')
+      replaceFrom(index, filtered)
     }
 
     function handlePaste(event: ClipboardEvent) {
@@ -431,7 +416,7 @@ export default defineComponent({
         return
       }
 
-      replaceFrom(0, splitChars(filteredValue), 'paste', true)
+      replaceFrom(0, splitChars(filteredValue))
     }
 
     function handleKeydown(event: KeyboardEvent) {

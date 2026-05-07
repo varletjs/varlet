@@ -44,10 +44,6 @@ export interface OtpInputProps extends BasicAttributes {
   autoBlur?: boolean
   allowPaste?: boolean
   pasteTransform?: (value: string) => string
-  onFocus?: ListenerProp<(index: number, e: FocusEvent) => void>
-  onBlur?: ListenerProp<(index: number, e: FocusEvent) => void>
-  onInput?: ListenerProp<(value: string, payload: { index: number; source: OtpInputSource }) => void>
-  onChange?: ListenerProp<(value: string) => void>
   onPaste?: ListenerProp<(value: string, e: ClipboardEvent) => void>
   onComplete?: ListenerProp<(value: string) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
