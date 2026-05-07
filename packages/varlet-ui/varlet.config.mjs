@@ -670,6 +670,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'OtpInput 验证码输入框',
+          'en-US': 'OtpInput',
+        },
+        doc: 'otp-input',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'AutoComplete 自动补全',
           'en-US': 'AutoComplete',
         },

@@ -1,0 +1,78 @@
+:root {
+  --otp-input-gutter: 8px;
+  --otp-input-cell-height: 50px;
+  --otp-input-cell-max-width: 52px;
+  --otp-input-input-font-size: 20px;
+  --otp-input-separator-color: var(--color-text-disabled);
+}
+
+.var-otp-input {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+
+  &__cells {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--otp-input-gutter);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__cell {
+    flex: 1 1 0;
+    min-width: 0;
+    height: var(--otp-input-cell-height);
+    max-width: var(--otp-input-cell-max-width);
+  }
+
+  &__separator {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--otp-input-separator-color);
+    white-space: nowrap;
+  }
+
+  &__details {
+    width: 100%;
+  }
+
+  .var-input__input {
+    text-align: center;
+    font-size: var(--otp-input-input-font-size);
+    text-transform: none;
+    height: 100%;
+  }
+
+  .var-field-decorator__middle {
+    justify-content: center;
+  }
+
+  .var-field-decorator--standard {
+    .var-field-decorator__controller,
+    .var-field-decorator__middle {
+      height: 100%;
+    }
+
+    .var-field-decorator__middle,
+    .var-field-decorator__icon,
+    .var-field-decorator--middle-non-hint,
+    .var-field-decorator--icon-non-hint {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .var-input,
+  .var-field-decorator,
+  .var-field-decorator__container,
+  .var-field-decorator__main,
+  .var-field-decorator__body {
+    height: 100%;
+  }
+}
