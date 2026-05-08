@@ -32,7 +32,6 @@ export interface OtpInputProps extends BasicAttributes {
   gutter?: string | number
   validateTrigger?: OtpInputValidateTrigger[]
   rules?: OtpInputRules
-  autoBlur?: boolean
   allowPaste?: boolean
   pasteTransform?: (value: string) => string
   onInput?: ListenerProp<(value: string) => void>

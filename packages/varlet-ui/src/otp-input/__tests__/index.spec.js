@@ -124,7 +124,7 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
-  test('paste should replace from the first cell and blur when auto-blur remains enabled', async () => {
+  test('paste should replace from the first cell and keep focus on the last cell', async () => {
     const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
     const wrapper = mount(VarOtpInput, {
@@ -147,7 +147,7 @@ describe('test otp-input behaviors', () => {
     await wrapper.vm.$nextTick()
 
     expect(onUpdateModelValue).not.toHaveBeenCalled()
-    expect(wrapper.vm.activeIndex).toBe(-1)
+    expect(wrapper.vm.activeIndex).toBe(5)
 
     wrapper.unmount()
   })
@@ -197,7 +197,7 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
-  test('should blur when overwriting the last filled value with auto-blur enabled', async () => {
+  test('should keep focus on the last filled cell when overwriting it', async () => {
     const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
     const wrapper = mount(VarOtpInput, {
@@ -216,12 +216,12 @@ describe('test otp-input behaviors', () => {
     await wrapper.vm.$nextTick()
 
     expect(onUpdateModelValue).toHaveBeenLastCalledWith('1239')
-    expect(wrapper.vm.activeIndex).toBe(-1)
+    expect(wrapper.vm.activeIndex).toBe(3)
 
     wrapper.unmount()
   })
 
-  test('should blur again when overwriting after the first complete input', async () => {
+  test('should keep focus when overwriting after the first complete input', async () => {
     const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
     const wrapper = mount(VarOtpInput, {
@@ -244,40 +244,7 @@ describe('test otp-input behaviors', () => {
     await wrapper.vm.$nextTick()
 
     expect(onUpdateModelValue).toHaveBeenLastCalledWith('1239')
-    expect(wrapper.vm.activeIndex).toBe(-1)
-
-    wrapper.unmount()
-  })
-
-  test('should blur again when auto-blur is enabled and the last cell is overwritten after completion', async () => {
-    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
-
-    const wrapper = mount(VarOtpInput, {
-      props: {
-        modelValue: '',
-        length: 4,
-        autoBlur: true,
-        'onUpdate:modelValue': onUpdateModelValue,
-      },
-      attachTo: document.body,
-    })
-
-    const inputs = wrapper.findAll('.var-input__input')
-
-    await inputs[0].setValue('1')
-    await inputs[1].setValue('2')
-    await inputs[2].setValue('3')
-    await inputs[3].setValue('4')
-    await wrapper.vm.$nextTick()
-    await wrapper.vm.$nextTick()
-
-    await inputs[3].trigger('focus')
-    await inputs[3].setValue('9')
-    await wrapper.vm.$nextTick()
-    await wrapper.vm.$nextTick()
-
-    expect(onUpdateModelValue).toHaveBeenLastCalledWith('1239')
-    expect(wrapper.vm.activeIndex).toBe(-1)
+    expect(wrapper.vm.activeIndex).toBe(3)
 
     wrapper.unmount()
   })
@@ -368,6 +335,26 @@ describe('test otp-input behaviors', () => {
 
     expect(onUpdateModelValue).toHaveBeenLastCalledWith('124')
     expect(wrapper.vm.activeIndex).toBe(1)
+
+    wrapper.unmount()
+  })
+
+  test('arrow right should move focus to the next empty cell', async () => {
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '12',
+        length: 4,
+      },
+      attachTo: document.body,
+    })
+
+    const inputs = wrapper.findAll('.var-input__input')
+
+    await inputs[1].trigger('focus')
+    await inputs[1].trigger('keydown', { key: 'ArrowRight' })
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.activeIndex).toBe(2)
 
     wrapper.unmount()
   })

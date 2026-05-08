@@ -73,7 +73,6 @@ export default defineComponent({
     const rootEl = ref<HTMLElement | null>(null)
     const inputRefs = ref<Array<InstanceType<typeof VarInput> | null>>([])
     const activeIndex = ref(-1)
-    const interactionVersion = ref(0)
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { bindForm, form } = useForm()
     const normalizedLength = computed(() => toNumber(props.length))
@@ -87,12 +86,15 @@ export default defineComponent({
     const nativeInputType = computed(() => (props.type === 'digit' ? 'tel' : 'text'))
     const formDisabled = computed(() => form?.disabled.value ?? false)
     const formReadonly = computed(() => form?.readonly.value ?? false)
+    let pendingFocusIndex: number | null = null
+    let focusEffectQueued = false
 
     bindForm?.({ validate, resetValidation, reset })
 
     onSmartMounted(() => {
       if (props.autofocus) {
-        focus()
+        const targetFocusIndex = Math.min(getValueChars().length, normalizedLength.value - 1)
+        focusCell(targetFocusIndex)
       }
     })
 
@@ -173,14 +175,9 @@ export default defineComponent({
       maybeEmitComplete(value)
     }
 
-    function focusCell(index = getFocusIndex()) {
+    function focusCell(index: number) {
       const targetIndex = clamp(index, 0, normalizedLength.value - 1)
       inputRefs.value[targetIndex]?.focus?.()
-    }
-
-    function blur() {
-      inputRefs.value.forEach((inputRef) => inputRef?.blur?.())
-      activeIndex.value = -1
     }
 
     function validate() {
@@ -198,10 +195,6 @@ export default defineComponent({
       resetValidation()
     }
 
-    function getFocusIndex() {
-      return Math.min(getValueChars().length, normalizedLength.value - 1)
-    }
-
     function syncCellDisplayValue(index: number) {
       const inputEl = inputRefs.value[index]?.el as HTMLInputElement | null | undefined
 
@@ -216,75 +209,56 @@ export default defineComponent({
       })
     }
 
-    function replaceFrom(index: number, charsToInsert: string[]) {
-      const currentInteractionVersion = ++interactionVersion.value
-      const valueChars = getValueChars()
-      const targetIndex = clamp(index, 0, valueChars.length)
-      const nextChars = [...valueChars]
-      let lastIndex = targetIndex
+    function scheduleFocusEffect(index: number) {
+      pendingFocusIndex = index
 
-      charsToInsert.forEach((char, offset) => {
-        const currentIndex = targetIndex + offset
+      if (focusEffectQueued) {
+        return
+      }
 
-        if (currentIndex >= normalizedLength.value) {
+      focusEffectQueued = true
+
+      nextTick(() => {
+        focusEffectQueued = false
+
+        if (pendingFocusIndex == null) {
           return
         }
 
-        nextChars[currentIndex] = char
-        lastIndex = currentIndex
+        activeIndex.value = pendingFocusIndex
+        focusCell(pendingFocusIndex)
+        pendingFocusIndex = null
+      })
+    }
+
+    function replaceChars(index: number, chars: string[]) {
+      const valueChars = getValueChars()
+      const targetIndex = clamp(index, 0, valueChars.length)
+      const nextChars = [...valueChars]
+      const processedChars = chars.slice(0, normalizedLength.value - targetIndex)
+
+      processedChars.forEach((char, offset) => {
+        nextChars[targetIndex + offset] = char
       })
 
       const nextValue = nextChars.join('').slice(0, normalizedLength.value)
       updateValue(nextValue, targetIndex)
+      const nextFocusIndex = clamp(targetIndex + processedChars.length, 0, normalizedLength.value - 1)
 
-      nextTick(() => {
-        if (currentInteractionVersion !== interactionVersion.value) {
-          return
-        }
-
-        if (
-          splitChars(nextValue).length >= normalizedLength.value &&
-          props.autoBlur &&
-          lastIndex >= normalizedLength.value - 1
-        ) {
-          blur()
-          return
-        }
-
-        activeIndex.value = clamp(lastIndex + 1, 0, normalizedLength.value - 1)
-        focusCell(activeIndex.value)
-      })
+      scheduleFocusEffect(nextFocusIndex)
     }
 
-    function removeAt(index: number) {
-      const currentInteractionVersion = ++interactionVersion.value
+    function removeAt(index: number, focusIndex = clamp(index, 0, normalizedLength.value - 1)) {
       const valueChars = getValueChars()
-
-      if (index < 0 || index >= valueChars.length) {
-        syncAllCellDisplayValues()
-        return
-      }
 
       valueChars.splice(index, 1)
       const nextValue = valueChars.join('')
       updateValue(nextValue, index)
-
-      nextTick(() => {
-        if (currentInteractionVersion !== interactionVersion.value) {
-          return
-        }
-
-        focusCell(clamp(index, 0, normalizedLength.value - 1))
-      })
+      scheduleFocusEffect(focusIndex)
     }
 
     function removeWithBackspace(index: number) {
       const valueChars = getValueChars()
-
-      if (index < 0 || index > valueChars.length) {
-        syncAllCellDisplayValues()
-        return
-      }
 
       if (!valueChars[index]) {
         if (index <= 0) {
@@ -292,27 +266,13 @@ export default defineComponent({
           return
         }
 
-        removeAt(index - 1)
-        nextTick(() => {
-          activeIndex.value = index - 1
-          focusCell(index - 1)
-        })
+        removeAt(index - 1, index - 1)
         return
       }
 
-      const isLastFilledCell = index === valueChars.length - 1
-      removeAt(index)
-
-      nextTick(() => {
-        if (!isLastFilledCell && index > 0) {
-          activeIndex.value = index - 1
-          focusCell(index - 1)
-          return
-        }
-
-        activeIndex.value = clamp(index, 0, normalizedLength.value - 1)
-        inputRefs.value[activeIndex.value]?.select?.()
-      })
+      const isLastCell = index === valueChars.length - 1
+      const nextFocusIndex = !isLastCell && index > 0 ? index - 1 : clamp(index, 0, normalizedLength.value - 1)
+      removeAt(index, nextFocusIndex)
     }
 
     function handleClick(event: Event) {
@@ -327,7 +287,6 @@ export default defineComponent({
     function handleFocus(index: number) {
       const valueChars = getValueChars()
 
-      interactionVersion.value += 1
       activeIndex.value = index
 
       if (valueChars[index]) {
@@ -347,21 +306,17 @@ export default defineComponent({
     }
 
     function handleCellInput(index: number, value: string) {
-      const cellValueChars = splitChars(transformByType(value))
+      const inputChars = splitChars(transformByType(value))
       const valueChars = getValueChars()
+      const crossTargetIndex = index > valueChars.length
 
-      if (index > valueChars.length) {
-        if (cellValueChars.length === 0) {
-          nextTick(() => focusCell(valueChars.length))
+      if (inputChars.length === 0) {
+        if (crossTargetIndex) {
+          scheduleFocusEffect(valueChars.length)
           syncCellDisplayValue(index)
           return
         }
 
-        replaceFrom(valueChars.length, cellValueChars)
-        return
-      }
-
-      if (cellValueChars.length === 0) {
         if (value === '') {
           removeAt(index)
         } else {
@@ -371,7 +326,12 @@ export default defineComponent({
         return
       }
 
-      replaceFrom(index, cellValueChars)
+      if (crossTargetIndex) {
+        replaceChars(valueChars.length, inputChars)
+        return
+      }
+
+      replaceChars(index, inputChars)
     }
 
     function handlePaste(event: ClipboardEvent) {
@@ -379,26 +339,26 @@ export default defineComponent({
         return
       }
 
-      const rawValue = event.clipboardData?.getData('text') ?? ''
+      const text = event.clipboardData?.getData('text') ?? ''
 
-      if (!rawValue) {
+      if (!text) {
         return
       }
 
       event.preventDefault()
 
-      const transformedValue = props.pasteTransform ? props.pasteTransform(rawValue) : rawValue
-      const resolvedValue = transformByType(transformedValue)
+      const transformedValue = props.pasteTransform ? props.pasteTransform(text) : text
+      const result = transformByType(transformedValue)
 
-      call(props.onPaste, resolvedValue, event)
-      validateWithTrigger('onPaste', resolvedValue)
+      call(props.onPaste, result, event)
+      validateWithTrigger('onPaste', result)
 
-      if (!resolvedValue) {
+      if (!result) {
         syncAllCellDisplayValues()
         return
       }
 
-      replaceFrom(0, splitChars(resolvedValue))
+      replaceChars(0, splitChars(result))
     }
 
     function handleKeydown(event: KeyboardEvent) {
@@ -415,9 +375,8 @@ export default defineComponent({
       }
 
       const index = Number(indexAttr)
-      const chars = getValueChars()
 
-      if (event.key === 'Backspace' && chars.length > 0) {
+      if (event.key === 'Backspace' && getValueChars().length > 0) {
         event.preventDefault()
         removeWithBackspace(index)
         return
@@ -431,7 +390,7 @@ export default defineComponent({
 
       if (event.key === 'ArrowRight' && index < normalizedLength.value - 1) {
         event.preventDefault()
-        focusCell(clamp(index + 1, 0, chars.length))
+        focusCell(index + 1)
         return
       }
     }
@@ -459,8 +418,6 @@ export default defineComponent({
       handleCellInput,
       handleKeydown,
       handlePaste,
-      focus,
-      blur,
       validate,
       resetValidation,
     }

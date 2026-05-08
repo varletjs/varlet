@@ -136,7 +136,6 @@ const value = ref('')
 | `gutter` | 格子间距 | _string \| number_ | `8` |
 | `validate-trigger` | 触发校验的时机，可选值为 `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示，支持 Zod 验证 | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
-| `auto-blur` | 输入满后是否自动失焦 | _boolean_ | `true` |
 | `allow-paste` | 是否允许粘贴整串验证码 | _boolean_ | `true` |
 | `paste-transform` | 粘贴内容转换器 | _(value: string) => string_ | `-` |
 

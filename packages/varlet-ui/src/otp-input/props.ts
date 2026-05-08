@@ -44,10 +44,6 @@ export const props = {
     default: () => ['onInput', 'onComplete'],
   },
   rules: [Array, Function, Object] as PropType<any>,
-  autoBlur: {
-    type: Boolean,
-    default: true,
-  },
   allowPaste: {
     type: Boolean,
     default: true,

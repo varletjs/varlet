@@ -136,7 +136,6 @@ const value = ref('')
 | `gutter` | Cell gap | _string \| number_ | `8` |
 | `validate-trigger` | Validation triggers, options are `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | Validation rules. Returning `true` means valid. Other values are converted to error messages. Supports Zod validation | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
-| `auto-blur` | Whether to blur after all cells are filled | _boolean_ | `true` |
 | `allow-paste` | Whether to allow full-string pasting | _boolean_ | `true` |
 | `paste-transform` | Paste value transformer | _(value: string) => string_ | `-` |
 
