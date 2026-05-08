@@ -134,7 +134,7 @@ const value = ref('')
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `autofocus` | 初始化后是否自动聚焦 | _boolean_ | `false` |
 | `gutter` | 格子间距 | _string \| number_ | `8` |
-| `validate-trigger` | 触发校验的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
+| `validate-trigger` | 触发校验的时机，可选值为 `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示，支持 Zod 验证 | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `auto-blur` | 输入满后是否自动失焦 | _boolean_ | `true` |
 | `allow-paste` | 是否允许粘贴整串验证码 | _boolean_ | `true` |
@@ -154,6 +154,8 @@ const value = ref('')
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
+| `input` | 验证码值变化时触发 | `value: string` |
+| `click` | 点击组件根节点时触发 | `event: Event` |
 | `paste` | 粘贴时触发 | `value: string`, `event: ClipboardEvent` |
 | `complete` | 输入满 `length` 时触发 | `value: string` |
 

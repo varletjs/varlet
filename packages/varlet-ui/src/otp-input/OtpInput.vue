@@ -49,15 +49,15 @@
 </template>
 
 <script lang="ts">
-import { call, clamp, isEmpty, toNumber } from '@varlet/shared'
+import { call, clamp, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import { computed, defineComponent, nextTick, ref, useSlots, type ComponentPublicInstance } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
-import Input from '../input/Input.vue'
+import VarInput from '../input/Input.vue'
 import { createNamespace, flatFragment, useValidation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { props, type OtpInputSource, type OtpInputValidateTrigger } from './props'
+import { props, type OtpInputValidateTrigger } from './props'
 
 const { name, n, classes } = createNamespace('otp-input')
 
@@ -65,13 +65,13 @@ export default defineComponent({
   name,
   components: {
     VarFormDetails,
-    VarInput: Input,
+    VarInput,
   },
   props,
   setup(props) {
     const slots = useSlots()
     const rootEl = ref<HTMLElement | null>(null)
-    const inputRefs = ref<Array<InstanceType<typeof Input> | null>>([])
+    const inputRefs = ref<Array<InstanceType<typeof VarInput> | null>>([])
     const activeIndex = ref(-1)
     const interactionVersion = ref(0)
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
@@ -88,11 +88,7 @@ export default defineComponent({
     const formDisabled = computed(() => form?.disabled.value ?? false)
     const formReadonly = computed(() => form?.readonly.value ?? false)
 
-    bindForm?.({
-      validate,
-      resetValidation,
-      reset,
-    })
+    bindForm?.({ validate, resetValidation, reset })
 
     onSmartMounted(() => {
       if (props.autofocus) {
@@ -105,14 +101,10 @@ export default defineComponent({
     }
 
     function normalizeValue(value: string) {
-      return filterByType(String(value ?? '')).slice(0, normalizedLength.value)
+      return transformByType(value).slice(0, normalizedLength.value)
     }
 
-    function filterByType(value: string) {
-      if (isEmpty(value)) {
-        return ''
-      }
-
+    function transformByType(value: string) {
       switch (props.type) {
         case 'digit':
           return value.replace(/\D+/g, '')
@@ -141,13 +133,8 @@ export default defineComponent({
       return props.mask ? normalizedMaskSymbol.value : char
     }
 
-    function setInputRef(el: Element | ComponentPublicInstance | InstanceType<typeof Input> | null, index: number) {
-      if (el && '$' in el) {
-        inputRefs.value[index] = el as InstanceType<typeof Input>
-        return
-      }
-
-      inputRefs.value[index] = null
+    function setInputRef(el: Element | ComponentPublicInstance | InstanceType<typeof VarInput> | null, index: number) {
+      inputRefs.value[index] = el && '$' in el ? (el as InstanceType<typeof VarInput>) : null
     }
 
     function shouldRenderSeparator(index: number) {
@@ -176,16 +163,17 @@ export default defineComponent({
 
     function updateValue(value: string, index: number) {
       if (value === normalizedValue.value) {
-        syncCellInput(index)
+        syncCellDisplayValue(index)
         return
       }
 
       call(props['onUpdate:modelValue'], value)
+      call(props.onInput, value)
       validateWithTrigger('onInput', value)
       maybeEmitComplete(value)
     }
 
-    function focus(index = getFocusIndex()) {
+    function focusCell(index = getFocusIndex()) {
       const targetIndex = clamp(index, 0, normalizedLength.value - 1)
       inputRefs.value[targetIndex]?.focus?.()
     }
@@ -195,22 +183,18 @@ export default defineComponent({
       activeIndex.value = -1
     }
 
-    function clear() {
-      if (normalizedValue.value === '') {
-        return
-      }
-
-      call(props['onUpdate:modelValue'], '')
-      validateWithTrigger('onInput', '')
-      validateWithTrigger('onClear', '')
-    }
-
     function validate() {
       return v(props.rules, normalizedValue.value)
     }
 
     function reset() {
-      clear()
+      if (normalizedValue.value === '') {
+        return
+      }
+
+      call(props['onUpdate:modelValue'], '')
+      call(props.onInput, '')
+      validateWithTrigger('onInput', '')
       resetValidation()
     }
 
@@ -218,7 +202,7 @@ export default defineComponent({
       return Math.min(getValueChars().length, normalizedLength.value - 1)
     }
 
-    function syncCellInput(index: number) {
+    function syncCellDisplayValue(index: number) {
       const inputEl = inputRefs.value[index]?.el as HTMLInputElement | null | undefined
 
       if (inputEl) {
@@ -226,9 +210,9 @@ export default defineComponent({
       }
     }
 
-    function syncAllCellInputs() {
+    function syncAllCellDisplayValues() {
       cellIndexes.value.forEach((_, index) => {
-        syncCellInput(index)
+        syncCellDisplayValue(index)
       })
     }
 
@@ -268,7 +252,7 @@ export default defineComponent({
         }
 
         activeIndex.value = clamp(lastIndex + 1, 0, normalizedLength.value - 1)
-        focus(activeIndex.value)
+        focusCell(activeIndex.value)
       })
     }
 
@@ -277,7 +261,7 @@ export default defineComponent({
       const valueChars = getValueChars()
 
       if (index < 0 || index >= valueChars.length) {
-        syncAllCellInputs()
+        syncAllCellDisplayValues()
         return
       }
 
@@ -290,7 +274,7 @@ export default defineComponent({
           return
         }
 
-        focus(clamp(index, 0, normalizedLength.value - 1))
+        focusCell(clamp(index, 0, normalizedLength.value - 1))
       })
     }
 
@@ -298,20 +282,20 @@ export default defineComponent({
       const valueChars = getValueChars()
 
       if (index < 0 || index > valueChars.length) {
-        syncAllCellInputs()
+        syncAllCellDisplayValues()
         return
       }
 
       if (!valueChars[index]) {
         if (index <= 0) {
-          syncAllCellInputs()
+          syncAllCellDisplayValues()
           return
         }
 
         removeAt(index - 1)
         nextTick(() => {
           activeIndex.value = index - 1
-          focus(index - 1)
+          focusCell(index - 1)
         })
         return
       }
@@ -322,7 +306,7 @@ export default defineComponent({
       nextTick(() => {
         if (!isLastFilledCell && index > 0) {
           activeIndex.value = index - 1
-          focus(index - 1)
+          focusCell(index - 1)
           return
         }
 
@@ -331,7 +315,12 @@ export default defineComponent({
       })
     }
 
-    function handleClick() {
+    function handleClick(event: Event) {
+      if (props.disabled || formDisabled.value) {
+        return
+      }
+
+      call(props.onClick, event)
       validateWithTrigger('onClick')
     }
 
@@ -340,7 +329,6 @@ export default defineComponent({
 
       interactionVersion.value += 1
       activeIndex.value = index
-      validateWithTrigger('onFocus')
 
       if (valueChars[index]) {
         nextTick(() => {
@@ -356,41 +344,34 @@ export default defineComponent({
       if (isLeavingComponent) {
         activeIndex.value = -1
       }
-
-      validateWithTrigger('onBlur')
     }
 
     function handleCellInput(index: number, value: string) {
-      if (formDisabled.value || formReadonly.value || props.disabled || props.readonly) {
-        syncCellInput(index)
-        return
-      }
-
+      const cellValueChars = splitChars(transformByType(value))
       const valueChars = getValueChars()
-      const filtered = splitChars(filterByType(value))
 
       if (index > valueChars.length) {
-        if (filtered.length === 0) {
-          nextTick(() => focus(valueChars.length))
-          syncCellInput(index)
+        if (cellValueChars.length === 0) {
+          nextTick(() => focusCell(valueChars.length))
+          syncCellDisplayValue(index)
           return
         }
 
-        replaceFrom(valueChars.length, filtered)
+        replaceFrom(valueChars.length, cellValueChars)
         return
       }
 
-      if (filtered.length === 0) {
+      if (cellValueChars.length === 0) {
         if (value === '') {
           removeAt(index)
         } else {
-          syncCellInput(index)
+          syncCellDisplayValue(index)
         }
 
         return
       }
 
-      replaceFrom(index, filtered)
+      replaceFrom(index, cellValueChars)
     }
 
     function handlePaste(event: ClipboardEvent) {
@@ -407,16 +388,17 @@ export default defineComponent({
       event.preventDefault()
 
       const transformedValue = props.pasteTransform ? props.pasteTransform(rawValue) : rawValue
-      const filteredValue = filterByType(transformedValue)
+      const resolvedValue = transformByType(transformedValue)
 
-      call(props.onPaste as any, filteredValue, event)
+      call(props.onPaste, resolvedValue, event)
+      validateWithTrigger('onPaste', resolvedValue)
 
-      if (!filteredValue) {
-        syncAllCellInputs()
+      if (!resolvedValue) {
+        syncAllCellDisplayValues()
         return
       }
 
-      replaceFrom(0, splitChars(filteredValue))
+      replaceFrom(0, splitChars(resolvedValue))
     }
 
     function handleKeydown(event: KeyboardEvent) {
@@ -443,13 +425,13 @@ export default defineComponent({
 
       if (event.key === 'ArrowLeft' && index > 0) {
         event.preventDefault()
-        focus(index - 1)
+        focusCell(index - 1)
         return
       }
 
       if (event.key === 'ArrowRight' && index < normalizedLength.value - 1) {
         event.preventDefault()
-        focus(clamp(index + 1, 0, chars.length))
+        focusCell(clamp(index + 1, 0, chars.length))
         return
       }
     }
@@ -468,7 +450,6 @@ export default defineComponent({
       nativeInputType,
       n,
       classes,
-      isEmpty,
       setInputRef,
       getDisplayChar,
       shouldRenderSeparator,
@@ -480,7 +461,6 @@ export default defineComponent({
       handlePaste,
       focus,
       blur,
-      clear,
       validate,
       resetValidation,
     }

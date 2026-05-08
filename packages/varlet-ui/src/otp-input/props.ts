@@ -4,16 +4,7 @@ import { defineListenerProp, pickProps } from '../utils/components'
 
 export type OtpInputType = 'digit' | 'text' | 'alphanumeric'
 
-export type OtpInputValidateTrigger =
-  | 'onFocus'
-  | 'onBlur'
-  | 'onChange'
-  | 'onClick'
-  | 'onClear'
-  | 'onInput'
-  | 'onComplete'
-
-export type OtpInputSource = 'input' | 'delete' | 'paste'
+export type OtpInputValidateTrigger = 'onInput' | 'onClick' | 'onPaste' | 'onComplete'
 
 export const props = {
   modelValue: {
@@ -62,6 +53,8 @@ export const props = {
     default: true,
   },
   pasteTransform: Function as PropType<(value: string) => string>,
+  onInput: defineListenerProp<(value: string) => void>(),
+  onClick: defineListenerProp<(e: Event) => void>(),
   onPaste: defineListenerProp<(value: string, e: ClipboardEvent) => void>(),
   onComplete: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),

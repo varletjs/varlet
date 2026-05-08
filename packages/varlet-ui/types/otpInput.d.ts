@@ -12,16 +12,7 @@ export declare const otpInputProps: Record<keyof OtpInputProps, any>
 
 export type OtpInputType = 'digit' | 'text' | 'alphanumeric'
 
-export type OtpInputValidateTrigger =
-  | 'onFocus'
-  | 'onBlur'
-  | 'onChange'
-  | 'onClick'
-  | 'onClear'
-  | 'onInput'
-  | 'onComplete'
-
-export type OtpInputSource = 'input' | 'delete' | 'paste'
+export type OtpInputValidateTrigger = 'onInput' | 'onClick' | 'onPaste' | 'onComplete'
 
 export interface OtpInputProps extends BasicAttributes {
   modelValue?: string
@@ -44,6 +35,8 @@ export interface OtpInputProps extends BasicAttributes {
   autoBlur?: boolean
   allowPaste?: boolean
   pasteTransform?: (value: string) => string
+  onInput?: ListenerProp<(value: string) => void>
+  onClick?: ListenerProp<(e: Event) => void>
   onPaste?: ListenerProp<(value: string, e: ClipboardEvent) => void>
   onComplete?: ListenerProp<(value: string) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>

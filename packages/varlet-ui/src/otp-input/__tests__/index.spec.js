@@ -12,12 +12,14 @@ test('otp-input plugin', () => {
 describe('test otp-input behaviors', () => {
   test('input digits and emit complete', async () => {
     const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onInput = vi.fn()
     const onComplete = vi.fn()
 
     const wrapper = mount(VarOtpInput, {
       props: {
         modelValue: '',
         length: 4,
+        onInput,
         onComplete,
         'onUpdate:modelValue': onUpdateModelValue,
       },
@@ -31,6 +33,8 @@ describe('test otp-input behaviors', () => {
     await inputs[3].setValue('4')
 
     expect(onUpdateModelValue).toHaveBeenLastCalledWith('1234')
+    expect(onInput).toHaveBeenCalledTimes(4)
+    expect(onInput).toHaveBeenLastCalledWith('1234')
     expect(onComplete).toHaveBeenCalledTimes(1)
     expect(onComplete).toHaveBeenLastCalledWith('1234')
 
@@ -69,31 +73,53 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
-  test('should not fall through removed input or change listeners as native events', async () => {
-    const onInput = vi.fn()
-    const onChange = vi.fn()
-    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  test('click should emit event and trigger onClick validation', async () => {
+    const onClick = vi.fn()
+    const rule = vi.fn(() => true)
 
     const wrapper = mount(VarOtpInput, {
       props: {
         modelValue: '',
         length: 4,
-        'onUpdate:modelValue': onUpdateModelValue,
-      },
-      attrs: {
-        onInput,
-        onChange,
+        onClick,
+        rules: rule,
+        validateTrigger: ['onClick'],
       },
     })
 
-    const inputs = wrapper.findAll('.var-input__input')
+    await wrapper.trigger('click')
+    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
 
-    await inputs[0].setValue('1')
-    await inputs[0].trigger('change')
+    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(onClick.mock.calls[0][0]).toBeInstanceOf(Event)
+    expect(rule).toHaveBeenCalled()
+    expect(rule.mock.calls[0][0]).toBe('')
 
-    expect(onUpdateModelValue).toHaveBeenLastCalledWith('1')
-    expect(onInput).not.toHaveBeenCalled()
-    expect(onChange).not.toHaveBeenCalled()
+    wrapper.unmount()
+  })
+
+  test('click should do nothing when disabled', async () => {
+    const onClick = vi.fn()
+    const rule = vi.fn(() => true)
+
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '',
+        length: 4,
+        disabled: true,
+        onClick,
+        rules: rule,
+        validateTrigger: ['onClick'],
+      },
+    })
+
+    await wrapper.trigger('click')
+    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
+
+    expect(onClick).not.toHaveBeenCalled()
+    expect(rule).not.toHaveBeenCalled()
 
     wrapper.unmount()
   })
@@ -342,31 +368,6 @@ describe('test otp-input behaviors', () => {
 
     expect(onUpdateModelValue).toHaveBeenLastCalledWith('124')
     expect(wrapper.vm.activeIndex).toBe(1)
-
-    wrapper.unmount()
-  })
-
-  test('clear should trigger onClear validation', async () => {
-    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
-    const rule = vi.fn((value) => value.length === 4 || 'OTP length must be 4')
-
-    const wrapper = mount(VarOtpInput, {
-      props: {
-        modelValue: '1234',
-        length: 4,
-        rules: rule,
-        validateTrigger: ['onClear'],
-        'onUpdate:modelValue': onUpdateModelValue,
-      },
-    })
-
-    wrapper.vm.clear()
-    await wrapper.vm.$nextTick()
-    await wrapper.vm.$nextTick()
-
-    expect(onUpdateModelValue).toHaveBeenLastCalledWith('')
-    expect(rule).toHaveBeenCalled()
-    expect(rule.mock.calls[0][0]).toBe('')
 
     wrapper.unmount()
   })

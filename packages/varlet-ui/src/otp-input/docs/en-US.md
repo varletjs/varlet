@@ -134,7 +134,7 @@ const value = ref('')
 | `readonly` | Whether the component is readonly | _boolean_ | `false` |
 | `autofocus` | Whether to autofocus on mount | _boolean_ | `false` |
 | `gutter` | Cell gap | _string \| number_ | `8` |
-| `validate-trigger` | Validation triggers, options are `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
+| `validate-trigger` | Validation triggers, options are `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | Validation rules. Returning `true` means valid. Other values are converted to error messages. Supports Zod validation | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `auto-blur` | Whether to blur after all cells are filled | _boolean_ | `true` |
 | `allow-paste` | Whether to allow full-string pasting | _boolean_ | `true` |
@@ -154,6 +154,8 @@ const value = ref('')
 
 | Event | Description | Arguments |
 | --- | --- | --- |
+| `input` | Emitted when the OTP value changes | `value: string` |
+| `click` | Emitted when the component root is clicked | `event: Event` |
 | `paste` | Emitted on paste | `value: string`, `event: ClipboardEvent` |
 | `complete` | Emitted when input reaches `length` | `value: string` |
 
