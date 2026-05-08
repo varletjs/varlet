@@ -199,13 +199,12 @@ export default defineComponent({
 
     // expose
     function reset() {
-      if (normalizedValue.value === '') {
-        return
+      if (normalizedValue.value !== '') {
+        call(props['onUpdate:modelValue'], '')
+        call(props.onInput, '')
+        validateWithTrigger('onInput', '')
       }
 
-      call(props['onUpdate:modelValue'], '')
-      call(props.onInput, '')
-      validateWithTrigger('onInput', '')
       resetValidation()
     }
 

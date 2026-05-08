@@ -358,4 +358,23 @@ describe('test otp-input behaviors', () => {
 
     wrapper.unmount()
   })
+
+  test('reset should clear validation messages even when value is already empty', async () => {
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '',
+        rules: [() => 'invalid'],
+      },
+    })
+
+    await wrapper.vm.validate()
+    expect(wrapper.vm.errorMessage).toBe('invalid')
+
+    wrapper.vm.reset()
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.errorMessage).toBe('')
+
+    wrapper.unmount()
+  })
 })
