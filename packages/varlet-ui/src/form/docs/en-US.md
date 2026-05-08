@@ -14,6 +14,7 @@ import { reactive, ref } from 'vue'
 const formData = reactive({
   username: '',
   password: '',
+  otp: '',
   department: '',
   gender: undefined,
   license: false,
@@ -98,6 +99,10 @@ const readonly = ref(false)
       <var-slider
         :rules="v => v > 10 || 'It has to be greater than 10'"
         v-model="formData.range"
+      />
+      <var-otp-input
+        v-model="formData.otp"
+        :rules="[v => !!v || 'The OTP cannot be empty', (v) => v.length === 6 || 'The OTP length must be 6']"
       />
       <var-uploader
         :rules="v => v.length >= 1 || 'Upload at least one picture'"

@@ -4,6 +4,8 @@ export default {
   usernameMessage: 'The username cannot be empty',
   password: 'Please input password',
   passwordMessage: 'The password cannot be empty',
+  otpMessage: 'The OTP cannot be empty',
+  otpLengthMessage: 'The OTP length must be 6',
   email: 'Please input email',
   emailMessage: 'The email cannot be empty',
   passwordMinLengthMessage: 'The password cannot be less than 8 characters',

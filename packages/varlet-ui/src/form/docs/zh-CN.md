@@ -14,6 +14,7 @@ import { reactive, ref } from 'vue'
 const formData = reactive({
   username: '',
   password: '',
+  otp: '',
   email: '',
   department: '',
   gender: undefined,
@@ -115,6 +116,10 @@ const emailSuggestions = computed(() =>
       <var-slider
         :rules="v => v > 10 || '必须大于10'"
         v-model="formData.range"
+      />
+      <var-otp-input
+        v-model="formData.otp"
+        :rules="[v => !!v || '验证码不能为空', (v) => v.length === 6 || '验证码长度必须为 6']"
       />
       <var-uploader
         :rules="v => v.length >= 1 || '至少上传一张图片'"

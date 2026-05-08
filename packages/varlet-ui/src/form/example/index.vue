@@ -7,6 +7,7 @@ import { t, use } from './locale'
 const formData = reactive({
   username: '',
   password: '',
+  otp: '',
   email: '',
   department: '',
   gender: undefined,
@@ -101,6 +102,10 @@ onThemeChange()
       <var-switch v-model="formData.license" variant :rules="[(v) => !!v || t('licenseMessage')]" />
       <var-counter v-model="formData.count" :rules="[(v) => v > 10 || t('countMessage')]" />
       <var-slider v-model="formData.range" :rules="[(v) => v > 10 || t('rangeMessage')]" />
+      <var-otp-input
+        v-model="formData.otp"
+        :rules="[(v) => !!v || t('otpMessage'), (v) => v.length === 6 || t('otpLengthMessage')]"
+      />
       <var-uploader v-model="formData.files" :rules="[(v) => v.length >= 1 || t('filesMessage')]" />
     </var-space>
 

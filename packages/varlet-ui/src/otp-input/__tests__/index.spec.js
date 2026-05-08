@@ -377,4 +377,28 @@ describe('test otp-input behaviors', () => {
 
     wrapper.unmount()
   })
+
+  test('reset should not trigger validation again', async () => {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '12',
+        rules: [() => 'invalid'],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.vm.validate()
+    expect(wrapper.vm.errorMessage).toBe('invalid')
+
+    wrapper.vm.reset()
+    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.errorMessage).toBe('')
+    expect(onUpdateModelValue).toHaveBeenLastCalledWith('')
+
+    wrapper.unmount()
+  })
 })

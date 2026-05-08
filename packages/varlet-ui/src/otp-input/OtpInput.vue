@@ -201,8 +201,6 @@ export default defineComponent({
     function reset() {
       if (normalizedValue.value !== '') {
         call(props['onUpdate:modelValue'], '')
-        call(props.onInput, '')
-        validateWithTrigger('onInput', '')
       }
 
       resetValidation()

@@ -4,6 +4,8 @@ export default {
   usernameMessage: '用户名不能为空',
   password: '请输入密码',
   passwordMessage: '密码不能为空',
+  otpMessage: '验证码不能为空',
+  otpLengthMessage: '验证码长度必须为 6',
   email: '请输入邮箱',
   emailMessage: '邮箱不能为空',
   passwordMinLengthMessage: '密码长度不能低于8位',
