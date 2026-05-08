@@ -44,7 +44,7 @@
       </template>
     </div>
 
-    <var-form-details :class="n('details')" :error-message="errorMessage" />
+    <var-form-details :class="n('details')" var-otp-input-cover :error-message="errorMessage" />
   </div>
 </template>
 
@@ -93,8 +93,7 @@ export default defineComponent({
 
     onSmartMounted(() => {
       if (props.autofocus) {
-        const targetFocusIndex = Math.min(getValueChars().length, normalizedLength.value - 1)
-        focusCell(targetFocusIndex)
+        focus()
       }
     })
 
@@ -180,10 +179,25 @@ export default defineComponent({
       inputRefs.value[targetIndex]?.focus?.()
     }
 
+    // expose
+    function focus(index?: number) {
+      const targetIndex = index == null ? Math.min(getValueChars().length, normalizedLength.value - 1) : index
+      focusCell(targetIndex)
+    }
+
+    // expose
+    function blur() {
+      inputRefs.value.forEach((inputRef) => {
+        inputRef?.blur?.()
+      })
+    }
+
+    // expose
     function validate() {
       return v(props.rules, normalizedValue.value)
     }
 
+    // expose
     function reset() {
       if (normalizedValue.value === '') {
         return
@@ -418,6 +432,9 @@ export default defineComponent({
       handleCellInput,
       handleKeydown,
       handlePaste,
+      focus,
+      blur,
+      reset,
       validate,
       resetValidation,
     }

@@ -38,6 +38,7 @@ import menu from './menu'
 import menuOption from './menuOption'
 import menuSelect from './menuSelect'
 import option from './option'
+import otpInput from './otpInput'
 import overlay from './overlay'
 import pagination from './pagination'
 import paper from './paper'
@@ -202,6 +203,7 @@ export default {
   ...imagePreview,
   ...indexBar,
   ...input,
+  ...otpInput,
   ...list,
   ...loading,
   ...loadingBar,

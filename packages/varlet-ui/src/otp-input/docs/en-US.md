@@ -18,7 +18,7 @@ const value = ref('')
 </template>
 ```
 
-### Type Variants
+### Type
 
 Use `type` to switch between numeric, alphabetic, and alphanumeric input.
 
@@ -36,6 +36,31 @@ const mixedValue = ref('')
     <var-otp-input v-model="digitValue" type="digit" />
     <var-otp-input v-model="textValue" type="text" />
     <var-otp-input v-model="mixedValue" type="alphanumeric" />
+  </var-space>
+</template>
+```
+
+### Variants
+
+Use `variant` to switch between `standard`, `outlined`, and `filled`.
+
+```html
+<template>
+  <var-space direction="column" size="large">
+    <var-otp-input variant="standard" />
+    <var-otp-input variant="outlined" />
+    <var-otp-input variant="filled" />
+  </var-space>
+</template>
+```
+
+### Readonly / Disabled
+
+```html
+<template>
+  <var-space direction="column" size="large">
+    <var-otp-input model-value="123456" readonly />
+    <var-otp-input model-value="123456" disabled />
   </var-space>
 </template>
 ```
@@ -74,6 +99,22 @@ const value = ref('')
 </template>
 ```
 
+### Paste
+
+Paste a full code directly. Longer content will be truncated to the configured length.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-otp-input v-model="value" />
+</template>
+```
+
 ### Paste Transform
 
 Use `paste-transform` to preprocess pasted content.
@@ -91,6 +132,25 @@ const value = ref('')
     type="alphanumeric"
     :paste-transform="(value) => value.replace(/[-\\s]/g, '').toUpperCase()"
   />
+</template>
+```
+
+### Complete Event
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+
+const value = ref('')
+
+function handleComplete(value) {
+  Snackbar.success(`Completed: ${value}`)
+}
+</script>
+
+<template>
+  <var-otp-input v-model="value" @complete="handleComplete" />
 </template>
 ```
 
@@ -145,7 +205,7 @@ const value = ref('')
 | --- | --- | --- | --- |
 | `focus` | Focus the first empty cell, or a specific cell | `index?: number` | `-` |
 | `blur` | Blur all cells | `-` | `-` |
-| `clear` | Clear the current OTP value | `-` | `-` |
+| `reset` | Clear the value of the binding and validate messages | `-` | `-` |
 | `validate` | Trigger validation | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear validation message | `-` | `-` |
 

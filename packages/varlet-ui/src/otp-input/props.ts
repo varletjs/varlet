@@ -1,5 +1,6 @@
 import { type PropType } from 'vue'
 import { fieldDecoratorProps } from '../field-decorator'
+import { FieldDecoratorVariant } from '../field-decorator/props'
 import { defineListenerProp, pickProps } from '../utils/components'
 
 export type OtpInputType = 'digit' | 'text' | 'alphanumeric'
@@ -54,5 +55,9 @@ export const props = {
   onPaste: defineListenerProp<(value: string, e: ClipboardEvent) => void>(),
   onComplete: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
-  ...pickProps(fieldDecoratorProps, ['variant', 'textColor', 'focusColor', 'blurColor']),
+  ...pickProps(fieldDecoratorProps, ['textColor', 'focusColor', 'blurColor']),
+  variant: {
+    type: String as PropType<FieldDecoratorVariant>,
+    default: 'outlined',
+  },
 }

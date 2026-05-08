@@ -18,7 +18,7 @@ const value = ref('')
 </template>
 ```
 
-### 不同验证码类型
+### 类型
 
 通过 `type` 切换数字、字母和字母数字混合输入。
 
@@ -36,6 +36,31 @@ const mixedValue = ref('')
     <var-otp-input v-model="digitValue" type="digit" />
     <var-otp-input v-model="textValue" type="text" />
     <var-otp-input v-model="mixedValue" type="alphanumeric" />
+  </var-space>
+</template>
+```
+
+### 不同风格
+
+通过 `variant` 切换 `standard`、`outlined` 和 `filled` 三种风格。
+
+```html
+<template>
+  <var-space direction="column" size="large">
+    <var-otp-input variant="standard" />
+    <var-otp-input variant="outlined" />
+    <var-otp-input variant="filled" />
+  </var-space>
+</template>
+```
+
+### 只读与禁用
+
+```html
+<template>
+  <var-space direction="column" size="large">
+    <var-otp-input model-value="123456" readonly />
+    <var-otp-input model-value="123456" disabled />
   </var-space>
 </template>
 ```
@@ -74,6 +99,22 @@ const value = ref('')
 </template>
 ```
 
+### 粘贴场景
+
+可以直接粘贴完整验证码，超出长度的内容会自动截断。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-otp-input v-model="value" />
+</template>
+```
+
 ### 粘贴转换
 
 通过 `paste-transform` 可以对粘贴内容做预处理。
@@ -91,6 +132,25 @@ const value = ref('')
     type="alphanumeric"
     :paste-transform="(value) => value.replace(/[-\\s]/g, '').toUpperCase()"
   />
+</template>
+```
+
+### 完成事件
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+import { ref } from 'vue'
+
+const value = ref('')
+
+function handleComplete(value) {
+  Snackbar.success(`输入完成：${value}`)
+}
+</script>
+
+<template>
+  <var-otp-input v-model="value" @complete="handleComplete" />
 </template>
 ```
 
@@ -145,7 +205,7 @@ const value = ref('')
 | --- | --- | --- | --- |
 | `focus` | 聚焦到首个空位，或指定位置 | `index?: number` | `-` |
 | `blur` | 使所有输入格失焦 | `-` | `-` |
-| `clear` | 清空当前验证码 | `-` | `-` |
+| `reset` | 清空绑定的值和校验信息 | `-` | `-` |
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 

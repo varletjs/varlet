@@ -58,7 +58,7 @@ export class OtpInput extends VarComponent {
 
   blur(): void
 
-  clear(): void
+  reset(): void
 
   validate(): Promise<boolean>
 
