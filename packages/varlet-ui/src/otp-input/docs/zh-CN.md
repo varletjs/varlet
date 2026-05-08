@@ -125,8 +125,8 @@ const value = ref('')
 | `variant` | 风格，可选值为 `standard` `outlined` `filled` | _Variant_ | `outlined` |
 | `mask` | 是否掩码显示 | _boolean_ | `false` |
 | `mask-symbol` | 掩码字符 | _string_ | `•` |
-| `cell-height` | 单格高度 | _string \| number_ | `50` |
-| `cell-max-width` | 单格最大宽度 | _string \| number_ | `52` |
+| `cell-height` | 单格高度 | _string \| number_ | `48` |
+| `cell-max-width` | 单格最大宽度 | _string \| number_ | `48` |
 | `text-color` | 文字颜色 | _string_ | `-` |
 | `focus-color` | 聚焦时主要颜色 | _string_ | `-` |
 | `blur-color` | 失焦时主要颜色 | _string_ | `-` |
@@ -170,7 +170,7 @@ const value = ref('')
 | 变量名 | 默认值 |
 | --- | --- |
 | `--otp-input-gutter` | `8px` |
-| `--otp-input-cell-height` | `50px` |
-| `--otp-input-cell-max-width` | `52px` |
+| `--otp-input-cell-height` | `48px` |
+| `--otp-input-cell-max-width` | `48px` |
 | `--otp-input-input-font-size` | `20px` |
 | `--otp-input-separator-color` | `var(--color-text-disabled)` |

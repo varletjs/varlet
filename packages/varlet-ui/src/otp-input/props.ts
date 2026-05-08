@@ -35,11 +35,11 @@ export const props = {
   },
   cellHeight: {
     type: [String, Number],
-    default: 50,
+    default: 48,
   },
   cellMaxWidth: {
     type: [String, Number],
-    default: 52,
+    default: 48,
   },
   disabled: Boolean,
   readonly: Boolean,

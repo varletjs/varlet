@@ -125,8 +125,8 @@ const value = ref('')
 | `variant` | Visual variant, options are `standard` `outlined` `filled` | _Variant_ | `outlined` |
 | `mask` | Whether to mask characters | _boolean_ | `false` |
 | `mask-symbol` | Mask character | _string_ | `•` |
-| `cell-height` | Cell height | _string \| number_ | `50` |
-| `cell-max-width` | Cell max width | _string \| number_ | `52` |
+| `cell-height` | Cell height | _string \| number_ | `48` |
+| `cell-max-width` | Cell max width | _string \| number_ | `48` |
 | `text-color` | Text color | _string_ | `-` |
 | `focus-color` | Main color when focused | _string_ | `-` |
 | `blur-color` | Main color when blurred | _string_ | `-` |
@@ -170,7 +170,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--otp-input-gutter` | `8px` |
-| `--otp-input-cell-height` | `50px` |
-| `--otp-input-cell-max-width` | `52px` |
+| `--otp-input-cell-height` | `48px` |
+| `--otp-input-cell-max-width` | `48px` |
 | `--otp-input-input-font-size` | `20px` |
 | `--otp-input-separator-color` | `var(--color-text-disabled)` |
