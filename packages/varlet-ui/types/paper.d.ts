@@ -3,6 +3,8 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 
 export declare const paperProps: Record<keyof PaperProps, any>
 
+export type PaperSurface = 'low'
+
 export interface PaperProps extends BasicAttributes {
   elevation?: boolean | number | string
   ripple?: boolean
@@ -11,6 +13,7 @@ export interface PaperProps extends BasicAttributes {
   height?: string | number
   round?: boolean
   inline?: boolean
+  surface?: PaperSurface
   onClick?: ListenerProp<(e: Event) => void>
 }
 

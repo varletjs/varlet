@@ -61,6 +61,7 @@
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
+| `surface` | 表面预设，可选值 `low`。大多数情况下该属性主要在 MD3 暗色模式下更有意义 | _string_ | `-` |
 
 ### 事件
 
@@ -81,4 +82,5 @@
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
 | `--paper-background`                 | `var(--color-surface-container-highest)`               |
+| `--paper-surface-low-background`     | `var(--color-surface-container-highest)`               |
 | `--paper-border-radius`              | `4px` |

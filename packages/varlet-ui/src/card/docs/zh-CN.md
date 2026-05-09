@@ -168,6 +168,7 @@ const floating = ref(false)
 | 参数                  | 说明                                                     | 类型       | 默认值      |
 |---------------------|--------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***           | 卡片外观，可选值 `standard` `outlined` `filled`            | _string_ | `standard`      |
+| `surface`                      | 表面预设，可选值 `low`，在 `variant` 为 `filled` 时无效。大多数情况下该属性主要在 MD3 暗色模式下更有意义     | _string_ | `-`             |
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |
@@ -208,6 +209,7 @@ const floating = ref(false)
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
 | `--card-background`                 | `var(--color-surface-container-highest)`               |
+| `--card-surface-low-background`     | `var(--color-surface-container-highest)`               |
 | `--card-filled-background`          | `hsla(0, 0%, 93%, 1)` |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |

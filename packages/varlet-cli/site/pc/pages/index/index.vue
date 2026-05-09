@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, type Ref } from 'vue'
+import { computed, ref, watch, type Ref } from 'vue'
 import config from '@config'
 import { getBrowserTheme, getPCLocationInfo, onThemeChange, setTheme, watchTheme, type Theme } from '@varlet/cli/client'
 import { useRoute, useRouter } from 'vue-router'
@@ -13,6 +13,11 @@ const github = config?.pc?.header?.github
 const title: Ref<string> = ref(config?.title)
 const language: Ref<string> = ref(config?.defaultLanguage)
 const indexPage: Ref<Record<string, any>> = ref(config?.pc?.indexPage)
+const teamTitle = () => indexPage.value?.teamMembers?.label?.[language.value]
+const contributorsTitle = () => indexPage.value?.contributors?.label?.[language.value]
+const sponsorsTitle = () => indexPage.value?.sponsors?.label?.[language.value]
+const indexCardVariant = computed(() => (currentTheme.value === 'md3DarkTheme' ? 'standard' : 'filled'))
+const indexCardSurface = computed(() => (currentTheme.value === 'md3DarkTheme' ? 'low' : undefined))
 
 const getStar = () => {
   router.push(`/${language.value}/home`)
@@ -66,83 +71,131 @@ watch(
   <div class="varlet-doc-index">
     <app-ad :language="language" />
     <app-header :language="language" />
-    <div class="varlet-doc-index__layout">
-      <div class="varlet-doc-index__main-container">
-        <div class="varlet-doc-index__logo-container">
-          <div class="varlet-doc-index__logo-background-mask"></div>
-          <img class="varlet-doc-index__logo" :src="config.logo" alt="" />
-        </div>
-        <div class="varlet-doc-index__info-container">
-          <div class="varlet-doc-index__title">{{ title }}</div>
-          <div class="varlet-doc-index__description">{{ indexPage.description[language] }}</div>
 
-          <var-space size="large">
-            <var-button class="varlet-doc-index__link-button" type="primary" style="line-height: 1.2" @click="getStar">
+    <div class="varlet-doc-index__layout">
+      <section class="varlet-doc-index__hero">
+        <div class="varlet-doc-index__hero-content">
+          <h1 class="varlet-doc-index__title">{{ title }}</h1>
+          <p class="varlet-doc-index__description">{{ indexPage.description[language] }}</p>
+
+          <div class="varlet-doc-index__actions">
+            <var-button class="varlet-doc-index__link-button" type="primary" @click="getStar">
               {{ indexPage.started[language] }}
             </var-button>
-            <var-button class="varlet-doc-index__github-button" style="line-height: 1.2" @click="toGithub">
+            <var-button class="varlet-doc-index__github-button" type="primary" text outline @click="toGithub">
               {{ indexPage.viewOnGithub[language] }}
             </var-button>
-          </var-space>
+          </div>
         </div>
-      </div>
 
-      <div class="varlet-doc-index__features" v-if="indexPage.features">
-        <div class="varlet-doc-index__feature" v-for="feature in indexPage.features">
-          <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
-          <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
-        </div>
-      </div>
-
-      <div class="varlet-doc-index__team-members" v-if="indexPage.teamMembers">
-        <div class="varlet-doc-index__team-members-title">{{ indexPage.teamMembers.label[language] }}</div>
-
-        <div class="varlet-doc-index__team-members-container">
-          <div class="varlet-doc-index__team-member" v-for="member in indexPage.teamMembers.members">
-            <img class="varlet-doc-index__team-member-avatar" :src="member.avatar" />
-            <div class="varlet-doc-index__team-member-name">{{ member.name[language] }}</div>
-            <div class="varlet-doc-index__team-member-title">{{ member.title[language] }}</div>
-            <div class="varlet-doc-index__team-member-description">{{ member.description[language] }}</div>
-            <div class="varlet-doc-index__team-member-social">
-              <var-icon
-                class="varlet-doc-index__team-member-social-icon"
-                name="github"
-                :size="24"
-                @click="to(member.github)"
-                v-if="member.github"
-              />
-              <var-icon
-                class="varlet-doc-index__team-member-social-icon"
-                name="twitter"
-                :size="24"
-                @click="to(member.twitter)"
-                v-if="member.twitter"
-              />
+        <div class="varlet-doc-index__hero-side">
+          <div class="varlet-doc-index__hero-logo-stage">
+            <div class="varlet-doc-index__hero-brand-mark">
+              <div class="varlet-doc-index__hero-logo-background-mask"></div>
+              <img class="varlet-doc-index__hero-logo" :src="config.logo" alt="" />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="varlet-doc-index__contributors" v-if="indexPage.contributors">
-        <div class="varlet-doc-index__contributors-title">{{ indexPage.contributors.label[language] }}</div>
+      <section class="varlet-doc-index__section" v-if="indexPage.features?.length">
+        <div class="varlet-doc-index__features">
+          <var-card
+            class="varlet-doc-index__feature"
+            :variant="indexCardVariant"
+            :surface="indexCardSurface"
+            :elevation="false"
+            v-for="feature in indexPage.features"
+          >
+            <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
+            <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
+          </var-card>
+        </div>
+      </section>
 
-        <a class="varlet-doc-index__contributors-link" :href="indexPage.contributors.link">
-          <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image" />
+      <section class="varlet-doc-index__section" v-if="indexPage.teamMembers">
+        <div class="varlet-doc-index__section-header">
+          <div class="varlet-doc-index__section-divider">
+            <span class="varlet-doc-index__section-divider-text">{{ teamTitle() }}</span>
+          </div>
+        </div>
+
+        <div class="varlet-doc-index__team-members">
+          <var-card
+            class="varlet-doc-index__team-member"
+            :variant="indexCardVariant"
+            :surface="indexCardSurface"
+            :elevation="false"
+            v-for="member in indexPage.teamMembers.members"
+          >
+            <div class="varlet-doc-index__team-member-main">
+              <img class="varlet-doc-index__team-member-avatar" :src="member.avatar" />
+
+              <div class="varlet-doc-index__team-member-copy">
+                <div class="varlet-doc-index__team-member-name">{{ member.name[language] }}</div>
+                <div class="varlet-doc-index__team-member-title">{{ member.title[language] }}</div>
+                <div class="varlet-doc-index__team-member-description">{{ member.description[language] }}</div>
+
+                <div class="varlet-doc-index__team-member-social">
+                  <var-button
+                    class="varlet-doc-index__team-member-social-button"
+                    text
+                    round
+                    v-if="member.github"
+                    @click="to(member.github)"
+                  >
+                    <var-icon name="github" :size="22" />
+                  </var-button>
+                  <var-button
+                    class="varlet-doc-index__team-member-social-button"
+                    text
+                    round
+                    v-if="member.twitter"
+                    @click="to(member.twitter)"
+                  >
+                    <var-icon name="twitter" :size="22" />
+                  </var-button>
+                </div>
+              </div>
+            </div>
+          </var-card>
+        </div>
+      </section>
+
+      <section class="varlet-doc-index__section" v-if="indexPage.contributors">
+        <div class="varlet-doc-index__section-header">
+          <div class="varlet-doc-index__section-divider">
+            <span class="varlet-doc-index__section-divider-text">{{ contributorsTitle() }}</span>
+          </div>
+        </div>
+
+        <a class="varlet-doc-index__image-link" :href="indexPage.contributors.link">
+          <var-card class="varlet-doc-index__image-panel" :variant="indexCardVariant" :surface="indexCardSurface" :elevation="false">
+            <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image" />
+          </var-card>
         </a>
-      </div>
+      </section>
 
-      <div class="varlet-doc-index__sponsors" v-if="indexPage.sponsors">
-        <div class="varlet-doc-index__sponsors-title">{{ indexPage.sponsors.label[language] }}</div>
+      <section class="varlet-doc-index__section" v-if="indexPage.sponsors">
+        <div class="varlet-doc-index__section-header">
+          <div class="varlet-doc-index__section-divider">
+            <span class="varlet-doc-index__section-divider-text">{{ sponsorsTitle() }}</span>
+          </div>
+        </div>
 
-        <a class="varlet-doc-index__sponsors-link" :href="indexPage.sponsors.link">
-          <img class="varlet-doc-index__sponsors-image" :src="indexPage.sponsors.image" />
+        <a class="varlet-doc-index__image-link" :href="indexPage.sponsors.link">
+          <var-card class="varlet-doc-index__image-panel" :variant="indexCardVariant" :surface="indexCardSurface" :elevation="false">
+            <img class="varlet-doc-index__sponsors-image" :src="indexPage.sponsors.image" />
+          </var-card>
         </a>
-      </div>
+      </section>
 
-      <div class="varlet-doc-index__footer">
+      <div class="varlet-doc-index__footer-divider" aria-hidden="true"></div>
+
+      <footer class="varlet-doc-index__footer">
         <div class="varlet-doc-index__license">{{ indexPage.license[language] }}</div>
         <div class="varlet-doc-index__copyright">{{ indexPage.copyright[language] }}</div>
-      </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -179,246 +232,384 @@ watch(
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   min-height: 100vh;
-  box-sizing: border-box;
+  overflow-x: hidden;
   background: var(--site-config-color-index-page-background);
-  padding-bottom: 100px;
-  min-width: 1200px;
+
+  .varlet-site-header {
+    background: var(--site-config-color-index-page-background);
+  }
 
   &__layout {
+    width: 100%;
+    max-width: 1240px;
+    padding: 84px 32px 88px;
+    box-sizing: border-box;
+  }
+
+  &__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 36px;
+    align-items: center;
+  }
+
+  &__hero-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 170px 0;
-    max-width: 1200px;
-    transition: all 0.2s;
+    align-items: flex-start;
+    padding-top: 8px;
   }
 
-  &__main-container {
+  &__title {
+    margin: 0;
+    max-width: 720px;
+    color: var(--site-config-color-primary);
+    font-size: 76px;
+    line-height: 0.95;
+    font-weight: 780;
+    letter-spacing: -0.03em;
+  }
+
+  &__description {
+    max-width: 640px;
+    margin: 22px 0 0;
+    color: var(--site-config-color-index-page-second-text-color);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  &__actions {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
   }
 
-  &__info-container {
-    margin-left: 100px;
+  &__link-button,
+  &__github-button {
+    min-width: 154px !important;
+    height: 44px !important;
+    padding: 0 22px !important;
+    font-size: 16px !important;
   }
 
-  &__logo {
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0;
-    z-index: 2;
+  &__hero-side {
+    min-width: 0;
   }
 
-  &__logo-container {
+  &__hero-logo-stage {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
-    width: 174px;
-    height: 174px;
-    margin-top: 8px;
+    min-height: 456px;
   }
 
-  &__logo-background-mask {
+  &__hero-brand-mark {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 204px;
+    height: 204px;
+  }
+
+  &__hero-logo-background-mask {
     position: absolute;
-    left: -40px;
-    top: -40px;
-    bottom: -40px;
-    right: -40px;
+    inset: -64px;
     background: var(--site-config-color-index-page-logo-mask-background);
-    transition: background-color 0.2s;
-    filter: blur(45px);
+    filter: blur(56px);
     border-radius: 50%;
     animation: logo-wave 6s infinite linear;
   }
 
-  &__title {
-    font-size: 60px;
+  &__hero-logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
   }
 
-  &__description {
-    max-width: 700px;
-    width: 90vw;
-    font-size: 20px;
-    line-height: 38px;
-    margin-top: 14px;
-    padding-left: 2px;
-    box-sizing: border-box;
+  &__section {
+    margin-top: 56px;
+  }
+
+  &__section-header {
+    margin-bottom: 22px;
+  }
+
+  &__section-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 50% 0 auto;
+      border-top: 1px solid color-mix(in srgb, var(--site-config-color-border) 72%, transparent);
+      transform: translateY(-50%);
+    }
+  }
+
+  &__section-divider-text {
+    position: relative;
+    z-index: 1;
+    padding: 0 18px;
+    background: var(--site-config-color-index-page-background);
     color: var(--site-config-color-index-page-second-text-color);
-  }
-
-  &__link-button {
-    width: 170px !important;
-    height: 48px !important;
-    font-size: 19px !important;
-    transition: all 0.2s !important;
-    margin-top: 38px !important;
-  }
-
-  &__github-button {
-    width: 170px !important;
-    height: 48px !important;
-    font-size: 19px !important;
-    transition: all 0.2s !important;
-    margin-top: 38px !important;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   &__features {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 
   &__feature {
-    width: 300px;
-    margin: 12px;
-    padding: 20px;
-    border-radius: 12px;
-    background: var(--site-config-color-index-page-feature-background);
-    box-shadow:
-      0 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    --card-border-radius: 16px;
+    --card-padding: 0;
+    --card-content-padding: 0;
+    --card-content-margin: 0;
+    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
+    --card-title-padding: 0;
+    --card-title-margin: 0;
+    --card-description-padding: 0;
+    --card-description-margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 160px;
+  }
+
+  &__feature .var-card__container {
+    padding: 18px 18px 16px;
+  }
+
+  &__feature-name {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--site-config-color-text);
   }
 
   &__feature-description {
+    margin-top: 6px;
     color: var(--site-config-color-index-page-second-text-color);
     font-size: 14px;
-    margin-top: 10px;
     line-height: 1.7;
   }
 
-  &__contributors,
   &__team-members {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 90px;
-  }
-
-  &__contributors-title,
-  &__team-members-title {
-    padding-top: 24px;
-    line-height: 32px;
-    font-size: 24px;
-    border-top: 2px solid var(--site-config-color-index-page-divider-color);
-    color: var(--site-config-color-index-page-second-text-color);
-    letter-spacing: 1px;
-    transition: all 0.2s;
-  }
-
-  &__team-members-container {
-    width: 1098px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 
   &__team-member {
+    --card-border-radius: 16px;
+    --card-padding: 0;
+    --card-content-padding: 0;
+    --card-content-margin: 0;
+    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
+    min-height: 120px;
+  }
+
+  &__team-member .var-card__container {
+    padding: 18px;
+  }
+
+  &__team-member-main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    margin: 12px;
-    padding: 30px 20px;
-    border-radius: 12px;
-    background: var(--site-config-color-index-page-feature-background);
-    box-shadow:
-      0 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 1px 5px 0 rgba(0, 0, 0, 0.12);
-
-    &-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-    }
-
-    &-name {
-      font-weight: bold;
-      font-size: 20px;
-      margin-top: 20px;
-    }
-
-    &-title,
-    &-description {
-      color: var(--site-config-color-index-page-second-text-color);
-      font-size: 14px;
-      margin-top: 10px;
-      min-height: 40px;
-      text-align: center;
-    }
-
-    &-social {
-      margin-top: 10px;
-
-      &-icon {
-        margin: 10px 6px 0;
-        transition: all 0.25s !important;
-
-        &:hover {
-          opacity: 0.7;
-          transform: scale(1.25);
-          cursor: pointer;
-        }
-      }
-    }
+    align-items: flex-start;
+    gap: 14px;
   }
 
-  &__contributors-link {
-    display: block;
-    margin-top: 80px;
-    width: 800px;
+  &__team-member-avatar {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 50%;
   }
 
-  &__contributors-image {
-    display: block;
-    width: 100%;
+  &__team-member-copy {
+    min-width: 0;
   }
 
-  &__sponsors {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 90px;
+  &__team-member-name {
+    font-size: 16px;
+    font-weight: 600;
   }
 
-  &__sponsors-title {
-    padding-top: 24px;
-    line-height: 32px;
-    font-size: 24px;
-    border-top: 2px solid var(--site-config-color-index-page-divider-color);
+  &__team-member-title {
+    margin-top: 4px;
     color: var(--site-config-color-index-page-second-text-color);
-    letter-spacing: 1px;
-    transition: all 0.2s;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
-  &__sponsors-link {
+  &__team-member-description {
+    margin-top: 4px;
+    color: var(--site-config-color-index-page-second-text-color);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  &__team-member-social {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    margin-left: -6px;
+  }
+
+  &__team-member-social-button {
+    color: var(--site-config-color-text) !important;
+  }
+
+  &__image-link {
     display: block;
-    margin-top: 50px;
-    width: 1100px;
   }
 
+  &__image-panel {
+    --card-border-radius: 16px;
+    --card-padding: 0;
+    --card-content-padding: 0;
+    --card-content-margin: 0;
+    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
+  }
+
+  &__image-panel .var-card__container {
+    padding: 20px;
+  }
+
+  &__contributors-image,
   &__sponsors-image {
     display: block;
     width: 100%;
+    border-radius: 12px;
+  }
+
+  &__footer-divider {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    margin-top: 56px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__footer-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 8px;
+    transform: translateX(-50%);
+    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' width='100%25' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='a' width='91' height='8' patternUnits='userSpaceOnUse'%3E%3Cg clip-path='url(%23clip0_2426_11367)'%3E%3Cpath d='M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0' stroke='%23E1E3E1' stroke-linecap='square'/%3E%3C/g%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: auto 8px;
   }
 
   &__footer {
-    position: absolute;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    border-top: thin solid var(--site-config-color-border);
+    margin-top: 24px;
+    min-height: 56px;
+    padding-top: 0;
     color: var(--site-config-color-index-page-second-text-color);
     font-size: 14px;
-    line-height: 26px;
-    transition: all 0.2s;
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  @media (max-width: 1100px) {
+    &__layout {
+      padding: 84px 24px 80px;
+    }
+
+    &__hero {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    &__hero-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    &__hero-logo-stage {
+      min-height: 400px;
+    }
+
+    &__features,
+    &__team-members {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__layout {
+      padding: 76px 16px 64px;
+    }
+
+    &__title {
+      font-size: 52px;
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    &__actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    &__link-button,
+    &__github-button {
+      width: 100% !important;
+    }
+
+    &__hero-brand-mark {
+      width: 172px;
+      height: 172px;
+    }
+
+    &__hero-logo {
+      width: 100%;
+    }
+
+    &__features,
+    &__team-members {
+      grid-template-columns: 1fr;
+    }
+
+    &__feature {
+      min-height: auto;
+    }
+
+    &__feature .var-card__container,
+    &__team-member .var-card__container {
+      padding: 16px;
+    }
+
+    &__image-panel .var-card__container {
+      padding: 18px;
+    }
+
   }
 }
 </style>

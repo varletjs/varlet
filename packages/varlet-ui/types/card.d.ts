@@ -9,8 +9,11 @@ export type CardLayout = 'row' | 'column'
 
 export type CardVariant = 'standard' | 'outlined' | 'filled'
 
+export type CardSurface = 'low'
+
 export interface CardProps extends BasicAttributes {
   variant?: CardVariant
+  surface?: CardSurface
   src?: string
   fit?: CardFit
   imageHeight?: string | number

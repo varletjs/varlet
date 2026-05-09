@@ -91,6 +91,23 @@ test('paper radius', async () => {
   wrapper.unmount()
 })
 
+test('paper surface low', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      surface: 'low',
+    },
+  })
+
+  expect(wrapper.find('.var-paper--surface-low').exists()).toBeTruthy()
+
+  await wrapper.setProps({
+    surface: undefined,
+  })
+
+  expect(wrapper.find('.var-paper--surface-low').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
 test('paper onClick', () => {
   const onClick = vi.fn()
 

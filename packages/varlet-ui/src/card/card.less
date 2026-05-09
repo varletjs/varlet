@@ -1,6 +1,7 @@
 :root {
   --card-padding: 0 0 15px 0;
   --card-background: var(--color-surface-container-highest);
+  --card-surface-low-background: var(--color-surface-container-highest);
   --card-filled-background: hsla(0, 0%, 93%, 1);
   --card-outline-color: var(--color-outline);
   --card-border-radius: 4px;
@@ -198,6 +199,10 @@
 
   &--outline {
     border: thin solid var(--card-outline-color);
+  }
+
+  &--surface-low &__floater {
+    background-color: var(--card-surface-low-background);
   }
 
   &--filled &__floater {

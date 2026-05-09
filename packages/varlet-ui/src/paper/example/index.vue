@@ -25,4 +25,17 @@ onThemeChange()
     <var-cell>{{ t('paper') }}</var-cell>
     <var-cell>{{ t('paper') }}</var-cell>
   </var-paper>
+
+  <app-type>{{ t('surfaceLow') }}</app-type>
+  <div class="paper-example-tip">{{ t('surfaceLowTip') }}</div>
+  <var-paper surface="low" :elevation="2" width="25vmin" height="25vmin" />
 </template>
+
+<style scoped lang="less">
+.paper-example-tip {
+  margin: 0 0 8px;
+  color: var(--color-text-disabled);
+  font-size: 14px;
+  line-height: 1.6;
+}
+</style>

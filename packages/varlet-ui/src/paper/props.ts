@@ -1,4 +1,7 @@
+import type { PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
+
+export type PaperSurface = 'low'
 
 export const props = {
   elevation: {
@@ -11,5 +14,6 @@ export const props = {
   height: [Number, String],
   round: Boolean,
   inline: Boolean,
+  surface: String as PropType<PaperSurface>,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

@@ -158,6 +158,7 @@ interface BaseStyleVars {
   '--button-normal-font-size'?: string
   '--button-large-font-size'?: string
   '--card-background'?: string
+  '--card-surface-low-background'?: string
   '--card-filled-background'?: string
   '--card-padding'?: string
   '--card-border-radius'?: string
@@ -522,6 +523,7 @@ interface BaseStyleVars {
   '--pagination-size-padding'?: string
   '--pagination-quick-jumper-margin'?: string
   '--paper-background'?: string
+  '--paper-surface-low-background'?: string
   '--paper-border-radius'?: string
   '--picker-background'?: string
   '--picker-toolbar-height'?: string

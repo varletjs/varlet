@@ -7,6 +7,8 @@ export type CardLayout = 'row' | 'column'
 
 export type CardVariant = 'standard' | 'outlined' | 'filled'
 
+export type CardSurface = 'low'
+
 export const props = {
   src: String,
   fit: {
@@ -23,6 +25,7 @@ export const props = {
     type: String as PropType<CardLayout>,
     default: 'column',
   },
+  surface: String as PropType<CardSurface>,
   floating: Boolean,
   floatingDuration: {
     type: Number,

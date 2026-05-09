@@ -167,6 +167,7 @@ const floating = ref(false)
 | Prop                | Description                                                     | Type     | Default  |
 |---------------------|-----------------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***    | The variant of Card, optional value is `standard` `outlined` `filled`            | _string_ | `standard`      |
+| `surface`                | Surface preset, optional value is `low`, invalid when `variant` is `filled`. In most cases this is mainly meaningful in MD3 dark mode | _string_ | `-`             |
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |
@@ -208,6 +209,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|
 | `--card-background`                 | `var(--color-surface-container-highest)`                |
+| `--card-surface-low-background`     | `var(--color-surface-container-highest)`                |
 | `--card-filled-background`          | `hsla(0, 0%, 93%, 1)` |
 | `--card-padding`                    | `0px 0 15px 0`        |
 | `--card-border-radius`              | `4px`                 |

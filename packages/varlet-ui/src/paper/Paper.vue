@@ -8,6 +8,7 @@
         formatElevation(elevation, 2),
         [onClick, n('--cursor')],
         [round, n('--round')],
+        [surfaceLow, n('--surface-low')],
         [inline, n('$--inline-flex')],
       )
     "
@@ -24,7 +25,7 @@
 
 <script lang="ts">
 import { call } from '@varlet/shared'
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import Ripple from '../ripple'
 import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -37,6 +38,8 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
+    const surfaceLow = computed(() => props.surface === 'low')
+
     function handleClick(e: Event) {
       call(props.onClick, e)
     }
@@ -45,6 +48,7 @@ export default defineComponent({
       n,
       classes,
       formatElevation,
+      surfaceLow,
       toSizeUnit,
       handleClick,
     }

@@ -146,6 +146,25 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
+  test('card surface low', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        surface: 'low',
+      },
+    })
+
+    expect(wrapper.find('.var-card--surface-low').exists()).toBe(true)
+
+    await wrapper.setProps({
+      variant: 'filled',
+    })
+
+    expect(wrapper.find('.var-card--surface-low').exists()).toBe(false)
+    expect(wrapper.find('.var-card--filled').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+
   test('card src', async () => {
     const wrapper = mount(VarCard, {
       props: {

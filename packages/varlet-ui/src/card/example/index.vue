@@ -63,6 +63,10 @@ onThemeChange()
 
   <app-type>{{ t('filled') }}</app-type>
   <var-card :title="t('title')" :subtitle="t('subtitle')" variant="filled" :description="t('description')" />
+
+  <app-type>{{ t('surfaceLow') }}</app-type>
+  <div class="card-example-tip">{{ t('surfaceLowTip') }}</div>
+  <var-card :title="t('title')" :subtitle="t('subtitle')" surface="low" :description="t('description')" />
 </template>
 
 <style scoped lang="less">
@@ -70,5 +74,12 @@ onThemeChange()
   padding: 0 16px 16px;
   font-size: 14px;
   line-height: 28px;
+}
+
+.card-example-tip {
+  margin: 0 0 8px;
+  color: var(--color-text-disabled);
+  font-size: 14px;
+  line-height: 1.6;
 }
 </style>

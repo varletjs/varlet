@@ -59,12 +59,12 @@ export default defineConfig({
         },
         {
           name: {
-            'zh-CN': '主题定制',
-            'en-US': 'Theme customization',
+            'zh-CN': '默认配置与主题',
+            'en-US': 'Defaults and theming',
           },
           description: {
-            'zh-CN': '内置亮色和暗色两种主题，支持组件的样式自定义',
-            'en-US': 'Built-in light and dark themes, support style customization of components',
+            'zh-CN': '同时支持 MD2 与 MD3 两种设计系统，并覆盖明暗两套主题模式',
+            'en-US': 'Supports both MD2 and MD3 design systems, each with light and dark theme modes',
           },
         },
         {
@@ -99,12 +99,13 @@ export default defineConfig({
         },
         {
           name: {
-            'zh-CN': '国人开发',
-            'en-US': 'Developed by Chinese',
+            'zh-CN': '多端支持',
+            'en-US': 'Cross-platform support',
           },
           description: {
-            'zh-CN': '由国人开发，完善的中英文文档和后勤保障',
-            'en-US': 'Complete Chinese and English documentation and logistics support',
+            'zh-CN': '同时支持移动端与桌面端场景，组件能力覆盖多端界面开发',
+            'en-US':
+              'Supports both mobile and desktop scenarios, with component coverage for multi-platform UI development',
           },
         },
         {
@@ -116,17 +117,6 @@ export default defineConfig({
             'zh-CN': '支持在 webstorm，vscode 中的组件语法高亮, 并提供 vscode 插件为开发提升效率',
             'en-US':
               'Supports to highlight the component syntax for webstorm and vscode, and provides a separate helper plugin for vscode',
-          },
-        },
-        {
-          name: {
-            'zh-CN': '组件库快速成型工具',
-            'en-US': 'Component library toolchain',
-          },
-          description: {
-            'zh-CN': '开源了搭建本组件库的所有工具链，提供快速开发组件库的能力',
-            'en-US':
-              'Open-sourced the toolchain for building this component library, providing the ability to rapidly develop the component library',
           },
         },
       ],
@@ -551,7 +541,8 @@ export default defineConfig({
     'color-body': '#fff',
     'color-index-page-background': '#fff',
     'color-index-page-get-started-button': '#3a7afe',
-    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
+    'color-index-page-logo-mask-background':
+      'linear-gradient(-45deg, rgba(33, 150, 243, 0.5) 50%, rgba(174, 99, 255, 0.34) 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
     'card-border-radius': '12px',
@@ -597,7 +588,8 @@ export default defineConfig({
     'color-body': '#121212',
     'color-index-page-background': '#1e1e1e',
     'color-index-page-feature-background': '#303030',
-    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
+    'color-index-page-logo-mask-background':
+      'linear-gradient(-45deg, rgba(74, 122, 254, 0.58) 50%, rgba(186, 116, 255, 0.42) 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
     'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
     'card-border-radius': '12px',
@@ -641,9 +633,10 @@ export default defineConfig({
   },
   md3LightTheme: {
     'color-body': '#fff',
-    'color-index-page-background': '#fff',
+    'color-index-page-background': '#FEF7FF',
     'color-index-page-feature-background': '#fff',
-    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
+    'color-index-page-logo-mask-background':
+      'linear-gradient(-45deg, rgba(140, 112, 216, 0.46) 50%, rgba(208, 188, 255, 0.88) 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
     'card-border-radius': '12px',
@@ -687,9 +680,10 @@ export default defineConfig({
   },
   md3DarkTheme: {
     'color-body': '#050505',
-    'color-index-page-background': '#1e1e1e',
-    'color-index-page-feature-background': '#303030',
-    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
+    'color-index-page-background': '#141218',
+    'color-index-page-feature-background': '#1c1b1d',
+    'color-index-page-logo-mask-background':
+      'linear-gradient(-45deg, rgba(170, 146, 216, 0.44) 50%, rgba(123, 106, 158, 0.36) 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
     'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
     'card-border-radius': '12px',

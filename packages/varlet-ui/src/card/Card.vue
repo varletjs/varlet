@@ -8,6 +8,7 @@
         [isRow, n('--layout-row')],
         [variant === 'outlined' || outline, n('--outline')],
         [variant === 'filled', n('--filled')],
+        [surfaceLow, n('--surface-low')],
         [variant === 'standard' || outline, formatElevation(elevation, 1)],
       )
     "
@@ -141,6 +142,7 @@ export default defineComponent({
     const contentHeight = ref('0px')
     const opacity = ref('0')
     const isRow = computed(() => props.layout === 'row')
+    const surfaceLow = computed(() => props.surface === 'low' && props.variant !== 'filled')
     const showFloatingButtons = ref(false)
     const floated = ref(false)
     const { zIndex } = useZIndex(() => props.floating, 1)
@@ -256,6 +258,7 @@ export default defineComponent({
       opacity,
       zIndex,
       isRow,
+      surfaceLow,
       showFloatingButtons,
       floated,
       n,

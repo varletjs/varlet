@@ -14,4 +14,6 @@ export default {
   action2: 'ACTION 2',
   showRipple: 'Ripple Effect',
   floating: 'Floating',
+  surfaceLow: 'Surface Low',
+  surfaceLowTip: 'In most cases, surface="low" is mainly useful in MD3 dark mode.',
 }

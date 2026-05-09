@@ -14,4 +14,6 @@ export default {
   action2: '操作 2',
   showRipple: '水波效果',
   floating: '开启全屏',
+  surfaceLow: 'Surface Low',
+  surfaceLowTip: '大多数情况下，surface="low" 主要在 MD3 暗色模式下更有意义。',
 }

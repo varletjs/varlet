@@ -61,6 +61,7 @@ An easier container using elevation and water effects.
 | `height` | Paper height | _string \| number_ | `-` |
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
+| `surface` | Surface preset, optional value is `low`. In most cases this is mainly meaningful in MD3 dark mode | _string_ | `-` |
 
 ### Events
 
@@ -81,4 +82,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | ------ | -------------|
 | `--paper-background`    | `var(--color-surface-container-highest)` |
+| `--paper-surface-low-background` | `var(--color-surface-container-highest)` |
 | `--paper-border-radius` | `4px` |
