@@ -151,6 +151,7 @@ export default defineComponent({
     let dropdownFloaterLeft = 'auto'
     let dropper: any = null
     const floater: any = ref(null)
+    let hasEnteredFloating = false
 
     useLock(
       () => props.floating,
@@ -165,7 +166,12 @@ export default defineComponent({
         }
 
         nextTick(() => {
-          value ? floating() : dropdown()
+          if (value) {
+            hasEnteredFloating = true
+            floating()
+          } else if (hasEnteredFloating) {
+            dropdown()
+          }
         })
       },
       { immediate: true },
