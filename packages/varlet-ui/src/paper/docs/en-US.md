@@ -48,9 +48,9 @@ An easier container using elevation and water effects.
 </template>
 ```
 
-### Surface Low
+### Subtle Background
 
-`surface="low"` darkens the paper background compared to the default surface. This is especially useful in MD3 dark mode.
+`surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
 
 ```html
 <template>
@@ -71,7 +71,7 @@ An easier container using elevation and water effects.
 | `height` | Paper height | _string \| number_ | `-` |
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
-| `surface` | Surface preset, optional value is `low`. Darkens the background relative to the default surface; especially useful in MD3 dark mode | _string_ | `-` |
+| `surface`  ***3.16.0*** | Background preset, optional value is `low`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
 
 ### Events
 

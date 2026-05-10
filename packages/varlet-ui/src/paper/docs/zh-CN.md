@@ -48,9 +48,9 @@
 </template>
 ```
 
-### 低层级表面（surface="low"）
+### 弱背景色
 
-`surface="low"` 可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用。
+`surface="low"` 可以弱化背景色，目前只作用在 MD3 暗色主题。
 
 ```html
 <template>
@@ -71,7 +71,7 @@
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
-| `surface` | 表面预设，可选值 `low`。可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用 | _string_ | `-` |
+| `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-` |
 
 ### 事件
 

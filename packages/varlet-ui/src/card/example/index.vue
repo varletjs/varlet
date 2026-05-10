@@ -66,17 +66,12 @@ onThemeChange()
 
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="card-example-tip">{{ t('surfaceLowTip') }}</div>
-  <var-space direction="column" :size="12">
-    <div class="card-example-sublabel">{{ t('surfaceLowStandard') }}</div>
-    <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('surfaceLowShortDescription')" />
-    <div class="card-example-sublabel">{{ t('surfaceLowCompared') }}</div>
-    <var-card
-      :title="t('title')"
-      :subtitle="t('subtitle')"
-      surface="low"
-      :description="t('surfaceLowShortDescription')"
-    />
-  </var-space>
+  <var-card
+    :title="t('title')"
+    :subtitle="t('subtitle')"
+    surface="low"
+    :description="t('surfaceLowShortDescription')"
+  />
 </template>
 
 <style scoped lang="less">
@@ -91,13 +86,5 @@ onThemeChange()
   color: var(--color-text-disabled);
   font-size: 14px;
   line-height: 1.6;
-}
-
-.card-example-sublabel {
-  margin: 0;
-  color: var(--color-on-surface-variant);
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.5;
 }
 </style>

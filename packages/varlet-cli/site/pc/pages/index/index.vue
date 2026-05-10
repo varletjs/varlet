@@ -380,7 +380,6 @@ watch(
     --card-padding: 0;
     --card-content-padding: 0;
     --card-content-margin: 0;
-    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
     --card-title-padding: 0;
     --card-title-margin: 0;
     --card-description-padding: 0;
@@ -420,7 +419,6 @@ watch(
     --card-padding: 0;
     --card-content-padding: 0;
     --card-content-margin: 0;
-    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
     min-height: 120px;
   }
 
@@ -484,7 +482,6 @@ watch(
     --card-padding: 0;
     --card-content-padding: 0;
     --card-content-margin: 0;
-    --card-filled-background: var(--site-config-color-index-page-feature-background, var(--card-filled-background));
   }
 
   &__image-panel .var-card__container {

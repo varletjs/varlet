@@ -5,9 +5,6 @@ export default {
   radius: 'Custom Border Radius',
   slot: 'Use Slot',
   paper: 'Paper',
-  surfaceLow: 'Surface Low',
-  surfaceLowTip:
-    'surface="low" darkens the paper background compared to the default surface. This is especially useful in MD3 dark mode.',
-  surfaceLowStandard: 'Default surface',
-  surfaceLowCompared: 'surface="low"',
+  surfaceLow: 'Subtle Background',
+  surfaceLowTip: 'surface="low" softens the background color. It currently only takes effect in the MD3 dark theme.',
 }

@@ -5,8 +5,6 @@ export default {
   radius: '自定义圆角',
   slot: '使用插槽',
   paper: '纸张',
-  surfaceLow: '低层级表面',
-  surfaceLowTip: 'surface="low" 可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用。',
-  surfaceLowStandard: '默认表面',
-  surfaceLowCompared: 'surface="low"',
+  surfaceLow: '弱背景色',
+  surfaceLowTip: 'surface="low" 可以弱化背景色，目前只作用在 MD3 暗色主题。',
 }

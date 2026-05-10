@@ -14,11 +14,8 @@ export default {
   action2: 'ACTION 2',
   showRipple: 'Ripple Effect',
   floating: 'Floating',
-  surfaceLow: 'Surface Low',
-  surfaceLowTip:
-    'surface="low" darkens the card background compared to the default surface. This is especially useful in MD3 dark mode.',
-  surfaceLowStandard: 'Default surface',
-  surfaceLowCompared: 'surface="low"',
+  surfaceLow: 'Subtle Background',
+  surfaceLowTip: 'surface="low" softens the background color. It currently only takes effect in the MD3 dark theme.',
   surfaceLowShortDescription:
     'The way she came into the place I knew right then and there. There was something different about this girl.',
 }

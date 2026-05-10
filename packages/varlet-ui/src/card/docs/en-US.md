@@ -160,9 +160,9 @@ const floating = ref(false)
 </template>
 ```
 
-### Surface Low
+### Subtle Background
 
-`surface="low"` darkens the card background compared to the default surface. This is especially useful in MD3 dark mode.
+`surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
 
 ```html
 <template>
@@ -182,7 +182,7 @@ const floating = ref(false)
 | Prop                | Description                                                     | Type     | Default  |
 |---------------------|-----------------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***    | The variant of Card, optional value is `standard` `outlined` `filled`            | _string_ | `standard`      |
-| `surface`                | Surface preset, optional value is `low`, invalid when `variant` is `filled`. Darkens the background relative to the default surface; especially useful in MD3 dark mode | _string_ | `-`             |
+| `surface`  ***3.16.0***  | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-`             |
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |
