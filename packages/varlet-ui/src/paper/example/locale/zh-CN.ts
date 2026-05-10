@@ -5,6 +5,7 @@ export default {
   radius: '自定义圆角',
   slot: '使用插槽',
   paper: '纸张',
+  hoverable: '悬停高亮',
   surfaceLow: '弱背景色',
   surfaceLowTip: 'surface="low" 可以弱化背景色，目前只作用在 MD3 暗色主题。',
 }

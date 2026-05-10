@@ -14,6 +14,7 @@ export type CardSurface = 'low'
 export interface CardProps extends BasicAttributes {
   variant?: CardVariant
   surface?: CardSurface
+  hoverable?: boolean
   src?: string
   fit?: CardFit
   imageHeight?: string | number

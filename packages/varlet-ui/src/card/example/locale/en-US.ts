@@ -14,6 +14,7 @@ export default {
   action2: 'ACTION 2',
   showRipple: 'Ripple Effect',
   floating: 'Floating',
+  hoverable: 'Hoverable',
   surfaceLow: 'Subtle Background',
   surfaceLowTip: 'surface="low" softens the background color. It currently only takes effect in the MD3 dark theme.',
   surfaceLowShortDescription:

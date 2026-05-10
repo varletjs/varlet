@@ -2,6 +2,7 @@
   <div
     ref="card"
     v-ripple="{ disabled: !ripple || floater }"
+    v-hover:desktop="handleHovering"
     :class="
       classes(
         n(),
@@ -9,6 +10,7 @@
         [variant === 'outlined' || outline, n('--outline')],
         [variant === 'filled', n('--filled')],
         [surfaceLow, n('--surface-low')],
+        [hoverable, n('--cursor')],
         [variant === 'standard' || outline, formatElevation(elevation, 1)],
       )
     "
@@ -77,6 +79,8 @@
         </div>
       </div>
 
+      <var-hover-overlay :hovering="hoverable && !floated ? hovering : false" />
+
       <div
         v-if="showFloatingButtons"
         :class="classes(n('floating-buttons'), n('$--box'))"
@@ -110,6 +114,8 @@ import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarButton from '../button'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { createNamespace, formatElevation } from '../utils/components'
@@ -122,10 +128,11 @@ const RIPPLE_DELAY = 500
 
 export default defineComponent({
   name,
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarIcon,
     VarButton,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
@@ -137,12 +144,13 @@ export default defineComponent({
     const floaterHeight = ref('100%')
     const floaterTop = ref('auto')
     const floaterLeft = ref('auto')
-    const floaterPosition = ref<'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | undefined>(undefined)
+    const floaterPosition = ref<'fixed' | undefined>(undefined)
     const floaterOverflow = ref('hidden')
     const contentHeight = ref('0px')
     const opacity = ref('0')
     const isRow = computed(() => props.layout === 'row')
     const surfaceLow = computed(() => props.surface === 'low' && props.variant !== 'filled')
+    const { hovering, handleHovering } = useHoverOverlay()
     const showFloatingButtons = ref(false)
     const floated = ref(false)
     const { zIndex } = useZIndex(() => props.floating, 1)
@@ -265,6 +273,8 @@ export default defineComponent({
       zIndex,
       isRow,
       surfaceLow,
+      hovering,
+      handleHovering,
       showFloatingButtons,
       floated,
       n,
@@ -281,6 +291,7 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
+@import '../hover-overlay/hoverOverlay';
 @import '../ripple/ripple';
 @import '../loading/loading';
 @import '../button/button';

@@ -14,6 +14,7 @@ export default {
   action2: '操作 2',
   showRipple: '水波效果',
   floating: '开启全屏',
+  hoverable: '悬停高亮',
   surfaceLow: '弱背景色',
   surfaceLowTip: 'surface="low" 可以弱化背景色，目前只作用在 MD3 暗色主题。',
   surfaceLowShortDescription:

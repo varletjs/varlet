@@ -146,6 +146,24 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
+  test('card hoverable', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        hoverable: true,
+      },
+    })
+
+    expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBe(false)
+
+    await wrapper.trigger('mouseenter')
+    expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBe(true)
+
+    await wrapper.trigger('mouseleave')
+    expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('card surface low', async () => {
     const wrapper = mount(VarCard, {
       props: {
@@ -396,8 +414,8 @@ describe('test card component slots', () => {
     })
     const rowFloater = wrapper.find('.var-card__floater')
     const rowStyle = rowFloater.attributes('style') ?? ''
-    expect(rowStyle).toContain('width: auto')
-    expect(rowStyle).toContain('height: auto')
+    expect(rowStyle).toContain('width: 100%')
+    expect(rowStyle).toContain('height: 100%')
     expect(rowStyle).toContain('overflow: hidden')
 
     wrapper.unmount()

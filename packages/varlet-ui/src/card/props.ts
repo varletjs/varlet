@@ -26,6 +26,7 @@ export const props = {
     default: 'column',
   },
   surface: String as PropType<CardSurface>,
+  hoverable: Boolean,
   floating: Boolean,
   floatingDuration: {
     type: Number,

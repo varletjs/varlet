@@ -26,6 +26,9 @@ onThemeChange()
     <var-cell>{{ t('paper') }}</var-cell>
   </var-paper>
 
+  <app-type>{{ t('hoverable') }}</app-type>
+  <var-paper hoverable :elevation="2" width="25vmin" height="25vmin" />
+
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="paper-example-tip">{{ t('surfaceLowTip') }}</div>
   <var-paper surface="low" :elevation="2" width="25vmin" height="25vmin" />

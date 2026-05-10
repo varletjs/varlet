@@ -161,6 +161,19 @@ const floating = ref(false)
 </template>
 ```
 
+### 悬停高亮
+
+```html
+<template>
+  <var-card
+    hoverable
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。"
+  />
+</template>
+```
+
 ### 弱背景色
 
 `surface="low"` 可以弱化背景色，目前只作用在 MD3 暗色主题。
@@ -183,7 +196,6 @@ const floating = ref(false)
 | 参数                  | 说明                                                     | 类型       | 默认值      |
 |---------------------|--------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***           | 卡片外观，可选值 `standard` `outlined` `filled`            | _string_ | `standard`      |
-| `surface`  ***3.16.0***        | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-`             |
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |
@@ -197,6 +209,8 @@ const floating = ref(false)
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
 | `v-model:floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
 | `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
+| `hoverable`  ***3.16.0***      | 是否在桌面端悬停时显示一层高亮遮罩 | _boolean_ | `false` |
+| `surface`  ***3.16.0***        | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-`             |
 
 ### 事件
 

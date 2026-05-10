@@ -64,6 +64,9 @@ onThemeChange()
   <app-type>{{ t('filled') }}</app-type>
   <var-card :title="t('title')" :subtitle="t('subtitle')" variant="filled" :description="t('description')" />
 
+  <app-type>{{ t('hoverable') }}</app-type>
+  <var-card hoverable :title="t('title')" :subtitle="t('subtitle')" :description="t('surfaceLowShortDescription')" />
+
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="card-example-tip">{{ t('surfaceLowTip') }}</div>
   <var-card

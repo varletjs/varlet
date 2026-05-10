@@ -14,6 +14,7 @@ export interface PaperProps extends BasicAttributes {
   round?: boolean
   inline?: boolean
   surface?: PaperSurface
+  hoverable?: boolean
   onClick?: ListenerProp<(e: Event) => void>
 }
 

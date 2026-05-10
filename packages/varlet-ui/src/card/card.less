@@ -52,7 +52,7 @@
   &__floater {
     display: flex;
     flex-direction: column;
-    position: static;
+    position: relative;
     line-height: var(--card-line-height);
     background: var(--card-background);
     transition:
@@ -199,6 +199,10 @@
 
   &--outline {
     border: thin solid var(--card-outline-color);
+  }
+
+  &--cursor {
+    cursor: pointer;
   }
 
   &--surface-low &__floater {

@@ -48,6 +48,14 @@ An easier container using elevation and water effects.
 </template>
 ```
 
+### Hoverable
+
+```html
+<template>
+  <var-paper hoverable :elevation="2" :width="100" :height="100" />
+</template>
+```
+
 ### Subtle Background
 
 `surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
@@ -72,6 +80,7 @@ An easier container using elevation and water effects.
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
 | `surface`  ***3.16.0*** | Background preset, optional value is `low`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
+| `hoverable`  ***3.16.0*** | Whether to show a hover highlight overlay on desktop | _boolean_ | `false` |
 
 ### Events
 

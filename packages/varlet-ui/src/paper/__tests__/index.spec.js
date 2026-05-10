@@ -91,6 +91,23 @@ test('paper radius', async () => {
   wrapper.unmount()
 })
 
+test('paper hoverable', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      hoverable: true,
+    },
+  })
+
+  expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+
+  await wrapper.trigger('mouseenter')
+  expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeTruthy()
+
+  await wrapper.trigger('mouseleave')
+  expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
 test('paper surface low', async () => {
   const wrapper = mount(VarPaper, {
     props: {

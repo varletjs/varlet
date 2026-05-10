@@ -15,5 +15,6 @@ export const props = {
   round: Boolean,
   inline: Boolean,
   surface: String as PropType<PaperSurface>,
+  hoverable: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

@@ -160,6 +160,19 @@ const floating = ref(false)
 </template>
 ```
 
+### Hoverable
+
+```html
+<template>
+  <var-card
+    hoverable
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl."
+  />
+</template>
+```
+
 ### Subtle Background
 
 `surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
@@ -182,7 +195,6 @@ const floating = ref(false)
 | Prop                | Description                                                     | Type     | Default  |
 |---------------------|-----------------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***    | The variant of Card, optional value is `standard` `outlined` `filled`            | _string_ | `standard`      |
-| `surface`  ***3.16.0***  | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-`             |
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |
@@ -197,6 +209,8 @@ const floating = ref(false)
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
 | `v-model:floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
+| `hoverable`  ***3.16.0*** | Whether to show a hover highlight overlay on desktop | _boolean_ | `false` |
+| `surface`  ***3.16.0***  | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-`             |
 
 ### Events
 

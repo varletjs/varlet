@@ -5,6 +5,7 @@ export default {
   radius: 'Custom Border Radius',
   slot: 'Use Slot',
   paper: 'Paper',
+  hoverable: 'Hoverable',
   surfaceLow: 'Subtle Background',
   surfaceLowTip: 'surface="low" softens the background color. It currently only takes effect in the MD3 dark theme.',
 }

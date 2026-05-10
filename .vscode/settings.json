@@ -1,4 +1,5 @@
 {
+  "cSpell.words": ["hoverable"],
   "eslint.enable": false,
   "prettier.enable": false,
   "editor.defaultFormatter": "oxc.oxc-vscode"

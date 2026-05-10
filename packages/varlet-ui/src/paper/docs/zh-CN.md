@@ -48,6 +48,14 @@
 </template>
 ```
 
+### 悬停高亮
+
+```html
+<template>
+  <var-paper hoverable :elevation="2" :width="100" :height="100" />
+</template>
+```
+
 ### 弱背景色
 
 `surface="low"` 可以弱化背景色，目前只作用在 MD3 暗色主题。
@@ -71,7 +79,8 @@
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
-| `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-` |
+| `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，目前只作用在 MD3 暗色主题 | _string_ | `-` |
+| `hoverable`  ***3.16.0*** | 是否在桌面端悬停时显示一层高亮遮罩 | _boolean_ | `false` |
 
 ### 事件
 
