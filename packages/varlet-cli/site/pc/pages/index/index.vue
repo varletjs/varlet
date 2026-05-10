@@ -75,10 +75,14 @@ setTheme(currentTheme.value)
 window.postMessage(getThemeMessage(), '*')
 
 watchTheme((theme, from) => {
-  from === 'mobile' && setCurrentTheme(theme)
+  if (from !== 'default') {
+    setCurrentTheme(theme)
+  }
 })
 
-onThemeChange()
+onThemeChange((theme) => {
+  currentTheme.value = theme
+})
 
 watch(
   () => route.path,
