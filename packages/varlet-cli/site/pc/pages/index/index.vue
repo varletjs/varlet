@@ -6,6 +6,12 @@ import { useRoute, useRouter } from 'vue-router'
 import AppAd from '../../components/AppAd.vue'
 import AppHeader from '../../components/AppHeader.vue'
 
+type IndexFeature = {
+  name?: Record<string, string>
+  description?: Record<string, string>
+  link?: Record<string, string>
+}
+
 const route = useRoute()
 const router = useRouter()
 const currentTheme = ref(getBrowserTheme())
@@ -41,6 +47,23 @@ const setLocale = () => {
 
   language.value = lang
   document.title = config?.pc.title[lang] as string
+}
+
+const getFeatureLink = (feature: IndexFeature) => feature.link?.[language.value]
+
+const toFeature = (feature: IndexFeature) => {
+  const link = getFeatureLink(feature)
+
+  if (!link) {
+    return
+  }
+
+  if (/^https?:\/\//.test(link)) {
+    window.open(link)
+    return
+  }
+
+  router.push(link)
 }
 
 const to = (url: string) => {
@@ -104,8 +127,10 @@ watch(
             class="varlet-doc-index__feature"
             :variant="indexCardVariant"
             :surface="indexCardSurface"
+            :hoverable="!!getFeatureLink(feature)"
             :elevation="false"
             v-for="feature in indexPage.features"
+            @click="toFeature(feature)"
           >
             <div class="varlet-doc-index__feature-name">{{ feature.name[language] }}</div>
             <div class="varlet-doc-index__feature-description">{{ feature.description[language] }}</div>
@@ -201,32 +226,6 @@ watch(
 </template>
 
 <style lang="less">
-@keyframes logo-wave {
-  0% {
-    transform: translate(8%, 8%);
-  }
-
-  20% {
-    transform: translate(-8%, 8%);
-  }
-
-  40% {
-    transform: translate(-8%, -8%);
-  }
-
-  60% {
-    transform: translate(-2%, 8%);
-  }
-
-  80% {
-    transform: translate(8%, -8%);
-  }
-
-  100% {
-    transform: translate(8%, 8%);
-  }
-}
-
 .varlet-doc-index {
   position: relative;
   display: flex;
@@ -244,7 +243,7 @@ watch(
   &__layout {
     width: 100%;
     max-width: 1240px;
-    padding: 84px 32px 88px;
+    padding: 56px 32px 60px;
     box-sizing: border-box;
   }
 
@@ -265,7 +264,7 @@ watch(
   &__title {
     margin: 0;
     max-width: 720px;
-    color: var(--site-config-color-primary);
+    color: var(--site-config-color-index-page-get-started-button);
     font-size: 76px;
     line-height: 0.95;
     font-weight: 780;
@@ -293,6 +292,15 @@ watch(
     height: 44px !important;
     padding: 0 22px !important;
     font-size: 16px !important;
+  }
+
+  &__link-button {
+    background-color: var(--site-config-color-index-page-get-started-button) !important;
+  }
+
+  &__github-button {
+    color: var(--site-config-color-index-page-get-started-button) !important;
+    border-color: var(--site-config-color-index-page-get-started-button) !important;
   }
 
   &__hero-side {
@@ -323,7 +331,6 @@ watch(
     background: var(--site-config-color-index-page-logo-mask-background);
     filter: blur(56px);
     border-radius: 50%;
-    animation: logo-wave 6s infinite linear;
   }
 
   &__hero-logo {
@@ -533,7 +540,7 @@ watch(
 
   @media (max-width: 1100px) {
     &__layout {
-      padding: 84px 24px 80px;
+      padding: 52px 24px 54px;
     }
 
     &__hero {
@@ -546,8 +553,17 @@ watch(
       text-align: center;
     }
 
+    &__hero-side {
+      order: -1;
+    }
+
     &__hero-logo-stage {
-      min-height: 400px;
+      min-height: 292px;
+    }
+
+    &__hero-brand-mark {
+      width: 160px;
+      height: 160px;
     }
 
     &__features,
@@ -558,7 +574,7 @@ watch(
 
   @media (max-width: 767px) {
     &__layout {
-      padding: 76px 16px 64px;
+      padding: 44px 16px 42px;
     }
 
     &__title {
@@ -581,8 +597,8 @@ watch(
     }
 
     &__hero-brand-mark {
-      width: 172px;
-      height: 172px;
+      width: 136px;
+      height: 136px;
     }
 
     &__hero-logo {

@@ -79,7 +79,7 @@ export interface VarletConfigPcIndexPage {
   description?: Record<string, string>
   started?: Record<string, string>
   viewOnGithub?: Record<string, string>
-  features?: { name: Record<string, string>; description: Record<string, string> }[]
+  features?: { name: Record<string, string>; description: Record<string, string>; link?: Record<string, string> }[]
   teamMembers?: {
     label: Record<string, string>
     members: {

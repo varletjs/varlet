@@ -46,6 +46,10 @@ export default defineConfig({
             'zh-CN': '提供 60+ 个高质量通用组件',
             'en-US': 'Provide 60+ high quality general purpose components',
           },
+          link: {
+            'zh-CN': '/zh-CN/button',
+            'en-US': '/en-US/button',
+          },
         },
         {
           name: {
@@ -56,15 +60,23 @@ export default defineConfig({
             'zh-CN': '每一个组件都可单独引入，并有着良好的 tree-shaking 优化',
             'en-US': 'Each component can be imported separately and has good tree-shaking optimization',
           },
+          link: {
+            'zh-CN': '/zh-CN/importOnDemand',
+            'en-US': '/en-US/importOnDemand',
+          },
         },
         {
           name: {
-            'zh-CN': '默认配置与主题',
-            'en-US': 'Defaults and theming',
+            'zh-CN': '多设计系统支持',
+            'en-US': 'Multi-design system support',
           },
           description: {
             'zh-CN': '同时支持 MD2 与 MD3 两种设计系统，并覆盖明暗两套主题模式',
             'en-US': 'Supports both MD2 and MD3 design systems, each with light and dark theme modes',
+          },
+          link: {
+            'zh-CN': '/zh-CN/themes',
+            'en-US': '/en-US/themes',
           },
         },
         {
@@ -76,11 +88,15 @@ export default defineConfig({
             'zh-CN': '内置国际化 API，内置中文和英文的语言包',
             'en-US': 'Built-in i18n API, which supports both Chinese and English languages by default',
           },
+          link: {
+            'zh-CN': '/zh-CN/locale',
+            'en-US': '/en-US/locale',
+          },
         },
         {
           name: {
-            'zh-CN': '支持 Typescript',
-            'en-US': 'Support typescript',
+            'zh-CN': 'Typescript 友好',
+            'en-US': 'Typescript-friendly',
           },
           description: {
             'zh-CN': '使用 Typescript 构建，提供良好的组件类型系统',
@@ -96,6 +112,10 @@ export default defineConfig({
             'zh-CN': '对服务端渲染支持良好，并对 Nuxt 进行了适配',
             'en-US': 'Good support for server-side rendering and adaptation to Nuxt',
           },
+          link: {
+            'zh-CN': '/zh-CN/serverSideRendering',
+            'en-US': '/en-US/serverSideRendering',
+          },
         },
         {
           name: {
@@ -107,6 +127,10 @@ export default defineConfig({
             'en-US':
               'Supports both mobile and desktop scenarios, with component coverage for multi-platform UI development',
           },
+          link: {
+            'zh-CN': '/zh-CN/browserAdaptation',
+            'en-US': '/en-US/browserAdaptation',
+          },
         },
         {
           name: {
@@ -117,6 +141,10 @@ export default defineConfig({
             'zh-CN': '支持在 webstorm，vscode 中的组件语法高亮, 并提供 vscode 插件为开发提升效率',
             'en-US':
               'Supports to highlight the component syntax for webstorm and vscode, and provides a separate helper plugin for vscode',
+          },
+          link: {
+            'zh-CN': '/zh-CN/extension',
+            'en-US': '/en-US/extension',
           },
         },
       ],
@@ -542,7 +570,7 @@ export default defineConfig({
     'color-index-page-background': '#fff',
     'color-index-page-get-started-button': '#3a7afe',
     'color-index-page-logo-mask-background':
-      'linear-gradient(-45deg, rgba(33, 150, 243, 0.5) 50%, rgba(174, 99, 255, 0.34) 50%)',
+      'linear-gradient(-45deg, rgba(255, 168, 214, 0.9) 0%, rgba(220, 170, 255, 0.92) 45%, rgba(132, 205, 255, 0.98) 100%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
     'card-border-radius': '12px',
@@ -587,9 +615,10 @@ export default defineConfig({
   darkTheme: {
     'color-body': '#121212',
     'color-index-page-background': '#1e1e1e',
+    'color-index-page-get-started-button': '#4a7afe',
     'color-index-page-feature-background': '#303030',
     'color-index-page-logo-mask-background':
-      'linear-gradient(-45deg, rgba(74, 122, 254, 0.58) 50%, rgba(186, 116, 255, 0.42) 50%)',
+      'linear-gradient(-45deg, rgba(188, 122, 255, 0.44) 0%, rgba(151, 119, 255, 0.47) 46%, rgba(84, 132, 255, 0.58) 100%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
     'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
     'card-border-radius': '12px',
@@ -634,9 +663,10 @@ export default defineConfig({
   md3LightTheme: {
     'color-body': '#fff',
     'color-index-page-background': '#FEF7FF',
+    'color-index-page-get-started-button': '#6750A4',
     'color-index-page-feature-background': '#fff',
     'color-index-page-logo-mask-background':
-      'linear-gradient(-45deg, rgba(140, 112, 216, 0.46) 50%, rgba(208, 188, 255, 0.88) 50%)',
+      'linear-gradient(-45deg, rgba(255, 168, 214, 0.9) 0%, rgba(220, 170, 255, 0.92) 45%, rgba(132, 205, 255, 0.98) 100%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
     'card-border-radius': '12px',
@@ -681,9 +711,10 @@ export default defineConfig({
   md3DarkTheme: {
     'color-body': '#050505',
     'color-index-page-background': '#141218',
+    'color-index-page-get-started-button': '#D0BCFF',
     'color-index-page-feature-background': '#1c1b1d',
     'color-index-page-logo-mask-background':
-      'linear-gradient(-45deg, rgba(170, 146, 216, 0.44) 50%, rgba(123, 106, 158, 0.36) 50%)',
+      'linear-gradient(-45deg, rgba(188, 122, 255, 0.44) 0%, rgba(151, 119, 255, 0.47) 46%, rgba(84, 132, 255, 0.58) 100%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
     'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
     'card-border-radius': '12px',
