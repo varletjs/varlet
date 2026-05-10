@@ -48,6 +48,16 @@
 </template>
 ```
 
+### 低层级表面（surface="low"）
+
+`surface="low"` 可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用。
+
+```html
+<template>
+  <var-paper surface="low" :elevation="2" :width="100" :height="100" />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -61,7 +71,7 @@
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
-| `surface` | 表面预设，可选值 `low`。大多数情况下该属性主要在 MD3 暗色模式下更有意义 | _string_ | `-` |
+| `surface` | 表面预设，可选值 `low`。可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用 | _string_ | `-` |
 
 ### 事件
 

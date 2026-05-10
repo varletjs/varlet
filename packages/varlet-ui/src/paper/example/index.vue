@@ -28,14 +28,27 @@ onThemeChange()
 
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="paper-example-tip">{{ t('surfaceLowTip') }}</div>
-  <var-paper surface="low" :elevation="2" width="25vmin" height="25vmin" />
+  <var-space direction="column" :size="12">
+    <div class="paper-example-sublabel">{{ t('surfaceLowStandard') }}</div>
+    <var-paper :elevation="2" width="25vmin" height="25vmin" />
+    <div class="paper-example-sublabel">{{ t('surfaceLowCompared') }}</div>
+    <var-paper surface="low" :elevation="2" width="25vmin" height="25vmin" />
+  </var-space>
 </template>
 
 <style scoped lang="less">
 .paper-example-tip {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   color: var(--color-text-disabled);
   font-size: 14px;
   line-height: 1.6;
+}
+
+.paper-example-sublabel {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 </style>

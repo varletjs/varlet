@@ -160,6 +160,21 @@ const floating = ref(false)
 </template>
 ```
 
+### Surface Low
+
+`surface="low"` darkens the card background compared to the default surface. This is especially useful in MD3 dark mode.
+
+```html
+<template>
+  <var-card
+    title='Dangerous'
+    subtitle='The girl was dangerous'
+    description='The way she came into the place I knew right then and there.There was something different about this girl.'
+    surface='low'
+  />
+</template>
+```
+
 ## API
 
 ### Props
@@ -167,7 +182,7 @@ const floating = ref(false)
 | Prop                | Description                                                     | Type     | Default  |
 |---------------------|-----------------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***    | The variant of Card, optional value is `standard` `outlined` `filled`            | _string_ | `standard`      |
-| `surface`                | Surface preset, optional value is `low`, invalid when `variant` is `filled`. In most cases this is mainly meaningful in MD3 dark mode | _string_ | `-`             |
+| `surface`                | Surface preset, optional value is `low`, invalid when `variant` is `filled`. Darkens the background relative to the default surface; especially useful in MD3 dark mode | _string_ | `-`             |
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |

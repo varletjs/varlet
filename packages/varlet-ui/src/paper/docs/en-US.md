@@ -8,7 +8,7 @@ An easier container using elevation and water effects.
 
 ```html
 <template>
-   <var-paper :elevation="2" :width="100" :height="100" />
+  <var-paper :elevation="2" :width="100" :height="100" />
 </template>
 ```
 
@@ -16,7 +16,7 @@ An easier container using elevation and water effects.
 
 ```html
 <template>
-   <var-paper :elevation="2" :width="100" :height="100" ripple />
+  <var-paper :elevation="2" :width="100" :height="100" ripple />
 </template>
 ```
 
@@ -24,7 +24,7 @@ An easier container using elevation and water effects.
 
 ```html
 <template>
-   <var-paper :elevation="2" :width="100" :height="100" round />
+  <var-paper :elevation="2" :width="100" :height="100" round />
 </template>
 ```
 
@@ -32,7 +32,7 @@ An easier container using elevation and water effects.
 
 ```html
 <template>
-   <var-paper :elevation="2" :width="100" :height="100" :radius="8" />
+  <var-paper :elevation="2" :width="100" :height="100" :radius="8" />
 </template>
 ```
 
@@ -40,11 +40,21 @@ An easier container using elevation and water effects.
 
 ```html
 <template>
-   <var-paper :elevation="2">
-     <var-cell>Paper</var-cell>
-     <var-cell>Paper</var-cell>
-     <var-cell>Paper</var-cell>
-   </var-paper>
+  <var-paper :elevation="2">
+    <var-cell>Paper</var-cell>
+    <var-cell>Paper</var-cell>
+    <var-cell>Paper</var-cell>
+  </var-paper>
+</template>
+```
+
+### Surface Low
+
+`surface="low"` darkens the paper background compared to the default surface. This is especially useful in MD3 dark mode.
+
+```html
+<template>
+  <var-paper surface="low" :elevation="2" :width="100" :height="100" />
 </template>
 ```
 
@@ -61,7 +71,7 @@ An easier container using elevation and water effects.
 | `height` | Paper height | _string \| number_ | `-` |
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
-| `surface` | Surface preset, optional value is `low`. In most cases this is mainly meaningful in MD3 dark mode | _string_ | `-` |
+| `surface` | Surface preset, optional value is `low`. Darkens the background relative to the default surface; especially useful in MD3 dark mode | _string_ | `-` |
 
 ### Events
 

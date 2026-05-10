@@ -14,6 +14,10 @@ export default {
   action2: '操作 2',
   showRipple: '水波效果',
   floating: '开启全屏',
-  surfaceLow: 'Surface Low',
-  surfaceLowTip: '大多数情况下，surface="low" 主要在 MD3 暗色模式下更有意义。',
+  surfaceLow: '低层级表面',
+  surfaceLowTip: 'surface="low" 可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用。',
+  surfaceLowStandard: '默认表面',
+  surfaceLowCompared: 'surface="low"',
+  surfaceLowShortDescription:
+    '如果华佗再世，崇洋都被医治，外邦来学汉字，激发我民族意识。马钱子、决明子、苍耳子，还有莲子。',
 }

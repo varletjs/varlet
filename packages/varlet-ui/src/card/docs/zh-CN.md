@@ -161,6 +161,21 @@ const floating = ref(false)
 </template>
 ```
 
+### 低层级表面（surface="low"）
+
+`surface="low"` 可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用。
+
+```html
+<template>
+  <var-card
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。"
+    surface="low"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -168,7 +183,7 @@ const floating = ref(false)
 | 参数                  | 说明                                                     | 类型       | 默认值      |
 |---------------------|--------------------------------------------------------|----------|----------|
 | `variant`  ***3.5.4***           | 卡片外观，可选值 `standard` `outlined` `filled`            | _string_ | `standard`      |
-| `surface`                      | 表面预设，可选值 `low`，在 `variant` 为 `filled` 时无效。大多数情况下该属性主要在 MD3 暗色模式下更有意义     | _string_ | `-`             |
+| `surface`                      | 表面预设，可选值 `low`，在 `variant` 为 `filled` 时无效。可以把背景颜色调得更暗，在 MD3 暗色模式下会很有用 | _string_ | `-`             |
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |

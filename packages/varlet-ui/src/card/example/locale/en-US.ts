@@ -15,5 +15,10 @@ export default {
   showRipple: 'Ripple Effect',
   floating: 'Floating',
   surfaceLow: 'Surface Low',
-  surfaceLowTip: 'In most cases, surface="low" is mainly useful in MD3 dark mode.',
+  surfaceLowTip:
+    'surface="low" darkens the card background compared to the default surface. This is especially useful in MD3 dark mode.',
+  surfaceLowStandard: 'Default surface',
+  surfaceLowCompared: 'surface="low"',
+  surfaceLowShortDescription:
+    'The way she came into the place I knew right then and there. There was something different about this girl.',
 }

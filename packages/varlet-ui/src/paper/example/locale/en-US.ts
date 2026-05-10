@@ -6,5 +6,8 @@ export default {
   slot: 'Use Slot',
   paper: 'Paper',
   surfaceLow: 'Surface Low',
-  surfaceLowTip: 'In most cases, surface="low" is mainly useful in MD3 dark mode.',
+  surfaceLowTip:
+    'surface="low" darkens the paper background compared to the default surface. This is especially useful in MD3 dark mode.',
+  surfaceLowStandard: 'Default surface',
+  surfaceLowCompared: 'surface="low"',
 }
