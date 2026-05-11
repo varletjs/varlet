@@ -1,9 +1,8 @@
-# [3.16.0](https://github.com/varletjs/varlet/compare/v3.15.2...v3.16.0) (2026-05-11)
+## [3.16.1](https://github.com/varletjs/varlet/compare/v3.16.0...v3.16.1) (2026-05-11)
 
 
 ### Bug Fixes
 
-* **date-picker:** Fixed the issue of inconsistent years in preview mode and close [#1959](https://github.com/varletjs/varlet/issues/1959) ([54a23eb](https://github.com/varletjs/varlet/commit/54a23eb14c6ca0695c0264952de46822c74d7025))
 * **docs:** clarify hoverable property description in card and paper documentation ([b6db3f6](https://github.com/varletjs/varlet/commit/b6db3f652a27fda6dbdba27b3361d5417b30908d))
 * **otp-input:** update default cell height and max width to improve layout consistency ([0a51c75](https://github.com/varletjs/varlet/commit/0a51c7568d6be76ad20ccb454100a15f571b3416))
 * **theme:** prevent theme change from mobile by checking source and update theme handling ([72ef505](https://github.com/varletjs/varlet/commit/72ef505fe18613d4cdf4009421bb9ef763de3228))
@@ -17,8 +16,8 @@
 * **card, paper:** rename 'surface="low"' to 'subtle background' and update related documentation ([16dabe1](https://github.com/varletjs/varlet/commit/16dabe11bc171dc9bd33892655699183033bcffd))
 * **card:** add surface prop for low surface preset in MD3 dark mode ([0d1e783](https://github.com/varletjs/varlet/commit/0d1e7831e43fb9cd203d93c6efdfbd940a63ec59))
 * **card:** enhance floating behavior with entry tracking for dropdown ([f5b32e0](https://github.com/varletjs/varlet/commit/f5b32e059c202d809946062554743b7d3a909ec0))
-* **date-picker:** add fallbackViewDate prop to control panel view date and close [#1951](https://github.com/varletjs/varlet/issues/1951) ([686edcf](https://github.com/varletjs/varlet/commit/686edcf58f09162ecda8d062308249caf29bb01d))
 * **index, config:** add feature links to index page and update configuration ([7cc3439](https://github.com/varletjs/varlet/commit/7cc3439415280792153688cd5a99c0e53d9091de))
+* **otp-input:** add alignment options for OTP input cells and update documentation ([3772792](https://github.com/varletjs/varlet/commit/37727921447b5796aecad947ae75fe9a90b5e085))
 * **otp-input:** add new style variables for OTP input component customization ([efdb715](https://github.com/varletjs/varlet/commit/efdb715f25a8ab29249ebc5e656a61643392ba85))
 * **otp-input:** add OTP field and validation rules to form components; enhance localization and tests ([2f15794](https://github.com/varletjs/varlet/commit/2f15794ccee29d030aea7df51354ae0ded78484f))
 * **otp-input:** add padding adjustments for outlined and filled field decorators ([deedc9b](https://github.com/varletjs/varlet/commit/deedc9bf3e08c0ebddbde4fdd8ddd22e871dad65))
@@ -32,6 +31,18 @@
 * **otp-input:** remove auto-blur prop and update related tests and documentation ([2f420b1](https://github.com/varletjs/varlet/commit/2f420b17d8e032ba36a33cedfe6560b792159422))
 * **otp-input:** simplify event handling and remove unused listeners ([b571ab5](https://github.com/varletjs/varlet/commit/b571ab56dc70775c18520b672c63db400107ecbf))
 * **otp-input:** update separator styling and remove unused CSS variable ([a80b9ae](https://github.com/varletjs/varlet/commit/a80b9aeaafffc15ce3335ba452ad60f0a916fe5b))
+
+## [3.15.2](https://github.com/varletjs/varlet/compare/v3.15.1...v3.15.2) (2026-05-03)
+
+
+### Bug Fixes
+
+* **date-picker:** Fixed the issue of inconsistent years in preview mode and close [#1959](https://github.com/varletjs/varlet/issues/1959) ([54a23eb](https://github.com/varletjs/varlet/commit/54a23eb14c6ca0695c0264952de46822c74d7025))
+
+
+### Features
+
+* **date-picker:** add fallbackViewDate prop to control panel view date and close [#1951](https://github.com/varletjs/varlet/issues/1951) ([686edcf](https://github.com/varletjs/varlet/commit/686edcf58f09162ecda8d062308249caf29bb01d))
 
 ## [3.15.1](https://github.com/varletjs/varlet/compare/v3.15.0...v3.15.1) (2026-04-19)
 
