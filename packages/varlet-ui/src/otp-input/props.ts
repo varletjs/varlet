@@ -7,6 +7,8 @@ export type OtpInputType = 'digit' | 'text' | 'alphanumeric'
 
 export type OtpInputValidateTrigger = 'onInput' | 'onClick' | 'onPaste' | 'onComplete'
 
+export type OtpInputAlign = 'start' | 'center' | 'end'
+
 export const props = {
   modelValue: {
     type: String,
@@ -39,6 +41,10 @@ export const props = {
   gutter: {
     type: [String, Number],
     default: 8,
+  },
+  align: {
+    type: String as PropType<OtpInputAlign>,
+    default: 'center',
   },
   validateTrigger: {
     type: Array as PropType<OtpInputValidateTrigger[]>,

@@ -14,6 +14,8 @@ export type OtpInputType = 'digit' | 'text' | 'alphanumeric'
 
 export type OtpInputValidateTrigger = 'onInput' | 'onClick' | 'onPaste' | 'onComplete'
 
+export type OtpInputAlign = 'start' | 'center' | 'end'
+
 export interface OtpInputProps extends BasicAttributes {
   modelValue?: string
   length?: string | number
@@ -30,6 +32,7 @@ export interface OtpInputProps extends BasicAttributes {
   readonly?: boolean
   autofocus?: boolean
   gutter?: string | number
+  align?: OtpInputAlign
   validateTrigger?: OtpInputValidateTrigger[]
   rules?: OtpInputRules
   allowPaste?: boolean

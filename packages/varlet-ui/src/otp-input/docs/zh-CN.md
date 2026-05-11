@@ -194,6 +194,7 @@ const value = ref('')
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `autofocus` | 初始化后是否自动聚焦 | _boolean_ | `false` |
 | `gutter` | 格子间距 | _string \| number_ | `8` |
+| `align` ***3.16.1*** | 组件整体内容对齐方式，可选值为 `start` `center` `end` | _OtpInputAlign_ | `center` |
 | `validate-trigger` | 触发校验的时机，可选值为 `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示，支持 Zod 验证 | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `allow-paste` | 是否允许粘贴整串验证码 | _boolean_ | `true` |

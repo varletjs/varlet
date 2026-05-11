@@ -40,6 +40,42 @@
     width: 100%;
   }
 
+  &--align-start {
+    .var-otp-input__cells {
+      justify-content: flex-start;
+    }
+
+    .var-otp-input__details,
+    .var-otp-input__details .var-form-details__error-message,
+    .var-otp-input__details .var-form-details__extra-message {
+      text-align: left;
+    }
+  }
+
+  &--align-center {
+    .var-otp-input__cells {
+      justify-content: center;
+    }
+
+    .var-otp-input__details,
+    .var-otp-input__details .var-form-details__error-message,
+    .var-otp-input__details .var-form-details__extra-message {
+      text-align: center;
+    }
+  }
+
+  &--align-end {
+    .var-otp-input__cells {
+      justify-content: flex-end;
+    }
+
+    .var-otp-input__details,
+    .var-otp-input__details .var-form-details__error-message,
+    .var-otp-input__details .var-form-details__extra-message {
+      text-align: right;
+    }
+  }
+
   .var-input__input {
     text-align: center;
     font-size: var(--otp-input-input-font-size);

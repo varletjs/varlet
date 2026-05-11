@@ -1,7 +1,7 @@
 <template>
   <div
     ref="rootEl"
-    :class="classes(n(), n('$--box'))"
+    :class="classes(n(), n('$--box'), n(`--align-${align}`))"
     :style="{
       '--otp-input-gutter': gutterStyle,
       '--otp-input-cell-height': cellHeightStyle,
@@ -418,6 +418,7 @@ export default defineComponent({
       cellMaxWidthStyle,
       resolvedInputmode,
       nativeInputType,
+      align: props.align,
       n,
       classes,
       setInputRef,

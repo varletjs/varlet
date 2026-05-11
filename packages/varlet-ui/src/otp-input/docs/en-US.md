@@ -194,6 +194,7 @@ const value = ref('')
 | `readonly` | Whether the component is readonly | _boolean_ | `false` |
 | `autofocus` | Whether to autofocus on mount | _boolean_ | `false` |
 | `gutter` | Cell gap | _string \| number_ | `8` |
+| `align` ***3.16.1*** | Overall content alignment, options are `start` `center` `end` | _OtpInputAlign_ | `center` |
 | `validate-trigger` | Validation triggers, options are `onInput` `onClick` `onPaste` `onComplete` | _OtpInputValidateTrigger[]_ | `['onInput', 'onComplete']` |
 | `rules` | Validation rules. Returning `true` means valid. Other values are converted to error messages. Supports Zod validation | _((v: string) => any) \| ZodType \| Array<((v: string) => any) \| ZodType>_ | `-` |
 | `allow-paste` | Whether to allow full-string pasting | _boolean_ | `true` |

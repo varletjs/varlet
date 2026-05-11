@@ -359,6 +359,35 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
+  ;[
+    ['start', 'flex-start', 'left'],
+    ['center', 'center', 'center'],
+    ['end', 'flex-end', 'right'],
+  ].forEach(([align, justifyContent, textAlign]) => {
+    test(`should apply ${align} alignment to cells and error message`, async () => {
+      const wrapper = mount(VarOtpInput, {
+        props: {
+          align,
+          rules: [() => 'invalid'],
+        },
+        attachTo: document.body,
+      })
+
+      await wrapper.vm.validate()
+      await wrapper.vm.$nextTick()
+      await wrapper.vm.$nextTick()
+
+      const cells = wrapper.find('.var-otp-input__cells').element
+      const errorMessage = wrapper.find('.var-form-details__error-message').element
+
+      expect(wrapper.classes()).toContain(`var-otp-input--align-${align}`)
+      expect(getComputedStyle(cells).justifyContent).toBe(justifyContent)
+      expect(getComputedStyle(errorMessage).textAlign).toBe(textAlign)
+
+      wrapper.unmount()
+    })
+  })
+
   test('reset should clear validation messages even when value is already empty', async () => {
     const wrapper = mount(VarOtpInput, {
       props: {
