@@ -80,7 +80,7 @@ An easier container using elevation and water effects.
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
 | `surface`  ***3.16.0*** | Background preset, optional value is `low`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
-| `hoverable`  ***3.16.0*** | Whether to show a hover highlight overlay on desktop | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | Whether to enable hover effect | _boolean_ | `false` |
 
 ### Events
 

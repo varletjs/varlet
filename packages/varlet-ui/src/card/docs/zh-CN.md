@@ -209,7 +209,7 @@ const floating = ref(false)
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
 | `v-model:floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
 | `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
-| `hoverable`  ***3.16.0***      | 是否在桌面端悬停时显示一层高亮遮罩 | _boolean_ | `false` |
+| `hoverable`  ***3.16.0***      | 是否开启鼠标悬停效果 | _boolean_ | `false` |
 | `surface`  ***3.16.0***        | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-`             |
 
 ### 事件

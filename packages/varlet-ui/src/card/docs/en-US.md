@@ -209,7 +209,7 @@ const floating = ref(false)
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
 | `v-model:floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
-| `hoverable`  ***3.16.0*** | Whether to show a hover highlight overlay on desktop | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | Whether to enable hover effect | _boolean_ | `false` |
 | `surface`  ***3.16.0***  | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-`             |
 
 ### Events

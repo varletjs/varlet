@@ -80,7 +80,7 @@
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
 | `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，目前只作用在 MD3 暗色主题 | _string_ | `-` |
-| `hoverable`  ***3.16.0*** | 是否在桌面端悬停时显示一层高亮遮罩 | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | 是否开启鼠标悬停效果 | _boolean_ | `false` |
 
 ### 事件
 
