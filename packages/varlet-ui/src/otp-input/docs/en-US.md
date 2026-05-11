@@ -79,7 +79,7 @@ const value = ref('')
 <template>
   <var-otp-input v-model="value" type="alphanumeric">
     <template #separator="{ index }">
-      <span v-if="index === 2">-</span>
+      <span v-if="index === 2" style="font-size: 22px;">-</span>
     </template>
   </var-otp-input>
 </template>
@@ -234,4 +234,3 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--otp-input-cell-height` | `48px` |
 | `--otp-input-cell-max-width` | `48px` |
 | `--otp-input-input-font-size` | `20px` |
-| `--otp-input-separator-color` | `var(--color-text-disabled)` |

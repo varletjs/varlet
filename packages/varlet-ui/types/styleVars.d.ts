@@ -501,7 +501,6 @@ interface BaseStyleVars {
   '--otp-input-cell-height'?: string
   '--otp-input-cell-max-width'?: string
   '--otp-input-input-font-size'?: string
-  '--otp-input-separator-color'?: string
   '--overlay-background-color'?: string
   '--pagination-text-color'?: string
   '--pagination-font-size'?: string

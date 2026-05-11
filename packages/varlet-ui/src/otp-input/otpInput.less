@@ -3,7 +3,6 @@
   --otp-input-cell-height: 48px;
   --otp-input-cell-max-width: 48px;
   --otp-input-input-font-size: 20px;
-  --otp-input-separator-color: var(--color-text-disabled);
 }
 
 .var-otp-input {
@@ -30,12 +29,11 @@
   }
 
   &__separator {
-    flex: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--otp-input-separator-color);
-    white-space: nowrap;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
   }
 
   &__details {

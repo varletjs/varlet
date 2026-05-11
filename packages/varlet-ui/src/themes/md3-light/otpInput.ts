@@ -3,5 +3,4 @@ export default {
   '--otp-input-cell-height': '48px',
   '--otp-input-cell-max-width': '48px',
   '--otp-input-input-font-size': '20px',
-  '--otp-input-separator-color': 'var(--color-text-disabled)',
 }

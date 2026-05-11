@@ -57,7 +57,7 @@ function handleComplete(value) {
   <app-type style="margin-top: 10vmin">{{ t('separatorSlot') }}</app-type>
   <var-otp-input v-model="separatorValue" type="alphanumeric">
     <template #separator="{ index }">
-      <span v-if="index === 2" class="otp-input-example__separator">•</span>
+      <span v-if="index === 2" style="font-size: 22px">-</span>
     </template>
   </var-otp-input>
 
@@ -107,7 +107,6 @@ function handleComplete(value) {
   align-items: center;
   justify-content: center;
   min-width: 1em;
-  color: var(--color-text);
   font-size: 18px;
   font-weight: 600;
   line-height: 1;
