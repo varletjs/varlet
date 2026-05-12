@@ -189,6 +189,38 @@ export default defineConfig({
           },
           {
             name: {
+              'zh-CN': 'chouchouji',
+              'en-US': 'chouchouji',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & uniapp 核心团队成员',
+              'en-US': 'Core team member of varletjs & uniapp',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/70570907',
+            github: 'https://github.com/chouchouji',
+          },
+          {
+            name: {
+              'zh-CN': 'rzzf',
+              'en-US': 'rzzf',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & element-plus 团队成员',
+              'en-US': 'Core team member of varletjs & element-plus',
+            },
+            avatar: 'https://avatars.githubusercontent.com/rzzf',
+            github: 'https://github.com/rzzf',
+          },
+          {
+            name: {
               'zh-CN': 'zhangmo8',
               'en-US': 'zhangmo8',
             },
@@ -203,22 +235,6 @@ export default defineConfig({
             avatar: 'https://avatars.githubusercontent.com/u/43628500',
             github: 'https://github.com/zhangmo8',
             twitter: 'https://twitter.com/wegi8666',
-          },
-          {
-            name: {
-              'zh-CN': 'chouchouji',
-              'en-US': 'chouchouji',
-            },
-            title: {
-              'zh-CN': '开源开发者',
-              'en-US': 'Open Source Developer',
-            },
-            description: {
-              'zh-CN': 'varletjs 核心团队成员',
-              'en-US': 'Core team member of varletjs',
-            },
-            avatar: 'https://avatars.githubusercontent.com/u/70570907',
-            github: 'https://github.com/chouchouji',
           },
           {
             name: {
@@ -263,8 +279,8 @@ export default defineConfig({
               'en-US': 'Open Source Developer',
             },
             description: {
-              'zh-CN': 'varletjs & dcloud 团队成员',
-              'en-US': 'Core team member of varletjs & dcloud',
+              'zh-CN': 'varletjs & uniapp 团队成员',
+              'en-US': 'Core team member of varletjs & uniapp',
             },
             avatar: 'https://avatars.githubusercontent.com/u/37523000',
             github: 'https://github.com/zhenyuWang',
