@@ -131,8 +131,12 @@ watch(
             class="varlet-doc-index__feature"
             :variant="indexCardVariant"
             :surface="indexCardSurface"
-            :hoverable="!!getFeatureLink(feature)"
-            :ripple="!!getFeatureLink(feature)"
+            :hoverable="
+              getFeatureLink(feature) ? { color: 'var(--site-config-color-index-page-get-started-button)' } : false
+            "
+            :ripple="
+              getFeatureLink(feature) ? { color: 'var(--site-config-color-index-page-get-started-button)' } : false
+            "
             :elevation="false"
             v-for="feature in indexPage.features"
             @click="toFeature(feature)"
