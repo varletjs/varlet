@@ -1,4 +1,14 @@
-## [3.16.1](https://github.com/varletjs/varlet/compare/v3.16.0...v3.16.1) (2026-05-11)
+## [3.16.2](https://github.com/varletjs/varlet/compare/v3.16.1...v3.16.2) (2026-05-12)
+
+
+### Features
+
+* **card, paper:** add support for hoverable and ripple properties as objects with color and disabled options ([d5b224b](https://github.com/varletjs/varlet/commit/d5b224bdb5c848b69526ae7492274b40547fb790))
+* **config:** update team member details including names, descriptions, and social links ([351168e](https://github.com/varletjs/varlet/commit/351168ebb17fb8baa26a5fd991f77187e14a7824))
+* **index:** update hoverable and ripple properties to accept color options for features ([05e5289](https://github.com/varletjs/varlet/commit/05e5289aca3c35b4afb7e41bf70bc5182e5721cd))
+* **otp-input:** add alignment options for OTP input cells and update documentation ([3772792](https://github.com/varletjs/varlet/commit/37727921447b5796aecad947ae75fe9a90b5e085))
+
+# [3.16.0](https://github.com/varletjs/varlet/compare/v3.15.2...v3.16.0) (2026-05-11)
 
 
 ### Bug Fixes
@@ -17,7 +27,6 @@
 * **card:** add surface prop for low surface preset in MD3 dark mode ([0d1e783](https://github.com/varletjs/varlet/commit/0d1e7831e43fb9cd203d93c6efdfbd940a63ec59))
 * **card:** enhance floating behavior with entry tracking for dropdown ([f5b32e0](https://github.com/varletjs/varlet/commit/f5b32e059c202d809946062554743b7d3a909ec0))
 * **index, config:** add feature links to index page and update configuration ([7cc3439](https://github.com/varletjs/varlet/commit/7cc3439415280792153688cd5a99c0e53d9091de))
-* **otp-input:** add alignment options for OTP input cells and update documentation ([3772792](https://github.com/varletjs/varlet/commit/37727921447b5796aecad947ae75fe9a90b5e085))
 * **otp-input:** add new style variables for OTP input component customization ([efdb715](https://github.com/varletjs/varlet/commit/efdb715f25a8ab29249ebc5e656a61643392ba85))
 * **otp-input:** add OTP field and validation rules to form components; enhance localization and tests ([2f15794](https://github.com/varletjs/varlet/commit/2f15794ccee29d030aea7df51354ae0ded78484f))
 * **otp-input:** add padding adjustments for outlined and filled field decorators ([deedc9b](https://github.com/varletjs/varlet/commit/deedc9bf3e08c0ebddbde4fdd8ddd22e871dad65))
