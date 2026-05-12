@@ -1,5 +1,8 @@
 <template>
-  <div :class="classes(n(), [hovering, n('--hovering')], [focusing && !inMobile(), n('--focusing')])"></div>
+  <div
+    :class="classes(n(), [hovering, n('--hovering')], [focusing && !inMobile(), n('--focusing')])"
+    :style="{ color }"
+  ></div>
 </template>
 
 <script lang="ts">

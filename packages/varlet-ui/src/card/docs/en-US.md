@@ -95,6 +95,33 @@ Display content and actions about a single subject.
 </template>
 ```
 
+### Hoverable
+
+```html
+<template>
+  <var-card
+    hoverable
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl."
+  />
+</template>
+```
+
+### Custom Ripple / Hover Effect
+
+```html
+<template>
+  <var-card
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl."
+  />
+</template>
+```
+
 ### Floating
 
 ```html
@@ -160,19 +187,6 @@ const floating = ref(false)
 </template>
 ```
 
-### Hoverable
-
-```html
-<template>
-  <var-card
-    hoverable
-    title="Dangerous"
-    subtitle="The girl was dangerous"
-    description="The way she came into the place I knew right then and there.There was something different about this girl."
-  />
-</template>
-```
-
 ### Subtle Background
 
 `surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
@@ -206,10 +220,10 @@ const floating = ref(false)
 | `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
 | `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
-| `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
+| `ripple`            | Whether to enable ripple, supports object form `{ disabled?: boolean, color?: string }`                                        | _boolean \| object_ | `false`  |
 | `v-model:floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
-| `hoverable`  ***3.16.0*** | Whether to enable hover effect | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | Whether to enable hover effect, supports object form `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 | `surface`  ***3.16.0***  | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-`             |
 
 ### Events

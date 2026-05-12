@@ -13,6 +13,18 @@ onThemeChange()
   <app-type>{{ t('ripple') }}</app-type>
   <var-paper :elevation="2" ripple width="25vmin" height="25vmin" />
 
+  <app-type>{{ t('hoverable') }}</app-type>
+  <var-paper hoverable :elevation="2" width="25vmin" height="25vmin" />
+
+  <app-type>{{ t('customInteraction') }}</app-type>
+  <var-paper
+    :elevation="2"
+    width="25vmin"
+    height="25vmin"
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+  />
+
   <app-type>{{ t('round') }}</app-type>
   <var-paper :elevation="2" width="25vmin" height="25vmin" round />
 
@@ -25,9 +37,6 @@ onThemeChange()
     <var-cell>{{ t('paper') }}</var-cell>
     <var-cell>{{ t('paper') }}</var-cell>
   </var-paper>
-
-  <app-type>{{ t('hoverable') }}</app-type>
-  <var-paper hoverable :elevation="2" width="25vmin" height="25vmin" />
 
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="paper-example-tip">{{ t('surfaceLowTip') }}</div>

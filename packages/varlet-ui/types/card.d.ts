@@ -11,10 +11,20 @@ export type CardVariant = 'standard' | 'outlined' | 'filled'
 
 export type CardSurface = 'low'
 
+export interface CardRipple {
+  disabled?: boolean
+  color?: string
+}
+
+export interface CardHoverable {
+  disabled?: boolean
+  color?: string
+}
+
 export interface CardProps extends BasicAttributes {
   variant?: CardVariant
   surface?: CardSurface
-  hoverable?: boolean
+  hoverable?: boolean | CardHoverable
   src?: string
   fit?: CardFit
   imageHeight?: string | number
@@ -24,7 +34,7 @@ export interface CardProps extends BasicAttributes {
   subtitle?: string
   description?: string
   elevation?: boolean | number | string
-  ripple?: boolean
+  ripple?: boolean | CardRipple
   layout?: CardLayout
   floating?: boolean
   floatingDuration?: number

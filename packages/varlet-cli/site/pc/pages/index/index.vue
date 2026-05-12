@@ -132,6 +132,7 @@ watch(
             :variant="indexCardVariant"
             :surface="indexCardSurface"
             :hoverable="!!getFeatureLink(feature)"
+            :ripple="!!getFeatureLink(feature)"
             :elevation="false"
             v-for="feature in indexPage.features"
             @click="toFeature(feature)"

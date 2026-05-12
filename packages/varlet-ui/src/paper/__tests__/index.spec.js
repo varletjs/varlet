@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import Paper from '..'
+import { delay, trigger } from '../../utils/test'
 import VarPaper from '../Paper'
 
 test('paper use', () => {
@@ -105,6 +106,59 @@ test('paper hoverable', async () => {
 
   await wrapper.trigger('mouseleave')
   expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
+test('paper hoverable object', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      hoverable: {
+        color: '#f00',
+      },
+    },
+  })
+
+  await wrapper.trigger('mouseenter')
+  const overlay = wrapper.find('.var-hover-overlay')
+  expect(overlay.classes()).toContain('var-hover-overlay--hovering')
+  expect(overlay.attributes('style')).toContain('color: rgb(255, 0, 0)')
+
+  await wrapper.setProps({
+    hoverable: {
+      disabled: true,
+      color: '#0f0',
+    },
+  })
+  await wrapper.trigger('mouseleave')
+  await wrapper.trigger('mouseenter')
+  expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
+test('paper ripple object', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      ripple: {
+        color: 'green',
+      },
+    },
+  })
+
+  await trigger(wrapper, 'touchstart')
+  await delay(250)
+  expect(wrapper.find('.var-ripple').element.style.backgroundColor).toBe('green')
+
+  await wrapper.setProps({
+    ripple: {
+      disabled: true,
+      color: 'red',
+    },
+  })
+  await trigger(document, 'touchend')
+  await delay(500)
+  await trigger(wrapper, 'touchstart')
+  await delay(250)
+  expect(wrapper.find('.var-ripple').exists()).toBeFalsy()
   wrapper.unmount()
 })
 

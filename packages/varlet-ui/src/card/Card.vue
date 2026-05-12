@@ -1,7 +1,7 @@
 <template>
   <div
     ref="card"
-    v-ripple="{ disabled: !ripple || floater }"
+    v-ripple="{ disabled: normalizedRipple.disabled || floater, color: normalizedRipple.color }"
     v-hover:desktop="handleHovering"
     :class="
       classes(
@@ -10,7 +10,7 @@
         [variant === 'outlined' || outline, n('--outline')],
         [variant === 'filled', n('--filled')],
         [surfaceLow, n('--surface-low')],
-        [hoverable, n('--cursor')],
+        [!normalizedHoverable.disabled, n('--cursor')],
         [variant === 'standard' || outline, formatElevation(elevation, 1)],
       )
     "
@@ -79,7 +79,10 @@
         </div>
       </div>
 
-      <var-hover-overlay :hovering="hoverable && !floated ? hovering : false" />
+      <var-hover-overlay
+        :hovering="!normalizedHoverable.disabled && !floated ? hovering : false"
+        :color="normalizedHoverable.color"
+      />
 
       <div
         v-if="showFloatingButtons"
@@ -109,7 +112,7 @@
 </template>
 
 <script lang="ts">
-import { call, doubleRaf, getRect } from '@varlet/shared'
+import { call, doubleRaf, getRect, isPlainObject } from '@varlet/shared'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarButton from '../button'
 import { useLock } from '../context/lock'
@@ -120,7 +123,7 @@ import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { props } from './props'
+import { type CardHoverable, type CardRipple, props } from './props'
 
 const { name, n, classes } = createNamespace('card')
 
@@ -154,6 +157,8 @@ export default defineComponent({
     const showFloatingButtons = ref(false)
     const floated = ref(false)
     const { zIndex } = useZIndex(() => props.floating, 1)
+    const normalizedRipple = computed(() => normalizeRipple(props.ripple))
+    const normalizedHoverable = computed(() => normalizeHoverable(props.hoverable))
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
@@ -216,8 +221,36 @@ export default defineComponent({
           floaterOverflow.value = 'auto'
           floated.value = true
         },
-        props.ripple ? RIPPLE_DELAY : 0,
+        normalizedRipple.value.disabled ? 0 : RIPPLE_DELAY,
       )
+    }
+
+    function normalizeRipple(value: boolean | CardRipple) {
+      if (isPlainObject(value)) {
+        return {
+          disabled: !!value.disabled,
+          color: value.color,
+        }
+      }
+
+      return {
+        disabled: !value,
+        color: undefined,
+      }
+    }
+
+    function normalizeHoverable(value: boolean | CardHoverable) {
+      if (isPlainObject(value)) {
+        return {
+          disabled: !!value.disabled,
+          color: value.color,
+        }
+      }
+
+      return {
+        disabled: !value,
+        color: undefined,
+      }
     }
 
     function dropdown() {
@@ -273,6 +306,8 @@ export default defineComponent({
       zIndex,
       isRow,
       surfaceLow,
+      normalizedRipple,
+      normalizedHoverable,
       hovering,
       handleHovering,
       showFloatingButtons,

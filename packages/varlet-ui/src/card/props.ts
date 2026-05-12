@@ -9,6 +9,16 @@ export type CardVariant = 'standard' | 'outlined' | 'filled'
 
 export type CardSurface = 'low'
 
+export interface CardRipple {
+  disabled?: boolean
+  color?: string
+}
+
+export interface CardHoverable {
+  disabled?: boolean
+  color?: string
+}
+
 export const props = {
   src: String,
   fit: {
@@ -26,7 +36,10 @@ export const props = {
     default: 'column',
   },
   surface: String as PropType<CardSurface>,
-  hoverable: Boolean,
+  hoverable: {
+    type: [Boolean, Object] as PropType<boolean | CardHoverable>,
+    default: false,
+  },
   floating: Boolean,
   floatingDuration: {
     type: Number,
@@ -40,7 +53,10 @@ export const props = {
     type: [Boolean, Number, String],
     default: true,
   },
-  ripple: Boolean,
+  ripple: {
+    type: [Boolean, Object] as PropType<boolean | CardRipple>,
+    default: false,
+  },
   onClick: defineListenerProp<(e: Event) => void>(),
   'onUpdate:floating': defineListenerProp<(value: boolean) => void>(),
 

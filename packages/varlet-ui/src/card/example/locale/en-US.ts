@@ -13,6 +13,7 @@ export default {
   action1: 'ACTION 1',
   action2: 'ACTION 2',
   showRipple: 'Ripple Effect',
+  customInteraction: 'Custom Ripple / Hover Effect',
   floating: 'Floating',
   hoverable: 'Hoverable',
   surfaceLow: 'Subtle Background',

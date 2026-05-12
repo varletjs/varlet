@@ -44,6 +44,18 @@ onThemeChange()
   <app-type>{{ t('showRipple') }}</app-type>
   <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" ripple />
 
+  <app-type>{{ t('hoverable') }}</app-type>
+  <var-card hoverable :title="t('title')" :subtitle="t('subtitle')" :description="t('surfaceLowShortDescription')" />
+
+  <app-type>{{ t('customInteraction') }}</app-type>
+  <var-card
+    :title="t('title')"
+    :subtitle="t('subtitle')"
+    :description="t('surfaceLowShortDescription')"
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+  />
+
   <app-type>{{ t('floating') }}</app-type>
   <var-card v-model:floating="floating" :title="t('title')" :subtitle="t('subtitle')" src="cat.jpg">
     <template #extra>
@@ -63,9 +75,6 @@ onThemeChange()
 
   <app-type>{{ t('filled') }}</app-type>
   <var-card :title="t('title')" :subtitle="t('subtitle')" variant="filled" :description="t('description')" />
-
-  <app-type>{{ t('hoverable') }}</app-type>
-  <var-card hoverable :title="t('title')" :subtitle="t('subtitle')" :description="t('surfaceLowShortDescription')" />
 
   <app-type>{{ t('surfaceLow') }}</app-type>
   <div class="card-example-tip">{{ t('surfaceLowTip') }}</div>

@@ -95,6 +95,33 @@
 </template>
 ```
 
+### 悬停高亮
+
+```html
+<template>
+  <var-card
+    hoverable
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。"
+  />
+</template>
+```
+
+### 自定义水波效果/悬停效果
+
+```html
+<template>
+  <var-card
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。"
+  />
+</template>
+```
+
 ### 开启全屏
 
 ```html
@@ -161,19 +188,6 @@ const floating = ref(false)
 </template>
 ```
 
-### 悬停高亮
-
-```html
-<template>
-  <var-card
-    hoverable
-    title="本草纲目"
-    subtitle="我表情悠哉 跳个大概"
-    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。"
-  />
-</template>
-```
-
 ### 弱背景色
 
 `surface="low"` 可以弱化背景色，目前只作用在 MD3 暗色主题。
@@ -206,10 +220,10 @@ const floating = ref(false)
 | `alt`               | 替代文本，和 img 标签原生属性一致                                                   | _string_ | `-`      |
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
-| `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
+| `ripple`            | 是否开启水波，支持对象形式 `{ disabled?: boolean, color?: string }`                                                 | _boolean \| object_ | `false`  |
 | `v-model:floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
 | `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
-| `hoverable`  ***3.16.0***      | 是否开启鼠标悬停效果 | _boolean_ | `false` |
+| `hoverable`  ***3.16.0***      | 是否开启鼠标悬停效果，支持对象形式 `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 | `surface`  ***3.16.0***        | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-`             |
 
 ### 事件

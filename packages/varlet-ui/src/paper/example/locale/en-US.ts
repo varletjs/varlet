@@ -1,6 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   ripple: 'Ripple Effect',
+  customInteraction: 'Custom Ripple / Hover Effect',
   round: 'Rounded Paper',
   radius: 'Custom Border Radius',
   slot: 'Use Slot',

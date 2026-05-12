@@ -20,6 +20,28 @@ An easier container using elevation and water effects.
 </template>
 ```
 
+### Hoverable
+
+```html
+<template>
+  <var-paper hoverable :elevation="2" :width="100" :height="100" />
+</template>
+```
+
+### Custom Ripple / Hover Effect
+
+```html
+<template>
+  <var-paper
+    :elevation="2"
+    :width="100"
+    :height="100"
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+  />
+</template>
+```
+
 ### Rounded Paper
 
 ```html
@@ -48,14 +70,6 @@ An easier container using elevation and water effects.
 </template>
 ```
 
-### Hoverable
-
-```html
-<template>
-  <var-paper hoverable :elevation="2" :width="100" :height="100" />
-</template>
-```
-
 ### Subtle Background
 
 `surface="low"` softens the background color. It currently only takes effect in the MD3 dark theme.
@@ -73,14 +87,14 @@ An easier container using elevation and water effects.
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
-| `ripple` | Whether to enable ripple effect | _boolean_ | `false` |
+| `ripple` | Whether to enable ripple effect, supports object form `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 | `radius` | Paper border radius | _string \| number_ | `-` |
 | `width` | Paper width | _string \| number_ | `-` |
 | `height` | Paper height | _string \| number_ | `-` |
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
 | `surface`  ***3.16.0*** | Background preset, optional value is `low`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
-| `hoverable`  ***3.16.0*** | Whether to enable hover effect | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | Whether to enable hover effect, supports object form `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 
 ### Events
 

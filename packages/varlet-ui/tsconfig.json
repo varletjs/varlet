@@ -6,7 +6,7 @@
     "jsx": "preserve",
     "isolatedModules": true,
     "allowJs": true,
-    "types": ["vite-plus/test/globals"]
+    "types": ["vite-plus/test/globals", "vite-plus/client"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

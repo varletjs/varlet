@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, h } from 'vue'
 import Card from '..'
-import { delay } from '../../utils/test'
+import { delay, trigger } from '../../utils/test'
 import VarCard from '../Card'
 
 test('card use', () => {
@@ -160,6 +160,61 @@ describe('test card component props', () => {
 
     await wrapper.trigger('mouseleave')
     expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('card hoverable object', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        hoverable: {
+          color: '#f00',
+        },
+      },
+    })
+
+    await wrapper.trigger('mouseenter')
+    const overlay = wrapper.find('.var-hover-overlay')
+    expect(overlay.classes()).toContain('var-hover-overlay--hovering')
+    expect(overlay.attributes('style')).toContain('color: rgb(255, 0, 0)')
+
+    await wrapper.setProps({
+      hoverable: {
+        disabled: true,
+        color: '#0f0',
+      },
+    })
+    await wrapper.trigger('mouseleave')
+    await wrapper.trigger('mouseenter')
+    expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('card ripple object', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        ripple: {
+          color: 'green',
+        },
+      },
+    })
+
+    await trigger(wrapper, 'touchstart')
+    await delay(250)
+    expect(wrapper.find('.var-ripple').element.style.backgroundColor).toBe('green')
+
+    await wrapper.setProps({
+      ripple: {
+        disabled: true,
+        color: 'red',
+      },
+    })
+    await trigger(document, 'touchend')
+    await delay(500)
+    await trigger(wrapper, 'touchstart')
+    await delay(250)
+    expect(wrapper.find('.var-ripple').exists()).toBe(false)
 
     wrapper.unmount()
   })

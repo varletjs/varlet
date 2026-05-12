@@ -20,6 +20,28 @@
 </template>
 ```
 
+### 悬停高亮
+
+```html
+<template>
+  <var-paper hoverable :elevation="2" :width="100" :height="100" />
+</template>
+```
+
+### 自定义水波效果/悬停效果
+
+```html
+<template>
+  <var-paper
+    :elevation="2"
+    :width="100"
+    :height="100"
+    :ripple="{ color: 'var(--color-primary)' }"
+    :hoverable="{ color: 'var(--color-primary)' }"
+  />
+</template>
+```
+
 ### 圆形纸张
 
 ```html
@@ -48,14 +70,6 @@
 </template>
 ```
 
-### 悬停高亮
-
-```html
-<template>
-  <var-paper hoverable :elevation="2" :width="100" :height="100" />
-</template>
-```
-
 ### 弱背景色
 
 `surface="low"` 可以弱化背景色，目前只作用在 MD3 暗色主题。
@@ -73,14 +87,14 @@
 | 参数 | 说明 | 类型 | 默认值  |
 | --- | --- | --- | ---    |
 | `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `false`            |
-| `ripple` | 是否启用水波效果  | _boolean_  | `false` |
+| `ripple` | 是否启用水波效果，支持对象形式 `{ disabled?: boolean, color?: string }`  | _boolean \| object_  | `false` |
 | `radius` | 纸张圆角  | _string \| number_  | `-` |
 | `width` | 纸张宽度  | _string \| number_  | `-` |
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
 | `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，目前只作用在 MD3 暗色主题 | _string_ | `-` |
-| `hoverable`  ***3.16.0*** | 是否开启鼠标悬停效果 | _boolean_ | `false` |
+| `hoverable`  ***3.16.0*** | 是否开启鼠标悬停效果，支持对象形式 `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 
 ### 事件
 

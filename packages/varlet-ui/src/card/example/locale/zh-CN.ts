@@ -13,6 +13,7 @@ export default {
   action1: '操作 1',
   action2: '操作 2',
   showRipple: '水波效果',
+  customInteraction: '自定义水波效果/悬停效果',
   floating: '开启全屏',
   hoverable: '悬停高亮',
   surfaceLow: '弱背景色',
