@@ -57,7 +57,13 @@ export function useChildren<P, C>(key: symbol | string) {
       provider: childProviders[index],
     }))
 
-    pairs.sort((a, b) => vNodes.indexOf(a.instance.vnode) - vNodes.indexOf(b.instance.vnode))
+    const getVNodeIndex = (instance: ComponentInternalInstance) => {
+      const index = vNodes.indexOf(instance.vnode)
+
+      return index === -1 ? Number.MAX_SAFE_INTEGER : index
+    }
+
+    pairs.sort((a, b) => getVNodeIndex(a.instance) - getVNodeIndex(b.instance))
 
     childInstances.splice(0, childInstances.length, ...pairs.map(({ instance }) => instance))
     childProviders.splice(0, childProviders.length, ...pairs.map(({ provider }) => provider))

@@ -244,12 +244,13 @@ test('options api label render and checkmark config', async () => {
   wrapper.unmount()
 })
 
-test('keeps child providers and instances ordered after options reorder', async () => {
-  const values = ['day', 'week', 'month']
+test('keeps child providers and instances ordered after options change', async () => {
+  const values = ['day', 'week', 'month', 'year']
   const options = [
     { label: 'Day', value: 'day' },
     { label: 'Week', value: 'week' },
     { label: 'Month', value: 'month' },
+    { label: 'Year', value: 'year' },
   ]
   const TestSegmentedButtons = {
     components: {
@@ -289,7 +290,7 @@ test('keeps child providers and instances ordered after options reorder', async 
   }
   const wrapper = mount(TestSegmentedButtons, {
     props: {
-      options,
+      options: options.slice(0, 3),
     },
   })
 
@@ -314,6 +315,29 @@ test('keeps child providers and instances ordered after options reorder', async 
   ])
   expect(wrapper.vm.getProviderOrder()).toStrictEqual(['month', 'day', 'week'])
   expect(wrapper.vm.getInstanceOrder()).toStrictEqual(['month', 'day', 'week'])
+
+  await wrapper.setProps({
+    options: [options[2], options[3], options[0], options[1]],
+  })
+  await delay(16)
+
+  expect(wrapper.findAll('.var-segmented-button').map((button) => button.text())).toStrictEqual([
+    'Month',
+    'Year',
+    'Day',
+    'Week',
+  ])
+  expect(wrapper.vm.getProviderOrder()).toStrictEqual(['month', 'year', 'day', 'week'])
+  expect(wrapper.vm.getInstanceOrder()).toStrictEqual(['month', 'year', 'day', 'week'])
+
+  await wrapper.setProps({
+    options: [options[3], options[1]],
+  })
+  await delay(16)
+
+  expect(wrapper.findAll('.var-segmented-button').map((button) => button.text())).toStrictEqual(['Year', 'Week'])
+  expect(wrapper.vm.getProviderOrder()).toStrictEqual(['year', 'week'])
+  expect(wrapper.vm.getInstanceOrder()).toStrictEqual(['year', 'week'])
 
   wrapper.unmount()
 })
