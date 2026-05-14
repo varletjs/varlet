@@ -28,7 +28,7 @@ const value = ref('day')
 <script setup>
 import { ref } from 'vue'
 
-const value = ref(['bold'])
+const value = ref(['day'])
 </script>
 
 <template>
@@ -60,41 +60,6 @@ const value = ref('day')
 </template>
 ```
 
-### Custom Checkmark
-
-Use the `checkmark` slot to customize the checkmark content. When rendering with `options`, you can also set `options.checkmark`.
-
-```html
-<script setup lang="ts">
-import { h, ref } from 'vue'
-
-const value = ref('day')
-
-function renderCheckmark() {
-  return h(
-    'span',
-    {
-      style: {
-        marginRight: '6px',
-        fontWeight: '700',
-      },
-    },
-    '✓'
-  )
-}
-
-const options = [
-  { label: 'Day', value: 'day', checkmark: renderCheckmark },
-  { label: 'Week', value: 'week', checkmark: renderCheckmark },
-  { label: 'Month', value: 'month', checkmark: renderCheckmark },
-]
-</script>
-
-<template>
-  <var-segmented-buttons v-model="value" :options="options" />
-</template>
-```
-
 ### Disabled
 
 ```html
@@ -105,9 +70,9 @@ const disabledValue = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="disabledValue">
+  <var-segmented-buttons v-model="disabledValue" disabled>
     <var-segmented-button checked-value="day">Day</var-segmented-button>
-    <var-segmented-button checked-value="week" disabled>Week</var-segmented-button>
+    <var-segmented-button checked-value="week">Week</var-segmented-button>
     <var-segmented-button checked-value="month">Month</var-segmented-button>
   </var-segmented-buttons>
 </template>
@@ -119,7 +84,7 @@ const disabledValue = ref('day')
 <script setup>
 import { ref } from 'vue'
 
-const readonlyValue = ref('week')
+const readonlyValue = ref('day')
 </script>
 
 <template>
@@ -167,14 +132,14 @@ Use `options` to render segmented buttons from data.
 
 ```html
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-const value = ref('week')
-const options = [
+const value = ref('day')
+const options = computed(() => [
   { label: 'Day', value: 'day' },
   { label: 'Week', value: 'week' },
   { label: 'Month', value: 'month' },
-]
+])
 </script>
 
 <template>
@@ -182,40 +147,24 @@ const options = [
 </template>
 ```
 
-### Render Label
+### Custom Fields
 
-`options.label` can be a render function.
+Customize the format of the data in `options` through the `label-key` and `value-key` attributes.
 
 ```html
 <script setup lang="ts">
-import { h, ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const value = ref('day')
-
-function renderLabel(option, checked) {
-  const text = option.value === 'day' ? 'Day' : option.value === 'week' ? 'Week' : 'Month'
-
-  return h(
-    'span',
-    {
-      style: {
-        color: checked ? 'var(--color-primary)' : 'inherit',
-        fontWeight: checked ? '600' : '500',
-      },
-    },
-    text
-  )
-}
-
-const options = [
-  { label: renderLabel, value: 'day' },
-  { label: renderLabel, value: 'week' },
-  { label: renderLabel, value: 'month' },
-]
+const options = computed(() => [
+  { name: 'Day', id: 'day' },
+  { name: 'Week', id: 'week' },
+  { name: 'Month', id: 'month' },
+])
 </script>
 
 <template>
-  <var-segmented-buttons v-model="value" :options="options" />
+  <var-segmented-buttons v-model="value" :options="options" label-key="name" value-key="id" />
 </template>
 ```
 
@@ -229,6 +178,8 @@ const options = [
 | --- | --- | --- | --- |
 | `v-model` | Bound value, uses a single value in single-select mode and an array in multiple mode | _any_ | `-` |
 | `options` | Option list | _SegmentedButtonsOption[]_ | `[]` |
+| `label-key` | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` | As the key that uniquely identifies value | _string_ | `value` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `disabled` | Whether to disable the segmented buttons group | _boolean_ | `false` |
 | `readonly` | Whether to set the segmented buttons group to readonly | _boolean_ | `false` |
@@ -238,6 +189,16 @@ const options = [
 | `validate-trigger` | Validation trigger timing, can be `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | Validation rules | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 
+#### SegmentedButtonsOption
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| `label` | Content of the segmented button option, can also be a render function | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
+| `checkmark` | Checkmark content of the segmented button option, or whether to display the default checkmark | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
+| `value` | Option value | _any_ | `-` |
+| `disabled` | Whether to disable the segmented button option | _boolean_ | `false` |
+| `ripple` | Whether to enable ripple effect for the segmented button option | _boolean_ | `-` |
+
 #### SegmentedButton Props
 
 | Prop | Description | Type | Default |
@@ -245,8 +206,8 @@ const options = [
 | `checked-value` | Value represented by the segmented button | _any_ | `true` |
 | `disabled` | Whether to disable the segmented button | _boolean_ | `false` |
 | `readonly` | Whether to set the segmented button to readonly | _boolean_ | `false` |
-| `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `-` |
-| `checkmark` | Whether the segmented button displays a checkmark when checked | _boolean_ | `-` |
+| `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `false` |
+| `checkmark` | Whether the segmented button displays a checkmark when checked | _boolean_ | `true` |
 
 ### Events
 
@@ -276,13 +237,3 @@ const options = [
 | --- | --- | --- |
 | `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `-` |
 | `default` | Label content of the segmented button | `-` |
-
-### SegmentedButtonsOption
-
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| `label` | Content of the segmented button option, can also be a render function | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
-| `checkmark` | Checkmark content of the segmented button option, or whether to display the default checkmark | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
-| `value` | Option value | _any_ | `-` |
-| `disabled` | Whether to disable the segmented button option | _boolean_ | `false` |
-| `ripple` | Whether to enable ripple effect for the segmented button option | _boolean_ | `-` |

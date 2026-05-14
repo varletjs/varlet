@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { computed, h, reactive, toRefs } from 'vue'
+import { computed, reactive, toRefs } from 'vue'
 import { t, use } from './locale'
 
 watchLang(use)
@@ -10,15 +10,14 @@ const values = reactive({
   view: 'day',
   styles: ['day'],
   disabledValue: 'day',
-  readonlyValue: 'week',
+  readonlyValue: 'day',
   noCheckmarkValue: 'day',
-  customCheckmarkValue: 'day',
   largeSizeValue: 'day',
   normalSizeValue: 'day',
   smallSizeValue: 'day',
   miniSizeValue: 'day',
-  period: 'week',
-  status: 'day',
+  period: 'day',
+  fieldValue: 'day',
 })
 
 const {
@@ -27,13 +26,12 @@ const {
   disabledValue,
   readonlyValue,
   noCheckmarkValue,
-  customCheckmarkValue,
   largeSizeValue,
   normalSizeValue,
   smallSizeValue,
   miniSizeValue,
   period,
-  status,
+  fieldValue,
 } = toRefs(values)
 
 const periodOptions = computed(() => [
@@ -42,41 +40,10 @@ const periodOptions = computed(() => [
   { label: t('month'), value: 'month' },
 ])
 
-function renderStatusLabel(option: { value: string }, checked: boolean) {
-  const text = option.value === 'day' ? t('day') : option.value === 'week' ? t('week') : t('month')
-
-  return h(
-    'span',
-    {
-      style: {
-        color: checked ? 'var(--color-primary)' : 'inherit',
-        fontWeight: checked ? '600' : '500',
-      },
-    },
-    text,
-  )
-}
-
-const statusOptions = computed(() => [
-  { label: renderStatusLabel, value: 'day' },
-  { label: renderStatusLabel, value: 'week' },
-  { label: renderStatusLabel, value: 'month' },
-])
-
-function renderOptionCheckmark() {
-  return h(
-    'span',
-    {
-      class: 'custom-checkmark',
-    },
-    '✓',
-  )
-}
-
-const checkmarkOptions = computed(() => [
-  { label: t('day'), value: 'day', checkmark: renderOptionCheckmark },
-  { label: t('week'), value: 'week', checkmark: renderOptionCheckmark },
-  { label: t('month'), value: 'month', checkmark: renderOptionCheckmark },
+const fieldOptions = computed(() => [
+  { name: t('day'), id: 'day' },
+  { name: t('week'), id: 'week' },
+  { name: t('month'), id: 'month' },
 ])
 </script>
 
@@ -102,13 +69,10 @@ const checkmarkOptions = computed(() => [
     <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
-  <app-type>{{ t('customCheckmark') }}</app-type>
-  <var-segmented-buttons v-model="customCheckmarkValue" :options="checkmarkOptions" />
-
   <app-type>{{ t('disabled') }}</app-type>
-  <var-segmented-buttons v-model="disabledValue">
+  <var-segmented-buttons v-model="disabledValue" disabled>
     <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
-    <var-segmented-button checked-value="week" disabled>{{ t('week') }}</var-segmented-button>
+    <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
     <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
@@ -155,20 +119,13 @@ const checkmarkOptions = computed(() => [
   <app-type>{{ t('options') }}</app-type>
   <var-segmented-buttons v-model="period" :options="periodOptions" />
 
-  <app-type>{{ t('renderLabel') }}</app-type>
-  <var-segmented-buttons v-model="status" :options="statusOptions" />
+  <app-type>{{ t('customFields') }}</app-type>
+  <var-segmented-buttons v-model="fieldValue" :options="fieldOptions" label-key="name" value-key="id" />
 
   <div class="space" />
 </template>
 
 <style scoped lang="less">
-.custom-checkmark {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 6px;
-  font-weight: 700;
-}
-
 .size-block {
   margin-bottom: 24px;
 }

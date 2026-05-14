@@ -8,7 +8,7 @@ export interface SegmentedButtonProvider {
   disabled: ComputedRef<boolean>
   isFocusing: ComputedRef<boolean>
   sync(value: any): boolean
-  toggle(event?: Event): void
+  toggle(): void
   move(selectWhenFocused: boolean): void
 }
 
@@ -20,7 +20,7 @@ export function useSegmentedButtons() {
   assert(!!bindParent, 'SegmentedButton', '<var-segmented-button/> must in <var-segmented-buttons/>')
 
   return {
-    segmentedButtons: parentProvider!,
-    bindSegmentedButtons: bindParent!,
+    segmentedButtons: parentProvider,
+    bindSegmentedButtons: bindParent,
   }
 }

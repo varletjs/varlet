@@ -28,6 +28,14 @@ export const props = {
     type: Array as PropType<SegmentedButtonsOption[]>,
     default: () => [],
   },
+  labelKey: {
+    type: String,
+    default: 'label',
+  },
+  valueKey: {
+    type: String,
+    default: 'value',
+  },
   multiple: Boolean,
   disabled: Boolean,
   readonly: Boolean,

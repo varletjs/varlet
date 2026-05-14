@@ -4,8 +4,8 @@
       <template v-if="options.length">
         <var-segmented-button
           v-for="option in options"
-          :key="option.value"
-          :checked-value="option.value"
+          :key="getOptionValue(option)"
+          :checked-value="getOptionValue(option)"
           :checkmark="getOptionCheckmark(option)"
           :disabled="option.disabled"
           :ripple="option.ripple"
@@ -92,11 +92,15 @@ export default defineComponent({
     }
 
     function renderOptionLabel(option: SegmentedButtonsOption) {
-      return callOrReturn(option.label, option, isChecked(option.value))
+      return callOrReturn(option[props.labelKey], option, isChecked(getOptionValue(option)))
     }
 
     function hasCustomOptionCheckmark(option: SegmentedButtonsOption) {
       return isFunction(option.checkmark) || isPlainObject(option.checkmark)
+    }
+
+    function getOptionValue(option: SegmentedButtonsOption) {
+      return option[props.valueKey]
     }
 
     function getOptionCheckmark(option: SegmentedButtonsOption) {
@@ -111,7 +115,7 @@ export default defineComponent({
       return callOrReturn(
         option.checkmark as Exclude<SegmentedButtonsOption['checkmark'], boolean | undefined>,
         option,
-        isChecked(option.value),
+        isChecked(getOptionValue(option)),
       )
     }
 
@@ -244,6 +248,7 @@ export default defineComponent({
       renderOptionLabel,
       renderOptionCheckmark,
       hasCustomOptionCheckmark,
+      getOptionValue,
       getOptionCheckmark,
       validate,
       reset,

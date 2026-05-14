@@ -9,11 +9,11 @@ export const props = {
   readonly: Boolean,
   ripple: {
     type: Boolean,
-    default: undefined,
+    default: false,
   },
   checkmark: {
     type: Boolean,
-    default: undefined,
+    default: true,
   },
   onClick: defineListenerProp<(e: Event) => void>(),
 }

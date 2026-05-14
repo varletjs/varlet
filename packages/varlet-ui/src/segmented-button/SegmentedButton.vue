@@ -18,7 +18,7 @@
       )
     "
     type="button"
-    @click="toggle"
+    @click="handleClick"
     @focus="isFocusing = true"
     @blur="isFocusing = false"
   >
@@ -78,13 +78,19 @@ export default defineComponent({
 
     bindSegmentedButtons(segmentedButtonProvider)
 
-    function toggle(event?: Event) {
+    function handleClick(event: Event) {
       if (mergedDisabled.value) {
         return
       }
 
-      if (event) {
-        call(props.onClick, event)
+      call(props.onClick, event)
+
+      toggle()
+    }
+
+    function toggle() {
+      if (mergedDisabled.value) {
+        return
       }
 
       if (mergedReadonly.value) {
@@ -126,6 +132,7 @@ export default defineComponent({
       n,
       classes,
       handleHovering,
+      handleClick,
       toggle,
     }
   },
