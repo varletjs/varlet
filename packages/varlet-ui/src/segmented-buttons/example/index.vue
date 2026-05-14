@@ -63,24 +63,24 @@ const fieldOptions = computed(() => [
   </var-segmented-buttons>
 
   <app-type>{{ t('disableCheckmark') }}</app-type>
-  <var-segmented-buttons v-model="noCheckmarkValue" :checkmark="false">
-    <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
-    <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
-    <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
+  <var-segmented-buttons v-model="noCheckmarkValue">
+    <var-segmented-button checked-value="day" :checkmark="false">{{ t('day') }}</var-segmented-button>
+    <var-segmented-button checked-value="week" :checkmark="false">{{ t('week') }}</var-segmented-button>
+    <var-segmented-button checked-value="month" :checkmark="false">{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-segmented-buttons v-model="disabledValue" disabled>
-    <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
-    <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
-    <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
+  <var-segmented-buttons v-model="disabledValue">
+    <var-segmented-button checked-value="day" disabled>{{ t('day') }}</var-segmented-button>
+    <var-segmented-button checked-value="week" disabled>{{ t('week') }}</var-segmented-button>
+    <var-segmented-button checked-value="month" disabled>{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
   <app-type>{{ t('readonly') }}</app-type>
-  <var-segmented-buttons v-model="readonlyValue" readonly>
-    <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
-    <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
-    <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
+  <var-segmented-buttons v-model="readonlyValue">
+    <var-segmented-button checked-value="day" readonly>{{ t('day') }}</var-segmented-button>
+    <var-segmented-button checked-value="week" readonly>{{ t('week') }}</var-segmented-button>
+    <var-segmented-button checked-value="month" readonly>{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
   <app-type>{{ t('size') }}</app-type>

@@ -1,20 +1,20 @@
 <template>
   <button
     ref="segmentedButton"
-    v-ripple="{ disabled: mergedReadonly || mergedDisabled || !enableRipple }"
+    v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
     v-hover:desktop="handleHovering"
     :role="role"
     :aria-checked="checked"
-    :aria-disabled="mergedDisabled || mergedReadonly"
-    :disabled="mergedDisabled"
-    :tabindex="mergedDisabled ? undefined : '0'"
+    :aria-disabled="formDisabled || disabled || formReadonly || readonly"
+    :disabled="formDisabled || disabled"
+    :tabindex="formDisabled || disabled ? undefined : '0'"
     :class="
       classes(
         n(),
         n('$--box'),
         n(`--${size}`),
         [checked, n('--checked'), n('--unchecked')],
-        [mergedDisabled, n('--disabled')],
+        [formDisabled || disabled, n('--disabled')],
       )
     "
     type="button"
@@ -32,13 +32,17 @@
       <slot />
     </div>
 
-    <var-hover-overlay :hovering="!mergedDisabled && hovering" :focusing="!mergedDisabled && isFocusing" />
+    <var-hover-overlay
+      :hovering="!formDisabled && !disabled && hovering"
+      :focusing="!formDisabled && !disabled && isFocusing"
+    />
   </button>
 </template>
 
 <script lang="ts">
 import { call, isArray } from '@varlet/shared'
 import { computed, defineComponent, ref } from 'vue'
+import { useForm } from '../form/provide'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
@@ -60,16 +64,13 @@ export default defineComponent({
     const checked = ref(false)
     const { segmentedButtons, bindSegmentedButtons } = useSegmentedButtons()
     const { hovering, handleHovering } = useHoverOverlay()
-    const mergedDisabled = computed(() => segmentedButtons.disabled.value || props.disabled || false)
-    const mergedReadonly = computed(() => segmentedButtons.readonly.value || props.readonly || false)
-    const enableRipple = computed(() => props.ripple ?? segmentedButtons.ripple.value ?? true)
-    const checkmark = computed(() => props.checkmark ?? segmentedButtons.checkmark.value ?? true)
+    const { form } = useForm()
     const role = computed(() => (segmentedButtons.multiple.value ? 'checkbox' : 'radio'))
     const size = computed(() => segmentedButtons.size.value)
 
     const segmentedButtonProvider: SegmentedButtonProvider = {
       checked: computed(() => checked.value),
-      disabled: mergedDisabled,
+      disabled: computed(() => form?.disabled.value || props.disabled),
       isFocusing: computed(() => isFocusing.value),
       sync,
       toggle,
@@ -79,7 +80,7 @@ export default defineComponent({
     bindSegmentedButtons(segmentedButtonProvider)
 
     function handleClick(event: Event) {
-      if (mergedDisabled.value) {
+      if (form?.disabled.value || props.disabled) {
         return
       }
 
@@ -89,11 +90,11 @@ export default defineComponent({
     }
 
     function toggle() {
-      if (mergedDisabled.value) {
+      if (form?.disabled.value || props.disabled) {
         return
       }
 
-      if (mergedReadonly.value) {
+      if (form?.readonly.value || props.readonly) {
         return
       }
 
@@ -107,13 +108,13 @@ export default defineComponent({
     }
 
     function move(selectWhenFocused: boolean) {
-      if (mergedDisabled.value) {
+      if (form?.disabled.value || props.disabled) {
         return
       }
 
       segmentedButton.value!.focus()
 
-      if (selectWhenFocused && !mergedReadonly.value) {
+      if (selectWhenFocused && !form?.readonly.value && !props.readonly) {
         segmentedButton.value!.click()
       }
     }
@@ -122,11 +123,9 @@ export default defineComponent({
       segmentedButton,
       isFocusing,
       checked,
+      formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       hovering,
-      mergedDisabled,
-      mergedReadonly,
-      enableRipple,
-      checkmark,
       size,
       role,
       n,

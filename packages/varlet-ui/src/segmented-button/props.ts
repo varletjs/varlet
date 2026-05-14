@@ -3,13 +3,13 @@ import { defineListenerProp } from '../utils/components'
 export const props = {
   checkedValue: {
     type: [String, Number, Boolean, Object, Array],
-    default: true,
+    default: undefined,
   },
   disabled: Boolean,
   readonly: Boolean,
   ripple: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   checkmark: {
     type: Boolean,

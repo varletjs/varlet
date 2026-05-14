@@ -1,10 +1,13 @@
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { computed, createApp, nextTick } from 'vue'
 import SegmentedButtons from '..'
+import { useChildren } from '../../../../varlet-use/src/useChildren'
+import VarForm from '../../form/Form'
 import SegmentedButton from '../../segmented-button'
 import VarSegmentedButton from '../../segmented-button/SegmentedButton.vue'
 import { delay, triggerKeyboard } from '../../utils/test'
+import { SEGMENTED_BUTTONS_BIND_BUTTON_KEY } from '../provide'
 import VarSegmentedButtons from '../SegmentedButtons.vue'
 
 test('segmented buttons plugin', () => {
@@ -73,6 +76,63 @@ test('multiple select', async () => {
   wrapper.unmount()
 })
 
+test('segmented button role and size', () => {
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    template: `
+      <var-segmented-buttons model-value="bold" multiple size="large">
+        <var-segmented-button checked-value="bold">Bold</var-segmented-button>
+        <var-segmented-button checked-value="italic">Italic</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  const group = wrapper.find('.var-segmented-buttons')
+  const buttons = wrapper.findAll('.var-segmented-button')
+
+  expect(group.attributes('role')).toBe('group')
+  expect(buttons[0].attributes('role')).toBe('checkbox')
+  expect(buttons[0].classes()).toContain('var-segmented-button--large')
+  expect(buttons[1].classes()).toContain('var-segmented-button--large')
+
+  wrapper.unmount()
+})
+
+test('segmented button syncs checked state when model changes', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: 'day',
+    },
+    slots: {
+      default: `
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week">Week</var-segmented-button>
+      `,
+    },
+    global: {
+      components: {
+        [VarSegmentedButton.name]: VarSegmentedButton,
+      },
+    },
+  })
+
+  await delay(16)
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+  expect(buttons[0].attributes('aria-checked')).toBe('true')
+  expect(buttons[1].attributes('aria-checked')).toBe('false')
+
+  await wrapper.setProps({ modelValue: 'week' })
+
+  expect(buttons[0].attributes('aria-checked')).toBe('false')
+  expect(buttons[1].attributes('aria-checked')).toBe('true')
+
+  wrapper.unmount()
+})
+
 test('options api', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
@@ -108,6 +168,8 @@ test('options api label-key and value-key', async () => {
     },
   })
 
+  await delay(16)
+
   const buttons = wrapper.findAll('.var-segmented-button')
   expect(buttons).toHaveLength(2)
   expect(buttons[0].text()).toContain('Day')
@@ -119,26 +181,123 @@ test('options api label-key and value-key', async () => {
   wrapper.unmount()
 })
 
-test('button click event', async () => {
-  const onClick = vi.fn()
+test('options api disabled option', async () => {
+  const onChange = vi.fn()
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
+      options: [
+        { label: 'Day', value: 'day' },
+        { label: 'Week', value: 'week', disabled: true },
+      ],
+      onChange,
+      'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
     },
-    slots: {
-      default: `
+  })
+
+  await delay(16)
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+  expect(buttons[1].attributes('disabled')).toBeDefined()
+  expect(buttons[1].attributes('aria-disabled')).toBe('true')
+
+  await buttons[1].trigger('click')
+  expect(wrapper.props('modelValue')).toBe('day')
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
+test('keeps child providers and instances ordered after options reorder', async () => {
+  const values = ['day', 'week', 'month']
+  const options = [
+    { label: 'Day', value: 'day' },
+    { label: 'Week', value: 'week' },
+    { label: 'Month', value: 'month' },
+  ]
+  const TestSegmentedButtons = {
+    components: {
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    props: {
+      options: {
+        type: Array,
+        default: () => [],
+      },
+    },
+    setup(_, { expose }) {
+      const { childProviders, childInstances, bindChildren } = useChildren(SEGMENTED_BUTTONS_BIND_BUTTON_KEY)
+
+      bindChildren({
+        multiple: computed(() => false),
+        size: computed(() => 'normal'),
+        onClick: vi.fn(),
+      })
+
+      expose({
+        getProviderOrder: () => childProviders.map((provider) => values.find((value) => provider.sync(value))),
+        getInstanceOrder: () => childInstances.map(({ props }) => props.checkedValue),
+      })
+    },
+    template: `
+      <div>
+        <var-segmented-button
+          v-for="option in options"
+          :key="option.value"
+          :checked-value="option.value"
+        >
+          {{ option.label }}
+        </var-segmented-button>
+      </div>
+    `,
+  }
+  const wrapper = mount(TestSegmentedButtons, {
+    props: {
+      options,
+    },
+  })
+
+  await delay(16)
+
+  expect(wrapper.findAll('.var-segmented-button').map((button) => button.text())).toStrictEqual([
+    'Day',
+    'Week',
+    'Month',
+  ])
+  expect(wrapper.vm.getProviderOrder()).toStrictEqual(['day', 'week', 'month'])
+  expect(wrapper.vm.getInstanceOrder()).toStrictEqual(['day', 'week', 'month'])
+
+  await wrapper.setProps({
+    options: [options[2], options[0], options[1]],
+  })
+
+  expect(wrapper.findAll('.var-segmented-button').map((button) => button.text())).toStrictEqual([
+    'Month',
+    'Day',
+    'Week',
+  ])
+  expect(wrapper.vm.getProviderOrder()).toStrictEqual(['month', 'day', 'week'])
+  expect(wrapper.vm.getInstanceOrder()).toStrictEqual(['month', 'day', 'week'])
+
+  wrapper.unmount()
+})
+
+test('button click event', async () => {
+  const onClick = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    methods: {
+      onClick,
+    },
+    template: `
+      <var-segmented-buttons model-value="day">
         <var-segmented-button checked-value="day">Day</var-segmented-button>
-        <var-segmented-button checked-value="week" :on-click="onClick">Week</var-segmented-button>
-      `,
-    },
-    global: {
-      components: {
-        [VarSegmentedButton.name]: VarSegmentedButton,
-      },
-      mocks: {
-        onClick,
-      },
-    },
+        <var-segmented-button checked-value="week" @click="onClick">Week</var-segmented-button>
+      </var-segmented-buttons>
+    `,
   })
 
   await wrapper.findAll('.var-segmented-button')[1].trigger('click')
@@ -148,35 +307,167 @@ test('button click event', async () => {
   wrapper.unmount()
 })
 
+test('disabled button does not emit click or change', async () => {
+  const onClick = vi.fn()
+  const onChange = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    methods: {
+      onClick,
+      onChange,
+    },
+    template: `
+      <var-segmented-buttons model-value="day" @change="onChange">
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week" disabled @click="onClick">Week</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  const button = wrapper.findAll('.var-segmented-button')[1]
+
+  expect(button.attributes('disabled')).toBeDefined()
+  expect(button.attributes('aria-disabled')).toBe('true')
+  expect(button.classes()).toContain('var-segmented-button--disabled')
+
+  await button.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
+test('form disabled disables segmented button', async () => {
+  const onClick = vi.fn()
+  const onChange = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarForm.name]: VarForm,
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    methods: {
+      onClick,
+      onChange,
+    },
+    template: `
+      <var-form disabled>
+        <var-segmented-buttons model-value="day" @change="onChange">
+          <var-segmented-button checked-value="day">Day</var-segmented-button>
+          <var-segmented-button checked-value="week" @click="onClick">Week</var-segmented-button>
+        </var-segmented-buttons>
+      </var-form>
+    `,
+  })
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+
+  expect(buttons[0].attributes('disabled')).toBeDefined()
+  expect(buttons[0].attributes('aria-disabled')).toBe('true')
+  expect(buttons[0].classes()).toContain('var-segmented-button--disabled')
+  expect(buttons[1].attributes('disabled')).toBeDefined()
+
+  await buttons[1].trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
 test('readonly button click event without change', async () => {
   const onClick = vi.fn()
   const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    methods: {
+      onClick,
+      onChange,
+      onUpdateModelValue,
+    },
+    template: `
+      <var-segmented-buttons model-value="day" @change="onChange" @update:model-value="onUpdateModelValue">
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week" readonly @click="onClick">Week</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  await wrapper.findAll('.var-segmented-button')[1].trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(1)
+  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
+test('form readonly prevents segmented button value change', async () => {
+  const onClick = vi.fn()
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarForm.name]: VarForm,
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    methods: {
+      onClick,
+      onChange,
+      onUpdateModelValue,
+    },
+    template: `
+      <var-form readonly>
+        <var-segmented-buttons model-value="day" @change="onChange" @update:model-value="onUpdateModelValue">
+          <var-segmented-button checked-value="day">Day</var-segmented-button>
+          <var-segmented-button checked-value="week" @click="onClick">Week</var-segmented-button>
+        </var-segmented-buttons>
+      </var-form>
+    `,
+  })
+
+  const button = wrapper.findAll('.var-segmented-button')[1]
+
+  expect(button.attributes('disabled')).toBeUndefined()
+  expect(button.attributes('aria-disabled')).toBe('true')
+
+  await button.trigger('click')
+  expect(onClick).toHaveBeenCalledTimes(1)
+  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
+})
+
+test('segmented button checkmark slot', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
-      readonly: true,
-      onChange,
-      'onUpdate:modelValue': vi.fn(),
     },
     slots: {
       default: `
-        <var-segmented-button checked-value="day">Day</var-segmented-button>
-        <var-segmented-button checked-value="week" :on-click="onClick">Week</var-segmented-button>
+        <var-segmented-button checked-value="day">
+          <template #checkmark>Selected</template>
+          Day
+        </var-segmented-button>
       `,
     },
     global: {
       components: {
         [VarSegmentedButton.name]: VarSegmentedButton,
       },
-      mocks: {
-        onClick,
-      },
     },
   })
 
-  await wrapper.findAll('.var-segmented-button')[1].trigger('click')
-  expect(onClick).toHaveBeenCalledTimes(1)
-  expect(onChange).toHaveBeenCalledTimes(0)
+  await delay(16)
+
+  expect(wrapper.text()).toContain('Selected')
 
   wrapper.unmount()
 })
@@ -185,11 +476,11 @@ test('checkmark prop', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
-      checkmark: false,
+      'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
     },
     slots: {
       default: `
-        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="day" :checkmark="false">Day</var-segmented-button>
         <var-segmented-button checked-value="week" :checkmark="true">Week</var-segmented-button>
       `,
     },
@@ -205,12 +496,13 @@ test('checkmark prop', async () => {
   expect(buttons[1].find('.var-icon').exists()).toBeFalsy()
 
   await buttons[1].trigger('click')
+  await delay(16)
   expect(buttons[1].find('.var-icon').exists()).toBeTruthy()
 
   wrapper.unmount()
 })
 
-test('options api custom checkmark render', () => {
+test('options api custom checkmark render', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
@@ -228,6 +520,8 @@ test('options api custom checkmark render', () => {
       ],
     },
   })
+
+  await delay(16)
 
   expect(wrapper.text()).toContain('♥')
 
@@ -283,6 +577,9 @@ test('keyboard multiple select', async () => {
 
   await buttons[0].trigger('focus')
   await triggerKeyboard(window, 'keydown', { key: 'ArrowRight' })
+  await buttons[0].trigger('blur')
+  await buttons[1].trigger('focus')
+  await nextTick()
   expect(wrapper.vm.value).toStrictEqual([])
 
   await triggerKeyboard(window, 'keyup', { key: ' ' })
@@ -291,18 +588,17 @@ test('keyboard multiple select', async () => {
   wrapper.unmount()
 })
 
-test('disabled group', async () => {
+test('disabled button', async () => {
   const onChange = vi.fn()
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'list',
-      disabled: true,
       onChange,
     },
     slots: {
       default: `
         <var-segmented-button checked-value="list">List</var-segmented-button>
-        <var-segmented-button checked-value="card">Card</var-segmented-button>
+        <var-segmented-button checked-value="card" disabled>Card</var-segmented-button>
       `,
     },
     global: {

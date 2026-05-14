@@ -37,16 +37,6 @@ export const props = {
     default: 'value',
   },
   multiple: Boolean,
-  disabled: Boolean,
-  readonly: Boolean,
-  ripple: {
-    type: Boolean,
-    default: true,
-  },
-  checkmark: {
-    type: Boolean,
-    default: true,
-  },
   size: {
     type: String as PropType<SegmentedButtonsSize>,
     default: 'normal',

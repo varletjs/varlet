@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, isArray, isFunction, isPlainObject } from '@varlet/shared'
+import { call, callOrReturn, isArray, isBoolean, isFunction, isPlainObject } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import VarFormDetails from '../form-details'
@@ -58,10 +58,6 @@ export default defineComponent({
 
     const segmentedButtonsProvider: SegmentedButtonsProvider = {
       multiple: computed(() => props.multiple),
-      disabled: computed(() => props.disabled),
-      readonly: computed(() => props.readonly),
-      ripple: computed(() => props.ripple),
-      checkmark: computed(() => props.checkmark),
       size: computed(() => props.size as SegmentedButtonsSize),
       onClick,
     }
@@ -76,6 +72,7 @@ export default defineComponent({
     watch(() => length.value, syncButtons)
 
     bindButtons(segmentedButtonsProvider)
+    nextTick(syncButtons)
     call(bindForm, segmentedButtonsValidationProvider)
 
     useEventListener(() => window, 'keydown', handleKeydown)
@@ -108,7 +105,7 @@ export default defineComponent({
         return
       }
 
-      return typeof option.checkmark === 'boolean' ? option.checkmark : true
+      return isBoolean(option.checkmark) ? option.checkmark : true
     }
 
     function renderOptionCheckmark(option: SegmentedButtonsOption) {

@@ -42,7 +42,7 @@ const value = ref(['day'])
 
 ### 取消勾选图标
 
-默认情况下，选中项会显示勾选图标。可以通过 `checkmark` 关闭。
+默认情况下，选中项会显示勾选图标。可以通过 `SegmentedButton` 的 `checkmark` 关闭。
 
 ```html
 <script setup>
@@ -52,10 +52,10 @@ const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="value" :checkmark="false">
-    <var-segmented-button checked-value="day">天</var-segmented-button>
-    <var-segmented-button checked-value="week">周</var-segmented-button>
-    <var-segmented-button checked-value="month">月</var-segmented-button>
+  <var-segmented-buttons v-model="value">
+    <var-segmented-button checked-value="day" :checkmark="false">天</var-segmented-button>
+    <var-segmented-button checked-value="week" :checkmark="false">周</var-segmented-button>
+    <var-segmented-button checked-value="month" :checkmark="false">月</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -70,10 +70,10 @@ const disabledValue = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="disabledValue" disabled>
-    <var-segmented-button checked-value="day">天</var-segmented-button>
-    <var-segmented-button checked-value="week">周</var-segmented-button>
-    <var-segmented-button checked-value="month">月</var-segmented-button>
+  <var-segmented-buttons v-model="disabledValue">
+    <var-segmented-button checked-value="day" disabled>天</var-segmented-button>
+    <var-segmented-button checked-value="week" disabled>周</var-segmented-button>
+    <var-segmented-button checked-value="month" disabled>月</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -88,10 +88,10 @@ const readonlyValue = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="readonlyValue" readonly>
-    <var-segmented-button checked-value="day">天</var-segmented-button>
-    <var-segmented-button checked-value="week">周</var-segmented-button>
-    <var-segmented-button checked-value="month">月</var-segmented-button>
+  <var-segmented-buttons v-model="readonlyValue">
+    <var-segmented-button checked-value="day" readonly>天</var-segmented-button>
+    <var-segmented-button checked-value="week" readonly>周</var-segmented-button>
+    <var-segmented-button checked-value="month" readonly>月</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -131,7 +131,7 @@ const readonlyValue = ref('day')
 通过 `options` 可以根据数据渲染分段按钮。
 
 ```html
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
 
 const value = ref('day')
@@ -152,7 +152,7 @@ const options = computed(() => [
 通过 `label-key` 和 `value-key` 属性自定义 `options` 中数据的格式。
 
 ```html
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
 
 const value = ref('day')
@@ -181,10 +181,6 @@ const options = computed(() => [
 | `label-key` | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
-| `disabled` | 是否禁用分段按钮组 | _boolean_ | `false` |
-| `readonly` | 是否将分段按钮组设为只读 | _boolean_ | `false` |
-| `ripple` | 是否为分段按钮组开启水波纹效果 | _boolean_ | `true` |
-| `checkmark` | 分段按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 | `size` | 分段按钮尺寸，可选值为 `mini` `small` `normal` `large` | _string_ | `normal` |
 | `validate-trigger` | 校验触发时机，可选值为 `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | 校验规则 | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
@@ -203,10 +199,10 @@ const options = computed(() => [
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `checked-value` | 分段按钮对应的值 | _any_ | `true` |
+| `checked-value` | 分段按钮对应的值 | _any_ | `-` |
 | `disabled` | 是否禁用分段按钮 | _boolean_ | `false` |
 | `readonly` | 是否将分段按钮设为只读 | _boolean_ | `false` |
-| `ripple` | 是否为分段按钮开启水波纹效果 | _boolean_ | `false` |
+| `ripple` | 是否为分段按钮开启水波纹效果 | _boolean_ | `true` |
 | `checkmark` | 分段按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 
 ### 事件

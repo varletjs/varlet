@@ -3,6 +3,7 @@ import {
   computed,
   getCurrentInstance,
   isVNode,
+  onUpdated,
   provide,
   reactive,
   type ComponentInternalInstance,
@@ -82,8 +83,11 @@ export function useChildren<P, C>(key: symbol | string) {
     })
   }
 
+  onUpdated(sortInstances)
+
   return {
     length,
+    childInstances,
     childProviders,
     bindChildren,
   }

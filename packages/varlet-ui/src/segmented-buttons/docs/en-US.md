@@ -42,7 +42,7 @@ const value = ref(['day'])
 
 ### Disable Checkmark
 
-By default, checked items display a checkmark. You can disable it with `checkmark`.
+By default, checked items display a checkmark. You can disable it with `checkmark` on `SegmentedButton`.
 
 ```html
 <script setup>
@@ -52,10 +52,10 @@ const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="value" :checkmark="false">
-    <var-segmented-button checked-value="day">Day</var-segmented-button>
-    <var-segmented-button checked-value="week">Week</var-segmented-button>
-    <var-segmented-button checked-value="month">Month</var-segmented-button>
+  <var-segmented-buttons v-model="value">
+    <var-segmented-button checked-value="day" :checkmark="false">Day</var-segmented-button>
+    <var-segmented-button checked-value="week" :checkmark="false">Week</var-segmented-button>
+    <var-segmented-button checked-value="month" :checkmark="false">Month</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -70,10 +70,10 @@ const disabledValue = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="disabledValue" disabled>
-    <var-segmented-button checked-value="day">Day</var-segmented-button>
-    <var-segmented-button checked-value="week">Week</var-segmented-button>
-    <var-segmented-button checked-value="month">Month</var-segmented-button>
+  <var-segmented-buttons v-model="disabledValue">
+    <var-segmented-button checked-value="day" disabled>Day</var-segmented-button>
+    <var-segmented-button checked-value="week" disabled>Week</var-segmented-button>
+    <var-segmented-button checked-value="month" disabled>Month</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -88,10 +88,10 @@ const readonlyValue = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="readonlyValue" readonly>
-    <var-segmented-button checked-value="day">Day</var-segmented-button>
-    <var-segmented-button checked-value="week">Week</var-segmented-button>
-    <var-segmented-button checked-value="month">Month</var-segmented-button>
+  <var-segmented-buttons v-model="readonlyValue">
+    <var-segmented-button checked-value="day" readonly>Day</var-segmented-button>
+    <var-segmented-button checked-value="week" readonly>Week</var-segmented-button>
+    <var-segmented-button checked-value="month" readonly>Month</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -131,7 +131,7 @@ const readonlyValue = ref('day')
 Use `options` to render segmented buttons from data.
 
 ```html
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
 
 const value = ref('day')
@@ -152,7 +152,7 @@ const options = computed(() => [
 Customize the format of the data in `options` through the `label-key` and `value-key` attributes.
 
 ```html
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
 
 const value = ref('day')
@@ -181,10 +181,6 @@ const options = computed(() => [
 | `label-key` | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` | As the key that uniquely identifies value | _string_ | `value` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
-| `disabled` | Whether to disable the segmented buttons group | _boolean_ | `false` |
-| `readonly` | Whether to set the segmented buttons group to readonly | _boolean_ | `false` |
-| `ripple` | Whether to enable ripple effect for the segmented buttons group | _boolean_ | `true` |
-| `checkmark` | Whether segmented buttons display a checkmark when checked | _boolean_ | `true` |
 | `size` | Size of segmented buttons, can be `mini` `small` `normal` `large` | _string_ | `normal` |
 | `validate-trigger` | Validation trigger timing, can be `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | Validation rules | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
@@ -203,10 +199,10 @@ const options = computed(() => [
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `checked-value` | Value represented by the segmented button | _any_ | `true` |
+| `checked-value` | Value represented by the segmented button | _any_ | `-` |
 | `disabled` | Whether to disable the segmented button | _boolean_ | `false` |
 | `readonly` | Whether to set the segmented button to readonly | _boolean_ | `false` |
-| `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `false` |
+| `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `true` |
 | `checkmark` | Whether the segmented button displays a checkmark when checked | _boolean_ | `true` |
 
 ### Events
