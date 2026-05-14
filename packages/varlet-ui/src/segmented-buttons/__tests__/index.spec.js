@@ -208,6 +208,42 @@ test('options api disabled option', async () => {
   wrapper.unmount()
 })
 
+test('options api label render and checkmark config', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: 'day',
+      options: [
+        {
+          label: (option, checked) => `${option.value}-${checked}`,
+          value: 'day',
+          checkmark: false,
+        },
+        {
+          label: (option, checked) => `${option.value}-${checked}`,
+          value: 'week',
+          checkmark: true,
+        },
+      ],
+      'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
+    },
+  })
+
+  await delay(16)
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+  expect(buttons[0].text()).toContain('day-true')
+  expect(buttons[0].find('.var-icon').exists()).toBeFalsy()
+  expect(buttons[1].text()).toContain('week-false')
+
+  await buttons[1].trigger('click')
+  await delay(16)
+
+  expect(buttons[1].text()).toContain('week-true')
+  expect(buttons[1].find('.var-icon').exists()).toBeTruthy()
+
+  wrapper.unmount()
+})
+
 test('keeps child providers and instances ordered after options reorder', async () => {
   const values = ['day', 'week', 'month']
   const options = [
@@ -556,6 +592,61 @@ test('keyboard single select', async () => {
   wrapper.unmount()
 })
 
+test('keyboard enter selects focused button', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    data: () => ({
+      value: 'list',
+    }),
+    template: `
+      <var-segmented-buttons v-model="value">
+        <var-segmented-button checked-value="list">List</var-segmented-button>
+        <var-segmented-button checked-value="card">Card</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+
+  await buttons[1].trigger('focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+
+  expect(wrapper.vm.value).toBe('card')
+
+  wrapper.unmount()
+})
+
+test('keyboard navigation skips disabled buttons', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    data: () => ({
+      value: 'list',
+    }),
+    template: `
+      <var-segmented-buttons v-model="value">
+        <var-segmented-button checked-value="list">List</var-segmented-button>
+        <var-segmented-button checked-value="card" disabled>Card</var-segmented-button>
+        <var-segmented-button checked-value="table">Table</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  const buttons = wrapper.findAll('.var-segmented-button')
+
+  await buttons[0].trigger('focus')
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowRight' })
+
+  expect(wrapper.vm.value).toBe('table')
+
+  wrapper.unmount()
+})
+
 test('keyboard multiple select', async () => {
   const wrapper = mount({
     components: {
@@ -645,6 +736,69 @@ test('group validation', async () => {
   await delay(16)
 
   expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('group validation methods', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    data: () => ({
+      value: 'card',
+    }),
+    template: `
+      <var-segmented-buttons
+        ref="segmentedButtons"
+        v-model="value"
+        :rules="[v => v === 'list' || 'You must choose list']"
+      >
+        <var-segmented-button checked-value="list">List</var-segmented-button>
+        <var-segmented-button checked-value="card">Card</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  const { segmentedButtons } = wrapper.vm.$refs
+
+  expect(await segmentedButtons.validate()).toBe(false)
+  await delay(16)
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose list')
+
+  segmentedButtons.resetValidation()
+  await delay(16)
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+
+  segmentedButtons.reset()
+  await delay(16)
+  expect(wrapper.vm.value).toBeUndefined()
+
+  wrapper.unmount()
+})
+
+test('multiple group reset clears value to empty array', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    data: () => ({
+      value: ['bold'],
+    }),
+    template: `
+      <var-segmented-buttons ref="segmentedButtons" v-model="value" multiple>
+        <var-segmented-button checked-value="bold">Bold</var-segmented-button>
+        <var-segmented-button checked-value="italic">Italic</var-segmented-button>
+      </var-segmented-buttons>
+    `,
+  })
+
+  wrapper.vm.$refs.segmentedButtons.reset()
+  await delay(16)
+
+  expect(wrapper.vm.value).toStrictEqual([])
 
   wrapper.unmount()
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { computed, reactive, toRefs } from 'vue'
+import { computed, reactive, ref, toRefs } from 'vue'
 import { t, use } from './locale'
 
 watchLang(use)
@@ -18,6 +18,7 @@ const values = reactive({
   miniSizeValue: 'day',
   period: 'day',
   fieldValue: 'day',
+  validationValue: undefined,
 })
 
 const {
@@ -32,7 +33,10 @@ const {
   miniSizeValue,
   period,
   fieldValue,
+  validationValue,
 } = toRefs(values)
+
+const form = ref()
 
 const periodOptions = computed(() => [
   { label: t('day'), value: 'day' },
@@ -45,6 +49,10 @@ const fieldOptions = computed(() => [
   { name: t('week'), id: 'week' },
   { name: t('month'), id: 'month' },
 ])
+
+function validate() {
+  form.value.validate()
+}
 </script>
 
 <template>
@@ -122,12 +130,26 @@ const fieldOptions = computed(() => [
   <app-type>{{ t('customFields') }}</app-type>
   <var-segmented-buttons v-model="fieldValue" :options="fieldOptions" label-key="name" value-key="id" />
 
+  <app-type>{{ t('formValidation') }}</app-type>
+  <var-form ref="form">
+    <var-segmented-buttons v-model="validationValue" :rules="[(v) => v === 'day' || t('chooseDay')]">
+      <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
+      <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
+      <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
+    </var-segmented-buttons>
+  </var-form>
+  <var-button class="validate-button" type="primary" block @click="validate">{{ t('validate') }}</var-button>
+
   <div class="space" />
 </template>
 
 <style scoped lang="less">
 .size-block {
   margin-bottom: 24px;
+}
+
+.validate-button {
+  margin-top: 12px;
 }
 
 .space {

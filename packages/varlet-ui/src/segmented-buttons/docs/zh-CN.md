@@ -62,6 +62,8 @@ const value = ref('day')
 
 ### 禁用状态
 
+通过 `SegmentedButton` 的 `disabled` 禁用分段按钮。
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -79,6 +81,8 @@ const disabledValue = ref('day')
 ```
 
 ### 只读状态
+
+通过 `SegmentedButton` 的 `readonly` 将分段按钮设置为只读。
 
 ```html
 <script setup>
@@ -168,6 +172,35 @@ const options = computed(() => [
 </template>
 ```
 
+### 表单验证
+
+通过 `rules` 对表单中的分段按钮组进行校验。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const form = ref()
+const value = ref()
+
+function validate() {
+  form.value.validate()
+}
+</script>
+
+<template>
+  <var-form ref="form">
+    <var-segmented-buttons v-model="value" :rules="[(v) => v === 'day' || '请选择天']">
+      <var-segmented-button checked-value="day">天</var-segmented-button>
+      <var-segmented-button checked-value="week">周</var-segmented-button>
+      <var-segmented-button checked-value="month">月</var-segmented-button>
+    </var-segmented-buttons>
+  </var-form>
+
+  <var-button type="primary" block @click="validate">验证</var-button>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -205,6 +238,16 @@ const options = computed(() => [
 | `ripple` | 是否为分段按钮开启水波纹效果 | _boolean_ | `true` |
 | `checkmark` | 分段按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 
+### 方法
+
+#### SegmentedButtons Methods
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
+| `resetValidation` | 清空校验信息 | `-` | `-` |
+| `reset` | 清空绑定的值和校验信息 | `-` | `-` |
+
 ### 事件
 
 #### SegmentedButtons Events
@@ -233,3 +276,37 @@ const options = computed(() => [
 | --- | --- | --- |
 | `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `-` |
 | `default` | 分段按钮的文字或标签内容 | `-` |
+
+### 样式变量
+
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+#### SegmentedButtons Variables
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--segmented-buttons-border-color` | `var(--color-outline)` |
+| `--segmented-buttons-border-radius` | `4px` |
+| `--segmented-buttons-border-width` | `1px` |
+
+#### SegmentedButton Variables
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--segmented-button-text-color` | `var(--color-text)` |
+| `--segmented-button-checked-background` | `var(--color-primary-container)` |
+| `--segmented-button-checked-text-color` | `var(--color-on-primary-container)` |
+| `--segmented-button-disabled-background` | `var(--color-disabled)` |
+| `--segmented-button-disabled-color` | `var(--color-text-disabled)` |
+| `--segmented-button-mini-padding` | `0 8px` |
+| `--segmented-button-small-padding` | `0 12px` |
+| `--segmented-button-normal-padding` | `0 16px` |
+| `--segmented-button-large-padding` | `0 22px` |
+| `--segmented-button-mini-height` | `20px` |
+| `--segmented-button-small-height` | `28px` |
+| `--segmented-button-normal-height` | `36px` |
+| `--segmented-button-large-height` | `44px` |
+| `--segmented-button-mini-font-size` | `var(--font-size-xs)` |
+| `--segmented-button-small-font-size` | `var(--font-size-sm)` |
+| `--segmented-button-normal-font-size` | `var(--font-size-md)` |
+| `--segmented-button-large-font-size` | `var(--font-size-lg)` |

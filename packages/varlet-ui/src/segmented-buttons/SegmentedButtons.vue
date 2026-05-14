@@ -54,7 +54,13 @@ export default defineComponent({
   setup(props) {
     const { length, buttons, bindButtons } = useSegmentedButtons()
     const { bindForm } = useForm()
-    const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
 
     const segmentedButtonsProvider: SegmentedButtonsProvider = {
       multiple: computed(() => props.multiple),
@@ -228,10 +234,12 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
+    // expose
     function validate() {
       return v(props.rules, getSafeModelValue())
     }
 
+    // expose
     function reset() {
       change(props.multiple ? [] : undefined)
       resetValidation()

@@ -62,6 +62,8 @@ const value = ref('day')
 
 ### Disabled
 
+Use `disabled` on `SegmentedButton` to disable segmented buttons.
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -79,6 +81,8 @@ const disabledValue = ref('day')
 ```
 
 ### Readonly
+
+Use `readonly` on `SegmentedButton` to make segmented buttons readonly.
 
 ```html
 <script setup>
@@ -168,6 +172,35 @@ const options = computed(() => [
 </template>
 ```
 
+### Form Validation
+
+Use `rules` to validate the segmented buttons group in a form.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const form = ref()
+const value = ref()
+
+function validate() {
+  form.value.validate()
+}
+</script>
+
+<template>
+  <var-form ref="form">
+    <var-segmented-buttons v-model="value" :rules="[(v) => v === 'day' || 'Please choose day']">
+      <var-segmented-button checked-value="day">Day</var-segmented-button>
+      <var-segmented-button checked-value="week">Week</var-segmented-button>
+      <var-segmented-button checked-value="month">Month</var-segmented-button>
+    </var-segmented-buttons>
+  </var-form>
+
+  <var-button type="primary" block @click="validate">Validate</var-button>
+</template>
+```
+
 ## API
 
 ### Props
@@ -205,6 +238,16 @@ const options = computed(() => [
 | `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `true` |
 | `checkmark` | Whether the segmented button displays a checkmark when checked | _boolean_ | `true` |
 
+### Methods
+
+#### SegmentedButtons Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
+| `reset` | Clear the bound value and validate messages | `-` | `-` |
+
 ### Events
 
 #### SegmentedButtons Events
@@ -233,3 +276,37 @@ const options = computed(() => [
 | --- | --- | --- |
 | `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `-` |
 | `default` | Label content of the segmented button | `-` |
+
+### Style Variables
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+#### SegmentedButtons Variables
+
+| Variable | Default |
+| --- | --- |
+| `--segmented-buttons-border-color` | `var(--color-outline)` |
+| `--segmented-buttons-border-radius` | `4px` |
+| `--segmented-buttons-border-width` | `1px` |
+
+#### SegmentedButton Variables
+
+| Variable | Default |
+| --- | --- |
+| `--segmented-button-text-color` | `var(--color-text)` |
+| `--segmented-button-checked-background` | `var(--color-primary-container)` |
+| `--segmented-button-checked-text-color` | `var(--color-on-primary-container)` |
+| `--segmented-button-disabled-background` | `var(--color-disabled)` |
+| `--segmented-button-disabled-color` | `var(--color-text-disabled)` |
+| `--segmented-button-mini-padding` | `0 8px` |
+| `--segmented-button-small-padding` | `0 12px` |
+| `--segmented-button-normal-padding` | `0 16px` |
+| `--segmented-button-large-padding` | `0 22px` |
+| `--segmented-button-mini-height` | `20px` |
+| `--segmented-button-small-height` | `28px` |
+| `--segmented-button-normal-height` | `36px` |
+| `--segmented-button-large-height` | `44px` |
+| `--segmented-button-mini-font-size` | `var(--font-size-xs)` |
+| `--segmented-button-small-font-size` | `var(--font-size-sm)` |
+| `--segmented-button-normal-font-size` | `var(--font-size-md)` |
+| `--segmented-button-large-font-size` | `var(--font-size-lg)` |

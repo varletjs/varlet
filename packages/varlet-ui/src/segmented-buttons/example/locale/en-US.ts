@@ -7,7 +7,10 @@ export default {
   size: 'Size',
   options: 'Options API',
   customFields: 'Custom Fields',
+  formValidation: 'Form Validation',
   day: 'Day',
   week: 'Week',
   month: 'Month',
+  chooseDay: 'Please choose day',
+  validate: 'Validate',
 }
