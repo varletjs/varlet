@@ -694,6 +694,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'SegmentedButtons 分段按钮',
+          'en-US': 'SegmentedButtons',
+        },
+        doc: 'segmented-buttons',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Radio 单选框',
           'en-US': 'Radio',
         },

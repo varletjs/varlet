@@ -1,0 +1,82 @@
+:root {
+  --segmented-button-text-color: var(--color-text);
+  --segmented-button-checked-background: var(--color-primary-container);
+  --segmented-button-checked-text-color: var(--color-on-primary-container);
+  --segmented-button-disabled-color: var(--color-text-disabled);
+  --segmented-button-mini-padding: 0 8px;
+  --segmented-button-small-padding: 0 12px;
+  --segmented-button-normal-padding: 0 16px;
+  --segmented-button-large-padding: 0 22px;
+  --segmented-button-mini-height: 20px;
+  --segmented-button-small-height: 28px;
+  --segmented-button-normal-height: 36px;
+  --segmented-button-large-height: 44px;
+  --segmented-button-mini-font-size: var(--font-size-xs);
+  --segmented-button-small-font-size: var(--font-size-sm);
+  --segmented-button-normal-font-size: var(--font-size-md);
+  --segmented-button-large-font-size: var(--font-size-lg);
+}
+
+.var-segmented-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--segmented-button-text-color);
+  user-select: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon[var-segmented-button-cover] {
+    font-size: 18px;
+    margin-right: 6px;
+  }
+
+  &--normal {
+    height: var(--segmented-button-normal-height);
+    padding: var(--segmented-button-normal-padding);
+    font-size: var(--segmented-button-normal-font-size);
+  }
+
+  &--large {
+    height: var(--segmented-button-large-height);
+    padding: var(--segmented-button-large-padding);
+    font-size: var(--segmented-button-large-font-size);
+  }
+
+  &--small {
+    height: var(--segmented-button-small-height);
+    padding: var(--segmented-button-small-padding);
+    font-size: var(--segmented-button-small-font-size);
+  }
+
+  &--mini {
+    height: var(--segmented-button-mini-height);
+    padding: var(--segmented-button-mini-padding);
+    font-size: var(--segmented-button-mini-font-size);
+  }
+
+  &--checked {
+    background-color: var(--segmented-button-checked-background);
+    color: var(--segmented-button-checked-text-color);
+  }
+
+  &--disabled {
+    color: var(--segmented-button-disabled-color);
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,25 @@
+:root {
+  --segmented-buttons-border-color: var(--color-outline);
+  --segmented-buttons-border-radius: 4px;
+  --segmented-buttons-border-width: 1px;
+}
+
+.var-segmented-buttons {
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+  border: var(--segmented-buttons-border-width) solid var(--segmented-buttons-border-color);
+  border-radius: var(--segmented-buttons-border-radius);
+
+  &__wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .var-segmented-button {
+    &:not(:last-child) {
+      border-right: var(--segmented-buttons-border-width) solid var(--segmented-buttons-border-color);
+    }
+  }
+}

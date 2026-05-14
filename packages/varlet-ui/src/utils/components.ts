@@ -25,6 +25,7 @@ import {
   type PropType,
   type Ref,
   type VNode,
+  type VNodeChild,
 } from 'vue'
 import type { SafeParseReturnType, ZodType } from 'zod'
 
@@ -244,7 +245,7 @@ export function formatElevation(elevation: number | boolean | string, defaultLev
 export const MaybeVNode = defineComponent({
   props: {
     is: {
-      type: [String, Object] as PropType<string | VNode>,
+      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
     },
 
     tag: {
