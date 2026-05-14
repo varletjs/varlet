@@ -14,9 +14,7 @@
             <maybe-v-node :is="renderOptionCheckmark(option)" />
           </template>
 
-          <template #default>
-            <maybe-v-node :is="renderOptionLabel(option)" />
-          </template>
+          <maybe-v-node :is="renderOptionLabel(option)" />
         </var-segmented-button>
       </template>
 
@@ -28,15 +26,19 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, isArray } from '@varlet/shared'
+import { call, callOrReturn, isArray, isFunction, isPlainObject } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import type { ButtonSize } from '../button/props'
 import VarFormDetails from '../form-details'
 import { useForm, type Validation } from '../form/provide'
 import VarSegmentedButton from '../segmented-button'
 import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
-import { props, type SegmentedButtonsOption } from './props'
+import {
+  props,
+  type SegmentedButtonsOption,
+  type SegmentedButtonsSize,
+  type SegmentedButtonsValidateTrigger,
+} from './props'
 import { useSegmentedButtons, type SegmentedButtonsProvider } from './provide'
 
 const { name, n, classes } = createNamespace('segmented-buttons')
@@ -60,8 +62,8 @@ export default defineComponent({
       readonly: computed(() => props.readonly),
       ripple: computed(() => props.ripple),
       checkmark: computed(() => props.checkmark),
-      size: computed(() => props.size as ButtonSize),
-      onToggle,
+      size: computed(() => props.size as SegmentedButtonsSize),
+      onClick,
     }
 
     const segmentedButtonsValidationProvider: Validation = {
@@ -83,23 +85,23 @@ export default defineComponent({
       return props.multiple ? (isArray(props.modelValue) ? props.modelValue : []) : props.modelValue
     }
 
-    function isSelected(value: any) {
+    function isChecked(value: any) {
       const modelValue = getSafeModelValue()
 
       return isArray(modelValue) ? modelValue.includes(value) : modelValue === value
     }
 
     function renderOptionLabel(option: SegmentedButtonsOption) {
-      return callOrReturn(option.label, option, isSelected(option.value))
+      return callOrReturn(option.label, option, isChecked(option.value))
     }
 
     function hasCustomOptionCheckmark(option: SegmentedButtonsOption) {
-      return option.checkmark != null && option.checkmark !== true && option.checkmark !== false
+      return isFunction(option.checkmark) || isPlainObject(option.checkmark)
     }
 
     function getOptionCheckmark(option: SegmentedButtonsOption) {
       if (option.checkmark == null) {
-        return undefined
+        return
       }
 
       return typeof option.checkmark === 'boolean' ? option.checkmark : true
@@ -109,7 +111,7 @@ export default defineComponent({
       return callOrReturn(
         option.checkmark as Exclude<SegmentedButtonsOption['checkmark'], boolean | undefined>,
         option,
-        isSelected(option.value),
+        isChecked(option.value),
       )
     }
 
@@ -187,24 +189,15 @@ export default defineComponent({
       }
     }
 
-    function validateWithTrigger() {
+    function validateWithTrigger(trigger: SegmentedButtonsValidateTrigger) {
       nextTick(() => {
-        vt(['onChange'], 'onChange', props.rules, getSafeModelValue())
+        vt(props.validateTrigger, trigger, props.rules, getSafeModelValue())
       })
     }
 
-    function syncButtons() {
-      const modelValue = getSafeModelValue()
-      buttons.forEach(({ sync }) => sync(modelValue))
-    }
+    function onClick(changedValue: any, checked: boolean) {
+      validateWithTrigger('onClick')
 
-    function change(changedModelValue: any | any[]) {
-      call(props['onUpdate:modelValue'], changedModelValue)
-      call(props.onChange, changedModelValue)
-      validateWithTrigger()
-    }
-
-    function onToggle(changedValue: any, checked: boolean) {
       if (!props.multiple) {
         if (checked) {
           return
@@ -222,6 +215,17 @@ export default defineComponent({
       }
 
       change([...modelValue, changedValue])
+    }
+
+    function syncButtons() {
+      const modelValue = getSafeModelValue()
+      buttons.forEach(({ sync }) => sync(modelValue))
+    }
+
+    function change(changedModelValue: any | any[]) {
+      call(props['onUpdate:modelValue'], changedModelValue)
+      call(props.onChange, changedModelValue)
+      validateWithTrigger('onChange')
     }
 
     function validate() {

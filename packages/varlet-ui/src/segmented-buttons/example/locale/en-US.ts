@@ -6,7 +6,7 @@ export default {
   disabled: 'Disabled',
   readonly: 'Readonly',
   size: 'Size',
-  options: 'Options',
+  options: 'Options API',
   renderLabel: 'Render Label',
   day: 'Day',
   week: 'Week',

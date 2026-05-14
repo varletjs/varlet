@@ -95,14 +95,13 @@ const options = [
 </template>
 ```
 
-### 禁用与只读
+### 禁用状态
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const disabledValue = ref('day')
-const readonlyValue = ref('week')
 </script>
 
 <template>
@@ -111,7 +110,19 @@ const readonlyValue = ref('week')
     <var-segmented-button checked-value="week" disabled>周</var-segmented-button>
     <var-segmented-button checked-value="month">月</var-segmented-button>
   </var-segmented-buttons>
+</template>
+```
 
+### 只读状态
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const readonlyValue = ref('week')
+</script>
+
+<template>
   <var-segmented-buttons v-model="readonlyValue" readonly>
     <var-segmented-button checked-value="day">天</var-segmented-button>
     <var-segmented-button checked-value="week">周</var-segmented-button>
@@ -124,6 +135,24 @@ const readonlyValue = ref('week')
 
 ```html
 <template>
+  <var-segmented-buttons size="large">
+    <var-segmented-button checked-value="day">天</var-segmented-button>
+    <var-segmented-button checked-value="week">周</var-segmented-button>
+    <var-segmented-button checked-value="month">月</var-segmented-button>
+  </var-segmented-buttons>
+
+  <var-segmented-buttons>
+    <var-segmented-button checked-value="day">天</var-segmented-button>
+    <var-segmented-button checked-value="week">周</var-segmented-button>
+    <var-segmented-button checked-value="month">月</var-segmented-button>
+  </var-segmented-buttons>
+
+  <var-segmented-buttons size="small">
+    <var-segmented-button checked-value="day">天</var-segmented-button>
+    <var-segmented-button checked-value="week">周</var-segmented-button>
+    <var-segmented-button checked-value="month">月</var-segmented-button>
+  </var-segmented-buttons>
+
   <var-segmented-buttons size="mini">
     <var-segmented-button checked-value="day">天</var-segmented-button>
     <var-segmented-button checked-value="week">周</var-segmented-button>
@@ -132,9 +161,9 @@ const readonlyValue = ref('week')
 </template>
 ```
 
-### 选项数据
+### 选项式 API
 
-通过 `options` 可以根据数据渲染分段按钮组。
+通过 `options` 可以根据数据渲染分段按钮。
 
 ```html
 <script setup lang="ts">
@@ -206,6 +235,7 @@ const options = [
 | `ripple` | 是否为分段按钮组开启水波纹效果 | _boolean_ | `true` |
 | `checkmark` | 分段按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 | `size` | 分段按钮尺寸，可选值为 `mini` `small` `normal` `large` | _string_ | `normal` |
+| `validate-trigger` | 校验触发时机，可选值为 `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | 校验规则 | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 
 #### SegmentedButton Props
@@ -226,6 +256,12 @@ const options = [
 | --- | --- | --- |
 | `change` | 分段按钮组的值变化时触发 | `value: any \| any[]` |
 
+#### SegmentedButton Events
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `click` | 点击分段按钮时触发 | `e: Event` |
+
 ### 插槽
 
 #### SegmentedButtons Slots
@@ -238,29 +274,15 @@ const options = [
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `checkmark` | 分段按钮的自定义勾选图标内容 | `-` |
-| `default` | 分段按钮内容 | `-` |
+| `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `-` |
+| `default` | 分段按钮的文字或标签内容 | `-` |
 
 ### SegmentedButtonsOption
 
 | 名称 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `label` | 分段按钮选项内容，也可以是渲染函数 | _string \| VNode \| SegmentedButtonsOptionLabelRender_ | `-` |
-| `checkmark` | 分段按钮选项的勾选图标内容，或是否显示默认勾选图标 | _boolean \| VNode \| SegmentedButtonsOptionCheckmarkRender_ | `-` |
+| `label` | 分段按钮选项内容，也可以是渲染函数 | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
+| `checkmark` | 分段按钮选项的勾选图标内容，或是否显示默认勾选图标 | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `value` | 选项值 | _any_ | `-` |
 | `disabled` | 是否禁用分段按钮选项 | _boolean_ | `false` |
 | `ripple` | 是否为分段按钮选项开启水波纹效果 | _boolean_ | `-` |
-
-### SegmentedButtonsOptionLabelRender
-
-| 名称 | 说明 | 类型 |
-| --- | --- | --- |
-| `option` | 当前选项 | _SegmentedButtonsOption_ |
-| `checked` | 当前选项是否处于选中状态 | _boolean_ |
-
-### SegmentedButtonsOptionCheckmarkRender
-
-| 名称 | 说明 | 类型 |
-| --- | --- | --- |
-| `option` | 当前选项 | _SegmentedButtonsOption_ |
-| `checked` | 当前选项是否处于选中状态 | _boolean_ |

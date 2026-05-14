@@ -8,7 +8,7 @@ export interface SegmentedButtonProvider {
   disabled: ComputedRef<boolean>
   isFocusing: ComputedRef<boolean>
   sync(value: any): boolean
-  toggle(): void
+  toggle(event?: Event): void
   move(selectWhenFocused: boolean): void
 }
 

@@ -6,7 +6,7 @@ export default {
   disabled: '禁用状态',
   readonly: '只读状态',
   size: '尺寸',
-  options: '选项数据',
+  options: '选项式 API',
   renderLabel: '自定义选项内容',
   day: '天',
   week: '周',

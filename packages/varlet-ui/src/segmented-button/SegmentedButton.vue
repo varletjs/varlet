@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { isArray } from '@varlet/shared'
+import { call, isArray } from '@varlet/shared'
 import { computed, defineComponent, ref } from 'vue'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
@@ -78,12 +78,20 @@ export default defineComponent({
 
     bindSegmentedButtons(segmentedButtonProvider)
 
-    function toggle() {
-      if (mergedDisabled.value || mergedReadonly.value) {
+    function toggle(event?: Event) {
+      if (mergedDisabled.value) {
         return
       }
 
-      segmentedButtons.onToggle(props.checkedValue, checked.value)
+      if (event) {
+        call(props.onClick, event)
+      }
+
+      if (mergedReadonly.value) {
+        return
+      }
+
+      segmentedButtons.onClick(props.checkedValue, checked.value)
     }
 
     function sync(v: any) {

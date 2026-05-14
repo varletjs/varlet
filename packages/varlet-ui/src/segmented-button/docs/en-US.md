@@ -12,9 +12,15 @@
 | `ripple` | Whether to enable ripple effect for the current button | _boolean_ | `-` |
 | `checkmark` | Whether the current button displays a checkmark when checked | _boolean_ | `-` |
 
+### Events
+
+| Event | Description | Arguments |
+| --- | --- | --- |
+| `click` | Triggered when the segmented button is clicked | `e: Event` |
+
 ### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `checkmark` | Custom checkmark content | `-` |
-| `default` | Button content | `-` |
+| `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `-` |
+| `default` | Label content of the segmented button | `-` |

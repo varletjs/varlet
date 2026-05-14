@@ -1,3 +1,5 @@
+import { defineListenerProp } from '../utils/components'
+
 export const props = {
   checkedValue: {
     type: [String, Number, Boolean, Object, Array],
@@ -13,4 +15,5 @@ export const props = {
     type: Boolean,
     default: undefined,
   },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }
