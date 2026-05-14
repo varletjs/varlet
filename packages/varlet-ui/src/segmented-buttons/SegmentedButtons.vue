@@ -68,11 +68,10 @@ export default defineComponent({
       resetValidation,
     }
 
-    watch(() => props.modelValue, syncButtons, { deep: true })
+    watch(() => props.modelValue, syncButtons)
     watch(() => length.value, syncButtons)
 
     bindButtons(segmentedButtonsProvider)
-    nextTick(syncButtons)
     call(bindForm, segmentedButtonsValidationProvider)
 
     useEventListener(() => window, 'keydown', handleKeydown)
