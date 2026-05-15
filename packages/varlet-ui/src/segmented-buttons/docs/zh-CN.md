@@ -2,7 +2,7 @@
 
 ### 介绍
 
-使用 `SegmentedButtons` 和 `SegmentedButton` 可以在一组相关选项中进行紧凑的单选或多选。
+在一组按钮风格的备选项中进行单选或多选。
 
 ### 基本使用
 
@@ -68,11 +68,11 @@ const value = ref('day')
 <script setup>
 import { ref } from 'vue'
 
-const disabledValue = ref('day')
+const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="disabledValue">
+  <var-segmented-buttons v-model="value">
     <var-segmented-button checked-value="day" disabled>天</var-segmented-button>
     <var-segmented-button checked-value="week" disabled>周</var-segmented-button>
     <var-segmented-button checked-value="month" disabled>月</var-segmented-button>
@@ -88,11 +88,11 @@ const disabledValue = ref('day')
 <script setup>
 import { ref } from 'vue'
 
-const readonlyValue = ref('day')
+const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="readonlyValue">
+  <var-segmented-buttons v-model="value">
     <var-segmented-button checked-value="day" readonly>天</var-segmented-button>
     <var-segmented-button checked-value="week" readonly>周</var-segmented-button>
     <var-segmented-button checked-value="month" readonly>月</var-segmented-button>
@@ -225,7 +225,7 @@ function validate() {
 | `label` | 分段按钮选项内容，也可以是渲染函数 | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `checkmark` | 分段按钮选项的勾选图标内容，或是否显示默认勾选图标 | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `value` | 选项值 | _any_ | `-` |
-| `disabled` | 是否禁用分段按钮选项 | _boolean_ | `false` |
+| `disabled` | 是否禁用分段按钮选项 | _boolean_ | `-` |
 | `ripple` | 是否为分段按钮选项开启水波纹效果 | _boolean_ | `-` |
 
 #### SegmentedButton Props

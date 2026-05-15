@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["hoverable"],
+  "cSpell.words": ["hoverable", "checkmark"],
   "eslint.enable": false,
   "prettier.enable": false,
   "editor.defaultFormatter": "oxc.oxc-vscode"

@@ -2,7 +2,7 @@
 
 ### Intro
 
-Use `SegmentedButtons` and `SegmentedButton` to present a compact group of related options for single or multiple selection.
+Select one or multiple options from a group of button-style alternatives.
 
 ### Basic Usage
 
@@ -68,11 +68,11 @@ Use `disabled` on `SegmentedButton` to disable segmented buttons.
 <script setup>
 import { ref } from 'vue'
 
-const disabledValue = ref('day')
+const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="disabledValue">
+  <var-segmented-buttons v-model="value">
     <var-segmented-button checked-value="day" disabled>Day</var-segmented-button>
     <var-segmented-button checked-value="week" disabled>Week</var-segmented-button>
     <var-segmented-button checked-value="month" disabled>Month</var-segmented-button>
@@ -88,11 +88,11 @@ Use `readonly` on `SegmentedButton` to make segmented buttons readonly.
 <script setup>
 import { ref } from 'vue'
 
-const readonlyValue = ref('day')
+const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="readonlyValue">
+  <var-segmented-buttons v-model="value">
     <var-segmented-button checked-value="day" readonly>Day</var-segmented-button>
     <var-segmented-button checked-value="week" readonly>Week</var-segmented-button>
     <var-segmented-button checked-value="month" readonly>Month</var-segmented-button>
@@ -225,7 +225,7 @@ function validate() {
 | `label` | Content of the segmented button option, can also be a render function | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `checkmark` | Checkmark content of the segmented button option, or whether to display the default checkmark | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `value` | Option value | _any_ | `-` |
-| `disabled` | Whether to disable the segmented button option | _boolean_ | `false` |
+| `disabled` | Whether to disable the segmented button option | _boolean_ | `-` |
 | `ripple` | Whether to enable ripple effect for the segmented button option | _boolean_ | `-` |
 
 #### SegmentedButton Props
