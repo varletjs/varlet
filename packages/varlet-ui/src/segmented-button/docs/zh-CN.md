@@ -6,11 +6,11 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `checked-value` | 当前按钮对应的值 | _any_ | `true` |
+| `checked-value` | 当前按钮对应的值 | _any_ | `-` |
 | `disabled` | 是否禁用当前按钮 | _boolean_ | `false` |
 | `readonly` | 是否将当前按钮设为只读 | _boolean_ | `false` |
-| `ripple` | 是否为当前按钮开启水波纹效果 | _boolean_ | `-` |
-| `checkmark` | 当前按钮在选中时是否显示勾选图标 | _boolean_ | `-` |
+| `ripple` | 是否为当前按钮开启水波纹效果 | _boolean_ | `true` |
+| `checkmark` | 当前按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 
 ### 事件
 

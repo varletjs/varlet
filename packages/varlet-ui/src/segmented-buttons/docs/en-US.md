@@ -294,8 +294,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--segmented-button-text-color` | `var(--color-text)` |
-| `--segmented-button-checked-background` | `var(--color-primary-container)` |
-| `--segmented-button-checked-text-color` | `var(--color-on-primary-container)` |
+| `--segmented-button-checked-background` | `hsla(var(--hsl-primary), 0.2)` |
+| `--segmented-button-checked-text-color` | `var(--color-primary)` |
 | `--segmented-button-disabled-background` | `var(--color-disabled)` |
 | `--segmented-button-disabled-color` | `var(--color-text-disabled)` |
 | `--segmented-button-mini-padding` | `0 8px` |
