@@ -530,6 +530,73 @@ test('segmented button checkmark slot', async () => {
   wrapper.unmount()
 })
 
+test('segmented button checkmark slot is not rendered when group checkmark is disabled', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: 'day',
+      checkmark: false,
+    },
+    slots: {
+      default: `
+        <var-segmented-button checked-value="day">
+          <template #checkmark>Selected</template>
+          Day
+        </var-segmented-button>
+      `,
+    },
+    global: {
+      components: {
+        [VarSegmentedButton.name]: VarSegmentedButton,
+      },
+    },
+  })
+
+  await delay(16)
+
+  expect(wrapper.text()).not.toContain('Selected')
+
+  wrapper.unmount()
+})
+
+test('segmented button default slot checked data updates with selection state', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: 'day',
+      'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
+    },
+    slots: {
+      default: `
+        <var-segmented-button checked-value="day">
+          <template #default="{ checked }">Day-{{ checked }}</template>
+        </var-segmented-button>
+        <var-segmented-button checked-value="week">
+          <template #default="{ checked }">Week-{{ checked }}</template>
+        </var-segmented-button>
+      `,
+    },
+    global: {
+      components: {
+        [VarSegmentedButton.name]: VarSegmentedButton,
+      },
+    },
+  })
+
+  await delay(16)
+
+  let buttons = wrapper.findAll('.var-segmented-button')
+  expect(buttons[0].text()).toContain('Day-true')
+  expect(buttons[1].text()).toContain('Week-false')
+
+  await buttons[1].trigger('click')
+  await delay(16)
+
+  buttons = wrapper.findAll('.var-segmented-button')
+  expect(buttons[0].text()).toContain('Day-false')
+  expect(buttons[1].text()).toContain('Week-true')
+
+  wrapper.unmount()
+})
+
 test('checkmark prop', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
@@ -558,6 +625,26 @@ test('checkmark prop', async () => {
   await buttons[1].trigger('click')
   await delay(16)
   expect(buttons[1].find('.var-icon').exists()).toBeTruthy()
+
+  wrapper.unmount()
+})
+
+test('options api ripple prop is forwarded to segmented button', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: 'day',
+      options: [
+        { label: 'Day', value: 'day', ripple: false },
+        { label: 'Week', value: 'week', ripple: true },
+      ],
+    },
+  })
+
+  await delay(16)
+
+  const buttons = wrapper.findAllComponents(VarSegmentedButton)
+  expect(buttons[0].props('ripple')).toBe(false)
+  expect(buttons[1].props('ripple')).toBe(true)
 
   wrapper.unmount()
 })
