@@ -8,8 +8,15 @@ export interface SegmentedButtonProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
   ripple?: boolean
-  checkmark?: boolean
   onClick?: ListenerProp<(e: Event) => void>
+}
+
+export interface SegmentedButtonDefaultData {
+  checked: boolean
+}
+
+export interface SegmentedButtonCheckmarkData {
+  checked: boolean
 }
 
 export class SegmentedButton extends VarComponent {
@@ -18,8 +25,8 @@ export class SegmentedButton extends VarComponent {
   $props: SegmentedButtonProps
 
   $slots: {
-    checkmark(): VNode[]
-    default(): VNode[]
+    checkmark(data: SegmentedButtonCheckmarkData): VNode[]
+    default(data: SegmentedButtonDefaultData): VNode[]
   }
 }
 

@@ -605,6 +605,26 @@ interface BaseStyleVars {
   '--select-empty-text-color'?: string
   '--select-empty-height'?: string
   '--select-empty-font-size'?: string
+  '--segmented-buttons-border-color'?: string
+  '--segmented-buttons-border-radius'?: string
+  '--segmented-buttons-border-width'?: string
+  '--segmented-button-text-color'?: string
+  '--segmented-button-checked-background'?: string
+  '--segmented-button-checked-text-color'?: string
+  '--segmented-button-disabled-background'?: string
+  '--segmented-button-disabled-color'?: string
+  '--segmented-button-mini-padding'?: string
+  '--segmented-button-small-padding'?: string
+  '--segmented-button-normal-padding'?: string
+  '--segmented-button-large-padding'?: string
+  '--segmented-button-mini-height'?: string
+  '--segmented-button-small-height'?: string
+  '--segmented-button-normal-height'?: string
+  '--segmented-button-large-height'?: string
+  '--segmented-button-mini-font-size'?: string
+  '--segmented-button-small-font-size'?: string
+  '--segmented-button-normal-font-size'?: string
+  '--segmented-button-large-font-size'?: string
   '--option-height'?: string
   '--option-padding'?: string
   '--option-font-size'?: string

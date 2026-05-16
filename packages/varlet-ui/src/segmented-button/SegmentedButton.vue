@@ -3,7 +3,7 @@
     ref="segmentedButton"
     v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
     v-hover:desktop="handleHovering"
-    :role="role"
+    :role="segmentedButtons.multiple.value ? 'checkbox' : 'radio'"
     :aria-checked="checked"
     :aria-disabled="formDisabled || disabled || formReadonly || readonly"
     :disabled="formDisabled || disabled"
@@ -12,7 +12,7 @@
       classes(
         n(),
         n('$--box'),
-        n(`--${size}`),
+        n(`--${segmentedButtons.size.value}`),
         [checked, n('--checked'), n('--unchecked')],
         [formDisabled || disabled, n('--disabled')],
       )
@@ -23,13 +23,13 @@
     @blur="isFocusing = false"
   >
     <div :class="n('content')">
-      <template v-if="checkmark && checked">
-        <slot name="checkmark">
+      <template v-if="segmentedButtons.checkmark.value && checked">
+        <slot name="checkmark" :checked="checked">
           <var-icon :class="n('icon')" var-segmented-button-cover name="check" />
         </slot>
       </template>
 
-      <slot />
+      <slot :checked="checked" />
     </div>
 
     <var-hover-overlay
@@ -65,8 +65,6 @@ export default defineComponent({
     const { segmentedButtons, bindSegmentedButtons } = useSegmentedButtons()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form } = useForm()
-    const role = computed(() => (segmentedButtons.multiple.value ? 'checkbox' : 'radio'))
-    const size = computed(() => segmentedButtons.size.value)
 
     const segmentedButtonProvider: SegmentedButtonProvider = {
       checked: computed(() => checked.value),
@@ -121,13 +119,12 @@ export default defineComponent({
 
     return {
       segmentedButton,
+      segmentedButtons,
       isFocusing,
       checked,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
-      size,
-      role,
       n,
       classes,
       handleHovering,

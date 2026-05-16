@@ -71,10 +71,10 @@ function validate() {
   </var-segmented-buttons>
 
   <app-type>{{ t('disableCheckmark') }}</app-type>
-  <var-segmented-buttons v-model="noCheckmarkValue">
-    <var-segmented-button checked-value="day" :checkmark="false">{{ t('day') }}</var-segmented-button>
-    <var-segmented-button checked-value="week" :checkmark="false">{{ t('week') }}</var-segmented-button>
-    <var-segmented-button checked-value="month" :checkmark="false">{{ t('month') }}</var-segmented-button>
+  <var-segmented-buttons v-model="noCheckmarkValue" :checkmark="false">
+    <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
+    <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
+    <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
   </var-segmented-buttons>
 
   <app-type>{{ t('disabled') }}</app-type>

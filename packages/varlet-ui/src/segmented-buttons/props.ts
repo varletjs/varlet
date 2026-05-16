@@ -7,11 +7,8 @@ export type SegmentedButtonsValidateTrigger = 'onClick' | 'onChange'
 
 export type SegmentedButtonsOptionLabelRender = (option: SegmentedButtonsOption, checked: boolean) => VNodeChild
 
-export type SegmentedButtonsOptionCheckmarkRender = (option: SegmentedButtonsOption, checked: boolean) => VNodeChild
-
 export interface SegmentedButtonsOption {
   label?: string | VNode | SegmentedButtonsOptionLabelRender
-  checkmark?: boolean | VNode | SegmentedButtonsOptionCheckmarkRender
   value?: any
   disabled?: boolean
   ripple?: boolean
@@ -37,6 +34,10 @@ export const props = {
     default: 'value',
   },
   multiple: Boolean,
+  checkmark: {
+    type: Boolean,
+    default: true,
+  },
   size: {
     type: String as PropType<SegmentedButtonsSize>,
     default: 'normal',

@@ -6,14 +6,9 @@
           v-for="option in options"
           :key="getOptionValue(option)"
           :checked-value="getOptionValue(option)"
-          :checkmark="getOptionCheckmark(option)"
           :disabled="option.disabled"
           :ripple="option.ripple"
         >
-          <template v-if="hasCustomOptionCheckmark(option)" #checkmark>
-            <maybe-v-node :is="renderOptionCheckmark(option)" />
-          </template>
-
           <maybe-v-node :is="renderOptionLabel(option)" />
         </var-segmented-button>
       </template>
@@ -26,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, isArray, isBoolean, isFunction, isPlainObject } from '@varlet/shared'
+import { call, callOrReturn, isArray } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import VarFormDetails from '../form-details'
@@ -64,6 +59,7 @@ export default defineComponent({
 
     const segmentedButtonsProvider: SegmentedButtonsProvider = {
       multiple: computed(() => props.multiple),
+      checkmark: computed(() => props.checkmark),
       size: computed(() => props.size as SegmentedButtonsSize),
       onClick,
     }
@@ -97,28 +93,8 @@ export default defineComponent({
       return callOrReturn(option[props.labelKey], option, isChecked(getOptionValue(option)))
     }
 
-    function hasCustomOptionCheckmark(option: SegmentedButtonsOption) {
-      return isFunction(option.checkmark) || isPlainObject(option.checkmark)
-    }
-
     function getOptionValue(option: SegmentedButtonsOption) {
       return option[props.valueKey]
-    }
-
-    function getOptionCheckmark(option: SegmentedButtonsOption) {
-      if (option.checkmark == null) {
-        return
-      }
-
-      return isBoolean(option.checkmark) ? option.checkmark : true
-    }
-
-    function renderOptionCheckmark(option: SegmentedButtonsOption) {
-      return callOrReturn(
-        option.checkmark as Exclude<SegmentedButtonsOption['checkmark'], boolean | undefined>,
-        option,
-        isChecked(getOptionValue(option)),
-      )
     }
 
     function handleKeydown(event: KeyboardEvent) {
@@ -250,10 +226,7 @@ export default defineComponent({
       n,
       classes,
       renderOptionLabel,
-      renderOptionCheckmark,
-      hasCustomOptionCheckmark,
       getOptionValue,
-      getOptionCheckmark,
       validate,
       reset,
       resetValidation,

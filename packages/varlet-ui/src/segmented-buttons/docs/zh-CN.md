@@ -42,7 +42,7 @@ const value = ref(['day'])
 
 ### 取消勾选图标
 
-默认情况下，选中项会显示勾选图标。可以通过 `SegmentedButton` 的 `checkmark` 关闭。
+默认情况下，选中项会显示勾选图标。可以通过 `SegmentedButtons` 的 `checkmark` 关闭。
 
 ```html
 <script setup>
@@ -52,10 +52,10 @@ const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="value">
-    <var-segmented-button checked-value="day" :checkmark="false">天</var-segmented-button>
-    <var-segmented-button checked-value="week" :checkmark="false">周</var-segmented-button>
-    <var-segmented-button checked-value="month" :checkmark="false">月</var-segmented-button>
+  <var-segmented-buttons v-model="value" :checkmark="false">
+    <var-segmented-button checked-value="day">天</var-segmented-button>
+    <var-segmented-button checked-value="week">周</var-segmented-button>
+    <var-segmented-button checked-value="month">月</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -214,6 +214,7 @@ function validate() {
 | `label-key` | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
+| `checkmark` | 选中项是否显示勾选图标 | _boolean_ | `true` |
 | `size` | 分段按钮尺寸，可选值为 `mini` `small` `normal` `large` | _string_ | `normal` |
 | `validate-trigger` | 校验触发时机，可选值为 `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | 校验规则 | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
@@ -223,7 +224,6 @@ function validate() {
 | 名称 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `label` | 分段按钮选项内容，也可以是渲染函数 | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
-| `checkmark` | 分段按钮选项的勾选图标内容，或是否显示默认勾选图标 | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `value` | 选项值 | _any_ | `-` |
 | `disabled` | 是否禁用分段按钮选项 | _boolean_ | `-` |
 | `ripple` | 是否为分段按钮选项开启水波纹效果 | _boolean_ | `-` |
@@ -236,7 +236,6 @@ function validate() {
 | `disabled` | 是否禁用分段按钮 | _boolean_ | `false` |
 | `readonly` | 是否将分段按钮设为只读 | _boolean_ | `false` |
 | `ripple` | 是否为分段按钮开启水波纹效果 | _boolean_ | `true` |
-| `checkmark` | 分段按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 
 ### 方法
 
@@ -274,8 +273,8 @@ function validate() {
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `-` |
-| `default` | 分段按钮的文字或标签内容 | `-` |
+| `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `checked: boolean` |
+| `default` | 分段按钮的文字或标签内容 | `checked: boolean` |
 
 ### 样式变量
 

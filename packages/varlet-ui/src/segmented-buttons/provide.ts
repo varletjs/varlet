@@ -5,6 +5,7 @@ import type { SegmentedButtonsSize } from './props'
 
 export interface SegmentedButtonsProvider {
   multiple: ComputedRef<boolean>
+  checkmark: ComputedRef<boolean>
   size: ComputedRef<SegmentedButtonsSize>
   onClick(value: any, checked: boolean): void
 }

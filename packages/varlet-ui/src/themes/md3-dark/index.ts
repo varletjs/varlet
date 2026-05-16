@@ -50,6 +50,7 @@ import radio from './radio'
 import rate from './rate'
 import result from './result'
 import ripple from './ripple'
+import segmentedButton from './segmentedButton'
 import segmentedButtons from './segmentedButtons'
 import select from './select'
 import signature from './signature'
@@ -162,6 +163,7 @@ export default {
   ...fieldDecorator,
   ...checkbox,
   ...radio,
+  ...segmentedButton,
   ...segmentedButtons,
   ...card,
   ...chip,

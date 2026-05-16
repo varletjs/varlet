@@ -208,7 +208,7 @@ test('options api disabled option', async () => {
   wrapper.unmount()
 })
 
-test('options api label render and checkmark config', async () => {
+test('options api label render', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
@@ -216,12 +216,10 @@ test('options api label render and checkmark config', async () => {
         {
           label: (option, checked) => `${option.value}-${checked}`,
           value: 'day',
-          checkmark: false,
         },
         {
           label: (option, checked) => `${option.value}-${checked}`,
           value: 'week',
-          checkmark: true,
         },
       ],
       'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
@@ -232,14 +230,12 @@ test('options api label render and checkmark config', async () => {
 
   const buttons = wrapper.findAll('.var-segmented-button')
   expect(buttons[0].text()).toContain('day-true')
-  expect(buttons[0].find('.var-icon').exists()).toBeFalsy()
   expect(buttons[1].text()).toContain('week-false')
 
   await buttons[1].trigger('click')
   await delay(16)
 
   expect(buttons[1].text()).toContain('week-true')
-  expect(buttons[1].find('.var-icon').exists()).toBeTruthy()
 
   wrapper.unmount()
 })
@@ -267,6 +263,7 @@ test('keeps child providers and instances ordered after options change', async (
 
       bindChildren({
         multiple: computed(() => false),
+        checkmark: computed(() => true),
         size: computed(() => 'normal'),
         onClick: vi.fn(),
       })
@@ -513,8 +510,8 @@ test('segmented button checkmark slot', async () => {
     slots: {
       default: `
         <var-segmented-button checked-value="day">
-          <template #checkmark>Selected</template>
-          Day
+          <template #checkmark="{ checked }">Selected-{{ checked }}</template>
+          <template #default="{ checked }">Day-{{ checked }}</template>
         </var-segmented-button>
       `,
     },
@@ -527,7 +524,8 @@ test('segmented button checkmark slot', async () => {
 
   await delay(16)
 
-  expect(wrapper.text()).toContain('Selected')
+  expect(wrapper.text()).toContain('Selected-true')
+  expect(wrapper.text()).toContain('Day-true')
 
   wrapper.unmount()
 })
@@ -536,12 +534,13 @@ test('checkmark prop', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {
       modelValue: 'day',
+      checkmark: false,
       'onUpdate:modelValue': (value) => wrapper.setProps({ modelValue: value }),
     },
     slots: {
       default: `
-        <var-segmented-button checked-value="day" :checkmark="false">Day</var-segmented-button>
-        <var-segmented-button checked-value="week" :checkmark="true">Week</var-segmented-button>
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week">Week</var-segmented-button>
       `,
     },
     global: {
@@ -555,35 +554,10 @@ test('checkmark prop', async () => {
   expect(buttons[0].find('.var-icon').exists()).toBeFalsy()
   expect(buttons[1].find('.var-icon').exists()).toBeFalsy()
 
+  await wrapper.setProps({ checkmark: true })
   await buttons[1].trigger('click')
   await delay(16)
   expect(buttons[1].find('.var-icon').exists()).toBeTruthy()
-
-  wrapper.unmount()
-})
-
-test('options api custom checkmark render', async () => {
-  const wrapper = mount(VarSegmentedButtons, {
-    props: {
-      modelValue: 'day',
-      options: [
-        {
-          label: 'Day',
-          value: 'day',
-          checkmark: () => '♥',
-        },
-        {
-          label: 'Week',
-          value: 'week',
-          checkmark: () => '♥',
-        },
-      ],
-    },
-  })
-
-  await delay(16)
-
-  expect(wrapper.text()).toContain('♥')
 
   wrapper.unmount()
 })

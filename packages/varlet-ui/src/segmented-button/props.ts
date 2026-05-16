@@ -11,9 +11,5 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  checkmark: {
-    type: Boolean,
-    default: true,
-  },
   onClick: defineListenerProp<(e: Event) => void>(),
 }

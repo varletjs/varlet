@@ -10,7 +10,6 @@
 | `disabled` | 是否禁用当前按钮 | _boolean_ | `false` |
 | `readonly` | 是否将当前按钮设为只读 | _boolean_ | `false` |
 | `ripple` | 是否为当前按钮开启水波纹效果 | _boolean_ | `true` |
-| `checkmark` | 当前按钮在选中时是否显示勾选图标 | _boolean_ | `true` |
 
 ### 事件
 
@@ -22,5 +21,5 @@
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `-` |
-| `default` | 分段按钮的文字或标签内容 | `-` |
+| `checkmark` | 分段按钮在选中时显示的自定义勾选图标内容 | `checked: boolean` |
+| `default` | 分段按钮的文字或标签内容 | `checked: boolean` |

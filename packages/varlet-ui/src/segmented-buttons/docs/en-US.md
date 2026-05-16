@@ -42,7 +42,7 @@ const value = ref(['day'])
 
 ### Disable Checkmark
 
-By default, checked items display a checkmark. You can disable it with `checkmark` on `SegmentedButton`.
+By default, checked items display a checkmark. You can disable it with `checkmark` on `SegmentedButtons`.
 
 ```html
 <script setup>
@@ -52,10 +52,10 @@ const value = ref('day')
 </script>
 
 <template>
-  <var-segmented-buttons v-model="value">
-    <var-segmented-button checked-value="day" :checkmark="false">Day</var-segmented-button>
-    <var-segmented-button checked-value="week" :checkmark="false">Week</var-segmented-button>
-    <var-segmented-button checked-value="month" :checkmark="false">Month</var-segmented-button>
+  <var-segmented-buttons v-model="value" :checkmark="false">
+    <var-segmented-button checked-value="day">Day</var-segmented-button>
+    <var-segmented-button checked-value="week">Week</var-segmented-button>
+    <var-segmented-button checked-value="month">Month</var-segmented-button>
   </var-segmented-buttons>
 </template>
 ```
@@ -214,6 +214,7 @@ function validate() {
 | `label-key` | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` | As the key that uniquely identifies value | _string_ | `value` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
+| `checkmark` | Whether checked items display the checkmark icon | _boolean_ | `true` |
 | `size` | Size of segmented buttons, can be `mini` `small` `normal` `large` | _string_ | `normal` |
 | `validate-trigger` | Validation trigger timing, can be `onClick` `onChange` | _Array<'onClick' \| 'onChange'>_ | `['onChange']` |
 | `rules` | Validation rules | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
@@ -223,7 +224,6 @@ function validate() {
 | Name | Description | Type | Default |
 | --- | --- | --- | --- |
 | `label` | Content of the segmented button option, can also be a render function | _string \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
-| `checkmark` | Checkmark content of the segmented button option, or whether to display the default checkmark | _boolean \| VNode \| ((option: SegmentedButtonsOption, checked: boolean) => VNodeChild)_ | `-` |
 | `value` | Option value | _any_ | `-` |
 | `disabled` | Whether to disable the segmented button option | _boolean_ | `-` |
 | `ripple` | Whether to enable ripple effect for the segmented button option | _boolean_ | `-` |
@@ -236,7 +236,6 @@ function validate() {
 | `disabled` | Whether to disable the segmented button | _boolean_ | `false` |
 | `readonly` | Whether to set the segmented button to readonly | _boolean_ | `false` |
 | `ripple` | Whether to enable ripple effect for the segmented button | _boolean_ | `true` |
-| `checkmark` | Whether the segmented button displays a checkmark when checked | _boolean_ | `true` |
 
 ### Methods
 
@@ -274,8 +273,8 @@ function validate() {
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `-` |
-| `default` | Label content of the segmented button | `-` |
+| `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `checked: boolean` |
+| `default` | Label content of the segmented button | `checked: boolean` |
 
 ### Style Variables
 

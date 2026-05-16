@@ -10,7 +10,6 @@
 | `disabled` | Whether to disable the current button | _boolean_ | `false` |
 | `readonly` | Whether to make the current button readonly | _boolean_ | `false` |
 | `ripple` | Whether to enable ripple effect for the current button | _boolean_ | `true` |
-| `checkmark` | Whether the current button displays a checkmark when checked | _boolean_ | `true` |
 
 ### Events
 
@@ -22,5 +21,5 @@
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `-` |
-| `default` | Label content of the segmented button | `-` |
+| `checkmark` | Custom checkmark icon content displayed when the segmented button is checked | `checked: boolean` |
+| `default` | Label content of the segmented button | `checked: boolean` |
