@@ -217,7 +217,7 @@ export default defineComponent({
 
     // expose
     function reset() {
-      change(props.multiple ? [] : undefined)
+      call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
     }
 

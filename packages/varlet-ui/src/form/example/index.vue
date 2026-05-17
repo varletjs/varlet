@@ -10,6 +10,7 @@ const formData = reactive({
   otp: '',
   email: '',
   department: '',
+  period: undefined,
   gender: undefined,
   license: false,
   range: 0,
@@ -89,6 +90,11 @@ onThemeChange()
         <var-option :label="`${t('sleep')}${t('groupUnit')}`" />
         <var-option :label="`${t('play')}${t('groupUnit')}`" />
       </var-select>
+      <var-segmented-buttons v-model="formData.period" :rules="[(v) => !!v || t('periodMessage')]">
+        <var-segmented-button checked-value="day">{{ t('day') }}</var-segmented-button>
+        <var-segmented-button checked-value="week">{{ t('week') }}</var-segmented-button>
+        <var-segmented-button checked-value="month">{{ t('month') }}</var-segmented-button>
+      </var-segmented-buttons>
       <var-radio-group v-model="formData.gender" :rules="[(v) => !!v || t('genderMessage')]">
         <var-radio :checked-value="1">{{ t('male') }}</var-radio>
         <var-radio :checked-value="2">{{ t('female') }}</var-radio>

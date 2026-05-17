@@ -502,6 +502,53 @@ test('form readonly prevents segmented button value change', async () => {
   wrapper.unmount()
 })
 
+test('form reset clears segmented buttons without emitting change', async () => {
+  const onChange = vi.fn()
+  const wrapper = mount({
+    components: {
+      [VarForm.name]: VarForm,
+      [VarSegmentedButtons.name]: VarSegmentedButtons,
+      [VarSegmentedButton.name]: VarSegmentedButton,
+    },
+    data: () => ({
+      value: 'day',
+    }),
+    methods: {
+      onChange,
+      onUpdateModelValue(value) {
+        this.value = value
+      },
+    },
+    template: `
+      <var-form ref="form">
+        <var-segmented-buttons
+          v-model="value"
+          :rules="[(v) => !!v || 'Please choose one option']"
+          @change="onChange"
+          @update:model-value="onUpdateModelValue"
+        >
+          <var-segmented-button checked-value="day">Day</var-segmented-button>
+          <var-segmented-button checked-value="week">Week</var-segmented-button>
+        </var-segmented-buttons>
+      </var-form>
+    `,
+  })
+
+  const { form } = wrapper.vm.$refs
+
+  await form.validate()
+  await delay(16)
+
+  form.reset()
+  await delay(16)
+
+  expect(wrapper.vm.value).toBeUndefined()
+  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
 test('segmented button checkmark slot', async () => {
   const wrapper = mount(VarSegmentedButtons, {
     props: {

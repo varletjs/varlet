@@ -9,25 +9,38 @@ Provides the ability to control all form components.
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
 const formData = reactive({
   username: '',
   password: '',
   otp: '',
+  email: '',
   department: '',
+  period: undefined,
   gender: undefined,
   license: false,
-  range: 10,
+  range: 0,
   count: 0,
   group: [],
   score: 0,
   like: [],
-  files: []
+  files: [],
+  custom: false,
 })
 const form = ref(null)
 const disabled = ref(false)
 const readonly = ref(false)
+
+const suggestions = computed(() =>
+  ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+    const [prefix] = formData.email.split('@')
+    return {
+      label: prefix + suffix,
+      value: prefix + suffix,
+    }
+  }),
+)
 </script>
 
 <template>
@@ -36,98 +49,121 @@ const readonly = ref(false)
     :disabled="disabled"
     :readonly="readonly"
     scroll-to-error="start"
+    scroll-to-error-offset-y="14.4vmin"
   >
-    <var-space direction="column" :size="[14, 0]">
+    <var-space direction="column" :size="['4vmin', 0]">
       <var-input
-        placeholder="Please input username"
-        :rules="v => !!v || 'The username cannot be empty'"
         v-model="formData.username"
+        placeholder="Please input username"
+        :rules="[(v) => !!v || 'The username cannot be empty']"
       />
       <var-input
+        v-model="formData.password"
         type="password"
         placeholder="Please input password"
         :rules="[v => !!v || 'The password cannot be empty', (v) => v.length >= 8 || 'The password cannot be less than 8 characters']"
-        v-model="formData.password"
+      />
+      <var-auto-complete
+        v-model="formData.email"
+        placeholder="Please input email"
+        :rules="[(v) => !!v || 'The email cannot be empty']"
+        :options="suggestions"
       />
       <var-select
-        placeholder="Please select department"
-        :rules="v => !!v || 'The select cannot be empty'"
         v-model="formData.department"
+        placeholder="Please select department"
+        :rules="[(v) => !!v || 'The select cannot be empty']"
       >
         <var-option label="Eat department"  />
         <var-option label="Sleep department"  />
         <var-option label="Play game department" />
       </var-select>
       <var-select
+        v-model="formData.group"
         multiple
         placeholder="Please select group"
-        :rules="v => v.length >= 1 || 'The select cannot be empty'"
-        v-model="formData.group"
+        :rules="[(v) => v.length >= 1 || 'The select cannot be empty']"
       >
         <var-option label="Eat group"  />
         <var-option label="Sleep group"  />
         <var-option label="Play game group" />
       </var-select>
+      <var-segmented-buttons
+        v-model="formData.period"
+        :rules="[(v) => !!v || 'A period must be selected']"
+      >
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week">Week</var-segmented-button>
+        <var-segmented-button checked-value="month">Month</var-segmented-button>
+      </var-segmented-buttons>
       <var-radio-group
-        :rules="v => !!v || 'The gender cannot be empty'"
         v-model="formData.gender"
+        :rules="[(v) => !!v || 'The gender cannot be empty']"
       >
         <var-radio :checked-value="1">Male</var-radio>
         <var-radio :checked-value="2">Female</var-radio>
       </var-radio-group>
       <var-checkbox-group
-        :rules="v => v.length > 0 || 'The select cannot be empty'"
         v-model="formData.like"
+        :rules="[(v) => v.length > 0 || 'The select cannot be empty']"
       >
         <var-checkbox :checked-value="1">Eat</var-checkbox>
         <var-checkbox :checked-value="2">Sleep</var-checkbox>
         <var-checkbox :checked-value="3">Play game</var-checkbox>
       </var-checkbox-group>
       <var-rate
-        :rules="v => v >= 3 || 'It has to be greater than 2'"
         v-model="formData.score"
+        :rules="[(v) => v >= 3 || 'It has to be greater than 2']"
       />
       <var-switch
-        variant
-        :rules="v => !!v || 'You must turn on'"
         v-model="formData.license"
+        variant
+        :rules="[(v) => !!v || 'You must turn on']"
       />
       <var-counter
-        :rules="v => v > 10 || 'It has to be greater than 10'"
         v-model="formData.count"
+        :rules="[(v) => v > 10 || 'It has to be greater than 10']"
       />
       <var-slider
-        :rules="v => v > 10 || 'It has to be greater than 10'"
         v-model="formData.range"
+        :rules="[(v) => v > 10 || 'It has to be greater than 10']"
       />
       <var-otp-input
         v-model="formData.otp"
         :rules="[v => !!v || 'The OTP cannot be empty', (v) => v.length === 6 || 'The OTP length must be 6']"
       />
       <var-uploader
-        :rules="v => v.length >= 1 || 'Upload at least one picture'"
         v-model="formData.files"
+        :rules="[(v) => v.length >= 1 || 'Upload at least one picture']"
       />
-
-      <var-space direction="column" :size="[14, 0]">
-        <var-button block type="danger" @click="form.reset()">
-          Empty form
-        </var-button>
-        <var-button block type="warning" @click="form.resetValidation()">
-          Empty the validation
-        </var-button>
-        <var-button block type="success" @click="form.validate()">
-          Trigger validation
-        </var-button>
-        <var-button block type="info" @click="disabled = !disabled">
-          Form disabled
-        </var-button>
-        <var-button block type="primary" @click="readonly = !readonly">
-          Form readonly
-        </var-button>
-      </var-space>
     </var-space>
+
+    <var-custom-form-component
+      v-model="formData.custom"
+      extra-message="Extra message"
+      :rules="[(v) => !!v || 'Please check it']"
+    >
+      Click toggle
+    </var-custom-form-component>
   </var-form>
+
+  <var-space direction="column" :size="['4vmin', 0]">
+    <var-button block type="danger" @click="form.reset()">
+      Empty form
+    </var-button>
+    <var-button block type="warning" @click="form.resetValidation()">
+      Empty the validation
+    </var-button>
+    <var-button block type="success" @click="form.validate()">
+      Trigger validation
+    </var-button>
+    <var-button block type="info" @click="disabled = !disabled">
+      Form disabled
+    </var-button>
+    <var-button block type="primary" @click="readonly = !readonly">
+      Form readonly
+    </var-button>
+  </var-space>
 </template>
 ```
 

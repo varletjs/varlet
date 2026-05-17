@@ -9,7 +9,7 @@
 
 ```html
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
 const formData = reactive({
   username: '',
@@ -17,20 +17,22 @@ const formData = reactive({
   otp: '',
   email: '',
   department: '',
+  period: undefined,
   gender: undefined,
   license: false,
-  range: 10,
+  range: 0,
   count: 0,
   group: [],
   score: 0,
   like: [],
-  files: []
+  files: [],
+  custom: false,
 })
 const form = ref(null)
 const disabled = ref(false)
 const readonly = ref(false)
 
-const emailSuggestions = computed(() =>
+const suggestions = computed(() =>
   ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
     const [prefix] = formData.email.split('@')
     return {
@@ -47,104 +49,121 @@ const emailSuggestions = computed(() =>
     :disabled="disabled"
     :readonly="readonly" 
     scroll-to-error="start"
+    scroll-to-error-offset-y="14.4vmin"
   >
-    <var-space direction="column" :size="[14, 0]">
+    <var-space direction="column" :size="['4vmin', 0]">
       <var-input
-        placeholder="请输入用户名"
-        :rules="v => !!v || '用户名不能为空'"
         v-model="formData.username"
+        placeholder="请输入用户名"
+        :rules="[(v) => !!v || '用户名不能为空']"
       />
       <var-input
+        v-model="formData.password"
         type="password"
         placeholder="请输入密码"
-        :rules="[v => !!v || '密码不能为空', (v) => v.length >= 8 || '密码长度不能低于8位']"
-        v-model="formData.password"
+        :rules="[(v) => !!v || '密码不能为空', (v) => v.length >= 8 || '密码长度不能低于8位']"
       />
       <var-auto-complete
-        placeholder="请输入邮箱"
-        :rules="v => !!v || '邮箱不能为空'"
-        :options="emailSuggestions"
         v-model="formData.email"
+        placeholder="请输入邮箱"
+        :rules="[(v) => !!v || '邮箱不能为空']"
+        :options="suggestions"
       />
       <var-select
-        placeholder="请选择部门"
-        :rules="v => !!v || '必须选一个部门'"
         v-model="formData.department"
+        placeholder="请选择部门"
+        :rules="[(v) => !!v || '必须选一个部门']"
       >
         <var-option label="吃饭部"  />
         <var-option label="睡觉部"  />
         <var-option label="打游戏部" />
       </var-select>
       <var-select
+        v-model="formData.group"
         multiple
         placeholder="请选择组织"
-        :rules="v => v.length >= 1 || '至少选择一个组织'"
-        v-model="formData.group"
+        :rules="[(v) => v.length >= 1 || '至少选择一个组织']"
       >
         <var-option label="吃饭组"  />
         <var-option label="睡觉组"  />
         <var-option label="打游戏组" />
       </var-select>
+      <var-segmented-buttons
+        v-model="formData.period"
+        :rules="[(v) => !!v || '必须选择一个周期']"
+      >
+        <var-segmented-button checked-value="day">天</var-segmented-button>
+        <var-segmented-button checked-value="week">周</var-segmented-button>
+        <var-segmented-button checked-value="month">月</var-segmented-button>
+      </var-segmented-buttons>
       <var-radio-group
-        :rules="v => !!v || '必须选择一个性别'"
         v-model="formData.gender"
+        :rules="[(v) => !!v || '必须选择一个性别']"
       >
         <var-radio :checked-value="1">男</var-radio>
         <var-radio :checked-value="2">女</var-radio>
       </var-radio-group>
       <var-checkbox-group
-        :rules="v => v.length > 0 || '至少选择一个爱好'"
         v-model="formData.like"
+        :rules="[(v) => v.length > 0 || '至少选择一个爱好']"
       >
         <var-checkbox :checked-value="1">吃饭</var-checkbox>
         <var-checkbox :checked-value="2">睡觉</var-checkbox>
         <var-checkbox :checked-value="3">打游戏</var-checkbox>
       </var-checkbox-group>
       <var-rate
-        :rules="v => v >= 3 || '必须大于2'"
         v-model="formData.score"
+        :rules="[(v) => v >= 3 || '必须大于2']"
       />
       <var-switch
-        variant
-        :rules="v => !!v || '您必须开启'"
         v-model="formData.license"
+        variant
+        :rules="[(v) => !!v || '您必须开启']"
       />
       <var-counter
-        :rules="v => v > 10 || '必须大于10'"
         v-model="formData.count"
+        :rules="[(v) => v > 10 || '必须大于10']"
       />
       <var-slider
-        :rules="v => v > 10 || '必须大于10'"
         v-model="formData.range"
+        :rules="[(v) => v > 10 || '必须大于10']"
       />
       <var-otp-input
         v-model="formData.otp"
         :rules="[v => !!v || '验证码不能为空', (v) => v.length === 6 || '验证码长度必须为 6']"
       />
       <var-uploader
-        :rules="v => v.length >= 1 || '至少上传一张图片'"
         v-model="formData.files"
+        :rules="[(v) => v.length >= 1 || '至少上传一张图片']"
       />
-
-      <var-space direction="column" :size="[14, 0]">
-        <var-button block type="danger" @click="form.reset()">
-          清空表单
-        </var-button>
-        <var-button block type="warning" @click="form.resetValidation()">
-          清空验证
-        </var-button>
-        <var-button block type="success" @click="form.validate()">
-          触发验证
-        </var-button>
-        <var-button block type="info" @click="disabled = !disabled">
-          表单禁用
-        </var-button>
-        <var-button block type="primary" @click="readonly = !readonly">
-          表单只读
-        </var-button>
-      </var-space>
     </var-space>
+
+    <var-custom-form-component
+      v-model="formData.custom"
+      extra-message="附加信息"
+      :rules="[(v) => !!v || '必须是对勾']"
+    >
+      点我切换
+    </var-custom-form-component>
   </var-form>
+
+  <var-space direction="column" :size="['4vmin', 0]">
+    <var-button block type="danger" @click="form.reset()">
+      清空表单
+    </var-button>
+    <var-button block type="warning" @click="form.resetValidation()">
+      清空验证
+    </var-button>
+    <var-button block type="success" @click="form.validate()">
+      触发验证
+    </var-button>
+    <var-button block type="info" @click="disabled = !disabled">
+      表单禁用
+    </var-button>
+    <var-button block type="primary" @click="readonly = !readonly">
+      表单只读
+    </var-button>
+  </var-space>
 </template>
 ```
 
