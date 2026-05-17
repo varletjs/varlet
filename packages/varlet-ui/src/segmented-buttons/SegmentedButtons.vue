@@ -1,6 +1,6 @@
 <template>
   <div :class="n('wrap')">
-    <div :role="multiple ? 'group' : 'radiogroup'" :class="n()">
+    <div :role="multiple ? 'group' : 'radiogroup'" :class="[n(), hasError ? n('--error') : null]">
       <template v-if="options.length">
         <var-segmented-button
           v-for="option in options"
@@ -210,6 +210,8 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
+    const hasError = computed(() => !!errorMessage.value)
+
     // expose
     function validate() {
       return v(props.rules, getSafeModelValue())
@@ -227,6 +229,7 @@ export default defineComponent({
       classes,
       renderOptionLabel,
       getOptionValue,
+      hasError,
       validate,
       reset,
       resetValidation,

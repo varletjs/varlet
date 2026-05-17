@@ -544,7 +544,37 @@ test('form reset clears segmented buttons without emitting change', async () => 
 
   expect(wrapper.vm.value).toBeUndefined()
   expect(onChange).toHaveBeenCalledTimes(0)
+  expect(wrapper.find('.var-segmented-buttons').classes()).not.toContain('var-segmented-buttons--error')
   expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('validation applies error class to segmented buttons group only', async () => {
+  const wrapper = mount(VarSegmentedButtons, {
+    props: {
+      modelValue: undefined,
+      rules: [(v) => !!v || 'Please choose one option'],
+    },
+    slots: {
+      default: `
+        <var-segmented-button checked-value="day">Day</var-segmented-button>
+        <var-segmented-button checked-value="week">Week</var-segmented-button>
+      `,
+    },
+    global: {
+      components: {
+        [VarSegmentedButton.name]: VarSegmentedButton,
+      },
+    },
+  })
+
+  const group = wrapper.find('.var-segmented-buttons')
+  await expect(wrapper.vm.validate()).resolves.toBe(false)
+  await delay(16)
+
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('Please choose one option')
+  expect(group.classes()).toContain('var-segmented-buttons--error')
 
   wrapper.unmount()
 })

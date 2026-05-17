@@ -608,6 +608,9 @@ interface BaseStyleVars {
   '--segmented-buttons-border-color'?: string
   '--segmented-buttons-border-radius'?: string
   '--segmented-buttons-border-width'?: string
+  '--segmented-buttons-error-border-color'?: string
+  '--segmented-buttons-error-color'?: string
+  '--segmented-buttons-error-checked-background'?: string
   '--segmented-button-text-color'?: string
   '--segmented-button-checked-background'?: string
   '--segmented-button-checked-text-color'?: string
