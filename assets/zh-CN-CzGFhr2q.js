@@ -1,0 +1,110 @@
+import{G as e,L as t,N as n,c as r,d as i,g as a,h as o,m as s}from"./runtime-core.esm-bundler-5xw830oL.js";import{t as c}from"./_plugin-vue_export-helper-V-yks4gF.js";var l={components:{}},u={class:`varlet-site-doc`},d={class:`card`},f={id:`jie4shao4`},p={class:`card`},m={id:`ji1ben3shi3yong4`},h={class:`card`},g={id:`lei4xing2`},_={class:`card`},v={id:`bu4tong2feng1ge2`},y={class:`card`},b={id:`zhi1du2yu3jin4yong4`},x={class:`card`},S={id:`fen1ge2wei4cha1cao2`},C={class:`card`},w={id:`yan3ma3xian3shi4`},T={class:`card`},E={id:`nian2tie1chang3jing3`},D={class:`card`},O={id:`nian2tie1zhuan3huan4`},k={class:`card`},A={id:`wan2cheng2shi4jian4`},j={class:`card`},M={id:`zi4duan4jiao4yan4`},N={class:`card`},P={id:`shu3xing4`},F={class:`card`},I={id:`fang1fa3`},L={class:`card`},R={id:`shi4jian4`},z={class:`card`},B={id:`cha1cao2`},V={class:`card`},H={id:`yang4shi4bian4liang4`};function U(c,l,U,W,G,K){let q=t(`router-link`),J=t(`var-site-code-example`);return n(),i(`div`,u,[l[53]||=r(`h1`,null,`验证码输入框`,-1),r(`div`,d,[r(`h3`,f,[a(q,{to:`#jie4shao4`},{default:e(()=>[...l[0]||=[o(`#`,-1)]]),_:1}),l[1]||=o(`介绍`,-1)]),l[2]||=r(`p`,null,[o(`用于输入短信验证码、邮箱验证码等多位短码，`),r(`code`,null,`v-model`),o(` 始终是完整字符串。`)],-1)]),r(`div`,p,[r(`h3`,m,[a(q,{to:`#ji1ben3shi3yong4`},{default:e(()=>[...l[3]||=[o(`#`,-1)]]),_:1}),l[4]||=o(`基本使用`,-1)]),a(J,null,{default:e(()=>[...l[5]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,h,[r(`h3`,g,[a(q,{to:`#lei4xing2`},{default:e(()=>[...l[6]||=[o(`#`,-1)]]),_:1}),l[7]||=o(`类型`,-1)]),l[9]||=r(`p`,null,[o(`通过 `),r(`code`,null,`type`),o(` 切换数字、字母和字母数字混合输入。`)],-1),a(J,null,{default:e(()=>[...l[8]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` digitValue = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` textValue = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` mixedValue = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"digitValue"`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"digit"`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"textValue"`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"text"`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"mixedValue"`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"alphanumeric"`),o(` />`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,_,[r(`h3`,v,[a(q,{to:`#bu4tong2feng1ge2`},{default:e(()=>[...l[10]||=[o(`#`,-1)]]),_:1}),l[11]||=o(`不同风格`,-1)]),l[13]||=r(`p`,null,[o(`通过 `),r(`code`,null,`variant`),o(` 切换 `),r(`code`,null,`standard`),o(`、`),r(`code`,null,`outlined`),o(` 和 `),r(`code`,null,`filled`),o(` 三种风格。`)],-1),a(J,null,{default:e(()=>[...l[12]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"standard"`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"outlined"`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"filled"`),o(` />`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,y,[r(`h3`,b,[a(q,{to:`#zhi1du2yu3jin4yong4`},{default:e(()=>[...l[14]||=[o(`#`,-1)]]),_:1}),l[15]||=o(`只读与禁用`,-1)]),a(J,null,{default:e(()=>[...l[16]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-space`),o(),r(`span`,{class:`hljs-attr`},`direction`),o(`=`),r(`span`,{class:`hljs-string`},`"column"`),o(),r(`span`,{class:`hljs-attr`},`size`),o(`=`),r(`span`,{class:`hljs-string`},`"large"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`model-value`),o(`=`),r(`span`,{class:`hljs-string`},`"123456"`),o(),r(`span`,{class:`hljs-attr`},`readonly`),o(` />`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`model-value`),o(`=`),r(`span`,{class:`hljs-string`},`"123456"`),o(),r(`span`,{class:`hljs-attr`},`disabled`),o(` />`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-space`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,x,[r(`h3`,S,[a(q,{to:`#fen1ge2wei4cha1cao2`},{default:e(()=>[...l[17]||=[o(`#`,-1)]]),_:1}),l[18]||=o(`分隔位插槽`,-1)]),l[20]||=r(`p`,null,[o(`使用 `),r(`code`,null,`separator`),o(` 插槽自定义分隔展示内容。`)],-1),a(J,null,{default:e(()=>[...l[19]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"alphanumeric"`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(` #`),r(`span`,{class:`hljs-attr`},`separator`),o(`=`),r(`span`,{class:`hljs-string`},`"{ index }"`),o(`>`)]),o(`
+      `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`span`),o(),r(`span`,{class:`hljs-attr`},`v-if`),o(`=`),r(`span`,{class:`hljs-string`},`"index === 2"`),o(),r(`span`,{class:`hljs-attr`},`style`),o(`=`),r(`span`,{class:`hljs-string`},`"font-size: 22px;"`),o(`>`)]),o(`-`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`span`),o(`>`)]),o(`
+    `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(`>`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,C,[r(`h3`,w,[a(q,{to:`#yan3ma3xian3shi4`},{default:e(()=>[...l[21]||=[o(`#`,-1)]]),_:1}),l[22]||=o(`掩码显示`,-1)]),a(J,null,{default:e(()=>[...l[23]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(),r(`span`,{class:`hljs-attr`},`mask`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,T,[r(`h3`,E,[a(q,{to:`#nian2tie1chang3jing3`},{default:e(()=>[...l[24]||=[o(`#`,-1)]]),_:1}),l[25]||=o(`粘贴场景`,-1)]),l[27]||=r(`p`,null,`可以直接粘贴完整验证码，超出长度的内容会自动截断。`,-1),a(J,null,{default:e(()=>[...l[26]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,D,[r(`h3`,O,[a(q,{to:`#nian2tie1zhuan3huan4`},{default:e(()=>[...l[28]||=[o(`#`,-1)]]),_:1}),l[29]||=o(`粘贴转换`,-1)]),l[31]||=r(`p`,null,[o(`通过 `),r(`code`,null,`paste-transform`),o(` 可以对粘贴内容做预处理。`)],-1),a(J,null,{default:e(()=>[...l[30]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(`
+    `),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(`
+    `),r(`span`,{class:`hljs-attr`},`type`),o(`=`),r(`span`,{class:`hljs-string`},`"alphanumeric"`),o(`
+    `),r(`span`,{class:`hljs-attr`},`:paste-transform`),o(`=`),r(`span`,{class:`hljs-string`},`"(value) => value.replace(/[-\\\\s]/g, '').toUpperCase()"`),o(`
+  />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,k,[r(`h3`,A,[a(q,{to:`#wan2cheng2shi4jian4`},{default:e(()=>[...l[32]||=[o(`#`,-1)]]),_:1}),l[33]||=o(`完成事件`,-1)]),a(J,null,{default:e(()=>[...l[34]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { Snackbar } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'@varlet/ui'`),o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+
+`),r(`span`,{class:`hljs-function`},[r(`span`,{class:`hljs-keyword`},`function`),o(),r(`span`,{class:`hljs-title`},`handleComplete`),o(`(`),r(`span`,{class:`hljs-params`},`value`),o(`) `)]),o(`{
+  Snackbar.success(`),r(`span`,{class:`hljs-string`},[o("`输入完成："),r(`span`,{class:`hljs-subst`},"${value}"),o("`")]),o(`)
+}
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(` @`),r(`span`,{class:`hljs-attr`},`complete`),o(`=`),r(`span`,{class:`hljs-string`},`"handleComplete"`),o(` />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),r(`div`,j,[r(`h3`,M,[a(q,{to:`#zi4duan4jiao4yan4`},{default:e(()=>[...l[35]||=[o(`#`,-1)]]),_:1}),l[36]||=o(`字段校验`,-1)]),a(J,null,{default:e(()=>[...l[37]||=[r(`pre`,{class:`hljs`},[r(`code`,null,[r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`script`),o(),r(`span`,{class:`hljs-attr`},`setup`),o(`>`)]),r(`span`,{class:`javascript`},[o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { ref } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'vue'`),o(`
+`),r(`span`,{class:`hljs-keyword`},`import`),o(` { z } `),r(`span`,{class:`hljs-keyword`},`from`),o(),r(`span`,{class:`hljs-string`},`'zod'`),o(`
+
+`),r(`span`,{class:`hljs-keyword`},`const`),o(` value = ref(`),r(`span`,{class:`hljs-string`},`''`),o(`)
+`)]),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`script`),o(`>`)]),o(`
+
+`),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+  `),r(`span`,{class:`hljs-tag`},[o(`<`),r(`span`,{class:`hljs-name`},`var-otp-input`),o(`
+    `),r(`span`,{class:`hljs-attr`},`v-model`),o(`=`),r(`span`,{class:`hljs-string`},`"value"`),o(`
+    `),r(`span`,{class:`hljs-attr`},`variant`),o(`=`),r(`span`,{class:`hljs-string`},`"filled"`),o(`
+    `),r(`span`,{class:`hljs-attr`},`:rules`),o(`=`),r(`span`,{class:`hljs-string`},`"z.string().length(6, '验证码长度必须为 6')"`),o(`
+  />`)]),o(`
+`),r(`span`,{class:`hljs-tag`},[o(`</`),r(`span`,{class:`hljs-name`},`template`),o(`>`)]),o(`
+`)])],-1)]]),_:1})]),l[54]||=r(`h2`,null,`API`,-1),r(`div`,N,[r(`h3`,P,[a(q,{to:`#shu3xing4`},{default:e(()=>[...l[38]||=[o(`#`,-1)]]),_:1}),l[39]||=o(`属性`,-1)]),l[40]||=s(`<table><thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>v-model</code></td><td>验证码值</td><td><em>string</em></td><td><code>&#39;&#39;</code></td></tr><tr><td><code>length</code></td><td>验证码位数</td><td><em>string | number</em></td><td><code>6</code></td></tr><tr><td><code>type</code></td><td>验证码类型，可选值为 <code>digit</code> <code>text</code> <code>alphanumeric</code></td><td><em>OtpInputType</em></td><td><code>digit</code></td></tr><tr><td><code>variant</code></td><td>风格，可选值为 <code>standard</code> <code>outlined</code> <code>filled</code></td><td><em>Variant</em></td><td><code>outlined</code></td></tr><tr><td><code>mask</code></td><td>是否掩码显示</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>mask-symbol</code></td><td>掩码字符</td><td><em>string</em></td><td><code>•</code></td></tr><tr><td><code>cell-height</code></td><td>单格高度</td><td><em>string | number</em></td><td><code>48</code></td></tr><tr><td><code>cell-max-width</code></td><td>单格最大宽度</td><td><em>string | number</em></td><td><code>48</code></td></tr><tr><td><code>text-color</code></td><td>文字颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>focus-color</code></td><td>聚焦时主要颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>blur-color</code></td><td>失焦时主要颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>disabled</code></td><td>是否禁用</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>readonly</code></td><td>是否只读</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>autofocus</code></td><td>初始化后是否自动聚焦</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>gutter</code></td><td>格子间距</td><td><em>string | number</em></td><td><code>8</code></td></tr><tr><td><code>align</code> <em><strong>3.16.1</strong></em></td><td>组件整体内容对齐方式，可选值为 <code>start</code> <code>center</code> <code>end</code></td><td><em>OtpInputAlign</em></td><td><code>center</code></td></tr><tr><td><code>validate-trigger</code></td><td>触发校验的时机，可选值为 <code>onInput</code> <code>onClick</code> <code>onPaste</code> <code>onComplete</code></td><td><em>OtpInputValidateTrigger[]</em></td><td><code>[&#39;onInput&#39;, &#39;onComplete&#39;]</code></td></tr><tr><td><code>rules</code></td><td>验证规则，返回 <code>true</code> 表示验证通过，其它类型的值将转换为文本作为用户提示，支持 Zod 验证</td><td><em>((v: string) =&gt; any) | ZodType | Array&lt;((v: string) =&gt; any) | ZodType&gt;</em></td><td><code>-</code></td></tr><tr><td><code>allow-paste</code></td><td>是否允许粘贴整串验证码</td><td><em>boolean</em></td><td><code>true</code></td></tr><tr><td><code>paste-transform</code></td><td>粘贴内容转换器</td><td><em>(value: string) =&gt; string</em></td><td><code>-</code></td></tr></tbody></table>`,1)]),r(`div`,F,[r(`h3`,I,[a(q,{to:`#fang1fa3`},{default:e(()=>[...l[41]||=[o(`#`,-1)]]),_:1}),l[42]||=o(`方法`,-1)]),l[43]||=s(`<table><thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>返回值</th></tr></thead><tbody><tr><td><code>focus</code></td><td>聚焦到首个空位，或指定位置</td><td><code>index?: number</code></td><td><code>-</code></td></tr><tr><td><code>blur</code></td><td>使所有输入格失焦</td><td><code>-</code></td><td><code>-</code></td></tr><tr><td><code>reset</code></td><td>清空绑定的值和校验信息</td><td><code>-</code></td><td><code>-</code></td></tr><tr><td><code>validate</code></td><td>触发校验</td><td><code>-</code></td><td><code>valid: Promise&lt;boolean&gt;</code></td></tr><tr><td><code>resetValidation</code></td><td>清空校验信息</td><td><code>-</code></td><td><code>-</code></td></tr></tbody></table>`,1)]),r(`div`,L,[r(`h3`,R,[a(q,{to:`#shi4jian4`},{default:e(()=>[...l[44]||=[o(`#`,-1)]]),_:1}),l[45]||=o(`事件`,-1)]),l[46]||=s(`<table><thead><tr><th>事件名</th><th>说明</th><th>参数</th></tr></thead><tbody><tr><td><code>input</code></td><td>验证码值变化时触发</td><td><code>value: string</code></td></tr><tr><td><code>click</code></td><td>点击组件根节点时触发</td><td><code>event: Event</code></td></tr><tr><td><code>paste</code></td><td>粘贴时触发</td><td><code>value: string</code>, <code>event: ClipboardEvent</code></td></tr><tr><td><code>complete</code></td><td>输入满 <code>length</code> 时触发</td><td><code>value: string</code></td></tr></tbody></table>`,1)]),r(`div`,z,[r(`h3`,B,[a(q,{to:`#cha1cao2`},{default:e(()=>[...l[47]||=[o(`#`,-1)]]),_:1}),l[48]||=o(`插槽`,-1)]),l[49]||=r(`table`,null,[r(`thead`,null,[r(`tr`,null,[r(`th`,null,`插槽名`),r(`th`,null,`说明`),r(`th`,null,`参数`)])]),r(`tbody`,null,[r(`tr`,null,[r(`td`,null,[r(`code`,null,`separator`)]),r(`td`,null,`自定义分隔位内容`),r(`td`,null,[r(`code`,null,`index: number`)])])])],-1)]),r(`div`,V,[r(`h3`,H,[a(q,{to:`#yang4shi4bian4liang4`},{default:e(()=>[...l[50]||=[o(`#`,-1)]]),_:1}),l[51]||=o(`样式变量`,-1)]),l[52]||=s(`<p>以下为组件使用的 CSS 变量，可以使用 <a href="#/zh-CN/style-provider">StyleProvider 组件</a> 进行样式定制。</p><table><thead><tr><th>变量名</th><th>默认值</th></tr></thead><tbody><tr><td><code>--otp-input-gutter</code></td><td><code>8px</code></td></tr><tr><td><code>--otp-input-cell-height</code></td><td><code>48px</code></td></tr><tr><td><code>--otp-input-cell-max-width</code></td><td><code>48px</code></td></tr><tr><td><code>--otp-input-input-font-size</code></td><td><code>20px</code></td></tr></tbody></table>`,2)])])}var W=c(l,[[`render`,U]]);export{W as default};
