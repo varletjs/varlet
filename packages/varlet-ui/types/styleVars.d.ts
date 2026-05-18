@@ -592,19 +592,6 @@ interface BaseStyleVars {
   '--result-description-line-height'?: string
   '--ripple-cubic-bezier'?: string
   '--ripple-color'?: string
-  '--select-scroller-background'?: string
-  '--select-scroller-padding'?: string
-  '--select-scroller-max-height'?: string
-  '--select-scroller-border-radius'?: string
-  '--select-label-font-size'?: string
-  '--select-chips-margin'?: string
-  '--select-chips-padding'?: string
-  '--select-chip-margin'?: string
-  '--select-arrow-size'?: string
-  '--select-standard-menu-margin'?: string
-  '--select-empty-text-color'?: string
-  '--select-empty-height'?: string
-  '--select-empty-font-size'?: string
   '--segmented-buttons-border-color'?: string
   '--segmented-buttons-border-radius'?: string
   '--segmented-buttons-border-width'?: string
@@ -628,6 +615,19 @@ interface BaseStyleVars {
   '--segmented-button-small-font-size'?: string
   '--segmented-button-normal-font-size'?: string
   '--segmented-button-large-font-size'?: string
+  '--select-scroller-background'?: string
+  '--select-scroller-padding'?: string
+  '--select-scroller-max-height'?: string
+  '--select-scroller-border-radius'?: string
+  '--select-label-font-size'?: string
+  '--select-chips-margin'?: string
+  '--select-chips-padding'?: string
+  '--select-chip-margin'?: string
+  '--select-arrow-size'?: string
+  '--select-standard-menu-margin'?: string
+  '--select-empty-text-color'?: string
+  '--select-empty-height'?: string
+  '--select-empty-font-size'?: string
   '--option-height'?: string
   '--option-padding'?: string
   '--option-font-size'?: string

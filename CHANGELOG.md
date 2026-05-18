@@ -1,11 +1,34 @@
-## [3.16.2](https://github.com/varletjs/varlet/compare/v3.16.1...v3.16.2) (2026-05-12)
+# [3.17.0](https://github.com/varletjs/varlet/compare/v3.16.2...v3.17.0) (2026-05-18)
+
+
+### Bug Fixes
+
+* **segmented-buttons:** simplify modelValue watcher and remove unnecessary nextTick call ([11d2351](https://github.com/varletjs/varlet/commit/11d2351ba16f74d18a9b40e5a6393e7412dfae48))
+* **segmented-buttons:** update checked background and text color variables for consistency across themes ([be8da89](https://github.com/varletjs/varlet/commit/be8da893e53671198b262d671630a2c3649c09e4))
+* **segmented-buttons:** update default values for checked-value, ripple, and checkmark props in documentation ([debc2e6](https://github.com/varletjs/varlet/commit/debc2e6245749137fd91fdb51432340946844d8f))
+* **segmented-buttons:** update documentation for clarity, adjust variable names, and improve layout styles ([06723ea](https://github.com/varletjs/varlet/commit/06723eaa3e70f7559fb99d5cf821b4c698e213f7))
 
 
 ### Features
 
 * **card, paper:** add support for hoverable and ripple properties as objects with color and disabled options ([d5b224b](https://github.com/varletjs/varlet/commit/d5b224bdb5c848b69526ae7492274b40547fb790))
 * **config:** update team member details including names, descriptions, and social links ([351168e](https://github.com/varletjs/varlet/commit/351168ebb17fb8baa26a5fd991f77187e14a7824))
+* **form:** add segmented buttons for period selection and enhance form functionality ([0ac5a15](https://github.com/varletjs/varlet/commit/0ac5a15f871e0fb7236e1a2ca6936d8a00d6ebf3))
 * **index:** update hoverable and ripple properties to accept color options for features ([05e5289](https://github.com/varletjs/varlet/commit/05e5289aca3c35b4afb7e41bf70bc5182e5721cd))
+* **segmented-buttons:** add disabled and readonly states, enhance form validation, and update documentation ([9cbfcde](https://github.com/varletjs/varlet/commit/9cbfcde3f6451a2d6fecd4c86def3a476eb052ae))
+* **segmented-buttons:** add error handling styles and validation logic ([0f99bca](https://github.com/varletjs/varlet/commit/0f99bcaa89b8d0fa85d26a6300589be156b17427))
+* **segmented-buttons:** add SegmentedButtons and SegmentedButton components with comprehensive functionality and documentation ([2c0bf43](https://github.com/varletjs/varlet/commit/2c0bf43b7a510bdd33c881a423ce2b5d52d3bcfd))
+* **segmented-buttons:** enhance checkmark functionality and update documentation ([979dfdd](https://github.com/varletjs/varlet/commit/979dfddb1dcd532ff89da05ed176bba17ced224d))
+* **segmented-buttons:** enhance functionality with click event handling and update documentation ([22effb3](https://github.com/varletjs/varlet/commit/22effb3bc2c0f417c21285cf5c85f429e1c25aa9))
+* **segmented-buttons:** enhance SegmentedButton and SegmentedButtons components with improved props, updated documentation, and additional tests ([b64f08d](https://github.com/varletjs/varlet/commit/b64f08d2733b9b79c3c566171d828b829d9e5ade))
+* **segmented-buttons:** refactor click handling, enhance props for label and value keys, and update documentation ([f3eef34](https://github.com/varletjs/varlet/commit/f3eef3430a5d7fbf52c665d9b4939b0c8bafe09c))
+* **segmented-buttons:** update button styles for improved visual consistency and enhance test coverage for options handling ([7ae3c72](https://github.com/varletjs/varlet/commit/7ae3c724d81c76d90a021ee6867df2469e43569e))
+
+## [3.16.1](https://github.com/varletjs/varlet/compare/v3.16.0...v3.16.1) (2026-05-11)
+
+
+### Features
+
 * **otp-input:** add alignment options for OTP input cells and update documentation ([3772792](https://github.com/varletjs/varlet/commit/37727921447b5796aecad947ae75fe9a90b5e085))
 
 # [3.16.0](https://github.com/varletjs/varlet/compare/v3.15.2...v3.16.0) (2026-05-11)

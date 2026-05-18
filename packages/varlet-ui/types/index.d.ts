@@ -74,9 +74,9 @@ export * from './rate'
 export * from './result'
 export * from './ripple'
 export * from './row'
-export * from './select'
 export * from './segmentedButton'
 export * from './segmentedButtons'
+export * from './select'
 export * from './signature'
 export * from './skeleton'
 export * from './slider'
@@ -173,9 +173,9 @@ declare module 'vue' {
     VarRate: typeof import('@varlet/ui')['_RateComponent']
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
-    VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSegmentedButton: typeof import('@varlet/ui')['_SegmentedButtonComponent']
     VarSegmentedButtons: typeof import('@varlet/ui')['_SegmentedButtonsComponent']
+    VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSignature: typeof import('@varlet/ui')['_SignatureComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
     VarSlider: typeof import('@varlet/ui')['_SliderComponent']
