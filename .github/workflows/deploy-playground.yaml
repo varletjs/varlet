@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Install pnpm
         run: npm i -g --force corepack && corepack enable
 
       - name: Set node version to 22
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
         with:
           node-version: '22.x'
           cache: 'pnpm'
@@ -27,7 +27,7 @@ jobs:
         run: pnpm build:play
 
       - name: Deploy site
-        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        uses: JamesIves/github-pages-deploy-action@a1ea191d508feb8485aceba848389d49f80ca2dc # v4.4.3
         with:
           branch: gh-page
           folder: packages/varlet-ui-playground/site

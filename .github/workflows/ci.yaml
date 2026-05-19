@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Install pnpm
         run: npm i -g --force corepack && corepack enable
 
       - name: Set node version to 22
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
         with:
           node-version: '22.x'
           cache: 'pnpm'
@@ -28,6 +28,6 @@ jobs:
         run: pnpm test:coverage
 
       - name: Report coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@29386c70ef20e286228c72b668a06fd0e8399192 # v1.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
