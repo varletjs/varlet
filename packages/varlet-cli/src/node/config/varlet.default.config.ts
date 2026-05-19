@@ -43,8 +43,8 @@ export default defineConfig({
             'en-US': 'Rich components',
           },
           description: {
-            'zh-CN': '提供 60+ 个高质量通用组件',
-            'en-US': 'Provide 60+ high quality general purpose components',
+            'zh-CN': '提供 70+ 个高质量通用组件',
+            'en-US': 'Provide 70+ high quality general purpose components',
           },
           link: {
             'zh-CN': '/zh-CN/button',
@@ -549,7 +549,7 @@ export default defineConfig({
       'Material Design 3',
       'Mobile',
       'Desktop',
-      'Provide 60+ high quality general purpose components',
+      'Provide 70+ high quality general purpose components',
       'Components are very lightweight',
       'Developed by Chinese, complete Chinese and English documentation and logistics support',
       'Support on-demand introduction',
@@ -567,7 +567,7 @@ export default defineConfig({
       'Vue3 组件库',
       '移动端',
       '桌面端',
-      '提供 60+ 个高质量通用组件',
+      '提供 70+ 个高质量通用组件',
       '组件十分轻量',
       '由国人开发，完善的中英文文档和后勤保障',
       '支持按需引入',
