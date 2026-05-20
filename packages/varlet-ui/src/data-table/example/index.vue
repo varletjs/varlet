@@ -1,9 +1,10 @@
-<script setup lang="ts">
-import { AppType, watchLang } from '@varlet/cli/client'
+<script setup>
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { computed, h, ref } from 'vue'
 import { t, use } from './locale'
 
 watchLang(use)
+onThemeChange()
 
 const columns = [
   { key: 'name', title: 'Name' },
@@ -18,23 +19,35 @@ const data = [
   { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
 ]
 
+const renderStatus = ({ row }) =>
+  h(
+    'span',
+    {
+      style: {
+        color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-text-disabled)',
+      },
+    },
+    row.status,
+  )
+
 const renderColumns = [
   { key: 'name', title: 'Name' },
-  {
-    key: 'status',
-    title: 'Status',
-    render: ({ row }) =>
-      h(
-        'span',
-        {
-          style: {
-            color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-text-disabled)',
-          },
-        },
-        row.status,
-      ),
-  },
+  { key: 'status', title: 'Status', render: renderStatus },
 ]
+
+const checkedRowKeys = ref([1, 3])
+const selectionColumns = [
+  { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+const selectedRowNames = computed(() =>
+  data
+    .filter((row) => checkedRowKeys.value.includes(row.id))
+    .map((row) => row.name)
+    .join(', '),
+)
 
 const alignedColumns = [
   { key: 'name', title: 'Name', minWidth: 140 },
@@ -42,20 +55,37 @@ const alignedColumns = [
   { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 100 },
 ]
 
+const getStatusCellProps = ({ row }) => ({
+  style: {
+    color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-warning)',
+    fontWeight: '600',
+  },
+})
+
 const cellPropsColumns = [
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
-  {
-    key: 'status',
-    title: 'Status',
-    cellProps: ({ row }) => ({
-      style: {
-        color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-warning)',
-        fontWeight: '600',
-      },
-    }),
-  },
+  { key: 'status', title: 'Status', cellProps: getStatusCellProps },
 ]
+
+const customRowProps = ({ row, rowIndex }) => ({
+  style: {
+    backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
+  },
+  title: row.name,
+})
+
+const pagerPagination = {
+  simple: false,
+  showSizeChanger: false,
+  showQuickJumper: false,
+  maxPagerCount: 2,
+}
+
+const defaultPagination = {
+  showSizeChanger: false,
+  showQuickJumper: false,
+}
 
 const manyRows = Array.from({ length: 48 }, (_, index) => ({
   id: index + 1,
@@ -87,9 +117,6 @@ const remoteData = computed(() => {
   <app-type>{{ t('cellBordered') }}</app-type>
   <var-data-table :columns="columns" :data="data" cell-bordered />
 
-  <app-type>{{ t('striped') }}</app-type>
-  <var-data-table :columns="columns" :data="data" striped />
-
   <app-type>{{ t('sizes') }}</app-type>
   <var-data-table :columns="columns" :data="data" size="small" />
   <div style="height: 12px"></div>
@@ -99,45 +126,22 @@ const remoteData = computed(() => {
   <var-data-table :columns="alignedColumns" :data="data" />
 
   <app-type>{{ t('customProps') }}</app-type>
-  <var-data-table
-    :columns="cellPropsColumns"
-    :data="data"
-    :row-props="
-      ({ row, rowIndex }) => ({
-        style: {
-          backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
-        },
-        title: row.name,
-      })
-    "
-  />
+  <var-data-table :columns="cellPropsColumns" :data="data" :row-props="customRowProps" />
 
   <app-type>{{ t('customRender') }}</app-type>
   <var-data-table :columns="renderColumns" :data="data" />
 
-  <app-type>{{ t('compactPagination') }}</app-type>
-  <var-data-table
-    :columns="columns"
-    :data="compactPagedRows"
-    :pagination="{
-      simple: false,
-      showSizeChanger: false,
-      showQuickJumper: false,
-      maxPagerCount: 2,
-    }"
-  />
+  <app-type>{{ t('selection') }}</app-type>
+  <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="selectionColumns" :data="data" />
+  <div style="margin-top: 8px; color: var(--color-text-secondary); font-size: 14px">
+    {{ t('selectedRows') }}: {{ selectedRowNames || '-' }}
+  </div>
+
+  <app-type>{{ t('pagerPagination') }}</app-type>
+  <var-data-table :columns="columns" :data="compactPagedRows" :pagination="pagerPagination" />
 
   <app-type>{{ t('localPagination') }}</app-type>
-  <var-data-table
-    :columns="columns"
-    :data="manyRows"
-    striped
-    :pagination="{
-      simple: true,
-      showSizeChanger: false,
-      showQuickJumper: false,
-    }"
-  />
+  <var-data-table :columns="columns" :data="manyRows" :pagination="defaultPagination" />
 
   <app-type>{{ t('remotePagination') }}</app-type>
   <var-data-table
@@ -146,16 +150,14 @@ const remoteData = computed(() => {
     :columns="columns"
     :data="remoteData"
     :total="manyRows.length"
-    :pagination="{
-      simple: true,
-      showSizeChanger: false,
-      showQuickJumper: false,
-    }"
+    :pagination="defaultPagination"
     remote
   />
 
   <app-type>{{ t('emptyText') }}</app-type>
-  <var-data-table :columns="columns" :data="[]" :pagination="false" :empty-text="t('emptyTip')" />
+  <var-data-table :columns="columns" :data="[]" :pagination="false">
+    <template #empty>{{ t('emptyTip') }}</template>
+  </var-data-table>
 
   <app-type>{{ t('loading') }}</app-type>
   <var-data-table :columns="columns" :data="[]" loading />

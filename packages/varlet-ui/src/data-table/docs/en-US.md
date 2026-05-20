@@ -33,14 +33,6 @@ const data = [
 </template>
 ```
 
-### Striped
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" striped />
-</template>
-```
-
 ### Sizes
 
 ```html
@@ -88,19 +80,17 @@ const columns = [
     }),
   },
 ]
+
+const customRowProps = ({ row, rowIndex }) => ({
+  style: {
+    backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
+  },
+  title: row.name,
+})
 </script>
 
 <template>
-  <var-data-table
-    :columns="columns"
-    :data="data"
-    :row-props="({ row, rowIndex }) => ({
-      style: {
-        backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
-      },
-      title: row.name,
-    })"
-  />
+  <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
 </template>
 ```
 
@@ -141,6 +131,28 @@ const data = [
 </template>
 ```
 
+### Selection
+
+Use `type: 'selection'` to render a checkbox column. Bind `v-model:checked-row-keys` to control the selected rows.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([1, 3])
+
+const columns = [
+  { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+]
+</script>
+
+<template>
+  <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
 ### Pager Pagination
 
 Use `pagination` to configure built-in pager pagination.
@@ -170,7 +182,6 @@ In local pagination mode, pass the full data set and let the component slice it 
     :columns="columns"
     :data="data"
     :pagination="{
-      simple: true,
       showSizeChanger: false,
       showQuickJumper: false,
     }"
@@ -209,6 +220,10 @@ const columns = [{ key: 'name', title: 'Name' }]
     :columns="columns"
     :data="currentPageData"
     :total="allData.length"
+    :pagination="{
+      showSizeChanger: false,
+      showQuickJumper: false,
+    }"
     remote
   />
 </template>
@@ -218,7 +233,9 @@ const columns = [{ key: 'name', title: 'Name' }]
 
 ```html
 <template>
-  <var-data-table :columns="columns" :data="[]" :pagination="false" empty-text="No Data" />
+  <var-data-table :columns="columns" :data="[]" :pagination="false">
+    <template #empty>No Data</template>
+  </var-data-table>
 </template>
 ```
 
@@ -239,39 +256,32 @@ const columns = [{ key: 'name', title: 'Name' }]
 | `data` | Data source. Full data in local mode, current page data in remote mode | _any[]_ | `[]` |
 | `columns` | Column definitions | _DataTableColumn[]_ | `[]` |
 | `row-key` | Row key field or getter | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
-| `row-props` | Native row props, supports object or function | _DataTableRowProps_ | `-` |
+| `row-props` | Native row props, supports object or function | _object \| (context) => object_ | `-` |
 | `loading` | Whether to show loading overlay | _boolean_ | `false` |
 | `pagination` | Built-in pagination config | _boolean \| DataTablePagination_ | `true` |
 | `remote` | Whether to enable remote pagination mode | _boolean_ | `false` |
 | `v-model:page` | Current page | _number \| string_ | `1` |
 | `v-model:page-size` | Current page size | _number \| string_ | `10` |
+| `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number \| string_ | `-` |
 | `elevation` | Elevation level | _boolean \| number \| string_ | `true` |
-| `striped` | Whether to show striped rows | _boolean_ | `false` |
-| `cell-bordered` | Whether to show outer border and cell dividers | _boolean_ | `false` |
+| `cell-bordered` | Whether to show cell dividers | _boolean_ | `false` |
 | `size` | Table size | _'small' \| 'normal' \| 'large'_ | `'normal'` |
-| `empty-text` | Empty text | _string_ | `Locale.selectEmptyText` |
 
 ### DataTableColumn
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
+| `type` | Column type. Set to `selection` to render checkboxes | _'selection'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
 | `title` | Column title | _string_ | `-` |
 | `width` | Column width | _number \| string_ | `-` |
 | `minWidth` | Column min width | _number \| string_ | `-` |
 | `align` | Body cell align | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | Header title align | _'left' \| 'center' \| 'right'_ | `align` |
-| `cellProps` | Native cell props, supports object or function | _DataTableCellProps_ | `-` |
+| `selectable` | Whether the row can be selected. Only works on selection columns | _`(context) => boolean`_ | `-` |
+| `cellProps` | Native cell props, supports object or function | _object \| (context) => object_ | `-` |
 | `render` | Custom cell render | _`(context) => VNodeChild`_ | `-` |
-
-### DataTableRowProps
-
-`DataTableRowProps = HTMLAttributes | ((context: { row, rowIndex, pageRowIndex }) => HTMLAttributes | undefined)`
-
-### DataTableCellProps
-
-`DataTableCellProps = HTMLAttributes | ((context: { row, rowIndex, pageRowIndex, column }) => HTMLAttributes | undefined)`
 
 ### DataTablePagination
 
@@ -289,6 +299,7 @@ const columns = [{ key: 'name', title: 'Name' }]
 
 | Name | Description | Parameters |
 | --- | --- | --- |
+| `empty` | Custom empty content | `-` |
 | `loading` | Custom loading content | `-` |
 | `footer-prefix` | Content before pagination | `-` |
 
@@ -302,7 +313,6 @@ const columns = [{ key: 'name', title: 'Name' }]
 | `--data-table-row-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
 | `--data-table-hover-background` | `#eee` |
-| `--data-table-striped-background` | `#fff` |
 | `--data-table-empty-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

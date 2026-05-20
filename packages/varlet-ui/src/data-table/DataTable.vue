@@ -14,15 +14,31 @@
     <var-loading :loading="loading">
       <div :class="n('main')">
         <table :class="n('table')">
+          <colgroup>
+            <col
+              v-for="(column, index) in columns"
+              :key="column.key ?? column.type ?? index"
+              :style="getColStyle(column)"
+            />
+          </colgroup>
+
           <thead v-if="columns.length">
             <tr :class="n('header-row')">
               <th
                 v-for="column in columns"
-                :key="column.key"
-                :class="classes(n('cell'), n('header-cell'))"
+                :key="column.key ?? column.type"
+                :class="classes(n('cell'), n('header-cell'), [isSelectionColumn(column), n('selection-cell')])"
                 :style="getHeaderCellStyle(column)"
               >
-                {{ column.title }}
+                <var-checkbox
+                  v-if="isSelectionColumn(column)"
+                  :model-value="allCurrentRowsSelected"
+                  :indeterminate="someCurrentRowsSelected"
+                  :disabled="!currentSelectableRows.length"
+                  tabindex="-1"
+                  @update:model-value="toggleAllCurrentRows"
+                />
+                <template v-else>{{ column.title }}</template>
               </th>
             </tr>
           </thead>
@@ -31,24 +47,33 @@
             <tr
               v-for="(row, pageRowIndex) in currentData"
               :key="getRowKey(row, getAbsoluteRowIndex(pageRowIndex))"
-              :class="classes(n('row'), [striped, n('row--striped')])"
+              :class="n('row')"
               v-bind="getRowProps(row, pageRowIndex)"
             >
               <td
                 v-for="column in columns"
-                :key="column.key"
-                :class="classes(n('cell'), n('body-cell'))"
+                :key="column.key ?? column.type"
+                :class="classes(n('cell'), n('body-cell'), [isSelectionColumn(column), n('selection-cell')])"
                 :style="getBodyCellStyle(column)"
                 v-bind="getCellProps(row, column, pageRowIndex)"
               >
-                <MaybeVNode :is="renderCell(row, column, pageRowIndex)" tag="div" />
+                <var-checkbox
+                  v-if="isSelectionColumn(column)"
+                  :model-value="isRowSelected(row, pageRowIndex)"
+                  :disabled="!isRowSelectable(row, pageRowIndex, column)"
+                  tabindex="-1"
+                  @update:model-value="toggleRowSelection(row, pageRowIndex, $event)"
+                />
+                <MaybeVNode v-else :is="renderCell(row, column, pageRowIndex)" tag="div" />
               </td>
             </tr>
           </tbody>
         </table>
 
         <div v-if="!currentData.length" :class="n('empty')">
-          {{ resolvedEmptyText }}
+          <slot name="empty">
+            {{ resolvedEmptyText }}
+          </slot>
         </div>
       </div>
 
@@ -78,14 +103,23 @@
 </template>
 
 <script lang="ts">
-import { call, isFunction, toNumber } from '@varlet/shared'
-import { computed, defineComponent, watch } from 'vue'
+import { call, callOrReturn, clamp, isFunction, toNumber } from '@varlet/shared'
+import { computed, defineComponent, ref, watch } from 'vue'
+import VarCheckbox from '../checkbox'
 import VarLoading from '../loading'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import VarPagination from '../pagination'
 import { createNamespace, formatElevation, MaybeVNode } from '../utils/components'
-import { props, type DataTableAlign, type DataTableColumn, type DataTablePagination } from './props'
+import { toSizeUnit } from '../utils/elements'
+import {
+  props,
+  type DataTableAlign,
+  type DataTableColumn,
+  type DataTableKey,
+  type DataTablePagination,
+  type DataTableSelectionColumn,
+} from './props'
 
 const { name, n, classes } = createNamespace('data-table')
 
@@ -100,6 +134,7 @@ type NormalizedPaginationOptions = Required<
 export default defineComponent({
   name,
   components: {
+    VarCheckbox,
     VarLoading,
     VarPagination,
     MaybeVNode,
@@ -107,6 +142,7 @@ export default defineComponent({
   props,
   setup(props) {
     const { t: pt } = injectLocaleProvider()
+    const checkedRowKeys = ref<DataTableKey[]>([...props.checkedRowKeys])
     const defaultPaginationOptions: NormalizedPaginationOptions = {
       simple: false,
       disabled: false,
@@ -134,8 +170,8 @@ export default defineComponent({
       }
     })
 
-    const currentPage = computed(() => Math.max(1, toNumber(props.page) || 1))
-    const currentPageSize = computed(() => Math.max(1, toNumber(props.pageSize) || 10))
+    const currentPage = computed(() => clamp(toNumber(props.page) || 1, 1, Number.MAX_SAFE_INTEGER))
+    const currentPageSize = computed(() => clamp(toNumber(props.pageSize) || 10, 1, Number.MAX_SAFE_INTEGER))
     const localTotal = computed(() => props.data.length)
     const paginationTotal = computed(() => {
       if (!paginationEnabled.value) {
@@ -143,7 +179,7 @@ export default defineComponent({
       }
 
       if (props.remote) {
-        return Math.max(0, toNumber(props.total) || 0)
+        return clamp(toNumber(props.total) || 0, 0, Number.MAX_SAFE_INTEGER)
       }
 
       return localTotal.value
@@ -164,7 +200,7 @@ export default defineComponent({
         return 1
       }
 
-      return Math.min(currentPage.value, pageCount.value)
+      return clamp(currentPage.value, 1, pageCount.value)
     })
 
     const currentData = computed(() => {
@@ -178,7 +214,42 @@ export default defineComponent({
       return props.data.slice(start, end)
     })
 
-    const resolvedEmptyText = computed(() => props.emptyText || (pt ? pt : t)('selectEmptyText'))
+    const resolvedEmptyText = computed(() => (pt ? pt : t)('selectEmptyText'))
+    const selectionColumn = computed(() => props.columns.find(isSelectionColumn))
+    const checkedRowKeySet = computed(() => new Set(checkedRowKeys.value))
+    const currentSelectableRows = computed(() => {
+      if (!selectionColumn.value) {
+        return []
+      }
+
+      return currentData.value
+        .map((row, pageRowIndex) => ({
+          row,
+          pageRowIndex,
+          rowIndex: getAbsoluteRowIndex(pageRowIndex),
+          key: getRowKey(row, getAbsoluteRowIndex(pageRowIndex)),
+        }))
+        .filter(({ row, rowIndex, pageRowIndex }) =>
+          isRowSelectable(row, pageRowIndex, selectionColumn.value!, rowIndex),
+        )
+    })
+    const allCurrentRowsSelected = computed(
+      () =>
+        currentSelectableRows.value.length > 0 &&
+        currentSelectableRows.value.every(({ key }) => checkedRowKeySet.value.has(key)),
+    )
+    const someCurrentRowsSelected = computed(
+      () =>
+        currentSelectableRows.value.some(({ key }) => checkedRowKeySet.value.has(key)) && !allCurrentRowsSelected.value,
+    )
+
+    watch(
+      () => props.checkedRowKeys,
+      (value) => {
+        checkedRowKeys.value = [...value]
+      },
+      { deep: true },
+    )
 
     watch(
       [hasPagination, () => props.remote, currentPage, normalizedPage],
@@ -208,8 +279,61 @@ export default defineComponent({
       return row[props.rowKey] ?? rowIndex
     }
 
+    function isSelectionColumn(column: DataTableColumn): column is DataTableSelectionColumn {
+      return column.type === 'selection'
+    }
+
+    function isRowSelectable(
+      row: Record<string, any>,
+      pageRowIndex: number,
+      column?: DataTableSelectionColumn,
+      rowIndex = getAbsoluteRowIndex(pageRowIndex),
+    ) {
+      if (!column?.selectable) {
+        return true
+      }
+
+      return column.selectable({
+        row,
+        rowIndex,
+        pageRowIndex,
+      })
+    }
+
+    function updateCheckedRowKeys(value: DataTableKey[]) {
+      checkedRowKeys.value = value
+      call(props['onUpdate:checkedRowKeys'], value)
+    }
+
+    function isRowSelected(row: Record<string, any>, pageRowIndex: number) {
+      return checkedRowKeySet.value.has(getRowKey(row, getAbsoluteRowIndex(pageRowIndex)))
+    }
+
+    function toggleRowSelection(row: Record<string, any>, pageRowIndex: number, selected: boolean) {
+      const key = getRowKey(row, getAbsoluteRowIndex(pageRowIndex))
+      const nextKeys = new Set(checkedRowKeys.value)
+
+      selected ? nextKeys.add(key) : nextKeys.delete(key)
+
+      updateCheckedRowKeys([...nextKeys])
+    }
+
+    function toggleAllCurrentRows(selected: boolean) {
+      const nextKeys = new Set(checkedRowKeys.value)
+
+      currentSelectableRows.value.forEach(({ key }) => {
+        selected ? nextKeys.add(key) : nextKeys.delete(key)
+      })
+
+      updateCheckedRowKeys([...nextKeys])
+    }
+
     const renderCell = (row: Record<string, any>, column: DataTableColumn, pageRowIndex: number) => {
       const rowIndex = getAbsoluteRowIndex(pageRowIndex)
+
+      if (isSelectionColumn(column)) {
+        return undefined
+      }
 
       if (column.render) {
         return column.render({
@@ -230,15 +354,11 @@ export default defineComponent({
 
       const rowIndex = getAbsoluteRowIndex(pageRowIndex)
 
-      if (isFunction(props.rowProps)) {
-        return props.rowProps({
-          row,
-          rowIndex,
-          pageRowIndex,
-        })
-      }
-
-      return props.rowProps
+      return callOrReturn(props.rowProps, {
+        row,
+        rowIndex,
+        pageRowIndex,
+      })
     }
 
     const getCellProps = (row: Record<string, any>, column: DataTableColumn, pageRowIndex: number) => {
@@ -248,29 +368,26 @@ export default defineComponent({
 
       const rowIndex = getAbsoluteRowIndex(pageRowIndex)
 
-      if (isFunction(column.cellProps)) {
-        return column.cellProps({
-          row,
-          rowIndex,
-          pageRowIndex,
-          column,
-        })
-      }
-
-      return column.cellProps
+      return callOrReturn(column.cellProps, {
+        row,
+        rowIndex,
+        pageRowIndex,
+        column,
+      })
     }
 
     const getAlign = (align?: DataTableAlign) => align ?? 'left'
 
+    const getColStyle = (column: DataTableColumn) => ({
+      width: column.width != null ? toSizeUnit(column.width) : isSelectionColumn(column) ? '52px' : undefined,
+      minWidth: column.minWidth != null ? toSizeUnit(column.minWidth) : isSelectionColumn(column) ? '52px' : undefined,
+    })
+
     const getHeaderCellStyle = (column: DataTableColumn) => ({
-      width: column.width != null ? toSizeUnit(column.width) : undefined,
-      minWidth: column.minWidth != null ? toSizeUnit(column.minWidth) : undefined,
       textAlign: getAlign(column.titleAlign ?? column.align),
     })
 
     const getBodyCellStyle = (column: DataTableColumn) => ({
-      width: column.width != null ? toSizeUnit(column.width) : undefined,
-      minWidth: column.minWidth != null ? toSizeUnit(column.minWidth) : undefined,
       textAlign: getAlign(column.align),
     })
 
@@ -287,11 +404,20 @@ export default defineComponent({
       paginationTotal,
       resolvedEmptyText,
       hasPagination,
+      allCurrentRowsSelected,
+      someCurrentRowsSelected,
       getAbsoluteRowIndex,
       getRowKey,
       getRowProps,
       getCellProps,
+      isSelectionColumn,
+      isRowSelectable,
+      isRowSelected,
+      toggleAllCurrentRows,
+      toggleRowSelection,
+      currentSelectableRows,
       renderCell,
+      getColStyle,
       getHeaderCellStyle,
       getBodyCellStyle,
       handlePaginationChange,
@@ -306,5 +432,18 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
+@import '../ripple/ripple';
+@import '../form-details/formDetails';
+@import '../icon/icon';
+@import '../hover-overlay/hoverOverlay';
+@import '../checkbox/checkbox';
+@import '../loading/loading';
+@import '../menu/menu';
+@import '../menu-select/menuSelect';
+@import '../menu-option/menuOption';
+@import '../cell/cell';
+@import '../field-decorator/fieldDecorator';
+@import '../input/input';
+@import '../pagination/pagination';
 @import './dataTable';
 </style>

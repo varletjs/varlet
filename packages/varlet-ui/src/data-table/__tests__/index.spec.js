@@ -87,6 +87,32 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support selection column', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data,
+        pagination: false,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
+
+    checkboxes[0].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 2, 3])
+    wrapper.unmount()
+  })
+
   test('should support rowProps and cellProps', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -118,13 +144,28 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should render empty text', () => {
+  test('should render default empty text', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns,
         data: [],
         pagination: false,
-        emptyText: 'Nothing here',
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__empty').text()).toBeTruthy()
+    wrapper.unmount()
+  })
+
+  test('should render empty slot', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data: [],
+        pagination: false,
+      },
+      slots: {
+        empty: () => h('span', 'Nothing here'),
       },
     })
 

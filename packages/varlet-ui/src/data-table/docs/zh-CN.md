@@ -33,14 +33,6 @@ const data = [
 </template>
 ```
 
-### 斑马纹
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" striped />
-</template>
-```
-
 ### 尺寸
 
 ```html
@@ -88,19 +80,17 @@ const columns = [
     }),
   },
 ]
+
+const customRowProps = ({ row, rowIndex }) => ({
+  style: {
+    backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
+  },
+  title: row.name,
+})
 </script>
 
 <template>
-  <var-data-table
-    :columns="columns"
-    :data="data"
-    :row-props="({ row, rowIndex }) => ({
-      style: {
-        backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
-      },
-      title: row.name,
-    })"
-  />
+  <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
 </template>
 ```
 
@@ -141,6 +131,28 @@ const data = [
 </template>
 ```
 
+### 选择列
+
+通过 `type: 'selection'` 渲染复选框列，并使用 `v-model:checked-row-keys` 控制选中行。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([1, 3])
+
+const columns = [
+  { type: 'selection' },
+  { key: 'name', title: '姓名' },
+  { key: 'role', title: '角色' },
+]
+</script>
+
+<template>
+  <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
 ### 页码分页
 
 通过 `pagination` 配置内置页码分页。
@@ -170,7 +182,6 @@ const data = [
     :columns="columns"
     :data="data"
     :pagination="{
-      simple: true,
       showSizeChanger: false,
       showQuickJumper: false,
     }"
@@ -209,6 +220,10 @@ const columns = [{ key: 'name', title: '姓名' }]
     :columns="columns"
     :data="currentPageData"
     :total="allData.length"
+    :pagination="{
+      showSizeChanger: false,
+      showQuickJumper: false,
+    }"
     remote
   />
 </template>
@@ -218,7 +233,9 @@ const columns = [{ key: 'name', title: '姓名' }]
 
 ```html
 <template>
-  <var-data-table :columns="columns" :data="[]" :pagination="false" empty-text="暂无数据" />
+  <var-data-table :columns="columns" :data="[]" :pagination="false">
+    <template #empty>暂无数据</template>
+  </var-data-table>
 </template>
 ```
 
@@ -239,39 +256,32 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `data` | 数据源。本地分页下传全量数据，远程分页下传当前页数据 | _any[]_ | `[]` |
 | `columns` | 列配置 | _DataTableColumn[]_ | `[]` |
 | `row-key` | 行 key 字段或获取函数 | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
-| `row-props` | 行属性透传，支持对象或函数 | _DataTableRowProps_ | `-` |
+| `row-props` | 行属性透传，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `loading` | 是否显示加载遮罩 | _boolean_ | `false` |
 | `pagination` | 内置分页配置 | _boolean \| DataTablePagination_ | `true` |
 | `remote` | 是否启用远程分页模式 | _boolean_ | `false` |
 | `v-model:page` | 当前页码 | _number \| string_ | `1` |
 | `v-model:page-size` | 当前每页条数 | _number \| string_ | `10` |
+| `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number \| string_ | `-` |
 | `elevation` | 海拔层级 | _boolean \| number \| string_ | `true` |
-| `striped` | 是否显示斑马纹 | _boolean_ | `false` |
-| `cell-bordered` | 是否显示外边框和单元格分割线 | _boolean_ | `false` |
+| `cell-bordered` | 是否显示单元格分割线 | _boolean_ | `false` |
 | `size` | 表格尺寸 | _'small' \| 'normal' \| 'large'_ | `'normal'` |
-| `empty-text` | 空数据文案 | _string_ | `Locale.selectEmptyText` |
 
 ### DataTableColumn
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| `type` | 列类型。设为 `selection` 时渲染勾选列 | _'selection'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
 | `title` | 列标题 | _string_ | `-` |
 | `width` | 列宽 | _number \| string_ | `-` |
 | `minWidth` | 列最小宽度 | _number \| string_ | `-` |
 | `align` | 内容对齐方式 | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | 表头标题对齐方式 | _'left' \| 'center' \| 'right'_ | `align` |
-| `cellProps` | 单元格属性透传，支持对象或函数 | _DataTableCellProps_ | `-` |
+| `selectable` | 是否允许选中该行，仅对选择列生效 | _`(context) => boolean`_ | `-` |
+| `cellProps` | 单元格属性透传，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `render` | 自定义单元格渲染 | _`(context) => VNodeChild`_ | `-` |
-
-### DataTableRowProps
-
-`DataTableRowProps = HTMLAttributes \| ((context: { row, rowIndex, pageRowIndex }) => HTMLAttributes \| undefined)`
-
-### DataTableCellProps
-
-`DataTableCellProps = HTMLAttributes \| ((context: { row, rowIndex, pageRowIndex, column }) => HTMLAttributes \| undefined)`
 
 ### DataTablePagination
 
@@ -289,6 +299,7 @@ const columns = [{ key: 'name', title: '姓名' }]
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
+| `empty` | 自定义空态内容 | `-` |
 | `loading` | 自定义加载内容 | `-` |
 | `footer-prefix` | 分页前置内容 | `-` |
 
@@ -302,7 +313,6 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `--data-table-row-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
 | `--data-table-hover-background` | `#eee` |
-| `--data-table-striped-background` | `#fff` |
 | `--data-table-empty-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

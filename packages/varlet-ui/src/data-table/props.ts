@@ -5,7 +5,10 @@ export type DataTableKey = string | number
 
 export type DataTableAlign = 'left' | 'center' | 'right'
 
-export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => DataTableKey)
+export type DataTableRowKey<Row = any> =
+  | Extract<keyof Row, string>
+  | string
+  | ((row: Row, rowIndex: number) => DataTableKey)
 
 export interface DataTableColumnRenderContext<Row = any> {
   row: Row
@@ -24,6 +27,10 @@ export interface DataTableCellPropsContext<Row = any> extends DataTableRowPropsC
   column: DataTableColumn<Row>
 }
 
+export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowPropsContext<Row> {
+  checked: boolean
+}
+
 export type DataTableRowProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes | undefined)
@@ -32,16 +39,30 @@ export type DataTableCellProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableCellPropsContext<Row>) => HTMLAttributes | undefined)
 
-export interface DataTableColumn<Row = any> {
-  key: string
-  title: string
+export interface DataTableBaseColumn<Row = any> {
   width?: string | number
   minWidth?: string | number
   align?: DataTableAlign
   titleAlign?: DataTableAlign
   cellProps?: DataTableCellProps<Row>
+}
+
+export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row> {
+  type?: undefined
+  key: string
+  title: string
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
 }
+
+export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn<Row> {
+  type: 'selection'
+  key?: string
+  title?: string
+  render?: never
+  selectable?: (context: DataTableRowPropsContext<Row>) => boolean
+}
+
+export type DataTableColumn<Row = any> = DataTableFieldColumn<Row> | DataTableSelectionColumn<Row>
 
 export interface DataTablePagination {
   simple?: boolean
@@ -84,17 +105,20 @@ export const props = {
     default: 10,
   },
   total: [Number, String],
+  checkedRowKeys: {
+    type: Array as PropType<DataTableKey[]>,
+    default: () => [],
+  },
   elevation: {
     type: [Boolean, Number, String],
     default: true,
   },
-  striped: Boolean,
   cellBordered: Boolean,
   size: {
     type: String as PropType<'small' | 'normal' | 'large'>,
     default: 'normal',
   },
-  emptyText: String,
+  'onUpdate:checkedRowKeys': defineListenerProp<(checkedRowKeys: DataTableKey[]) => void>(),
   'onUpdate:page': defineListenerProp<(page: number) => void>(),
   'onUpdate:pageSize': defineListenerProp<(pageSize: number) => void>(),
 }
