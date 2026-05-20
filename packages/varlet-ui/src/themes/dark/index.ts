@@ -18,6 +18,7 @@ import code from './code'
 import collapse from './collapse'
 import countdown from './countdown'
 import counter from './counter'
+import dataTable from './dataTable'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
@@ -193,6 +194,7 @@ export default {
   ...bottomNavigation,
   ...countdown,
   ...counter,
+  ...dataTable,
   ...fab,
   ...floatingPanel,
   ...formDetails,

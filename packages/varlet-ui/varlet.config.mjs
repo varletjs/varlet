@@ -386,6 +386,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'DataTable 数据表格',
+          'en-US': 'DataTable',
+        },
+        doc: 'data-table',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Watermark 水印',
           'en-US': 'Watermark',
         },

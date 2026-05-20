@@ -2,7 +2,6 @@ import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type Range = [number, number]
-
 export const props = {
   current: [Number, String],
   size: {

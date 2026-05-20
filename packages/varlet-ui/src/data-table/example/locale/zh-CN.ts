@@ -1,0 +1,15 @@
+export default {
+  basicUsage: '基本使用',
+  cellBordered: '单元格分割线',
+  striped: '斑马纹',
+  sizes: '尺寸',
+  columnOptions: '列配置',
+  customProps: '属性透传',
+  customRender: '自定义渲染',
+  compactPagination: '页码分页',
+  localPagination: '本地分页',
+  remotePagination: '远程分页',
+  emptyText: '空态文案',
+  emptyTip: '暂无数据',
+  loading: '加载状态',
+}

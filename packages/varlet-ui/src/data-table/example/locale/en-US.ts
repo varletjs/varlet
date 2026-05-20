@@ -1,0 +1,15 @@
+export default {
+  basicUsage: 'Basic Usage',
+  cellBordered: 'Cell Bordered',
+  striped: 'Striped',
+  sizes: 'Sizes',
+  columnOptions: 'Column Options',
+  customProps: 'Custom Props',
+  customRender: 'Custom Render',
+  compactPagination: 'Pager Pagination',
+  localPagination: 'Local Pagination',
+  remotePagination: 'Remote Pagination',
+  emptyText: 'Empty Text',
+  emptyTip: 'No Data',
+  loading: 'Loading',
+}

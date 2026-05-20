@@ -268,6 +268,24 @@ interface BaseStyleVars {
   '--count-to-text-font-size'?: string
   '--countdown-text-color'?: string
   '--countdown-text-font-size'?: string
+  '--data-table-background'?: string
+  '--data-table-header-background'?: string
+  '--data-table-header-color'?: string
+  '--data-table-row-color'?: string
+  '--data-table-border-color'?: string
+  '--data-table-hover-background'?: string
+  '--data-table-striped-background'?: string
+  '--data-table-empty-color'?: string
+  '--data-table-border-radius'?: string
+  '--data-table-cell-padding'?: string
+  '--data-table-cell-min-width'?: string
+  '--data-table-cell-font-size'?: string
+  '--data-table-header-font-size'?: string
+  '--data-table-row-height'?: string
+  '--data-table-row-height-small'?: string
+  '--data-table-row-height-large'?: string
+  '--data-table-footer-padding'?: string
+  '--data-table-empty-padding'?: string
   '--counter-padding'?: string
   '--counter-font-color'?: string
   '--counter-background'?: string
