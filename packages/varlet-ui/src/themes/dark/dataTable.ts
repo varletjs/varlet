@@ -9,7 +9,6 @@ export default {
   '--data-table-empty-color': 'var(--color-text-disabled)',
   '--data-table-border-radius': '2px',
   '--data-table-cell-padding': '0 16px',
-  '--data-table-cell-min-width': '120px',
   '--data-table-cell-font-size': '16px',
   '--data-table-header-font-size': '14px',
   '--data-table-row-height': '46px',

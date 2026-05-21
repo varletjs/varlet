@@ -278,7 +278,6 @@ interface BaseStyleVars {
   '--data-table-empty-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string
-  '--data-table-cell-min-width'?: string
   '--data-table-cell-font-size'?: string
   '--data-table-header-font-size'?: string
   '--data-table-row-height'?: string
