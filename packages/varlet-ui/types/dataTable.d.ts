@@ -5,31 +5,34 @@ export declare const dataTableProps: Record<keyof DataTableProps, any>
 
 export type DataTableKey = string | number
 
-export type DataTableAlign = 'left' | 'center' | 'right'
-export type DataTableFixed = 'left' | 'right'
+export type DataTableColumnAlign = 'left' | 'center' | 'right'
+export type DataTableColumnFixed = 'left' | 'right'
+export type DataTableSurface = 'low'
+export type DataTableTableLayout = 'auto' | 'fixed'
 
 export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => DataTableKey)
 
-export interface DataTableColumnRenderContext<Row = any> {
+export interface DataTableRowBaseContext<Row = any> {
   row: Row
   rowIndex: number
-  pageRowIndex: number
-  column: DataTableColumn<Row>
 }
 
-export interface DataTableRowPropsContext<Row = any> {
-  row: Row
-  rowIndex: number
-  pageRowIndex: number
+export interface DataTableColumnRenderContext<Row = any> extends DataTableRowBaseContext<Row> {}
+
+export interface DataTableRowPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
+
+export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
+
+export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableCellPropsContext<Row>) => number)
+export type DataTableColumnSelectionDisabled<Row = any> =
+  | boolean
+  | ((context: DataTableRowPropsContext<Row>) => boolean)
+
+export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
+  checked: boolean
 }
 
-export interface DataTableCellPropsContext<Row = any> extends DataTableRowPropsContext<Row> {
-  column: DataTableColumn<Row>
-}
-
-export type DataTableCellSpan<Row = any> = number | ((context: DataTableCellPropsContext<Row>) => number)
-export type DataTableSelectionDisabled<Row = any> = boolean | ((context: DataTableRowPropsContext<Row>) => boolean)
-export interface DataTableExpandColumnContext<Row = any> extends DataTableRowPropsContext<Row> {
+export interface DataTableExpandColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   expanded: boolean
 }
 
@@ -42,14 +45,14 @@ export type DataTableCellProps<Row = any> =
   | ((context: DataTableCellPropsContext<Row>) => HTMLAttributes | undefined)
 
 export interface DataTableBaseColumn<Row = any> {
-  fixed?: DataTableFixed
+  fixed?: DataTableColumnFixed
   width?: string | number
   minWidth?: string | number
-  align?: DataTableAlign
-  titleAlign?: DataTableAlign
+  align?: DataTableColumnAlign
+  titleAlign?: DataTableColumnAlign
   titleColSpan?: number
-  colSpan?: DataTableCellSpan<Row>
-  rowSpan?: DataTableCellSpan<Row>
+  colSpan?: DataTableColumnCellSpan<Row>
+  rowSpan?: DataTableColumnCellSpan<Row>
   cellProps?: DataTableCellProps<Row>
 }
 
@@ -65,7 +68,7 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
   key?: string
   title?: string
   multiple?: boolean
-  disabled?: DataTableSelectionDisabled<Row>
+  disabled?: DataTableColumnSelectionDisabled<Row>
   render?: never
 }
 
@@ -105,18 +108,19 @@ export interface DataTableProps extends BasicAttributes {
   loading?: boolean
   pagination?: boolean | DataTablePagination
   remote?: boolean
-  page?: number | string
-  pageSize?: number | string
-  total?: number | string
+  page?: number
+  pageSize?: number
+  total?: number
   maxHeight?: number | string
   tree?: boolean | DataTableTreeOption
+  surface?: DataTableSurface
   cascade?: boolean
   childrenKey?: string
   elevation?: boolean | string | number
-  striped?: boolean
   cellBordered?: boolean
+  tableLayout?: DataTableTableLayout
   size?: 'small' | 'normal' | 'large'
-  emptyText?: string
+  checkedRowKeys?: DataTableKey[]
   'onUpdate:checkedRowKeys'?: ListenerProp<(checkedRowKeys: DataTableKey[]) => void>
   'onUpdate:page'?: ListenerProp<(page: number) => void>
   'onUpdate:pageSize'?: ListenerProp<(pageSize: number) => void>

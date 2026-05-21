@@ -100,7 +100,7 @@ const customRowProps = ({ row, rowIndex }) => ({
 
 ```html
 <script setup>
-import { h } from 'vue'
+import { h, resolveComponent } from 'vue'
 
 const columns = [
   { key: 'name', title: '姓名' },
@@ -128,6 +128,16 @@ const data = [
 
 <template>
   <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### 弱背景色
+
+通过 `surface="low"` 使用更接近 MD3 的弱背景层级。
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" surface="low" />
 </template>
 ```
 
@@ -165,7 +175,7 @@ const data = [
 
 ### 选择列
 
-通过 `type: 'selection'` 渲染选择列，并使用 `v-model:checked-row-keys` 控制选中行。设置 `multiple: false` 可切换为单选，设置 `disabled` 可禁用整列选择或按行禁用。
+通过 `type: 'selection'` 渲染选择列，并使用 `v-model:checked-row-keys` 控制选中行。设置 `multiple: false` 可切换为单选，设置 `disabled` 可禁用整列选择或按行禁用。单选模式下会使用 `radio`，而不是 `checkbox`。
 
 ```html
 <script setup>
@@ -255,9 +265,47 @@ const data = [
 </template>
 ```
 
+#### 非级联
+
+```html
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    :cascade="false"
+    tree
+    children-key="nodes"
+  />
+</template>
+```
+
+#### 树形单选
+
+树形单选与级联无关，仍然只保留一个选中 key。
+
+```html
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="[
+      { type: 'selection', multiple: false },
+      { key: 'name', title: '名称' },
+      { key: 'role', title: '角色' },
+      { key: 'status', title: '状态' },
+    ]"
+    :data="data"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
+</template>
+```
+
 ### 展开列
 
-通过 `type: 'expand'` 渲染展开列，使用 `renderExpand` 自定义展开内容，`expandable` 可按行控制是否允许展开。
+通过 `type: 'expand'` 渲染展开列，使用 `renderExpand` 自定义展开内容，`expandable` 可按行控制是否允许展开。展开区域更适合展示聚焦的详情块，而不是再嵌一层表格。
 
 ```html
 <script setup>
@@ -267,7 +315,15 @@ const columns = [
   {
     type: 'expand',
     expandable: ({ row }) => row.status === '在线',
-    renderExpand: ({ row }) => h('div', `${row.name} 的更多信息`),
+    renderExpand: ({ row }) =>
+      h('div', { style: { padding: '4px 0', display: 'grid', gap: '12px' } }, [
+        h('div', { style: { fontSize: '14px', fontWeight: '600' } }, `${row.name} 详情`),
+        h('div', { style: { color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: '1.6' } }, [
+          h('div', `当前角色：${row.role}`),
+          h('div', `当前状态：${row.status}`),
+          h('div', '最近更新时间：2026-05-21'),
+        ]),
+      ]),
   },
   { key: 'name', title: '姓名' },
   { key: 'status', title: '状态' },
@@ -300,11 +356,20 @@ const columns = [
 
 ### 本地分页
 
-本地分页模式下传入全量数据，由组件内部切片。
+本地分页模式下传入全量数据，并绑定 `v-model:page` / `v-model:page-size`，由组件内部切片。
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const page = ref(1)
+const pageSize = ref(10)
+</script>
+
 <template>
   <var-data-table
+    v-model:page="page"
+    v-model:page-size="pageSize"
     :columns="columns"
     :data="data"
     :pagination="{
@@ -317,11 +382,11 @@ const columns = [
 
 ### 远程分页
 
-设置 `remote` 后组件不再切片数据。此时 `data` 应为当前页数据，`total` 由外部控制。
+设置 `remote` 后组件不再切片数据。此时 `data` 应为当前页数据，`total` 由外部控制。下面示例通过 `setTimeout` 模拟异步请求，并配合 `loading` 展示加载状态。
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const allData = Array.from({ length: 40 }, (_, index) => ({
   id: index + 1,
@@ -330,11 +395,25 @@ const allData = Array.from({ length: 40 }, (_, index) => ({
 
 const page = ref(1)
 const pageSize = ref(10)
+const loading = ref(false)
+const currentPageData = ref([])
+let timer
 
-const currentPageData = computed(() => {
-  const start = (page.value - 1) * pageSize.value
-  return allData.slice(start, start + pageSize.value)
-})
+watch(
+  [page, pageSize],
+  ([current, size]) => {
+    loading.value = true
+
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      const start = (current - 1) * size
+      currentPageData.value = allData.slice(start, start + size)
+      loading.value = false
+    }, 400)
+  },
+  { immediate: true },
+)
 
 const columns = [{ key: 'name', title: '姓名' }]
 </script>
@@ -345,6 +424,7 @@ const columns = [{ key: 'name', title: '姓名' }]
     v-model:page-size="pageSize"
     :columns="columns"
     :data="currentPageData"
+    :loading="loading"
     :total="allData.length"
     :pagination="{
       showSizeChanger: false,
@@ -396,15 +476,17 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `loading` | 是否显示加载遮罩 | _boolean_ | `false` |
 | `pagination` | 内置分页配置 | _boolean \| DataTablePagination_ | `true` |
 | `remote` | 是否启用远程分页模式 | _boolean_ | `false` |
-| `v-model:page` | 当前页码 | _number \| string_ | `1` |
-| `v-model:page-size` | 当前每页条数 | _number \| string_ | `10` |
+| `v-model:page` | 当前页码 | _number_ | `1` |
+| `v-model:page-size` | 当前每页条数 | _number_ | `10` |
 | `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
-| `total` | 远程分页总条数 | _number \| string_ | `-` |
+| `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
+| `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | 是否显式开启树形数据，也支持传入配置对象 | _boolean \| DataTableTreeOption_ | `false` |
 | `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |
 | `children-key` | 树形子节点字段名 | _string_ | `'children'` |
 | `elevation` | 海拔层级 | _boolean \| number \| string_ | `true` |
+| `surface` | 弱背景色风格 | _'low'_ | `-` |
 | `cell-bordered` | 是否显示单元格分割线 | _boolean_ | `false` |
 | `size` | 表格尺寸 | _'small' \| 'normal' \| 'large'_ | `'normal'` |
 
@@ -461,17 +543,18 @@ const columns = [{ key: 'name', title: '姓名' }]
 | --- | --- |
 | `--data-table-background` | `#fff` |
 | `--data-table-header-background` | `#fff` |
-| `--data-table-header-color` | `rgba(0, 0, 0, 0.6)` |
-| `--data-table-row-color` | `#555` |
+| `--data-table-surface-low-background` | `var(--color-surface-container-low)` |
+| `--data-table-header-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--data-table-row-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
 | `--data-table-hover-background` | `#eee` |
-| `--data-table-empty-color` | `var(--color-text-disabled)` |
+| `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
 | `--data-table-cell-font-size` | `16px` |
 | `--data-table-header-font-size` | `14px` |
 | `--data-table-row-height` | `46px` |
-| `--data-table-row-height-small` | `40px` |
-| `--data-table-row-height-large` | `52px` |
+| `--data-table-row-small-height` | `40px` |
+| `--data-table-row-large-height` | `52px` |
 | `--data-table-footer-padding` | `12px 16px` |
 | `--data-table-empty-padding` | `48px 16px` |

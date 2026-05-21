@@ -1,9 +1,13 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { computed, h, ref } from 'vue'
+import { computed, h, ref, watch } from 'vue'
+import { use as useVarletLocale } from '../../locale'
 import { t, use } from './locale'
 
-watchLang(use)
+watchLang((lang) => {
+  use(lang)
+  useVarletLocale(lang)
+})
 onThemeChange()
 
 const columns = [
@@ -34,6 +38,11 @@ const renderColumns = [
   { key: 'name', title: 'Name' },
   { key: 'status', title: 'Status', render: renderStatus },
 ]
+const surfaceColumns = [
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
 
 const spanColumns = [
   {
@@ -57,7 +66,9 @@ const spanData = [
 
 const checkedRowKeys = ref([1, 3])
 const singleCheckedRowKeys = ref([2])
-const treeCheckedRowKeys = ref([12])
+const treeCheckedRowKeys = ref([1, 11, 12])
+const treeNonCascadeCheckedRowKeys = ref([12])
+const treeSingleCheckedRowKeys = ref([21])
 const selectionColumns = [
   { type: 'selection' },
   { key: 'name', title: 'Name' },
@@ -71,21 +82,22 @@ const singleSelectionColumns = [
   { key: 'status', title: 'Status' },
 ]
 
+function renderExpandContent({ row }) {
+  return h('div', { style: { padding: '4px 0', display: 'grid', gap: '12px' } }, [
+    h('div', { style: { fontSize: '14px', fontWeight: '600' } }, `${row.name} Details`),
+    h('div', { style: { color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: '1.6' } }, [
+      h('div', `Current Role: ${row.role}`),
+      h('div', `Current Status: ${row.status}`),
+      h('div', `Last Updated: 2026-05-21`),
+    ]),
+  ])
+}
+
 const expandColumns = [
   {
     type: 'expand',
     expandable: ({ row }) => row.status !== 'Busy',
-    renderExpand: ({ row }) =>
-      h(
-        'div',
-        {
-          style: {
-            display: 'grid',
-            gap: '4px',
-          },
-        },
-        [h('strong', `${row.name}`), h('span', `Role: ${row.role}`), h('span', `Status: ${row.status}`)],
-      ),
+    renderExpand: renderExpandContent,
   },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
@@ -93,6 +105,12 @@ const expandColumns = [
 ]
 const treeColumns = [
   { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+const treeSingleColumns = [
+  { type: 'selection', multiple: false },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -162,6 +180,9 @@ const defaultPagination = {
   showQuickJumper: false,
 }
 
+const localPage = ref(1)
+const localPageSize = ref(10)
+
 const manyRows = Array.from({ length: 48 }, (_, index) => ({
   id: index + 1,
   name: `User ${index + 1}`,
@@ -178,11 +199,27 @@ const compactPagedRows = Array.from({ length: 12 }, (_, index) => ({
 
 const remotePage = ref(1)
 const remotePageSize = ref(10)
+const remoteLoading = ref(false)
+const remoteData = ref(manyRows.slice(0, remotePageSize.value))
+let remoteTimer
 
-const remoteData = computed(() => {
-  const start = (remotePage.value - 1) * remotePageSize.value
-  return manyRows.slice(start, start + remotePageSize.value)
-})
+watch(
+  [remotePage, remotePageSize],
+  ([page, pageSize]) => {
+    remoteLoading.value = true
+
+    if (remoteTimer) {
+      clearTimeout(remoteTimer)
+    }
+
+    remoteTimer = setTimeout(() => {
+      const start = (page - 1) * pageSize
+      remoteData.value = manyRows.slice(start, start + pageSize)
+      remoteLoading.value = false
+    }, 400)
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -206,6 +243,9 @@ const remoteData = computed(() => {
   <app-type>{{ t('customRender') }}</app-type>
   <var-data-table :columns="renderColumns" :data="data" />
 
+  <app-type>{{ t('surfaceLow') }}</app-type>
+  <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
+
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
 
@@ -228,6 +268,27 @@ const remoteData = computed(() => {
     children-key="nodes"
   />
 
+  <app-type>{{ t('treeNonCascade') }}</app-type>
+  <var-data-table
+    v-model:checked-row-keys="treeNonCascadeCheckedRowKeys"
+    :columns="treeColumns"
+    :data="treeData"
+    :pagination="false"
+    :cascade="false"
+    tree
+    children-key="nodes"
+  />
+
+  <app-type>{{ t('treeSingleSelection') }}</app-type>
+  <var-data-table
+    v-model:checked-row-keys="treeSingleCheckedRowKeys"
+    :columns="treeSingleColumns"
+    :data="treeData"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
+
   <app-type>{{ t('expand') }}</app-type>
   <var-data-table :columns="expandColumns" :data="data" :pagination="false" />
 
@@ -235,7 +296,13 @@ const remoteData = computed(() => {
   <var-data-table :columns="columns" :data="compactPagedRows" :pagination="pagerPagination" />
 
   <app-type>{{ t('localPagination') }}</app-type>
-  <var-data-table :columns="columns" :data="manyRows" :pagination="defaultPagination" />
+  <var-data-table
+    v-model:page="localPage"
+    v-model:page-size="localPageSize"
+    :columns="columns"
+    :data="manyRows"
+    :pagination="defaultPagination"
+  />
 
   <app-type>{{ t('remotePagination') }}</app-type>
   <var-data-table
@@ -243,6 +310,7 @@ const remoteData = computed(() => {
     v-model:page-size="remotePageSize"
     :columns="columns"
     :data="remoteData"
+    :loading="remoteLoading"
     :total="manyRows.length"
     :pagination="defaultPagination"
     remote

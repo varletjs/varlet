@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 1), n('$--box'))">
+  <div :class="classes(n(), formatElevation(elevation, 1), n('$--box'), [surfaceLow, n('--surface-low')])">
     <div :class="classes(n('main'), n('$--scrollbar'))" :style="{ 'max-height': toSizeUnit(scrollerHeight) }">
       <table :class="n('table')" :style="{ width: toSizeUnit(fullWidth) }">
         <slot />
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { createNamespace, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
@@ -22,12 +22,17 @@ const { name, n, classes } = createNamespace('table')
 export default defineComponent({
   name,
   props,
-  setup: () => ({
-    toSizeUnit,
-    n,
-    classes,
-    formatElevation,
-  }),
+  setup(props) {
+    const surfaceLow = computed(() => props.surface === 'low')
+
+    return {
+      toSizeUnit,
+      n,
+      classes,
+      formatElevation,
+      surfaceLow,
+    }
+  },
 })
 </script>
 

@@ -196,16 +196,17 @@ describe('test data-table component props', () => {
       },
     })
 
-    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+    const radios = wrapper.findAllComponents({ name: 'var-radio' })
 
-    expect(checkboxes).toHaveLength(3)
+    expect(wrapper.findAllComponents({ name: 'var-checkbox' })).toHaveLength(0)
+    expect(radios).toHaveLength(3)
 
-    checkboxes[0].vm.$emit('update:modelValue', true)
+    radios[0].vm.$emit('update:modelValue', true)
     await wrapper.vm.$nextTick()
     expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
 
     await wrapper.setProps({ checkedRowKeys: [1] })
-    checkboxes[1].vm.$emit('update:modelValue', true)
+    radios[1].vm.$emit('update:modelValue', true)
     await wrapper.vm.$nextTick()
     expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([2])
 
@@ -384,6 +385,23 @@ describe('test data-table component props', () => {
     expect(wrapper.find('.var-data-table__main').classes()).toContain('var--scrollbar')
     expect(wrapper.find('.var-data-table__table').exists()).toBe(true)
     expect(wrapper.find('.var-data-table__body-scroller').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('should support tableLayout prop', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('table-layout: auto;')
+
+    await wrapper.setProps({ tableLayout: 'fixed' })
+
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('table-layout: fixed;')
     wrapper.unmount()
   })
 

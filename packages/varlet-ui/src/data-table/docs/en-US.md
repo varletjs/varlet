@@ -100,7 +100,7 @@ Use `column.render` to customize the cell content.
 
 ```html
 <script setup>
-import { h } from 'vue'
+import { h, resolveComponent } from 'vue'
 
 const columns = [
   { key: 'name', title: 'Name' },
@@ -128,6 +128,16 @@ const data = [
 
 <template>
   <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### Subtle Background
+
+Use `surface="low"` for a subtler MD3-style surface layer.
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" surface="low" />
 </template>
 ```
 
@@ -165,7 +175,7 @@ const data = [
 
 ### Selection
 
-Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `disabled` to disable the whole selection column or specific rows.
+Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `disabled` to disable the whole selection column or specific rows. In single selection mode, the table uses `radio` instead of `checkbox`.
 
 ```html
 <script setup>
@@ -255,9 +265,47 @@ const data = [
 </template>
 ```
 
+#### Non-Cascading
+
+```html
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    :cascade="false"
+    tree
+    children-key="nodes"
+  />
+</template>
+```
+
+#### Tree Single Selection
+
+Tree single selection is independent from cascading and still keeps only one selected key.
+
+```html
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="[
+      { type: 'selection', multiple: false },
+      { key: 'name', title: 'Name' },
+      { key: 'role', title: 'Role' },
+      { key: 'status', title: 'Status' },
+    ]"
+    :data="data"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
+</template>
+```
+
 ### Expand
 
-Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, and `expandable` to control whether a row can be expanded.
+Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, and `expandable` to control whether a row can be expanded. Expanded content is better suited for focused detail blocks than another table.
 
 ```html
 <script setup>
@@ -267,7 +315,15 @@ const columns = [
   {
     type: 'expand',
     expandable: ({ row }) => row.status === 'Online',
-    renderExpand: ({ row }) => h('div', `More details for ${row.name}`),
+    renderExpand: ({ row }) =>
+      h('div', { style: { padding: '4px 0', display: 'grid', gap: '12px' } }, [
+        h('div', { style: { fontSize: '14px', fontWeight: '600' } }, `${row.name} Details`),
+        h('div', { style: { color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: '1.6' } }, [
+          h('div', `Current Role: ${row.role}`),
+          h('div', `Current Status: ${row.status}`),
+          h('div', `Last Updated: 2026-05-21`),
+        ]),
+      ]),
   },
   { key: 'name', title: 'Name' },
   { key: 'status', title: 'Status' },
@@ -300,11 +356,20 @@ Use `pagination` to configure built-in pager pagination.
 
 ### Local Pagination
 
-In local pagination mode, pass the full data set and let the component slice it internally.
+In local pagination mode, pass the full data set, bind `v-model:page` and `v-model:page-size`, and let the component slice it internally.
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const page = ref(1)
+const pageSize = ref(10)
+</script>
+
 <template>
   <var-data-table
+    v-model:page="page"
+    v-model:page-size="pageSize"
     :columns="columns"
     :data="data"
     :pagination="{
@@ -317,11 +382,11 @@ In local pagination mode, pass the full data set and let the component slice it 
 
 ### Remote Pagination
 
-Set `remote` to stop internal slicing. In this mode, `data` should be the current page data and `total` should be controlled externally.
+Set `remote` to stop internal slicing. In this mode, `data` should be the current page data and `total` should be controlled externally. The following example uses `setTimeout` to simulate an async request and shows `loading` during the request.
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const allData = Array.from({ length: 40 }, (_, index) => ({
   id: index + 1,
@@ -330,11 +395,25 @@ const allData = Array.from({ length: 40 }, (_, index) => ({
 
 const page = ref(1)
 const pageSize = ref(10)
+const loading = ref(false)
+const currentPageData = ref([])
+let timer
 
-const currentPageData = computed(() => {
-  const start = (page.value - 1) * pageSize.value
-  return allData.slice(start, start + pageSize.value)
-})
+watch(
+  [page, pageSize],
+  ([current, size]) => {
+    loading.value = true
+
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      const start = (current - 1) * size
+      currentPageData.value = allData.slice(start, start + size)
+      loading.value = false
+    }, 400)
+  },
+  { immediate: true },
+)
 
 const columns = [{ key: 'name', title: 'Name' }]
 </script>
@@ -345,6 +424,7 @@ const columns = [{ key: 'name', title: 'Name' }]
     v-model:page-size="pageSize"
     :columns="columns"
     :data="currentPageData"
+    :loading="loading"
     :total="allData.length"
     :pagination="{
       showSizeChanger: false,
@@ -396,15 +476,17 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `loading` | Whether to show loading overlay | _boolean_ | `false` |
 | `pagination` | Built-in pagination config | _boolean \| DataTablePagination_ | `true` |
 | `remote` | Whether to enable remote pagination mode | _boolean_ | `false` |
-| `v-model:page` | Current page | _number \| string_ | `1` |
-| `v-model:page-size` | Current page size | _number \| string_ | `10` |
+| `v-model:page` | Current page | _number_ | `1` |
+| `v-model:page-size` | Current page size | _number_ | `10` |
 | `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
-| `total` | Total item count in remote mode | _number \| string_ | `-` |
+| `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
+| `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | Whether to explicitly enable tree data mode. Also supports a config object | _boolean \| DataTableTreeOption_ | `false` |
 | `cascade` | Whether tree selection should cascade | _boolean_ | `true` |
 | `children-key` | Child node field name for tree rows | _string_ | `'children'` |
 | `elevation` | Elevation level | _boolean \| number \| string_ | `true` |
+| `surface` | Subtle background style | _'low'_ | `-` |
 | `cell-bordered` | Whether to show cell dividers | _boolean_ | `false` |
 | `size` | Table size | _'small' \| 'normal' \| 'large'_ | `'normal'` |
 
@@ -461,17 +543,18 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | --- | --- |
 | `--data-table-background` | `#fff` |
 | `--data-table-header-background` | `#fff` |
-| `--data-table-header-color` | `rgba(0, 0, 0, 0.6)` |
-| `--data-table-row-color` | `#555` |
+| `--data-table-surface-low-background` | `var(--color-surface-container-low)` |
+| `--data-table-header-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--data-table-row-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
 | `--data-table-hover-background` | `#eee` |
-| `--data-table-empty-color` | `var(--color-text-disabled)` |
+| `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
 | `--data-table-cell-font-size` | `16px` |
 | `--data-table-header-font-size` | `14px` |
 | `--data-table-row-height` | `46px` |
-| `--data-table-row-height-small` | `40px` |
-| `--data-table-row-height-large` | `52px` |
+| `--data-table-row-small-height` | `40px` |
+| `--data-table-row-large-height` | `52px` |
 | `--data-table-footer-padding` | `12px 16px` |
 | `--data-table-empty-padding` | `48px 16px` |
