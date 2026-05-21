@@ -56,8 +56,16 @@ const spanData = [
 ]
 
 const checkedRowKeys = ref([1, 3])
+const singleCheckedRowKeys = ref([2])
+const treeCheckedRowKeys = ref([12])
 const selectionColumns = [
   { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+const singleSelectionColumns = [
+  { type: 'selection', multiple: false },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -82,6 +90,31 @@ const expandColumns = [
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
+]
+const treeColumns = [
+  { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+const treeData = [
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    status: 'Online',
+    nodes: [
+      { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
+      { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    status: 'Offline',
+    nodes: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+  },
 ]
 
 const selectedRowNames = computed(() =>
@@ -174,13 +207,26 @@ const remoteData = computed(() => {
   <var-data-table :columns="renderColumns" :data="data" />
 
   <app-type>{{ t('spans') }}</app-type>
-  <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" />
+  <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
 
   <app-type>{{ t('selection') }}</app-type>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="selectionColumns" :data="data" />
   <div style="margin-top: 8px; color: var(--color-text-secondary); font-size: 14px">
     {{ t('selectedRows') }}: {{ selectedRowNames || '-' }}
   </div>
+
+  <app-type>{{ t('singleSelection') }}</app-type>
+  <var-data-table v-model:checked-row-keys="singleCheckedRowKeys" :columns="singleSelectionColumns" :data="data" />
+
+  <app-type>{{ t('tree') }}</app-type>
+  <var-data-table
+    v-model:checked-row-keys="treeCheckedRowKeys"
+    :columns="treeColumns"
+    :data="treeData"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
 
   <app-type>{{ t('expand') }}</app-type>
   <var-data-table :columns="expandColumns" :data="data" :pagination="false" />

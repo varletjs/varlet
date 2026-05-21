@@ -7,6 +7,8 @@ export default {
   customRender: 'Custom Render',
   spans: 'Cell Spans',
   selection: 'Selection',
+  singleSelection: 'Single Selection',
+  tree: 'Tree Data',
   expand: 'Expand',
   selectedRows: 'Selected Rows',
   pagerPagination: 'Pager Pagination',

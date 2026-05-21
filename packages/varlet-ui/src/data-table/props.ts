@@ -99,6 +99,10 @@ export interface DataTablePagination {
   showTotal?: (total: number, range: [number, number]) => string
 }
 
+export interface DataTableTreeOption {
+  disabled?: boolean
+}
+
 export const props = {
   data: {
     type: Array as PropType<any[]>,
@@ -131,6 +135,18 @@ export const props = {
   },
   total: [Number, String],
   maxHeight: [Number, String],
+  tree: {
+    type: [Boolean, Object] as PropType<boolean | DataTableTreeOption>,
+    default: false,
+  },
+  cascade: {
+    type: Boolean,
+    default: true,
+  },
+  childrenKey: {
+    type: String,
+    default: 'children',
+  },
   checkedRowKeys: {
     type: Array as PropType<DataTableKey[]>,
     default: () => [],

@@ -159,7 +159,7 @@ const data = [
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
 </template>
 ```
 
@@ -182,6 +182,76 @@ const columns = [
 
 <template>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+#### Single Selection
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([2])
+
+const columns = [
+  { type: 'selection', multiple: false },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+]
+</script>
+
+<template>
+  <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+### Tree Data
+
+Set `tree` explicitly to flatten and render hierarchical rows by `children-key`. Tree selection cascades by default: selecting a parent row also affects its children. Pass `:cascade="false"` if you want to keep tree selection non-cascading.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([12])
+
+const columns = [
+  { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+
+const data = [
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    status: 'Online',
+    nodes: [
+      { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
+      { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    status: 'Offline',
+    nodes: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+  },
+]
+</script>
+
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
 </template>
 ```
 
@@ -331,6 +401,9 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number \| string_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
+| `tree` | Whether to explicitly enable tree data mode. Also supports a config object | _boolean \| DataTableTreeOption_ | `false` |
+| `cascade` | Whether tree selection should cascade | _boolean_ | `true` |
+| `children-key` | Child node field name for tree rows | _string_ | `'children'` |
 | `elevation` | Elevation level | _boolean \| number \| string_ | `true` |
 | `cell-bordered` | Whether to show cell dividers | _boolean_ | `false` |
 | `size` | Table size | _'small' \| 'normal' \| 'large'_ | `'normal'` |
@@ -367,6 +440,12 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `maxPagerCount` | Max pager count | _number_ | `5` |
 | `sizeOption` | Page size options | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | Total text renderer | _`(total: number, range: [number, number]) => string`_ | `-` |
+
+### DataTableTreeOption
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `disabled` | Whether to disable tree rendering | _boolean_ | `false` |
 
 ### Slots
 

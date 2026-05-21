@@ -159,7 +159,7 @@ const data = [
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
 </template>
 ```
 
@@ -182,6 +182,76 @@ const columns = [
 
 <template>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+#### 单选
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([2])
+
+const columns = [
+  { type: 'selection', multiple: false },
+  { key: 'name', title: '姓名' },
+  { key: 'role', title: '角色' },
+]
+</script>
+
+<template>
+  <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+### 树形数据
+
+显式设置 `tree` 后，表格会按照 `children-key` 扁平化渲染树形结构。树形多选默认开启级联，勾选父节点会联动子节点；如果你想改成非级联模式，可以传 `:cascade="false"`。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([12])
+
+const columns = [
+  { type: 'selection' },
+  { key: 'name', title: '名称' },
+  { key: 'role', title: '角色' },
+  { key: 'status', title: '状态' },
+]
+
+const data = [
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    status: '在线',
+    nodes: [
+      { id: 11, name: 'Ada', role: 'Lead', status: '在线' },
+      { id: 12, name: 'Taylor', role: 'Engineer', status: '忙碌' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    status: '离线',
+    nodes: [{ id: 21, name: 'Linus', role: 'Designer', status: '离线' }],
+  },
+]
+</script>
+
+<template>
+  <var-data-table
+    v-model:checked-row-keys="checkedRowKeys"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    tree
+    children-key="nodes"
+  />
 </template>
 ```
 
@@ -331,6 +401,9 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number \| string_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
+| `tree` | 是否显式开启树形数据，也支持传入配置对象 | _boolean \| DataTableTreeOption_ | `false` |
+| `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |
+| `children-key` | 树形子节点字段名 | _string_ | `'children'` |
 | `elevation` | 海拔层级 | _boolean \| number \| string_ | `true` |
 | `cell-bordered` | 是否显示单元格分割线 | _boolean_ | `false` |
 | `size` | 表格尺寸 | _'small' \| 'normal' \| 'large'_ | `'normal'` |
@@ -367,6 +440,12 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `maxPagerCount` | 最多显示的页码数量 | _number_ | `5` |
 | `sizeOption` | 每页条数选项 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | 总数文案渲染函数 | _`(total: number, range: [number, number]) => string`_ | `-` |
+
+### DataTableTreeOption
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `disabled` | 是否禁用树形渲染 | _boolean_ | `false` |
 
 ### Slots
 

@@ -31,26 +31,28 @@
 
   &--scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: hsla(var(--hsl-text), 0.28) transparent;
+    scrollbar-color: hsla(var(--hsl-text), 0.28) var(--scrollbar-track-background, transparent);
 
     &::-webkit-scrollbar {
       width: 4px;
       height: 4px;
-      background: transparent;
+      background: var(--scrollbar-track-background, transparent);
     }
 
     &::-webkit-scrollbar-track {
-      background: transparent;
+      background: var(--scrollbar-track-background, transparent);
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 999px;
       background: hsla(var(--hsl-text), 0.28);
+      border: 1px solid var(--scrollbar-track-background, transparent);
+      background-clip: padding-box;
       cursor: pointer;
     }
 
     &::-webkit-scrollbar-corner {
-      background: transparent;
+      background: var(--scrollbar-track-background, transparent);
     }
   }
 }

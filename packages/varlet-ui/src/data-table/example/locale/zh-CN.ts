@@ -7,6 +7,8 @@ export default {
   customRender: '自定义渲染',
   spans: '单元格合并',
   selection: '选择列',
+  singleSelection: '单选',
+  tree: '树形数据',
   expand: '展开列',
   selectedRows: '已选行',
   pagerPagination: '页码分页',

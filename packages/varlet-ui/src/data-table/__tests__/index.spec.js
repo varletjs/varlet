@@ -20,6 +20,24 @@ const data = [
   { id: 3, name: 'Taylor', role: 'Designer' },
 ]
 
+const treeData = [
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    nodes: [
+      { id: 11, name: 'Ada', role: 'Lead' },
+      { id: 12, name: 'Taylor', role: 'Engineer' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    nodes: [{ id: 21, name: 'Linus', role: 'Designer' }],
+  },
+]
+
 describe('test data-table component props', () => {
   test('should render basic table content', () => {
     const wrapper = mount(VarDataTable, {
@@ -251,6 +269,103 @@ describe('test data-table component props', () => {
     checkboxes[0].vm.$emit('update:modelValue', true)
     await wrapper.vm.$nextTick()
     expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 3])
+
+    wrapper.unmount()
+  })
+
+  test('should support tree data with custom children key', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+      },
+    })
+
+    expect(wrapper.text()).toContain('Frontend')
+    expect(wrapper.text()).toContain('Ada')
+    expect(wrapper.text()).toContain('Taylor')
+    expect(wrapper.text()).toContain('Design')
+    expect(wrapper.text()).toContain('Linus')
+
+    const triggers = wrapper.findAll('.var-data-table__tree-trigger')
+    expect(triggers).toHaveLength(2)
+
+    await triggers[0].trigger('click')
+
+    expect(wrapper.text()).not.toContain('Ada')
+    expect(wrapper.text()).not.toContain('Taylor')
+    expect(wrapper.text()).toContain('Linus')
+
+    wrapper.unmount()
+  })
+
+  test('should cascade tree selection in multiple mode by default', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 11, 12])
+
+    wrapper.unmount()
+  })
+
+  test('should support non-cascading tree selection when cascade is false', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        cascade: false,
+        childrenKey: 'nodes',
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
+
+    wrapper.unmount()
+  })
+
+  test('should count collapsed selected tree rows in header checkbox state', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        checkedRowKeys: [11],
+      },
+    })
+
+    await wrapper.find('.var-data-table__tree-trigger').trigger('click')
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+    expect(checkboxes[0].vm.modelValue).toBe(false)
+    expect(checkboxes[0].vm.indeterminate).toBe(true)
 
     wrapper.unmount()
   })

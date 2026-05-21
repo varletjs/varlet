@@ -20,6 +20,7 @@
 }
 
 .var-data-table {
+  --scrollbar-track-background: var(--data-table-background);
   width: 100%;
   border-radius: var(--data-table-border-radius);
   background: var(--data-table-background);
@@ -94,6 +95,10 @@
     padding: var(--data-table-selection-cell-padding);
     min-width: var(--data-table-selection-column-width);
 
+    .var-checkbox {
+      transform: none;
+    }
+
     .var-checkbox__wrap {
       display: flex;
       align-items: center;
@@ -123,6 +128,31 @@
       opacity: 0.4;
       cursor: not-allowed;
     }
+  }
+
+  &__tree-cell {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  &__tree-trigger,
+  &__tree-indent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: none;
+    margin-right: 4px;
+  }
+
+  &__tree-trigger {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
   }
 
   &__expanded-row {

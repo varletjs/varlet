@@ -93,6 +93,10 @@ export interface DataTablePagination {
   showTotal?: (total: number, range: [number, number]) => string
 }
 
+export interface DataTableTreeOption {
+  disabled?: boolean
+}
+
 export interface DataTableProps extends BasicAttributes {
   data?: any[]
   columns?: DataTableColumn[]
@@ -105,6 +109,9 @@ export interface DataTableProps extends BasicAttributes {
   pageSize?: number | string
   total?: number | string
   maxHeight?: number | string
+  tree?: boolean | DataTableTreeOption
+  cascade?: boolean
+  childrenKey?: string
   elevation?: boolean | string | number
   striped?: boolean
   cellBordered?: boolean

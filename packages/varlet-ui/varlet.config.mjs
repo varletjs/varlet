@@ -394,6 +394,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Pagination 分页',
+          'en-US': 'Pagination',
+        },
+        doc: 'pagination',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Watermark 水印',
           'en-US': 'Watermark',
         },
@@ -555,14 +563,6 @@ export default defineConfig({
           'en-US': 'Popup',
         },
         doc: 'popup',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Pagination 分页',
-          'en-US': 'Pagination',
-        },
-        doc: 'pagination',
         type: 2,
       },
       {
