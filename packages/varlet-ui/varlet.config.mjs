@@ -330,6 +330,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'VirtualList 虚拟滚动列表',
+          'en-US': 'VirtualList',
+        },
+        doc: 'virtual-list',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Swipe 轮播',
           'en-US': 'Swipe',
         },
