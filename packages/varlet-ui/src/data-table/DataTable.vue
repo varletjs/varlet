@@ -195,6 +195,7 @@ import {
   type DataTableSelectionColumn,
   type DataTableTreeOption,
 } from './props'
+import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
 
 const { name, n, classes } = createNamespace('data-table')
 const defaultDataTableControlColumnWidth = 52
@@ -275,7 +276,7 @@ export default defineComponent({
   props,
   setup(props) {
     const { t: pt } = injectLocaleProvider()
-    const { page, pageSize } = toRefs(props)
+    const { columns, page, pageSize } = toRefs(props)
     const checkedRowKeys = ref<DataTableKey[]>([...props.checkedRowKeys])
     const expandedRowKeys = ref(new Set<DataTableKey>())
     const collapsedTreeRowKeys = ref(new Set<DataTableKey>())
@@ -306,14 +307,7 @@ export default defineComponent({
         return 0
       })
     })
-
-    const leftFixedOffsets = computed(() => {
-      return buildFixedOffsets('left')
-    })
-
-    const rightFixedOffsets = computed(() => {
-      return buildFixedOffsets('right')
-    })
+    const { leftFixedOffsets, rightFixedOffsets } = useColumnsFixedOffsets({ columns, columnWidths })
 
     const paginationTotal = computed(() => {
       if (props.pagination === false) {
@@ -626,35 +620,6 @@ export default defineComponent({
       },
       { immediate: true },
     )
-
-    function buildFixedOffsets(direction: DataTableColumnFixed) {
-      const offsets = Array<number | undefined>(props.columns.length).fill(undefined)
-      let offset = 0
-
-      if (direction === 'left') {
-        for (let index = 0; index < props.columns.length; index += 1) {
-          if (props.columns[index].fixed !== 'left') {
-            continue
-          }
-
-          offsets[index] = offset
-          offset += columnWidths.value[index]
-        }
-
-        return offsets
-      }
-
-      for (let index = props.columns.length - 1; index >= 0; index -= 1) {
-        if (props.columns[index].fixed !== 'right') {
-          continue
-        }
-
-        offsets[index] = offset
-        offset += columnWidths.value[index]
-      }
-
-      return offsets
-    }
 
     function getRowKey(row: Record<string, any>, rowIndex: number) {
       if (isFunction(props.rowKey)) {
