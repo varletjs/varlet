@@ -149,7 +149,7 @@
       </var-field-decorator>
 
       <template #menu>
-        <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+        <div ref="menuEl" :class="classes(n('scroller'), n('$--scrollbar'), n('$-elevation--3'))">
           <template v-if="showEmpty">
             <slot name="empty">
               <div :class="n('empty')">{{ (pt ? pt : t)('selectEmptyText') }}</div>

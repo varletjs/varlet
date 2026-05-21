@@ -28,6 +28,31 @@
   &--inline-flex {
     display: inline-flex;
   }
+
+  &--scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsla(var(--hsl-text), 0.28) transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: hsla(var(--hsl-text), 0.28);
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+  }
 }
 
 :root {

@@ -35,6 +35,26 @@ const renderColumns = [
   { key: 'status', title: 'Status', render: renderStatus },
 ]
 
+const spanColumns = [
+  {
+    key: 'name',
+    title: 'Identity',
+    titleColSpan: 2,
+    rowSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  {
+    key: 'role',
+    title: 'Role',
+    colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  { key: 'status', title: 'Status' },
+]
+
+const spanData = [
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+]
+
 const checkedRowKeys = ref([1, 3])
 const selectionColumns = [
   { type: 'selection' },
@@ -42,6 +62,28 @@ const selectionColumns = [
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
 ]
+
+const expandColumns = [
+  {
+    type: 'expand',
+    expandable: ({ row }) => row.status !== 'Busy',
+    renderExpand: ({ row }) =>
+      h(
+        'div',
+        {
+          style: {
+            display: 'grid',
+            gap: '4px',
+          },
+        },
+        [h('strong', `${row.name}`), h('span', `Role: ${row.role}`), h('span', `Status: ${row.status}`)],
+      ),
+  },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+]
+
 const selectedRowNames = computed(() =>
   data
     .filter((row) => checkedRowKeys.value.includes(row.id))
@@ -131,11 +173,17 @@ const remoteData = computed(() => {
   <app-type>{{ t('customRender') }}</app-type>
   <var-data-table :columns="renderColumns" :data="data" />
 
+  <app-type>{{ t('spans') }}</app-type>
+  <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" />
+
   <app-type>{{ t('selection') }}</app-type>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="selectionColumns" :data="data" />
   <div style="margin-top: 8px; color: var(--color-text-secondary); font-size: 14px">
     {{ t('selectedRows') }}: {{ selectedRowNames || '-' }}
   </div>
+
+  <app-type>{{ t('expand') }}</app-type>
+  <var-data-table :columns="expandColumns" :data="data" :pagination="false" />
 
   <app-type>{{ t('pagerPagination') }}</app-type>
   <var-data-table :columns="columns" :data="compactPagedRows" :pagination="pagerPagination" />
@@ -153,6 +201,9 @@ const remoteData = computed(() => {
     :pagination="defaultPagination"
     remote
   />
+
+  <app-type>{{ t('stickyHeader') }}</app-type>
+  <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
 
   <app-type>{{ t('emptyText') }}</app-type>
   <var-data-table :columns="columns" :data="[]" :pagination="false">

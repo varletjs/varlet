@@ -131,9 +131,41 @@ const data = [
 </template>
 ```
 
+### Cell Spans
+
+Use `rowSpan`, `colSpan`, and `titleColSpan` to merge body and header cells. Returning `0` hides the current cell, which is typically used together with a previous spanning cell.
+
+```html
+<script setup>
+const columns = [
+  {
+    key: 'name',
+    title: 'Identity',
+    titleColSpan: 2,
+    rowSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  {
+    key: 'role',
+    title: 'Role',
+    colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  { key: 'status', title: 'Status' },
+]
+
+const data = [
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
 ### Selection
 
-Use `type: 'selection'` to render a checkbox column. Bind `v-model:checked-row-keys` to control the selected rows.
+Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `disabled` to disable the whole selection column or specific rows.
 
 ```html
 <script setup>
@@ -150,6 +182,30 @@ const columns = [
 
 <template>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+### Expand
+
+Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, and `expandable` to control whether a row can be expanded.
+
+```html
+<script setup>
+import { h } from 'vue'
+
+const columns = [
+  {
+    type: 'expand',
+    expandable: ({ row }) => row.status === 'Online',
+    renderExpand: ({ row }) => h('div', `More details for ${row.name}`),
+  },
+  { key: 'name', title: 'Name' },
+  { key: 'status', title: 'Status' },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
 </template>
 ```
 
@@ -229,6 +285,16 @@ const columns = [{ key: 'name', title: 'Name' }]
 </template>
 ```
 
+### Sticky Header
+
+Set `max-height` to make the table body scroll internally while keeping the header fixed at the top of the scroll container.
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
+</template>
+```
+
 ### Empty Text
 
 ```html
@@ -264,6 +330,7 @@ const columns = [{ key: 'name', title: 'Name' }]
 | `v-model:page-size` | Current page size | _number \| string_ | `10` |
 | `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number \| string_ | `-` |
+| `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
 | `elevation` | Elevation level | _boolean \| number \| string_ | `true` |
 | `cell-bordered` | Whether to show cell dividers | _boolean_ | `false` |
 | `size` | Table size | _'small' \| 'normal' \| 'large'_ | `'normal'` |
@@ -272,14 +339,20 @@ const columns = [{ key: 'name', title: 'Name' }]
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `type` | Column type. Set to `selection` to render checkboxes | _'selection'_ | `-` |
+| `type` | Column type. Supports `selection` and `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
 | `title` | Column title | _string_ | `-` |
+| `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
+| `disabled` | Whether selection is disabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `false` |
+| `expandable` | Whether the row can be expanded. Only works on expand columns | _`(context) => boolean`_ | `-` |
+| `renderExpand` | Custom expanded content. Only works on expand columns | _`(context) => VNodeChild`_ | `-` |
 | `width` | Column width | _number \| string_ | `-` |
 | `minWidth` | Column min width | _number \| string_ | `-` |
 | `align` | Body cell align | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | Header title align | _'left' \| 'center' \| 'right'_ | `align` |
-| `selectable` | Whether the row can be selected. Only works on selection columns | _`(context) => boolean`_ | `-` |
+| `titleColSpan` | Header col span. Set to `0` to hide the current header cell | _number_ | `1` |
+| `colSpan` | Body cell col span. Supports a number or function. Return `0` to hide the current cell | _number \| `(context) => number`_ | `1` |
+| `rowSpan` | Body cell row span. Supports a number or function. Return `0` to hide the current cell | _number \| `(context) => number`_ | `1` |
 | `cellProps` | Native cell props, supports object or function | _object \| (context) => object_ | `-` |
 | `render` | Custom cell render | _`(context) => VNodeChild`_ | `-` |
 

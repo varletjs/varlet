@@ -31,7 +31,7 @@
   &__main {
     position: relative;
     width: 100%;
-    overflow: auto;
+    max-width: 100%;
   }
 
   &__table {
@@ -81,6 +81,8 @@
     font-size: var(--data-table-header-font-size);
     font-weight: 500;
     background: var(--data-table-header-background);
+    position: sticky;
+    top: 0;
   }
 
   &__body-cell {
@@ -98,6 +100,39 @@
       justify-content: center;
       width: 100%;
     }
+  }
+
+  &__expand-cell {
+    text-align: center;
+    padding: var(--data-table-selection-cell-padding);
+    min-width: var(--data-table-selection-column-width);
+  }
+
+  &__expand-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__expanded-row {
+    background: var(--data-table-background);
+    border-bottom: 1px solid var(--data-table-border-color);
+  }
+
+  &__expanded-cell {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   &__empty {

@@ -29,7 +29,7 @@
     <template #menu>
       <div
         ref="menuOptionsRef"
-        :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
+        :class="classes(n('menu'), n('$--scrollbar'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
       >
         <template v-for="option in options" :key="option[valueKey]">
           <var-menu-children

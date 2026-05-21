@@ -131,9 +131,41 @@ const data = [
 </template>
 ```
 
+### 单元格合并
+
+通过 `rowSpan`、`colSpan` 和 `titleColSpan` 控制表体与表头合并。返回 `0` 时当前单元格不渲染，通常配合前一个单元格的跨行或跨列使用。
+
+```html
+<script setup>
+const columns = [
+  {
+    key: 'name',
+    title: '身份',
+    titleColSpan: 2,
+    rowSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  {
+    key: 'role',
+    title: '角色',
+    colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+  },
+  { key: 'status', title: '状态' },
+]
+
+const data = [
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
 ### 选择列
 
-通过 `type: 'selection'` 渲染复选框列，并使用 `v-model:checked-row-keys` 控制选中行。
+通过 `type: 'selection'` 渲染选择列，并使用 `v-model:checked-row-keys` 控制选中行。设置 `multiple: false` 可切换为单选，设置 `disabled` 可禁用整列选择或按行禁用。
 
 ```html
 <script setup>
@@ -150,6 +182,30 @@ const columns = [
 
 <template>
   <var-data-table v-model:checked-row-keys="checkedRowKeys" :columns="columns" :data="data" />
+</template>
+```
+
+### 展开列
+
+通过 `type: 'expand'` 渲染展开列，使用 `renderExpand` 自定义展开内容，`expandable` 可按行控制是否允许展开。
+
+```html
+<script setup>
+import { h } from 'vue'
+
+const columns = [
+  {
+    type: 'expand',
+    expandable: ({ row }) => row.status === '在线',
+    renderExpand: ({ row }) => h('div', `${row.name} 的更多信息`),
+  },
+  { key: 'name', title: '姓名' },
+  { key: 'status', title: '状态' },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
 </template>
 ```
 
@@ -229,6 +285,16 @@ const columns = [{ key: 'name', title: '姓名' }]
 </template>
 ```
 
+### 固定表头
+
+设置 `max-height` 后，表格主体会在内部滚动，表头会固定在滚动容器顶部。
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
+</template>
+```
+
 ### 空态文案
 
 ```html
@@ -264,6 +330,7 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `v-model:page-size` | 当前每页条数 | _number \| string_ | `10` |
 | `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number \| string_ | `-` |
+| `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
 | `elevation` | 海拔层级 | _boolean \| number \| string_ | `true` |
 | `cell-bordered` | 是否显示单元格分割线 | _boolean_ | `false` |
 | `size` | 表格尺寸 | _'small' \| 'normal' \| 'large'_ | `'normal'` |
@@ -272,14 +339,20 @@ const columns = [{ key: 'name', title: '姓名' }]
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `type` | 列类型。设为 `selection` 时渲染勾选列 | _'selection'_ | `-` |
+| `type` | 列类型。支持 `selection` 和 `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
 | `title` | 列标题 | _string_ | `-` |
+| `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |
+| `disabled` | 是否禁用选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `false` |
+| `expandable` | 是否允许展开该行，仅对展开列生效 | _`(context) => boolean`_ | `-` |
+| `renderExpand` | 自定义展开内容，仅对展开列生效 | _`(context) => VNodeChild`_ | `-` |
 | `width` | 列宽 | _number \| string_ | `-` |
 | `minWidth` | 列最小宽度 | _number \| string_ | `-` |
 | `align` | 内容对齐方式 | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | 表头标题对齐方式 | _'left' \| 'center' \| 'right'_ | `align` |
-| `selectable` | 是否允许选中该行，仅对选择列生效 | _`(context) => boolean`_ | `-` |
+| `titleColSpan` | 表头列合并数量，设为 `0` 时当前表头不渲染 | _number_ | `1` |
+| `colSpan` | 表体单元格列合并数量，支持数字或函数，返回 `0` 时当前单元格不渲染 | _number \| `(context) => number`_ | `1` |
+| `rowSpan` | 表体单元格行合并数量，支持数字或函数，返回 `0` 时当前单元格不渲染 | _number \| `(context) => number`_ | `1` |
 | `cellProps` | 单元格属性透传，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `render` | 自定义单元格渲染 | _`(context) => VNodeChild`_ | `-` |
 

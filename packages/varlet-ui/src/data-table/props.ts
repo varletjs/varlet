@@ -4,6 +4,7 @@ import { defineListenerProp } from '../utils/components'
 export type DataTableKey = string | number
 
 export type DataTableAlign = 'left' | 'center' | 'right'
+export type DataTableFixed = 'left' | 'right'
 
 export type DataTableRowKey<Row = any> =
   | Extract<keyof Row, string>
@@ -27,8 +28,15 @@ export interface DataTableCellPropsContext<Row = any> extends DataTableRowPropsC
   column: DataTableColumn<Row>
 }
 
+export type DataTableCellSpan<Row = any> = number | ((context: DataTableCellPropsContext<Row>) => number)
+export type DataTableSelectionDisabled<Row = any> = boolean | ((context: DataTableRowPropsContext<Row>) => boolean)
+
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowPropsContext<Row> {
   checked: boolean
+}
+
+export interface DataTableExpandColumnContext<Row = any> extends DataTableRowPropsContext<Row> {
+  expanded: boolean
 }
 
 export type DataTableRowProps<Row = any> =
@@ -40,10 +48,14 @@ export type DataTableCellProps<Row = any> =
   | ((context: DataTableCellPropsContext<Row>) => HTMLAttributes | undefined)
 
 export interface DataTableBaseColumn<Row = any> {
+  fixed?: DataTableFixed
   width?: string | number
   minWidth?: string | number
   align?: DataTableAlign
   titleAlign?: DataTableAlign
+  titleColSpan?: number
+  colSpan?: DataTableCellSpan<Row>
+  rowSpan?: DataTableCellSpan<Row>
   cellProps?: DataTableCellProps<Row>
 }
 
@@ -58,11 +70,24 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
   type: 'selection'
   key?: string
   title?: string
+  multiple?: boolean
+  disabled?: DataTableSelectionDisabled<Row>
   render?: never
-  selectable?: (context: DataTableRowPropsContext<Row>) => boolean
 }
 
-export type DataTableColumn<Row = any> = DataTableFieldColumn<Row> | DataTableSelectionColumn<Row>
+export interface DataTableExpandColumn<Row = any> extends DataTableBaseColumn<Row> {
+  type: 'expand'
+  key?: string
+  title?: string
+  render?: never
+  expandable?: (context: DataTableRowPropsContext<Row>) => boolean
+  renderExpand: (context: DataTableExpandColumnContext<Row>) => VNodeChild
+}
+
+export type DataTableColumn<Row = any> =
+  | DataTableFieldColumn<Row>
+  | DataTableSelectionColumn<Row>
+  | DataTableExpandColumn<Row>
 
 export interface DataTablePagination {
   simple?: boolean
@@ -105,6 +130,7 @@ export const props = {
     default: 10,
   },
   total: [Number, String],
+  maxHeight: [Number, String],
   checkedRowKeys: {
     type: Array as PropType<DataTableKey[]>,
     default: () => [],

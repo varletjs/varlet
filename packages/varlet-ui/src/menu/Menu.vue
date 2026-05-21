@@ -15,6 +15,7 @@
             classes(
               n('menu'),
               n('$--box'),
+              n('$--scrollbar'),
               popoverClass,
               [defaultStyle, n('--menu-background-color')],
               [defaultStyle, formatElevation(elevation, 3)],

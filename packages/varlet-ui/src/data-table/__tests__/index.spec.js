@@ -113,6 +113,165 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support expand column', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'expand',
+            renderExpand: ({ row }) => h('div', { class: 'expanded-content' }, row.role),
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('tbody tr')).toHaveLength(3)
+
+    await wrapper.find('.var-data-table__expand-trigger').trigger('click')
+
+    expect(wrapper.find('.expanded-content').text()).toBe('Admin')
+    expect(wrapper.findAll('tbody tr')).toHaveLength(4)
+    wrapper.unmount()
+  })
+
+  test('should support expandable in expand column', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'expand',
+            expandable: ({ row }) => row.id !== 1,
+            renderExpand: ({ row }) => h('div', { class: 'expanded-content' }, row.role),
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const triggers = wrapper.findAll('.var-data-table__expand-trigger')
+
+    expect(triggers[0].attributes('disabled')).toBeDefined()
+    expect(triggers[1].attributes('disabled')).toBeUndefined()
+
+    await triggers[0].trigger('click')
+    expect(wrapper.find('.expanded-content').exists()).toBe(false)
+
+    await triggers[1].trigger('click')
+    expect(wrapper.find('.expanded-content').text()).toBe('Maintainer')
+    wrapper.unmount()
+  })
+
+  test('should support single selection column', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection', multiple: false }, ...columns],
+        data,
+        pagination: false,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    expect(checkboxes).toHaveLength(3)
+
+    checkboxes[0].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
+
+    await wrapper.setProps({ checkedRowKeys: [1] })
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([2])
+
+    wrapper.unmount()
+  })
+
+  test('should support disabled selection column', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection', disabled: true }, ...columns],
+        data,
+        pagination: false,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    expect(checkboxes[0].vm.disabled).toBe(true)
+    expect(checkboxes[1].vm.disabled).toBe(true)
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    checkboxes[0].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateCheckedRowKeys).not.toHaveBeenCalled()
+    wrapper.unmount()
+  })
+
+  test('should support row disabled selection column', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'selection',
+            disabled: ({ row }) => row.id === 2,
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    expect(checkboxes[0].vm.disabled).toBe(false)
+    expect(checkboxes[1].vm.disabled).toBe(false)
+    expect(checkboxes[2].vm.disabled).toBe(true)
+    expect(checkboxes[3].vm.disabled).toBe(false)
+
+    checkboxes[2].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).not.toHaveBeenCalled()
+
+    checkboxes[0].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 3])
+
+    wrapper.unmount()
+  })
+
+  test('should support maxHeight with sticky header', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        maxHeight: 240,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__main').attributes('style')).toContain('max-height: 240px;')
+    expect(wrapper.find('.var-data-table__main').classes()).toContain('var--scrollbar')
+    expect(wrapper.find('.var-data-table__table').exists()).toBe(true)
+    expect(wrapper.find('.var-data-table__body-scroller').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
   test('should support rowProps and cellProps', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -141,6 +300,54 @@ describe('test data-table component props', () => {
     expect(wrapper.find('tbody tr').attributes('data-id')).toBe('1')
     expect(wrapper.find('tbody td').classes()).toContain('custom-cell')
     expect(wrapper.find('tbody td').attributes('data-name')).toBe('Ada')
+    wrapper.unmount()
+  })
+
+  test('should support titleColSpan colSpan and rowSpan', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            key: 'name',
+            title: 'Identity',
+            titleColSpan: 2,
+            rowSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+          },
+          {
+            key: 'role',
+            title: 'Role',
+            colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
+          },
+          {
+            key: 'status',
+            title: 'Status',
+          },
+        ],
+        data: [
+          { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+          { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+        ],
+        pagination: false,
+      },
+    })
+
+    const headerCells = wrapper.findAll('thead th')
+    const firstRowCells = wrapper.findAll('tbody tr')[0].findAll('td')
+    const secondRowCells = wrapper.findAll('tbody tr')[1].findAll('td')
+
+    expect(headerCells).toHaveLength(2)
+    expect(headerCells[0].attributes('colspan')).toBe('2')
+    expect(headerCells[0].text()).toContain('Identity')
+    expect(headerCells[1].text()).toContain('Status')
+
+    expect(firstRowCells).toHaveLength(2)
+    expect(firstRowCells[0].attributes('rowspan')).toBe('2')
+    expect(firstRowCells[1].attributes('colspan')).toBe('2')
+    expect(firstRowCells[1].text()).toContain('Admin')
+
+    expect(secondRowCells).toHaveLength(2)
+    expect(secondRowCells[0].text()).toContain('Maintainer')
+    expect(secondRowCells[1].text()).toContain('Offline')
     wrapper.unmount()
   })
 
