@@ -7,6 +7,9 @@
   --data-table-border-color: var(--color-outline);
   --data-table-hover-background: #eee;
   --data-table-empty-text-color: var(--color-text-disabled);
+  --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.42);
+  --data-table-resize-trigger-focus-color: hsla(var(--hsl-primary), 0.45);
+  --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
   --data-table-border-radius: 2px;
   --data-table-cell-padding: 0 16px;
   --data-table-selection-cell-padding: 0 8px;
@@ -29,7 +32,7 @@
     box-sizing: border-box;
   }
 
-  &__main {
+  &__container {
     position: relative;
     width: 100%;
     max-width: 100%;
@@ -91,8 +94,69 @@
     top: 0;
   }
 
+  &__resize-trigger {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    z-index: 1;
+    width: 20px;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: col-resize;
+    touch-action: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      bottom: 10px;
+      width: 2px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: var(--data-table-resize-trigger-color);
+    }
+
+    &:focus-visible::before {
+      background: var(--data-table-resize-trigger-focus-color);
+    }
+  }
+
   &__body-cell {
     color: var(--data-table-row-text-color);
+  }
+
+  &__fixed-cell {
+    background: inherit;
+    background-clip: padding-box;
+  }
+
+  &__fixed-cell--shadow-right {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -14px;
+      bottom: 0;
+      width: 14px;
+      pointer-events: none;
+      background: linear-gradient(to right, var(--data-table-fixed-shadow-color), transparent);
+    }
+  }
+
+  &__fixed-cell--shadow-left {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -14px;
+      bottom: 0;
+      width: 14px;
+      pointer-events: none;
+      background: linear-gradient(to left, var(--data-table-fixed-shadow-color), transparent);
+    }
   }
 
   &__selection-cell {

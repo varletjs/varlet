@@ -13,16 +13,13 @@
     "
   >
     <var-loading :loading="loading">
-      <div
-        :class="classes(n('main'), n('$--scrollbar'))"
-        :style="{ maxHeight: toSizeUnit(maxHeight), overflow: maxHeight != null ? 'auto' : undefined }"
-      >
-        <table v-if="columns.length" :class="n('table')" :style="{ tableLayout }">
+      <div :class="classes(n('container'), n('$--scrollbar'))" :style="mainStyle">
+        <table v-if="columns.length" :class="n('table')" :style="tableStyle">
           <colgroup>
             <col
               v-for="(column, index) in columns"
               :key="column.key ?? column.type ?? index"
-              :style="getColStyle(column)"
+              :style="getColStyle(column, index)"
             />
           </colgroup>
 
@@ -38,6 +35,8 @@
                     [isSelectionColumn(headerCell.column), n('selection-cell')],
                     [isExpandColumn(headerCell.column), n('expand-cell')],
                     [headerCell.column.fixed, n('fixed-cell')],
+                    [isLastLeftFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-right')],
+                    [isFirstRightFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-left')],
                   )
                 "
                 :style="getHeaderCellStyle(headerCell)"
@@ -58,6 +57,18 @@
                       : headerCell.column.title
                   }}
                 </template>
+                <button
+                  v-if="
+                    isColumnResizable(headerCell.column) &&
+                    headerCell.colSpan == null &&
+                    !isLastHeaderColumn(headerCell.columnIndex)
+                  "
+                  type="button"
+                  tabindex="-1"
+                  :class="n('resize-trigger')"
+                  @click.stop
+                  @mousedown="startColumnResize($event, headerCell)"
+                />
               </th>
             </tr>
           </thead>
@@ -75,6 +86,8 @@
                       [isSelectionColumn(cell.column), n('selection-cell')],
                       [isExpandColumn(cell.column), n('expand-cell')],
                       [cell.column.fixed, n('fixed-cell')],
+                      [isLastLeftFixedColumn(cell.columnIndex), n('fixed-cell--shadow-right')],
+                      [isFirstRightFixedColumn(cell.columnIndex), n('fixed-cell--shadow-left')],
                     )
                   "
                   :style="getBodyCellStyle(cell)"
@@ -182,7 +195,7 @@
 <script lang="ts">
 import { call, callOrReturn, clamp, floor, isArray, isFunction } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
-import { computed, defineComponent, ref, watch, type CSSProperties } from 'vue'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import VarCheckbox from '../checkbox'
 import VarIcon from '../icon'
 import VarLoading from '../loading'
@@ -191,7 +204,7 @@ import { injectLocaleProvider } from '../locale-provider/provide'
 import VarPagination from '../pagination'
 import VarRadio from '../radio'
 import { createNamespace, formatElevation, MaybeVNode } from '../utils/components'
-import { toPxNum, toSizeUnit } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 import {
   props,
   type DataTableColumn,
@@ -201,13 +214,13 @@ import {
 } from './props'
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
+import { useColumnWidths } from './useColumnWidths'
 import { useExpandRow } from './useExpandRow'
 import { usePagination } from './usePagination'
 import { useSelectionColumn } from './useSelectionColumn'
 import { useTreeExpand } from './useTreeExpand'
 
 const { name, n, classes } = createNamespace('data-table')
-const defaultDataTableControlColumnWidth = 52
 
 interface DataTableHeaderCell {
   key: string
@@ -232,6 +245,31 @@ export default defineComponent({
     const page = computed(() => props.page)
     const pageSize = computed(() => props.pageSize)
     const checkedRowKeys = useVModel(props, 'checkedRowKeys')
+    const mainStyle = computed<CSSProperties>(() => {
+      const style: CSSProperties = {}
+
+      if (props.maxHeight != null) {
+        style.maxHeight = toSizeUnit(props.maxHeight)
+        style.overflow = 'auto'
+      }
+
+      if (props.scrollX != null) {
+        style.overflowX = 'auto'
+      }
+
+      return style
+    })
+    const tableStyle = computed<CSSProperties>(() => {
+      const style: CSSProperties = {
+        tableLayout: props.tableLayout,
+      }
+
+      if (props.scrollX != null) {
+        style.minWidth = `max(100%, ${toSizeUnit(props.scrollX)})`
+      }
+
+      return style
+    })
 
     const { collapsedTreeRowKeys, toggleTreeRowExpanded } = useTreeExpand({
       tree: () => props.tree,
@@ -240,23 +278,13 @@ export default defineComponent({
       getTreeChildren,
     })
 
-    const columnWidths = computed(() => {
-      return props.columns.map((column) => {
-        const resolvedWidth = getColumnDefaultWidth(column)
-
-        if (resolvedWidth != null) {
-          return toPxNum(resolvedWidth)
-        }
-
-        if (column.minWidth != null) {
-          return toPxNum(column.minWidth)
-        }
-
-        return 0
-      })
+    const { columnWidths, getColStyle, isColumnResizable, startColumnResize } = useColumnWidths({
+      columns: () => props.columns,
+      isSelectionColumn,
+      isExpandColumn,
     })
 
-    const { getFixedStyle } = useColumnsFixedOffsets({
+    const { getFixedStyle, isFirstRightFixedColumn, isLastLeftFixedColumn } = useColumnsFixedOffsets({
       columns: () => props.columns,
       columnWidths: () => columnWidths.value,
     })
@@ -405,31 +433,8 @@ export default defineComponent({
       return align ?? 'left'
     }
 
-    function getColumnDefaultWidth(column: DataTableColumn) {
-      if (column.width != null) {
-        return column.width
-      }
-
-      if (isSelectionColumn(column) || isExpandColumn(column)) {
-        return defaultDataTableControlColumnWidth
-      }
-    }
-
-    function getColStyle(column: DataTableColumn) {
-      const style: CSSProperties = {}
-      const resolvedWidth = getColumnDefaultWidth(column)
-
-      if (resolvedWidth != null) {
-        style.width = toSizeUnit(resolvedWidth)
-      }
-
-      if (column.minWidth != null) {
-        style.minWidth = toSizeUnit(column.minWidth)
-      } else if (resolvedWidth != null) {
-        style.minWidth = toSizeUnit(resolvedWidth)
-      }
-
-      return style
+    function isLastHeaderColumn(columnIndex: number) {
+      return columnIndex === props.columns.length - 1
     }
 
     function getHeaderCellStyle(cell: DataTableHeaderCell): CSSProperties {
@@ -456,16 +461,19 @@ export default defineComponent({
       pt,
       t,
       expandedRowKeys,
+      mainStyle,
       page,
       pageSize,
       paginationProps,
       paginationTotal,
       showPagination,
+      tableStyle,
       currentSelectableRows,
       allCurrentRowsSelected,
       someCurrentRowsSelected,
       headerCells,
       bodyRows,
+      isColumnResizable,
       getRowProps,
       getCellProps,
       isSelectionColumn,
@@ -486,6 +494,10 @@ export default defineComponent({
       getHeaderCellStyle,
       getBodyCellStyle,
       handlePaginationChange,
+      isLastHeaderColumn,
+      isFirstRightFixedColumn,
+      isLastLeftFixedColumn,
+      startColumnResize,
       n,
       classes,
       formatElevation,

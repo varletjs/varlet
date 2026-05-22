@@ -18,6 +18,8 @@ export default {
   localPagination: '本地分页',
   remotePagination: '远程分页',
   stickyHeader: '固定表头',
+  fixedColumns: '固定列',
+  resizableColumns: '可调整列宽',
   emptyText: '空态文案',
   emptyTip: '暂无数据',
   loading: '加载状态',

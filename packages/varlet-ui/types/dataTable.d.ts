@@ -38,8 +38,10 @@ export type DataTableCellProps<Row = any> =
 
 export interface DataTableBaseColumn<Row = any> {
   fixed?: DataTableColumnFixed
+  resizable?: boolean
   width?: string | number
   minWidth?: string | number
+  maxWidth?: string | number
   align?: DataTableColumnAlign
   titleAlign?: DataTableColumnAlign
   titleColSpan?: number
@@ -100,6 +102,7 @@ export interface DataTableProps extends BasicAttributes {
   pageSize?: number
   total?: number
   maxHeight?: number | string
+  scrollX?: number | string
   tree?: boolean
   surface?: DataTableSurface
   cascade?: boolean

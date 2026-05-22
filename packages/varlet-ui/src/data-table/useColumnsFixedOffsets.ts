@@ -7,6 +7,14 @@ export interface UseColumnsFixedOffsetsOptions {
 }
 
 export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixedOffsetsOptions) {
+  const lastLeftFixedColumnIndex = computed(() => {
+    return findEdgeFixedColumnIndex('left')
+  })
+
+  const firstRightFixedColumnIndex = computed(() => {
+    return findEdgeFixedColumnIndex('right')
+  })
+
   const leftFixedOffsets = computed(() => {
     return buildFixedOffsets('left')
   })
@@ -66,8 +74,40 @@ export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixe
     return offsets
   }
 
+  function isLastLeftFixedColumn(columnIndex: number) {
+    return lastLeftFixedColumnIndex.value === columnIndex
+  }
+
+  function isFirstRightFixedColumn(columnIndex: number) {
+    return firstRightFixedColumnIndex.value === columnIndex
+  }
+
+  function findEdgeFixedColumnIndex(direction: DataTableColumnFixed) {
+    const resolvedColumns = columns()
+
+    if (direction === 'left') {
+      for (let index = resolvedColumns.length - 1; index >= 0; index -= 1) {
+        if (resolvedColumns[index].fixed === 'left') {
+          return index
+        }
+      }
+
+      return -1
+    }
+
+    for (let index = 0; index < resolvedColumns.length; index += 1) {
+      if (resolvedColumns[index].fixed === 'right') {
+        return index
+      }
+    }
+
+    return -1
+  }
+
   return {
     getFixedStyle,
+    isFirstRightFixedColumn,
+    isLastLeftFixedColumn,
     leftFixedOffsets,
     rightFixedOffsets,
   }

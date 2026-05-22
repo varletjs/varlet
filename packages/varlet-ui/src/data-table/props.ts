@@ -45,8 +45,10 @@ export type DataTableCellProps<Row = any> =
 
 export interface DataTableBaseColumn<Row = any> {
   fixed?: DataTableColumnFixed
+  resizable?: boolean
   width?: string | number
   minWidth?: string | number
+  maxWidth?: string | number
   align?: DataTableColumnAlign
   titleAlign?: DataTableColumnAlign
   titleColSpan?: number
@@ -127,6 +129,7 @@ export const props = {
   },
   total: Number,
   maxHeight: [Number, String],
+  scrollX: [Number, String],
   tree: Boolean,
   surface: String as PropType<DataTableSurface>,
   cascade: {

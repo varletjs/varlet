@@ -446,6 +446,44 @@ const columns = [{ key: 'name', title: '姓名' }]
 </template>
 ```
 
+### 固定列
+
+设置 `scroll-x` 用来声明表格的横向滚动宽度，再通过 `fixed: 'left' | 'right'` 固定需要钉住的列。
+
+```html
+<template>
+  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :scroll-x="566" />
+</template>
+
+<script setup>
+const scrollColumns = [
+  { key: 'name', title: 'Name', fixed: 'left', width: 104 },
+  { key: 'role', title: 'Role', width: 126 },
+  { key: 'department', title: 'Dept', width: 120 },
+  { key: 'location', title: 'City', width: 120 },
+  { key: 'status', title: 'Status', fixed: 'right', width: 96 },
+]
+</script>
+```
+
+### 可调整列宽
+
+设置 `resizable` 可以开启列拖拽调整宽度。`minWidth` 和 `maxWidth` 会作为拖拽时的宽度边界。
+
+```html
+<template>
+  <var-data-table :columns="resizableColumns" :data="data" :pagination="false" :scroll-x="540" />
+</template>
+
+<script setup>
+const resizableColumns = [
+  { key: 'name', title: 'Name', width: 180, minWidth: 120, maxWidth: 260, resizable: true },
+  { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
+  { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
+]
+</script>
+```
+
 ### 空态文案
 
 ```html
@@ -482,6 +520,7 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
+| `scroll-x` | 用于开启横向滚动的表格宽度，通常和固定列一起使用 | _number \| string_ | `-` |
 | `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | 是否显式开启树形数据 | _boolean_ | `false` |
 | `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |
@@ -502,8 +541,10 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `selectable` | 是否允许选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | 是否允许展开该行，仅对展开列生效 | _`(context) => boolean`_ | `-` |
 | `renderExpand` | 自定义展开内容，仅对展开列生效 | _`(context) => VNodeChild`_ | `-` |
+| `resizable` | 是否允许通过拖拽调整列宽 | _boolean_ | `false` |
 | `width` | 列宽 | _number \| string_ | `-` |
 | `minWidth` | 列最小宽度 | _number \| string_ | `-` |
+| `maxWidth` | 列最大宽度。开启 `resizable` 时也会作为拖拽的上限 | _number \| string_ | `-` |
 | `align` | 内容对齐方式 | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | 表头标题对齐方式 | _'left' \| 'center' \| 'right'_ | `align` |
 | `titleColSpan` | 表头列合并数量，设为 `0` 时当前表头不渲染 | _number_ | `1` |

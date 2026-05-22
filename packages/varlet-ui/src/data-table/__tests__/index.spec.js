@@ -456,10 +456,102 @@ describe('test data-table component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-data-table__main').attributes('style')).toContain('max-height: 240px;')
-    expect(wrapper.find('.var-data-table__main').classes()).toContain('var--scrollbar')
+    expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('max-height: 240px;')
+    expect(wrapper.find('.var-data-table__container').classes()).toContain('var--scrollbar')
     expect(wrapper.find('.var-data-table__table').exists()).toBe(true)
     expect(wrapper.find('.var-data-table__body-scroller').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('should support scrollX with horizontal scrolling', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        scrollX: 640,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('overflow-x: auto;')
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: max(100%, 640px);')
+    wrapper.unmount()
+  })
+
+  test('should support scrollX together with maxHeight', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        maxHeight: 240,
+        scrollX: 640,
+      },
+    })
+
+    const mainStyle = wrapper.find('.var-data-table__container').attributes('style')
+
+    expect(mainStyle).toContain('max-height: 240px;')
+    expect(mainStyle).toContain('overflow: auto;')
+    expect(mainStyle).toContain('overflow-x: auto;')
+    wrapper.unmount()
+  })
+
+  test('should support column maxWidth', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', maxWidth: 120 },
+          { key: 'role', title: 'Role' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('col').attributes('style')).toContain('max-width: 120px;')
+    wrapper.unmount()
+  })
+
+  test('should support resizable columns and respect maxWidth', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', width: 120, maxWidth: 160, resizable: true },
+          { key: 'role', title: 'Role' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const resizeTrigger = wrapper.find('.var-data-table__resize-trigger')
+    const firstHeaderCell = wrapper.find('thead th').element
+
+    firstHeaderCell.getBoundingClientRect = () => ({
+      width: 120,
+      height: 46,
+      top: 0,
+      right: 120,
+      bottom: 46,
+      left: 0,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    })
+
+    await resizeTrigger.trigger('mousedown', { clientX: 100 })
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 130 }))
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('col').attributes('style')).toContain('width: 150px;')
+
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 200 }))
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('col').attributes('style')).toContain('width: 160px;')
+
+    document.dispatchEvent(new MouseEvent('mouseup'))
     wrapper.unmount()
   })
 

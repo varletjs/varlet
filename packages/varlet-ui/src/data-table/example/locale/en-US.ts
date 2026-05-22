@@ -18,6 +18,8 @@ export default {
   localPagination: 'Local Pagination',
   remotePagination: 'Remote Pagination',
   stickyHeader: 'Sticky Header',
+  fixedColumns: 'Fixed Columns',
+  resizableColumns: 'Resizable Columns',
   emptyText: 'Empty Text',
   emptyTip: 'No Data',
   loading: 'Loading',

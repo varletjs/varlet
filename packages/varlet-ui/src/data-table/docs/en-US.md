@@ -446,6 +446,44 @@ Set `max-height` to make the table body scroll internally while keeping the head
 </template>
 ```
 
+### Fixed Columns
+
+Set `scroll-x` to declare the table width for horizontal scrolling, then use `fixed: 'left' | 'right'` on columns that should stay pinned.
+
+```html
+<template>
+  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :scroll-x="566" />
+</template>
+
+<script setup>
+const scrollColumns = [
+  { key: 'name', title: 'Name', fixed: 'left', width: 104 },
+  { key: 'role', title: 'Role', width: 126 },
+  { key: 'department', title: 'Dept', width: 120 },
+  { key: 'location', title: 'City', width: 120 },
+  { key: 'status', title: 'Status', fixed: 'right', width: 96 },
+]
+</script>
+```
+
+### Resizable Columns
+
+Set `resizable` to enable drag resizing for a column. `minWidth` and `maxWidth` are used as resize limits.
+
+```html
+<template>
+  <var-data-table :columns="resizableColumns" :data="data" :pagination="false" :scroll-x="540" />
+</template>
+
+<script setup>
+const resizableColumns = [
+  { key: 'name', title: 'Name', width: 180, minWidth: 120, maxWidth: 260, resizable: true },
+  { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
+  { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
+]
+</script>
+```
+
 ### Empty Text
 
 ```html
@@ -482,6 +520,7 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
+| `scroll-x` | Table width used to enable horizontal scrolling. Usually paired with fixed columns | _number \| string_ | `-` |
 | `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | Whether to explicitly enable tree data mode | _boolean_ | `false` |
 | `cascade` | Whether tree selection should cascade | _boolean_ | `true` |
@@ -502,8 +541,10 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | Whether the row can be expanded. Only works on expand columns | _`(context) => boolean`_ | `-` |
 | `renderExpand` | Custom expanded content. Only works on expand columns | _`(context) => VNodeChild`_ | `-` |
+| `resizable` | Whether the column width can be resized by dragging | _boolean_ | `false` |
 | `width` | Column width | _number \| string_ | `-` |
 | `minWidth` | Column min width | _number \| string_ | `-` |
+| `maxWidth` | Column max width. Also used as the upper resize limit when `resizable` is enabled | _number \| string_ | `-` |
 | `align` | Body cell align | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | Header title align | _'left' \| 'center' \| 'right'_ | `align` |
 | `titleColSpan` | Header col span. Set to `0` to hide the current header cell | _number_ | `1` |

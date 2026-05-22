@@ -65,6 +65,47 @@ const spanData = [
   { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
 ]
 
+const scrollColumns = [
+  { key: 'name', title: 'Name', fixed: 'left', width: 104 },
+  { key: 'role', title: 'Role', width: 126 },
+  { key: 'department', title: 'Dept', width: 120 },
+  { key: 'location', title: 'City', width: 120 },
+  { key: 'status', title: 'Status', fixed: 'right', width: 96 },
+]
+
+const scrollData = [
+  {
+    id: 1,
+    name: 'Ada',
+    role: 'FE Lead',
+    department: 'Exp',
+    location: 'HZ',
+    status: 'Online',
+  },
+  {
+    id: 2,
+    name: 'Linus',
+    role: 'Platform',
+    department: 'Infra',
+    location: 'SH',
+    status: 'Offline',
+  },
+  {
+    id: 3,
+    name: 'Taylor',
+    role: 'Designer',
+    department: 'Design',
+    location: 'SZ',
+    status: 'Busy',
+  },
+]
+
+const resizableColumns = [
+  { key: 'name', title: 'Name', width: 180, minWidth: 120, maxWidth: 260, resizable: true },
+  { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
+  { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
+]
+
 const checkedRowKeys = ref([1, 3])
 const singleCheckedRowKeys = ref([2])
 const treeCheckedRowKeys = ref([1, 11, 12])
@@ -319,6 +360,12 @@ watch(
 
   <app-type>{{ t('stickyHeader') }}</app-type>
   <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
+
+  <app-type>{{ t('fixedColumns') }}</app-type>
+  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :scroll-x="566" />
+
+  <app-type>{{ t('resizableColumns') }}</app-type>
+  <var-data-table :columns="resizableColumns" :data="data" :pagination="false" :scroll-x="540" />
 
   <app-type>{{ t('emptyText') }}</app-type>
   <var-data-table :columns="columns" :data="[]" :pagination="false">
