@@ -474,7 +474,8 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('overflow-x: auto;')
-    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: max(100%, 640px);')
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: 100%;')
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('width: 640px;')
     wrapper.unmount()
   })
 

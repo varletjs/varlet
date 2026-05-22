@@ -262,10 +262,11 @@ export default defineComponent({
     const tableStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {
         tableLayout: props.tableLayout,
+        minWidth: '100%',
       }
 
       if (props.scrollX != null) {
-        style.minWidth = `max(100%, ${toSizeUnit(props.scrollX)})`
+        style.width = toSizeUnit(props.scrollX)
       }
 
       return style

@@ -7,8 +7,8 @@
   --data-table-border-color: var(--color-outline);
   --data-table-hover-background: #eee;
   --data-table-empty-text-color: var(--color-text-disabled);
-  --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.42);
-  --data-table-resize-trigger-focus-color: hsla(var(--hsl-primary), 0.45);
+  --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
+  --data-table-resize-trigger-focus-color: hsla(var(--hsl-primary), 0.42);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
   --data-table-border-radius: 2px;
   --data-table-cell-padding: 0 16px;
@@ -97,9 +97,9 @@
   &__resize-trigger {
     position: absolute;
     top: 0;
-    right: -10px;
+    right: -5px;
     z-index: 1;
-    width: 20px;
+    width: 10px;
     height: 100%;
     padding: 0;
     border: 0;
@@ -115,12 +115,7 @@
       bottom: 10px;
       width: 2px;
       transform: translateX(-50%);
-      border-radius: 999px;
       background: var(--data-table-resize-trigger-color);
-    }
-
-    &:focus-visible::before {
-      background: var(--data-table-resize-trigger-focus-color);
     }
   }
 
