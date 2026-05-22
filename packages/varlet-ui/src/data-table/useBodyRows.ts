@@ -141,24 +141,6 @@ export function useBodyRows({
     })
   })
 
-  function syncCollapsedTreeRowKeys() {
-    if (!tree()) {
-      collapsedTreeRowKeys.value = new Set()
-      return
-    }
-
-    const validKeys = collectExpandableRowKeys(sourceRows())
-    const nextCollapsedKeys = new Set<string | number>()
-
-    for (const key of collapsedTreeRowKeys.value) {
-      if (validKeys.has(key)) {
-        nextCollapsedKeys.add(key)
-      }
-    }
-
-    collapsedTreeRowKeys.value = nextCollapsedKeys
-  }
-
   function buildFlatRows(sourceRows: Record<string, any>[], includeCollapsedChildren: boolean) {
     const rows: DataTableFlatRow[] = []
     let rowIndex = 0
@@ -199,30 +181,6 @@ export function useBodyRows({
     return rows
   }
 
-  function collectExpandableRowKeys(rows: Record<string, any>[]) {
-    const keys = new Set<string | number>()
-    let rowIndex = 0
-
-    function visit(source: Record<string, any>[]) {
-      for (const row of source) {
-        const currentRowIndex = rowIndex
-        rowIndex += 1
-
-        const children = getTreeChildren(row)
-
-        if (children.length > 0) {
-          keys.add(getRowKey(row, currentRowIndex))
-        }
-
-        visit(children)
-      }
-    }
-
-    visit(rows)
-
-    return keys
-  }
-
   function resolveSpan(
     span: DataTableColumnCellSpan | undefined,
     context: InternalDataTableCellContext,
@@ -242,6 +200,5 @@ export function useBodyRows({
     visibleFlatRows,
     treeRowMeta,
     bodyRows,
-    syncCollapsedTreeRowKeys,
   }
 }

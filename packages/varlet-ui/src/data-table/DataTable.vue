@@ -49,7 +49,7 @@
                   :indeterminate="someCurrentRowsSelected"
                   :disabled="!isSelectionColumnSelectable(headerCell.column) || !currentSelectableRows.length"
                   tabindex="-1"
-                  @update:model-value="toggleAllCurrentRows"
+                  @update:model-value="toggleCurrentSelectableRows"
                 />
                 <template v-else>
                   {{
@@ -203,6 +203,7 @@ import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './us
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
 import { usePagination } from './usePagination'
 import { useSelectionColumn } from './useSelectionColumn'
+import { useTreeExpand } from './useTreeExpand'
 
 const { name, n, classes } = createNamespace('data-table')
 const defaultDataTableControlColumnWidth = 52
@@ -231,7 +232,13 @@ export default defineComponent({
     const pageSize = computed(() => props.pageSize)
     const checkedRowKeys = useVModel(props, 'checkedRowKeys')
     const expandedRowKeys = ref(new Set<string | number>())
-    const collapsedTreeRowKeys = ref(new Set<string | number>())
+
+    const { collapsedTreeRowKeys, toggleTreeRowExpanded } = useTreeExpand({
+      tree: () => props.tree,
+      data: () => props.data,
+      getRowKey,
+      getTreeChildren,
+    })
 
     const columnWidths = computed(() => {
       return props.columns.map((column) => {
@@ -264,22 +271,23 @@ export default defineComponent({
       onUpdatePage: () => props['onUpdate:page'],
     })
 
-    const firstTreeColumnIndex = computed(() => {
-      return props.columns.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column))
-    })
+    const firstTreeColumnIndex = computed(() =>
+      props.columns.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column)),
+    )
 
-    const { allFlatRows, treeRowMeta, bodyRows, syncCollapsedTreeRowKeys } = useBodyRows({
-      columns: () => props.columns,
-      sourceRows: () => pagedData.value,
-      tree: () => props.tree,
+    const { allFlatRows, treeRowMeta, bodyRows } = useBodyRows({
       collapsedTreeRowKeys,
       expandedRowKeys,
       firstTreeColumnIndex,
       getRowKey,
       getTreeChildren,
+      columns: () => props.columns,
+      sourceRows: () => pagedData.value,
+      tree: () => props.tree,
     })
 
     const expandColumn = computed(() => props.columns.find(isExpandColumn))
+
     const {
       currentSelectableRows,
       allCurrentRowsSelected,
@@ -290,17 +298,17 @@ export default defineComponent({
       isRowKeySelected,
       isRowKeyIndeterminate,
       toggleRowSelection,
-      toggleAllCurrentRows,
+      toggleCurrentSelectableRows,
     } = useSelectionColumn({
+      checkedRowKeys,
+      isSelectionColumn,
+      getTreeChildren,
       columns: () => props.columns,
       tree: () => props.tree,
       cascade: () => props.cascade,
       pagedData: () => pagedData.value,
       allFlatRows: () => allFlatRows.value,
       treeRowMeta: () => treeRowMeta.value,
-      checkedRowKeys,
-      isSelectionColumn,
-      getTreeChildren,
     })
 
     const headerCells = computed<DataTableHeaderCell[]>(() => {
@@ -330,14 +338,6 @@ export default defineComponent({
 
       return cells
     })
-
-    watch(
-      () => props.data,
-      () => {
-        syncCollapsedTreeRowKeys()
-      },
-      { immediate: true },
-    )
 
     function getRowKey(row: Record<string, any>, rowIndex: number) {
       if (isFunction(props.rowKey)) {
@@ -378,31 +378,15 @@ export default defineComponent({
         return
       }
 
-      const nextExpandedRows = new Set(expandedRowKeys.value)
+      const target = new Set(expandedRowKeys.value)
 
-      if (nextExpandedRows.has(bodyRow.key)) {
-        nextExpandedRows.delete(bodyRow.key)
+      if (target.has(bodyRow.key)) {
+        target.delete(bodyRow.key)
       } else {
-        nextExpandedRows.add(bodyRow.key)
+        target.add(bodyRow.key)
       }
 
-      expandedRowKeys.value = nextExpandedRows
-    }
-
-    function toggleTreeRowExpanded(bodyRow: DataTableBodyRow) {
-      if (!props.tree || !bodyRow.expandable) {
-        return
-      }
-
-      const nextCollapsedRows = new Set(collapsedTreeRowKeys.value)
-
-      if (nextCollapsedRows.has(bodyRow.key)) {
-        nextCollapsedRows.delete(bodyRow.key)
-      } else {
-        nextCollapsedRows.add(bodyRow.key)
-      }
-
-      collapsedTreeRowKeys.value = nextCollapsedRows
+      expandedRowKeys.value = target
     }
 
     function renderCell(bodyRow: DataTableBodyRow, column: DataTableColumn) {
@@ -530,7 +514,7 @@ export default defineComponent({
       isRowKeyIndeterminate,
       isRowKeySelected,
       isRowSelectable,
-      toggleAllCurrentRows,
+      toggleCurrentSelectableRows,
       toggleRowExpanded,
       toggleTreeRowExpanded,
       toggleRowSelection,

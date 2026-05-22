@@ -203,7 +203,7 @@ export function useSelectionColumn({
     updateCheckedRowKeys([...nextKeys])
   }
 
-  function toggleAllCurrentRows(selected: boolean) {
+  function toggleCurrentSelectableRows(selected: boolean) {
     const column = selectionColumn.value
 
     if (!column || !isSelectionColumnSelectable(column) || !isMultipleSelectionColumn(column)) {
@@ -305,6 +305,6 @@ export function useSelectionColumn({
     isRowKeySelected,
     isRowKeyIndeterminate,
     toggleRowSelection,
-    toggleAllCurrentRows,
+    toggleCurrentSelectableRows,
   }
 }
