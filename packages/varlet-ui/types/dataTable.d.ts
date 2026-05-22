@@ -22,7 +22,7 @@ export interface DataTableRowPropsContext<Row = any> extends DataTableRowBaseCon
 export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
 
 export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
-export type DataTableColumnSelectionDisabled<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
+export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
@@ -64,7 +64,7 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
   key?: string
   title?: string
   multiple?: boolean
-  disabled?: DataTableColumnSelectionDisabled<Row>
+  selectable?: DataTableColumnSelectable<Row>
   render?: never
 }
 

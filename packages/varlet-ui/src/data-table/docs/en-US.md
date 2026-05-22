@@ -175,7 +175,7 @@ const data = [
 
 ### Selection
 
-Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `disabled` to disable the whole selection column or specific rows. In single selection mode, the table uses `radio` instead of `checkbox`.
+Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `selectable` to control whether the whole selection column or specific rows can be selected. In single selection mode, the table uses `radio` instead of `checkbox`.
 
 ```html
 <script setup>
@@ -499,7 +499,7 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `key` | Unique column key | _string_ | `-` |
 | `title` | Column title | _string_ | `-` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
-| `disabled` | Whether selection is disabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `false` |
+| `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | Whether the row can be expanded. Only works on expand columns | _`(context) => boolean`_ | `-` |
 | `renderExpand` | Custom expanded content. Only works on expand columns | _`(context) => VNodeChild`_ | `-` |
 | `width` | Column width | _number \| string_ | `-` |

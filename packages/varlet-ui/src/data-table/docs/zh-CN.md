@@ -175,7 +175,7 @@ const data = [
 
 ### 选择列
 
-通过 `type: 'selection'` 渲染选择列，并使用 `v-model:checked-row-keys` 控制选中行。设置 `multiple: false` 可切换为单选，设置 `disabled` 可禁用整列选择或按行禁用。单选模式下会使用 `radio`，而不是 `checkbox`。
+通过 `type: 'selection'` 渲染选择列，并使用 `v-model:checked-row-keys` 控制选中行。设置 `multiple: false` 可切换为单选，设置 `selectable` 可控制整列或指定行是否可选。单选模式下会使用 `radio`，而不是 `checkbox`。
 
 ```html
 <script setup>
@@ -499,7 +499,7 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `key` | 列唯一 key | _string_ | `-` |
 | `title` | 列标题 | _string_ | `-` |
 | `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |
-| `disabled` | 是否禁用选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `false` |
+| `selectable` | 是否允许选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | 是否允许展开该行，仅对展开列生效 | _`(context) => boolean`_ | `-` |
 | `renderExpand` | 自定义展开内容，仅对展开列生效 | _`(context) => VNodeChild`_ | `-` |
 | `width` | 列宽 | _number \| string_ | `-` |

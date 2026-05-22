@@ -9,6 +9,8 @@ export type DataTableColumnAlign = 'left' | 'center' | 'right'
 
 export type DataTableColumnFixed = 'left' | 'right'
 
+export type DataTableRowData = Record<string, any>
+
 export type DataTableRowKey<Row = any> =
   | Extract<keyof Row, string>
   | string
@@ -27,7 +29,7 @@ export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseCo
 
 export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
 
-export type DataTableColumnSelectionDisabled<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
+export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
@@ -69,7 +71,7 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
   key?: string
   title?: string
   multiple?: boolean
-  disabled?: DataTableColumnSelectionDisabled<Row>
+  selectable?: DataTableColumnSelectable<Row>
   render?: never
 }
 
@@ -99,7 +101,7 @@ export interface DataTablePagination {
 
 export const props = {
   data: {
-    type: Array as PropType<any[]>,
+    type: Array as PropType<DataTableRowData[]>,
     default: () => [],
   },
   columns: {

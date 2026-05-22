@@ -213,11 +213,11 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should support disabled selection column', async () => {
+  test('should support non-selectable selection column', async () => {
     const onUpdateCheckedRowKeys = vi.fn()
     const wrapper = mount(VarDataTable, {
       props: {
-        columns: [{ type: 'selection', disabled: true }, ...columns],
+        columns: [{ type: 'selection', selectable: false }, ...columns],
         data,
         pagination: false,
         checkedRowKeys: [],
@@ -238,14 +238,14 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should support row disabled selection column', async () => {
+  test('should support row non-selectable selection column', async () => {
     const onUpdateCheckedRowKeys = vi.fn()
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [
           {
             type: 'selection',
-            disabled: ({ row }) => row.id === 2,
+            selectable: ({ row }) => row.id !== 2,
           },
           ...columns,
         ],

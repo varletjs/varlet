@@ -47,7 +47,7 @@
                   v-if="isSelectionColumn(headerCell.column) && isMultipleSelectionColumn(headerCell.column)"
                   :model-value="allCurrentRowsSelected"
                   :indeterminate="someCurrentRowsSelected"
-                  :disabled="isSelectionColumnDisabled(headerCell.column) || !currentSelectableRows.length"
+                  :disabled="!isSelectionColumnSelectable(headerCell.column) || !currentSelectableRows.length"
                   tabindex="-1"
                   @update:model-value="toggleAllCurrentRows"
                 />
@@ -84,19 +84,21 @@
                 >
                   <var-checkbox
                     v-if="isSelectionColumn(cell.column) && isMultipleSelectionColumn(cell.column)"
-                    :model-value="isRowSelected(bodyRow)"
-                    :indeterminate="isRowIndeterminate(bodyRow)"
+                    :model-value="isRowKeySelected(bodyRow.key)"
+                    :indeterminate="isRowKeyIndeterminate(bodyRow.key)"
                     :disabled="
-                      isSelectionColumnDisabled(cell.column) || isRowSelectionDisabledByColumn(bodyRow, cell.column)
+                      !isSelectionColumnSelectable(cell.column) ||
+                      !isRowSelectable(bodyRow.row, bodyRow.rowIndex, cell.column)
                     "
                     tabindex="-1"
                     @update:model-value="toggleRowSelection(bodyRow, $event)"
                   />
                   <var-radio
                     v-else-if="isSelectionColumn(cell.column)"
-                    :model-value="isRowSelected(bodyRow)"
+                    :model-value="isRowKeySelected(bodyRow.key)"
                     :disabled="
-                      isSelectionColumnDisabled(cell.column) || isRowSelectionDisabledByColumn(bodyRow, cell.column)
+                      !isSelectionColumnSelectable(cell.column) ||
+                      !isRowSelectable(bodyRow.row, bodyRow.rowIndex, cell.column)
                     "
                     tabindex="-1"
                     @update:model-value="toggleRowSelection(bodyRow, $event)"
@@ -104,11 +106,13 @@
                   <button
                     v-else-if="isExpandColumn(cell.column)"
                     type="button"
-                    :class="classes(n('expand-trigger'), [isRowExpanded(bodyRow), n('expand-trigger--expanded')])"
+                    :class="
+                      classes(n('expand-trigger'), [expandedRowKeys.has(bodyRow.key), n('expand-trigger--expanded')])
+                    "
                     :disabled="!isRowExpandable(bodyRow, cell.column)"
                     @click="toggleRowExpanded(bodyRow)"
                   >
-                    <var-icon :name="isRowExpanded(bodyRow) ? 'chevron-down' : 'chevron-right'" />
+                    <var-icon :name="expandedRowKeys.has(bodyRow.key) ? 'chevron-down' : 'chevron-right'" />
                   </button>
                   <div
                     v-else-if="tree && cell.treeLevel != null"
@@ -286,7 +290,7 @@ export default defineComponent({
 
     const checkedRowKeySet = computed(() => new Set(checkedRowKeys.value))
 
-    const treeSelectionState = computed(() => {
+    const treeSelectionStates = computed(() => {
       const states = new Map<string | number, { checked: boolean; indeterminate: boolean }>()
       const column = selectionColumn.value
 
@@ -307,7 +311,7 @@ export default defineComponent({
 
         const children = getTreeChildren(row)
         const childStates = children.map(visit)
-        const selectable = !isRowSelectionDisabled(row, flatRow.rowIndex, column)
+        const selectable = isRowSelectable(row, flatRow.rowIndex, column)
         const selfChecked = checkedRowKeySet.value.has(flatRow.key)
 
         if (!cascadeSelectionEnabled.value || childStates.length === 0) {
@@ -363,7 +367,7 @@ export default defineComponent({
       const rows = props.tree ? allFlatRows.value : visibleFlatRows.value
 
       return rows.filter((flatRow) => {
-        return !isRowSelectionDisabled(flatRow.row, flatRow.rowIndex, column)
+        return isRowSelectable(flatRow.row, flatRow.rowIndex, column)
       })
     })
 
@@ -445,8 +449,8 @@ export default defineComponent({
       return column.multiple !== false
     }
 
-    function isSelectionColumnDisabled(column: DataTableSelectionColumn) {
-      return column.disabled === true
+    function isSelectionColumnSelectable(column: DataTableSelectionColumn) {
+      return column.selectable !== false
     }
 
     function isRowExpandable(bodyRow: DataTableBodyRow, column?: DataTableExpandColumn) {
@@ -460,19 +464,15 @@ export default defineComponent({
       })
     }
 
-    function isRowSelectionDisabled(row: Record<string, any>, rowIndex: number, column?: DataTableSelectionColumn) {
-      if (!column?.disabled || column.disabled === true) {
-        return false
+    function isRowSelectable(row: Record<string, any>, rowIndex: number, column?: DataTableSelectionColumn) {
+      if (!column?.selectable || column.selectable === true) {
+        return true
       }
 
-      return column.disabled({
+      return column.selectable({
         row,
         rowIndex,
       })
-    }
-
-    function isRowSelectionDisabledByColumn(bodyRow: DataTableBodyRow, column?: DataTableSelectionColumn) {
-      return isRowSelectionDisabled(bodyRow.row, bodyRow.rowIndex, column)
     }
 
     function updateCheckedRowKeys(value: Array<string | number>) {
@@ -480,29 +480,17 @@ export default defineComponent({
     }
 
     function isRowKeySelected(key: string | number) {
-      return treeSelectionState.value.get(key)?.checked ?? checkedRowKeySet.value.has(key)
+      return treeSelectionStates.value.get(key)?.checked ?? checkedRowKeySet.value.has(key)
     }
 
     function isRowKeyIndeterminate(key: string | number) {
-      return treeSelectionState.value.get(key)?.indeterminate ?? false
-    }
-
-    function isRowSelected(bodyRow: DataTableBodyRow) {
-      return isRowKeySelected(bodyRow.key)
-    }
-
-    function isRowIndeterminate(bodyRow: DataTableBodyRow) {
-      return isRowKeyIndeterminate(bodyRow.key)
-    }
-
-    function isRowExpanded(bodyRow: DataTableBodyRow) {
-      return expandedRowKeys.value.has(bodyRow.key)
+      return treeSelectionStates.value.get(key)?.indeterminate ?? false
     }
 
     function toggleRowSelection(bodyRow: DataTableBodyRow, selected: boolean) {
       const column = selectionColumn.value
 
-      if (!column || isSelectionColumnDisabled(column) || isRowSelectionDisabledByColumn(bodyRow, column)) {
+      if (!column || !isSelectionColumnSelectable(column) || !isRowSelectable(bodyRow.row, bodyRow.rowIndex, column)) {
         return
       }
 
@@ -541,7 +529,7 @@ export default defineComponent({
     function toggleAllCurrentRows(selected: boolean) {
       const column = selectionColumn.value
 
-      if (!column || isSelectionColumnDisabled(column) || !isMultipleSelectionColumn(column)) {
+      if (!column || !isSelectionColumnSelectable(column) || !isMultipleSelectionColumn(column)) {
         return
       }
 
@@ -573,7 +561,7 @@ export default defineComponent({
           return
         }
 
-        if (!isRowSelectionDisabled(currentRow, flatRow.rowIndex, column)) {
+        if (isRowSelectable(currentRow, flatRow.rowIndex, column)) {
           keys.push(flatRow.key)
         }
 
@@ -595,7 +583,7 @@ export default defineComponent({
         return false
       }
 
-      const selectable = !isRowSelectionDisabled(row, flatRow.rowIndex, column)
+      const selectable = isRowSelectable(row, flatRow.rowIndex, column)
       const children = getTreeChildren(row)
 
       if (!children.length) {
@@ -769,6 +757,7 @@ export default defineComponent({
     return {
       pt,
       t,
+      expandedRowKeys,
       page,
       pageSize,
       paginationProps,
@@ -784,12 +773,11 @@ export default defineComponent({
       isSelectionColumn,
       isExpandColumn,
       isMultipleSelectionColumn,
-      isSelectionColumnDisabled,
-      isRowSelectionDisabledByColumn,
+      isSelectionColumnSelectable,
       isRowExpandable,
-      isRowExpanded,
-      isRowIndeterminate,
-      isRowSelected,
+      isRowKeyIndeterminate,
+      isRowKeySelected,
+      isRowSelectable,
       toggleAllCurrentRows,
       toggleRowExpanded,
       toggleTreeRowExpanded,
