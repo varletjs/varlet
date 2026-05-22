@@ -5,8 +5,6 @@ export type DataTableSurface = 'low'
 
 export type DataTableTableLayout = 'auto' | 'fixed'
 
-export type DataTableKey = string | number
-
 export type DataTableColumnAlign = 'left' | 'center' | 'right'
 
 export type DataTableColumnFixed = 'left' | 'right'
@@ -14,7 +12,7 @@ export type DataTableColumnFixed = 'left' | 'right'
 export type DataTableRowKey<Row = any> =
   | Extract<keyof Row, string>
   | string
-  | ((row: Row, rowIndex: number) => DataTableKey)
+  | ((row: Row, rowIndex: number) => string | number)
 
 export interface DataTableRowBaseContext<Row = any> {
   row: Row
@@ -27,11 +25,9 @@ export interface DataTableRowPropsContext<Row = any> extends DataTableRowBaseCon
 
 export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
 
-export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableCellPropsContext<Row>) => number)
+export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
 
-export type DataTableColumnSelectionDisabled<Row = any> =
-  | boolean
-  | ((context: DataTableRowPropsContext<Row>) => boolean)
+export type DataTableColumnSelectionDisabled<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
@@ -101,10 +97,6 @@ export interface DataTablePagination {
   showTotal?: (total: number, range: [number, number]) => string
 }
 
-export interface DataTableTreeOption {
-  disabled?: boolean
-}
-
 export const props = {
   data: {
     type: Array as PropType<any[]>,
@@ -137,10 +129,7 @@ export const props = {
   },
   total: Number,
   maxHeight: [Number, String],
-  tree: {
-    type: [Boolean, Object] as PropType<boolean | DataTableTreeOption>,
-    default: false,
-  },
+  tree: Boolean,
   surface: String as PropType<DataTableSurface>,
   cascade: {
     type: Boolean,
@@ -151,7 +140,7 @@ export const props = {
     default: 'children',
   },
   checkedRowKeys: {
-    type: Array as PropType<DataTableKey[]>,
+    type: Array as PropType<Array<string | number>>,
     default: () => [],
   },
   elevation: {
@@ -167,7 +156,7 @@ export const props = {
     type: String as PropType<'small' | 'normal' | 'large'>,
     default: 'normal',
   },
-  'onUpdate:checkedRowKeys': defineListenerProp<(checkedRowKeys: DataTableKey[]) => void>(),
+  'onUpdate:checkedRowKeys': defineListenerProp<(checkedRowKeys: Array<string | number>) => void>(),
   'onUpdate:page': defineListenerProp<(page: number) => void>(),
   'onUpdate:pageSize': defineListenerProp<(pageSize: number) => void>(),
 }

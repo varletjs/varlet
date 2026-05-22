@@ -386,9 +386,10 @@ Set `remote` to stop internal slicing. In this mode, `data` should be the curren
 
 ```html
 <script setup>
+import { times } from '@varlet/shared'
 import { ref, watch } from 'vue'
 
-const allData = Array.from({ length: 40 }, (_, index) => ({
+const allData = times(40, (index) => ({
   id: index + 1,
   name: `User ${index + 1}`,
 }))
@@ -482,7 +483,7 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
 | `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
-| `tree` | Whether to explicitly enable tree data mode. Also supports a config object | _boolean \| DataTableTreeOption_ | `false` |
+| `tree` | Whether to explicitly enable tree data mode | _boolean_ | `false` |
 | `cascade` | Whether tree selection should cascade | _boolean_ | `true` |
 | `children-key` | Child node field name for tree rows | _string_ | `'children'` |
 | `elevation` | Elevation level | _boolean \| number \| string_ | `true` |
@@ -522,12 +523,6 @@ Set `max-height` to make the table body scroll internally while keeping the head
 | `maxPagerCount` | Max pager count | _number_ | `5` |
 | `sizeOption` | Page size options | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | Total text renderer | _`(total: number, range: [number, number]) => string`_ | `-` |
-
-### DataTableTreeOption
-
-| Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `disabled` | Whether to disable tree rendering | _boolean_ | `false` |
 
 ### Slots
 

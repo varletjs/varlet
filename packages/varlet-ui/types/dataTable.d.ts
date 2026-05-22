@@ -3,14 +3,12 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 
 export declare const dataTableProps: Record<keyof DataTableProps, any>
 
-export type DataTableKey = string | number
-
 export type DataTableColumnAlign = 'left' | 'center' | 'right'
 export type DataTableColumnFixed = 'left' | 'right'
 export type DataTableSurface = 'low'
 export type DataTableTableLayout = 'auto' | 'fixed'
 
-export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => DataTableKey)
+export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => string | number)
 
 export interface DataTableRowBaseContext<Row = any> {
   row: Row
@@ -23,10 +21,8 @@ export interface DataTableRowPropsContext<Row = any> extends DataTableRowBaseCon
 
 export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
 
-export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableCellPropsContext<Row>) => number)
-export type DataTableColumnSelectionDisabled<Row = any> =
-  | boolean
-  | ((context: DataTableRowPropsContext<Row>) => boolean)
+export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
+export type DataTableColumnSelectionDisabled<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
@@ -96,10 +92,6 @@ export interface DataTablePagination {
   showTotal?: (total: number, range: [number, number]) => string
 }
 
-export interface DataTableTreeOption {
-  disabled?: boolean
-}
-
 export interface DataTableProps extends BasicAttributes {
   data?: any[]
   columns?: DataTableColumn[]
@@ -112,7 +104,7 @@ export interface DataTableProps extends BasicAttributes {
   pageSize?: number
   total?: number
   maxHeight?: number | string
-  tree?: boolean | DataTableTreeOption
+  tree?: boolean
   surface?: DataTableSurface
   cascade?: boolean
   childrenKey?: string
@@ -120,8 +112,8 @@ export interface DataTableProps extends BasicAttributes {
   cellBordered?: boolean
   tableLayout?: DataTableTableLayout
   size?: 'small' | 'normal' | 'large'
-  checkedRowKeys?: DataTableKey[]
-  'onUpdate:checkedRowKeys'?: ListenerProp<(checkedRowKeys: DataTableKey[]) => void>
+  checkedRowKeys?: Array<string | number>
+  'onUpdate:checkedRowKeys'?: ListenerProp<(checkedRowKeys: Array<string | number>) => void>
   'onUpdate:page'?: ListenerProp<(page: number) => void>
   'onUpdate:pageSize'?: ListenerProp<(pageSize: number) => void>
 }

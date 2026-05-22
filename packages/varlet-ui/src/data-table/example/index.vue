@@ -1,5 +1,6 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { times } from '@varlet/shared'
 import { computed, h, ref, watch } from 'vue'
 import { use as useVarletLocale } from '../../locale'
 import { t, use } from './locale'
@@ -183,14 +184,14 @@ const defaultPagination = {
 const localPage = ref(1)
 const localPageSize = ref(10)
 
-const manyRows = Array.from({ length: 48 }, (_, index) => ({
+const manyRows = times(48, (index) => ({
   id: index + 1,
   name: `User ${index + 1}`,
   role: index % 2 === 0 ? 'Engineer' : 'Operator',
   status: index % 3 === 0 ? 'Online' : 'Offline',
 }))
 
-const compactPagedRows = Array.from({ length: 12 }, (_, index) => ({
+const compactPagedRows = times(12, (index) => ({
   id: index + 1,
   name: `Member ${index + 1}`,
   role: index % 2 === 0 ? 'Engineer' : 'Operator',

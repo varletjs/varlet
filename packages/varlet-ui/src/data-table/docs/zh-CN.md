@@ -386,9 +386,10 @@ const pageSize = ref(10)
 
 ```html
 <script setup>
+import { times } from '@varlet/shared'
 import { ref, watch } from 'vue'
 
-const allData = Array.from({ length: 40 }, (_, index) => ({
+const allData = times(40, (index) => ({
   id: index + 1,
   name: `用户 ${index + 1}`,
 }))
@@ -482,7 +483,7 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
 | `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
-| `tree` | 是否显式开启树形数据，也支持传入配置对象 | _boolean \| DataTableTreeOption_ | `false` |
+| `tree` | 是否显式开启树形数据 | _boolean_ | `false` |
 | `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |
 | `children-key` | 树形子节点字段名 | _string_ | `'children'` |
 | `elevation` | 海拔层级 | _boolean \| number \| string_ | `true` |
@@ -522,12 +523,6 @@ const columns = [{ key: 'name', title: '姓名' }]
 | `maxPagerCount` | 最多显示的页码数量 | _number_ | `5` |
 | `sizeOption` | 每页条数选项 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | 总数文案渲染函数 | _`(total: number, range: [number, number]) => string`_ | `-` |
-
-### DataTableTreeOption
-
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `disabled` | 是否禁用树形渲染 | _boolean_ | `false` |
 
 ### Slots
 

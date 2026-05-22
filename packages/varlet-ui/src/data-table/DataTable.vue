@@ -7,7 +7,7 @@
         n('$--box'),
         [surface === 'low', n('--surface-low')],
         [cellBordered, n('--cell-bordered')],
-        [showFooter, n('--with-footer')],
+        [showPagination, n('--with-footer')],
         n(`--${size}`),
       )
     "
@@ -51,11 +51,13 @@
                   tabindex="-1"
                   @update:model-value="toggleAllCurrentRows"
                 />
-                <template v-else>{{
-                  isSelectionColumn(headerCell.column) || isExpandColumn(headerCell.column)
-                    ? ''
-                    : headerCell.column.title
-                }}</template>
+                <template v-else>
+                  {{
+                    isSelectionColumn(headerCell.column) || isExpandColumn(headerCell.column)
+                      ? ''
+                      : headerCell.column.title
+                  }}
+                </template>
               </th>
             </tr>
           </thead>
@@ -109,7 +111,7 @@
                     <var-icon :name="isRowExpanded(bodyRow) ? 'chevron-down' : 'chevron-right'" />
                   </button>
                   <div
-                    v-else-if="treeEnabled && cell.treeLevel != null"
+                    v-else-if="tree && cell.treeLevel != null"
                     :class="n('tree-cell')"
                     :style="{ paddingInlineStart: `${cell.treeLevel * 20}px` }"
                   >
@@ -141,25 +143,25 @@
 
         <div v-if="!bodyRows.length" :class="n('empty')">
           <slot name="empty">
-            {{ resolvedEmptyText }}
+            {{ (pt ? pt : t)('dataTableEmptyText') }}
           </slot>
         </div>
       </div>
 
-      <div v-if="showFooter" :class="n('footer')">
+      <div v-if="showPagination" :class="n('footer')">
         <slot name="footer-prefix" />
 
         <var-pagination
           :current="page"
           :size="pageSize"
           :total="paginationTotal"
-          :simple="normalizedPaginationOptions.simple"
-          :disabled="normalizedPaginationOptions.disabled"
-          :show-size-changer="normalizedPaginationOptions.showSizeChanger"
-          :show-quick-jumper="normalizedPaginationOptions.showQuickJumper"
-          :max-pager-count="normalizedPaginationOptions.maxPagerCount"
-          :size-option="normalizedPaginationOptions.sizeOption"
-          :show-total="normalizedPaginationOptions.showTotal"
+          :simple="paginationProps.simple"
+          :disabled="paginationProps.disabled"
+          :show-size-changer="paginationProps.showSizeChanger"
+          :show-quick-jumper="paginationProps.showQuickJumper"
+          :max-pager-count="paginationProps.maxPagerCount"
+          :size-option="paginationProps.sizeOption"
+          :show-total="paginationProps.showTotal"
           @change="handlePaginationChange"
         />
       </div>
@@ -172,8 +174,9 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, clamp, isArray, isBoolean, isFunction } from '@varlet/shared'
-import { computed, defineComponent, ref, toRefs, watch, type CSSProperties } from 'vue'
+import { call, callOrReturn, clamp, floor, isArray, isFunction } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
+import { computed, defineComponent, ref, watch, type CSSProperties } from 'vue'
 import VarCheckbox from '../checkbox'
 import VarIcon from '../icon'
 import VarLoading from '../loading'
@@ -187,74 +190,21 @@ import {
   props,
   type DataTableColumn,
   type DataTableColumnAlign,
-  type DataTableColumnCellSpan,
-  type DataTableColumnFixed,
   type DataTableExpandColumn,
-  type DataTableKey,
-  type DataTablePagination,
   type DataTableSelectionColumn,
-  type DataTableTreeOption,
 } from './props'
+import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
+import { usePagination } from './usePagination'
 
 const { name, n, classes } = createNamespace('data-table')
 const defaultDataTableControlColumnWidth = 52
-
-const defaultPaginationOptions = {
-  simple: false,
-  disabled: false,
-  showSizeChanger: true,
-  showQuickJumper: false,
-  maxPagerCount: 5,
-  sizeOption: [10, 20, 50, 100],
-  showTotal: undefined,
-} satisfies Required<
-  Pick<
-    DataTablePagination,
-    'simple' | 'disabled' | 'showSizeChanger' | 'showQuickJumper' | 'maxPagerCount' | 'sizeOption'
-  >
-> &
-  Pick<DataTablePagination, 'showTotal'>
-
-interface InternalDataTableCellContext {
-  row: Record<string, any>
-  rowIndex: number
-  pageRowIndex: number
-  column: DataTableColumn
-}
 
 interface DataTableHeaderCell {
   key: string
   columnIndex: number
   column: DataTableColumn
   colSpan?: number
-}
-
-interface DataTableBodyCell {
-  key: string
-  columnIndex: number
-  column: DataTableColumn
-  treeLevel?: number
-  treeExpandable?: boolean
-  treeExpanded?: boolean
-  colSpan?: number
-  rowSpan?: number
-}
-
-interface DataTableFlatRow {
-  key: DataTableKey
-  row: Record<string, any>
-  rowIndex: number
-  pageRowIndex: number
-  level: number
-  parentKey?: DataTableKey
-  expandable: boolean
-  treeExpanded: boolean
-}
-
-interface DataTableBodyRow extends DataTableFlatRow {
-  expanded: boolean
-  cells: DataTableBodyCell[]
 }
 
 interface DataTableTreeSelectionState {
@@ -276,21 +226,11 @@ export default defineComponent({
   props,
   setup(props) {
     const { t: pt } = injectLocaleProvider()
-    const { columns, page, pageSize } = toRefs(props)
-    const checkedRowKeys = ref<DataTableKey[]>([...props.checkedRowKeys])
-    const expandedRowKeys = ref(new Set<DataTableKey>())
-    const collapsedTreeRowKeys = ref(new Set<DataTableKey>())
-
-    const normalizedPaginationOptions = computed(() => {
-      if (isBoolean(props.pagination)) {
-        return defaultPaginationOptions
-      }
-
-      return {
-        ...defaultPaginationOptions,
-        ...props.pagination,
-      }
-    })
+    const page = computed(() => props.page)
+    const pageSize = computed(() => props.pageSize)
+    const checkedRowKeys = useVModel(props, 'checkedRowKeys')
+    const expandedRowKeys = ref(new Set<string | number>())
+    const collapsedTreeRowKeys = ref(new Set<string | number>())
 
     const columnWidths = computed(() => {
       return props.columns.map((column) => {
@@ -307,92 +247,37 @@ export default defineComponent({
         return 0
       })
     })
-    const { leftFixedOffsets, rightFixedOffsets } = useColumnsFixedOffsets({ columns, columnWidths })
 
-    const paginationTotal = computed(() => {
-      if (props.pagination === false) {
-        return props.data.length
-      }
-
-      return props.remote ? (props.total ?? 0) : props.data.length
+    const { getFixedStyle } = useColumnsFixedOffsets({
+      columns: () => props.columns,
+      columnWidths: () => columnWidths.value,
     })
 
-    const showFooter = computed(() => {
-      return props.pagination !== false && paginationTotal.value > 0
+    const { paginationProps, paginationTotal, showPagination, pagedData } = usePagination({
+      pagination: () => props.pagination,
+      remote: () => props.remote,
+      page: () => props.page,
+      pageSize: () => props.pageSize,
+      total: () => props.total,
+      data: () => props.data,
+      onUpdatePage: () => props['onUpdate:page'],
     })
 
-    const pageCount = computed(() => {
-      if (!showFooter.value) {
-        return 1
-      }
-
-      return clamp(Math.ceil(paginationTotal.value / pageSize.value), 1, Number.MAX_SAFE_INTEGER)
-    })
-
-    const normalizedPage = computed(() => {
-      if (!showFooter.value) {
-        return 1
-      }
-
-      return clamp(page.value, 1, pageCount.value)
-    })
-
-    const pagedData = computed(() => {
-      if (!showFooter.value || props.remote) {
-        return props.data
-      }
-
-      const start = (normalizedPage.value - 1) * pageSize.value
-      return props.data.slice(start, start + pageSize.value)
-    })
-
-    const treeOptions = computed<DataTableTreeOption | undefined>(() => {
-      if (props.tree === false) {
-        return
-      }
-
-      if (props.tree === true) {
-        return {}
-      }
-
-      return props.tree
-    })
-
-    const treeEnabled = computed(() => {
-      return !!treeOptions.value && !treeOptions.value.disabled
-    })
-
-    const cascadeSelectionEnabled = computed(() => {
-      return treeEnabled.value && props.cascade
-    })
+    const cascadeSelectionEnabled = computed(() => props.tree && props.cascade)
 
     const firstTreeColumnIndex = computed(() => {
       return props.columns.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column))
     })
 
-    const allFlatRows = computed<DataTableFlatRow[]>(() => buildFlatRows(pagedData.value, true))
-
-    const visibleFlatRows = computed<DataTableFlatRow[]>(() => buildFlatRows(pagedData.value, false))
-
-    const treeRowMeta = computed(() => {
-      const rowByKey = new Map<DataTableKey, DataTableFlatRow>()
-      const rowByObject = new Map<Record<string, any>, DataTableFlatRow>()
-      const parentKeyByChild = new Map<DataTableKey, DataTableKey>()
-
-      for (const flatRow of allFlatRows.value) {
-        rowByKey.set(flatRow.key, flatRow)
-        rowByObject.set(flatRow.row, flatRow)
-
-        if (flatRow.parentKey != null) {
-          parentKeyByChild.set(flatRow.key, flatRow.parentKey)
-        }
-      }
-
-      return {
-        rowByKey,
-        rowByObject,
-        parentKeyByChild,
-      }
+    const { allFlatRows, visibleFlatRows, treeRowMeta, bodyRows, syncCollapsedTreeRowKeys } = useBodyRows({
+      columns: () => props.columns,
+      sourceRows: () => pagedData.value,
+      tree: () => props.tree,
+      collapsedTreeRowKeys,
+      expandedRowKeys,
+      firstTreeColumnIndex,
+      getRowKey,
+      getTreeChildren,
     })
 
     const selectionColumn = computed(() => props.columns.find(isSelectionColumn))
@@ -402,7 +287,7 @@ export default defineComponent({
     const checkedRowKeySet = computed(() => new Set(checkedRowKeys.value))
 
     const treeSelectionState = computed(() => {
-      const states = new Map<DataTableKey, { checked: boolean; indeterminate: boolean }>()
+      const states = new Map<string | number, { checked: boolean; indeterminate: boolean }>()
       const column = selectionColumn.value
 
       if (!column) {
@@ -439,9 +324,7 @@ export default defineComponent({
           }
         }
 
-        const selectableChildren = childStates.filter((childState) => {
-          return childState.selectable
-        })
+        const selectableChildren = childStates.filter((childState) => childState.selectable)
         const allChildrenChecked =
           selectableChildren.length > 0 &&
           selectableChildren.every((childState) => {
@@ -477,7 +360,7 @@ export default defineComponent({
         return []
       }
 
-      const rows = treeEnabled.value ? allFlatRows.value : visibleFlatRows.value
+      const rows = props.tree ? allFlatRows.value : visibleFlatRows.value
 
       return rows.filter((flatRow) => {
         return !isRowSelectionDisabled(flatRow.row, flatRow.rowIndex, column)
@@ -501,8 +384,6 @@ export default defineComponent({
       )
     })
 
-    const resolvedEmptyText = computed(() => (pt ? pt : t)('dataTableEmptyText'))
-
     const headerCells = computed<DataTableHeaderCell[]>(() => {
       const cells: DataTableHeaderCell[] = []
       let coveredUntil = -1
@@ -513,7 +394,7 @@ export default defineComponent({
         }
 
         const maxColSpan = props.columns.length - columnIndex
-        const colSpan = clamp(Math.trunc(Number(column.titleColSpan ?? 1)), 0, maxColSpan)
+        const colSpan = clamp(floor(column.titleColSpan ?? 1), 0, maxColSpan)
 
         if (colSpan === 0) {
           return
@@ -531,92 +412,10 @@ export default defineComponent({
       return cells
     })
 
-    const bodyRows = computed<DataTableBodyRow[]>(() => {
-      const rowCount = visibleFlatRows.value.length
-      const columnCount = props.columns.length
-      const covered = Array.from({ length: rowCount }, () => {
-        return Array(columnCount).fill(false)
-      })
-
-      return visibleFlatRows.value.map((flatRow, visibleRowIndex) => {
-        const cells: DataTableBodyCell[] = []
-
-        props.columns.forEach((column, columnIndex) => {
-          if (covered[visibleRowIndex][columnIndex]) {
-            return
-          }
-
-          const context = {
-            row: flatRow.row,
-            rowIndex: flatRow.rowIndex,
-            pageRowIndex: visibleRowIndex,
-            column,
-          }
-          const maxColSpan = columnCount - columnIndex
-          const maxRowSpan = rowCount - visibleRowIndex
-          const colSpan = resolveSpan(column.colSpan, context, maxColSpan)
-          const rowSpan = resolveSpan(column.rowSpan, context, maxRowSpan)
-
-          if (colSpan === 0 || rowSpan === 0) {
-            return
-          }
-
-          for (let rowOffset = 0; rowOffset < rowSpan; rowOffset += 1) {
-            for (let colOffset = 0; colOffset < colSpan; colOffset += 1) {
-              if (rowOffset === 0 && colOffset === 0) {
-                continue
-              }
-
-              covered[visibleRowIndex + rowOffset][columnIndex + colOffset] = true
-            }
-          }
-
-          const isTreeColumn = columnIndex === firstTreeColumnIndex.value
-          cells.push({
-            key: `${column.key ?? column.type ?? columnIndex}-${visibleRowIndex}-${columnIndex}`,
-            columnIndex,
-            column,
-            treeLevel: isTreeColumn ? flatRow.level : undefined,
-            treeExpandable: isTreeColumn ? flatRow.expandable : undefined,
-            treeExpanded: isTreeColumn ? flatRow.treeExpanded : undefined,
-            colSpan: colSpan > 1 ? colSpan : undefined,
-            rowSpan: rowSpan > 1 ? rowSpan : undefined,
-          })
-        })
-
-        return {
-          ...flatRow,
-          pageRowIndex: visibleRowIndex,
-          expanded: expandedRowKeys.value.has(flatRow.key),
-          cells,
-        }
-      })
-    })
-
-    watch(
-      () => props.checkedRowKeys,
-      (value) => {
-        checkedRowKeys.value = [...value]
-      },
-      { deep: true },
-    )
-
     watch(
       () => props.data,
       () => {
         syncCollapsedTreeRowKeys()
-      },
-      { deep: true, immediate: true },
-    )
-
-    watch(
-      [() => props.pagination, () => props.remote, page, normalizedPage],
-      ([pagination, remote, page, nextPage]) => {
-        if (pagination === false || remote || page === nextPage) {
-          return
-        }
-
-        call(props['onUpdate:page'], nextPage)
       },
       { immediate: true },
     )
@@ -632,89 +431,6 @@ export default defineComponent({
     function getTreeChildren(row: Record<string, any>) {
       const children = row[props.childrenKey]
       return isArray(children) ? children : []
-    }
-
-    function buildFlatRows(sourceRows: Record<string, any>[], includeCollapsedChildren: boolean) {
-      const rows: DataTableFlatRow[] = []
-      let rowIndex = 0
-
-      function visit(
-        source: Record<string, any>[],
-        level: number,
-        parentKey: DataTableKey | undefined,
-        visible: boolean,
-      ): void {
-        for (const row of source) {
-          const currentRowIndex = rowIndex
-          rowIndex += 1
-
-          const key = getRowKey(row, currentRowIndex)
-          const children = getTreeChildren(row)
-          const expandable = treeEnabled.value && children.length > 0
-          const treeExpanded = !expandable || !collapsedTreeRowKeys.value.has(key)
-
-          if (includeCollapsedChildren || visible) {
-            rows.push({
-              key,
-              row,
-              rowIndex: currentRowIndex,
-              pageRowIndex: currentRowIndex,
-              level,
-              parentKey,
-              expandable,
-              treeExpanded,
-            })
-          }
-
-          visit(children, level + 1, key, visible && treeExpanded)
-        }
-      }
-
-      visit(sourceRows, 0, undefined, true)
-
-      return rows
-    }
-
-    function collectExpandableRowKeys(rows: Record<string, any>[]) {
-      const keys = new Set<DataTableKey>()
-      let rowIndex = 0
-
-      function visit(source: Record<string, any>[]): void {
-        for (const row of source) {
-          const currentRowIndex = rowIndex
-          rowIndex += 1
-
-          const children = getTreeChildren(row)
-
-          if (children.length > 0) {
-            keys.add(getRowKey(row, currentRowIndex))
-          }
-
-          visit(children)
-        }
-      }
-
-      visit(rows)
-
-      return keys
-    }
-
-    function syncCollapsedTreeRowKeys() {
-      if (!treeEnabled.value) {
-        collapsedTreeRowKeys.value = new Set()
-        return
-      }
-
-      const validKeys = collectExpandableRowKeys(props.data)
-      const nextCollapsedKeys = new Set<DataTableKey>()
-
-      for (const key of collapsedTreeRowKeys.value) {
-        if (validKeys.has(key)) {
-          nextCollapsedKeys.add(key)
-        }
-      }
-
-      collapsedTreeRowKeys.value = nextCollapsedKeys
     }
 
     function isSelectionColumn(column: DataTableColumn): column is DataTableSelectionColumn {
@@ -759,16 +475,15 @@ export default defineComponent({
       return isRowSelectionDisabled(bodyRow.row, bodyRow.rowIndex, column)
     }
 
-    function updateCheckedRowKeys(value: DataTableKey[]) {
+    function updateCheckedRowKeys(value: Array<string | number>) {
       checkedRowKeys.value = value
-      call(props['onUpdate:checkedRowKeys'], value)
     }
 
-    function isRowKeySelected(key: DataTableKey) {
+    function isRowKeySelected(key: string | number) {
       return treeSelectionState.value.get(key)?.checked ?? checkedRowKeySet.value.has(key)
     }
 
-    function isRowKeyIndeterminate(key: DataTableKey) {
+    function isRowKeyIndeterminate(key: string | number) {
       return treeSelectionState.value.get(key)?.indeterminate ?? false
     }
 
@@ -845,13 +560,13 @@ export default defineComponent({
 
     function collectSelectableBranchKeys(row: Record<string, any>) {
       const column = selectionColumn.value
-      const keys: DataTableKey[] = []
+      const keys: Array<string | number> = []
 
       if (!column) {
         return keys
       }
 
-      function visit(currentRow: Record<string, any>): void {
+      function visit(currentRow: Record<string, any>) {
         const flatRow = treeRowMeta.value.rowByObject.get(currentRow)
 
         if (!flatRow) {
@@ -872,7 +587,7 @@ export default defineComponent({
       return keys
     }
 
-    function shouldAncestorBeChecked(row: Record<string, any>, nextKeys: Set<DataTableKey>): boolean {
+    function shouldAncestorBeChecked(row: Record<string, any>, nextKeys: Set<string | number>): boolean {
       const column = selectionColumn.value
       const flatRow = treeRowMeta.value.rowByObject.get(row)
 
@@ -895,7 +610,7 @@ export default defineComponent({
       )
     }
 
-    function syncAncestorSelection(nextKeys: Set<DataTableKey>, key: DataTableKey) {
+    function syncAncestorSelection(nextKeys: Set<string | number>, key: string | number) {
       let parentKey = treeRowMeta.value.parentKeyByChild.get(key)
 
       while (parentKey != null) {
@@ -934,7 +649,7 @@ export default defineComponent({
     }
 
     function toggleTreeRowExpanded(bodyRow: DataTableBodyRow) {
-      if (!treeEnabled.value || !bodyRow.expandable) {
+      if (!props.tree || !bodyRow.expandable) {
         return
       }
 
@@ -976,20 +691,6 @@ export default defineComponent({
         rowIndex: bodyRow.rowIndex,
         expanded: true,
       })
-    }
-
-    function resolveSpan(
-      span: DataTableColumnCellSpan | undefined,
-      context: InternalDataTableCellContext,
-      maxSpan: number,
-    ) {
-      const resolvedSpan = span == null ? 1 : Math.trunc(Number(callOrReturn(span, context)))
-
-      if (resolvedSpan <= 0) {
-        return 0
-      }
-
-      return clamp(resolvedSpan, 1, maxSpan)
     }
 
     function getRowProps(bodyRow: DataTableBodyRow) {
@@ -1045,24 +746,6 @@ export default defineComponent({
       return style
     }
 
-    function getFixedStyle(fixed: DataTableColumnFixed | undefined, columnIndex: number) {
-      if (fixed === 'left') {
-        return {
-          left: `${leftFixedOffsets.value[columnIndex] ?? 0}px`,
-          position: 'sticky',
-          zIndex: 2,
-        } satisfies CSSProperties
-      }
-
-      if (fixed === 'right') {
-        return {
-          right: `${rightFixedOffsets.value[columnIndex] ?? 0}px`,
-          position: 'sticky',
-          zIndex: 2,
-        } satisfies CSSProperties
-      }
-    }
-
     function getHeaderCellStyle(cell: DataTableHeaderCell): CSSProperties {
       return {
         textAlign: getAlign(cell.column.titleAlign ?? cell.column.align),
@@ -1084,13 +767,13 @@ export default defineComponent({
     }
 
     return {
+      pt,
+      t,
       page,
       pageSize,
-      normalizedPaginationOptions,
+      paginationProps,
       paginationTotal,
-      resolvedEmptyText,
-      showFooter,
-      treeEnabled,
+      showPagination,
       currentSelectableRows,
       allCurrentRowsSelected,
       someCurrentRowsSelected,
