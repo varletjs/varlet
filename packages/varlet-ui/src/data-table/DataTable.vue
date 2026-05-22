@@ -201,6 +201,7 @@ import {
 } from './props'
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
+import { useExpandRow } from './useExpandRow'
 import { usePagination } from './usePagination'
 import { useSelectionColumn } from './useSelectionColumn'
 import { useTreeExpand } from './useTreeExpand'
@@ -231,7 +232,6 @@ export default defineComponent({
     const page = computed(() => props.page)
     const pageSize = computed(() => props.pageSize)
     const checkedRowKeys = useVModel(props, 'checkedRowKeys')
-    const expandedRowKeys = ref(new Set<string | number>())
 
     const { collapsedTreeRowKeys, toggleTreeRowExpanded } = useTreeExpand({
       tree: () => props.tree,
@@ -275,6 +275,11 @@ export default defineComponent({
       props.columns.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column)),
     )
 
+    const { expandedRowKeys, isRowExpandable, toggleRowExpanded, renderExpandedRow } = useExpandRow({
+      columns: () => props.columns,
+      isExpandColumn,
+    })
+
     const { allFlatRows, treeRowMeta, bodyRows } = useBodyRows({
       collapsedTreeRowKeys,
       expandedRowKeys,
@@ -285,8 +290,6 @@ export default defineComponent({
       sourceRows: () => pagedData.value,
       tree: () => props.tree,
     })
-
-    const expandColumn = computed(() => props.columns.find(isExpandColumn))
 
     const {
       currentSelectableRows,
@@ -349,6 +352,7 @@ export default defineComponent({
 
     function getTreeChildren(row: Record<string, any>) {
       const children = row[props.childrenKey]
+
       return isArray(children) ? children : []
     }
 
@@ -358,35 +362,6 @@ export default defineComponent({
 
     function isExpandColumn(column: DataTableColumn): column is DataTableExpandColumn {
       return column.type === 'expand'
-    }
-
-    function isRowExpandable(bodyRow: DataTableBodyRow, column?: DataTableExpandColumn) {
-      if (!column?.expandable) {
-        return true
-      }
-
-      return column.expandable({
-        row: bodyRow.row,
-        rowIndex: bodyRow.rowIndex,
-      })
-    }
-
-    function toggleRowExpanded(bodyRow: DataTableBodyRow) {
-      const column = expandColumn.value
-
-      if (!column || !isRowExpandable(bodyRow, column)) {
-        return
-      }
-
-      const target = new Set(expandedRowKeys.value)
-
-      if (target.has(bodyRow.key)) {
-        target.delete(bodyRow.key)
-      } else {
-        target.add(bodyRow.key)
-      }
-
-      expandedRowKeys.value = target
     }
 
     function renderCell(bodyRow: DataTableBodyRow, column: DataTableColumn) {
@@ -402,19 +377,6 @@ export default defineComponent({
       }
 
       return bodyRow.row[column.key]
-    }
-
-    function renderExpandedRow(bodyRow: DataTableBodyRow) {
-      const column = expandColumn.value
-
-      if (!column) {
-        return
-      }
-
-      return column.renderExpand({
-        row: bodyRow.row,
-        rowIndex: bodyRow.rowIndex,
-      })
     }
 
     function getRowProps(bodyRow: DataTableBodyRow) {
