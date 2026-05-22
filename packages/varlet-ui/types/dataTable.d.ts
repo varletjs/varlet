@@ -28,10 +28,6 @@ export interface DataTableSelectionColumnContext<Row = any> extends DataTableRow
   checked: boolean
 }
 
-export interface DataTableExpandColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
-  expanded: boolean
-}
-
 export type DataTableRowProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes | undefined)
@@ -74,7 +70,7 @@ export interface DataTableExpandColumn<Row = any> extends DataTableBaseColumn<Ro
   title?: string
   render?: never
   expandable?: (context: DataTableRowPropsContext<Row>) => boolean
-  renderExpand: (context: DataTableExpandColumnContext<Row>) => VNodeChild
+  renderExpand: (context: DataTableRowBaseContext<Row>) => VNodeChild
 }
 
 export type DataTableColumn<Row = any> =

@@ -350,6 +350,53 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should not cascade tree selection in single selection mode', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection', multiple: false }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        checkedRowKeys: [11],
+      },
+    })
+
+    const radios = wrapper.findAllComponents({ name: 'var-radio' })
+
+    expect(radios[0].vm.modelValue).toBe(false)
+    expect(radios[1].vm.modelValue).toBe(true)
+    expect(radios[2].vm.modelValue).toBe(false)
+    expect(radios[3].vm.modelValue).toBe(false)
+    expect(radios[4].vm.modelValue).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('should replace checked key instead of cascading in single tree selection mode', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection', multiple: false }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        checkedRowKeys: [11],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const radios = wrapper.findAllComponents({ name: 'var-radio' })
+
+    radios[3].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([2])
+
+    wrapper.unmount()
+  })
+
   test('should count collapsed selected tree rows in header checkbox state', async () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -367,6 +414,34 @@ describe('test data-table component props', () => {
     const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
     expect(checkboxes[0].vm.modelValue).toBe(false)
     expect(checkboxes[0].vm.indeterminate).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('should ignore non-selectable rows when toggling all current rows', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'selection',
+            selectable: ({ row }) => row.id !== 2,
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[0].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 3])
 
     wrapper.unmount()
   })

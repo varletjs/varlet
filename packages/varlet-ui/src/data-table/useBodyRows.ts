@@ -34,6 +34,12 @@ export interface DataTableBodyRow extends DataTableFlatRow {
   cells: DataTableBodyCell[]
 }
 
+export interface DataTableTreeRowMeta {
+  rowByKey: Map<string | number, DataTableFlatRow>
+  rowByObject: Map<Record<string, any>, DataTableFlatRow>
+  parentKeyByChild: Map<string | number, string | number>
+}
+
 interface UseBodyRowsOptions {
   columns: () => DataTableColumn[]
   sourceRows: () => Record<string, any>[]
@@ -59,7 +65,7 @@ export function useBodyRows({
 
   const visibleFlatRows = computed(() => buildFlatRows(sourceRows(), false))
 
-  const treeRowMeta = computed(() => {
+  const treeRowMeta = computed<DataTableTreeRowMeta>(() => {
     const rowByKey = new Map<string | number, DataTableFlatRow>()
     const rowByObject = new Map<Record<string, any>, DataTableFlatRow>()
     const parentKeyByChild = new Map<string | number, string | number>()

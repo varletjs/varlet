@@ -106,6 +106,7 @@
                   <button
                     v-else-if="isExpandColumn(cell.column)"
                     type="button"
+                    tabindex="-1"
                     :class="
                       classes(n('expand-trigger'), [expandedRowKeys.has(bodyRow.key), n('expand-trigger--expanded')])
                     "
@@ -122,6 +123,7 @@
                     <button
                       v-if="cell.treeExpandable"
                       type="button"
+                      tabindex="-1"
                       :class="classes(n('tree-trigger'), [cell.treeExpanded, n('tree-trigger--expanded')])"
                       @click="toggleTreeRowExpanded(bodyRow)"
                     >
@@ -200,6 +202,7 @@ import {
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
 import { usePagination } from './usePagination'
+import { useSelectionColumn } from './useSelectionColumn'
 
 const { name, n, classes } = createNamespace('data-table')
 const defaultDataTableControlColumnWidth = 52
@@ -209,12 +212,6 @@ interface DataTableHeaderCell {
   columnIndex: number
   column: DataTableColumn
   colSpan?: number
-}
-
-interface DataTableTreeSelectionState {
-  checked: boolean
-  indeterminate: boolean
-  selectable: boolean
 }
 
 export default defineComponent({
@@ -267,13 +264,11 @@ export default defineComponent({
       onUpdatePage: () => props['onUpdate:page'],
     })
 
-    const cascadeSelectionEnabled = computed(() => props.tree && props.cascade)
-
     const firstTreeColumnIndex = computed(() => {
       return props.columns.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column))
     })
 
-    const { allFlatRows, visibleFlatRows, treeRowMeta, bodyRows, syncCollapsedTreeRowKeys } = useBodyRows({
+    const { allFlatRows, treeRowMeta, bodyRows, syncCollapsedTreeRowKeys } = useBodyRows({
       columns: () => props.columns,
       sourceRows: () => pagedData.value,
       tree: () => props.tree,
@@ -284,108 +279,28 @@ export default defineComponent({
       getTreeChildren,
     })
 
-    const selectionColumn = computed(() => props.columns.find(isSelectionColumn))
-
     const expandColumn = computed(() => props.columns.find(isExpandColumn))
-
-    const checkedRowKeySet = computed(() => new Set(checkedRowKeys.value))
-
-    const treeSelectionStates = computed(() => {
-      const states = new Map<string | number, { checked: boolean; indeterminate: boolean }>()
-      const column = selectionColumn.value
-
-      if (!column) {
-        return states
-      }
-
-      function visit(row: Record<string, any>): DataTableTreeSelectionState {
-        const flatRow = treeRowMeta.value.rowByObject.get(row)
-
-        if (!flatRow) {
-          return {
-            checked: false,
-            indeterminate: false,
-            selectable: false,
-          }
-        }
-
-        const children = getTreeChildren(row)
-        const childStates = children.map(visit)
-        const selectable = isRowSelectable(row, flatRow.rowIndex, column)
-        const selfChecked = checkedRowKeySet.value.has(flatRow.key)
-
-        if (!cascadeSelectionEnabled.value || childStates.length === 0) {
-          const state = {
-            checked: selfChecked,
-            indeterminate: false,
-          }
-
-          states.set(flatRow.key, state)
-
-          return {
-            ...state,
-            selectable,
-          }
-        }
-
-        const selectableChildren = childStates.filter((childState) => childState.selectable)
-        const allChildrenChecked =
-          selectableChildren.length > 0 &&
-          selectableChildren.every((childState) => {
-            return childState.checked
-          })
-        const someChildrenSelected = selectableChildren.some((childState) => {
-          return childState.checked || childState.indeterminate
-        })
-        const state = {
-          checked: selectable ? allChildrenChecked : false,
-          indeterminate: !allChildrenChecked && someChildrenSelected,
-        }
-
-        states.set(flatRow.key, state)
-
-        return {
-          ...state,
-          selectable: selectable || selectableChildren.length > 0,
-        }
-      }
-
-      for (const row of pagedData.value) {
-        visit(row)
-      }
-
-      return states
-    })
-
-    const currentSelectableRows = computed(() => {
-      const column = selectionColumn.value
-
-      if (!column) {
-        return []
-      }
-
-      const rows = props.tree ? allFlatRows.value : visibleFlatRows.value
-
-      return rows.filter((flatRow) => {
-        return isRowSelectable(flatRow.row, flatRow.rowIndex, column)
-      })
-    })
-
-    const allCurrentRowsSelected = computed(() => {
-      return (
-        currentSelectableRows.value.length > 0 &&
-        currentSelectableRows.value.every((flatRow) => {
-          return isRowKeySelected(flatRow.key)
-        })
-      )
-    })
-
-    const someCurrentRowsSelected = computed(() => {
-      return (
-        currentSelectableRows.value.some((flatRow) => {
-          return isRowKeySelected(flatRow.key) || isRowKeyIndeterminate(flatRow.key)
-        }) && !allCurrentRowsSelected.value
-      )
+    const {
+      currentSelectableRows,
+      allCurrentRowsSelected,
+      someCurrentRowsSelected,
+      isMultipleSelectionColumn,
+      isSelectionColumnSelectable,
+      isRowSelectable,
+      isRowKeySelected,
+      isRowKeyIndeterminate,
+      toggleRowSelection,
+      toggleAllCurrentRows,
+    } = useSelectionColumn({
+      columns: () => props.columns,
+      tree: () => props.tree,
+      cascade: () => props.cascade,
+      pagedData: () => pagedData.value,
+      allFlatRows: () => allFlatRows.value,
+      treeRowMeta: () => treeRowMeta.value,
+      checkedRowKeys,
+      isSelectionColumn,
+      getTreeChildren,
     })
 
     const headerCells = computed<DataTableHeaderCell[]>(() => {
@@ -445,14 +360,6 @@ export default defineComponent({
       return column.type === 'expand'
     }
 
-    function isMultipleSelectionColumn(column: DataTableSelectionColumn) {
-      return column.multiple !== false
-    }
-
-    function isSelectionColumnSelectable(column: DataTableSelectionColumn) {
-      return column.selectable !== false
-    }
-
     function isRowExpandable(bodyRow: DataTableBodyRow, column?: DataTableExpandColumn) {
       if (!column?.expandable) {
         return true
@@ -462,160 +369,6 @@ export default defineComponent({
         row: bodyRow.row,
         rowIndex: bodyRow.rowIndex,
       })
-    }
-
-    function isRowSelectable(row: Record<string, any>, rowIndex: number, column?: DataTableSelectionColumn) {
-      if (!column?.selectable || column.selectable === true) {
-        return true
-      }
-
-      return column.selectable({
-        row,
-        rowIndex,
-      })
-    }
-
-    function updateCheckedRowKeys(value: Array<string | number>) {
-      checkedRowKeys.value = value
-    }
-
-    function isRowKeySelected(key: string | number) {
-      return treeSelectionStates.value.get(key)?.checked ?? checkedRowKeySet.value.has(key)
-    }
-
-    function isRowKeyIndeterminate(key: string | number) {
-      return treeSelectionStates.value.get(key)?.indeterminate ?? false
-    }
-
-    function toggleRowSelection(bodyRow: DataTableBodyRow, selected: boolean) {
-      const column = selectionColumn.value
-
-      if (!column || !isSelectionColumnSelectable(column) || !isRowSelectable(bodyRow.row, bodyRow.rowIndex, column)) {
-        return
-      }
-
-      if (!isMultipleSelectionColumn(column)) {
-        updateCheckedRowKeys(
-          selected
-            ? [bodyRow.key]
-            : checkedRowKeys.value.filter((key) => {
-                return key !== bodyRow.key
-              }),
-        )
-        return
-      }
-
-      const nextKeys = new Set(checkedRowKeys.value)
-
-      if (cascadeSelectionEnabled.value) {
-        for (const key of collectSelectableBranchKeys(bodyRow.row)) {
-          if (selected) {
-            nextKeys.add(key)
-          } else {
-            nextKeys.delete(key)
-          }
-        }
-
-        syncAncestorSelection(nextKeys, bodyRow.key)
-      } else if (selected) {
-        nextKeys.add(bodyRow.key)
-      } else {
-        nextKeys.delete(bodyRow.key)
-      }
-
-      updateCheckedRowKeys([...nextKeys])
-    }
-
-    function toggleAllCurrentRows(selected: boolean) {
-      const column = selectionColumn.value
-
-      if (!column || !isSelectionColumnSelectable(column) || !isMultipleSelectionColumn(column)) {
-        return
-      }
-
-      const nextKeys = new Set(checkedRowKeys.value)
-
-      for (const flatRow of currentSelectableRows.value) {
-        if (selected) {
-          nextKeys.add(flatRow.key)
-        } else {
-          nextKeys.delete(flatRow.key)
-        }
-      }
-
-      updateCheckedRowKeys([...nextKeys])
-    }
-
-    function collectSelectableBranchKeys(row: Record<string, any>) {
-      const column = selectionColumn.value
-      const keys: Array<string | number> = []
-
-      if (!column) {
-        return keys
-      }
-
-      function visit(currentRow: Record<string, any>) {
-        const flatRow = treeRowMeta.value.rowByObject.get(currentRow)
-
-        if (!flatRow) {
-          return
-        }
-
-        if (isRowSelectable(currentRow, flatRow.rowIndex, column)) {
-          keys.push(flatRow.key)
-        }
-
-        for (const child of getTreeChildren(currentRow)) {
-          visit(child)
-        }
-      }
-
-      visit(row)
-
-      return keys
-    }
-
-    function shouldAncestorBeChecked(row: Record<string, any>, nextKeys: Set<string | number>): boolean {
-      const column = selectionColumn.value
-      const flatRow = treeRowMeta.value.rowByObject.get(row)
-
-      if (!column || !flatRow) {
-        return false
-      }
-
-      const selectable = isRowSelectable(row, flatRow.rowIndex, column)
-      const children = getTreeChildren(row)
-
-      if (!children.length) {
-        return selectable ? nextKeys.has(flatRow.key) : true
-      }
-
-      return (
-        selectable &&
-        children.every((child) => {
-          return shouldAncestorBeChecked(child, nextKeys)
-        })
-      )
-    }
-
-    function syncAncestorSelection(nextKeys: Set<string | number>, key: string | number) {
-      let parentKey = treeRowMeta.value.parentKeyByChild.get(key)
-
-      while (parentKey != null) {
-        const parentRow = treeRowMeta.value.rowByKey.get(parentKey)
-
-        if (!parentRow) {
-          break
-        }
-
-        if (shouldAncestorBeChecked(parentRow.row, nextKeys)) {
-          nextKeys.add(parentKey)
-        } else {
-          nextKeys.delete(parentKey)
-        }
-
-        parentKey = treeRowMeta.value.parentKeyByChild.get(parentKey)
-      }
     }
 
     function toggleRowExpanded(bodyRow: DataTableBodyRow) {
@@ -677,7 +430,6 @@ export default defineComponent({
       return column.renderExpand({
         row: bodyRow.row,
         rowIndex: bodyRow.rowIndex,
-        expanded: true,
       })
     }
 
