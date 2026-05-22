@@ -141,6 +141,16 @@ Use `surface="low"` for a subtler MD3-style surface layer.
 </template>
 ```
 
+### Flat Table
+
+Set `elevation` to `0` to remove the card-like shadow and present the table as a flat surface.
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+</template>
+```
+
 ### Cell Spans
 
 Use `rowSpan`, `colSpan`, and `titleColSpan` to merge body and header cells. Returning `0` hides the current cell, which is typically used together with a previous spanning cell.
@@ -578,12 +588,12 @@ const resizableColumns = [
 | Variable | Default |
 | --- | --- |
 | `--data-table-background` | `#fff` |
-| `--data-table-header-background` | `#fff` |
-| `--data-table-surface-low-background` | `var(--color-surface-container-low)` |
-| `--data-table-header-text-color` | `rgba(0, 0, 0, 0.6)` |
-| `--data-table-row-text-color` | `#555` |
+| `--data-table-header-cell-background` | `#fff` |
+| `--data-table-surface-low-background` | `var(--color-surface-container-highest)` |
+| `--data-table-header-cell-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--data-table-body-cell-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
-| `--data-table-hover-background` | `#eee` |
+| `--data-table-row-hover-background` | `#eee` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

@@ -269,13 +269,13 @@ interface BaseStyleVars {
   '--countdown-text-color'?: string
   '--countdown-text-font-size'?: string
   '--data-table-background'?: string
-  '--data-table-header-background'?: string
-  '--data-table-header-color'?: string
-  '--data-table-row-color'?: string
+  '--data-table-header-cell-background'?: string
+  '--data-table-header-cell-text-color'?: string
+  '--data-table-body-cell-text-color'?: string
   '--data-table-border-color'?: string
-  '--data-table-hover-background'?: string
+  '--data-table-row-hover-background'?: string
   '--data-table-striped-background'?: string
-  '--data-table-empty-color'?: string
+  '--data-table-empty-text-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string
   '--data-table-cell-font-size'?: string

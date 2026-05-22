@@ -25,128 +25,54 @@
 
           <thead>
             <tr :class="n('header-row')">
-              <th
+              <data-table-header-cell
                 v-for="headerCell in headerCells"
                 :key="headerCell.key"
-                :class="
-                  classes(
-                    n('cell'),
-                    n('header-cell'),
-                    [isSelectionColumn(headerCell.column), n('selection-cell')],
-                    [isExpandColumn(headerCell.column), n('expand-cell')],
-                    [headerCell.column.fixed, n('fixed-cell')],
-                    [isLastLeftFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-right')],
-                    [isFirstRightFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-left')],
-                  )
-                "
+                :header-cell="headerCell"
                 :style="getHeaderCellStyle(headerCell)"
-                :colspan="headerCell.colSpan"
-              >
-                <var-checkbox
-                  v-if="isSelectionColumn(headerCell.column) && isMultipleSelectionColumn(headerCell.column)"
-                  :model-value="allCurrentRowsSelected"
-                  :indeterminate="someCurrentRowsSelected"
-                  :disabled="!isSelectionColumnSelectable(headerCell.column) || !currentSelectableRows.length"
-                  tabindex="-1"
-                  @update:model-value="toggleCurrentSelectableRows"
-                />
-                <template v-else>
-                  {{
-                    isSelectionColumn(headerCell.column) || isExpandColumn(headerCell.column)
-                      ? ''
-                      : headerCell.column.title
-                  }}
-                </template>
-                <button
-                  v-if="
-                    isColumnResizable(headerCell.column) &&
-                    headerCell.colSpan == null &&
-                    !isLastHeaderColumn(headerCell.columnIndex)
-                  "
-                  type="button"
-                  tabindex="-1"
-                  :class="n('resize-trigger')"
-                  @click.stop
-                  @mousedown="startColumnResize($event, headerCell)"
-                />
-              </th>
+                :all-current-rows-selected="allCurrentRowsSelected"
+                :some-current-rows-selected="someCurrentRowsSelected"
+                :has-selectable-rows="!!currentSelectableRows.length"
+                :is-selection-column="isSelectionColumn"
+                :is-expand-column="isExpandColumn"
+                :is-multiple-selection-column="isMultipleSelectionColumn"
+                :is-selection-column-selectable="isSelectionColumnSelectable"
+                :is-column-resizable="isColumnResizable"
+                :is-last-header-column="isLastHeaderColumn"
+                :is-last-left-fixed-column="isLastLeftFixedColumn"
+                :is-first-right-fixed-column="isFirstRightFixedColumn"
+                :toggle-current-selectable-rows="toggleCurrentSelectableRows"
+                :start-column-resize="startColumnResize"
+              />
             </tr>
           </thead>
 
           <tbody v-if="bodyRows.length">
             <template v-for="bodyRow in bodyRows" :key="bodyRow.key">
               <tr :class="n('row')" v-bind="getRowProps(bodyRow)">
-                <td
+                <data-table-body-cell
                   v-for="cell in bodyRow.cells"
                   :key="cell.key"
-                  :class="
-                    classes(
-                      n('cell'),
-                      n('body-cell'),
-                      [isSelectionColumn(cell.column), n('selection-cell')],
-                      [isExpandColumn(cell.column), n('expand-cell')],
-                      [cell.column.fixed, n('fixed-cell')],
-                      [isLastLeftFixedColumn(cell.columnIndex), n('fixed-cell--shadow-right')],
-                      [isFirstRightFixedColumn(cell.columnIndex), n('fixed-cell--shadow-left')],
-                    )
-                  "
+                  :body-row="bodyRow"
+                  :cell="cell"
                   :style="getBodyCellStyle(cell)"
-                  v-bind="getCellProps(bodyRow, cell.column)"
-                  :colspan="cell.colSpan"
-                  :rowspan="cell.rowSpan"
-                >
-                  <var-checkbox
-                    v-if="isSelectionColumn(cell.column) && isMultipleSelectionColumn(cell.column)"
-                    :model-value="isRowKeySelected(bodyRow.key)"
-                    :indeterminate="isRowKeyIndeterminate(bodyRow.key)"
-                    :disabled="
-                      !isSelectionColumnSelectable(cell.column) ||
-                      !isRowSelectable(bodyRow.row, bodyRow.rowIndex, cell.column)
-                    "
-                    tabindex="-1"
-                    @update:model-value="toggleRowSelection(bodyRow, $event)"
-                  />
-                  <var-radio
-                    v-else-if="isSelectionColumn(cell.column)"
-                    :model-value="isRowKeySelected(bodyRow.key)"
-                    :disabled="
-                      !isSelectionColumnSelectable(cell.column) ||
-                      !isRowSelectable(bodyRow.row, bodyRow.rowIndex, cell.column)
-                    "
-                    tabindex="-1"
-                    @update:model-value="toggleRowSelection(bodyRow, $event)"
-                  />
-                  <button
-                    v-else-if="isExpandColumn(cell.column)"
-                    type="button"
-                    tabindex="-1"
-                    :class="
-                      classes(n('expand-trigger'), [expandedRowKeys.has(bodyRow.key), n('expand-trigger--expanded')])
-                    "
-                    :disabled="!isRowExpandable(bodyRow, cell.column)"
-                    @click="toggleRowExpanded(bodyRow)"
-                  >
-                    <var-icon :name="expandedRowKeys.has(bodyRow.key) ? 'chevron-down' : 'chevron-right'" />
-                  </button>
-                  <div
-                    v-else-if="tree && cell.treeLevel != null"
-                    :class="n('tree-cell')"
-                    :style="{ paddingInlineStart: `${cell.treeLevel * 20}px` }"
-                  >
-                    <button
-                      v-if="cell.treeExpandable"
-                      type="button"
-                      tabindex="-1"
-                      :class="classes(n('tree-trigger'), [cell.treeExpanded, n('tree-trigger--expanded')])"
-                      @click="toggleTreeRowExpanded(bodyRow)"
-                    >
-                      <var-icon :name="cell.treeExpanded ? 'chevron-down' : 'chevron-right'" />
-                    </button>
-                    <span v-else :class="n('tree-indent')" />
-                    <maybe-v-node :is="renderCell(bodyRow, cell.column)" tag="div" />
-                  </div>
-                  <maybe-v-node v-else :is="renderCell(bodyRow, cell.column)" tag="div" />
-                </td>
+                  :tree="tree"
+                  :is-selection-column="isSelectionColumn"
+                  :is-expand-column="isExpandColumn"
+                  :is-multiple-selection-column="isMultipleSelectionColumn"
+                  :is-selection-column-selectable="isSelectionColumnSelectable"
+                  :is-row-selectable="isRowSelectable"
+                  :is-row-key-selected="isRowKeySelected"
+                  :is-row-key-indeterminate="isRowKeyIndeterminate"
+                  :is-row-expandable="isRowExpandable"
+                  :is-last-left-fixed-column="isLastLeftFixedColumn"
+                  :is-first-right-fixed-column="isFirstRightFixedColumn"
+                  :toggle-row-selection="toggleRowSelection"
+                  :toggle-row-expanded="toggleRowExpanded"
+                  :toggle-tree-row-expanded="toggleTreeRowExpanded"
+                  :render-cell="renderCell"
+                  :get-cell-props="getCellProps"
+                />
               </tr>
 
               <tr v-if="bodyRow.expanded" :class="n('expanded-row')">
@@ -196,15 +122,14 @@
 import { call, callOrReturn, clamp, floor, isArray, isFunction } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { computed, defineComponent, type CSSProperties } from 'vue'
-import VarCheckbox from '../checkbox'
-import VarIcon from '../icon'
 import VarLoading from '../loading'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import VarPagination from '../pagination'
-import VarRadio from '../radio'
 import { createNamespace, formatElevation, MaybeVNode } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import DataTableBodyCellComponent from './DataTableBodyCell.vue'
+import DataTableHeaderCellComponent from './DataTableHeaderCell.vue'
 import {
   props,
   type DataTableColumn,
@@ -232,11 +157,10 @@ interface DataTableHeaderCell {
 export default defineComponent({
   name,
   components: {
-    VarCheckbox,
-    VarIcon,
+    DataTableBodyCell: DataTableBodyCellComponent,
+    DataTableHeaderCell: DataTableHeaderCellComponent,
     VarLoading,
     VarPagination,
-    VarRadio,
     MaybeVNode,
   },
   props,

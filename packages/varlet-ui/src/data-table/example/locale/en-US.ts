@@ -6,6 +6,7 @@ export default {
   customProps: 'Custom Props',
   customRender: 'Custom Render',
   surfaceLow: 'Subtle Background',
+  flatTable: 'Flat Table',
   spans: 'Cell Spans',
   selection: 'Selection',
   singleSelection: 'Single Selection',

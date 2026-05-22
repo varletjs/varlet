@@ -6,6 +6,7 @@ export default {
   customProps: '属性透传',
   customRender: '自定义渲染',
   surfaceLow: '弱背景色',
+  flatTable: '无卡片表格',
   spans: '单元格合并',
   selection: '选择列',
   singleSelection: '单选',

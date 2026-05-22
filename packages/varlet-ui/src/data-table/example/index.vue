@@ -288,6 +288,9 @@ watch(
   <app-type>{{ t('surfaceLow') }}</app-type>
   <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
 
+  <app-type>{{ t('flatTable') }}</app-type>
+  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
 

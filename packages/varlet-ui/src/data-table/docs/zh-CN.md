@@ -141,6 +141,16 @@ const data = [
 </template>
 ```
 
+### 无卡片表格
+
+设置 `elevation` 为 `0` 可以去掉卡片阴影，展示更纯粹的表格形态。
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+</template>
+```
+
 ### 单元格合并
 
 通过 `rowSpan`、`colSpan` 和 `titleColSpan` 控制表体与表头合并。返回 `0` 时当前单元格不渲染，通常配合前一个单元格的跨行或跨列使用。
@@ -578,12 +588,12 @@ const resizableColumns = [
 | 变量名 | 默认值 |
 | --- | --- |
 | `--data-table-background` | `#fff` |
-| `--data-table-header-background` | `#fff` |
-| `--data-table-surface-low-background` | `var(--color-surface-container-low)` |
-| `--data-table-header-text-color` | `rgba(0, 0, 0, 0.6)` |
-| `--data-table-row-text-color` | `#555` |
+| `--data-table-header-cell-background` | `#fff` |
+| `--data-table-surface-low-background` | `var(--color-surface-container-highest)` |
+| `--data-table-header-cell-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--data-table-body-cell-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
-| `--data-table-hover-background` | `#eee` |
+| `--data-table-row-hover-background` | `#eee` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

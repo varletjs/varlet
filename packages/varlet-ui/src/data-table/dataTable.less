@@ -1,14 +1,13 @@
 :root {
   --data-table-background: #fff;
   --data-table-surface-low-background: var(--color-surface-container-highest);
-  --data-table-header-background: #fff;
-  --data-table-header-text-color: rgba(0, 0, 0, 0.6);
-  --data-table-row-text-color: #555;
+  --data-table-header-cell-background: #fff;
+  --data-table-header-cell-text-color: rgba(0, 0, 0, 0.6);
+  --data-table-body-cell-text-color: #555;
   --data-table-border-color: var(--color-outline);
-  --data-table-hover-background: #eee;
+  --data-table-row-hover-background: #eee;
   --data-table-empty-text-color: var(--color-text-disabled);
   --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
-  --data-table-resize-trigger-focus-color: hsla(var(--hsl-primary), 0.42);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
   --data-table-border-radius: 2px;
   --data-table-cell-padding: 0 16px;
@@ -47,7 +46,7 @@
   }
 
   &__header-row {
-    background: var(--data-table-header-background);
+    background: var(--data-table-header-cell-background);
     border-bottom: 1px solid var(--data-table-border-color);
   }
 
@@ -57,7 +56,7 @@
     transition: background-color 0.25s;
 
     &:hover {
-      background: var(--data-table-hover-background);
+      background: var(--data-table-row-hover-background);
     }
   }
 
@@ -69,7 +68,7 @@
 
   &--surface-low {
     --data-table-background: var(--data-table-surface-low-background);
-    --data-table-header-background: var(--data-table-surface-low-background);
+    --data-table-header-cell-background: var(--data-table-surface-low-background);
   }
 
   &__cell {
@@ -86,10 +85,10 @@
   }
 
   &__header-cell {
-    color: var(--data-table-header-text-color);
+    color: var(--data-table-header-cell-text-color);
     font-size: var(--data-table-header-font-size);
     font-weight: 500;
-    background: var(--data-table-header-background);
+    background: var(--data-table-header-cell-background);
     position: sticky;
     top: 0;
   }
@@ -120,7 +119,7 @@
   }
 
   &__body-cell {
-    color: var(--data-table-row-text-color);
+    color: var(--data-table-body-cell-text-color);
   }
 
   &__fixed-cell {
@@ -154,11 +153,14 @@
     }
   }
 
-  &__selection-cell {
+  &__selection-cell,
+  &__expand-cell {
     text-align: center;
     padding: var(--data-table-selection-cell-padding);
     min-width: 52px;
+  }
 
+  &__selection-cell {
     .var-checkbox,
     .var-radio {
       transform: none;
@@ -171,12 +173,6 @@
       justify-content: center;
       width: 100%;
     }
-  }
-
-  &__expand-cell {
-    text-align: center;
-    padding: var(--data-table-selection-cell-padding);
-    min-width: 52px;
   }
 
   &__expand-trigger {
@@ -236,9 +232,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
-
-  &__empty {
     color: var(--data-table-empty-text-color);
     padding: var(--data-table-empty-padding);
   }
