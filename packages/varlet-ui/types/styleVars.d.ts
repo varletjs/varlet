@@ -274,15 +274,16 @@ interface BaseStyleVars {
   '--data-table-body-cell-text-color'?: string
   '--data-table-border-color'?: string
   '--data-table-row-hover-background'?: string
-  '--data-table-striped-background'?: string
+  '--data-table-surface-low-row-hover-background'?: string
+  '--data-table-plain-row-hover-background'?: string
   '--data-table-empty-text-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string
   '--data-table-cell-font-size'?: string
   '--data-table-header-font-size'?: string
   '--data-table-row-height'?: string
-  '--data-table-row-height-small'?: string
-  '--data-table-row-height-large'?: string
+  '--data-table-row-small-height'?: string
+  '--data-table-row-large-height'?: string
   '--data-table-footer-padding'?: string
   '--data-table-empty-padding'?: string
   '--counter-padding'?: string
@@ -780,6 +781,7 @@ interface BaseStyleVars {
   '--table-row-height'?: string
   '--table-row-padding'?: string
   '--table-footer-border-top'?: string
+  '--table-surface-low-row-hover-background'?: string
   '--tabs-item-horizontal-height'?: string
   '--tabs-item-vertical-height'?: string
   '--tabs-radius'?: string

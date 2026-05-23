@@ -141,13 +141,13 @@ Use `surface="low"` for a subtler MD3-style surface layer.
 </template>
 ```
 
-### Flat Table
+### Plain Table
 
-Set `elevation` to `0` to remove the card-like shadow and present the table as a flat surface.
+Set `plain` to remove the card-like shadow, background, and radius, and present the table as a pure table surface.
 
 ```html
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
 ```
 
@@ -345,25 +345,6 @@ const columns = [
 </template>
 ```
 
-### Pager Pagination
-
-Use `pagination` to configure built-in pager pagination.
-
-```html
-<template>
-  <var-data-table
-    :columns="columns"
-    :data="data"
-    :pagination="{
-      simple: false,
-      showSizeChanger: false,
-      showQuickJumper: false,
-      maxPagerCount: 2,
-    }"
-  />
-</template>
-```
-
 ### Local Pagination
 
 In local pagination mode, pass the full data set, bind `v-model:page` and `v-model:page-size`, and let the component slice it internally.
@@ -531,6 +512,7 @@ const resizableColumns = [
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
 | `scroll-x` | Table width used to enable horizontal scrolling. Usually paired with fixed columns | _number \| string_ | `-` |
+| `plain` | Whether to render as a plain table without card shadow, background, or radius | _boolean_ | `false` |
 | `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | Whether to explicitly enable tree data mode | _boolean_ | `false` |
 | `cascade` | Whether tree selection should cascade | _boolean_ | `true` |
@@ -593,7 +575,9 @@ const resizableColumns = [
 | `--data-table-header-cell-text-color` | `rgba(0, 0, 0, 0.6)` |
 | `--data-table-body-cell-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
-| `--data-table-row-hover-background` | `#eee` |
+| `--data-table-row-hover-background` | `#f5f5f5` |
+| `--data-table-surface-low-row-hover-background` | `var(--color-surface-container-highest)` |
+| `--data-table-plain-row-hover-background` | `hsla(var(--hsl-on-surface), 0.04)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

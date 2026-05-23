@@ -140,6 +140,7 @@ export const props = {
     type: String,
     default: 'children',
   },
+  plain: Boolean,
   checkedRowKeys: {
     type: Array as PropType<Array<string | number>>,
     default: () => [],

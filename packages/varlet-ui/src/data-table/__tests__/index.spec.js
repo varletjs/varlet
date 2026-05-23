@@ -105,6 +105,21 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support plain table mode', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        plain: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-data-table--plain')
+    expect(wrapper.classes()).not.toContain('var-elevation--1')
+    wrapper.unmount()
+  })
+
   test('should support selection column', async () => {
     const onUpdateCheckedRowKeys = vi.fn()
     const wrapper = mount(VarDataTable, {

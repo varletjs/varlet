@@ -1,6 +1,7 @@
 export default {
   '--table-background': 'var(--color-surface-container-low)',
-  '--table-tbody-tr-hover-background': 'var(--color-surface-container-low)',
+  '--table-surface-low-row-hover-background': 'var(--color-surface-container-highest)',
+  '--table-tbody-tr-hover-background': 'var(--color-surface-container-high)',
   '--table-border-radius': '2px',
   '--table-thead-border-bottom': 'thin solid var(--color-outline)',
   '--table-thead-th-text-color': 'rgba(0, 0, 0, 0.6)',

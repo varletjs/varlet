@@ -107,6 +107,7 @@ export interface DataTableProps extends BasicAttributes {
   surface?: DataTableSurface
   cascade?: boolean
   childrenKey?: string
+  plain?: boolean
   elevation?: boolean | string | number
   cellBordered?: boolean
   tableLayout?: DataTableTableLayout

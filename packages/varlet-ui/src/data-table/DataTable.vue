@@ -3,10 +3,11 @@
     :class="
       classes(
         n(),
-        formatElevation(elevation, 1),
+        [!plain, formatElevation(elevation, 1)],
         n('$--box'),
         [surface === 'low', n('--surface-low')],
         [cellBordered, n('--cell-bordered')],
+        [plain, n('--plain')],
         [showPagination, n('--with-footer')],
         n(`--${size}`),
       )

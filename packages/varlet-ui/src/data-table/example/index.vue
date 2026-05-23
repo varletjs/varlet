@@ -210,13 +210,6 @@ const customRowProps = ({ row, rowIndex }) => ({
   title: row.name,
 })
 
-const pagerPagination = {
-  simple: false,
-  showSizeChanger: false,
-  showQuickJumper: false,
-  maxPagerCount: 2,
-}
-
 const defaultPagination = {
   showSizeChanger: false,
   showQuickJumper: false,
@@ -228,13 +221,6 @@ const localPageSize = ref(10)
 const manyRows = times(48, (index) => ({
   id: index + 1,
   name: `User ${index + 1}`,
-  role: index % 2 === 0 ? 'Engineer' : 'Operator',
-  status: index % 3 === 0 ? 'Online' : 'Offline',
-}))
-
-const compactPagedRows = times(12, (index) => ({
-  id: index + 1,
-  name: `Member ${index + 1}`,
   role: index % 2 === 0 ? 'Engineer' : 'Operator',
   status: index % 3 === 0 ? 'Online' : 'Offline',
 }))
@@ -288,8 +274,8 @@ watch(
   <app-type>{{ t('surfaceLow') }}</app-type>
   <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
 
-  <app-type>{{ t('flatTable') }}</app-type>
-  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+  <app-type>{{ t('plainTable') }}</app-type>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
@@ -336,9 +322,6 @@ watch(
 
   <app-type>{{ t('expand') }}</app-type>
   <var-data-table :columns="expandColumns" :data="data" :pagination="false" />
-
-  <app-type>{{ t('pagerPagination') }}</app-type>
-  <var-data-table :columns="columns" :data="compactPagedRows" :pagination="pagerPagination" />
 
   <app-type>{{ t('localPagination') }}</app-type>
   <var-data-table

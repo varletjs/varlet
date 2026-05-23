@@ -141,13 +141,13 @@ const data = [
 </template>
 ```
 
-### 无卡片表格
+### 纯表格
 
-设置 `elevation` 为 `0` 可以去掉卡片阴影，展示更纯粹的表格形态。
+设置 `plain` 可以一并去掉卡片阴影、背景色和圆角，展示更纯粹的表格形态。
 
 ```html
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" :elevation="0" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
 ```
 
@@ -345,25 +345,6 @@ const columns = [
 </template>
 ```
 
-### 页码分页
-
-通过 `pagination` 配置内置页码分页。
-
-```html
-<template>
-  <var-data-table
-    :columns="columns"
-    :data="data"
-    :pagination="{
-      simple: false,
-      showSizeChanger: false,
-      showQuickJumper: false,
-      maxPagerCount: 2,
-    }"
-  />
-</template>
-```
-
 ### 本地分页
 
 本地分页模式下传入全量数据，并绑定 `v-model:page` / `v-model:page-size`，由组件内部切片。
@@ -531,6 +512,7 @@ const resizableColumns = [
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
 | `scroll-x` | 用于开启横向滚动的表格宽度，通常和固定列一起使用 | _number \| string_ | `-` |
+| `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
 | `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | 是否显式开启树形数据 | _boolean_ | `false` |
 | `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |
@@ -593,7 +575,9 @@ const resizableColumns = [
 | `--data-table-header-cell-text-color` | `rgba(0, 0, 0, 0.6)` |
 | `--data-table-body-cell-text-color` | `#555` |
 | `--data-table-border-color` | `var(--color-outline)` |
-| `--data-table-row-hover-background` | `#eee` |
+| `--data-table-row-hover-background` | `#f5f5f5` |
+| `--data-table-surface-low-row-hover-background` | `var(--color-surface-container-highest)` |
+| `--data-table-plain-row-hover-background` | `hsla(var(--hsl-on-surface), 0.04)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

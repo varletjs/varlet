@@ -5,7 +5,9 @@
   --data-table-header-cell-text-color: rgba(0, 0, 0, 0.6);
   --data-table-body-cell-text-color: #555;
   --data-table-border-color: var(--color-outline);
-  --data-table-row-hover-background: #eee;
+  --data-table-row-hover-background: #f5f5f5;
+  --data-table-surface-low-row-hover-background: var(--color-surface-container-highest);
+  --data-table-plain-row-hover-background: hsla(var(--hsl-on-surface), 0.04);
   --data-table-empty-text-color: var(--color-text-disabled);
   --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
@@ -69,6 +71,14 @@
   &--surface-low {
     --data-table-background: var(--data-table-surface-low-background);
     --data-table-header-cell-background: var(--data-table-surface-low-background);
+    --data-table-row-hover-background: var(--data-table-surface-low-row-hover-background);
+  }
+
+  &--plain {
+    --data-table-background: transparent;
+    --data-table-header-cell-background: transparent;
+    --data-table-row-hover-background: var(--data-table-plain-row-hover-background);
+    border-radius: 0;
   }
 
   &__cell {
