@@ -7,6 +7,8 @@ export default {
   customRender: '自定义渲染',
   surfaceLow: '弱背景色',
   plainTable: '纯表格',
+  sorter: '单列排序',
+  multipleSorter: '多列排序',
   spans: '单元格合并',
   selection: '选择列',
   singleSelection: '单选',
@@ -23,4 +25,6 @@ export default {
   emptyText: '空态文案',
   emptyTip: '暂无数据',
   loading: '加载状态',
+  centeredSortingAndResizing: '居中对齐',
+  rightAlignedSortingAndResizing: '右对齐',
 }

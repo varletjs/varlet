@@ -8,6 +8,9 @@
   --data-table-row-hover-background: #f5f5f5;
   --data-table-surface-low-row-hover-background: var(--color-surface-container-highest);
   --data-table-plain-row-hover-background: hsla(var(--hsl-on-surface), 0.04);
+  --data-table-sort-trigger-color: hsla(var(--hsl-on-surface), 0.42);
+  --data-table-sort-trigger-active-color: var(--color-primary);
+  --data-table-sort-trigger-hover-background: hsla(var(--hsl-primary), 0.08);
   --data-table-empty-text-color: var(--color-text-disabled);
   --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
@@ -49,7 +52,6 @@
 
   &__header-row {
     background: var(--data-table-header-cell-background);
-    border-bottom: 1px solid var(--data-table-border-color);
   }
 
   &__row {
@@ -99,8 +101,89 @@
     font-size: var(--data-table-header-font-size);
     font-weight: 500;
     background: var(--data-table-header-cell-background);
+    border-bottom: 1px solid var(--data-table-border-color);
     position: sticky;
     top: 0;
+  }
+
+  &__sort-trigger {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: var(--data-table-cell-padding);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--data-table-sort-trigger-color);
+    cursor: pointer;
+    text-align: inherit;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--data-table-sort-trigger-hover-background);
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__sort-trigger--align-left {
+    justify-content: flex-start;
+  }
+
+  &__sort-trigger--align-center {
+    justify-content: center;
+  }
+
+  &__sort-trigger--align-right {
+    justify-content: flex-end;
+  }
+
+  &__sort-trigger--active {
+    color: var(--data-table-sort-trigger-active-color);
+  }
+
+  &__sort-trigger-text {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  &__sort-trigger-icon {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    margin-inline-start: 8px;
+    vertical-align: middle;
+    color: inherit;
+    opacity: 0.72;
+  }
+
+  &__sort-trigger-icon-up,
+  &__sort-trigger-icon-down {
+    display: block;
+    font-size: 12px;
+    line-height: 1;
+    opacity: 0.45;
+    transition: opacity 0.2s ease;
+  }
+
+  &__sort-trigger-icon-up {
+    margin-bottom: -5px;
+  }
+
+  &__sort-trigger-icon-down {
+    margin-top: -5px;
+  }
+
+  &__sort-trigger-icon--active {
+    opacity: 1;
   }
 
   &__resize-trigger {

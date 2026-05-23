@@ -86,6 +86,19 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should disable pagination while loading', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        loading: true,
+      },
+    })
+
+    expect(wrapper.findComponent({ name: 'var-pagination' }).props('disabled')).toBe(true)
+    wrapper.unmount()
+  })
+
   test('should support render function', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -117,6 +130,87 @@ describe('test data-table component props', () => {
 
     expect(wrapper.classes()).toContain('var-data-table--plain')
     expect(wrapper.classes()).not.toContain('var-elevation--1')
+    wrapper.unmount()
+  })
+
+  test('should support single sorter cycle', async () => {
+    const onUpdateSorters = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', sorter: true },
+          { key: 'role', title: 'Role' },
+        ],
+        data,
+        pagination: false,
+        sorters: [],
+        'onUpdate:sorters': onUpdateSorters,
+      },
+    })
+
+    const sortTrigger = wrapper.find('.var-data-table__sort-trigger')
+
+    await sortTrigger.trigger('click')
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([{ key: 'name', order: 'asc' }])
+
+    await wrapper.setProps({ sorters: [{ key: 'name', order: 'asc' }] })
+    await sortTrigger.trigger('click')
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([{ key: 'name', order: 'desc' }])
+
+    await wrapper.setProps({ sorters: [{ key: 'name', order: 'desc' }] })
+    await sortTrigger.trigger('click')
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([])
+
+    wrapper.unmount()
+  })
+
+  test('should support multiple sorters', async () => {
+    const onUpdateSorters = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', sorter: true },
+          { key: 'role', title: 'Role', sorter: true },
+        ],
+        data,
+        pagination: false,
+        sorters: [{ key: 'name', order: 'asc' }],
+        sortMode: 'multiple',
+        'onUpdate:sorters': onUpdateSorters,
+      },
+    })
+
+    const sortTriggers = wrapper.findAll('.var-data-table__sort-trigger')
+
+    await sortTriggers[1].trigger('click')
+
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([
+      { key: 'name', order: 'asc' },
+      { key: 'role', order: 'asc' },
+    ])
+
+    wrapper.unmount()
+  })
+
+  test('should only render sorter trigger for sortable field columns', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { type: 'selection' },
+          { key: 'name', title: 'Name', sorter: true },
+          {
+            type: 'expand',
+            renderExpand: ({ row }) => h('div', row.role),
+          },
+          { key: 'role', title: 'Role' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('.var-data-table__sort-trigger')).toHaveLength(1)
+
     wrapper.unmount()
   })
 

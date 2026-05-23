@@ -4,6 +4,8 @@ import { defineListenerProp } from '../utils/components'
 export type DataTableSurface = 'low'
 
 export type DataTableTableLayout = 'auto' | 'fixed'
+export type DataTableSortMode = 'single' | 'multiple'
+export type DataTableSorterOrder = 'asc' | 'desc'
 
 export type DataTableColumnAlign = 'left' | 'center' | 'right'
 
@@ -57,10 +59,16 @@ export interface DataTableBaseColumn<Row = any> {
   cellProps?: DataTableCellProps<Row>
 }
 
+export interface DataTableSorter {
+  key: string
+  order: DataTableSorterOrder
+}
+
 export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row> {
   type?: undefined
   key: string
   title: string
+  sorter?: boolean
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
 }
 
@@ -130,6 +138,14 @@ export const props = {
   total: Number,
   maxHeight: [Number, String],
   scrollX: [Number, String],
+  sorters: {
+    type: Array as PropType<DataTableSorter[]>,
+    default: () => [],
+  },
+  sortMode: {
+    type: String as PropType<DataTableSortMode>,
+    default: 'single',
+  },
   tree: Boolean,
   surface: String as PropType<DataTableSurface>,
   cascade: {
@@ -161,4 +177,5 @@ export const props = {
   'onUpdate:checkedRowKeys': defineListenerProp<(checkedRowKeys: Array<string | number>) => void>(),
   'onUpdate:page': defineListenerProp<(page: number) => void>(),
   'onUpdate:pageSize': defineListenerProp<(pageSize: number) => void>(),
+  'onUpdate:sorters': defineListenerProp<(sorters: DataTableSorter[]) => void>(),
 }

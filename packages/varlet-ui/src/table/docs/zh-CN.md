@@ -62,6 +62,36 @@
 </template>
 ```
 
+### 弱背景色
+
+通过 `surface="low"` 使用更接近 MD3 的弱背景层级。
+
+```html
+<template>
+  <var-table surface="low">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>数学</th>
+        <th>英语</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>耗子君</td>
+        <td>124</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>火猫桑</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+</template>
+```
+
 ### 尾部插槽
 
 可以在尾部插槽中插入一些东西，最常见的是插入分页组件。
@@ -207,6 +237,7 @@ function get(current, size) {
 | `full-width` | `table` 的宽度(包含可滚动部分) | _string \| number_ | `100%` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
+| `surface` | 弱背景色风格 | _'low'_ | `-` |
 | `scroller-height` ***3.2.0*** | 滚动容器高度，可用于实现纵向局部滚动，固定表头等功能 | _string \| number_ | `-` |
 
 ### 插槽

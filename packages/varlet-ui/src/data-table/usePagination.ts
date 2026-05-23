@@ -22,6 +22,7 @@ const defaultPaginationOptions = {
 interface UsePaginationOptions<Row = Record<string, any>> {
   pagination: () => boolean | DataTablePagination
   remote: () => boolean
+  loading: () => boolean
   page: () => number
   pageSize: () => number
   total: () => number | undefined
@@ -32,6 +33,7 @@ interface UsePaginationOptions<Row = Record<string, any>> {
 export function usePagination<Row = Record<string, any>>({
   pagination,
   remote,
+  loading,
   page,
   pageSize,
   total,
@@ -42,12 +44,16 @@ export function usePagination<Row = Record<string, any>>({
     const resolvedPagination = pagination()
 
     if (isBoolean(resolvedPagination)) {
-      return defaultPaginationOptions
+      return {
+        ...defaultPaginationOptions,
+        disabled: loading(),
+      }
     }
 
     return {
       ...defaultPaginationOptions,
       ...resolvedPagination,
+      disabled: loading() || resolvedPagination.disabled === true,
     }
   })
 

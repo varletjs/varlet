@@ -62,6 +62,36 @@ Set `plain` to remove the card-like shadow, background, and radius, and present 
 </template>
 ```
 
+### Subtle Background
+
+Use `surface="low"` for a subtler MD3-style surface layer.
+
+```html
+<template>
+  <var-table surface="low">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Math</th>
+        <th>English</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Jerry</td>
+        <td>124</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>Tom</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+</template>
+```
+
 ### Footer Slots
 
 You can insert something in the tail slot, the most common is to insert a `Pagination`.
@@ -207,6 +237,7 @@ function get(current, size) {
 | `full-width` | The width of the `table` (including the scrollable part) | _string \| number_ | `100%` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `plain` | Whether to render as a plain table without card shadow, background, or radius | _boolean_ | `false` |
+| `surface` | Subtle background style | _'low'_ | `-` |
 | `scroller-height` ***3.2.0*** | The height of the scroll container, which can be used to implement functions such as longitudinal partial scrolling and fixed table headers. | _string \| number_ | `-` |
 
 ### Slots

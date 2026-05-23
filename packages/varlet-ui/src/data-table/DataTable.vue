@@ -38,10 +38,13 @@
                 :is-expand-column="isExpandColumn"
                 :is-multiple-selection-column="isMultipleSelectionColumn"
                 :is-selection-column-selectable="isSelectionColumnSelectable"
+                :is-column-sortable="isColumnSortable"
+                :get-column-sorter-order="getColumnSorterOrder"
                 :is-column-resizable="isColumnResizable"
                 :is-last-header-column="isLastHeaderColumn"
                 :is-last-left-fixed-column="isLastLeftFixedColumn"
                 :is-first-right-fixed-column="isFirstRightFixedColumn"
+                :toggle-column-sorter="toggleColumnSorter"
                 :toggle-current-selectable-rows="toggleCurrentSelectableRows"
                 :start-column-resize="startColumnResize"
               />
@@ -112,8 +115,8 @@
         />
       </div>
 
-      <template v-if="$slots.loading" #description>
-        <slot name="loading" />
+      <template v-if="$slots['loading-description']" #description>
+        <slot name="loading-description" />
       </template>
     </var-loading>
   </div>
@@ -144,6 +147,7 @@ import { useColumnWidths } from './useColumnWidths'
 import { useExpandRow } from './useExpandRow'
 import { usePagination } from './usePagination'
 import { useSelectionColumn } from './useSelectionColumn'
+import { useSorter } from './useSorter'
 import { useTreeExpand } from './useTreeExpand'
 
 const { name, n, classes } = createNamespace('data-table')
@@ -215,9 +219,16 @@ export default defineComponent({
       columnWidths: () => columnWidths.value,
     })
 
+    const { getColumnSorterOrder, isColumnSortable, toggleColumnSorter } = useSorter({
+      sorters: () => props.sorters,
+      sortMode: () => props.sortMode,
+      onUpdateSorters: () => props['onUpdate:sorters'],
+    })
+
     const { paginationProps, paginationTotal, showPagination, pagedData } = usePagination({
       pagination: () => props.pagination,
       remote: () => props.remote,
+      loading: () => props.loading,
       page: () => props.page,
       pageSize: () => props.pageSize,
       total: () => props.total,
@@ -404,12 +415,15 @@ export default defineComponent({
       getCellProps,
       isSelectionColumn,
       isExpandColumn,
+      isColumnSortable,
       isMultipleSelectionColumn,
       isSelectionColumnSelectable,
+      getColumnSorterOrder,
       isRowExpandable,
       isRowKeyIndeterminate,
       isRowKeySelected,
       isRowSelectable,
+      toggleColumnSorter,
       toggleCurrentSelectableRows,
       toggleRowExpanded,
       toggleTreeRowExpanded,

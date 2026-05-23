@@ -7,6 +7,8 @@ export type DataTableColumnAlign = 'left' | 'center' | 'right'
 export type DataTableColumnFixed = 'left' | 'right'
 export type DataTableSurface = 'low'
 export type DataTableTableLayout = 'auto' | 'fixed'
+export type DataTableSortMode = 'single' | 'multiple'
+export type DataTableSorterOrder = 'asc' | 'desc'
 
 export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => string | number)
 
@@ -50,10 +52,16 @@ export interface DataTableBaseColumn<Row = any> {
   cellProps?: DataTableCellProps<Row>
 }
 
+export interface DataTableSorter {
+  key: string
+  order: DataTableSorterOrder
+}
+
 export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row> {
   type?: undefined
   key: string
   title: string
+  sorter?: boolean
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
 }
 
@@ -103,6 +111,8 @@ export interface DataTableProps extends BasicAttributes {
   total?: number
   maxHeight?: number | string
   scrollX?: number | string
+  sorters?: DataTableSorter[]
+  sortMode?: DataTableSortMode
   tree?: boolean
   surface?: DataTableSurface
   cascade?: boolean
@@ -116,6 +126,7 @@ export interface DataTableProps extends BasicAttributes {
   'onUpdate:checkedRowKeys'?: ListenerProp<(checkedRowKeys: Array<string | number>) => void>
   'onUpdate:page'?: ListenerProp<(page: number) => void>
   'onUpdate:pageSize'?: ListenerProp<(pageSize: number) => void>
+  'onUpdate:sorters'?: ListenerProp<(sorters: DataTableSorter[]) => void>
 }
 
 export class DataTable extends VarComponent {
@@ -124,7 +135,7 @@ export class DataTable extends VarComponent {
   $props: DataTableProps
 
   $slots: {
-    loading(): VNode[]
+    loadingDescription(): VNode[]
     footerPrefix(): VNode[]
   }
 }

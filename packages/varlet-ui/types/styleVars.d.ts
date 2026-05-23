@@ -269,6 +269,7 @@ interface BaseStyleVars {
   '--countdown-text-color'?: string
   '--countdown-text-font-size'?: string
   '--data-table-background'?: string
+  '--data-table-surface-low-background'?: string
   '--data-table-header-cell-background'?: string
   '--data-table-header-cell-text-color'?: string
   '--data-table-body-cell-text-color'?: string
@@ -276,6 +277,9 @@ interface BaseStyleVars {
   '--data-table-row-hover-background'?: string
   '--data-table-surface-low-row-hover-background'?: string
   '--data-table-plain-row-hover-background'?: string
+  '--data-table-sort-trigger-color'?: string
+  '--data-table-sort-trigger-active-color'?: string
+  '--data-table-sort-trigger-hover-background'?: string
   '--data-table-empty-text-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string

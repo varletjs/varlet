@@ -22,8 +22,33 @@
       tabindex="-1"
       @update:model-value="toggleCurrentSelectableRows"
     />
+    <button
+      v-else-if="isColumnSortable(headerCell.column)"
+      type="button"
+      :class="
+        classes(n('sort-trigger'), n(`sort-trigger--align-${headerAlign}`), [
+          columnSorterOrder,
+          n('sort-trigger--active'),
+        ])
+      "
+      :style="sortTriggerStyle"
+      :aria-label="sortTriggerLabel"
+      @click="toggleColumnSorter(headerCell.column.key)"
+    >
+      <span :class="n('sort-trigger-text')">{{ headerCell.column.title }}</span>
+      <span :class="n('sort-trigger-icon')" aria-hidden="true">
+        <var-icon
+          name="chevron-up"
+          :class="classes(n('sort-trigger-icon-up'), [columnSorterOrder === 'asc', n('sort-trigger-icon--active')])"
+        />
+        <var-icon
+          name="chevron-down"
+          :class="classes(n('sort-trigger-icon-down'), [columnSorterOrder === 'desc', n('sort-trigger-icon--active')])"
+        />
+      </span>
+    </button>
     <template v-else>
-      {{ isSelectionColumn(headerCell.column) || isExpandColumn(headerCell.column) ? '' : headerCell.column.title }}
+      {{ headerTitle }}
     </template>
     <button
       v-if="
@@ -41,10 +66,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type CSSProperties, type PropType } from 'vue'
+import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
 import VarCheckbox from '../checkbox'
+import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
-import type { DataTableColumn, DataTableExpandColumn, DataTableSelectionColumn } from './props'
+import type {
+  DataTableColumn,
+  DataTableExpandColumn,
+  DataTableFieldColumn,
+  DataTableSelectionColumn,
+  DataTableSorterOrder,
+} from './props'
 
 const { n, classes } = createNamespace('data-table')
 
@@ -59,6 +91,7 @@ export default defineComponent({
   name: 'DataTableHeaderCell',
   components: {
     VarCheckbox,
+    VarIcon,
   },
   props: {
     headerCell: {
@@ -97,6 +130,18 @@ export default defineComponent({
       type: Function as PropType<(column: DataTableSelectionColumn) => boolean>,
       required: true,
     },
+    isColumnSortable: {
+      type: Function as PropType<(column: DataTableColumn) => column is DataTableFieldColumn>,
+      required: true,
+    },
+    getColumnSorterOrder: {
+      type: Function as PropType<(columnKey: string) => DataTableSorterOrder | undefined>,
+      required: true,
+    },
+    toggleColumnSorter: {
+      type: Function as PropType<(columnKey: string) => void>,
+      required: true,
+    },
     isColumnResizable: {
       type: Function as PropType<(column: DataTableColumn) => boolean>,
       required: true,
@@ -122,10 +167,54 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
+    const columnSorterOrder = computed(() => {
+      if (!props.isColumnSortable(props.headerCell.column)) {
+        return
+      }
+
+      return props.getColumnSorterOrder(props.headerCell.column.key)
+    })
+
+    const headerAlign = computed(() => {
+      return props.headerCell.column.titleAlign ?? props.headerCell.column.align ?? 'left'
+    })
+
+    const headerTitle = computed(() => {
+      return props.isSelectionColumn(props.headerCell.column) || props.isExpandColumn(props.headerCell.column)
+        ? ''
+        : props.headerCell.column.title
+    })
+
+    const sortTriggerStyle = computed<CSSProperties>(() => {
+      return {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }
+    })
+
+    const sortTriggerLabel = computed(() => {
+      if (!props.isColumnSortable(props.headerCell.column)) {
+        return ''
+      }
+
+      const orderLabel =
+        columnSorterOrder.value === 'asc' ? 'ascending' : columnSorterOrder.value === 'desc' ? 'descending' : 'none'
+
+      return `Sort by ${props.headerCell.column.title}, current: ${orderLabel}`
+    })
+
     return {
       n,
       classes,
+      columnSorterOrder,
+      headerTitle,
+      headerAlign,
+      sortTriggerStyle,
+      sortTriggerLabel,
     }
   },
 })

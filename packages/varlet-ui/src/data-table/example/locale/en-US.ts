@@ -7,6 +7,8 @@ export default {
   customRender: 'Custom Render',
   surfaceLow: 'Subtle Background',
   plainTable: 'Plain Table',
+  sorter: 'Single Column Sorting',
+  multipleSorter: 'Multiple Column Sorting',
   spans: 'Cell Spans',
   selection: 'Selection',
   singleSelection: 'Single Selection',
@@ -23,4 +25,6 @@ export default {
   emptyText: 'Empty Text',
   emptyTip: 'No Data',
   loading: 'Loading',
+  centeredSortingAndResizing: 'Centered Alignment',
+  rightAlignedSortingAndResizing: 'Right Alignment',
 }

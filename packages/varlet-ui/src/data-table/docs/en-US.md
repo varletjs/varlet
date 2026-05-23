@@ -35,6 +35,65 @@ Set `plain` to remove the card-like shadow, background, and radius, and present 
 </template>
 ```
 
+### Single Column Sorting
+
+Set `column.sorter` to enable sorter interaction on a field column. The component only manages sorter state. You should control `v-model:sorters` and decide how to sort the data yourself.
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const rawData = [
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+]
+
+const sorters = ref([])
+
+const columns = [
+  { key: 'name', title: 'Name', sorter: true },
+  { key: 'role', title: 'Role', sorter: true },
+  { key: 'status', title: 'Status', sorter: true },
+]
+
+const data = computed(() => {
+  return sorters.value.reduceRight((rows, sorter) => {
+    return [...rows].sort((left, right) => {
+      const leftValue = left[sorter.key]
+      const rightValue = right[sorter.key]
+
+      if (leftValue === rightValue) {
+        return 0
+      }
+
+      const result = leftValue > rightValue ? 1 : -1
+      return sorter.order === 'asc' ? result : -result
+    })
+  }, rawData)
+})
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
+### Multiple Column Sorting
+
+Set `sort-mode="multiple"` to keep multiple columns active at the same time.
+
+```html
+<template>
+  <var-data-table
+    v-model:sorters="sorters"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    sort-mode="multiple"
+  />
+</template>
+```
+
 ### Cell Bordered
 
 ```html
@@ -110,7 +169,7 @@ Use `column.render` to customize the cell content.
 
 ```html
 <script setup>
-import { h, resolveComponent } from 'vue'
+import { h } from 'vue'
 
 const columns = [
   { key: 'name', title: 'Name' },
@@ -493,6 +552,74 @@ const resizableColumns = [
 </template>
 ```
 
+### Centered Alignment
+
+Use centered `align` and `titleAlign` together with `sorter` and `resizable` when you want to verify the relative position of the sort trigger and resize trigger in a centered header layout.
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+const rawData = [
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+]
+
+function renderExpand({ row }) {
+  return `${row.name} Details`
+}
+
+const columns = [
+  { type: 'selection' },
+  { type: 'expand', renderExpand },
+  { key: 'name', title: 'Name', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+  { key: 'role', title: 'Role', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+  { key: 'status', title: 'Status', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+]
+
+const data = computed(() => applySorters(rawData, sorters.value))
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+</template>
+```
+
+### Right Alignment
+
+Use right-aligned headers and cells together with `sorter` and `resizable` to verify the trigger layout in a right-aligned case.
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+const rawData = [
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+]
+
+function renderExpand({ row }) {
+  return `${row.name} Details`
+}
+
+const columns = [
+  { type: 'selection' },
+  { type: 'expand', renderExpand },
+  { key: 'name', title: 'Name', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+  { key: 'role', title: 'Role', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+  { key: 'status', title: 'Status', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+]
+
+const data = computed(() => applySorters(rawData, sorters.value))
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+</template>
+```
+
 ## API
 
 ### Props
@@ -512,6 +639,8 @@ const resizableColumns = [
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
 | `scroll-x` | Table width used to enable horizontal scrolling. Usually paired with fixed columns | _number \| string_ | `-` |
+| `v-model:sorters` | Controlled sorter states | _DataTableSorter[]_ | `[]` |
+| `sort-mode` | Sorter mode | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | Whether to render as a plain table without card shadow, background, or radius | _boolean_ | `false` |
 | `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | Whether to explicitly enable tree data mode | _boolean_ | `false` |
@@ -522,13 +651,14 @@ const resizableColumns = [
 | `cell-bordered` | Whether to show cell dividers | _boolean_ | `false` |
 | `size` | Table size | _'small' \| 'normal' \| 'large'_ | `'normal'` |
 
-### DataTableColumn
+#### DataTableColumn
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `type` | Column type. Supports `selection` and `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
 | `title` | Column title | _string_ | `-` |
+| `sorter` | Whether the field column shows sorter interaction | _boolean_ | `false` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
 | `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | Whether the row can be expanded. Only works on expand columns | _`(context) => boolean`_ | `-` |
@@ -545,7 +675,7 @@ const resizableColumns = [
 | `cellProps` | Native cell props, supports object or function | _object \| (context) => object_ | `-` |
 | `render` | Custom cell render | _`(context) => VNodeChild`_ | `-` |
 
-### DataTablePagination
+#### DataTablePagination
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
@@ -557,12 +687,19 @@ const resizableColumns = [
 | `sizeOption` | Page size options | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | Total text renderer | _`(total: number, range: [number, number]) => string`_ | `-` |
 
+#### DataTableSorter
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `key` | Target column key | _string_ | `-` |
+| `order` | Sort order | _'asc' \| 'desc'_ | `-` |
+
 ### Slots
 
 | Name | Description | Parameters |
 | --- | --- | --- |
 | `empty` | Custom empty content | `-` |
-| `loading` | Custom loading content | `-` |
+| `loading-description` | Custom loading description | `-` |
 | `footer-prefix` | Content before pagination | `-` |
 
 ### Style Variables
@@ -578,6 +715,9 @@ const resizableColumns = [
 | `--data-table-row-hover-background` | `#f5f5f5` |
 | `--data-table-surface-low-row-hover-background` | `var(--color-surface-container-highest)` |
 | `--data-table-plain-row-hover-background` | `hsla(var(--hsl-on-surface), 0.04)` |
+| `--data-table-sort-trigger-color` | `hsla(var(--hsl-on-surface), 0.42)` |
+| `--data-table-sort-trigger-active-color` | `var(--color-primary)` |
+| `--data-table-sort-trigger-hover-background` | `hsla(var(--hsl-primary), 0.08)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

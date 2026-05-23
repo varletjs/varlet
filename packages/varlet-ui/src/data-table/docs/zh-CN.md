@@ -35,6 +35,65 @@ const data = [
 </template>
 ```
 
+### 单列排序
+
+给字段列设置 `column.sorter` 后，可以开启排序交互。组件只管理排序状态，你需要通过 `v-model:sorters` 受控这些状态，并自行决定如何排序数据。
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const rawData = [
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+]
+
+const sorters = ref([])
+
+const columns = [
+  { key: 'name', title: '姓名', sorter: true },
+  { key: 'role', title: '角色', sorter: true },
+  { key: 'status', title: '状态', sorter: true },
+]
+
+const data = computed(() => {
+  return sorters.value.reduceRight((rows, sorter) => {
+    return [...rows].sort((left, right) => {
+      const leftValue = left[sorter.key]
+      const rightValue = right[sorter.key]
+
+      if (leftValue === rightValue) {
+        return 0
+      }
+
+      const result = leftValue > rightValue ? 1 : -1
+      return sorter.order === 'asc' ? result : -result
+    })
+  }, rawData)
+})
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
+### 多列排序
+
+设置 `sort-mode="multiple"` 后，可以让多个列同时处于非无排序态。
+
+```html
+<template>
+  <var-data-table
+    v-model:sorters="sorters"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    sort-mode="multiple"
+  />
+</template>
+```
+
 ### 单元格分割线
 
 ```html
@@ -110,7 +169,7 @@ const customRowProps = ({ row, rowIndex }) => ({
 
 ```html
 <script setup>
-import { h, resolveComponent } from 'vue'
+import { h } from 'vue'
 
 const columns = [
   { key: 'name', title: '姓名' },
@@ -493,6 +552,74 @@ const resizableColumns = [
 </template>
 ```
 
+### 居中对齐
+
+当你需要检查居中表头下排序按钮和列宽拖拽触发区的相对位置时，可以同时设置居中的 `align`、`titleAlign`，并开启 `sorter` 和 `resizable`。
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+const rawData = [
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+]
+
+function renderExpand({ row }) {
+  return `${row.name} 详情`
+}
+
+const columns = [
+  { type: 'selection' },
+  { type: 'expand', renderExpand },
+  { key: 'name', title: '姓名', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+  { key: 'role', title: '角色', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+  { key: 'status', title: '状态', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
+]
+
+const data = computed(() => applySorters(rawData, sorters.value))
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+</template>
+```
+
+### 右对齐
+
+当你需要检查右对齐表头和单元格下排序按钮、列宽拖拽触发区的布局时，可以同时设置 `align`、`titleAlign` 为 `right`，并开启 `sorter` 和 `resizable`。
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+const rawData = [
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+]
+
+function renderExpand({ row }) {
+  return `${row.name} 详情`
+}
+
+const columns = [
+  { type: 'selection' },
+  { type: 'expand', renderExpand },
+  { key: 'name', title: '姓名', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+  { key: 'role', title: '角色', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+  { key: 'status', title: '状态', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
+]
+
+const data = computed(() => applySorters(rawData, sorters.value))
+</script>
+
+<template>
+  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+</template>
+```
+
 ## API
 
 ### Props
@@ -512,6 +639,8 @@ const resizableColumns = [
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
 | `scroll-x` | 用于开启横向滚动的表格宽度，通常和固定列一起使用 | _number \| string_ | `-` |
+| `v-model:sorters` | 受控排序状态集合 | _DataTableSorter[]_ | `[]` |
+| `sort-mode` | 排序器模式 | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
 | `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | 是否显式开启树形数据 | _boolean_ | `false` |
@@ -522,13 +651,14 @@ const resizableColumns = [
 | `cell-bordered` | 是否显示单元格分割线 | _boolean_ | `false` |
 | `size` | 表格尺寸 | _'small' \| 'normal' \| 'large'_ | `'normal'` |
 
-### DataTableColumn
+#### DataTableColumn
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `type` | 列类型。支持 `selection` 和 `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
 | `title` | 列标题 | _string_ | `-` |
+| `sorter` | 字段列是否显示排序交互 | _boolean_ | `false` |
 | `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |
 | `selectable` | 是否允许选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `true` |
 | `expandable` | 是否允许展开该行，仅对展开列生效 | _`(context) => boolean`_ | `-` |
@@ -545,7 +675,7 @@ const resizableColumns = [
 | `cellProps` | 单元格属性透传，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `render` | 自定义单元格渲染 | _`(context) => VNodeChild`_ | `-` |
 
-### DataTablePagination
+#### DataTablePagination
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -557,12 +687,19 @@ const resizableColumns = [
 | `sizeOption` | 每页条数选项 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | 总数文案渲染函数 | _`(total: number, range: [number, number]) => string`_ | `-` |
 
+#### DataTableSorter
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `key` | 对应列 key | _string_ | `-` |
+| `order` | 排序方向 | _'asc' \| 'desc'_ | `-` |
+
 ### Slots
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
 | `empty` | 自定义空态内容 | `-` |
-| `loading` | 自定义加载内容 | `-` |
+| `loading-description` | 自定义加载描述 | `-` |
 | `footer-prefix` | 分页前置内容 | `-` |
 
 ### 样式变量
@@ -578,6 +715,9 @@ const resizableColumns = [
 | `--data-table-row-hover-background` | `#f5f5f5` |
 | `--data-table-surface-low-row-hover-background` | `var(--color-surface-container-highest)` |
 | `--data-table-plain-row-hover-background` | `hsla(var(--hsl-on-surface), 0.04)` |
+| `--data-table-sort-trigger-color` | `hsla(var(--hsl-on-surface), 0.42)` |
+| `--data-table-sort-trigger-active-color` | `var(--color-primary)` |
+| `--data-table-sort-trigger-hover-background` | `hsla(var(--hsl-primary), 0.08)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |

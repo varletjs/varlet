@@ -1,5 +1,6 @@
 export default {
   '--data-table-background': '#303030',
+  '--data-table-surface-low-background': '#2a2a2a',
   '--data-table-header-cell-background': '#303030',
   '--data-table-header-cell-text-color': 'rgba(255, 255, 255, 0.6)',
   '--data-table-body-cell-text-color': '#fff',
@@ -7,6 +8,9 @@ export default {
   '--data-table-row-hover-background': '#3a3a3a',
   '--data-table-surface-low-row-hover-background': '#2a2a2a',
   '--data-table-plain-row-hover-background': 'hsla(var(--hsl-on-surface), 0.08)',
+  '--data-table-sort-trigger-color': 'hsla(var(--hsl-on-surface), 0.5)',
+  '--data-table-sort-trigger-active-color': 'var(--color-primary)',
+  '--data-table-sort-trigger-hover-background': 'hsla(var(--hsl-primary), 0.12)',
   '--data-table-empty-text-color': 'var(--color-text-disabled)',
   '--data-table-border-radius': '2px',
   '--data-table-cell-padding': '0 16px',

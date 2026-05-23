@@ -44,6 +44,11 @@ const surfaceColumns = [
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
 ]
+const sortableColumns = [
+  { key: 'name', title: 'Name', sorter: true },
+  { key: 'role', title: 'Role', sorter: true },
+  { key: 'status', title: 'Status', sorter: true },
+]
 
 const spanColumns = [
   {
@@ -105,8 +110,86 @@ const resizableColumns = [
   { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
   { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
 ]
+const centeredSortableResizableColumns = [
+  { type: 'selection' },
+  {
+    type: 'expand',
+    renderExpand: renderExpandContent,
+  },
+  {
+    key: 'name',
+    title: 'Name',
+    width: 170,
+    minWidth: 120,
+    resizable: true,
+    sorter: true,
+    align: 'center',
+    titleAlign: 'center',
+  },
+  {
+    key: 'role',
+    title: 'Role',
+    width: 190,
+    minWidth: 140,
+    resizable: true,
+    sorter: true,
+    align: 'center',
+    titleAlign: 'center',
+  },
+  {
+    key: 'status',
+    title: 'Status',
+    width: 150,
+    minWidth: 120,
+    resizable: true,
+    sorter: true,
+    align: 'center',
+    titleAlign: 'center',
+  },
+]
+const rightAlignedSortableResizableColumns = [
+  { type: 'selection' },
+  {
+    type: 'expand',
+    renderExpand: renderExpandContent,
+  },
+  {
+    key: 'name',
+    title: 'Name',
+    width: 170,
+    minWidth: 120,
+    resizable: true,
+    sorter: true,
+    align: 'right',
+    titleAlign: 'right',
+  },
+  {
+    key: 'role',
+    title: 'Role',
+    width: 190,
+    minWidth: 140,
+    resizable: true,
+    sorter: true,
+    align: 'right',
+    titleAlign: 'right',
+  },
+  {
+    key: 'status',
+    title: 'Status',
+    width: 150,
+    minWidth: 120,
+    resizable: true,
+    sorter: true,
+    align: 'right',
+    titleAlign: 'right',
+  },
+]
 
 const checkedRowKeys = ref([1, 3])
+const sorters = ref([])
+const multipleSorters = ref([])
+const centeredSorters = ref([])
+const rightAlignedSorters = ref([])
 const singleCheckedRowKeys = ref([2])
 const treeCheckedRowKeys = ref([1, 11, 12])
 const treeNonCascadeCheckedRowKeys = ref([12])
@@ -184,6 +267,11 @@ const selectedRowNames = computed(() =>
     .join(', '),
 )
 
+const sortedData = computed(() => applySorters(data, sorters.value))
+const multipleSortedData = computed(() => applySorters(data, multipleSorters.value))
+const centeredSortedData = computed(() => applySorters(data, centeredSorters.value))
+const rightAlignedSortedData = computed(() => applySorters(data, rightAlignedSorters.value))
+
 const alignedColumns = [
   { key: 'name', title: 'Name', minWidth: 140 },
   { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 120 },
@@ -248,6 +336,22 @@ watch(
   },
   { immediate: true },
 )
+
+function applySorters(rows, activeSorters) {
+  return activeSorters.reduceRight((currentRows, sorter) => {
+    return [...currentRows].sort((leftRow, rightRow) => {
+      const leftValue = leftRow[sorter.key]
+      const rightValue = rightRow[sorter.key]
+
+      if (leftValue === rightValue) {
+        return 0
+      }
+
+      const comparisonResult = leftValue > rightValue ? 1 : -1
+      return sorter.order === 'asc' ? comparisonResult : -comparisonResult
+    })
+  }, rows)
+}
 </script>
 
 <template>
@@ -256,6 +360,18 @@ watch(
 
   <app-type>{{ t('plainTable') }}</app-type>
   <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+
+  <app-type>{{ t('sorter') }}</app-type>
+  <var-data-table v-model:sorters="sorters" :columns="sortableColumns" :data="sortedData" :pagination="false" />
+
+  <app-type>{{ t('multipleSorter') }}</app-type>
+  <var-data-table
+    v-model:sorters="multipleSorters"
+    :columns="sortableColumns"
+    :data="multipleSortedData"
+    :pagination="false"
+    sort-mode="multiple"
+  />
 
   <app-type>{{ t('cellBordered') }}</app-type>
   <var-data-table :columns="columns" :data="data" cell-bordered />
@@ -360,4 +476,22 @@ watch(
 
   <app-type>{{ t('loading') }}</app-type>
   <var-data-table :columns="columns" :data="[]" loading />
+
+  <app-type>{{ t('centeredSortingAndResizing') }}</app-type>
+  <var-data-table
+    v-model:sorters="centeredSorters"
+    :columns="centeredSortableResizableColumns"
+    :data="centeredSortedData"
+    :pagination="false"
+    :scroll-x="510"
+  />
+
+  <app-type>{{ t('rightAlignedSortingAndResizing') }}</app-type>
+  <var-data-table
+    v-model:sorters="rightAlignedSorters"
+    :columns="rightAlignedSortableResizableColumns"
+    :data="rightAlignedSortedData"
+    :pagination="false"
+    :scroll-x="510"
+  />
 </template>
