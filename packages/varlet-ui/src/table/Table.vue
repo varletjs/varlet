@@ -1,5 +1,15 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 1), n('$--box'), [surfaceLow, n('--surface-low')])">
+  <div
+    :class="
+      classes(
+        n(),
+        [!plain, formatElevation(elevation, 1)],
+        n('$--box'),
+        [surfaceLow, n('--surface-low')],
+        [plain, n('--plain')],
+      )
+    "
+  >
     <div :class="classes(n('main'), n('$--scrollbar'))" :style="{ 'max-height': toSizeUnit(scrollerHeight) }">
       <table :class="n('table')" :style="{ width: toSizeUnit(fullWidth) }">
         <slot />
@@ -31,6 +41,7 @@ export default defineComponent({
       classes,
       formatElevation,
       surfaceLow,
+      plain: computed(() => props.plain),
     }
   },
 })

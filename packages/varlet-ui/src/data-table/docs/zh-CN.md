@@ -25,6 +25,16 @@ const data = [
 </template>
 ```
 
+### 纯表格
+
+设置 `plain` 可以一并去掉卡片阴影、背景色和圆角，展示更纯粹的表格形态。
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+</template>
+```
+
 ### 单元格分割线
 
 ```html
@@ -138,16 +148,6 @@ const data = [
 ```html
 <template>
   <var-data-table :columns="columns" :data="data" surface="low" />
-</template>
-```
-
-### 纯表格
-
-设置 `plain` 可以一并去掉卡片阴影、背景色和圆角，展示更纯粹的表格形态。
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
 ```
 

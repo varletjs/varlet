@@ -40,6 +40,19 @@ describe('test table component props', () => {
     wrapper.unmount()
   })
 
+  test('table plain', () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        plain: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-table--plain')
+    expect(wrapper.classes()).not.toContain('var-elevation--1')
+
+    wrapper.unmount()
+  })
+
   test('table scroller height', () => {
     const wrapper = mount(VarTable, {
       props: {

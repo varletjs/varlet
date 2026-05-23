@@ -7,6 +7,8 @@ export interface TableProps extends BasicAttributes {
   fullWidth?: string | number
   scrollerHeight?: string | number
   elevation?: boolean | string | number
+  surface?: 'low'
+  plain?: boolean
 }
 
 export class Table extends VarComponent {

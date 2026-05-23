@@ -774,6 +774,8 @@ interface BaseStyleVars {
   '--table-thead-th-font-size'?: string
   '--table-thead-tr-border-bottom'?: string
   '--table-tbody-tr-hover-background'?: string
+  '--table-surface-low-row-hover-background'?: string
+  '--table-plain-row-hover-background'?: string
   '--table-tbody-tr-border-bottom'?: string
   '--table-tbody-td-text-color'?: string
   '--table-tbody-td-font-size'?: string

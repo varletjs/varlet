@@ -2,6 +2,7 @@
   --table-background: #fff;
   --table-surface-low-background: var(--color-surface-container-highest);
   --table-surface-low-row-hover-background: var(--color-surface-container-highest);
+  --table-plain-row-hover-background: hsla(var(--hsl-on-surface), 0.04);
   --table-border-radius: 2px;
   --table-thead-border-bottom: thin solid var(--color-outline);
   --table-thead-th-text-color: rgba(0, 0, 0, 0.6);
@@ -78,6 +79,8 @@
         td {
           color: var(--table-tbody-td-text-color);
           font-size: var(--table-tbody-td-font-size);
+          background: inherit;
+          background-clip: padding-box;
         }
       }
 
@@ -101,6 +104,12 @@
   &--surface-low {
     --table-background: var(--table-surface-low-background);
     --table-tbody-tr-hover-background: var(--table-surface-low-row-hover-background);
+  }
+
+  &--plain {
+    --table-background: transparent;
+    --table-tbody-tr-hover-background: var(--table-plain-row-hover-background);
+    border-radius: 0;
   }
 
   &__footer {

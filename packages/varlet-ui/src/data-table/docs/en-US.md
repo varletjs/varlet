@@ -25,6 +25,16 @@ const data = [
 </template>
 ```
 
+### Plain Table
+
+Set `plain` to remove the card-like shadow, background, and radius, and present the table as a pure table surface.
+
+```html
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+</template>
+```
+
 ### Cell Bordered
 
 ```html
@@ -138,16 +148,6 @@ Use `surface="low"` for a subtler MD3-style surface layer.
 ```html
 <template>
   <var-data-table :columns="columns" :data="data" surface="low" />
-</template>
-```
-
-### Plain Table
-
-Set `plain` to remove the card-like shadow, background, and radius, and present the table as a pure table surface.
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
 ```
 

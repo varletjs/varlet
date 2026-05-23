@@ -254,6 +254,9 @@ watch(
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-data-table :columns="columns" :data="data" />
 
+  <app-type>{{ t('plainTable') }}</app-type>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+
   <app-type>{{ t('cellBordered') }}</app-type>
   <var-data-table :columns="columns" :data="data" cell-bordered />
 
@@ -273,9 +276,6 @@ watch(
 
   <app-type>{{ t('surfaceLow') }}</app-type>
   <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
-
-  <app-type>{{ t('plainTable') }}</app-type>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
