@@ -133,6 +133,34 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support grouped header columns', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Profile',
+            children: [
+              { key: 'name', title: 'Name' },
+              { key: 'role', title: 'Role' },
+            ],
+          },
+          {
+            title: 'State',
+            children: [{ key: 'status', title: 'Status' }],
+          },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('thead tr')).toHaveLength(2)
+    expect(wrapper.findAll('thead tr')[0].findAll('th')).toHaveLength(2)
+    expect(wrapper.findAll('thead tr')[1].findAll('th')).toHaveLength(3)
+    expect(wrapper.findAll('colgroup col')).toHaveLength(3)
+    wrapper.unmount()
+  })
+
   test('should support single sorter cycle', async () => {
     const onUpdateSorters = vi.fn()
     const wrapper = mount(VarDataTable, {

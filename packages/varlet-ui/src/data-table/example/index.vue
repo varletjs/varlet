@@ -277,6 +277,19 @@ const alignedColumns = [
   { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 120 },
   { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 100 },
 ]
+const groupedHeaderColumns = [
+  {
+    title: 'Profile',
+    children: [
+      { key: 'name', title: 'Name', width: 140 },
+      { key: 'role', title: 'Role', width: 140 },
+    ],
+  },
+  {
+    title: 'State',
+    children: [{ key: 'status', title: 'Status', width: 120 }],
+  },
+]
 
 const getStatusCellProps = ({ row }) => ({
   style: {
@@ -383,6 +396,9 @@ function applySorters(rows, activeSorters) {
 
   <app-type>{{ t('columnOptions') }}</app-type>
   <var-data-table :columns="alignedColumns" :data="data" />
+
+  <app-type>{{ t('groupedHeader') }}</app-type>
+  <var-data-table :columns="groupedHeaderColumns" :data="data" :pagination="false" />
 
   <app-type>{{ t('customProps') }}</app-type>
   <var-data-table :columns="cellPropsColumns" :data="data" :row-props="customRowProps" />

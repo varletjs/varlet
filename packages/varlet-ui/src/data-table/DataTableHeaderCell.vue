@@ -6,13 +6,14 @@
         n('header-cell'),
         [isSelectionColumn(headerCell.column), n('selection-cell')],
         [isExpandColumn(headerCell.column), n('expand-cell')],
-        [headerCell.column.fixed, n('fixed-cell')],
-        [isLastLeftFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-right')],
-        [isFirstRightFixedColumn(headerCell.columnIndex), n('fixed-cell--shadow-left')],
+        [headerCell.fixed, n('fixed-cell')],
+        [isLastLeftFixedColumn(headerCell.endLeafColumnIndex), n('fixed-cell--shadow-right')],
+        [isFirstRightFixedColumn(headerCell.startLeafColumnIndex), n('fixed-cell--shadow-left')],
       )
     "
     :style="style"
     :colspan="headerCell.colSpan"
+    :rowspan="headerCell.rowSpan"
   >
     <var-checkbox
       v-if="isSelectionColumn(headerCell.column) && isMultipleSelectionColumn(headerCell.column)"
@@ -54,7 +55,7 @@
       v-if="
         isColumnResizable(headerCell.column) &&
         headerCell.colSpan == null &&
-        !isLastHeaderColumn(headerCell.columnIndex)
+        !isLastHeaderColumn(headerCell.startLeafColumnIndex)
       "
       type="button"
       tabindex="-1"
@@ -72,6 +73,7 @@ import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import type {
   DataTableColumn,
+  DataTableColumnFixed,
   DataTableExpandColumn,
   DataTableFieldColumn,
   DataTableSelectionColumn,
@@ -82,9 +84,13 @@ const { n, classes } = createNamespace('data-table')
 
 export interface DataTableHeaderCellData {
   key: string
-  columnIndex: number
   column: DataTableColumn
+  columnIndex: number
+  startLeafColumnIndex: number
+  endLeafColumnIndex: number
   colSpan?: number
+  rowSpan?: number
+  fixed?: DataTableColumnFixed
 }
 
 export default defineComponent({
@@ -187,6 +193,10 @@ export default defineComponent({
     })
 
     const sortTriggerStyle = computed<CSSProperties>(() => {
+      if (props.headerCell.colSpan != null && props.headerCell.colSpan > 1) {
+        return {}
+      }
+
       return {
         position: 'absolute',
         top: 0,

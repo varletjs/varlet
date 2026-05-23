@@ -3,6 +3,7 @@ export default {
   cellBordered: 'Cell Bordered',
   sizes: 'Sizes',
   columnOptions: 'Column Options',
+  groupedHeader: 'Grouped Header',
   customProps: 'Custom Props',
   customRender: 'Custom Render',
   surfaceLow: 'Subtle Background',

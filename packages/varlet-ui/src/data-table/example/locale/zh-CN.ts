@@ -3,6 +3,7 @@ export default {
   cellBordered: '单元格分割线',
   sizes: '尺寸',
   columnOptions: '列配置',
+  groupedHeader: '分组表头',
   customProps: '属性透传',
   customRender: '自定义渲染',
   surfaceLow: '弱背景色',

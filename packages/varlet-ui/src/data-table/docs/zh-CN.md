@@ -129,6 +129,32 @@ const columns = [
 </template>
 ```
 
+### 分组表头
+
+给列配置设置 `children` 后，可以把多个叶子列归到同一个表头分组下。表体只会渲染叶子列对应的单元格。
+
+```html
+<script setup>
+const columns = [
+  {
+    title: '资料',
+    children: [
+      { key: 'name', title: '姓名', width: 140 },
+      { key: 'role', title: '角色', width: 140 },
+    ],
+  },
+  {
+    title: '状态分组',
+    children: [{ key: 'status', title: '状态', width: 120 }],
+  },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
 ### 属性透传
 
 通过 `row-props` 和 `column.cellProps` 向行和单元格透传原生属性。
@@ -658,6 +684,7 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `type` | 列类型。支持 `selection` 和 `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
 | `title` | 列标题 | _string_ | `-` |
+| `children` | 子列配置，用于渲染分组表头 | _DataTableColumn[]_ | `-` |
 | `sorter` | 字段列是否显示排序交互 | _boolean_ | `false` |
 | `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |
 | `selectable` | 是否允许选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| `(context) => boolean`_ | `true` |

@@ -129,6 +129,32 @@ const columns = [
 </template>
 ```
 
+### Grouped Header
+
+Set `children` on a column to group leaf columns under a shared header cell. Only leaf columns render body cells.
+
+```html
+<script setup>
+const columns = [
+  {
+    title: 'Profile',
+    children: [
+      { key: 'name', title: 'Name', width: 140 },
+      { key: 'role', title: 'Role', width: 140 },
+    ],
+  },
+  {
+    title: 'State',
+    children: [{ key: 'status', title: 'Status', width: 120 }],
+  },
+]
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" />
+</template>
+```
+
 ### Custom Props
 
 Use `row-props` and `column.cellProps` to pass native attributes to rows and cells.
@@ -658,6 +684,7 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `type` | Column type. Supports `selection` and `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
 | `title` | Column title | _string_ | `-` |
+| `children` | Child columns used to render a grouped header | _DataTableColumn[]_ | `-` |
 | `sorter` | Whether the field column shows sorter interaction | _boolean_ | `false` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
 | `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `true` |

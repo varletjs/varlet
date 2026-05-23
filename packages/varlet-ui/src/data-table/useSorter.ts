@@ -18,7 +18,7 @@ export function useSorter({ sorters, sortMode, onUpdateSorters }: UseSorterOptio
   const activeSorters = computed(() => sorters())
 
   function isColumnSortable(column: DataTableColumn): column is DataTableFieldColumn {
-    return column.type == null && column.sorter === true
+    return column.type == null && !column.children?.length && column.sorter === true
   }
 
   function getColumnSorterOrder(columnKey: string): DataTableSorterOrder | undefined {

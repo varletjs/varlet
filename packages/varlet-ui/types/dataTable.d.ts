@@ -61,6 +61,7 @@ export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row
   type?: undefined
   key: string
   title: string
+  children?: DataTableColumn<Row>[]
   sorter?: boolean
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
 }
