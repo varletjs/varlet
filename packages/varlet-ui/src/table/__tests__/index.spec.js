@@ -10,6 +10,16 @@ test('table use', () => {
 })
 
 describe('test table component props', () => {
+  test('table default elevation', () => {
+    const wrapper = mount(VarTable)
+
+    expect(wrapper.classes()).toContain('var-elevation--1')
+    expect(wrapper.classes()).not.toContain('var-table--plain')
+    expect(wrapper.classes()).not.toContain('var-table--surface-low')
+
+    wrapper.unmount()
+  })
+
   test('table full-Width', async () => {
     const wrapper = mount(VarTable)
 
@@ -53,6 +63,18 @@ describe('test table component props', () => {
     wrapper.unmount()
   })
 
+  test('table surface low', () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        surface: 'low',
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-table--surface-low')
+
+    wrapper.unmount()
+  })
+
   test('table scroller height', () => {
     const wrapper = mount(VarTable, {
       props: {
@@ -61,6 +83,18 @@ describe('test table component props', () => {
     })
 
     expect(wrapper.find('.var-table__main').attributes('style')).toContain('height: 300px;')
+
+    wrapper.unmount()
+  })
+
+  test('table numeric scroller height', () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        scrollerHeight: 300,
+      },
+    })
+
+    expect(wrapper.find('.var-table__main').attributes('style')).toContain('max-height: 300px;')
 
     wrapper.unmount()
   })
@@ -79,6 +113,18 @@ describe('test table component slots', () => {
     wrapper.unmount()
   })
 
+  test('table should not render footer without footer slot', () => {
+    const wrapper = mount(VarTable, {
+      slots: {
+        default: () => '<tbody><tr><td>Body</td></tr></tbody>',
+      },
+    })
+
+    expect(wrapper.find('.var-table__footer').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('table footer slot', () => {
     const wrapper = mount(VarTable, {
       slots: {
@@ -86,6 +132,20 @@ describe('test table component slots', () => {
       },
     })
 
+    expect(wrapper.find('.var-table__footer').text()).toBe('table footer slot')
+
+    wrapper.unmount()
+  })
+
+  test('table default and footer slots', () => {
+    const wrapper = mount(VarTable, {
+      slots: {
+        default: () => '<tbody><tr><td>table body slot</td></tr></tbody>',
+        footer: () => 'table footer slot',
+      },
+    })
+
+    expect(wrapper.find('.var-table__table').text()).toContain('table body slot')
     expect(wrapper.find('.var-table__footer').text()).toBe('table footer slot')
 
     wrapper.unmount()

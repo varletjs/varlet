@@ -220,6 +220,34 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should cycle sorter in multiple mode', async () => {
+    const onUpdateSorters = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', sorter: true },
+          { key: 'role', title: 'Role', sorter: true },
+        ],
+        data,
+        pagination: false,
+        sorters: [{ key: 'name', order: 'asc' }],
+        sortMode: 'multiple',
+        'onUpdate:sorters': onUpdateSorters,
+      },
+    })
+
+    const sortTrigger = wrapper.findAll('.var-data-table__sort-trigger')[0]
+
+    await sortTrigger.trigger('click')
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([{ key: 'name', order: 'desc' }])
+
+    await wrapper.setProps({ sorters: [{ key: 'name', order: 'desc' }] })
+    await sortTrigger.trigger('click')
+    expect(onUpdateSorters).toHaveBeenLastCalledWith([])
+
+    wrapper.unmount()
+  })
+
   test('should only render sorter trigger for sortable field columns', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -238,6 +266,29 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.findAll('.var-data-table__sort-trigger')).toHaveLength(1)
+
+    wrapper.unmount()
+  })
+
+  test('should not render sorter trigger for grouped header parents', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Profile',
+            children: [
+              { key: 'name', title: 'Name', sorter: true },
+              { key: 'role', title: 'Role', sorter: true },
+            ],
+          },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('.var-data-table__sort-trigger')).toHaveLength(2)
+    expect(wrapper.findAll('thead tr')).toHaveLength(2)
 
     wrapper.unmount()
   })
@@ -635,6 +686,23 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support loading description slot', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        loading: true,
+      },
+      slots: {
+        'loading-description': () => h('span', { class: 'loading-text' }, 'Loading rows'),
+      },
+    })
+
+    expect(wrapper.find('.loading-text').text()).toBe('Loading rows')
+
+    wrapper.unmount()
+  })
+
   test('should support column maxWidth', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -690,6 +758,69 @@ describe('test data-table component props', () => {
     expect(wrapper.find('col').attributes('style')).toContain('width: 160px;')
 
     document.dispatchEvent(new MouseEvent('mouseup'))
+    wrapper.unmount()
+  })
+
+  test('should not render resize trigger for the last leaf column', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', resizable: true },
+          { key: 'role', title: 'Role', resizable: true },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('.var-data-table__resize-trigger')).toHaveLength(1)
+
+    wrapper.unmount()
+  })
+
+  test('should resolve grouped header fixed side from child columns', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Left Group',
+            children: [
+              { key: 'name', title: 'Name', fixed: 'left' },
+              { key: 'role', title: 'Role', fixed: 'left' },
+            ],
+          },
+          { key: 'status', title: 'Status' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('thead tr')[0].find('th').classes()).toContain('var-data-table__fixed-cell')
+
+    wrapper.unmount()
+  })
+
+  test('should not resolve grouped header fixed side when child columns differ', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Mixed Group',
+            children: [
+              { key: 'name', title: 'Name', fixed: 'left' },
+              { key: 'role', title: 'Role' },
+            ],
+          },
+          { key: 'status', title: 'Status' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.findAll('thead tr')[0].find('th').classes()).not.toContain('var-data-table__fixed-cell')
+
     wrapper.unmount()
   })
 
@@ -828,6 +959,21 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.find('.var-loading__body').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
+  test('should not render table when no normalized columns exist', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__table').exists()).toBe(false)
+    expect(wrapper.find('.var-data-table__empty').exists()).toBe(false)
+
     wrapper.unmount()
   })
 

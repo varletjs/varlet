@@ -15,10 +15,10 @@
   >
     <var-loading :loading="loading">
       <div :class="classes(n('container'), n('$--scrollbar'))" :style="mainStyle">
-        <table v-if="leafColumns.length" :class="n('table')" :style="tableStyle">
+        <table v-if="columns.length" :class="n('table')" :style="tableStyle">
           <colgroup>
             <col
-              v-for="(column, index) in leafColumns"
+              v-for="(column, index) in columns"
               :key="column.key ?? column.type ?? index"
               :style="getColStyle(column, index)"
             />
@@ -80,7 +80,7 @@
               </tr>
 
               <tr v-if="bodyRow.expanded" :class="n('expanded-row')">
-                <td :class="classes(n('cell'), n('body-cell'), n('expanded-cell'))" :colspan="leafColumns.length">
+                <td :class="classes(n('cell'), n('body-cell'), n('expanded-cell'))" :colspan="columns.length">
                   <div :class="n('expanded-content')">
                     <maybe-v-node :is="renderExpandedRow(bodyRow)" tag="div" />
                   </div>
@@ -123,7 +123,7 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, clamp, floor, isArray, isFunction } from '@varlet/shared'
+import { call, callOrReturn, isArray, isFunction } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { computed, defineComponent, type CSSProperties } from 'vue'
 import VarLoading from '../loading'
@@ -145,25 +145,15 @@ import {
 } from './props'
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
-import { useColumnWidths } from './useColumnWidths'
+import { useColumnSizes } from './useColumnSizes'
 import { useExpandRow } from './useExpandRow'
+import { type DataTableHeaderCell, useHeaderRows } from './useHeaderRows'
 import { usePagination } from './usePagination'
 import { useSelectionColumn } from './useSelectionColumn'
 import { useSorter } from './useSorter'
 import { useTreeExpand } from './useTreeExpand'
 
 const { name, n, classes } = createNamespace('data-table')
-
-interface DataTableHeaderCell {
-  key: string
-  column: DataTableColumn
-  columnIndex: number
-  startLeafColumnIndex: number
-  endLeafColumnIndex: number
-  colSpan?: number
-  rowSpan?: number
-  fixed?: DataTableColumnFixed
-}
 
 export default defineComponent({
   name,
@@ -214,16 +204,18 @@ export default defineComponent({
       getTreeChildren,
     })
 
-    const leafColumns = computed(() => flattenLeafColumns(props.columns))
+    const { normalizedColumns: columns, headerRows } = useHeaderRows({
+      columns: () => props.columns,
+    })
 
-    const { columnWidths, getColStyle, isColumnResizable, startColumnResize } = useColumnWidths({
-      columns: () => leafColumns.value,
+    const { columnWidths, getColStyle, isColumnResizable, startColumnResize } = useColumnSizes({
+      columns: () => columns.value,
       isSelectionColumn,
       isExpandColumn,
     })
 
     const { getFixedStyle, isFirstRightFixedColumn, isLastLeftFixedColumn } = useColumnsFixedOffsets({
-      columns: () => leafColumns.value,
+      columns: () => columns.value,
       columnWidths: () => columnWidths.value,
     })
 
@@ -245,11 +237,11 @@ export default defineComponent({
     })
 
     const firstTreeColumnIndex = computed(() =>
-      leafColumns.value.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column)),
+      columns.value.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column)),
     )
 
     const { expandedRowKeys, isRowExpandable, toggleRowExpanded, renderExpandedRow } = useExpandRow({
-      columns: () => leafColumns.value,
+      columns: () => columns.value,
       isExpandColumn,
     })
 
@@ -259,7 +251,7 @@ export default defineComponent({
       firstTreeColumnIndex,
       getRowKey,
       getTreeChildren,
-      columns: () => leafColumns.value,
+      columns: () => columns.value,
       sourceRows: () => pagedData.value,
       tree: () => props.tree,
     })
@@ -279,93 +271,12 @@ export default defineComponent({
       checkedRowKeys,
       isSelectionColumn,
       getTreeChildren,
-      columns: () => leafColumns.value,
+      columns: () => columns.value,
       tree: () => props.tree,
       cascade: () => props.cascade,
       pagedData: () => pagedData.value,
       allFlatRows: () => allFlatRows.value,
       treeRowMeta: () => treeRowMeta.value,
-    })
-
-    const headerRows = computed<DataTableHeaderCell[][]>(() => {
-      if (!props.columns.some(isGroupColumn)) {
-        const cells: DataTableHeaderCell[] = []
-        let coveredUntil = -1
-
-        props.columns.forEach((column, columnIndex) => {
-          if (columnIndex <= coveredUntil) {
-            return
-          }
-
-          const maxColSpan = props.columns.length - columnIndex
-          const colSpan = clamp(floor(column.titleColSpan ?? 1), 0, maxColSpan)
-
-          if (colSpan === 0) {
-            return
-          }
-
-          coveredUntil = columnIndex + colSpan - 1
-          cells.push({
-            key: `${column.key ?? column.type ?? columnIndex}-header-${columnIndex}`,
-            column,
-            columnIndex,
-            startLeafColumnIndex: columnIndex,
-            endLeafColumnIndex: columnIndex + colSpan - 1,
-            colSpan: colSpan > 1 ? colSpan : undefined,
-            fixed: resolveHeaderCellFixed(leafColumns.value.slice(columnIndex, columnIndex + colSpan)),
-          })
-        })
-
-        return [cells]
-      }
-
-      const rows: DataTableHeaderCell[][] = []
-      const maxDepth = getColumnDepth(props.columns)
-      let leafColumnIndex = 0
-
-      function visit(columns: DataTableColumn[], depth: number) {
-        columns.forEach((column, columnIndex) => {
-          rows[depth] ??= []
-
-          if (isGroupColumn(column)) {
-            const childColumns = column.children
-            const startLeafColumnIndex = leafColumnIndex
-            const leafCount = countLeafColumns(childColumns)
-            leafColumnIndex += leafCount
-            const endLeafColumnIndex = leafColumnIndex - 1
-
-            rows[depth].push({
-              key: `${column.key ?? column.title}-header-${depth}-${columnIndex}`,
-              column,
-              columnIndex: startLeafColumnIndex,
-              startLeafColumnIndex,
-              endLeafColumnIndex,
-              colSpan: leafCount,
-              fixed: resolveHeaderCellFixed(leafColumns.value.slice(startLeafColumnIndex, endLeafColumnIndex + 1)),
-            })
-
-            visit(childColumns, depth + 1)
-            return
-          }
-
-          const startLeafColumnIndex = leafColumnIndex
-          leafColumnIndex += 1
-
-          rows[depth].push({
-            key: `${column.key ?? column.type ?? columnIndex}-header-${depth}-${startLeafColumnIndex}`,
-            column,
-            columnIndex: startLeafColumnIndex,
-            startLeafColumnIndex,
-            endLeafColumnIndex: startLeafColumnIndex,
-            rowSpan: maxDepth - depth > 1 ? maxDepth - depth : undefined,
-            fixed: column.fixed,
-          })
-        })
-      }
-
-      visit(props.columns, 0)
-
-      return rows
     })
 
     function getRowKey(row: Record<string, any>, rowIndex: number) {
@@ -380,40 +291,6 @@ export default defineComponent({
       const children = row[props.childrenKey]
 
       return isArray(children) ? children : []
-    }
-
-    function isGroupColumn(column: DataTableColumn): column is DataTableFieldColumn & { children: DataTableColumn[] } {
-      return 'children' in column && isArray(column.children) && column.children.length > 0
-    }
-
-    function flattenLeafColumns(columns: DataTableColumn[]): DataTableColumn[] {
-      return columns.flatMap((column) => (isGroupColumn(column) ? flattenLeafColumns(column.children) : [column]))
-    }
-
-    function countLeafColumns(columns: DataTableColumn[]) {
-      return flattenLeafColumns(columns).length
-    }
-
-    function getColumnDepth(columns: DataTableColumn[]): number {
-      if (!columns.length) {
-        return 0
-      }
-
-      return Math.max(...columns.map((column) => (isGroupColumn(column) ? 1 + getColumnDepth(column.children) : 1)))
-    }
-
-    function resolveHeaderCellFixed(columns: DataTableColumn[]): DataTableColumnFixed | undefined {
-      if (!columns.length) {
-        return
-      }
-
-      if (columns.every((column) => column.fixed === 'left')) {
-        return 'left'
-      }
-
-      if (columns.every((column) => column.fixed === 'right')) {
-        return 'right'
-      }
     }
 
     function isSelectionColumn(column: DataTableColumn): column is DataTableSelectionColumn {
@@ -466,7 +343,7 @@ export default defineComponent({
     }
 
     function isLastHeaderColumn(columnIndex: number) {
-      return columnIndex === leafColumns.value.length - 1
+      return columnIndex === columns.value.length - 1
     }
 
     function getHeaderCellStyle(cell: DataTableHeaderCell): CSSProperties {
@@ -500,7 +377,7 @@ export default defineComponent({
       paginationTotal,
       showPagination,
       tableStyle,
-      leafColumns,
+      columns,
       currentSelectableRows,
       allCurrentRowsSelected,
       someCurrentRowsSelected,

@@ -4,7 +4,7 @@ import type { DataTableColumn, DataTableExpandColumn, DataTableSelectionColumn }
 
 const defaultDataTableControlColumnWidth = 52
 
-interface UseColumnWidthsOptions {
+interface UseColumnSizesOptions {
   columns: () => DataTableColumn[]
   isSelectionColumn: (column: DataTableColumn) => column is DataTableSelectionColumn
   isExpandColumn: (column: DataTableColumn) => column is DataTableExpandColumn
@@ -15,7 +15,7 @@ export interface DataTableResizableHeaderCell {
   columnIndex: number
 }
 
-export function useColumnWidths({ columns, isSelectionColumn, isExpandColumn }: UseColumnWidthsOptions) {
+export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: UseColumnSizesOptions) {
   const resizedColumnWidths = ref<Record<string, number>>({})
   let stopActiveResize: (() => void) | undefined
 

@@ -73,25 +73,14 @@ import VarIcon from '../icon'
 import { createNamespace } from '../utils/components'
 import type {
   DataTableColumn,
-  DataTableColumnFixed,
   DataTableExpandColumn,
   DataTableFieldColumn,
   DataTableSelectionColumn,
   DataTableSorterOrder,
 } from './props'
+import type { DataTableHeaderCell as DataTableHeaderCellData } from './useHeaderRows'
 
 const { n, classes } = createNamespace('data-table')
-
-export interface DataTableHeaderCellData {
-  key: string
-  column: DataTableColumn
-  columnIndex: number
-  startLeafColumnIndex: number
-  endLeafColumnIndex: number
-  colSpan?: number
-  rowSpan?: number
-  fixed?: DataTableColumnFixed
-}
 
 export default defineComponent({
   name: 'DataTableHeaderCell',
