@@ -139,19 +139,19 @@ const columns = [
   {
     title: '资料',
     children: [
-      { key: 'name', title: '姓名', width: 140 },
-      { key: 'role', title: '角色', width: 140 },
+      { key: 'name', title: '姓名', width: 112 },
+      { key: 'role', title: '角色', width: 112 },
     ],
   },
   {
     title: '状态分组',
-    children: [{ key: 'status', title: '状态', width: 120 }],
+    children: [{ key: 'status', title: '状态', width: 96 }],
   },
 ]
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
 </template>
 ```
 

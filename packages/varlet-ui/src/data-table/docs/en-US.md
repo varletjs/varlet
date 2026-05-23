@@ -139,19 +139,19 @@ const columns = [
   {
     title: 'Profile',
     children: [
-      { key: 'name', title: 'Name', width: 140 },
-      { key: 'role', title: 'Role', width: 140 },
+      { key: 'name', title: 'Name', width: 112 },
+      { key: 'role', title: 'Role', width: 112 },
     ],
   },
   {
     title: 'State',
-    children: [{ key: 'status', title: 'Status', width: 120 }],
+    children: [{ key: 'status', title: 'Status', width: 96 }],
   },
 ]
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" />
+  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
 </template>
 ```
 

@@ -281,13 +281,13 @@ const groupedHeaderColumns = [
   {
     title: 'Profile',
     children: [
-      { key: 'name', title: 'Name', width: 140 },
-      { key: 'role', title: 'Role', width: 140 },
+      { key: 'name', title: 'Name', width: 112 },
+      { key: 'role', title: 'Role', width: 112 },
     ],
   },
   {
     title: 'State',
-    children: [{ key: 'status', title: 'Status', width: 120 }],
+    children: [{ key: 'status', title: 'Status', width: 96 }],
   },
 ]
 
@@ -398,7 +398,7 @@ function applySorters(rows, activeSorters) {
   <var-data-table :columns="alignedColumns" :data="data" />
 
   <app-type>{{ t('groupedHeader') }}</app-type>
-  <var-data-table :columns="groupedHeaderColumns" :data="data" :pagination="false" />
+  <var-data-table :columns="groupedHeaderColumns" :data="data" :pagination="false" cell-bordered />
 
   <app-type>{{ t('customProps') }}</app-type>
   <var-data-table :columns="cellPropsColumns" :data="data" :row-props="customRowProps" />
