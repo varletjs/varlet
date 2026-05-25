@@ -343,6 +343,58 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support controlled expanded row keys', async () => {
+    const onUpdateExpandedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'expand',
+            renderExpand: ({ row }) => h('div', { class: 'expanded-content' }, row.role),
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+        expandedRowKeys: [1],
+        'onUpdate:expandedRowKeys': onUpdateExpandedRowKeys,
+      },
+    })
+
+    expect(wrapper.find('.expanded-content').text()).toBe('Admin')
+
+    await wrapper.find('.var-data-table__expand-trigger').trigger('click')
+    expect(onUpdateExpandedRowKeys).toHaveBeenLastCalledWith([])
+
+    wrapper.unmount()
+  })
+
+  test('should support uncontrolled expanded row keys', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'expand',
+            renderExpand: ({ row }) => h('div', { class: 'expanded-content' }, row.role),
+          },
+          ...columns,
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('.expanded-content').exists()).toBe(false)
+
+    await wrapper.find('.var-data-table__expand-trigger').trigger('click')
+    expect(wrapper.find('.expanded-content').text()).toBe('Admin')
+
+    await wrapper.find('.var-data-table__expand-trigger').trigger('click')
+    expect(wrapper.find('.expanded-content').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('should support expandable in expand column', async () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -474,19 +526,43 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.text()).toContain('Frontend')
-    expect(wrapper.text()).toContain('Ada')
-    expect(wrapper.text()).toContain('Taylor')
     expect(wrapper.text()).toContain('Design')
-    expect(wrapper.text()).toContain('Linus')
+    expect(wrapper.text()).not.toContain('Ada')
+    expect(wrapper.text()).not.toContain('Taylor')
+    expect(wrapper.text()).not.toContain('Linus')
 
     const triggers = wrapper.findAll('.var-data-table__tree-trigger')
     expect(triggers).toHaveLength(2)
 
     await triggers[0].trigger('click')
 
-    expect(wrapper.text()).not.toContain('Ada')
-    expect(wrapper.text()).not.toContain('Taylor')
-    expect(wrapper.text()).toContain('Linus')
+    expect(wrapper.text()).toContain('Ada')
+    expect(wrapper.text()).toContain('Taylor')
+    expect(wrapper.text()).not.toContain('Linus')
+
+    wrapper.unmount()
+  })
+
+  test('should support controlled expanded tree row keys', async () => {
+    const onUpdateExpandedTreeRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        expandedTreeRowKeys: [1],
+        'onUpdate:expandedTreeRowKeys': onUpdateExpandedTreeRowKeys,
+      },
+    })
+
+    expect(wrapper.text()).toContain('Ada')
+    expect(wrapper.text()).toContain('Taylor')
+    expect(wrapper.text()).not.toContain('Linus')
+
+    await wrapper.find('.var-data-table__tree-trigger').trigger('click')
+    expect(onUpdateExpandedTreeRowKeys).toHaveBeenLastCalledWith([])
 
     wrapper.unmount()
   })
@@ -500,6 +576,7 @@ describe('test data-table component props', () => {
         pagination: false,
         tree: true,
         childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2],
         checkedRowKeys: [],
         'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
       },
@@ -524,6 +601,7 @@ describe('test data-table component props', () => {
         tree: true,
         cascade: false,
         childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2],
         checkedRowKeys: [],
         'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
       },
@@ -546,6 +624,7 @@ describe('test data-table component props', () => {
         pagination: false,
         tree: true,
         childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2],
         checkedRowKeys: [11],
       },
     })
@@ -570,6 +649,7 @@ describe('test data-table component props', () => {
         pagination: false,
         tree: true,
         childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2],
         checkedRowKeys: [11],
         'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
       },
@@ -585,7 +665,7 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should count collapsed selected tree rows in header checkbox state', async () => {
+  test('should count collapsed selected tree rows in header checkbox state', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [{ type: 'selection' }, ...columns],
@@ -596,8 +676,6 @@ describe('test data-table component props', () => {
         checkedRowKeys: [11],
       },
     })
-
-    await wrapper.find('.var-data-table__tree-trigger').trigger('click')
 
     const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
     expect(checkboxes[0].vm.modelValue).toBe(false)

@@ -400,7 +400,7 @@ Tree single selection is independent from cascading and still keeps only one sel
 
 ### Expand
 
-Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, and `expandable` to control whether a row can be expanded. Expanded content is better suited for focused detail blocks than another table.
+Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, `expandable` to control whether a row can be expanded, and `v-model:expanded-row-keys` when you need to control expanded detail rows from outside. Expanded content is better suited for focused detail blocks than another table.
 
 ```html
 <script setup>
@@ -662,6 +662,8 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `v-model:page` | Current page | _number_ | `1` |
 | `v-model:page-size` | Current page size | _number_ | `10` |
 | `v-model:checked-row-keys` | Selected row keys | _Array<string \| number>_ | `[]` |
+| `v-model:expanded-row-keys` | Expanded detail row keys for `type: 'expand'` columns | _Array<string \| number>_ | `[]` |
+| `v-model:expanded-tree-row-keys` | Expanded tree row keys for `tree` mode | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
 | `scroll-x` | Table width used to enable horizontal scrolling. Usually paired with fixed columns | _number \| string_ | `-` |
@@ -748,6 +750,8 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
+| `--data-table-selection-cell-padding` | `0 8px` |
+| `--data-table-expand-cell-padding` | `0 8px` |
 | `--data-table-cell-font-size` | `16px` |
 | `--data-table-header-font-size` | `14px` |
 | `--data-table-row-height` | `46px` |

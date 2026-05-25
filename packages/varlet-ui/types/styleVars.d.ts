@@ -283,6 +283,8 @@ interface BaseStyleVars {
   '--data-table-empty-text-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string
+  '--data-table-selection-cell-padding'?: string
+  '--data-table-expand-cell-padding'?: string
   '--data-table-cell-font-size'?: string
   '--data-table-header-font-size'?: string
   '--data-table-row-height'?: string

@@ -14,6 +14,8 @@ export default {
   '--data-table-empty-text-color': 'var(--color-text-disabled)',
   '--data-table-border-radius': '2px',
   '--data-table-cell-padding': '0 16px',
+  '--data-table-selection-cell-padding': '0 8px',
+  '--data-table-expand-cell-padding': '0 8px',
   '--data-table-cell-font-size': '16px',
   '--data-table-header-font-size': '14px',
   '--data-table-row-height': '46px',

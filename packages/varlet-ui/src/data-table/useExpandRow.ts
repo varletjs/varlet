@@ -1,14 +1,15 @@
-import { computed, ref } from 'vue'
+import { computed, type Ref } from 'vue'
 import type { DataTableColumn, DataTableExpandColumn } from './props'
 import type { DataTableBodyRow } from './useBodyRows'
 
 interface UseExpandRowOptions {
   columns: () => DataTableColumn[]
+  expandedRowKeys: Ref<Array<string | number>>
   isExpandColumn: (column: DataTableColumn) => column is DataTableExpandColumn
 }
 
-export function useExpandRow({ columns, isExpandColumn }: UseExpandRowOptions) {
-  const expandedRowKeys = ref(new Set<string | number>())
+export function useExpandRow({ columns, expandedRowKeys, isExpandColumn }: UseExpandRowOptions) {
+  const expandedRowKeySet = computed(() => new Set(expandedRowKeys.value))
 
   const expandColumn = computed(() => columns().find(isExpandColumn))
 
@@ -38,7 +39,7 @@ export function useExpandRow({ columns, isExpandColumn }: UseExpandRowOptions) {
       target.add(bodyRow.key)
     }
 
-    expandedRowKeys.value = target
+    expandedRowKeys.value = [...target]
   }
 
   function renderExpandedRow(bodyRow: DataTableBodyRow) {
@@ -55,7 +56,7 @@ export function useExpandRow({ columns, isExpandColumn }: UseExpandRowOptions) {
   }
 
   return {
-    expandedRowKeys,
+    expandedRowKeySet,
     isRowExpandable,
     toggleRowExpanded,
     renderExpandedRow,

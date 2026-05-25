@@ -17,6 +17,7 @@
   --data-table-border-radius: 2px;
   --data-table-cell-padding: 0 16px;
   --data-table-selection-cell-padding: 0 8px;
+  --data-table-expand-cell-padding: 0 8px;
   --data-table-cell-font-size: 16px;
   --data-table-header-font-size: 14px;
   --data-table-row-height: 46px;
@@ -64,10 +65,8 @@
     }
   }
 
-  &--with-footer {
-    .var-data-table__row:last-child {
-      border-bottom: 0;
-    }
+  &__row:last-child {
+    border-bottom: 0;
   }
 
   &--surface-low {
@@ -165,8 +164,8 @@
     opacity: 0.72;
   }
 
-  &__sort-trigger-icon-up,
-  &__sort-trigger-icon-down {
+  &__sort-trigger-icon-up[var-data-table-cover],
+  &__sort-trigger-icon-down[var-data-table-cover] {
     display: block;
     font-size: 12px;
     line-height: 1;
@@ -174,15 +173,15 @@
     transition: opacity 0.2s ease;
   }
 
-  &__sort-trigger-icon-up {
+  &__sort-trigger-icon-up[var-data-table-cover] {
     margin-bottom: -5px;
   }
 
-  &__sort-trigger-icon-down {
+  &__sort-trigger-icon-down[var-data-table-cover] {
     margin-top: -5px;
   }
 
-  &__sort-trigger-icon--active {
+  &__sort-trigger-icon--active[var-data-table-cover] {
     opacity: 1;
   }
 
@@ -251,18 +250,25 @@
   &__selection-cell,
   &__expand-cell {
     text-align: center;
-    padding: var(--data-table-selection-cell-padding);
     min-width: 52px;
   }
 
   &__selection-cell {
-    .var-checkbox,
-    .var-radio {
+    padding: var(--data-table-selection-cell-padding);
+  }
+
+  &__expand-cell {
+    padding: var(--data-table-expand-cell-padding);
+  }
+
+  &__selection-cell {
+    .var-checkbox[var-data-table-cover],
+    .var-radio[var-data-table-cover] {
       transform: none;
     }
 
-    .var-checkbox__wrap,
-    .var-radio__wrap {
+    .var-checkbox[var-data-table-cover] .var-checkbox__wrap,
+    .var-radio[var-data-table-cover] .var-radio__wrap {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -340,7 +346,7 @@
     background: var(--data-table-background);
     overflow: auto;
 
-    .var-pagination {
+    .var-pagination[var-data-table-cover] {
       margin-left: auto;
     }
   }

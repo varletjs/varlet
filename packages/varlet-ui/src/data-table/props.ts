@@ -162,6 +162,14 @@ export const props = {
     type: Array as PropType<Array<string | number>>,
     default: () => [],
   },
+  expandedRowKeys: {
+    type: Array as PropType<Array<string | number>>,
+    default: () => [],
+  },
+  expandedTreeRowKeys: {
+    type: Array as PropType<Array<string | number>>,
+    default: () => [],
+  },
   elevation: {
     type: [Boolean, Number, String],
     default: true,
@@ -176,6 +184,8 @@ export const props = {
     default: 'normal',
   },
   'onUpdate:checkedRowKeys': defineListenerProp<(checkedRowKeys: Array<string | number>) => void>(),
+  'onUpdate:expandedRowKeys': defineListenerProp<(expandedRowKeys: Array<string | number>) => void>(),
+  'onUpdate:expandedTreeRowKeys': defineListenerProp<(expandedTreeRowKeys: Array<string | number>) => void>(),
   'onUpdate:page': defineListenerProp<(page: number) => void>(),
   'onUpdate:pageSize': defineListenerProp<(pageSize: number) => void>(),
   'onUpdate:sorters': defineListenerProp<(sorters: DataTableSorter[]) => void>(),

@@ -400,7 +400,7 @@ const data = [
 
 ### 展开列
 
-通过 `type: 'expand'` 渲染展开列，使用 `renderExpand` 自定义展开内容，`expandable` 可按行控制是否允许展开。展开区域更适合展示聚焦的详情块，而不是再嵌一层表格。
+通过 `type: 'expand'` 渲染展开列，使用 `renderExpand` 自定义展开内容，`expandable` 可按行控制是否允许展开；如果需要从外部受控详情展开行，可以使用 `v-model:expanded-row-keys`。展开区域更适合展示聚焦的详情块，而不是再嵌一层表格。
 
 ```html
 <script setup>
@@ -662,6 +662,8 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `v-model:page` | 当前页码 | _number_ | `1` |
 | `v-model:page-size` | 当前每页条数 | _number_ | `10` |
 | `v-model:checked-row-keys` | 选中行的 key 集合 | _Array<string \| number>_ | `[]` |
+| `v-model:expanded-row-keys` | `type: 'expand'` 展开详情行的 key 集合 | _Array<string \| number>_ | `[]` |
+| `v-model:expanded-tree-row-keys` | `tree` 模式下展开树节点的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
 | `scroll-x` | 用于开启横向滚动的表格宽度，通常和固定列一起使用 | _number \| string_ | `-` |
@@ -748,6 +750,8 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
+| `--data-table-selection-cell-padding` | `0 8px` |
+| `--data-table-expand-cell-padding` | `0 8px` |
 | `--data-table-cell-font-size` | `16px` |
 | `--data-table-header-font-size` | `14px` |
 | `--data-table-row-height` | `46px` |

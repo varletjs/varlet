@@ -14,7 +14,7 @@
     "
   >
     <var-loading :loading="loading">
-      <div :class="classes(n('container'), n('$--scrollbar'))" :style="mainStyle">
+      <div :class="classes(n('container'), n('$--scrollbar'))" :style="containerStyle">
         <table v-if="columns.length" :class="n('table')" :style="tableStyle">
           <colgroup>
             <col
@@ -101,6 +101,7 @@
         <slot name="footer-prefix" />
 
         <var-pagination
+          var-data-table-cover
           :current="page"
           :size="pageSize"
           :total="paginationTotal"
@@ -167,10 +168,10 @@ export default defineComponent({
   props,
   setup(props) {
     const { t: pt } = injectLocaleProvider()
-    const page = computed(() => props.page)
-    const pageSize = computed(() => props.pageSize)
     const checkedRowKeys = useVModel(props, 'checkedRowKeys')
-    const mainStyle = computed<CSSProperties>(() => {
+    const expandedRowKeys = useVModel(props, 'expandedRowKeys')
+    const expandedTreeRowKeys = useVModel(props, 'expandedTreeRowKeys')
+    const containerStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {}
 
       if (props.maxHeight != null) {
@@ -200,6 +201,7 @@ export default defineComponent({
     const { collapsedTreeRowKeys, toggleTreeRowExpanded } = useTreeExpand({
       tree: () => props.tree,
       data: () => props.data,
+      expandedTreeRowKeys,
       getRowKey,
       getTreeChildren,
     })
@@ -240,14 +242,15 @@ export default defineComponent({
       columns.value.findIndex((column) => !isSelectionColumn(column) && !isExpandColumn(column)),
     )
 
-    const { expandedRowKeys, isRowExpandable, toggleRowExpanded, renderExpandedRow } = useExpandRow({
+    const { expandedRowKeySet, isRowExpandable, toggleRowExpanded, renderExpandedRow } = useExpandRow({
       columns: () => columns.value,
+      expandedRowKeys,
       isExpandColumn,
     })
 
     const { allFlatRows, treeRowMeta, bodyRows } = useBodyRows({
       collapsedTreeRowKeys,
-      expandedRowKeys,
+      expandedRowKeySet,
       firstTreeColumnIndex,
       getRowKey,
       getTreeChildren,
@@ -370,9 +373,7 @@ export default defineComponent({
       pt,
       t,
       expandedRowKeys,
-      mainStyle,
-      page,
-      pageSize,
+      containerStyle,
       paginationProps,
       paginationTotal,
       showPagination,
@@ -433,7 +434,6 @@ export default defineComponent({
 @import '../menu-select/menuSelect';
 @import '../menu-option/menuOption';
 @import '../radio/radio';
-@import '../cell/cell';
 @import '../field-decorator/fieldDecorator';
 @import '../input/input';
 @import '../pagination/pagination';

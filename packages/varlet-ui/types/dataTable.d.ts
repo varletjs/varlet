@@ -10,7 +10,10 @@ export type DataTableTableLayout = 'auto' | 'fixed'
 export type DataTableSortMode = 'single' | 'multiple'
 export type DataTableSorterOrder = 'asc' | 'desc'
 
-export type DataTableRowKey<Row = any> = keyof Row | string | ((row: Row, rowIndex: number) => string | number)
+export type DataTableRowKey<Row = any> =
+  | Extract<keyof Row, string>
+  | string
+  | ((row: Row, rowIndex: number) => string | number)
 
 export interface DataTableRowBaseContext<Row = any> {
   row: Row
@@ -124,7 +127,11 @@ export interface DataTableProps extends BasicAttributes {
   tableLayout?: DataTableTableLayout
   size?: 'small' | 'normal' | 'large'
   checkedRowKeys?: Array<string | number>
+  expandedRowKeys?: Array<string | number>
+  expandedTreeRowKeys?: Array<string | number>
   'onUpdate:checkedRowKeys'?: ListenerProp<(checkedRowKeys: Array<string | number>) => void>
+  'onUpdate:expandedRowKeys'?: ListenerProp<(expandedRowKeys: Array<string | number>) => void>
+  'onUpdate:expandedTreeRowKeys'?: ListenerProp<(expandedTreeRowKeys: Array<string | number>) => void>
   'onUpdate:page'?: ListenerProp<(page: number) => void>
   'onUpdate:pageSize'?: ListenerProp<(pageSize: number) => void>
   'onUpdate:sorters'?: ListenerProp<(sorters: DataTableSorter[]) => void>
@@ -136,6 +143,7 @@ export class DataTable extends VarComponent {
   $props: DataTableProps
 
   $slots: {
+    empty(): VNode[]
     loadingDescription(): VNode[]
     footerPrefix(): VNode[]
   }

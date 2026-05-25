@@ -1,20 +1,37 @@
-import { ref, watch } from 'vue'
+import { computed, watch, type Ref } from 'vue'
 import type { DataTableBodyRow } from './useBodyRows'
 
 interface UseTreeExpandOptions {
   tree: () => boolean
   data: () => Record<string, any>[]
+  expandedTreeRowKeys: Ref<Array<string | number>>
   getRowKey: (row: Record<string, any>, rowIndex: number) => string | number
   getTreeChildren: (row: Record<string, any>) => Record<string, any>[]
 }
 
-export function useTreeExpand({ tree, data, getRowKey, getTreeChildren }: UseTreeExpandOptions) {
-  const collapsedTreeRowKeys = ref(new Set<string | number>())
+export function useTreeExpand({ tree, data, expandedTreeRowKeys, getRowKey, getTreeChildren }: UseTreeExpandOptions) {
+  const expandedTreeRowKeySet = computed(() => new Set(expandedTreeRowKeys.value))
+  const collapsedTreeRowKeys = computed(() => {
+    if (!tree()) {
+      return new Set<string | number>()
+    }
+
+    const validKeys = collectExpandableRowKeys(data())
+    const collapsedKeys = new Set<string | number>()
+
+    for (const key of validKeys) {
+      if (!expandedTreeRowKeySet.value.has(key)) {
+        collapsedKeys.add(key)
+      }
+    }
+
+    return collapsedKeys
+  })
 
   watch(
-    data,
+    [data, tree],
     () => {
-      syncCollapsedTreeRowKeys()
+      syncExpandedTreeRowKeys()
     },
     { immediate: true },
   )
@@ -24,33 +41,25 @@ export function useTreeExpand({ tree, data, getRowKey, getTreeChildren }: UseTre
       return
     }
 
-    const nextCollapsedRows = new Set(collapsedTreeRowKeys.value)
+    const target = new Set(expandedTreeRowKeys.value)
 
-    if (nextCollapsedRows.has(bodyRow.key)) {
-      nextCollapsedRows.delete(bodyRow.key)
+    if (target.has(bodyRow.key)) {
+      target.delete(bodyRow.key)
     } else {
-      nextCollapsedRows.add(bodyRow.key)
+      target.add(bodyRow.key)
     }
 
-    collapsedTreeRowKeys.value = nextCollapsedRows
+    expandedTreeRowKeys.value = [...target]
   }
 
-  function syncCollapsedTreeRowKeys() {
+  function syncExpandedTreeRowKeys() {
     if (!tree()) {
-      collapsedTreeRowKeys.value = new Set()
+      expandedTreeRowKeys.value = []
       return
     }
 
     const validKeys = collectExpandableRowKeys(data())
-    const nextCollapsedKeys = new Set<string | number>()
-
-    for (const key of collapsedTreeRowKeys.value) {
-      if (validKeys.has(key)) {
-        nextCollapsedKeys.add(key)
-      }
-    }
-
-    collapsedTreeRowKeys.value = nextCollapsedKeys
+    expandedTreeRowKeys.value = expandedTreeRowKeys.value.filter((key) => validKeys.has(key))
   }
 
   function collectExpandableRowKeys(rows: Record<string, any>[]) {
@@ -79,6 +88,7 @@ export function useTreeExpand({ tree, data, getRowKey, getTreeChildren }: UseTre
 
   return {
     collapsedTreeRowKeys,
+    expandedTreeRowKeySet,
     toggleTreeRowExpanded,
   }
 }

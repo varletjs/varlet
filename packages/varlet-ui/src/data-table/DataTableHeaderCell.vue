@@ -17,6 +17,7 @@
   >
     <var-checkbox
       v-if="isSelectionColumn(headerCell.column) && isMultipleSelectionColumn(headerCell.column)"
+      var-data-table-cover
       :model-value="allCurrentRowsSelected"
       :indeterminate="someCurrentRowsSelected"
       :disabled="!isSelectionColumnSelectable(headerCell.column) || !hasSelectableRows"
@@ -40,10 +41,12 @@
       <span :class="n('sort-trigger-icon')" aria-hidden="true">
         <var-icon
           name="chevron-up"
+          var-data-table-cover
           :class="classes(n('sort-trigger-icon-up'), [columnSorterOrder === 'asc', n('sort-trigger-icon--active')])"
         />
         <var-icon
           name="chevron-down"
+          var-data-table-cover
           :class="classes(n('sort-trigger-icon-down'), [columnSorterOrder === 'desc', n('sort-trigger-icon--active')])"
         />
       </span>

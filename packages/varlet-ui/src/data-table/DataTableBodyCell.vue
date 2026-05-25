@@ -18,6 +18,7 @@
   >
     <var-checkbox
       v-if="isSelectionColumn(cell.column) && isMultipleSelectionColumn(cell.column)"
+      var-data-table-cover
       :model-value="isRowKeySelected(bodyRow.key)"
       :indeterminate="isRowKeyIndeterminate(bodyRow.key)"
       :disabled="
@@ -28,6 +29,7 @@
     />
     <var-radio
       v-else-if="isSelectionColumn(cell.column)"
+      var-data-table-cover
       :model-value="isRowKeySelected(bodyRow.key)"
       :disabled="
         !isSelectionColumnSelectable(cell.column) || !isRowSelectable(bodyRow.row, bodyRow.rowIndex, cell.column)
@@ -43,7 +45,7 @@
       :disabled="!isRowExpandable(bodyRow, cell.column)"
       @click="toggleRowExpanded(bodyRow)"
     >
-      <var-icon :name="bodyRow.expanded ? 'chevron-down' : 'chevron-right'" />
+      <var-icon var-data-table-cover :name="bodyRow.expanded ? 'chevron-down' : 'chevron-right'" />
     </button>
     <div v-else-if="tree && cell.treeLevel != null" :class="n('tree-cell')" :style="treeStyle">
       <button
@@ -53,7 +55,7 @@
         :class="classes(n('tree-trigger'), [cell.treeExpanded, n('tree-trigger--expanded')])"
         @click="toggleTreeRowExpanded(bodyRow)"
       >
-        <var-icon :name="cell.treeExpanded ? 'chevron-down' : 'chevron-right'" />
+        <var-icon var-data-table-cover :name="cell.treeExpanded ? 'chevron-down' : 'chevron-right'" />
       </button>
       <span v-else :class="n('tree-indent')" />
       <maybe-v-node :is="renderCell(bodyRow, cell.column)" tag="div" />
