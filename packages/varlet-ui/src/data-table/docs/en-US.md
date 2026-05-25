@@ -2,7 +2,7 @@
 
 ### Intro
 
-A higher-level data table component based on `Table`, with built-in column configuration and pagination.
+Data-driven table.
 
 ### Basic Usage
 
