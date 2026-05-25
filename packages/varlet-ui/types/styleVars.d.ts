@@ -773,6 +773,7 @@ interface BaseStyleVars {
   '--switch-variant-ripple-left'?: string
   '--switch-variant-ripple-active-left'?: string
   '--table-background'?: string
+  '--table-surface-low-background'?: string
   '--table-border-radius'?: string
   '--table-thead-border-bottom'?: string
   '--table-thead-th-text-color'?: string
@@ -789,7 +790,6 @@ interface BaseStyleVars {
   '--table-row-height'?: string
   '--table-row-padding'?: string
   '--table-footer-border-top'?: string
-  '--table-surface-low-row-hover-background'?: string
   '--tabs-item-horizontal-height'?: string
   '--tabs-item-vertical-height'?: string
   '--tabs-radius'?: string

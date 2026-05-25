@@ -1,5 +1,6 @@
 export default {
   '--table-background': 'var(--color-surface-container-highest)',
+  '--table-surface-low-background': '#1c1b1d',
   '--table-plain-row-hover-background': 'hsla(var(--hsl-on-surface), 0.08)',
   '--table-surface-low-row-hover-background': '#1c1b1d',
   '--table-thead-th-text-color': 'rgba(255, 255, 255, 0.6)',
