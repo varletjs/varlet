@@ -61,6 +61,9 @@ function handleComplete(value) {
     </template>
   </var-otp-input>
 
+  <app-type style="margin-top: 10vmin">{{ t('mask') }}</app-type>
+  <var-otp-input v-model="maskedValue" mask />
+
   <app-type style="margin-top: 10vmin">{{ t('paste') }}</app-type>
   <var-space direction="column" :size="['4vmin', 0]">
     <div class="otp-input-example__tip">
@@ -88,9 +91,6 @@ function handleComplete(value) {
 
   <app-type style="margin-top: 10vmin">{{ t('validation') }}</app-type>
   <var-otp-input v-model="validatedValue" variant="filled" :rules="z.string().length(6, t('errorMessage'))" />
-
-  <app-type style="margin-top: 10vmin">{{ t('mask') }}</app-type>
-  <var-otp-input v-model="maskedValue" mask />
 
   <div style="height: 20px"></div>
 </template>
