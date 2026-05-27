@@ -136,14 +136,14 @@ Use `options` to render segmented buttons from data.
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('day')
-const options = computed(() => [
+const options = [
   { label: 'Day', value: 'day' },
   { label: 'Week', value: 'week' },
   { label: 'Month', value: 'month' },
-])
+]
 </script>
 
 <template>
@@ -157,14 +157,14 @@ Customize the format of the data in `options` through the `label-key` and `value
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('day')
-const options = computed(() => [
+const options = [
   { name: 'Day', id: 'day' },
   { name: 'Week', id: 'week' },
   { name: 'Month', id: 'month' },
-])
+]
 </script>
 
 <template>
