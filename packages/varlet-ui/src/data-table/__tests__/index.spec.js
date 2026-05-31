@@ -69,6 +69,35 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should update local pagination internally when page is uncontrolled', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pageSize: 2,
+      },
+    })
+
+    wrapper.findComponent({ name: 'var-pagination' }).vm.$emit('change', 2, 2)
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.text()).not.toContain('Ada')
+    expect(wrapper.text()).toContain('Taylor')
+    wrapper.unmount()
+  })
+
+  test('should hide page size changer by default', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+      },
+    })
+
+    expect(wrapper.findComponent({ name: 'var-pagination' }).props('showSizeChanger')).toBe(false)
+    wrapper.unmount()
+  })
+
   test('should not slice data in remote pagination mode', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -188,6 +217,21 @@ describe('test data-table component props', () => {
     await wrapper.setProps({ sorters: [{ key: 'name', order: 'desc' }] })
     await sortTrigger.trigger('click')
     expect(onUpdateSorters).toHaveBeenLastCalledWith([])
+
+    wrapper.unmount()
+  })
+
+  test('should render sorter icons with explicit size', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ key: 'name', title: 'Name', sorter: true }],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__sort-trigger-icon-up').attributes('style')).toContain('font-size: 18px;')
+    expect(wrapper.find('.var-data-table__sort-trigger-icon-down').attributes('style')).toContain('font-size: 18px;')
 
     wrapper.unmount()
   })
@@ -761,6 +805,32 @@ describe('test data-table component props', () => {
     expect(mainStyle).toContain('max-height: 240px;')
     expect(mainStyle).toContain('overflow: auto;')
     expect(mainStyle).toContain('overflow-x: auto;')
+    wrapper.unmount()
+  })
+
+  test('should keep sticky header above fixed body cells', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', fixed: 'left', width: 120 },
+          { key: 'role', title: 'Role', width: 120 },
+          { key: 'status', title: 'Status', fixed: 'right', width: 120 },
+        ],
+        data,
+        pagination: false,
+        maxHeight: 240,
+        scrollX: 640,
+      },
+    })
+
+    const headerCells = wrapper.findAll('thead th')
+    const bodyCells = wrapper.findAll('tbody td')
+
+    expect(headerCells[0].attributes('style')).toContain('z-index: 3;')
+    expect(headerCells[1].attributes('style')).toContain('z-index: 2;')
+    expect(bodyCells[0].attributes('style')).toContain('z-index: 1;')
+    expect(bodyCells[2].attributes('style')).toContain('z-index: 1;')
+
     wrapper.unmount()
   })
 

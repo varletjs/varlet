@@ -6,7 +6,7 @@ import type { DataTablePagination } from './props'
 const defaultPaginationOptions = {
   simple: false,
   disabled: false,
-  showSizeChanger: true,
+  showSizeChanger: false,
   showQuickJumper: false,
   maxPagerCount: 5,
   sizeOption: [10, 20, 50, 100],

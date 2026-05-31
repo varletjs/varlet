@@ -41,11 +41,13 @@
       <span :class="n('sort-trigger-icon')" aria-hidden="true">
         <var-icon
           name="chevron-up"
+          :size="18"
           var-data-table-cover
           :class="classes(n('sort-trigger-icon-up'), [columnSorterOrder === 'asc', n('sort-trigger-icon--active')])"
         />
         <var-icon
           name="chevron-down"
+          :size="18"
           var-data-table-cover
           :class="classes(n('sort-trigger-icon-down'), [columnSorterOrder === 'desc', n('sort-trigger-icon--active')])"
         />

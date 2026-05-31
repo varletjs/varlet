@@ -124,7 +124,7 @@
 </template>
 
 <script lang="ts">
-import { call, callOrReturn, isArray, isFunction } from '@varlet/shared'
+import { callOrReturn, isArray, isFunction } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { computed, defineComponent, type CSSProperties } from 'vue'
 import VarLoading from '../loading'
@@ -171,6 +171,8 @@ export default defineComponent({
     const checkedRowKeys = useVModel(props, 'checkedRowKeys')
     const expandedRowKeys = useVModel(props, 'expandedRowKeys')
     const expandedTreeRowKeys = useVModel(props, 'expandedTreeRowKeys')
+    const page = useVModel(props, 'page')
+    const pageSize = useVModel(props, 'pageSize')
     const containerStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {}
 
@@ -231,11 +233,13 @@ export default defineComponent({
       pagination: () => props.pagination,
       remote: () => props.remote,
       loading: () => props.loading,
-      page: () => props.page,
-      pageSize: () => props.pageSize,
+      page: () => page.value,
+      pageSize: () => pageSize.value,
       total: () => props.total,
       data: () => props.data,
-      onUpdatePage: () => props['onUpdate:page'],
+      onUpdatePage: () => (nextPage) => {
+        page.value = nextPage
+      },
     })
 
     const firstTreeColumnIndex = computed(() =>
@@ -352,8 +356,8 @@ export default defineComponent({
     function getHeaderCellStyle(cell: DataTableHeaderCell): CSSProperties {
       return {
         textAlign: getAlign(cell.column.titleAlign ?? cell.column.align),
-        zIndex: cell.fixed ? 3 : undefined,
         ...getFixedStyle(cell.fixed, cell.startLeafColumnIndex),
+        zIndex: cell.fixed ? 3 : 2,
       }
     }
 
@@ -361,12 +365,13 @@ export default defineComponent({
       return {
         textAlign: getAlign(cell.column.align),
         ...getFixedStyle(cell.column.fixed, cell.columnIndex),
+        zIndex: cell.column.fixed ? 1 : undefined,
       }
     }
 
-    function handlePaginationChange(page: number, pageSize: number) {
-      call(props['onUpdate:page'], page)
-      call(props['onUpdate:pageSize'], pageSize)
+    function handlePaginationChange(nextPage: number, nextPageSize: number) {
+      page.value = nextPage
+      pageSize.value = nextPageSize
     }
 
     return {

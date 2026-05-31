@@ -8,16 +8,20 @@ Data-driven table.
 
 ```html
 <script setup>
-const columns = [
+import { ref } from 'vue'
+
+const columns = ref([
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
-]
+])
 
-const data = [
+const data = ref([
   { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
   { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
@@ -25,179 +29,14 @@ const data = [
 </template>
 ```
 
-### Plain Table
 
-Set `plain` to remove the card-like shadow, background, and radius, and present the table as a pure table surface.
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
-</template>
-```
-
-### Single Column Sorting
-
-Set `column.sorter` to enable sorter interaction on a field column. The component only manages sorter state. You should control `v-model:sorters` and decide how to sort the data yourself.
+### Custom Column Render
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { h, ref } from 'vue'
 
-const rawData = [
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
-
-const sorters = ref([])
-
-const columns = [
-  { key: 'name', title: 'Name', sorter: true },
-  { key: 'role', title: 'Role', sorter: true },
-  { key: 'status', title: 'Status', sorter: true },
-]
-
-const data = computed(() => {
-  return sorters.value.reduceRight((rows, sorter) => {
-    return [...rows].sort((left, right) => {
-      const leftValue = left[sorter.key]
-      const rightValue = right[sorter.key]
-
-      if (leftValue === rightValue) {
-        return 0
-      }
-
-      const result = leftValue > rightValue ? 1 : -1
-      return sorter.order === 'asc' ? result : -result
-    })
-  }, rawData)
-})
-</script>
-
-<template>
-  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" />
-</template>
-```
-
-### Multiple Column Sorting
-
-Set `sort-mode="multiple"` to keep multiple columns active at the same time.
-
-```html
-<template>
-  <var-data-table
-    v-model:sorters="sorters"
-    :columns="columns"
-    :data="data"
-    :pagination="false"
-    sort-mode="multiple"
-  />
-</template>
-```
-
-### Cell Bordered
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" cell-bordered />
-</template>
-```
-
-### Sizes
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="data" size="small" />
-  <var-data-table :columns="columns" :data="data" size="large" />
-</template>
-```
-
-### Column Options
-
-Use `width`, `minWidth`, `align`, and `titleAlign` to control column width and alignment.
-
-```html
-<script setup>
-const columns = [
-  { key: 'name', title: 'Name', minWidth: 140 },
-  { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 120 },
-  { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 100 },
-]
-</script>
-
-<template>
-  <var-data-table :columns="columns" :data="data" />
-</template>
-```
-
-### Grouped Header
-
-Set `children` on a column to group leaf columns under a shared header cell. Only leaf columns render body cells.
-
-```html
-<script setup>
-const columns = [
-  {
-    title: 'Profile',
-    children: [
-      { key: 'name', title: 'Name', width: 112 },
-      { key: 'role', title: 'Role', width: 112 },
-    ],
-  },
-  {
-    title: 'State',
-    children: [{ key: 'status', title: 'Status', width: 96 }],
-  },
-]
-</script>
-
-<template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
-</template>
-```
-
-### Custom Props
-
-Use `row-props` and `column.cellProps` to pass native attributes to rows and cells.
-
-```html
-<script setup>
-const columns = [
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  {
-    key: 'status',
-    title: 'Status',
-    cellProps: ({ row }) => ({
-      style: {
-        color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-warning)',
-        fontWeight: '600',
-      },
-    }),
-  },
-]
-
-const customRowProps = ({ row, rowIndex }) => ({
-  style: {
-    backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
-  },
-  title: row.name,
-})
-</script>
-
-<template>
-  <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
-</template>
-```
-
-### Custom Render
-
-Use `column.render` to customize the cell content.
-
-```html
-<script setup>
-import { h } from 'vue'
-
-const columns = [
+const columns = ref([
   { key: 'name', title: 'Name' },
   {
     key: 'status',
@@ -213,12 +52,14 @@ const columns = [
         row.status,
       ),
   },
-]
+])
 
-const data = [
-  { id: 1, name: 'Ada', status: 'Online' },
-  { id: 2, name: 'Linus', status: 'Offline' },
-]
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
@@ -226,23 +67,281 @@ const data = [
 </template>
 ```
 
-### Subtle Background
 
-Use `surface="low"` for a subtler MD3-style surface layer.
+### Frontend Pagination
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref(
+  Array.from({ length: 48 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'Engineer' : 'Operator',
+    status: index % 3 === 0 ? 'Online' : 'Offline',
+  })),
+)
+</script>
+
 <template>
-  <var-data-table :columns="columns" :data="data" surface="low" />
+  <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### Remote Pagination
+
+```html
+<script setup>
+import { ref, watch } from 'vue'
+
+const page = ref(1)
+const pageSize = ref(10)
+const loading = ref(false)
+const data = ref([])
+let timer
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const allData = ref(
+  Array.from({ length: 48 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'Engineer' : 'Operator',
+    status: index % 3 === 0 ? 'Online' : 'Offline',
+  })),
+)
+
+watch(
+  [page, pageSize],
+  ([current, size]) => {
+    loading.value = true
+
+    if (timer) {
+      clearTimeout(timer)
+    }
+
+    timer = setTimeout(() => {
+      const start = (current - 1) * size
+      data.value = allData.value.slice(start, start + size)
+      loading.value = false
+    }, 400)
+  },
+  { immediate: true },
+)
+</script>
+
+<template>
+  <var-data-table
+    v-model:page="page"
+    v-model:page-size="pageSize"
+    :columns="columns"
+    :data="data"
+    :loading="loading"
+    :total="allData.length"
+    remote
+  />
+</template>
+```
+
+### Single Column Sorting
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+
+const columns = ref([
+  { key: 'score', title: 'Score', sorter: true },
+  { key: 'tasks', title: 'Tasks', sorter: true },
+  { key: 'priority', title: 'Priority', sorter: true },
+])
+
+const data = computed(() => {
+  const data = [
+    { id: 1, score: 92, tasks: 16, priority: 2 },
+    { id: 2, score: 78, tasks: 24, priority: 3 },
+    { id: 3, score: 88, tasks: 12, priority: 1 },
+    { id: 4, score: 95, tasks: 18, priority: 2 },
+  ]
+  const [sorter] = sorters.value
+
+  if (!sorter) {
+    return data
+  }
+
+  return data.sort((a, b) => {
+    const result = a[sorter.key] - b[sorter.key]
+    return sorter.order === 'desc' ? -result : result
+  })
+})
+</script>
+
+<template>
+  <var-data-table
+    v-model:sorters="sorters"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+  />
+</template>
+```
+
+### Multiple Column Sorting
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const sorters = ref([])
+
+const columns = ref([
+  { key: 'score', title: 'Score', sorter: true },
+  { key: 'tasks', title: 'Tasks', sorter: true },
+  { key: 'priority', title: 'Priority', sorter: true },
+])
+
+const data = computed(() => {
+  const data = [
+    { id: 1, score: 92, tasks: 16, priority: 2 },
+    { id: 2, score: 78, tasks: 24, priority: 3 },
+    { id: 3, score: 88, tasks: 12, priority: 1 },
+    { id: 4, score: 95, tasks: 18, priority: 2 },
+  ]
+
+  return data.sort((a, b) => {
+    for (const sorter of sorters.value) {
+      const result = a[sorter.key] - b[sorter.key]
+
+      if (result !== 0) {
+        return sorter.order === 'desc' ? -result : result
+      }
+    }
+
+    return 0
+  })
+})
+</script>
+
+<template>
+  <var-data-table
+    v-model:sorters="sorters"
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    sort-mode="multiple"
+  />
+</template>
+```
+
+### Column Options
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name', minWidth: 96 },
+  { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 88 },
+  { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 84 },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### Grouped Header
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  {
+    title: 'Profile',
+    children: [
+      { key: 'name', title: 'Name', width: 112 },
+      { key: 'role', title: 'Role', width: 112 },
+    ],
+  },
+  {
+    title: 'State',
+    children: [{ key: 'status', title: 'Status', width: 96 }],
+  },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" cell-bordered />
+</template>
+```
+
+### Custom Row Props
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const customRowProps = ({ row, rowIndex }) => ({
+  style: {
+    backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
+  },
+  title: row.name,
+})
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
 </template>
 ```
 
 ### Cell Spans
 
-Use `rowSpan`, `colSpan`, and `titleColSpan` to merge body and header cells. Returning `0` hides the current cell, which is typically used together with a previous spanning cell.
-
 ```html
 <script setup>
-const columns = [
+import { ref } from 'vue'
+
+const columns = ref([
   {
     key: 'name',
     title: 'Identity',
@@ -255,12 +354,12 @@ const columns = [
     colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
   },
   { key: 'status', title: 'Status' },
-]
+])
 
-const data = [
+const data = ref([
   { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
   { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
+])
 </script>
 
 <template>
@@ -270,19 +369,25 @@ const data = [
 
 ### Selection
 
-Use `type: 'selection'` to render a selection column. Bind `v-model:checked-row-keys` to control the selected rows. Set `multiple: false` for single selection and `selectable` to control whether the whole selection column or specific rows can be selected. In single selection mode, the table uses `radio` instead of `checkbox`.
-
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const checkedRowKeys = ref([1, 3])
 
-const columns = [
+const columns = ref([
   { type: 'selection' },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
-]
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
@@ -298,11 +403,19 @@ import { ref } from 'vue'
 
 const checkedRowKeys = ref([2])
 
-const columns = [
+const columns = ref([
   { type: 'selection', multiple: false },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
-]
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
@@ -312,28 +425,26 @@ const columns = [
 
 ### Tree Data
 
-Set `tree` explicitly to flatten and render hierarchical rows by `children-key`. Tree selection cascades by default: selecting a parent row also affects its children. Pass `:cascade="false"` if you want to keep tree selection non-cascading.
-
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const checkedRowKeys = ref([12])
 
-const columns = [
+const columns = ref([
   { type: 'selection' },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
-]
+])
 
-const data = [
+const data = ref([
   {
     id: 1,
     name: 'Frontend',
     role: 'Team',
     status: 'Online',
-    nodes: [
+    children: [
       { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
       { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
     ],
@@ -343,9 +454,9 @@ const data = [
     name: 'Design',
     role: 'Team',
     status: 'Offline',
-    nodes: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+    children: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
   },
-]
+])
 </script>
 
 <template>
@@ -355,14 +466,46 @@ const data = [
     :data="data"
     :pagination="false"
     tree
-    children-key="nodes"
   />
 </template>
 ```
 
-#### Non-Cascading
+### Tree Non-Cascade
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([12])
+
+const columns = ref([
+  { type: 'selection' },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    status: 'Online',
+    children: [
+      { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
+      { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    status: 'Offline',
+    children: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+  },
+])
+</script>
+
 <template>
   <var-data-table
     v-model:checked-row-keys="checkedRowKeys"
@@ -371,58 +514,80 @@ const data = [
     :pagination="false"
     :cascade="false"
     tree
-    children-key="nodes"
   />
 </template>
 ```
 
-#### Tree Single Selection
-
-Tree single selection is independent from cascading and still keeps only one selected key.
+### Tree Single Selection
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const checkedRowKeys = ref([21])
+
+const columns = ref([
+  { type: 'selection', multiple: false },
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  {
+    id: 1,
+    name: 'Frontend',
+    role: 'Team',
+    status: 'Online',
+    children: [
+      { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
+      { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Design',
+    role: 'Team',
+    status: 'Offline',
+    children: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+  },
+])
+</script>
+
 <template>
   <var-data-table
     v-model:checked-row-keys="checkedRowKeys"
-    :columns="[
-      { type: 'selection', multiple: false },
-      { key: 'name', title: 'Name' },
-      { key: 'role', title: 'Role' },
-      { key: 'status', title: 'Status' },
-    ]"
+    :columns="columns"
     :data="data"
     :pagination="false"
     tree
-    children-key="nodes"
   />
 </template>
 ```
 
 ### Expand
 
-Use `type: 'expand'` to render an expand column. Use `renderExpand` to customize expanded content, `expandable` to control whether a row can be expanded, and `v-model:expanded-row-keys` when you need to control expanded detail rows from outside. Expanded content is better suited for focused detail blocks than another table.
-
 ```html
 <script setup>
-import { h } from 'vue'
+import { h, ref } from 'vue'
 
-const columns = [
+const columns = ref([
   {
     type: 'expand',
-    expandable: ({ row }) => row.status === 'Online',
-    renderExpand: ({ row }) =>
-      h('div', { style: { padding: '4px 0', display: 'grid', gap: '12px' } }, [
-        h('div', { style: { fontSize: '14px', fontWeight: '600' } }, `${row.name} Details`),
-        h('div', { style: { color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: '1.6' } }, [
-          h('div', `Current Role: ${row.role}`),
-          h('div', `Current Status: ${row.status}`),
-          h('div', `Last Updated: 2026-05-21`),
-        ]),
-      ]),
+    expandable: ({ row }) => row.status !== 'Busy',
+    renderExpand: ({ row }) => h('div', { style: { padding: '4px 0' } }, `${row.name} Details`),
   },
   { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
-]
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
@@ -430,219 +595,193 @@ const columns = [
 </template>
 ```
 
-### Local Pagination
-
-In local pagination mode, pass the full data set, bind `v-model:page` and `v-model:page-size`, and let the component slice it internally.
+### Fixed Header / Columns
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const page = ref(1)
-const pageSize = ref(10)
-</script>
-
-<template>
-  <var-data-table
-    v-model:page="page"
-    v-model:page-size="pageSize"
-    :columns="columns"
-    :data="data"
-    :pagination="{
-      showSizeChanger: false,
-      showQuickJumper: false,
-    }"
-  />
-</template>
-```
-
-### Remote Pagination
-
-Set `remote` to stop internal slicing. In this mode, `data` should be the current page data and `total` should be controlled externally. The following example uses `setTimeout` to simulate an async request and shows `loading` during the request.
-
-```html
-<script setup>
-import { times } from '@varlet/shared'
-import { ref, watch } from 'vue'
-
-const allData = times(40, (index) => ({
-  id: index + 1,
-  name: `User ${index + 1}`,
-}))
-
-const page = ref(1)
-const pageSize = ref(10)
-const loading = ref(false)
-const currentPageData = ref([])
-let timer
-
-watch(
-  [page, pageSize],
-  ([current, size]) => {
-    loading.value = true
-
-    if (timer) clearTimeout(timer)
-
-    timer = setTimeout(() => {
-      const start = (current - 1) * size
-      currentPageData.value = allData.slice(start, start + size)
-      loading.value = false
-    }, 400)
-  },
-  { immediate: true },
-)
-
-const columns = [{ key: 'name', title: 'Name' }]
-</script>
-
-<template>
-  <var-data-table
-    v-model:page="page"
-    v-model:page-size="pageSize"
-    :columns="columns"
-    :data="currentPageData"
-    :loading="loading"
-    :total="allData.length"
-    :pagination="{
-      showSizeChanger: false,
-      showQuickJumper: false,
-    }"
-    remote
-  />
-</template>
-```
-
-### Sticky Header
-
-Set `max-height` to make the table body scroll internally while keeping the header fixed at the top of the scroll container.
-
-```html
-<template>
-  <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
-</template>
-```
-
-### Fixed Columns
-
-Set `scroll-x` to declare the table width for horizontal scrolling, then use `fixed: 'left' | 'right'` on columns that should stay pinned.
-
-```html
-<template>
-  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :scroll-x="566" />
-</template>
-
-<script setup>
-const scrollColumns = [
+const columns = ref([
   { key: 'name', title: 'Name', fixed: 'left', width: 104 },
   { key: 'role', title: 'Role', width: 126 },
   { key: 'department', title: 'Dept', width: 120 },
   { key: 'location', title: 'City', width: 120 },
   { key: 'status', title: 'Status', fixed: 'right', width: 96 },
-]
+])
+
+const data = ref(
+  Array.from({ length: 24 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'FE Lead' : 'Platform',
+    department: index % 2 === 0 ? 'Exp' : 'Infra',
+    location: ['HZ', 'SH', 'SZ'][index % 3],
+    status: index % 3 === 0 ? 'Online' : index % 3 === 1 ? 'Offline' : 'Busy',
+  })),
+)
 </script>
+
+<template>
+  <var-data-table
+    :columns="columns"
+    :data="data"
+    :pagination="false"
+    :max-height="320"
+    :scroll-x="566"
+  />
+</template>
 ```
 
 ### Resizable Columns
 
-Set `resizable` to enable drag resizing for a column. `minWidth` and `maxWidth` are used as resize limits.
-
 ```html
-<template>
-  <var-data-table :columns="resizableColumns" :data="data" :pagination="false" :scroll-x="540" />
-</template>
-
 <script setup>
-const resizableColumns = [
+import { ref } from 'vue'
+
+const columns = ref([
   { key: 'name', title: 'Name', width: 180, minWidth: 120, maxWidth: 260, resizable: true },
   { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
   { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
-]
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" :scroll-x="540" />
+</template>
 ```
 
-### Empty Text
+### Custom Empty Content
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+</script>
+
 <template>
   <var-data-table :columns="columns" :data="[]" :pagination="false">
-    <template #empty>No Data</template>
+    <template #empty>
+      <div class="custom-empty">
+        <var-icon name="information" :size="24" />
+        <span>No matching data</span>
+      </div>
+    </template>
   </var-data-table>
 </template>
+
+<style scoped>
+.custom-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+}
+</style>
 ```
 
 ### Loading
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+</script>
+
 <template>
   <var-data-table :columns="columns" :data="[]" loading />
 </template>
 ```
 
-### Centered Alignment
-
-Use centered `align` and `titleAlign` together with `sorter` and `resizable` when you want to verify the relative position of the sort trigger and resize trigger in a centered header layout.
+### Sizes
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
-const sorters = ref([])
-const rawData = [
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
   { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
   { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
-
-function renderExpand({ row }) {
-  return `${row.name} Details`
-}
-
-const columns = [
-  { type: 'selection' },
-  { type: 'expand', renderExpand },
-  { key: 'name', title: 'Name', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
-  { key: 'role', title: 'Role', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
-  { key: 'status', title: 'Status', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'center', titleAlign: 'center' },
-]
-
-const data = computed(() => applySorters(rawData, sorters.value))
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
-  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+  <var-data-table :columns="columns" :data="data" size="small" />
+  <var-data-table :columns="columns" :data="data" size="large" />
 </template>
 ```
 
-### Right Alignment
-
-Use right-aligned headers and cells together with `sorter` and `resizable` to verify the trigger layout in a right-aligned case.
+### Subtle Background
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
-const sorters = ref([])
-const rawData = [
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
   { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
   { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
-
-function renderExpand({ row }) {
-  return `${row.name} Details`
-}
-
-const columns = [
-  { type: 'selection' },
-  { type: 'expand', renderExpand },
-  { key: 'name', title: 'Name', width: 170, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
-  { key: 'role', title: 'Role', width: 190, minWidth: 140, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
-  { key: 'status', title: 'Status', width: 150, minWidth: 120, sorter: true, resizable: true, align: 'right', titleAlign: 'right' },
-]
-
-const data = computed(() => applySorters(rawData, sorters.value))
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
 </script>
 
 <template>
-  <var-data-table v-model:sorters="sorters" :columns="columns" :data="data" :pagination="false" :scroll-x="510" />
+  <var-data-table :columns="columns" :data="data" surface="low" />
+</template>
+```
+
+### Plain Table
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
 ```
 
@@ -655,7 +794,7 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `data` | Data source. Full data in local mode, current page data in remote mode | _any[]_ | `[]` |
 | `columns` | Column definitions | _DataTableColumn[]_ | `[]` |
 | `row-key` | Row key field or getter | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
-| `row-props` | Native row props, supports object or function | _object \| (context) => object_ | `-` |
+| `row-props` | Custom row props, supports object or function | _object \| (context) => object_ | `-` |
 | `loading` | Whether to show loading overlay | _boolean_ | `false` |
 | `pagination` | Built-in pagination config | _boolean \| DataTablePagination_ | `true` |
 | `remote` | Whether to enable remote pagination mode | _boolean_ | `false` |
@@ -689,9 +828,9 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `children` | Child columns used to render a grouped header | _DataTableColumn[]_ | `-` |
 | `sorter` | Whether the field column shows sorter interaction | _boolean_ | `false` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
-| `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| `(context) => boolean`_ | `true` |
-| `expandable` | Whether the row can be expanded. Only works on expand columns | _`(context) => boolean`_ | `-` |
-| `renderExpand` | Custom expanded content. Only works on expand columns | _`(context) => VNodeChild`_ | `-` |
+| `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| (context) => boolean_ | `true` |
+| `expandable` | Whether the row can be expanded. Only works on expand columns | _(context) => boolean_ | `-` |
+| `renderExpand` | Custom expanded content. Only works on expand columns | _(context) => VNodeChild_ | `-` |
 | `resizable` | Whether the column width can be resized by dragging | _boolean_ | `false` |
 | `width` | Column width | _number \| string_ | `-` |
 | `minWidth` | Column min width | _number \| string_ | `-` |
@@ -699,10 +838,10 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | `align` | Body cell align | _'left' \| 'center' \| 'right'_ | `'left'` |
 | `titleAlign` | Header title align | _'left' \| 'center' \| 'right'_ | `align` |
 | `titleColSpan` | Header col span. Set to `0` to hide the current header cell | _number_ | `1` |
-| `colSpan` | Body cell col span. Supports a number or function. Return `0` to hide the current cell | _number \| `(context) => number`_ | `1` |
-| `rowSpan` | Body cell row span. Supports a number or function. Return `0` to hide the current cell | _number \| `(context) => number`_ | `1` |
-| `cellProps` | Native cell props, supports object or function | _object \| (context) => object_ | `-` |
-| `render` | Custom cell render | _`(context) => VNodeChild`_ | `-` |
+| `colSpan` | Body cell col span. Supports a number or function. Return `0` to hide the current cell | _number \| (context) => number_ | `1` |
+| `rowSpan` | Body cell row span. Supports a number or function. Return `0` to hide the current cell | _number \| (context) => number_ | `1` |
+| `cellProps` | Custom cell props, supports object or function | _object \| (context) => object_ | `-` |
+| `render` | Custom cell render | _(context) => VNodeChild_ | `-` |
 
 #### DataTablePagination
 
@@ -710,11 +849,11 @@ const data = computed(() => applySorters(rawData, sorters.value))
 | --- | --- | --- | --- |
 | `simple` | Whether to use simple pagination | _boolean_ | `false` |
 | `disabled` | Whether to disable pagination | _boolean_ | `false` |
-| `showSizeChanger` | Whether to show page size changer | _boolean_ | `true` |
+| `showSizeChanger` | Whether to show page size changer | _boolean_ | `false` |
 | `showQuickJumper` | Whether to show quick jumper | _boolean_ | `false` |
 | `maxPagerCount` | Max pager count | _number_ | `5` |
 | `sizeOption` | Page size options | _number[]_ | `[10, 20, 50, 100]` |
-| `showTotal` | Total text renderer | _`(total: number, range: [number, number]) => string`_ | `-` |
+| `showTotal` | Total text renderer | _(total: number, range: [number, number]) => string_ | `-` |
 
 #### DataTableSorter
 

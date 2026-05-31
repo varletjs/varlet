@@ -1,6 +1,5 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { times } from '@varlet/shared'
 import { computed, h, ref, watch } from 'vue'
 import { use as useVarletLocale } from '../../locale'
 import { t, use } from './locale'
@@ -11,298 +10,214 @@ watchLang((lang) => {
 })
 onThemeChange()
 
-const columns = [
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
+const columns = computed(() => [
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
 
-const data = [
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
-]
+const data = computed(() => [
+  { id: 1, name: 'Ada', role: t('admin'), status: t('online') },
+  { id: 2, name: 'Linus', role: t('maintainer'), status: t('offline') },
+  { id: 3, name: 'Taylor', role: t('designer'), status: t('online') },
+  { id: 4, name: 'Evan', role: t('reviewer'), status: t('busy') },
+])
 
 const renderStatus = ({ row }) =>
   h(
     'span',
     {
       style: {
-        color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-text-disabled)',
+        color: row.status === t('online') ? 'var(--color-success)' : 'var(--color-text-disabled)',
       },
     },
     row.status,
   )
 
-const renderColumns = [
-  { key: 'name', title: 'Name' },
-  { key: 'status', title: 'Status', render: renderStatus },
-]
-const surfaceColumns = [
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
-const sortableColumns = [
-  { key: 'name', title: 'Name', sorter: true },
-  { key: 'role', title: 'Role', sorter: true },
-  { key: 'status', title: 'Status', sorter: true },
-]
+const renderColumns = computed(() => [
+  { key: 'name', title: t('name') },
+  { key: 'status', title: t('status'), render: renderStatus },
+])
+const surfaceColumns = columns
+const sortableColumns = computed(() => [
+  { key: 'score', title: t('score'), sorter: true },
+  { key: 'tasks', title: t('tasks'), sorter: true },
+  { key: 'priority', title: t('priority'), sorter: true },
+])
 
-const spanColumns = [
+const sortableData = computed(() => {
+  const data = [
+    { id: 1, score: 92, tasks: 16, priority: 2 },
+    { id: 2, score: 78, tasks: 24, priority: 3 },
+    { id: 3, score: 88, tasks: 12, priority: 1 },
+    { id: 4, score: 95, tasks: 18, priority: 2 },
+  ]
+  const [sorter] = sorters.value
+
+  if (!sorter) {
+    return data
+  }
+
+  return data.sort((a, b) => {
+    const result = a[sorter.key] - b[sorter.key]
+    return sorter.order === 'desc' ? -result : result
+  })
+})
+
+const multipleSortableData = computed(() => {
+  const data = [
+    { id: 1, score: 92, tasks: 16, priority: 2 },
+    { id: 2, score: 78, tasks: 24, priority: 3 },
+    { id: 3, score: 88, tasks: 12, priority: 1 },
+    { id: 4, score: 95, tasks: 18, priority: 2 },
+  ]
+
+  return data.sort((a, b) => {
+    for (const sorter of multipleSorters.value) {
+      const result = a[sorter.key] - b[sorter.key]
+
+      if (result !== 0) {
+        return sorter.order === 'desc' ? -result : result
+      }
+    }
+
+    return 0
+  })
+})
+
+const spanColumns = computed(() => [
   {
     key: 'name',
-    title: 'Identity',
+    title: t('identity'),
     titleColSpan: 2,
     rowSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
   },
   {
     key: 'role',
-    title: 'Role',
+    title: t('role'),
     colSpan: ({ rowIndex }) => (rowIndex === 0 ? 2 : 1),
   },
-  { key: 'status', title: 'Status' },
-]
+  { key: 'status', title: t('status') },
+])
 
-const spanData = [
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-]
+const spanData = computed(() => data.value.slice(0, 2))
 
-const scrollColumns = [
-  { key: 'name', title: 'Name', fixed: 'left', width: 104 },
-  { key: 'role', title: 'Role', width: 126 },
-  { key: 'department', title: 'Dept', width: 120 },
-  { key: 'location', title: 'City', width: 120 },
-  { key: 'status', title: 'Status', fixed: 'right', width: 96 },
-]
+const scrollColumns = computed(() => [
+  { key: 'name', title: t('name'), fixed: 'left', width: 104 },
+  { key: 'role', title: t('role'), width: 126 },
+  { key: 'department', title: t('department'), width: 120 },
+  { key: 'location', title: t('city'), width: 120 },
+  { key: 'status', title: t('status'), fixed: 'right', width: 96 },
+])
 
-const scrollData = [
-  {
-    id: 1,
-    name: 'Ada',
-    role: 'FE Lead',
-    department: 'Exp',
-    location: 'HZ',
-    status: 'Online',
-  },
-  {
-    id: 2,
-    name: 'Linus',
-    role: 'Platform',
-    department: 'Infra',
-    location: 'SH',
-    status: 'Offline',
-  },
-  {
-    id: 3,
-    name: 'Taylor',
-    role: 'Designer',
-    department: 'Design',
-    location: 'SZ',
-    status: 'Busy',
-  },
-]
+const scrollData = computed(() =>
+  Array.from({ length: 24 }, (_, index) => ({
+    id: index + 1,
+    name: `${t('user')} ${index + 1}`,
+    role: index % 2 === 0 ? `FE ${t('lead')}` : t('platform'),
+    department: index % 2 === 0 ? t('experience') : t('infrastructure'),
+    location: ['HZ', 'SH', 'SZ'][index % 3],
+    status: index % 3 === 0 ? t('online') : index % 3 === 1 ? t('offline') : t('busy'),
+  })),
+)
 
-const resizableColumns = [
-  { key: 'name', title: 'Name', width: 180, minWidth: 120, maxWidth: 260, resizable: true },
-  { key: 'role', title: 'Role', width: 220, minWidth: 160, resizable: true },
-  { key: 'status', title: 'Status', width: 140, maxWidth: 180, resizable: true },
-]
-const centeredSortableResizableColumns = [
-  { type: 'selection' },
-  {
-    type: 'expand',
-    renderExpand: renderExpandContent,
-  },
-  {
-    key: 'name',
-    title: 'Name',
-    width: 170,
-    minWidth: 120,
-    resizable: true,
-    sorter: true,
-    align: 'center',
-    titleAlign: 'center',
-  },
-  {
-    key: 'role',
-    title: 'Role',
-    width: 190,
-    minWidth: 140,
-    resizable: true,
-    sorter: true,
-    align: 'center',
-    titleAlign: 'center',
-  },
-  {
-    key: 'status',
-    title: 'Status',
-    width: 150,
-    minWidth: 120,
-    resizable: true,
-    sorter: true,
-    align: 'center',
-    titleAlign: 'center',
-  },
-]
-const rightAlignedSortableResizableColumns = [
-  { type: 'selection' },
-  {
-    type: 'expand',
-    renderExpand: renderExpandContent,
-  },
-  {
-    key: 'name',
-    title: 'Name',
-    width: 170,
-    minWidth: 120,
-    resizable: true,
-    sorter: true,
-    align: 'right',
-    titleAlign: 'right',
-  },
-  {
-    key: 'role',
-    title: 'Role',
-    width: 190,
-    minWidth: 140,
-    resizable: true,
-    sorter: true,
-    align: 'right',
-    titleAlign: 'right',
-  },
-  {
-    key: 'status',
-    title: 'Status',
-    width: 150,
-    minWidth: 120,
-    resizable: true,
-    sorter: true,
-    align: 'right',
-    titleAlign: 'right',
-  },
-]
+const resizableColumns = computed(() => [
+  { key: 'name', title: t('name'), width: 180, minWidth: 120, maxWidth: 260, resizable: true },
+  { key: 'role', title: t('role'), width: 220, minWidth: 160, resizable: true },
+  { key: 'status', title: t('status'), width: 140, maxWidth: 180, resizable: true },
+])
 
 const checkedRowKeys = ref([1, 3])
 const sorters = ref([])
 const multipleSorters = ref([])
-const centeredSorters = ref([])
-const rightAlignedSorters = ref([])
 const singleCheckedRowKeys = ref([2])
 const treeCheckedRowKeys = ref([1, 11, 12])
 const treeNonCascadeCheckedRowKeys = ref([12])
 const treeSingleCheckedRowKeys = ref([21])
-const selectionColumns = [
+const selectionColumns = computed(() => [
   { type: 'selection' },
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
-const singleSelectionColumns = [
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
+const singleSelectionColumns = computed(() => [
   { type: 'selection', multiple: false },
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
 
 function renderExpandContent({ row }) {
-  return h('div', { style: { padding: '4px 0', display: 'grid', gap: '12px' } }, [
-    h('div', { style: { fontSize: '14px', fontWeight: '600' } }, `${row.name} Details`),
-    h('div', { style: { color: 'var(--color-text-secondary)', fontSize: '14px', lineHeight: '1.6' } }, [
-      h('div', `Current Role: ${row.role}`),
-      h('div', `Current Status: ${row.status}`),
-      h('div', `Last Updated: 2026-05-21`),
-    ]),
-  ])
+  return h('div', { style: { padding: '4px 0' } }, `${row.name} ${t('details')}`)
 }
 
-const expandColumns = [
+const expandColumns = computed(() => [
   {
     type: 'expand',
-    expandable: ({ row }) => row.status !== 'Busy',
+    expandable: ({ row }) => row.status !== t('busy'),
     renderExpand: renderExpandContent,
   },
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
-const treeColumns = [
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
+const treeColumns = computed(() => [
   { type: 'selection' },
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
-const treeSingleColumns = [
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
+const treeSingleColumns = computed(() => [
   { type: 'selection', multiple: false },
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status' },
-]
-const treeData = [
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
+const treeData = computed(() => [
   {
     id: 1,
-    name: 'Frontend',
-    role: 'Team',
-    status: 'Online',
-    nodes: [
-      { id: 11, name: 'Ada', role: 'Lead', status: 'Online' },
-      { id: 12, name: 'Taylor', role: 'Engineer', status: 'Busy' },
+    name: t('frontend'),
+    role: t('team'),
+    status: t('online'),
+    children: [
+      { id: 11, name: 'Ada', role: t('lead'), status: t('online') },
+      { id: 12, name: 'Taylor', role: t('engineer'), status: t('busy') },
     ],
   },
   {
     id: 2,
-    name: 'Design',
-    role: 'Team',
-    status: 'Offline',
-    nodes: [{ id: 21, name: 'Linus', role: 'Designer', status: 'Offline' }],
+    name: t('design'),
+    role: t('team'),
+    status: t('offline'),
+    children: [{ id: 21, name: 'Linus', role: t('designer'), status: t('offline') }],
   },
-]
+])
 
 const selectedRowNames = computed(() =>
-  data
+  data.value
     .filter((row) => checkedRowKeys.value.includes(row.id))
     .map((row) => row.name)
     .join(', '),
 )
 
-const sortedData = computed(() => applySorters(data, sorters.value))
-const multipleSortedData = computed(() => applySorters(data, multipleSorters.value))
-const centeredSortedData = computed(() => applySorters(data, centeredSorters.value))
-const rightAlignedSortedData = computed(() => applySorters(data, rightAlignedSorters.value))
-
-const alignedColumns = [
-  { key: 'name', title: 'Name', minWidth: 140 },
-  { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 120 },
-  { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 100 },
-]
-const groupedHeaderColumns = [
+const alignedColumns = computed(() => [
+  { key: 'name', title: t('name'), minWidth: 96 },
+  { key: 'role', title: t('role'), titleAlign: 'center', align: 'center', width: 88 },
+  { key: 'status', title: t('status'), titleAlign: 'right', align: 'right', width: 84 },
+])
+const groupedHeaderColumns = computed(() => [
   {
-    title: 'Profile',
+    title: t('profile'),
     children: [
-      { key: 'name', title: 'Name', width: 112 },
-      { key: 'role', title: 'Role', width: 112 },
+      { key: 'name', title: t('name'), width: 112 },
+      { key: 'role', title: t('role'), width: 112 },
     ],
   },
   {
-    title: 'State',
-    children: [{ key: 'status', title: 'Status', width: 96 }],
+    title: t('state'),
+    children: [{ key: 'status', title: t('status'), width: 96 }],
   },
-]
-
-const getStatusCellProps = ({ row }) => ({
-  style: {
-    color: row.status === 'Online' ? 'var(--color-success)' : 'var(--color-warning)',
-    fontWeight: '600',
-  },
-})
-
-const cellPropsColumns = [
-  { key: 'name', title: 'Name' },
-  { key: 'role', title: 'Role' },
-  { key: 'status', title: 'Status', cellProps: getStatusCellProps },
-]
+])
 
 const customRowProps = ({ row, rowIndex }) => ({
   style: {
@@ -311,29 +226,23 @@ const customRowProps = ({ row, rowIndex }) => ({
   title: row.name,
 })
 
-const defaultPagination = {
-  showSizeChanger: false,
-  showQuickJumper: false,
-}
-
-const localPage = ref(1)
-const localPageSize = ref(10)
-
-const manyRows = times(48, (index) => ({
-  id: index + 1,
-  name: `User ${index + 1}`,
-  role: index % 2 === 0 ? 'Engineer' : 'Operator',
-  status: index % 3 === 0 ? 'Online' : 'Offline',
-}))
+const manyRows = computed(() =>
+  Array.from({ length: 48 }, (_, index) => ({
+    id: index + 1,
+    name: `${t('user')} ${index + 1}`,
+    role: index % 2 === 0 ? t('engineer') : t('operator'),
+    status: index % 3 === 0 ? t('online') : t('offline'),
+  })),
+)
 
 const remotePage = ref(1)
 const remotePageSize = ref(10)
 const remoteLoading = ref(false)
-const remoteData = ref(manyRows.slice(0, remotePageSize.value))
+const remoteData = ref([])
 let remoteTimer
 
 watch(
-  [remotePage, remotePageSize],
+  [remotePage, remotePageSize, manyRows],
   ([page, pageSize]) => {
     remoteLoading.value = true
 
@@ -343,56 +252,46 @@ watch(
 
     remoteTimer = setTimeout(() => {
       const start = (page - 1) * pageSize
-      remoteData.value = manyRows.slice(start, start + pageSize)
+      remoteData.value = manyRows.value.slice(start, start + pageSize)
       remoteLoading.value = false
     }, 400)
   },
   { immediate: true },
 )
-
-function applySorters(rows, activeSorters) {
-  return activeSorters.reduceRight((currentRows, sorter) => {
-    return [...currentRows].sort((leftRow, rightRow) => {
-      const leftValue = leftRow[sorter.key]
-      const rightValue = rightRow[sorter.key]
-
-      if (leftValue === rightValue) {
-        return 0
-      }
-
-      const comparisonResult = leftValue > rightValue ? 1 : -1
-      return sorter.order === 'asc' ? comparisonResult : -comparisonResult
-    })
-  }, rows)
-}
 </script>
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-data-table :columns="columns" :data="data" />
 
-  <app-type>{{ t('plainTable') }}</app-type>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+  <app-type>{{ t('customRender') }}</app-type>
+  <var-data-table :columns="renderColumns" :data="data" />
+
+  <app-type>{{ t('localPagination') }}</app-type>
+  <var-data-table :columns="columns" :data="manyRows" />
+
+  <app-type>{{ t('remotePagination') }}</app-type>
+  <var-data-table
+    v-model:page="remotePage"
+    v-model:page-size="remotePageSize"
+    :columns="columns"
+    :data="remoteData"
+    :loading="remoteLoading"
+    :total="manyRows.length"
+    remote
+  />
 
   <app-type>{{ t('sorter') }}</app-type>
-  <var-data-table v-model:sorters="sorters" :columns="sortableColumns" :data="sortedData" :pagination="false" />
+  <var-data-table v-model:sorters="sorters" :columns="sortableColumns" :data="sortableData" :pagination="false" />
 
   <app-type>{{ t('multipleSorter') }}</app-type>
   <var-data-table
     v-model:sorters="multipleSorters"
     :columns="sortableColumns"
-    :data="multipleSortedData"
+    :data="multipleSortableData"
     :pagination="false"
     sort-mode="multiple"
   />
-
-  <app-type>{{ t('cellBordered') }}</app-type>
-  <var-data-table :columns="columns" :data="data" cell-bordered />
-
-  <app-type>{{ t('sizes') }}</app-type>
-  <var-data-table :columns="columns" :data="data" size="small" />
-  <div style="height: 12px"></div>
-  <var-data-table :columns="columns" :data="data" size="large" />
 
   <app-type>{{ t('columnOptions') }}</app-type>
   <var-data-table :columns="alignedColumns" :data="data" />
@@ -401,13 +300,7 @@ function applySorters(rows, activeSorters) {
   <var-data-table :columns="groupedHeaderColumns" :data="data" :pagination="false" cell-bordered />
 
   <app-type>{{ t('customProps') }}</app-type>
-  <var-data-table :columns="cellPropsColumns" :data="data" :row-props="customRowProps" />
-
-  <app-type>{{ t('customRender') }}</app-type>
-  <var-data-table :columns="renderColumns" :data="data" />
-
-  <app-type>{{ t('surfaceLow') }}</app-type>
-  <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
+  <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
 
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
@@ -428,7 +321,6 @@ function applySorters(rows, activeSorters) {
     :data="treeData"
     :pagination="false"
     tree
-    children-key="nodes"
   />
 
   <app-type>{{ t('treeNonCascade') }}</app-type>
@@ -439,7 +331,6 @@ function applySorters(rows, activeSorters) {
     :pagination="false"
     :cascade="false"
     tree
-    children-key="nodes"
   />
 
   <app-type>{{ t('treeSingleSelection') }}</app-type>
@@ -449,65 +340,47 @@ function applySorters(rows, activeSorters) {
     :data="treeData"
     :pagination="false"
     tree
-    children-key="nodes"
   />
 
   <app-type>{{ t('expand') }}</app-type>
   <var-data-table :columns="expandColumns" :data="data" :pagination="false" />
 
-  <app-type>{{ t('localPagination') }}</app-type>
-  <var-data-table
-    v-model:page="localPage"
-    v-model:page-size="localPageSize"
-    :columns="columns"
-    :data="manyRows"
-    :pagination="defaultPagination"
-  />
-
-  <app-type>{{ t('remotePagination') }}</app-type>
-  <var-data-table
-    v-model:page="remotePage"
-    v-model:page-size="remotePageSize"
-    :columns="columns"
-    :data="remoteData"
-    :loading="remoteLoading"
-    :total="manyRows.length"
-    :pagination="defaultPagination"
-    remote
-  />
-
-  <app-type>{{ t('stickyHeader') }}</app-type>
-  <var-data-table :columns="columns" :data="manyRows" :pagination="false" :max-height="320" />
-
-  <app-type>{{ t('fixedColumns') }}</app-type>
-  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :scroll-x="566" />
+  <app-type>{{ t('fixedHeaderAndColumns') }}</app-type>
+  <var-data-table :columns="scrollColumns" :data="scrollData" :pagination="false" :max-height="320" :scroll-x="566" />
 
   <app-type>{{ t('resizableColumns') }}</app-type>
   <var-data-table :columns="resizableColumns" :data="data" :pagination="false" :scroll-x="540" />
 
   <app-type>{{ t('emptyText') }}</app-type>
   <var-data-table :columns="columns" :data="[]" :pagination="false">
-    <template #empty>{{ t('emptyTip') }}</template>
+    <template #empty>
+      <div class="data-table-example__empty">
+        <var-icon name="information" :size="24" />
+        <span>{{ t('emptyTip') }}</span>
+      </div>
+    </template>
   </var-data-table>
 
   <app-type>{{ t('loading') }}</app-type>
   <var-data-table :columns="columns" :data="[]" loading />
 
-  <app-type>{{ t('centeredSortingAndResizing') }}</app-type>
-  <var-data-table
-    v-model:sorters="centeredSorters"
-    :columns="centeredSortableResizableColumns"
-    :data="centeredSortedData"
-    :pagination="false"
-    :scroll-x="510"
-  />
+  <app-type>{{ t('sizes') }}</app-type>
+  <var-data-table :columns="columns" :data="data" size="small" />
+  <div style="height: 12px"></div>
+  <var-data-table :columns="columns" :data="data" size="large" />
 
-  <app-type>{{ t('rightAlignedSortingAndResizing') }}</app-type>
-  <var-data-table
-    v-model:sorters="rightAlignedSorters"
-    :columns="rightAlignedSortableResizableColumns"
-    :data="rightAlignedSortedData"
-    :pagination="false"
-    :scroll-x="510"
-  />
+  <app-type>{{ t('surfaceLow') }}</app-type>
+  <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
+
+  <app-type>{{ t('plainTable') }}</app-type>
+  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
 </template>
+
+<style scoped>
+.data-table-example__empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+}
+</style>
