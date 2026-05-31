@@ -136,14 +136,14 @@ const value = ref('day')
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('day')
-const options = computed(() => [
+const options = [
   { label: '天', value: 'day' },
   { label: '周', value: 'week' },
   { label: '月', value: 'month' },
-])
+]
 </script>
 
 <template>
@@ -157,14 +157,14 @@ const options = computed(() => [
 
 ```html
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const value = ref('day')
-const options = computed(() => [
+const options = [
   { name: '天', id: 'day' },
   { name: '周', id: 'week' },
   { name: '月', id: 'month' },
-])
+]
 </script>
 
 <template>
