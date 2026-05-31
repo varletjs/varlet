@@ -12,6 +12,8 @@ export default {
   '--data-table-sort-trigger-active-color': 'var(--color-primary)',
   '--data-table-sort-trigger-hover-background': 'hsla(var(--hsl-primary), 0.12)',
   '--data-table-empty-text-color': 'var(--color-text-disabled)',
+  '--data-table-resize-trigger-color': 'hsla(var(--hsl-on-surface-variant), 0.36)',
+  '--data-table-fixed-shadow-color': 'rgba(0, 0, 0, 0.04)',
   '--data-table-border-radius': '2px',
   '--data-table-cell-padding': '0 16px',
   '--data-table-selection-cell-padding': '0 8px',

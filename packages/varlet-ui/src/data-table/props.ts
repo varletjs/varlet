@@ -27,7 +27,11 @@ export interface DataTableColumnRenderContext<Row = any> extends DataTableRowBas
 
 export interface DataTableRowPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
 
-export interface DataTableCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
+export interface DataTableColumnCellPropsContext<Row = any> extends DataTableRowBaseContext<Row> {}
+
+export interface DataTableSummaryContext<Row = any> {
+  data: Row[]
+}
 
 export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
 
@@ -41,9 +45,19 @@ export type DataTableRowProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes | undefined)
 
+export type DataTableRowClass<Row = any> =
+  | HTMLAttributes['class']
+  | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes['class'])
+
 export type DataTableCellProps<Row = any> =
   | HTMLAttributes
-  | ((context: DataTableCellPropsContext<Row>) => HTMLAttributes | undefined)
+  | ((context: DataTableColumnCellPropsContext<Row>) => HTMLAttributes | undefined)
+
+export type DataTableSummaryCell = VNodeChild | { value?: VNodeChild; colSpan?: number }
+
+export type DataTableSummary<Row = any> = (
+  context: DataTableSummaryContext<Row>,
+) => Record<string, DataTableSummaryCell>
 
 export interface DataTableBaseColumn<Row = any> {
   fixed?: DataTableColumnFixed
@@ -121,6 +135,12 @@ export const props = {
   },
   rowProps: {
     type: [Object, Function] as PropType<DataTableRowProps>,
+  },
+  rowClass: {
+    type: [String, Array, Object, Function] as PropType<DataTableRowClass>,
+  },
+  summary: {
+    type: Function as PropType<DataTableSummary>,
   },
   loading: Boolean,
   pagination: {

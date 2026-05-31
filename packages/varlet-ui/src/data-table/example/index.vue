@@ -134,6 +134,8 @@ const singleCheckedRowKeys = ref([2])
 const treeCheckedRowKeys = ref([1, 11, 12])
 const treeNonCascadeCheckedRowKeys = ref([12])
 const treeSingleCheckedRowKeys = ref([21])
+const expandTreeExpandedRowKeys = ref([1])
+const expandTreeExpandedTreeRowKeys = ref([1])
 const selectionColumns = computed(() => [
   { type: 'selection' },
   { key: 'name', title: t('name') },
@@ -169,6 +171,15 @@ const treeColumns = computed(() => [
 ])
 const treeSingleColumns = computed(() => [
   { type: 'selection', multiple: false },
+  { key: 'name', title: t('name') },
+  { key: 'role', title: t('role') },
+  { key: 'status', title: t('status') },
+])
+const expandTreeColumns = computed(() => [
+  {
+    type: 'expand',
+    renderExpand: renderExpandContent,
+  },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },
@@ -224,6 +235,30 @@ const customRowProps = ({ row, rowIndex }) => ({
     backgroundColor: rowIndex === 0 ? 'hsla(var(--hsl-primary), 0.08)' : undefined,
   },
   title: row.name,
+})
+
+const customRowClass = ({ row }) => {
+  return row.status === t('busy') ? 'data-table-example__row--busy' : undefined
+}
+
+const summaryColumns = computed(() => [
+  { key: 'name', title: t('name') },
+  { key: 'score', title: t('score') },
+  { key: 'tasks', title: t('tasks') },
+])
+
+const summaryData = computed(() => [
+  { id: 1, name: 'Ada', score: 92, tasks: 16 },
+  { id: 2, name: 'Linus', score: 78, tasks: 24 },
+  { id: 3, name: 'Taylor', score: 88, tasks: 12 },
+])
+
+const summary = ({ data }) => ({
+  name: {
+    value: t('total'),
+    colSpan: 2,
+  },
+  tasks: data.reduce((total, row) => total + row.tasks, 0),
 })
 
 const manyRows = computed(() =>
@@ -302,6 +337,12 @@ watch(
   <app-type>{{ t('customProps') }}</app-type>
   <var-data-table :columns="columns" :data="data" :row-props="customRowProps" />
 
+  <app-type>{{ t('rowClass') }}</app-type>
+  <var-data-table :columns="columns" :data="data" :row-class="customRowClass" />
+
+  <app-type>{{ t('summary') }}</app-type>
+  <var-data-table :columns="summaryColumns" :data="summaryData" :summary="summary" :pagination="false" />
+
   <app-type>{{ t('spans') }}</app-type>
   <var-data-table :columns="spanColumns" :data="spanData" :pagination="false" cell-bordered />
 
@@ -374,6 +415,16 @@ watch(
 
   <app-type>{{ t('plainTable') }}</app-type>
   <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+
+  <app-type>{{ t('expandWithTree') }}</app-type>
+  <var-data-table
+    v-model:expanded-row-keys="expandTreeExpandedRowKeys"
+    v-model:expanded-tree-row-keys="expandTreeExpandedTreeRowKeys"
+    :columns="expandTreeColumns"
+    :data="treeData"
+    :pagination="false"
+    tree
+  />
 </template>
 
 <style scoped>
@@ -382,5 +433,9 @@ watch(
   align-items: center;
   gap: 8px;
   color: var(--color-text-secondary);
+}
+
+:deep(.data-table-example__row--busy) {
+  color: var(--color-warning);
 }
 </style>

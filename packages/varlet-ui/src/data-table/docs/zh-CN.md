@@ -335,6 +335,73 @@ const data = ref([
 </template>
 ```
 
+### 行类名
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: '姓名' },
+  { key: 'role', title: '角色' },
+  { key: 'status', title: '状态' },
+])
+
+const rowClass = ({ row }) => {
+  return row.status === '忙碌' ? 'busy-row' : undefined
+}
+
+const data = ref([
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
+  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :row-class="rowClass" />
+</template>
+
+<style scoped>
+:deep(.busy-row) {
+  color: var(--color-warning);
+}
+</style>
+```
+
+### 总结栏
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: '姓名' },
+  { key: 'score', title: '评分' },
+  { key: 'tasks', title: '任务数' },
+])
+
+const summary = ({ data }) => ({
+  name: {
+    value: '合计',
+    colSpan: 2,
+  },
+  tasks: data.reduce((total, row) => total + row.tasks, 0),
+})
+
+const data = ref([
+  { id: 1, name: 'Ada', score: 92, tasks: 16 },
+  { id: 2, name: 'Linus', score: 78, tasks: 24 },
+  { id: 3, name: 'Taylor', score: 88, tasks: 12 },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :summary="summary" :pagination="false" />
+</template>
+```
+
 ### 单元格合并
 
 ```html
@@ -795,6 +862,8 @@ const data = ref([
 | `columns` | 列配置 | _DataTableColumn[]_ | `[]` |
 | `row-key` | 行 key 字段或获取函数 | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
 | `row-props` | 自定义行属性，支持对象或函数 | _object \| (context) => object_ | `-` |
+| `row-class` | 自定义行类名，支持字符串、数组、对象或函数 | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
+| `summary` | 总结栏渲染函数 | _(context) => Record<string, DataTableSummaryCell>_ | `-` |
 | `loading` | 是否显示加载遮罩 | _boolean_ | `false` |
 | `pagination` | 内置分页配置 | _boolean \| DataTablePagination_ | `true` |
 | `remote` | 是否启用远程分页模式 | _boolean_ | `false` |
@@ -855,6 +924,13 @@ const data = ref([
 | `sizeOption` | 每页条数选项 | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | 总数文案渲染函数 | _(total: number, range: [number, number]) => string_ | `-` |
 
+#### DataTableSummaryCell
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `value` | 单元格内容 | _VNodeChild_ | `-` |
+| `colSpan` | 单元格列合并数量 | _number_ | `1` |
+
 #### DataTableSorter
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -887,6 +963,8 @@ const data = ref([
 | `--data-table-sort-trigger-active-color` | `var(--color-primary)` |
 | `--data-table-sort-trigger-hover-background` | `hsla(var(--hsl-primary), 0.08)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
+| `--data-table-resize-trigger-color` | `hsla(var(--hsl-on-surface-variant), 0.36)` |
+| `--data-table-fixed-shadow-color` | `rgba(0, 0, 0, 0.04)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
 | `--data-table-selection-cell-padding` | `0 8px` |

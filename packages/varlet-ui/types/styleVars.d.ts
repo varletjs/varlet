@@ -281,6 +281,8 @@ interface BaseStyleVars {
   '--data-table-sort-trigger-active-color'?: string
   '--data-table-sort-trigger-hover-background'?: string
   '--data-table-empty-text-color'?: string
+  '--data-table-resize-trigger-color'?: string
+  '--data-table-fixed-shadow-color'?: string
   '--data-table-border-radius'?: string
   '--data-table-cell-padding'?: string
   '--data-table-selection-cell-padding'?: string

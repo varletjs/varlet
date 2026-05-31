@@ -147,6 +147,55 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support row class', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        rowClass: ({ row }) => (row.id === 1 ? 'active-row' : undefined),
+      },
+    })
+
+    expect(wrapper.findAll('tbody tr')[0].classes()).toContain('active-row')
+    expect(wrapper.findAll('tbody tr')[1].classes()).not.toContain('active-row')
+
+    wrapper.unmount()
+  })
+
+  test('should support summary row', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name' },
+          { key: 'score', title: 'Score' },
+          { key: 'tasks', title: 'Tasks' },
+        ],
+        data: [
+          { id: 1, name: 'Ada', score: 92, tasks: 16 },
+          { id: 2, name: 'Linus', score: 78, tasks: 24 },
+        ],
+        pagination: false,
+        summary: ({ data }) => ({
+          name: {
+            value: 'Total',
+            colSpan: 2,
+          },
+          tasks: data.reduce((total, row) => total + row.tasks, 0),
+        }),
+      },
+    })
+
+    const summaryCells = wrapper.findAll('tfoot td')
+
+    expect(summaryCells).toHaveLength(2)
+    expect(summaryCells[0].attributes('colspan')).toBe('2')
+    expect(summaryCells[0].text()).toBe('Total')
+    expect(summaryCells[1].text()).toBe('40')
+
+    wrapper.unmount()
+  })
+
   test('should support plain table mode', () => {
     const wrapper = mount(VarDataTable, {
       props: {

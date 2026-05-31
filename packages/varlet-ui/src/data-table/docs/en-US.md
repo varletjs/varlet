@@ -335,6 +335,73 @@ const data = ref([
 </template>
 ```
 
+### Row Class
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const rowClass = ({ row }) => {
+  return row.status === 'Busy' ? 'busy-row' : undefined
+}
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :row-class="rowClass" />
+</template>
+
+<style scoped>
+:deep(.busy-row) {
+  color: var(--color-warning);
+}
+</style>
+```
+
+### Summary
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'score', title: 'Score' },
+  { key: 'tasks', title: 'Tasks' },
+])
+
+const summary = ({ data }) => ({
+  name: {
+    value: 'Total',
+    colSpan: 2,
+  },
+  tasks: data.reduce((total, row) => total + row.tasks, 0),
+})
+
+const data = ref([
+  { id: 1, name: 'Ada', score: 92, tasks: 16 },
+  { id: 2, name: 'Linus', score: 78, tasks: 24 },
+  { id: 3, name: 'Taylor', score: 88, tasks: 12 },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" :summary="summary" :pagination="false" />
+</template>
+```
+
 ### Cell Spans
 
 ```html
@@ -795,6 +862,8 @@ const data = ref([
 | `columns` | Column definitions | _DataTableColumn[]_ | `[]` |
 | `row-key` | Row key field or getter | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
 | `row-props` | Custom row props, supports object or function | _object \| (context) => object_ | `-` |
+| `row-class` | Custom row class, supports string, array, object, or function | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
+| `summary` | Summary row render function | _(context) => Record<string, DataTableSummaryCell>_ | `-` |
 | `loading` | Whether to show loading overlay | _boolean_ | `false` |
 | `pagination` | Built-in pagination config | _boolean \| DataTablePagination_ | `true` |
 | `remote` | Whether to enable remote pagination mode | _boolean_ | `false` |
@@ -855,6 +924,13 @@ const data = ref([
 | `sizeOption` | Page size options | _number[]_ | `[10, 20, 50, 100]` |
 | `showTotal` | Total text renderer | _(total: number, range: [number, number]) => string_ | `-` |
 
+#### DataTableSummaryCell
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `value` | Cell content | _VNodeChild_ | `-` |
+| `colSpan` | Cell col span | _number_ | `1` |
+
 #### DataTableSorter
 
 | Prop | Description | Type | Default |
@@ -887,6 +963,8 @@ const data = ref([
 | `--data-table-sort-trigger-active-color` | `var(--color-primary)` |
 | `--data-table-sort-trigger-hover-background` | `hsla(var(--hsl-primary), 0.08)` |
 | `--data-table-empty-text-color` | `var(--color-text-disabled)` |
+| `--data-table-resize-trigger-color` | `hsla(var(--hsl-on-surface-variant), 0.36)` |
+| `--data-table-fixed-shadow-color` | `rgba(0, 0, 0, 0.04)` |
 | `--data-table-border-radius` | `2px` |
 | `--data-table-cell-padding` | `0 16px` |
 | `--data-table-selection-cell-padding` | `0 8px` |

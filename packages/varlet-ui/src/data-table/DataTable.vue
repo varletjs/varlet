@@ -53,7 +53,7 @@
 
           <tbody v-if="bodyRows.length">
             <template v-for="bodyRow in bodyRows" :key="bodyRow.key">
-              <tr :class="n('row')" v-bind="getRowProps(bodyRow)">
+              <tr :class="classes(n('row'), getRowClass(bodyRow))" v-bind="getRowProps(bodyRow)">
                 <data-table-body-cell
                   v-for="cell in bodyRow.cells"
                   :key="cell.key"
@@ -88,6 +88,28 @@
               </tr>
             </template>
           </tbody>
+
+          <tfoot v-if="summaryCells.length">
+            <tr :class="n('summary-row')">
+              <td
+                v-for="cell in summaryCells"
+                :key="cell.key"
+                :class="
+                  classes(
+                    n('cell'),
+                    n('summary-cell'),
+                    [cell.column.fixed, n('fixed-cell')],
+                    [isLastLeftFixedColumn(cell.columnIndex), n('fixed-cell--shadow-right')],
+                    [isFirstRightFixedColumn(cell.columnIndex), n('fixed-cell--shadow-left')],
+                  )
+                "
+                :style="getBodyCellStyle(cell)"
+                :colspan="cell.colSpan"
+              >
+                <maybe-v-node :is="cell.value" tag="div" />
+              </td>
+            </tr>
+          </tfoot>
         </table>
 
         <div v-if="!bodyRows.length" :class="n('empty')">
@@ -126,7 +148,7 @@
 <script lang="ts">
 import { callOrReturn, isArray, isFunction } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
-import { computed, defineComponent, type CSSProperties } from 'vue'
+import { computed, defineComponent, type CSSProperties, type VNodeChild } from 'vue'
 import VarLoading from '../loading'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
@@ -143,6 +165,7 @@ import {
   type DataTableExpandColumn,
   type DataTableFieldColumn,
   type DataTableSelectionColumn,
+  type DataTableSummaryCell,
 } from './props'
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
@@ -263,6 +286,42 @@ export default defineComponent({
       tree: () => props.tree,
     })
 
+    const summaryCells = computed(() => {
+      if (!props.summary) {
+        return []
+      }
+
+      const summary = props.summary({
+        data: pagedData.value,
+      })
+      const coveredColumns = new Set<number>()
+
+      return columns.value.flatMap((column, columnIndex) => {
+        if (coveredColumns.has(columnIndex)) {
+          return []
+        }
+
+        const key = getColumnSummaryKey(column, columnIndex)
+        const summaryCell = summary[key]
+        const normalizedSummaryCell = normalizeSummaryCell(summaryCell)
+        const colSpan = normalizedSummaryCell.colSpan ?? 1
+
+        for (let offset = 1; offset < colSpan; offset += 1) {
+          coveredColumns.add(columnIndex + offset)
+        }
+
+        return [
+          {
+            key,
+            columnIndex,
+            column,
+            value: normalizedSummaryCell.value,
+            colSpan: colSpan > 1 ? colSpan : undefined,
+          },
+        ]
+      })
+    })
+
     const {
       currentSelectableRows,
       allCurrentRowsSelected,
@@ -334,6 +393,17 @@ export default defineComponent({
       })
     }
 
+    function getRowClass(bodyRow: DataTableBodyRow) {
+      if (!props.rowClass) {
+        return
+      }
+
+      return callOrReturn(props.rowClass, {
+        row: bodyRow.row,
+        rowIndex: bodyRow.rowIndex,
+      })
+    }
+
     function getCellProps(bodyRow: DataTableBodyRow, column: DataTableColumn) {
       if (!column.cellProps) {
         return
@@ -369,6 +439,25 @@ export default defineComponent({
       }
     }
 
+    function getColumnSummaryKey(column: DataTableColumn, columnIndex: number) {
+      return column.key ?? column.type ?? String(columnIndex)
+    }
+
+    function normalizeSummaryCell(summaryCell: DataTableSummaryCell | undefined) {
+      if (
+        summaryCell != null &&
+        typeof summaryCell === 'object' &&
+        !Array.isArray(summaryCell) &&
+        !('__v_isVNode' in summaryCell)
+      ) {
+        return summaryCell as { value?: VNodeChild; colSpan?: number }
+      }
+
+      return {
+        value: summaryCell,
+      }
+    }
+
     function handlePaginationChange(nextPage: number, nextPageSize: number) {
       page.value = nextPage
       pageSize.value = nextPageSize
@@ -389,8 +478,10 @@ export default defineComponent({
       someCurrentRowsSelected,
       headerRows,
       bodyRows,
+      summaryCells,
       isColumnResizable,
       getRowProps,
+      getRowClass,
       getCellProps,
       isSelectionColumn,
       isExpandColumn,
