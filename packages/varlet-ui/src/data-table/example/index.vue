@@ -38,7 +38,6 @@ const renderColumns = computed(() => [
   { key: 'name', title: t('name') },
   { key: 'status', title: t('status'), render: renderStatus },
 ])
-const surfaceColumns = columns
 const sortableColumns = computed(() => [
   { key: 'score', title: t('score'), sorter: true },
   { key: 'tasks', title: t('tasks'), sorter: true },
@@ -209,13 +208,13 @@ const groupedHeaderColumns = computed(() => [
   {
     title: t('profile'),
     children: [
-      { key: 'name', title: t('name'), width: 112 },
-      { key: 'role', title: t('role'), width: 112 },
+      { key: 'name', title: t('name') },
+      { key: 'role', title: t('role') },
     ],
   },
   {
     title: t('state'),
-    children: [{ key: 'status', title: t('status'), width: 96 }],
+    children: [{ key: 'status', title: t('status') }],
   },
 ])
 
@@ -244,7 +243,7 @@ const summaryData = computed(() => [
 
 const summary = ({ data }) => ({
   name: {
-    value: t('total'),
+    value: h('span', { style: { color: 'var(--color-primary)' } }, t('total')),
     colSpan: 2,
   },
   tasks: {
@@ -402,7 +401,7 @@ watch(
   <var-data-table :columns="columns" :data="data" size="large" />
 
   <app-type>{{ t('surfaceLow') }}</app-type>
-  <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
+  <var-data-table :columns="columns" :data="manyRows" surface="low" />
 
   <app-type>{{ t('plainTable') }}</app-type>
   <var-data-table :columns="columns" :data="data" plain />
@@ -415,8 +414,10 @@ watch(
   gap: 8px;
   color: var(--color-text-secondary);
 }
+</style>
 
-:deep(.data-table-example__row--busy) {
-  color: var(--color-warning);
+<style>
+.data-table-example__row--busy {
+  --data-table-body-cell-text-color: var(--color-warning);
 }
 </style>

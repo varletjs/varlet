@@ -280,13 +280,13 @@ const columns = ref([
   {
     title: 'Profile',
     children: [
-      { key: 'name', title: 'Name', width: 112 },
-      { key: 'role', title: 'Role', width: 112 },
+      { key: 'name', title: 'Name' },
+      { key: 'role', title: 'Role' },
     ],
   },
   {
     title: 'State',
-    children: [{ key: 'status', title: 'Status', width: 96 }],
+    children: [{ key: 'status', title: 'Status' }],
   },
 ])
 
@@ -363,9 +363,9 @@ const data = ref([
   <var-data-table :columns="columns" :data="data" :row-class="rowClass" />
 </template>
 
-<style scoped>
-:deep(.busy-row) {
-  color: var(--color-warning);
+<style>
+.busy-row {
+  --data-table-body-cell-text-color: var(--color-warning);
 }
 </style>
 ```
@@ -374,7 +374,7 @@ const data = ref([
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 
 const columns = ref([
   { key: 'name', title: 'Name' },
@@ -384,7 +384,7 @@ const columns = ref([
 
 const summary = ({ data }) => ({
   name: {
-    value: 'Total',
+    value: h('span', { style: { color: 'var(--color-primary)' } }, 'Total'),
     colSpan: 2,
   },
   tasks: {
@@ -816,12 +816,14 @@ const columns = ref([
   { key: 'status', title: 'Status' },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
-])
+const data = ref(
+  Array.from({ length: 48 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'Engineer' : 'Operator',
+    status: index % 3 === 0 ? 'Online' : 'Offline',
+  })),
+)
 </script>
 
 <template>
@@ -850,7 +852,7 @@ const data = ref([
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+  <var-data-table :columns="columns" :data="data" plain />
 </template>
 ```
 

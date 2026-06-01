@@ -280,13 +280,13 @@ const columns = ref([
   {
     title: '资料',
     children: [
-      { key: 'name', title: '姓名', width: 112 },
-      { key: 'role', title: '角色', width: 112 },
+      { key: 'name', title: '姓名' },
+      { key: 'role', title: '角色' },
     ],
   },
   {
     title: '状态分组',
-    children: [{ key: 'status', title: '状态', width: 96 }],
+    children: [{ key: 'status', title: '状态' }],
   },
 ])
 
@@ -363,9 +363,9 @@ const data = ref([
   <var-data-table :columns="columns" :data="data" :row-class="rowClass" />
 </template>
 
-<style scoped>
-:deep(.busy-row) {
-  color: var(--color-warning);
+<style>
+.busy-row {
+  --data-table-body-cell-text-color: var(--color-warning);
 }
 </style>
 ```
@@ -374,7 +374,7 @@ const data = ref([
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 
 const columns = ref([
   { key: 'name', title: '姓名' },
@@ -384,7 +384,7 @@ const columns = ref([
 
 const summary = ({ data }) => ({
   name: {
-    value: '合计',
+    value: h('span', { style: { color: 'var(--color-primary)' } }, '合计'),
     colSpan: 2,
   },
   tasks: {
@@ -816,12 +816,14 @@ const columns = ref([
   { key: 'status', title: '状态' },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
-  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
-  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
-  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
-])
+const data = ref(
+  Array.from({ length: 48 }, (_, index) => ({
+    id: index + 1,
+    name: `用户 ${index + 1}`,
+    role: index % 2 === 0 ? '工程师' : '操作员',
+    status: index % 3 === 0 ? '在线' : '离线',
+  })),
+)
 </script>
 
 <template>
@@ -850,7 +852,7 @@ const data = ref([
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+  <var-data-table :columns="columns" :data="data" plain />
 </template>
 ```
 
