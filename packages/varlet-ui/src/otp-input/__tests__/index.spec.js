@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import OtpInput from '..'
+import { delay } from '../../utils/test'
 import VarOtpInput from '../OtpInput.vue'
 
 test('otp-input plugin', () => {
@@ -73,6 +74,30 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
+  test('input event with multiple chars should fill from the first empty cell', async () => {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '',
+        length: 6,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    const inputs = wrapper.findAll('.var-input__input')
+
+    await inputs[2].trigger('focus')
+    await inputs[2].setValue('123456')
+    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
+
+    expect(onUpdateModelValue).toHaveBeenLastCalledWith('123456')
+    expect(wrapper.vm.activeIndex).toBe(5)
+
+    wrapper.unmount()
+  })
+
   test('click should emit event and trigger onClick validation', async () => {
     const onClick = vi.fn()
     const rule = vi.fn(() => true)
@@ -96,6 +121,31 @@ describe('test otp-input behaviors', () => {
     expect(rule).toHaveBeenCalled()
     expect(rule.mock.calls[0][0]).toBe('')
 
+    wrapper.unmount()
+  })
+
+  test('click filled cell should keep selection', async () => {
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '1234',
+        length: 4,
+      },
+      attachTo: document.body,
+    })
+
+    const inputs = wrapper.findAll('.var-input__input')
+    const selectSpy = vi.spyOn(inputs[0].element, 'select')
+
+    inputs[0].element.focus()
+    await delay(20)
+    selectSpy.mockClear()
+
+    await inputs[0].trigger('click')
+    await delay(20)
+
+    expect(selectSpy).toHaveBeenCalled()
+
+    selectSpy.mockRestore()
     wrapper.unmount()
   })
 
