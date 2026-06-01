@@ -38,10 +38,6 @@ export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTabl
 
 export type DataTableColumnTitle = VNodeChild | (() => VNodeChild)
 
-export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
-  checked: boolean
-}
-
 export type DataTableRowProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes | undefined)
