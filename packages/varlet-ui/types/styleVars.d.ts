@@ -268,9 +268,21 @@ interface BaseStyleVars {
   '--count-to-text-font-size'?: string
   '--countdown-text-color'?: string
   '--countdown-text-font-size'?: string
+  '--counter-padding'?: string
+  '--counter-font-color'?: string
+  '--counter-background'?: string
+  '--counter-input-width'?: string
+  '--counter-input-margin'?: string
+  '--counter-input-font-size'?: string
+  '--counter-button-size'?: string
+  '--counter-button-text-color'?: string
+  '--counter-button-icon-size'?: string
+  '--counter-disabled-color'?: string
+  '--counter-disabled-opacity'?: string
+  '--counter-error-color'?: string
   '--data-table-background'?: string
-  '--data-table-surface-low-background'?: string
   '--data-table-header-cell-background'?: string
+  '--data-table-surface-low-background'?: string
   '--data-table-header-cell-text-color'?: string
   '--data-table-body-cell-text-color'?: string
   '--data-table-border-color'?: string
@@ -294,18 +306,6 @@ interface BaseStyleVars {
   '--data-table-row-large-height'?: string
   '--data-table-footer-padding'?: string
   '--data-table-empty-padding'?: string
-  '--counter-padding'?: string
-  '--counter-font-color'?: string
-  '--counter-background'?: string
-  '--counter-input-width'?: string
-  '--counter-input-margin'?: string
-  '--counter-input-font-size'?: string
-  '--counter-button-size'?: string
-  '--counter-button-text-color'?: string
-  '--counter-button-icon-size'?: string
-  '--counter-disabled-color'?: string
-  '--counter-disabled-opacity'?: string
-  '--counter-error-color'?: string
   '--date-picker-border-radius'?: string
   '--date-picker-font-size'?: string
   '--date-picker-min-width'?: string
@@ -776,6 +776,8 @@ interface BaseStyleVars {
   '--switch-variant-ripple-active-left'?: string
   '--table-background'?: string
   '--table-surface-low-background'?: string
+  '--table-surface-low-row-hover-background'?: string
+  '--table-plain-row-hover-background'?: string
   '--table-border-radius'?: string
   '--table-thead-border-bottom'?: string
   '--table-thead-th-text-color'?: string
@@ -783,8 +785,6 @@ interface BaseStyleVars {
   '--table-thead-th-font-size'?: string
   '--table-thead-tr-border-bottom'?: string
   '--table-tbody-tr-hover-background'?: string
-  '--table-surface-low-row-hover-background'?: string
-  '--table-plain-row-hover-background'?: string
   '--table-tbody-tr-border-bottom'?: string
   '--table-tbody-td-text-color'?: string
   '--table-tbody-td-font-size'?: string
