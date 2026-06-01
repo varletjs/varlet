@@ -18,7 +18,6 @@
             :ref="(el) => setInputRef(el, index)"
             :model-value="getDisplayChar(index)"
             :type="nativeInputType"
-            :maxlength="1"
             autocomplete="one-time-code"
             placeholder=""
             :hint="false"
@@ -49,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { call, clamp, toNumber } from '@varlet/shared'
+import { call, clamp, raf, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import { computed, defineComponent, nextTick, ref, useSlots, type ComponentPublicInstance } from 'vue'
 import VarFormDetails from '../form-details'
@@ -174,9 +173,13 @@ export default defineComponent({
       maybeEmitComplete(value)
     }
 
-    function focusCell(index: number) {
+    async function focusCell(index: number) {
       const targetIndex = clamp(index, 0, normalizedLength.value - 1)
       inputRefs.value[targetIndex]?.focus?.()
+      await raf()
+      if (document.activeElement === inputRefs.value[targetIndex]?.el) {
+        inputRefs.value[targetIndex]?.select?.()
+      }
     }
 
     // expose
@@ -291,20 +294,23 @@ export default defineComponent({
         return
       }
 
+      const target = event.target as HTMLElement | null
+      const cell = target?.closest(`.${n('cell')}`) as HTMLElement | null
+      const indexAttr = cell?.dataset.index
+
       call(props.onClick, event)
       validateWithTrigger('onClick')
+
+      if (indexAttr == null) {
+        return
+      }
+
+      focusCell(Number(indexAttr))
     }
 
     function handleFocus(index: number) {
-      const valueChars = getValueChars()
-
       activeIndex.value = index
-
-      if (valueChars[index]) {
-        nextTick(() => {
-          inputRefs.value[index]?.select?.()
-        })
-      }
+      focusCell(index)
     }
 
     function handleBlur(event: FocusEvent) {
@@ -332,6 +338,7 @@ export default defineComponent({
           removeAt(index)
         } else {
           syncCellDisplayValue(index)
+          scheduleFocusEffect(index)
         }
 
         return
