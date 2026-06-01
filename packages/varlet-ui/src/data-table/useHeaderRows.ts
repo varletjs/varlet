@@ -71,7 +71,7 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
           const endLeafColumnIndex = leafColumnIndex - 1
 
           rows[depth].push({
-            key: `${column.key ?? column.title}-header-${depth}-${columnIndex}`,
+            key: `${column.key ?? 'group'}-header-${depth}-${columnIndex}`,
             column,
             columnIndex: startLeafColumnIndex,
             startLeafColumnIndex,

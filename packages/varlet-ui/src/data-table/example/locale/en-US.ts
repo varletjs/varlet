@@ -7,6 +7,7 @@ export default {
   rowClass: 'Row Class',
   summary: 'Summary',
   customRender: 'Custom Column Render',
+  customHeader: 'Custom Header',
   surfaceLow: 'Subtle Background',
   plainTable: 'Plain Table',
   sorter: 'Single Column Sorting',

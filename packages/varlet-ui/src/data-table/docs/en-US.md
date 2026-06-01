@@ -25,7 +25,7 @@ const data = ref([
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" />
+  <var-data-table :columns="columns" :data="data" :pagination="{ showSizeChanger: true }" />
 </template>
 ```
 
@@ -52,6 +52,31 @@ const columns = ref([
         row.status,
       ),
   },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### Custom Header
+
+```html
+<script setup>
+import { h, ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: () => h('span', { style: { color: 'var(--color-primary)' } }, 'Name') },
+  { key: 'role', title: () => h('span', { style: { color: 'var(--color-success)' } }, 'Role') },
+  { key: 'status', title: () => h('span', { style: { color: 'var(--color-warning)' } }, 'Status') },
 ])
 
 const data = ref([
@@ -464,7 +489,7 @@ const data = ref([
 </template>
 ```
 
-#### Single Selection
+### Single Selection
 
 ```html
 <script setup>
@@ -897,7 +922,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `type` | Column type. Supports `selection` and `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
-| `title` | Column title | _string_ | `-` |
+| `title` | Column title. Supports render function | _VNodeChild \| () => VNodeChild_ | `-` |
 | `children` | Child columns used to render a grouped header | _DataTableColumn[]_ | `-` |
 | `sorter` | Whether the field column shows sorter interaction | _boolean_ | `false` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |

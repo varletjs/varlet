@@ -37,6 +37,8 @@ export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRo
 
 export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
 
+export type DataTableColumnTitle = VNodeChild | (() => VNodeChild)
+
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
 }
@@ -85,7 +87,7 @@ export interface DataTableSorter {
 export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row> {
   type?: undefined
   key: string
-  title: string
+  title: DataTableColumnTitle
   children?: DataTableColumn<Row>[]
   sorter?: boolean
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
@@ -94,7 +96,7 @@ export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row
 export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn<Row> {
   type: 'selection'
   key?: string
-  title?: string
+  title?: DataTableColumnTitle
   multiple?: boolean
   selectable?: DataTableColumnSelectable<Row>
   render?: never
@@ -103,7 +105,7 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
 export interface DataTableExpandColumn<Row = any> extends DataTableBaseColumn<Row> {
   type: 'expand'
   key?: string
-  title?: string
+  title?: DataTableColumnTitle
   render?: never
   expandable?: (context: DataTableRowPropsContext<Row>) => boolean
   renderExpand: (context: DataTableRowBaseContext<Row>) => VNodeChild

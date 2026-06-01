@@ -32,6 +32,7 @@ export interface DataTableSummaryContext<Row = any> {
 
 export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
 export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
+export type DataTableColumnTitle = VNodeChild | (() => VNodeChild)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
   checked: boolean
@@ -49,11 +50,15 @@ export type DataTableCellProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableColumnCellPropsContext<Row>) => HTMLAttributes | undefined)
 
-export type DataTableSummaryCell = VNodeChild | { value?: VNodeChild; colSpan?: number }
+export interface DataTableSummaryCell {
+  value?: VNodeChild
+  colSpan?: number
+  rowSpan?: number
+}
 
 export type DataTableSummary<Row = any> = (
   context: DataTableSummaryContext<Row>,
-) => Record<string, DataTableSummaryCell>
+) => Record<string, DataTableSummaryCell> | Array<Record<string, DataTableSummaryCell>>
 
 export interface DataTableBaseColumn<Row = any> {
   fixed?: DataTableColumnFixed
@@ -77,7 +82,7 @@ export interface DataTableSorter {
 export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row> {
   type?: undefined
   key: string
-  title: string
+  title: DataTableColumnTitle
   children?: DataTableColumn<Row>[]
   sorter?: boolean
   render?: (context: DataTableColumnRenderContext<Row>) => VNodeChild
@@ -86,7 +91,7 @@ export interface DataTableFieldColumn<Row = any> extends DataTableBaseColumn<Row
 export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn<Row> {
   type: 'selection'
   key?: string
-  title?: string
+  title?: DataTableColumnTitle
   multiple?: boolean
   selectable?: DataTableColumnSelectable<Row>
   render?: never
@@ -95,7 +100,7 @@ export interface DataTableSelectionColumn<Row = any> extends DataTableBaseColumn
 export interface DataTableExpandColumn<Row = any> extends DataTableBaseColumn<Row> {
   type: 'expand'
   key?: string
-  title?: string
+  title?: DataTableColumnTitle
   render?: never
   expandable?: (context: DataTableRowPropsContext<Row>) => boolean
   renderExpand: (context: DataTableRowBaseContext<Row>) => VNodeChild

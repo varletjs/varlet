@@ -36,8 +36,19 @@ const renderStatus = ({ row }) =>
 
 const renderColumns = computed(() => [
   { key: 'name', title: t('name') },
-  { key: 'status', title: t('status'), render: renderStatus },
+  {
+    key: 'status',
+    title: t('status'),
+    render: renderStatus,
+  },
 ])
+
+const customHeaderColumns = computed(() => [
+  { key: 'name', title: () => h('span', { style: { color: 'var(--color-primary)' } }, t('name')) },
+  { key: 'role', title: () => h('span', { style: { color: 'var(--color-success)' } }, t('role')) },
+  { key: 'status', title: () => h('span', { style: { color: 'var(--color-warning)' } }, t('status')) },
+])
+
 const sortableColumns = computed(() => [
   { key: 'score', title: t('score'), sorter: true },
   { key: 'tasks', title: t('tasks'), sorter: true },
@@ -287,10 +298,13 @@ watch(
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-data-table :columns="columns" :data="data" />
+  <var-data-table :columns="columns" :data="data" :pagination="{ showSizeChanger: true }" />
 
   <app-type>{{ t('customRender') }}</app-type>
   <var-data-table :columns="renderColumns" :data="data" />
+
+  <app-type>{{ t('customHeader') }}</app-type>
+  <var-data-table :columns="customHeaderColumns" :data="data" />
 
   <app-type>{{ t('localPagination') }}</app-type>
   <var-data-table :columns="columns" :data="manyRows" />

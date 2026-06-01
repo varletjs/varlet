@@ -25,7 +25,7 @@ const data = ref([
 </script>
 
 <template>
-  <var-data-table :columns="columns" :data="data" />
+  <var-data-table :columns="columns" :data="data" :pagination="{ showSizeChanger: true }" />
 </template>
 ```
 
@@ -52,6 +52,31 @@ const columns = ref([
         row.status,
       ),
   },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
+  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" />
+</template>
+```
+
+### 自定义表头
+
+```html
+<script setup>
+import { h, ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: () => h('span', { style: { color: 'var(--color-primary)' } }, '姓名') },
+  { key: 'role', title: () => h('span', { style: { color: 'var(--color-success)' } }, '角色') },
+  { key: 'status', title: () => h('span', { style: { color: 'var(--color-warning)' } }, '状态') },
 ])
 
 const data = ref([
@@ -464,7 +489,7 @@ const data = ref([
 </template>
 ```
 
-#### 单选
+### 单选
 
 ```html
 <script setup>
@@ -897,7 +922,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `type` | 列类型。支持 `selection` 和 `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
-| `title` | 列标题 | _string_ | `-` |
+| `title` | 列标题，支持渲染函数 | _VNodeChild \| () => VNodeChild_ | `-` |
 | `children` | 子列配置，用于渲染分组表头 | _DataTableColumn[]_ | `-` |
 | `sorter` | 字段列是否显示排序交互 | _boolean_ | `false` |
 | `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |

@@ -7,6 +7,7 @@ export default {
   rowClass: '行类名',
   summary: '总结栏',
   customRender: '自定义列渲染',
+  customHeader: '自定义表头',
   surfaceLow: '弱背景色',
   plainTable: '纯表格',
   sorter: '单列排序',

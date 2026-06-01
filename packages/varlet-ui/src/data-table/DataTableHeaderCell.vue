@@ -34,10 +34,11 @@
         ])
       "
       :style="sortTriggerStyle"
-      :aria-label="sortTriggerLabel"
       @click="toggleColumnSorter(headerCell.column.key)"
     >
-      <span :class="n('sort-trigger-text')">{{ headerCell.column.title }}</span>
+      <span :class="n('sort-trigger-text')">
+        <maybe-v-node :is="headerTitle" />
+      </span>
       <span :class="n('sort-trigger-icon')" aria-hidden="true">
         <var-icon
           name="chevron-up"
@@ -53,9 +54,7 @@
         />
       </span>
     </button>
-    <template v-else>
-      {{ headerTitle }}
-    </template>
+    <maybe-v-node v-else :is="headerTitle" />
     <button
       v-if="
         isColumnResizable(headerCell.column) &&
@@ -72,10 +71,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
+import { callOrReturn } from '@varlet/shared'
+import { computed, defineComponent, type CSSProperties, type PropType, type VNodeChild } from 'vue'
 import VarCheckbox from '../checkbox'
 import VarIcon from '../icon'
-import { createNamespace } from '../utils/components'
+import { createNamespace, MaybeVNode } from '../utils/components'
 import type {
   DataTableColumn,
   DataTableExpandColumn,
@@ -90,6 +90,7 @@ const { n, classes } = createNamespace('data-table')
 export default defineComponent({
   name: 'DataTableHeaderCell',
   components: {
+    MaybeVNode,
     VarCheckbox,
     VarIcon,
   },
@@ -180,10 +181,14 @@ export default defineComponent({
       return props.headerCell.column.titleAlign ?? props.headerCell.column.align ?? 'left'
     })
 
-    const headerTitle = computed(() => {
-      return props.isSelectionColumn(props.headerCell.column) || props.isExpandColumn(props.headerCell.column)
-        ? ''
-        : props.headerCell.column.title
+    const headerTitle = computed<VNodeChild>(() => {
+      const { column } = props.headerCell
+
+      if (props.isSelectionColumn(column) || props.isExpandColumn(column)) {
+        return ''
+      }
+
+      return callOrReturn(column.title)
     })
 
     const sortTriggerStyle = computed<CSSProperties>(() => {
@@ -200,17 +205,6 @@ export default defineComponent({
       }
     })
 
-    const sortTriggerLabel = computed(() => {
-      if (!props.isColumnSortable(props.headerCell.column)) {
-        return ''
-      }
-
-      const orderLabel =
-        columnSorterOrder.value === 'asc' ? 'ascending' : columnSorterOrder.value === 'desc' ? 'descending' : 'none'
-
-      return `Sort by ${props.headerCell.column.title}, current: ${orderLabel}`
-    })
-
     return {
       n,
       classes,
@@ -218,7 +212,6 @@ export default defineComponent({
       headerTitle,
       headerAlign,
       sortTriggerStyle,
-      sortTriggerLabel,
     }
   },
 })

@@ -1,8 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vite-plus/test'
-import { createApp, h } from 'vue'
+import { createApp, h, ref } from 'vue'
 import DataTable from '..'
 import VarDataTable from '../DataTable'
+import { useExpandRow } from '../useExpandRow'
+import { useSelectionColumn } from '../useSelectionColumn'
+import { useTreeExpand } from '../useTreeExpand'
 
 test('data-table use', () => {
   const app = createApp({}).use(DataTable)
@@ -38,7 +41,90 @@ const treeData = [
   },
 ]
 
+const isSelectionColumn = (column) => column.type === 'selection'
+const isExpandColumn = (column) => column.type === 'expand'
+const getTreeChildren = (row) => (Array.isArray(row.nodes) ? row.nodes : [])
+
 describe('test data-table component props', () => {
+  test('should handle selection composable without selection column', () => {
+    const checkedRowKeys = ref([1])
+    const selection = useSelectionColumn({
+      columns: () => [],
+      tree: () => false,
+      cascade: () => true,
+      pagedData: () => data,
+      allFlatRows: () => [],
+      treeRowMeta: () => ({
+        rowByKey: new Map(),
+        rowByObject: new Map(),
+        parentKeyByChild: new Map(),
+      }),
+      checkedRowKeys,
+      isSelectionColumn,
+      getTreeChildren,
+    })
+
+    expect(selection.currentSelectableRows.value).toEqual([])
+    expect(selection.allCurrentRowsSelected.value).toBe(false)
+    expect(selection.someCurrentRowsSelected.value).toBe(false)
+
+    selection.toggleCurrentSelectableRows(true)
+    selection.toggleRowSelection({ key: 1, row: data[0], rowIndex: 0 }, true)
+    expect(checkedRowKeys.value).toEqual([1])
+  })
+
+  test('should ignore tree selection rows missing from meta', () => {
+    const selection = useSelectionColumn({
+      columns: () => [{ type: 'selection' }],
+      tree: () => true,
+      cascade: () => true,
+      pagedData: () => [{ id: 1, nodes: [{ id: 11 }] }],
+      allFlatRows: () => [],
+      treeRowMeta: () => ({
+        rowByKey: new Map(),
+        rowByObject: new Map(),
+        parentKeyByChild: new Map(),
+      }),
+      checkedRowKeys: ref([]),
+      isSelectionColumn,
+      getTreeChildren,
+    })
+
+    expect(selection.isRowKeySelected(1)).toBe(false)
+    expect(selection.isRowKeyIndeterminate(1)).toBe(false)
+  })
+
+  test('should handle expand composable without expand column', () => {
+    const expandedRowKeys = ref([1])
+    const expand = useExpandRow({
+      columns: () => [],
+      expandedRowKeys,
+      isExpandColumn,
+    })
+    const bodyRow = { key: 1, row: data[0], rowIndex: 0 }
+
+    expand.toggleRowExpanded(bodyRow)
+
+    expect(expandedRowKeys.value).toEqual([1])
+    expect(expand.renderExpandedRow(bodyRow)).toBeUndefined()
+  })
+
+  test('should handle tree expand composable when tree is disabled', () => {
+    const expandedTreeRowKeys = ref([1])
+    const treeExpand = useTreeExpand({
+      tree: () => false,
+      data: () => treeData,
+      expandedTreeRowKeys,
+      getRowKey: (row, rowIndex) => row.id ?? rowIndex,
+      getTreeChildren,
+    })
+
+    treeExpand.toggleTreeRowExpanded({ key: 1, row: treeData[0], rowIndex: 0, expandable: true })
+
+    expect(expandedTreeRowKeys.value).toEqual([])
+    expect(treeExpand.collapsedTreeRowKeys.value.size).toBe(0)
+  })
+
   test('should render basic table content', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -128,6 +214,48 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support custom pagination options', () => {
+    const showTotal = vi.fn((total, range) => `${range[0]}-${range[1]} / ${total}`)
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: {
+          disabled: true,
+          showSizeChanger: true,
+          showQuickJumper: true,
+          maxPagerCount: 7,
+          sizeOption: [5, 10],
+          showTotal,
+        },
+      },
+    })
+
+    const pagination = wrapper.findComponent({ name: 'var-pagination' })
+
+    expect(pagination.props('disabled')).toBe(true)
+    expect(pagination.props('showSizeChanger')).toBe(true)
+    expect(pagination.props('showQuickJumper')).toBe(true)
+    expect(pagination.props('maxPagerCount')).toBe(7)
+    expect(pagination.props('sizeOption')).toEqual([5, 10])
+    expect(showTotal).toHaveBeenCalledWith(3, [1, 3])
+    wrapper.unmount()
+  })
+
+  test('should hide pagination when remote total is not provided', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        remote: true,
+      },
+    })
+
+    expect(wrapper.findComponent({ name: 'var-pagination' }).exists()).toBe(false)
+    expect(wrapper.findAll('tbody tr')).toHaveLength(3)
+    wrapper.unmount()
+  })
+
   test('should support render function', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -147,6 +275,43 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support title render function', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            key: 'name',
+            title: () => h('span', { class: 'custom-title' }, 'Custom Name'),
+          },
+        ],
+        data: [data[0]],
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('thead .custom-title').text()).toBe('Custom Name')
+    wrapper.unmount()
+  })
+
+  test('should support sortable title render function', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            key: 'name',
+            title: () => h('span', { class: 'custom-sort-title' }, 'Custom Name'),
+            sorter: true,
+          },
+        ],
+        data: [data[0]],
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('thead .custom-sort-title').text()).toBe('Custom Name')
+    wrapper.unmount()
+  })
+
   test('should support row class', () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -159,6 +324,36 @@ describe('test data-table component props', () => {
 
     expect(wrapper.findAll('tbody tr')[0].classes()).toContain('active-row')
     expect(wrapper.findAll('tbody tr')[1].classes()).not.toContain('active-row')
+
+    wrapper.unmount()
+  })
+
+  test('should support function row key and fallback row index key', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: [
+          { uid: 'ada', name: 'Ada', role: 'Admin' },
+          { name: 'Linus', role: 'Maintainer' },
+        ],
+        pagination: false,
+        rowKey: (row, rowIndex) => row.uid ?? rowIndex,
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith(['ada'])
+
+    await wrapper.setProps({ checkedRowKeys: [] })
+    checkboxes[2].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
 
     wrapper.unmount()
   })
@@ -249,6 +444,32 @@ describe('test data-table component props', () => {
     expect(secondRowCells).toHaveLength(2)
     expect(secondRowCells[0].text()).toBe('Average')
     expect(secondRowCells[1].text()).toBe('20')
+
+    wrapper.unmount()
+  })
+
+  test('should support vnode summary cell value', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name' },
+          { key: 'score', title: 'Score' },
+        ],
+        data,
+        pagination: false,
+        summary: () => ({
+          name: {
+            value: h('strong', { class: 'summary-total' }, 'Total'),
+          },
+          score: {
+            value: 3,
+          },
+        }),
+      },
+    })
+
+    expect(wrapper.find('tfoot .summary-total').text()).toBe('Total')
+    expect(wrapper.findAll('tfoot td')[1].text()).toBe('3')
 
     wrapper.unmount()
   })
@@ -769,6 +990,28 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should sync expanded tree row keys when tree is disabled or data changes', async () => {
+    const onUpdateExpandedTreeRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 999],
+        'onUpdate:expandedTreeRowKeys': onUpdateExpandedTreeRowKeys,
+      },
+    })
+
+    expect(onUpdateExpandedTreeRowKeys).toHaveBeenLastCalledWith([1])
+
+    await wrapper.setProps({ tree: false })
+    expect(onUpdateExpandedTreeRowKeys).toHaveBeenLastCalledWith([])
+
+    wrapper.unmount()
+  })
+
   test('should cascade tree selection in multiple mode by default', async () => {
     const onUpdateCheckedRowKeys = vi.fn()
     const wrapper = mount(VarDataTable, {
@@ -789,6 +1032,35 @@ describe('test data-table component props', () => {
     checkboxes[1].vm.$emit('update:modelValue', true)
     await wrapper.vm.$nextTick()
     expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1, 11, 12])
+
+    wrapper.unmount()
+  })
+
+  test('should sync ancestor selection when toggling tree children', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2],
+        checkedRowKeys: [11],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    checkboxes[3].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([11, 12, 1])
+
+    await wrapper.setProps({ checkedRowKeys: [11, 12, 1] })
+    checkboxes[1].vm.$emit('update:modelValue', false)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([])
 
     wrapper.unmount()
   })
@@ -1025,6 +1297,36 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should resolve control column width and column width limits', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { type: 'selection' },
+          {
+            type: 'expand',
+            renderExpand: ({ row }) => h('div', row.role),
+          },
+          { key: 'name', title: 'Name', width: 200, minWidth: 120, maxWidth: 160 },
+          { key: 'role', title: 'Role', minWidth: 180, maxWidth: 120 },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const cols = wrapper.findAll('col')
+
+    expect(cols[0].attributes('style')).toContain('width: 52px;')
+    expect(cols[1].attributes('style')).toContain('width: 52px;')
+    expect(cols[2].attributes('style')).toContain('width: 160px;')
+    expect(cols[2].attributes('style')).toContain('min-width: 120px;')
+    expect(cols[2].attributes('style')).toContain('max-width: 160px;')
+    expect(cols[3].attributes('style')).toContain('min-width: 120px;')
+    expect(cols[3].attributes('style')).toContain('max-width: 120px;')
+
+    wrapper.unmount()
+  })
+
   test('should support resizable columns and respect maxWidth', async () => {
     const wrapper = mount(VarDataTable, {
       props: {
@@ -1223,6 +1525,24 @@ describe('test data-table component props', () => {
     expect(secondRowCells).toHaveLength(2)
     expect(secondRowCells[0].text()).toContain('Maintainer')
     expect(secondRowCells[1].text()).toContain('Offline')
+    wrapper.unmount()
+  })
+
+  test('should render sortable title col span without absolute trigger style', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', titleColSpan: 2, sorter: true },
+          { key: 'role', title: 'Role' },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('thead th').attributes('colspan')).toBe('2')
+    expect(wrapper.find('.var-data-table__sort-trigger').attributes('style')).toBeUndefined()
+
     wrapper.unmount()
   })
 
