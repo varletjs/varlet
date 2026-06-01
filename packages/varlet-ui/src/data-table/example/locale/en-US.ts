@@ -18,7 +18,6 @@ export default {
   treeNonCascade: 'Tree Non-Cascade',
   treeSingleSelection: 'Tree Single Selection',
   expand: 'Expand',
-  expandWithTree: 'Expand + Tree Data',
   selectedRows: 'Selected Rows',
   localPagination: 'Frontend Pagination',
   remotePagination: 'Remote Pagination',

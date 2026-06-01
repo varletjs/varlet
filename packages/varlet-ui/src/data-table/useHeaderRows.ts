@@ -1,6 +1,7 @@
-import { clamp, floor, isArray } from '@varlet/shared'
+import { isArray } from '@varlet/shared'
 import { computed } from 'vue'
 import type { DataTableColumn, DataTableColumnFixed, DataTableFieldColumn } from './props'
+import { createCellSpanMatrix, resolveSpan } from './span'
 
 export interface DataTableHeaderCell {
   key: string
@@ -25,21 +26,21 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
 
     if (!resolvedColumns.some(isGroupColumn)) {
       const cells: DataTableHeaderCell[] = []
-      let coveredUntil = -1
+      const matrix = createCellSpanMatrix(1, resolvedColumns.length)
 
       resolvedColumns.forEach((column, columnIndex) => {
-        if (columnIndex <= coveredUntil) {
+        if (matrix.isCovered(0, columnIndex)) {
           return
         }
 
         const maxColSpan = resolvedColumns.length - columnIndex
-        const colSpan = clamp(floor(column.titleColSpan ?? 1), 0, maxColSpan)
+        const colSpan = resolveSpan(column.titleColSpan, maxColSpan)
 
         if (colSpan === 0) {
           return
         }
 
-        coveredUntil = columnIndex + colSpan - 1
+        matrix.cover(0, columnIndex, 1, colSpan)
         cells.push({
           key: `${column.key ?? column.type ?? columnIndex}-header-${columnIndex}`,
           column,

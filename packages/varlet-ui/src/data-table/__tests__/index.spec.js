@@ -181,7 +181,9 @@ describe('test data-table component props', () => {
             value: 'Total',
             colSpan: 2,
           },
-          tasks: data.reduce((total, row) => total + row.tasks, 0),
+          tasks: {
+            value: data.reduce((total, row) => total + row.tasks, 0),
+          },
         }),
       },
     })
@@ -192,6 +194,113 @@ describe('test data-table component props', () => {
     expect(summaryCells[0].attributes('colspan')).toBe('2')
     expect(summaryCells[0].text()).toBe('Total')
     expect(summaryCells[1].text()).toBe('40')
+
+    wrapper.unmount()
+  })
+
+  test('should support multiple summary rows with row span', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name' },
+          { key: 'score', title: 'Score' },
+          { key: 'tasks', title: 'Tasks' },
+        ],
+        data: [
+          { id: 1, name: 'Ada', score: 92, tasks: 16 },
+          { id: 2, name: 'Linus', score: 78, tasks: 24 },
+        ],
+        pagination: false,
+        summary: ({ data }) => [
+          {
+            name: {
+              value: 'Total',
+              rowSpan: 2,
+            },
+            score: {
+              value: data.reduce((total, row) => total + row.score, 0),
+            },
+            tasks: {
+              value: data.reduce((total, row) => total + row.tasks, 0),
+            },
+          },
+          {
+            score: {
+              value: 'Average',
+            },
+            tasks: {
+              value: data.reduce((total, row) => total + row.tasks, 0) / data.length,
+            },
+          },
+        ],
+      },
+    })
+
+    const summaryRows = wrapper.findAll('tfoot tr')
+    const firstRowCells = summaryRows[0].findAll('td')
+    const secondRowCells = summaryRows[1].findAll('td')
+
+    expect(summaryRows).toHaveLength(2)
+    expect(firstRowCells).toHaveLength(3)
+    expect(firstRowCells[0].attributes('rowspan')).toBe('2')
+    expect(firstRowCells[0].text()).toBe('Total')
+    expect(firstRowCells[1].text()).toBe('170')
+    expect(firstRowCells[2].text()).toBe('40')
+    expect(secondRowCells).toHaveLength(2)
+    expect(secondRowCells[0].text()).toBe('Average')
+    expect(secondRowCells[1].text()).toBe('20')
+
+    wrapper.unmount()
+  })
+
+  test('should normalize summary cell spans', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name' },
+          { key: 'score', title: 'Score' },
+          { key: 'tasks', title: 'Tasks' },
+        ],
+        data,
+        pagination: false,
+        summary: () => [
+          {
+            name: {
+              value: 'Total',
+              colSpan: 2.8,
+            },
+            tasks: {
+              value: '40',
+              rowSpan: 8,
+            },
+          },
+          {
+            name: {
+              value: 'Hidden',
+              colSpan: 0,
+            },
+            score: {
+              value: 'Average',
+            },
+            tasks: {
+              value: '20',
+            },
+          },
+        ],
+      },
+    })
+
+    const summaryRows = wrapper.findAll('tfoot tr')
+    const firstRowCells = summaryRows[0].findAll('td')
+    const secondRowCells = summaryRows[1].findAll('td')
+
+    expect(firstRowCells).toHaveLength(2)
+    expect(firstRowCells[0].attributes('colspan')).toBe('2')
+    expect(firstRowCells[0].text()).toBe('Total')
+    expect(firstRowCells[1].attributes('rowspan')).toBe('2')
+    expect(firstRowCells[1].text()).toBe('40')
+    expect(secondRowCells).toHaveLength(1)
+    expect(secondRowCells[0].text()).toBe('Average')
 
     wrapper.unmount()
   })

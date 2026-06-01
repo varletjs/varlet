@@ -1,12 +1,6 @@
-import { callOrReturn, clamp, floor, times } from '@varlet/shared'
 import { computed, type ComputedRef } from 'vue'
-import type { DataTableColumn, DataTableColumnCellSpan } from './props'
-
-interface InternalDataTableCellContext {
-  row: Record<string, any>
-  rowIndex: number
-  column: DataTableColumn
-}
+import type { DataTableColumn } from './props'
+import { createCellSpanMatrix, resolveSpan } from './span'
 
 export interface DataTableBodyCell {
   key: string
@@ -94,35 +88,27 @@ export function useBodyRows({
     const resolvedColumns = columns()
     const rowCount = visibleFlatRows.value.length
     const columnCount = resolvedColumns.length
-    const covered = times(rowCount, () => Array(columnCount).fill(false))
+    const matrix = createCellSpanMatrix(rowCount, columnCount)
 
     return visibleFlatRows.value.map((flatRow, visibleRowIndex) => {
       const cells: DataTableBodyCell[] = []
 
       resolvedColumns.forEach((column, columnIndex) => {
-        if (covered[visibleRowIndex][columnIndex]) {
+        if (matrix.isCovered(visibleRowIndex, columnIndex)) {
           return
         }
 
         const context = { row: flatRow.row, rowIndex: flatRow.rowIndex, column }
         const maxColSpan = columnCount - columnIndex
         const maxRowSpan = rowCount - visibleRowIndex
-        const colSpan = resolveSpan(column.colSpan, context, maxColSpan)
-        const rowSpan = resolveSpan(column.rowSpan, context, maxRowSpan)
+        const colSpan = resolveSpan(column.colSpan, maxColSpan, context)
+        const rowSpan = resolveSpan(column.rowSpan, maxRowSpan, context)
 
         if (colSpan === 0 || rowSpan === 0) {
           return
         }
 
-        times(rowSpan, (rowOffset) => {
-          times(colSpan, (colOffset) => {
-            if (rowOffset === 0 && colOffset === 0) {
-              return
-            }
-
-            covered[visibleRowIndex + rowOffset][columnIndex + colOffset] = true
-          })
-        })
+        matrix.cover(visibleRowIndex, columnIndex, rowSpan, colSpan)
 
         const isTreeColumn = columnIndex === firstTreeColumnIndex.value
         cells.push({
@@ -194,20 +180,6 @@ export function useBodyRows({
     visit(sourceRows, 0, undefined, true)
 
     return rows
-  }
-
-  function resolveSpan(
-    span: DataTableColumnCellSpan | undefined,
-    context: InternalDataTableCellContext,
-    maxSpan: number,
-  ) {
-    const resolvedSpan = span == null ? 1 : floor(callOrReturn(span, context))
-
-    if (resolvedSpan <= 0) {
-      return 0
-    }
-
-    return clamp(resolvedSpan, 1, maxSpan)
   }
 
   return {

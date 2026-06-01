@@ -134,8 +134,6 @@ const singleCheckedRowKeys = ref([2])
 const treeCheckedRowKeys = ref([1, 11, 12])
 const treeNonCascadeCheckedRowKeys = ref([12])
 const treeSingleCheckedRowKeys = ref([21])
-const expandTreeExpandedRowKeys = ref([1])
-const expandTreeExpandedTreeRowKeys = ref([1])
 const selectionColumns = computed(() => [
   { type: 'selection' },
   { key: 'name', title: t('name') },
@@ -171,15 +169,6 @@ const treeColumns = computed(() => [
 ])
 const treeSingleColumns = computed(() => [
   { type: 'selection', multiple: false },
-  { key: 'name', title: t('name') },
-  { key: 'role', title: t('role') },
-  { key: 'status', title: t('status') },
-])
-const expandTreeColumns = computed(() => [
-  {
-    type: 'expand',
-    renderExpand: renderExpandContent,
-  },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },
@@ -258,7 +247,9 @@ const summary = ({ data }) => ({
     value: t('total'),
     colSpan: 2,
   },
-  tasks: data.reduce((total, row) => total + row.tasks, 0),
+  tasks: {
+    value: data.reduce((total, row) => total + row.tasks, 0),
+  },
 })
 
 const manyRows = computed(() =>
@@ -415,16 +406,6 @@ watch(
 
   <app-type>{{ t('plainTable') }}</app-type>
   <var-data-table :columns="columns" :data="data" :pagination="false" plain />
-
-  <app-type>{{ t('expandWithTree') }}</app-type>
-  <var-data-table
-    v-model:expanded-row-keys="expandTreeExpandedRowKeys"
-    v-model:expanded-tree-row-keys="expandTreeExpandedTreeRowKeys"
-    :columns="expandTreeColumns"
-    :data="treeData"
-    :pagination="false"
-    tree
-  />
 </template>
 
 <style scoped>

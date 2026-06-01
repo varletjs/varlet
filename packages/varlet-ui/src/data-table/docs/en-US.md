@@ -387,7 +387,9 @@ const summary = ({ data }) => ({
     value: 'Total',
     colSpan: 2,
   },
-  tasks: data.reduce((total, row) => total + row.tasks, 0),
+  tasks: {
+    value: data.reduce((total, row) => total + row.tasks, 0),
+  },
 })
 
 const data = ref([
@@ -863,7 +865,7 @@ const data = ref([
 | `row-key` | Row key field or getter | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
 | `row-props` | Custom row props, supports object or function | _object \| (context) => object_ | `-` |
 | `row-class` | Custom row class, supports string, array, object, or function | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
-| `summary` | Summary row render function | _(context) => Record<string, DataTableSummaryCell>_ | `-` |
+| `summary` | Summary row render function. Return an array to render multiple summary rows | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |
 | `loading` | Whether to show loading overlay | _boolean_ | `false` |
 | `pagination` | Built-in pagination config | _boolean \| DataTablePagination_ | `true` |
 | `remote` | Whether to enable remote pagination mode | _boolean_ | `false` |
@@ -930,6 +932,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `value` | Cell content | _VNodeChild_ | `-` |
 | `colSpan` | Cell col span | _number_ | `1` |
+| `rowSpan` | Cell row span | _number_ | `1` |
 
 #### DataTableSorter
 

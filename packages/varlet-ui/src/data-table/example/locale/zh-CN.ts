@@ -18,7 +18,6 @@ export default {
   treeNonCascade: '树形非级联',
   treeSingleSelection: '树形单选',
   expand: '展开列',
-  expandWithTree: '展开列 + 树形数据',
   selectedRows: '已选行',
   localPagination: '前端分页',
   remotePagination: '远程分页',

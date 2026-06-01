@@ -53,11 +53,15 @@ export type DataTableCellProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableColumnCellPropsContext<Row>) => HTMLAttributes | undefined)
 
-export type DataTableSummaryCell = VNodeChild | { value?: VNodeChild; colSpan?: number }
+export interface DataTableSummaryCell {
+  value?: VNodeChild
+  colSpan?: number
+  rowSpan?: number
+}
 
 export type DataTableSummary<Row = any> = (
   context: DataTableSummaryContext<Row>,
-) => Record<string, DataTableSummaryCell>
+) => Record<string, DataTableSummaryCell> | Array<Record<string, DataTableSummaryCell>>
 
 export interface DataTableBaseColumn<Row = any> {
   fixed?: DataTableColumnFixed

@@ -387,7 +387,9 @@ const summary = ({ data }) => ({
     value: '合计',
     colSpan: 2,
   },
-  tasks: data.reduce((total, row) => total + row.tasks, 0),
+  tasks: {
+    value: data.reduce((total, row) => total + row.tasks, 0),
+  },
 })
 
 const data = ref([
@@ -863,7 +865,7 @@ const data = ref([
 | `row-key` | 行 key 字段或获取函数 | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
 | `row-props` | 自定义行属性，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `row-class` | 自定义行类名，支持字符串、数组、对象或函数 | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
-| `summary` | 总结栏渲染函数 | _(context) => Record<string, DataTableSummaryCell>_ | `-` |
+| `summary` | 总结栏渲染函数。返回数组时渲染多行总结栏 | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |
 | `loading` | 是否显示加载遮罩 | _boolean_ | `false` |
 | `pagination` | 内置分页配置 | _boolean \| DataTablePagination_ | `true` |
 | `remote` | 是否启用远程分页模式 | _boolean_ | `false` |
@@ -930,6 +932,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `value` | 单元格内容 | _VNodeChild_ | `-` |
 | `colSpan` | 单元格列合并数量 | _number_ | `1` |
+| `rowSpan` | 单元格行合并数量 | _number_ | `1` |
 
 #### DataTableSorter
 
