@@ -2556,7 +2556,7 @@ exports[`md3Light theme 1`] = `
   "--pagination-font-size": "var(--font-size-md)",
   "--pagination-hover-bg-color": "rgba(85, 85, 85, 0.15)",
   "--pagination-input-width": "32px",
-  "--pagination-item-background": "#fff",
+  "--pagination-item-background": "var(--color-surface-container)",
   "--pagination-item-border-radius": "4px",
   "--pagination-item-height": "32px",
   "--pagination-item-margin": "0 6px",

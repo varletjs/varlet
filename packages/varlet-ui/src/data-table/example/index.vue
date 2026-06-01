@@ -405,7 +405,7 @@ watch(
   <var-data-table :columns="surfaceColumns" :data="data" surface="low" />
 
   <app-type>{{ t('plainTable') }}</app-type>
-  <var-data-table :columns="columns" :data="data" :pagination="false" plain />
+  <var-data-table :columns="columns" :data="data" plain />
 </template>
 
 <style scoped>
