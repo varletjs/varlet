@@ -889,7 +889,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `data` | Data source. Full data in local mode, current page data in remote mode | _any[]_ | `[]` |
 | `columns` | Column definitions | _DataTableColumn[]_ | `[]` |
-| `row-key` | Row key field or getter | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
+| `row-key` | Row key field or getter | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
 | `row-props` | Custom row props, supports object or function | _object \| (context) => object_ | `-` |
 | `row-class` | Custom row class, supports string, array, object, or function | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
 | `summary` | Summary row render function. Return an array to render multiple summary rows | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |

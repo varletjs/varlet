@@ -4,7 +4,9 @@ import { defineListenerProp } from '../utils/components'
 export type DataTableSurface = 'low'
 
 export type DataTableTableLayout = 'auto' | 'fixed'
+
 export type DataTableSortMode = 'single' | 'multiple'
+
 export type DataTableSorterOrder = 'asc' | 'desc'
 
 export type DataTableColumnAlign = 'left' | 'center' | 'right'
@@ -13,10 +15,7 @@ export type DataTableColumnFixed = 'left' | 'right'
 
 export type DataTableRowData = Record<string, any>
 
-export type DataTableRowKey<Row = any> =
-  | Extract<keyof Row, string>
-  | string
-  | ((row: Row, rowIndex: number) => string | number)
+export type DataTableRowKey<Row = any> = string | number | ((context: DataTableRowBaseContext<Row>) => string | number)
 
 export interface DataTableRowBaseContext<Row = any> {
   row: Row
@@ -51,7 +50,7 @@ export type DataTableRowClass<Row = any> =
   | HTMLAttributes['class']
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes['class'])
 
-export type DataTableCellProps<Row = any> =
+export type DataTableColumnCellProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableColumnCellPropsContext<Row>) => HTMLAttributes | undefined)
 
@@ -76,7 +75,7 @@ export interface DataTableBaseColumn<Row = any> {
   titleColSpan?: number
   colSpan?: DataTableColumnCellSpan<Row>
   rowSpan?: DataTableColumnCellSpan<Row>
-  cellProps?: DataTableCellProps<Row>
+  cellProps?: DataTableColumnCellProps<Row>
 }
 
 export interface DataTableSorter {
@@ -136,7 +135,7 @@ export const props = {
     default: () => [],
   },
   rowKey: {
-    type: [String, Function] as PropType<DataTableRowKey>,
+    type: [String, Number, Function] as PropType<DataTableRowKey>,
     default: 'id',
   },
   rowProps: {

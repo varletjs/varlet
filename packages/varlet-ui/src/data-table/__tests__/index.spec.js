@@ -339,7 +339,7 @@ describe('test data-table component props', () => {
           { name: 'Linus', role: 'Maintainer' },
         ],
         pagination: false,
-        rowKey: (row, rowIndex) => row.uid ?? rowIndex,
+        rowKey: ({ row, rowIndex }) => row.uid ?? rowIndex,
         checkedRowKeys: [],
         'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
       },

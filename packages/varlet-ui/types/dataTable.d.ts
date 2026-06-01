@@ -4,16 +4,18 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 export declare const dataTableProps: Record<keyof DataTableProps, any>
 
 export type DataTableColumnAlign = 'left' | 'center' | 'right'
+
 export type DataTableColumnFixed = 'left' | 'right'
+
 export type DataTableSurface = 'low'
+
 export type DataTableTableLayout = 'auto' | 'fixed'
+
 export type DataTableSortMode = 'single' | 'multiple'
+
 export type DataTableSorterOrder = 'asc' | 'desc'
 
-export type DataTableRowKey<Row = any> =
-  | Extract<keyof Row, string>
-  | string
-  | ((row: Row, rowIndex: number) => string | number)
+export type DataTableRowKey<Row = any> = string | number | ((context: DataTableRowBaseContext<Row>) => string | number)
 
 export interface DataTableRowBaseContext<Row = any> {
   row: Row
@@ -31,7 +33,9 @@ export interface DataTableSummaryContext<Row = any> {
 }
 
 export type DataTableColumnCellSpan<Row = any> = number | ((context: DataTableRowBaseContext<Row>) => number)
+
 export type DataTableColumnSelectable<Row = any> = boolean | ((context: DataTableRowBaseContext<Row>) => boolean)
+
 export type DataTableColumnTitle = VNodeChild | (() => VNodeChild)
 
 export interface DataTableSelectionColumnContext<Row = any> extends DataTableRowBaseContext<Row> {
@@ -46,7 +50,7 @@ export type DataTableRowClass<Row = any> =
   | HTMLAttributes['class']
   | ((context: DataTableRowPropsContext<Row>) => HTMLAttributes['class'])
 
-export type DataTableCellProps<Row = any> =
+export type DataTableColumnCellProps<Row = any> =
   | HTMLAttributes
   | ((context: DataTableColumnCellPropsContext<Row>) => HTMLAttributes | undefined)
 
@@ -71,7 +75,7 @@ export interface DataTableBaseColumn<Row = any> {
   titleColSpan?: number
   colSpan?: DataTableColumnCellSpan<Row>
   rowSpan?: DataTableColumnCellSpan<Row>
-  cellProps?: DataTableCellProps<Row>
+  cellProps?: DataTableColumnCellProps<Row>
 }
 
 export interface DataTableSorter {

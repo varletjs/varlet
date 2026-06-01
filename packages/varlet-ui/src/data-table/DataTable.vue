@@ -316,7 +316,7 @@ export default defineComponent({
 
     function getRowKey(row: Record<string, any>, rowIndex: number) {
       if (isFunction(props.rowKey)) {
-        return props.rowKey(row, rowIndex)
+        return props.rowKey({ row, rowIndex })
       }
 
       return row[props.rowKey] ?? rowIndex

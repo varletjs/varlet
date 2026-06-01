@@ -889,7 +889,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `data` | 数据源。前端分页下传全量数据，远程分页下传当前页数据 | _any[]_ | `[]` |
 | `columns` | 列配置 | _DataTableColumn[]_ | `[]` |
-| `row-key` | 行 key 字段或获取函数 | _string \| ((row, rowIndex) => string \| number)_ | `'id'` |
+| `row-key` | 行 key 字段或获取函数 | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
 | `row-props` | 自定义行属性，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `row-class` | 自定义行类名，支持字符串、数组、对象或函数 | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
 | `summary` | 总结栏渲染函数。返回数组时渲染多行总结栏 | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |
