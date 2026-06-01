@@ -169,6 +169,7 @@ describe('test data-table component props', () => {
 
     expect(wrapper.text()).not.toContain('Ada')
     expect(wrapper.text()).toContain('Taylor')
+    expect(wrapper.findComponent({ name: 'var-pagination' }).props('current')).toBe(2)
     wrapper.unmount()
   })
 

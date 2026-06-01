@@ -125,7 +125,7 @@
 
         <var-pagination
           var-data-table-cover
-          :current="page"
+          :current="normalizedPage"
           :size="pageSize"
           :total="paginationTotal"
           :simple="paginationProps.simple"
@@ -251,7 +251,7 @@ export default defineComponent({
       onUpdateSorters: () => props['onUpdate:sorters'],
     })
 
-    const { paginationProps, paginationTotal, showPagination, pagedData } = usePagination({
+    const { paginationProps, paginationTotal, showPagination, normalizedPage, pagedData } = usePagination({
       pagination: () => props.pagination,
       remote: () => props.remote,
       loading: () => props.loading,
@@ -421,6 +421,8 @@ export default defineComponent({
       paginationProps,
       paginationTotal,
       showPagination,
+      normalizedPage,
+      pageSize,
       tableStyle,
       columns,
       currentSelectableRows,
