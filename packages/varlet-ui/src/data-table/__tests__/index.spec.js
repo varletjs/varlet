@@ -73,6 +73,29 @@ describe('test data-table component props', () => {
     expect(checkedRowKeys.value).toEqual([1])
   })
 
+  test('should handle selection composable with non-selectable column', () => {
+    const checkedRowKeys = ref([])
+    const selection = useSelectionColumn({
+      columns: () => [{ type: 'selection', selectable: false }],
+      tree: () => false,
+      cascade: () => true,
+      pagedData: () => data,
+      allFlatRows: () => data.map((row, rowIndex) => ({ key: row.id, row, rowIndex })),
+      treeRowMeta: () => ({
+        rowByKey: new Map(),
+        rowByObject: new Map(),
+        parentKeyByChild: new Map(),
+      }),
+      checkedRowKeys,
+      isSelectionColumn,
+      getTreeChildren,
+    })
+
+    expect(selection.currentSelectableRows.value).toEqual([])
+    expect(selection.allCurrentRowsSelected.value).toBe(false)
+    expect(selection.someCurrentRowsSelected.value).toBe(false)
+  })
+
   test('should ignore tree selection rows missing from meta', () => {
     const selection = useSelectionColumn({
       columns: () => [{ type: 'selection' }],

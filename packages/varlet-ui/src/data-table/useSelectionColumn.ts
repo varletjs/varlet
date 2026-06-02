@@ -142,8 +142,12 @@ export function useSelectionColumn({
   }
 
   function isRowSelectable(row: Record<string, any>, rowIndex: number, column?: DataTableSelectionColumn) {
-    if (!column?.selectable || column.selectable === true) {
+    if (!column || column.selectable == null || column.selectable === true) {
       return true
+    }
+
+    if (column.selectable === false) {
+      return false
     }
 
     return column.selectable({
