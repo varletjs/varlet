@@ -84,7 +84,7 @@ export function useSelectionColumn({
       const selectableChildren = childStates.filter((childState) => childState.selectable)
 
       const allChildrenChecked =
-        selectableChildren.length > 0 && selectableChildren.every((childState) => childState.checked)
+        selectableChildren.length > 0 ? selectableChildren.every((childState) => childState.checked) : selfChecked
 
       const someChildrenSelected = selectableChildren.some(
         (childState) => childState.checked || childState.indeterminate,
@@ -92,7 +92,7 @@ export function useSelectionColumn({
 
       const state = {
         checked: selectable ? allChildrenChecked : false,
-        indeterminate: !allChildrenChecked && someChildrenSelected,
+        indeterminate: selectableChildren.length > 0 && !allChildrenChecked && someChildrenSelected,
       }
 
       states.set(flatRow.key, state)

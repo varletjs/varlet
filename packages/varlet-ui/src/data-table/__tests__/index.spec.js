@@ -1210,6 +1210,43 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should keep selectable tree parent checked when all children are non-selectable', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            type: 'selection',
+            selectable: ({ row }) => row.id === 1,
+          },
+          ...columns,
+        ],
+        data: treeData,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        expandedTreeRowKeys: [1],
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+
+    expect(checkboxes[1].vm.disabled).toBe(false)
+    expect(checkboxes[2].vm.disabled).toBe(true)
+    expect(checkboxes[3].vm.disabled).toBe(true)
+
+    checkboxes[1].vm.$emit('update:modelValue', true)
+    await wrapper.vm.$nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([1])
+
+    await wrapper.setProps({ checkedRowKeys: [1] })
+    expect(checkboxes[1].vm.modelValue).toBe(true)
+
+    wrapper.unmount()
+  })
+
   test('should support maxHeight with sticky header', () => {
     const wrapper = mount(VarDataTable, {
       props: {
