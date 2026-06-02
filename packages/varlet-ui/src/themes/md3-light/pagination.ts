@@ -9,7 +9,7 @@ export default {
   '--pagination-item-width': '32px',
   '--pagination-item-height': '32px',
   '--pagination-item-margin': '0 6px',
-  '--pagination-item-background': '#fff',
+  '--pagination-item-background': 'var(--color-surface-container)',
   '--pagination-item-border-radius': '4px',
   '--pagination-item-simple-border-radius': '50%',
   '--pagination-input-width': '32px',

@@ -226,12 +226,6 @@ body {
     color 0.25s;
 }
 
-::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  background: transparent;
-}
-
 .app-type {
   width: 100%;
   padding: 15px 0;

@@ -106,4 +106,6 @@ export default {
   timePickerHint: '選擇時間',
   // select
   selectEmptyText: '暫無數據',
+  // data-table
+  dataTableEmptyText: '暫無數據',
 } satisfies Message

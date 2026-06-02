@@ -1,3 +1,7 @@
+import type { PropType } from 'vue'
+
+export type TableSurface = 'low'
+
 export const props = {
   fullWidth: {
     type: [Number, String],
@@ -10,4 +14,6 @@ export const props = {
     type: [Boolean, Number, String],
     default: true,
   },
+  surface: String as PropType<TableSurface>,
+  plain: Boolean,
 }

@@ -106,4 +106,6 @@ export default {
   timePickerHint: 'انتخاب زمان',
   // select
   selectEmptyText: 'داده‌ای وجود ندارد',
+  // data-table
+  dataTableEmptyText: 'داده‌ای وجود ندارد',
 } satisfies Message

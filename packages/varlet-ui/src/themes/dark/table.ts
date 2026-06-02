@@ -1,9 +1,12 @@
 export default {
   '--table-background': '#303030',
+  '--table-surface-low-background': '#2a2a2a',
+  '--table-plain-row-hover-background': 'hsla(var(--hsl-on-surface), 0.08)',
+  '--table-surface-low-row-hover-background': '#2a2a2a',
   '--table-thead-th-text-color': 'rgba(255, 255, 255, 0.6)',
   '--table-thead-th-text-align': 'left',
   '--table-tbody-td-text-color': '#fff',
-  '--table-tbody-tr-hover-background': '#4c4b4b',
+  '--table-tbody-tr-hover-background': '#3a3a3a',
   '--table-border-radius': '2px',
   '--table-thead-border-bottom': 'thin solid var(--color-outline)',
   '--table-thead-th-font-size': '14px',

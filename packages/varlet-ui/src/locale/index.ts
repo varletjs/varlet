@@ -36,6 +36,8 @@ export type Message = {
   timePickerHint: string
   // select
   selectEmptyText: string
+  // data-table
+  dataTableEmptyText: string
   // internal
   lang?: string
   [key: PropertyKey]: any
