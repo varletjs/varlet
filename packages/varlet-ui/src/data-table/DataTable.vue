@@ -14,7 +14,12 @@
     "
   >
     <var-loading :loading="loading">
-      <div :class="classes(n('container'), n('$--scrollbar'))" :style="containerStyle">
+      <div
+        ref="container"
+        :class="classes(n('container'), n('$--scrollbar'))"
+        :style="containerStyle"
+        @scroll="handleContainerScroll"
+      >
         <table v-if="columns.length" :class="n('table')" :style="tableStyle">
           <colgroup>
             <col
@@ -42,8 +47,8 @@
                 :get-column-sorter-order="getColumnSorterOrder"
                 :is-column-resizable="isColumnResizable"
                 :is-last-header-column="isLastHeaderColumn"
-                :is-last-left-fixed-column="isLastLeftFixedColumn"
-                :is-first-right-fixed-column="isFirstRightFixedColumn"
+                :should-render-left-fixed-shadow="shouldRenderLeftFixedShadow"
+                :should-render-right-fixed-shadow="shouldRenderRightFixedShadow"
                 :toggle-column-sorter="toggleColumnSorter"
                 :toggle-current-selectable-rows="toggleCurrentSelectableRows"
                 :start-column-resize="startColumnResize"
@@ -69,8 +74,8 @@
                   :is-row-key-selected="isRowKeySelected"
                   :is-row-key-indeterminate="isRowKeyIndeterminate"
                   :is-row-expandable="isRowExpandable"
-                  :is-last-left-fixed-column="isLastLeftFixedColumn"
-                  :is-first-right-fixed-column="isFirstRightFixedColumn"
+                  :should-render-left-fixed-shadow="shouldRenderLeftFixedShadow"
+                  :should-render-right-fixed-shadow="shouldRenderRightFixedShadow"
                   :toggle-row-selection="toggleRowSelection"
                   :toggle-row-expanded="toggleRowExpanded"
                   :toggle-tree-row-expanded="toggleTreeRowExpanded"
@@ -99,8 +104,8 @@
                     n('cell'),
                     n('summary-cell'),
                     [cell.column.fixed, n('fixed-cell')],
-                    [isLastLeftFixedColumn(cell.columnIndex), n('fixed-cell--shadow-right')],
-                    [isFirstRightFixedColumn(cell.columnIndex), n('fixed-cell--shadow-left')],
+                    [shouldRenderLeftFixedShadow(cell.columnIndex), n('fixed-cell--shadow-right')],
+                    [shouldRenderRightFixedShadow(cell.columnIndex), n('fixed-cell--shadow-left')],
                   )
                 "
                 :style="getBodyCellStyle(cell)"
@@ -168,6 +173,7 @@ import {
 import { type DataTableBodyCell, type DataTableBodyRow, useBodyRows } from './useBodyRows'
 import { useColumnsFixedOffsets } from './useColumnsFixedOffsets'
 import { useColumnSizes } from './useColumnSizes'
+import { useContainerScroll } from './useContainerScroll'
 import { useExpandRow } from './useExpandRow'
 import { useFootRows } from './useFootRows'
 import { type DataTableHeaderCell, useHeaderRows } from './useHeaderRows'
@@ -195,32 +201,6 @@ export default defineComponent({
     const expandedTreeRowKeys = useVModel(props, 'expandedTreeRowKeys')
     const page = useVModel(props, 'page')
     const pageSize = useVModel(props, 'pageSize')
-    const containerStyle = computed<CSSProperties>(() => {
-      const style: CSSProperties = {}
-
-      if (props.maxHeight != null) {
-        style.maxHeight = toSizeUnit(props.maxHeight)
-        style.overflow = 'auto'
-      }
-
-      if (props.scrollX != null) {
-        style.overflowX = 'auto'
-      }
-
-      return style
-    })
-    const tableStyle = computed<CSSProperties>(() => {
-      const style: CSSProperties = {
-        tableLayout: props.tableLayout,
-        minWidth: '100%',
-      }
-
-      if (props.scrollX != null) {
-        style.width = toSizeUnit(props.scrollX)
-      }
-
-      return style
-    })
 
     const { collapsedTreeRowKeys, toggleTreeRowExpanded } = useTreeExpand({
       tree: () => props.tree,
@@ -234,15 +214,60 @@ export default defineComponent({
       columns: () => props.columns,
     })
 
-    const { columnWidths, getColStyle, isColumnResizable, startColumnResize } = useColumnSizes({
+    console.log(columns)
+    console.log(headerRows)
+
+    const {
+      allColumnsHaveResolvedWidth,
+      hasResolvedColumnWidth,
+      resolvedColumnWidths,
+      totalResolvedColumnWidth,
+      getColStyle,
+      isColumnResizable,
+      startColumnResize,
+    } = useColumnSizes({
       columns: () => columns.value,
       isSelectionColumn,
       isExpandColumn,
     })
+    const containerStyle = computed<CSSProperties>(() => {
+      const style: CSSProperties = {}
+
+      if (props.maxHeight != null) {
+        style.maxHeight = toSizeUnit(props.maxHeight)
+        style.overflow = 'auto'
+      }
+
+      style.overflowX = 'auto'
+
+      return style
+    })
+    const tableStyle = computed<CSSProperties>(() => {
+      const style: CSSProperties = {
+        tableLayout: hasResolvedColumnWidth.value ? 'fixed' : props.tableLayout,
+      }
+
+      if (allColumnsHaveResolvedWidth.value) {
+        style.width = '100%'
+        style.minWidth = toSizeUnit(totalResolvedColumnWidth.value)
+        return style
+      }
+
+      if (props.scrollX != null) {
+        const width = toSizeUnit(props.scrollX)
+        style.width = width
+        style.minWidth = width
+        return style
+      }
+
+      style.minWidth = '100%'
+
+      return style
+    })
 
     const { getFixedStyle, isFirstRightFixedColumn, isLastLeftFixedColumn } = useColumnsFixedOffsets({
       columns: () => columns.value,
-      columnWidths: () => columnWidths.value,
+      resolvedColumnWidths: () => resolvedColumnWidths.value,
     })
 
     const { getColumnSorterOrder, isColumnSortable, toggleColumnSorter } = useSorter({
@@ -290,6 +315,14 @@ export default defineComponent({
       sourceRows: () => pagedData.value,
       summary: () => props.summary,
     })
+
+    const { container, scrollLeft, maxScrollDistance, handleContainerScroll } = useContainerScroll([
+      columns,
+      bodyRows,
+      footRows,
+      totalResolvedColumnWidth,
+      () => props.scrollX,
+    ])
 
     const {
       currentSelectableRows,
@@ -392,6 +425,14 @@ export default defineComponent({
       return columnIndex === columns.value.length - 1
     }
 
+    function shouldRenderLeftFixedShadow(columnIndex: number) {
+      return scrollLeft.value > 1 && isLastLeftFixedColumn(columnIndex)
+    }
+
+    function shouldRenderRightFixedShadow(columnIndex: number) {
+      return scrollLeft.value < maxScrollDistance.value - 1 && isFirstRightFixedColumn(columnIndex)
+    }
+
     function getHeaderCellStyle(cell: DataTableHeaderCell): CSSProperties {
       return {
         textAlign: getAlign(cell.column.titleAlign ?? cell.column.align),
@@ -416,6 +457,7 @@ export default defineComponent({
     return {
       pt,
       t,
+      container,
       expandedRowKeys,
       containerStyle,
       paginationProps,
@@ -445,6 +487,8 @@ export default defineComponent({
       isRowKeyIndeterminate,
       isRowKeySelected,
       isRowSelectable,
+      shouldRenderLeftFixedShadow,
+      shouldRenderRightFixedShadow,
       toggleColumnSorter,
       toggleCurrentSelectableRows,
       toggleRowExpanded,
@@ -456,9 +500,8 @@ export default defineComponent({
       getHeaderCellStyle,
       getBodyCellStyle,
       handlePaginationChange,
+      handleContainerScroll,
       isLastHeaderColumn,
-      isFirstRightFixedColumn,
-      isLastLeftFixedColumn,
       startColumnResize,
       n,
       classes,

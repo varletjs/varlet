@@ -67,8 +67,7 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
           const childColumns = column.children
           const startLeafColumnIndex = leafColumnIndex
           const leafCount = countLeafColumns(childColumns)
-          leafColumnIndex += leafCount
-          const endLeafColumnIndex = leafColumnIndex - 1
+          const endLeafColumnIndex = startLeafColumnIndex + leafCount - 1
 
           rows[depth].push({
             key: `${column.key ?? 'group'}-header-${depth}-${columnIndex}`,

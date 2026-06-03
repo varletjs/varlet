@@ -691,6 +691,8 @@ const data = ref([
 
 ### 固定表头/列
 
+固定列必须配合明确的 `width` 使用。
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -930,6 +932,7 @@ const data = ref([
 | `expandable` | 是否允许展开该行，仅对展开列生效 | _(context) => boolean_ | `-` |
 | `renderExpand` | 自定义展开内容，仅对展开列生效 | _(context) => VNodeChild_ | `-` |
 | `resizable` | 是否允许通过拖拽调整列宽 | _boolean_ | `false` |
+| `fixed` | 固定列位置，必须配合 `width` 使用 | _'left' \| 'right'_ | `-` |
 | `width` | 列宽 | _number \| string_ | `-` |
 | `minWidth` | 列最小宽度 | _number \| string_ | `-` |
 | `maxWidth` | 列最大宽度。开启 `resizable` 时也会作为拖拽的上限 | _number \| string_ | `-` |

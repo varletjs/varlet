@@ -19,10 +19,31 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
   const resizedColumnWidths = ref<Record<string, number>>({})
   let stopActiveResize: (() => void) | undefined
 
-  const columnWidths = computed(() => {
+  const resolvedColumnWidths = computed(() => {
     return columns().map((column, columnIndex) => {
       return getResolvedColumnWidth(column, columnIndex) ?? 0
     })
+  })
+
+  const allColumnsHaveResolvedWidth = computed(() => {
+    const resolvedColumns = columns()
+
+    return (
+      resolvedColumns.length > 0 &&
+      resolvedColumns.every((column, columnIndex) => {
+        return getResolvedColumnWidth(column, columnIndex) != null
+      })
+    )
+  })
+
+  const hasResolvedColumnWidth = computed(() => {
+    return columns().some((column, columnIndex) => {
+      return getResolvedColumnWidth(column, columnIndex) != null
+    })
+  })
+
+  const totalResolvedColumnWidth = computed(() => {
+    return resolvedColumnWidths.value.reduce((total, width) => total + width, 0)
   })
 
   watch(
@@ -61,18 +82,18 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
       return style
     }
 
-    const defaultWidth = getColumnDefaultWidth(column)
+    const resolvedWidth = getResolvedColumnWidth(column, columnIndex)
 
-    if (defaultWidth != null) {
-      style.width = toSizeUnit(getLimitedColumnWidth(column, toPxNum(defaultWidth)))
+    if (resolvedWidth != null) {
+      style.width = toSizeUnit(resolvedWidth)
     }
 
     const minWidth = getColumnMinWidth(column)
 
     if (minWidth != null) {
       style.minWidth = toSizeUnit(minWidth)
-    } else if (defaultWidth != null) {
-      style.minWidth = toSizeUnit(getLimitedColumnWidth(column, toPxNum(defaultWidth)))
+    } else if (resolvedWidth != null) {
+      style.minWidth = toSizeUnit(resolvedWidth)
     }
 
     const maxWidth = getColumnMaxWidth(column)
@@ -139,26 +160,18 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
       return resizedWidth
     }
 
-    const defaultWidth = getColumnDefaultWidth(column)
+    const preferredWidth =
+      column.width ??
+      (isSelectionColumn(column) || isExpandColumn(column) ? defaultDataTableControlColumnWidth : undefined)
 
-    if (defaultWidth != null) {
-      return getLimitedColumnWidth(column, toPxNum(defaultWidth))
+    if (preferredWidth != null) {
+      return getLimitedColumnWidth(column, toPxNum(preferredWidth))
     }
 
     const minWidth = getColumnMinWidth(column)
 
     if (minWidth != null) {
       return minWidth
-    }
-  }
-
-  function getColumnDefaultWidth(column: DataTableColumn) {
-    if (column.width != null) {
-      return column.width
-    }
-
-    if (isSelectionColumn(column) || isExpandColumn(column)) {
-      return defaultDataTableControlColumnWidth
     }
   }
 
@@ -197,7 +210,10 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
   }
 
   return {
-    columnWidths,
+    allColumnsHaveResolvedWidth,
+    hasResolvedColumnWidth,
+    resolvedColumnWidths,
+    totalResolvedColumnWidth,
     getColStyle,
     isColumnResizable,
     startColumnResize,

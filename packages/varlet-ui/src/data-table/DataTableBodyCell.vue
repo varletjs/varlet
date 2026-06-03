@@ -7,8 +7,8 @@
         [isSelectionColumn(cell.column), n('selection-cell')],
         [isExpandColumn(cell.column), n('expand-cell')],
         [cell.column.fixed, n('fixed-cell')],
-        [isLastLeftFixedColumn(cell.columnIndex), n('fixed-cell--shadow-right')],
-        [isFirstRightFixedColumn(cell.columnIndex), n('fixed-cell--shadow-left')],
+        [shouldRenderLeftFixedShadow(cell.columnIndex), n('fixed-cell--shadow-right')],
+        [shouldRenderRightFixedShadow(cell.columnIndex), n('fixed-cell--shadow-left')],
       )
     "
     :style="style"
@@ -134,11 +134,11 @@ export default defineComponent({
       type: Function as PropType<(bodyRow: DataTableBodyRow, column?: DataTableExpandColumn) => boolean>,
       required: true,
     },
-    isLastLeftFixedColumn: {
+    shouldRenderLeftFixedShadow: {
       type: Function as PropType<(columnIndex: number) => boolean>,
       required: true,
     },
-    isFirstRightFixedColumn: {
+    shouldRenderRightFixedShadow: {
       type: Function as PropType<(columnIndex: number) => boolean>,
       required: true,
     },

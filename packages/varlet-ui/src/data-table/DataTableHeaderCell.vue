@@ -7,8 +7,8 @@
         [isSelectionColumn(headerCell.column), n('selection-cell')],
         [isExpandColumn(headerCell.column), n('expand-cell')],
         [headerCell.fixed, n('fixed-cell')],
-        [isLastLeftFixedColumn(headerCell.endLeafColumnIndex), n('fixed-cell--shadow-right')],
-        [isFirstRightFixedColumn(headerCell.startLeafColumnIndex), n('fixed-cell--shadow-left')],
+        [shouldRenderLeftFixedShadow(headerCell.endLeafColumnIndex), n('fixed-cell--shadow-right')],
+        [shouldRenderRightFixedShadow(headerCell.startLeafColumnIndex), n('fixed-cell--shadow-left')],
       )
     "
     :style="style"
@@ -151,11 +151,11 @@ export default defineComponent({
       type: Function as PropType<(columnIndex: number) => boolean>,
       required: true,
     },
-    isLastLeftFixedColumn: {
+    shouldRenderLeftFixedShadow: {
       type: Function as PropType<(columnIndex: number) => boolean>,
       required: true,
     },
-    isFirstRightFixedColumn: {
+    shouldRenderRightFixedShadow: {
       type: Function as PropType<(columnIndex: number) => boolean>,
       required: true,
     },

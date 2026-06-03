@@ -3,10 +3,10 @@ import type { DataTableColumn, DataTableColumnFixed } from './props'
 
 export interface UseColumnsFixedOffsetsOptions {
   columns: () => DataTableColumn[]
-  columnWidths: () => number[]
+  resolvedColumnWidths: () => number[]
 }
 
-export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixedOffsetsOptions) {
+export function useColumnsFixedOffsets({ columns, resolvedColumnWidths }: UseColumnsFixedOffsetsOptions) {
   const lastLeftFixedColumnIndex = computed(() => {
     return findEdgeFixedColumnIndex('left')
   })
@@ -45,7 +45,7 @@ export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixe
 
   function buildFixedOffsets(direction: DataTableColumnFixed) {
     const resolvedColumns = columns()
-    const resolvedColumnWidths = columnWidths()
+    const widths = resolvedColumnWidths()
     const offsets = Array<number | undefined>(resolvedColumns.length).fill(undefined)
     let offset = 0
 
@@ -56,7 +56,7 @@ export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixe
         }
 
         offsets[index] = offset
-        offset += resolvedColumnWidths[index]
+        offset += widths[index]
       }
 
       return offsets
@@ -68,7 +68,7 @@ export function useColumnsFixedOffsets({ columns, columnWidths }: UseColumnsFixe
       }
 
       offsets[index] = offset
-      offset += resolvedColumnWidths[index]
+      offset += widths[index]
     }
 
     return offsets

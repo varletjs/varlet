@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, test } from 'vite-plus/test'
-import { createApp, h, ref } from 'vue'
+import { describe, expect, test, vi } from 'vite-plus/test'
+import { createApp, h, nextTick, ref } from 'vue'
 import DataTable from '..'
 import VarDataTable from '../DataTable'
 import { useExpandRow } from '../useExpandRow'
@@ -1275,8 +1275,52 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('overflow-x: auto;')
-    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: 100%;')
     expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('width: 640px;')
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: 640px;')
+    wrapper.unmount()
+  })
+
+  test('should respect configured column widths when all column widths are resolved', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', width: 50 },
+          { key: 'role', title: 'Role', width: 50 },
+          { key: 'status', title: 'Status', width: 200 },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
+
+    expect(tableStyle).toContain('table-layout: fixed;')
+    expect(tableStyle).toContain('width: 100%;')
+    expect(tableStyle).toContain('min-width: 300px;')
+
+    wrapper.unmount()
+  })
+
+  test('should prioritize resolved column widths over scrollX stretching', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', width: 50 },
+          { key: 'role', title: 'Role', width: 50 },
+          { key: 'status', title: 'Status', width: 200 },
+        ],
+        data,
+        pagination: false,
+        scrollX: 640,
+      },
+    })
+
+    const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
+
+    expect(tableStyle).toContain('width: 100%;')
+    expect(tableStyle).toContain('min-width: 300px;')
+
     wrapper.unmount()
   })
 
@@ -1296,6 +1340,58 @@ describe('test data-table component props', () => {
     expect(mainStyle).toContain('max-height: 240px;')
     expect(mainStyle).toContain('overflow: auto;')
     expect(mainStyle).toContain('overflow-x: auto;')
+    wrapper.unmount()
+  })
+
+  test('should contain horizontal overflow when only some columns have resolved widths', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Profile',
+            children: [
+              { key: 'name', title: 'Name', fixed: 'left', width: 100 },
+              { key: 'role', title: 'Role', fixed: 'left', width: 200 },
+            ],
+          },
+          {
+            title: 'State',
+            children: [{ key: 'status', title: 'Status' }],
+          },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('overflow-x: auto;')
+
+    wrapper.unmount()
+  })
+
+  test('should preserve configured widths with fixed layout when only some columns have resolved widths', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', fixed: 'left', width: 120 },
+          { key: 'role', title: 'Role', fixed: 'left', width: 50 },
+          { key: 'status', title: 'Status' },
+        ],
+        data,
+        pagination: false,
+        scrollX: 600,
+      },
+    })
+
+    const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
+    const cols = wrapper.findAll('col')
+
+    expect(tableStyle).toContain('table-layout: fixed;')
+    expect(tableStyle).toContain('width: 600px;')
+    expect(cols[0].attributes('style')).toContain('width: 120px;')
+    expect(cols[1].attributes('style')).toContain('width: 50px;')
+    expect(cols[2].attributes('style')).toBeUndefined()
+
     wrapper.unmount()
   })
 
@@ -1323,6 +1419,83 @@ describe('test data-table component props', () => {
     expect(bodyCells[2].attributes('style')).toContain('z-index: 1;')
 
     wrapper.unmount()
+  })
+
+  test('should render fixed column shadows only when horizontal scroll is clipped', async () => {
+    const OriginalResizeObserver = globalThis.ResizeObserver
+    let triggerResizeObserver
+
+    globalThis.ResizeObserver = class ResizeObserver {
+      constructor(callback) {
+        triggerResizeObserver = callback
+      }
+
+      observe() {}
+
+      disconnect() {}
+    }
+
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          { key: 'name', title: 'Name', fixed: 'left', width: 120 },
+          { key: 'role', title: 'Role', width: 120 },
+          { key: 'status', title: 'Status', fixed: 'right', width: 120 },
+        ],
+        data,
+        pagination: false,
+        scrollX: 640,
+      },
+    })
+
+    const container = wrapper.find('.var-data-table__container')
+
+    let clientWidth = 320
+
+    Object.defineProperty(container.element, 'scrollWidth', { configurable: true, value: 640 })
+    Object.defineProperty(container.element, 'clientWidth', {
+      configurable: true,
+      get: () => clientWidth,
+    })
+
+    container.element.scrollLeft = 0
+    await container.trigger('scroll')
+
+    let headerCells = wrapper.findAll('thead th')
+    expect(headerCells[0].classes()).not.toContain('var-data-table__fixed-cell--shadow-right')
+    expect(headerCells[2].classes()).toContain('var-data-table__fixed-cell--shadow-left')
+
+    container.element.scrollLeft = 80
+    await container.trigger('scroll')
+
+    headerCells = wrapper.findAll('thead th')
+    expect(headerCells[0].classes()).toContain('var-data-table__fixed-cell--shadow-right')
+    expect(headerCells[2].classes()).toContain('var-data-table__fixed-cell--shadow-left')
+
+    container.element.scrollLeft = 320
+    await container.trigger('scroll')
+
+    headerCells = wrapper.findAll('thead th')
+    expect(headerCells[0].classes()).toContain('var-data-table__fixed-cell--shadow-right')
+    expect(headerCells[2].classes()).not.toContain('var-data-table__fixed-cell--shadow-left')
+
+    container.element.scrollLeft = 200
+    clientWidth = 320
+    await container.trigger('scroll')
+
+    headerCells = wrapper.findAll('thead th')
+    expect(headerCells[2].classes()).toContain('var-data-table__fixed-cell--shadow-left')
+
+    clientWidth = 500
+    triggerResizeObserver([], {})
+    await nextTick()
+    await nextTick()
+
+    headerCells = wrapper.findAll('thead th')
+    expect(headerCells[2].classes()).not.toContain('var-data-table__fixed-cell--shadow-left')
+
+    wrapper.unmount()
+    globalThis.ResizeObserver = OriginalResizeObserver
   })
 
   test('should support loading description slot', () => {
@@ -1466,6 +1639,32 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.findAll('thead tr')[0].find('th').classes()).toContain('var-data-table__fixed-cell')
+
+    wrapper.unmount()
+  })
+
+  test('should keep grouped header leaf indexes aligned with flattened columns', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Left Group',
+            children: [
+              { key: 'name', title: 'Name', fixed: 'left', width: 120 },
+              { key: 'role', title: 'Role', fixed: 'left', width: 120 },
+            ],
+          },
+          { key: 'status', title: 'Status', width: 120 },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const leafHeaders = wrapper.findAll('thead tr')[1].findAll('th')
+
+    expect(leafHeaders[0].attributes('style')).toContain('left: 0px;')
+    expect(leafHeaders[1].attributes('style')).toContain('left: 120px;')
 
     wrapper.unmount()
   })

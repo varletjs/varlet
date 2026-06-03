@@ -691,6 +691,8 @@ const data = ref([
 
 ### Fixed Header / Columns
 
+Fixed columns must be used with an explicit `width`.
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -930,6 +932,7 @@ const data = ref([
 | `expandable` | Whether the row can be expanded. Only works on expand columns | _(context) => boolean_ | `-` |
 | `renderExpand` | Custom expanded content. Only works on expand columns | _(context) => VNodeChild_ | `-` |
 | `resizable` | Whether the column width can be resized by dragging | _boolean_ | `false` |
+| `fixed` | Fixed column position. Must be used with `width` | _'left' \| 'right'_ | `-` |
 | `width` | Column width | _number \| string_ | `-` |
 | `minWidth` | Column min width | _number \| string_ | `-` |
 | `maxWidth` | Column max width. Also used as the upper resize limit when `resizable` is enabled | _number \| string_ | `-` |
