@@ -214,9 +214,6 @@ export default defineComponent({
       columns: () => props.columns,
     })
 
-    console.log(columns)
-    console.log(headerRows)
-
     const {
       allColumnsHaveResolvedWidth,
       hasResolvedColumnWidth,
