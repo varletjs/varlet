@@ -1,5 +1,6 @@
 export default {
   themeColorButton: 'Theme Color Button',
+  tonalThemeColorButton: 'Tonal Theme Color Button',
   themeColorButtonGroup: 'Button Group Theme Color',
   defaultButton: 'Default Button',
   default: 'Default',
@@ -29,6 +30,7 @@ export default {
   verticalButtonGroup: 'Vertical Button Group',
   linearGradientColor: 'LinearGradient Color',
   roundButton: 'Round Button',
+  tonalRoundButton: 'Tonal Round Button',
   event: 'Events',
   click: 'Click',
   touchstart: 'Touchstart',

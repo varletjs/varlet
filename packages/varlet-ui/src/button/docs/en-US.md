@@ -19,6 +19,21 @@ Button component for triggering actions.
 </template>
 ```
 
+### Tonal Theme Color Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button tonal>Default Button</var-button>
+    <var-button type="primary" tonal>Primary Button</var-button>
+    <var-button type="info" tonal>Info Button</var-button>
+    <var-button type="success" tonal>Success Button</var-button>
+    <var-button type="warning" tonal>Warning Button</var-button>
+    <var-button type="danger" tonal>Danger Button</var-button>
+  </var-space>
+</template>
+```
+
 ### Text Button
 
 ```html
@@ -106,6 +121,30 @@ Button component for triggering actions.
       <var-icon name="warning" />
     </var-button>
     <var-button type="danger" round icon-container>
+      <var-icon name="window-close" />
+    </var-button>
+  </var-space>
+</template>
+```
+
+### Tonal Round Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button type="primary" round tonal>
+      <var-icon name="plus" />
+    </var-button>
+    <var-button type="info" round tonal>
+      <var-icon name="information" />
+    </var-button>
+    <var-button type="success" round tonal>
+      <var-icon name="check" />
+    </var-button>
+    <var-button type="warning" round tonal>
+      <var-icon name="warning" />
+    </var-button>
+    <var-button type="danger" round tonal>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
@@ -221,7 +260,7 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container">
+    <var-button-group mode="tonal">
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
@@ -271,7 +310,7 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container" vertical>
+    <var-button-group mode="tonal" vertical>
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
@@ -303,6 +342,7 @@ function handleAutoLoadingClick() {
 | `type`           | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger`      | _string_  | `default`      |
 | `native-type`    | Native button type, Can be set to `button` `submit` `reset` | _string_  | `button`       |
 | `size`           | Button size, Can be set to `normal` `mini` `small` `large`                              | _string_  | `normal`       |
+| `tonal` ***3.18.0*** | Whether to be tonal button, equivalent to `icon-container` without elevation                                                        | _boolean_ | `false`        |
 | `loading`        | Loading status                                                                          | _boolean_ | `false`        |
 | `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                           | _string  \| number_        | `-`      |
 | `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`                   | _string_  | `circle`       |
@@ -328,7 +368,7 @@ function handleAutoLoadingClick() {
 |--------------|------------------------------------------------------------------------------------------|----------|-----------|
 | `type`       | Button Group type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`       | Button Group size, can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
-| `mode`       | Button Group mode, can be set to `normal` `text` `outline` `icon-container`              | _string_ | `normal`  |
+| `mode`       | Button Group mode, can be set to `normal` `text` `outline` `tonal` `icon-container`              | _string_ | `normal`  |
 | `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
 | `elevation` | Elevation of Button Group, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `color`      | Button Group background color                                                            | _string_ | `-`       |

@@ -80,14 +80,14 @@ export default defineComponent({
     const states = computed(() => {
       if (!buttonGroup) {
         return {
-          elevation: formatElevation(props.elevation, 2),
+          elevation: props.tonal ? '' : formatElevation(props.elevation, 2),
           type: props.type ?? 'default',
           size: props.size ?? 'normal',
           color: props.color,
           text: props.text,
           textColor: props.textColor,
           outline: props.outline,
-          iconContainer: props.iconContainer,
+          iconContainer: props.tonal || props.iconContainer,
         }
       }
 
@@ -101,7 +101,7 @@ export default defineComponent({
         textColor: props.textColor ?? textColor.value,
         text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
-        iconContainer: mode.value === 'icon-container',
+        iconContainer: mode.value === 'tonal' || mode.value === 'icon-container',
       }
     })
 

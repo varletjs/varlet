@@ -173,7 +173,21 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
-  test('button icon container', async () => {
+  test('button tonal', async () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        tonal: true,
+      },
+    })
+
+    expect(wrapper.find('button').classes()).toContain('var-button--icon-container-default')
+    expect(wrapper.find('button').classes()).not.toContain('var-elevation--2')
+    await wrapper.setProps({ tonal: false })
+    expect(wrapper.find('button').classes()).not.toContain('var-button--icon-container-default')
+    wrapper.unmount()
+  })
+
+  test('button icon container compatibility', async () => {
     const wrapper = mount(VarButton, {
       props: {
         iconContainer: true,
@@ -181,6 +195,7 @@ describe('test button component props', () => {
     })
 
     expect(wrapper.find('button').classes()).toContain('var-button--icon-container-default')
+    expect(wrapper.find('button').classes()).toContain('var-elevation--2')
     await wrapper.setProps({ iconContainer: false })
     expect(wrapper.find('button').classes()).not.toContain('var-button--icon-container-default')
     wrapper.unmount()
@@ -375,7 +390,21 @@ describe('test button group component props', () => {
     wrapper.unmount()
   })
 
-  test('button group icon-container mode', () => {
+  test('button group tonal mode', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        mode: 'tonal',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('button group icon-container mode compatibility', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         mode: 'icon-container',
@@ -385,7 +414,8 @@ describe('test button group component props', () => {
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-button-group').classes()).toContain('var-button-group--mode-icon-container')
+    expect(wrapper.find('.var-button').classes()).toContain('var-button--icon-container-default')
     wrapper.unmount()
   })
 

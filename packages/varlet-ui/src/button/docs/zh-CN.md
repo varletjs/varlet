@@ -19,6 +19,21 @@
 </template>
 ```
 
+### Tonal 主题色按钮
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button tonal>默认按钮</var-button>
+    <var-button type="primary" tonal>主要按钮</var-button>
+    <var-button type="info" tonal>信息按钮</var-button>
+    <var-button type="success" tonal>成功按钮</var-button>
+    <var-button type="warning" tonal>警告按钮</var-button>
+    <var-button type="danger" tonal>危险按钮</var-button>
+  </var-space>
+</template>
+```
+
 ### 文字按钮
 
 ```html
@@ -121,6 +136,30 @@
       <var-icon name="warning" />
     </var-button>
     <var-button type="danger" round icon-container>
+      <var-icon name="window-close" />
+    </var-button>
+  </var-space>
+</template>
+```
+
+### Tonal 圆形按钮
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button type="primary" round tonal>
+      <var-icon name="plus" />
+    </var-button>
+    <var-button type="info" round tonal>
+      <var-icon name="information" />
+    </var-button>
+    <var-button type="success" round tonal>
+      <var-icon name="check" />
+    </var-button>
+    <var-button type="warning" round tonal>
+      <var-icon name="warning" />
+    </var-button>
+    <var-button type="danger" round tonal>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
@@ -241,7 +280,7 @@ function handleAutoLoadingClick() {
       <var-button>按钮</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container">
+    <var-button-group mode="tonal">
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
@@ -291,7 +330,7 @@ function handleAutoLoadingClick() {
       <var-button>按钮</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container" vertical>
+    <var-button-group mode="tonal" vertical>
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
@@ -323,6 +362,7 @@ function handleAutoLoadingClick() {
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default`      |
 | `native-type`    | 原生类型，可选值为 `button` `submit` `reset`                             | _string_ | `button`       |
 | `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_ | `normal`       |
+| `tonal` ***3.18.0*** | 是否使用 tonal 样式，等同于 `icon-container` 且无海拔                                                        | _boolean_ | `false`        |
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
 | `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |
 | `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_ | `circle`       |
@@ -347,7 +387,7 @@ function handleAutoLoadingClick() {
 |-------------|------------------------------------------------------------------|----------|-----------|
 | `type`      | 按钮组类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
-| `mode`      | 按钮组模式，可选值为 `normal` `text` `outline` `icon-container`                               | _string_ | `normal`       |
+| `mode`      | 按钮组模式，可选值为 `normal` `text` `outline` `tonal` `icon-container`                               | _string_ | `normal`       |
 | `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
 | `elevation`      | 按钮组海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `true`            |
 | `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |

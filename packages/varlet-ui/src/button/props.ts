@@ -20,6 +20,7 @@ export const props = {
   outline: Boolean,
   disabled: Boolean,
   autoLoading: Boolean,
+  tonal: Boolean,
   iconContainer: Boolean,
   ripple: {
     type: Boolean,

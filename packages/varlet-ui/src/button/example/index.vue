@@ -32,6 +32,16 @@ function handleAutoLoadingClick() {
     <var-button type="danger">{{ t('dangerButton') }}</var-button>
   </var-space>
 
+  <app-type>{{ t('tonalThemeColorButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button tonal>{{ t('defaultButton') }}</var-button>
+    <var-button type="primary" tonal>{{ t('primaryButton') }}</var-button>
+    <var-button type="info" tonal>{{ t('infoButton') }}</var-button>
+    <var-button type="success" tonal>{{ t('successButton') }}</var-button>
+    <var-button type="warning" tonal>{{ t('warningButton') }}</var-button>
+    <var-button type="danger" tonal>{{ t('dangerButton') }}</var-button>
+  </var-space>
+
   <app-type>{{ t('textButton') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button text outline type="primary">{{ t('outlineButton') }}</var-button>
@@ -91,6 +101,28 @@ function handleAutoLoadingClick() {
       <var-icon name="warning" />
     </var-button>
     <var-button type="danger" round icon-container>
+      <var-icon name="window-close" />
+    </var-button>
+  </var-space>
+
+  <app-type>{{ t('tonalRoundButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button round tonal>
+      <var-icon name="bookmark" />
+    </var-button>
+    <var-button type="primary" round tonal>
+      <var-icon name="plus" />
+    </var-button>
+    <var-button type="info" round tonal>
+      <var-icon name="information" />
+    </var-button>
+    <var-button type="success" round tonal>
+      <var-icon name="check" />
+    </var-button>
+    <var-button type="warning" round tonal>
+      <var-icon name="warning" />
+    </var-button>
+    <var-button type="danger" round tonal>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
@@ -162,7 +194,7 @@ function handleAutoLoadingClick() {
       <var-button>{{ t('button') }}</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container">
+    <var-button-group mode="tonal">
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
@@ -202,7 +234,7 @@ function handleAutoLoadingClick() {
       <var-button>{{ t('button') }}</var-button>
     </var-button-group>
 
-    <var-button-group mode="icon-container" vertical>
+    <var-button-group mode="tonal" vertical>
       <var-button type="warning">
         <var-icon name="warning" />
       </var-button>
