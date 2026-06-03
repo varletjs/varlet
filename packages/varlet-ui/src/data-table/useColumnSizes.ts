@@ -1,3 +1,4 @@
+import { clamp } from '@varlet/shared'
 import { computed, onBeforeUnmount, ref, watch, type CSSProperties } from 'vue'
 import { toPxNum, toSizeUnit } from '../utils/elements'
 import type { DataTableColumn, DataTableExpandColumn, DataTableSelectionColumn } from './props'
@@ -114,8 +115,12 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
     const startWidth = headerCellElement.getBoundingClientRect().width
     const columnId = getColumnId(headerCell.column, headerCell.columnIndex)
 
-    const handlePointerMove = (moveEvent: MouseEvent) => {
-      const nextWidth = getLimitedColumnWidth(headerCell.column, startWidth + moveEvent.clientX - startX)
+    document.addEventListener('mousemove', handlePointerMove)
+    document.addEventListener('mouseup', handlePointerUp)
+    stopActiveResize = detach
+
+    function handlePointerMove(event: MouseEvent) {
+      const nextWidth = getLimitedColumnWidth(headerCell.column, startWidth + event.clientX - startX)
 
       resizedColumnWidths.value = {
         ...resizedColumnWidths.value,
@@ -123,19 +128,15 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
       }
     }
 
-    const handlePointerUp = () => {
+    function handlePointerUp() {
       detach()
     }
 
-    const detach = () => {
+    function detach() {
       document.removeEventListener('mousemove', handlePointerMove)
       document.removeEventListener('mouseup', handlePointerUp)
       stopActiveResize = undefined
     }
-
-    document.addEventListener('mousemove', handlePointerMove)
-    document.addEventListener('mouseup', handlePointerUp)
-    stopActiveResize = detach
   }
 
   function getResizedColumnWidth(column: DataTableColumn, columnIndex: number) {
@@ -195,7 +196,7 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
     const minWidth = getColumnMinWidth(column) ?? 0
     const maxWidth = getColumnMaxWidth(column) ?? Number.POSITIVE_INFINITY
 
-    return Math.min(Math.max(width, minWidth), maxWidth)
+    return clamp(width, minWidth, maxWidth)
   }
 
   return {

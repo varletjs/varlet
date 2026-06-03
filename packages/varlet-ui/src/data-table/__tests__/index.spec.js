@@ -1302,7 +1302,7 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should prioritize resolved column widths over scrollX stretching', () => {
+  test('should prioritize scrollX as explicit horizontal width', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [
@@ -1318,8 +1318,8 @@ describe('test data-table component props', () => {
 
     const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
 
-    expect(tableStyle).toContain('width: 100%;')
-    expect(tableStyle).toContain('min-width: 300px;')
+    expect(tableStyle).toContain('width: 640px;')
+    expect(tableStyle).toContain('min-width: 640px;')
 
     wrapper.unmount()
   })
