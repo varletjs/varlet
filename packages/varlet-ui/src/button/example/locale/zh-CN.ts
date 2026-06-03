@@ -1,6 +1,7 @@
 export default {
-  themeColorButton: '主题色按钮',
-  tonalThemeColorButton: 'Tonal 主题色按钮',
+  elevatedButton: 'Elevated 按钮',
+  filledButton: 'Filled 按钮',
+  tonalButton: 'Tonal 按钮',
   themeColorButtonGroup: '按钮组主题色',
   defaultButton: '默认按钮',
   primaryButton: '主要按钮',
@@ -27,7 +28,6 @@ export default {
   backgroundTextColor: '背景/文字',
   linearGradientColor: '使用渐变',
   verticalButtonGroup: '按钮组竖直排列',
-  roundButton: '圆形按钮',
   tonalRoundButton: 'Tonal 圆形按钮',
   event: '注册事件',
   click: '点击',

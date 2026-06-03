@@ -4,7 +4,7 @@
 
 按钮组件，用于触发操作。
 
-### 主题色按钮
+### Elevated 按钮
 
 ```html
 <template>
@@ -19,7 +19,22 @@
 </template>
 ```
 
-### Tonal 主题色按钮
+### Filled 按钮
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button :elevation="false">默认按钮</var-button>
+    <var-button type="primary" :elevation="false">主要按钮</var-button>
+    <var-button type="info" :elevation="false">信息按钮</var-button>
+    <var-button type="success" :elevation="false">成功按钮</var-button>
+    <var-button type="warning" :elevation="false">警告按钮</var-button>
+    <var-button type="danger" :elevation="false">危险按钮</var-button>
+  </var-space>
+</template>
+```
+
+### Tonal 按钮
 
 ```html
 <template>
@@ -113,30 +128,6 @@
       text-color="#fff"
     >
       使用渐变
-    </var-button>
-  </var-space>
-</template>
-```
-
-### 圆形按钮
-
-```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button type="primary" round icon-container>
-      <var-icon name="plus" />
-    </var-button>
-    <var-button type="info" round icon-container>
-      <var-icon name="information" />
-    </var-button>
-    <var-button type="success" round icon-container>
-      <var-icon name="check" />
-    </var-button>
-    <var-button type="warning" round icon-container>
-      <var-icon name="warning" />
-    </var-button>
-    <var-button type="danger" round icon-container>
-      <var-icon name="window-close" />
     </var-button>
   </var-space>
 </template>
@@ -430,6 +421,7 @@ function handleAutoLoadingClick() {
 | `--button-warning-text-color` | `var(--color-on-warning)` |
 | `--button-info-text-color` | `var(--color-on-info)` |
 | `--button-default-color` | `#f5f5f5` |
+| `--button-default-filled-color` | `#f5f5f5` |
 | `--button-primary-color` | `var(--color-primary)`|
 | `--button-danger-color` |  `var(--color-danger)`|
 | `--button-success-color` | `var(--color-success)`|

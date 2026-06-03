@@ -4,7 +4,7 @@
 
 Button component for triggering actions.
 
-### Theme Color Button
+### Elevated Button
 
 ```html
 <template>
@@ -19,7 +19,22 @@ Button component for triggering actions.
 </template>
 ```
 
-### Tonal Theme Color Button
+### Filled Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button :elevation="false">Default Button</var-button>
+    <var-button type="primary" :elevation="false">Primary Button</var-button>
+    <var-button type="info" :elevation="false">Info Button</var-button>
+    <var-button type="success" :elevation="false">Success Button</var-button>
+    <var-button type="warning" :elevation="false">Warning Button</var-button>
+    <var-button type="danger" :elevation="false">Danger Button</var-button>
+  </var-space>
+</template>
+```
+
+### Tonal Button
 
 ```html
 <template>
@@ -99,30 +114,6 @@ Button component for triggering actions.
   <var-space :size="[10, 10]">
     <var-button color="#66bb6a" text-color="#fff">Background/Text Color</var-button>
     <var-button color="linear-gradient(to right bottom, #6750A4, #D0BCFF)" text-color="#fff"> Linear Gradient Color </var-button>
-  </var-space>
-</template>
-```
-
-### Round Button
-
-```html
-<template>
-  <var-space :size="[10, 10]">
-    <var-button type="primary" round icon-container>
-      <var-icon name="plus" />
-    </var-button>
-    <var-button type="info" round icon-container>
-      <var-icon name="information" />
-    </var-button>
-    <var-button type="success" round icon-container>
-      <var-icon name="check" />
-    </var-button>
-    <var-button type="warning" round icon-container>
-      <var-icon name="warning" />
-    </var-button>
-    <var-button type="danger" round icon-container>
-      <var-icon name="window-close" />
-    </var-button>
   </var-space>
 </template>
 ```
@@ -412,6 +403,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--button-warning-text-color` | `var(--color-on-warning)` |
 | `--button-info-text-color` | `var(--color-on-info)` |
 | `--button-default-color` | `#f5f5f5` |
+| `--button-default-filled-color` | `#f5f5f5` |
 | `--button-primary-color` | `var(--color-primary)`|
 | `--button-danger-color` |  `var(--color-danger)`|
 | `--button-success-color` | `var(--color-success)`|

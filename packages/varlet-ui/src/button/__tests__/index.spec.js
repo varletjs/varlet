@@ -298,6 +298,30 @@ describe('test button component props', () => {
     expect(wrapper.find('.var-elevation--4').exists()).toBe(true)
     wrapper.unmount()
   })
+
+  test('default filled button', async () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        elevation: false,
+      },
+    })
+
+    expect(wrapper.find('button').classes()).toContain('var-button--filled-default')
+
+    await wrapper.setProps({ elevation: 0 })
+    expect(wrapper.find('button').classes()).toContain('var-button--filled-default')
+
+    await wrapper.setProps({ elevation: '0' })
+    expect(wrapper.find('button').classes()).toContain('var-button--filled-default')
+
+    await wrapper.setProps({ elevation: true })
+    expect(wrapper.find('button').classes()).not.toContain('var-button--filled-default')
+
+    await wrapper.setProps({ elevation: false, type: 'primary' })
+    expect(wrapper.find('button').classes()).not.toContain('var-button--filled-default')
+
+    wrapper.unmount()
+  })
 })
 
 describe('test button component events', () => {

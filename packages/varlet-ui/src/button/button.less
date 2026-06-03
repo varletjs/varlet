@@ -6,6 +6,7 @@
   --button-warning-text-color: var(--color-on-warning);
   --button-info-text-color: var(--color-on-info);
   --button-default-color: #f5f5f5;
+  --button-default-filled-color: #f5f5f5;
   --button-primary-color: var(--color-primary);
   --button-danger-color: var(--color-danger);
   --button-success-color: var(--color-success);
@@ -84,6 +85,10 @@
     background-color: var(--button-default-color);
   }
 
+  &--filled-default {
+    background-color: var(--button-default-filled-color);
+  }
+
   &--primary {
     color: var(--button-primary-text-color);
     background-color: var(--button-primary-color);
@@ -110,7 +115,7 @@
   }
 
   &--loading {
-    cursor: default;
+    cursor: wait;
   }
 
   &--block {

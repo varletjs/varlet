@@ -124,6 +124,7 @@ interface BaseStyleVars {
   '--button-warning-text-color'?: string
   '--button-info-text-color'?: string
   '--button-default-color'?: string
+  '--button-default-filled-color'?: string
   '--button-primary-color'?: string
   '--button-danger-color'?: string
   '--button-success-color'?: string

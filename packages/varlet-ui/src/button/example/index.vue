@@ -22,7 +22,7 @@ function handleAutoLoadingClick() {
 </script>
 
 <template>
-  <app-type>{{ t('themeColorButton') }}</app-type>
+  <app-type>{{ t('elevatedButton') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button>{{ t('defaultButton') }}</var-button>
     <var-button type="primary">{{ t('primaryButton') }}</var-button>
@@ -32,7 +32,17 @@ function handleAutoLoadingClick() {
     <var-button type="danger">{{ t('dangerButton') }}</var-button>
   </var-space>
 
-  <app-type>{{ t('tonalThemeColorButton') }}</app-type>
+  <app-type>{{ t('filledButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button :elevation="false">{{ t('defaultButton') }}</var-button>
+    <var-button type="primary" :elevation="false">{{ t('primaryButton') }}</var-button>
+    <var-button type="info" :elevation="false">{{ t('infoButton') }}</var-button>
+    <var-button type="success" :elevation="false">{{ t('successButton') }}</var-button>
+    <var-button type="warning" :elevation="false">{{ t('warningButton') }}</var-button>
+    <var-button type="danger" :elevation="false">{{ t('dangerButton') }}</var-button>
+  </var-space>
+
+  <app-type>{{ t('tonalButton') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button tonal>{{ t('defaultButton') }}</var-button>
     <var-button type="primary" tonal>{{ t('primaryButton') }}</var-button>
@@ -80,28 +90,6 @@ function handleAutoLoadingClick() {
     <var-button color="#66bb6a" text-color="#fff">{{ t('backgroundTextColor') }}</var-button>
     <var-button color="linear-gradient(to bottom right, #6750A4, #D0BCFF)" text-color="#fff">
       {{ t('linearGradientColor') }}
-    </var-button>
-  </var-space>
-
-  <app-type>{{ t('roundButton') }}</app-type>
-  <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button round icon-container>
-      <var-icon name="bookmark" />
-    </var-button>
-    <var-button type="primary" round icon-container>
-      <var-icon name="plus" />
-    </var-button>
-    <var-button type="info" round icon-container>
-      <var-icon name="information" />
-    </var-button>
-    <var-button type="success" round icon-container>
-      <var-icon name="check" />
-    </var-button>
-    <var-button type="warning" round icon-container>
-      <var-icon name="warning" />
-    </var-button>
-    <var-button type="danger" round icon-container>
-      <var-icon name="window-close" />
     </var-button>
   </var-space>
 

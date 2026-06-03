@@ -12,6 +12,7 @@
         [!states.iconContainer && !states.text, n(`--${states.type}`)],
         [states.text, `${n('--text')} ${n(`--text-${states.type}`)}`],
         [states.iconContainer, n(`--icon-container-${states.type}`)],
+        [states.filledDefault, n('--filled-default')],
         [round, n('--round')],
         [states.outline, n('--outline')],
         [loading || pending, n('--loading')],
@@ -52,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { call, normalizeToArray } from '@varlet/shared'
+import { call, normalizeToArray, toNumber } from '@varlet/shared'
 import { computed, defineComponent, ref } from 'vue'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
@@ -63,6 +64,10 @@ import { props } from './props'
 import { useButtonGroup } from './provide'
 
 const { name, n, classes } = createNamespace('button')
+
+function isFilledElevation(elevation: boolean | number | string) {
+  return elevation === false || toNumber(elevation) === 0
+}
 
 export default defineComponent({
   name,
@@ -88,10 +93,17 @@ export default defineComponent({
           textColor: props.textColor,
           outline: props.outline,
           iconContainer: props.tonal || props.iconContainer,
+          filledDefault:
+            (props.type == null || props.type === 'default') &&
+            isFilledElevation(props.elevation) &&
+            !props.text &&
+            !props.outline &&
+            !props.tonal &&
+            !props.iconContainer,
         }
       }
 
-      const { type, size, color, textColor, mode } = buttonGroup
+      const { type, size, color, textColor, mode, elevation } = buttonGroup
 
       return {
         elevation: '',
@@ -102,6 +114,8 @@ export default defineComponent({
         text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
         iconContainer: mode.value === 'tonal' || mode.value === 'icon-container',
+        filledDefault:
+          mode.value === 'normal' && (props.type ?? type.value) === 'default' && isFilledElevation(elevation.value),
       }
     })
 
