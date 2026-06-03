@@ -25,17 +25,6 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
     })
   })
 
-  const allColumnsHaveResolvedWidth = computed(() => {
-    const resolvedColumns = columns()
-
-    return (
-      resolvedColumns.length > 0 &&
-      resolvedColumns.every((column, columnIndex) => {
-        return getResolvedColumnWidth(column, columnIndex) != null
-      })
-    )
-  })
-
   const hasResolvedColumnWidth = computed(() => {
     return columns().some((column, columnIndex) => {
       return getResolvedColumnWidth(column, columnIndex) != null
@@ -210,7 +199,6 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
   }
 
   return {
-    allColumnsHaveResolvedWidth,
     hasResolvedColumnWidth,
     resolvedColumnWidths,
     totalResolvedColumnWidth,

@@ -215,7 +215,6 @@ export default defineComponent({
     })
 
     const {
-      allColumnsHaveResolvedWidth,
       hasResolvedColumnWidth,
       resolvedColumnWidths,
       totalResolvedColumnWidth,
@@ -227,6 +226,7 @@ export default defineComponent({
       isSelectionColumn,
       isExpandColumn,
     })
+
     const containerStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {}
 
@@ -239,15 +239,11 @@ export default defineComponent({
 
       return style
     })
+
     const tableStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {
+        width: '100%',
         tableLayout: hasResolvedColumnWidth.value ? 'fixed' : props.tableLayout,
-      }
-
-      if (allColumnsHaveResolvedWidth.value) {
-        style.width = '100%'
-        style.minWidth = toSizeUnit(totalResolvedColumnWidth.value)
-        return style
       }
 
       if (props.scrollX != null) {
@@ -257,7 +253,9 @@ export default defineComponent({
         return style
       }
 
-      style.minWidth = '100%'
+      if (hasResolvedColumnWidth.value) {
+        style.minWidth = toSizeUnit(totalResolvedColumnWidth.value)
+      }
 
       return style
     })
