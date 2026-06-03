@@ -2,7 +2,19 @@ import { type PropType } from 'vue'
 
 export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
+export type AppBarType = 'primary' | 'surface'
+
+export type AppBarSize = 'normal' | 'large'
+
 export const props = {
+  type: {
+    type: String as PropType<AppBarType>,
+    default: 'primary',
+  },
+  size: {
+    type: String as PropType<AppBarSize>,
+    default: 'normal',
+  },
   color: String,
   textColor: String,
   title: String,

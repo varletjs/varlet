@@ -65,10 +65,6 @@ import { useButtonGroup } from './provide'
 
 const { name, n, classes } = createNamespace('button')
 
-function isFilledElevation(elevation: boolean | number | string) {
-  return elevation === false || toNumber(elevation) === 0
-}
-
 export default defineComponent({
   name,
   components: {
@@ -159,6 +155,10 @@ export default defineComponent({
       }
 
       isFocusing.value = true
+    }
+
+    function isFilledElevation(elevation: boolean | number | string) {
+      return elevation === false || toNumber(elevation) === 0
     }
 
     return {

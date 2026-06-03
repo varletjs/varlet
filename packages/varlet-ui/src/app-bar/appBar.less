@@ -3,7 +3,11 @@
   --app-bar-title-padding: 0 12px;
   --app-bar-title-font-size: var(--font-size-lg);
   --app-bar-text-color: #fff;
+  --app-bar-surface-color: #fff;
+  --app-bar-surface-text-color: rgba(0, 0, 0, 0.87);
+  --app-bar-surface-border-bottom: thin solid var(--color-outline);
   --app-bar-height: 54px;
+  --app-bar-large-height: 64px;
   --app-bar-left-gap: 6px;
   --app-bar-right-gap: 6px;
   --app-bar-border-radius: 4px;
@@ -63,6 +67,15 @@
     border-radius: var(--app-bar-border-radius);
   }
 
+  &--large &__toolbar {
+    height: var(--app-bar-large-height);
+  }
+
+  &--surface {
+    background: var(--app-bar-surface-color);
+    color: var(--app-bar-surface-text-color);
+  }
+
   &--safe-area-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
@@ -77,5 +90,9 @@
 
   &--border {
     border-bottom: var(--app-bar-border-bottom);
+  }
+
+  &--surface&--border {
+    border-bottom: var(--app-bar-surface-border-bottom);
   }
 }

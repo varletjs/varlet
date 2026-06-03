@@ -6,11 +6,27 @@ Provide navigation function for the page, often used at the top of the page.
 
 ### Basic Usage
 
-Set the title of the app bar through the `title` prop.
-
 ```html
 <template>
-   <var-app-bar title="title" />
+  <var-app-bar>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
@@ -20,27 +36,51 @@ Turn on rounded border with the `round` prop.
 
 ```html
 <template>
-   <var-app-bar title="Use Border Radius" title-position="center" round />
+  <var-app-bar round>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
-### Custom Background Color
+### Large Size
 
 ```html
 <template>
-   <var-app-bar
-     title="title"
-     title-position="center"
-     color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-   />
-</template>
-```
+  <var-app-bar size="large">
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
 
-### Add Title Slot
-
-```html
-<template>
-   <var-app-bar>Add Title Slot</var-app-bar>
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
@@ -48,35 +88,51 @@ Turn on rounded border with the `round` prop.
 
 ```html
 <template>
-  <var-app-bar title="Title">
+  <var-app-bar>
     <template #left>
-      <var-button
-        color="transparent"
-        text-color="#fff"
-        round
-        text
-      >
-        <var-icon name="chevron-left" :size="24" />
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
       </var-button>
     </template>
 
     <template #right>
-      <var-menu>
-        <var-button
-          color="transparent"
-          text-color="#fff"
-          round
-          text
-        >
-          <var-icon name="menu" :size="24" />
-        </var-button>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
+</template>
+```
 
-        <template #menu>
-          <var-cell ripple>OPTION</var-cell>
-          <var-cell ripple>OPTION</var-cell>
-          <var-cell ripple>OPTION</var-cell>
-        </template>
-      </var-menu>
+### Surface App Bar
+
+Use `type="surface"` for a low-emphasis surface appearance, suitable for desktop and admin pages.
+
+```html
+<template>
+  <var-app-bar type="surface" :elevation="false" border>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
     </template>
   </var-app-bar>
 </template>
@@ -97,22 +153,21 @@ const active = ref(0)
     image="https://varletjs.org/tree.jpeg"
     image-linear-gradient="to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%"
   >
-    Title
     <template #left>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="menu" :size="24" />
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
       </var-button>
     </template>
 
     <template #right>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="map-marker-radius" :size="24" />
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
       </var-button>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="star" :size="24" />
-      </var-button>
-      <var-button round text color="transparent" text-color="#fff">
+      <var-button round text>
         <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
       </var-button>
     </template>
 
@@ -141,6 +196,8 @@ const active = ref(0)
 |------------------|------------------------------------------------------| --- |---------|
 | `color`          | Background                                           | _string_ | `-`     |
 | `text-color`     | Text color                                           | _string_ | `-`     |
+| `type` ***3.18.0*** | AppBar type, can be set to `primary` `surface`       | _string_ | `primary` |
+| `size` ***3.18.0*** | Size, can be set to `normal` `large`                | _string_ | `normal` |
 | `title`          | Title                                                | _string_ | -       |
 | `title-position` | Title location, can be set to `left`, `center`, `right` | _string_ | `left`  |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
@@ -171,6 +228,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--app-bar-color` | `var(--color-primary)` |
 | `--app-bar-text-color` | `#fff` |
 | `--app-bar-height` | `54px` |
+| `--app-bar-large-height` | `64px` |
+| `--app-bar-surface-color` | `#fff` |
+| `--app-bar-surface-text-color` | `rgba(0, 0, 0, 0.87)` |
+| `--app-bar-surface-border-bottom` | `thin solid var(--color-outline)` |
 | `--app-bar-title-padding` | `0 12px` |
 | `--app-bar-title-font-size` | `var(--font-size-lg)` |
 | `--app-bar-left-gap` | `6px` |

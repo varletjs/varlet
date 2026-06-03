@@ -53,6 +53,10 @@ interface BaseStyleVars {
   '--app-bar-color'?: string
   '--app-bar-text-color'?: string
   '--app-bar-height'?: string
+  '--app-bar-large-height'?: string
+  '--app-bar-surface-color'?: string
+  '--app-bar-surface-text-color'?: string
+  '--app-bar-surface-border-bottom'?: string
   '--app-bar-title-padding'?: string
   '--app-bar-title-font-size'?: string
   '--app-bar-left-gap'?: string
@@ -108,6 +112,7 @@ interface BaseStyleVars {
   '--bottom-navigation-item-icon-size'?: string
   '--bottom-navigation-item-icon-margin-bottom'?: string
   '--bottom-navigation-fab-border-radius'?: string
+  '--bottom-navigation-item-variant-icon-margin-bottom'?: string
   '--bottom-navigation-item-variant-icon-container-height'?: string
   '--bottom-navigation-item-variant-icon-container-border-radius'?: string
   '--bottom-navigation-item-variant-icon-container-max-width'?: string
