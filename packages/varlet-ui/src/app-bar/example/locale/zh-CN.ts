@@ -1,8 +1,7 @@
 export default {
   basicUsage: '基本使用',
-  customStyle: '自定义背景色',
-  addTitleSlot: '添加标题插槽',
-  title: '标题',
+  surface: '弱背景色',
+  largeSize: '大尺寸',
   addLeftAndRightSlot: '添加左右插槽',
   option: '选项卡',
   search: '搜索',

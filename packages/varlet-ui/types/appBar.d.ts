@@ -5,7 +5,13 @@ export declare const appBarProps: Record<keyof AppBarProps, any>
 
 export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
+export type AppBarType = 'primary' | 'surface'
+
+export type AppBarSize = 'normal' | 'large'
+
 export interface AppBarProps extends BasicAttributes {
+  type?: AppBarType
+  size?: AppBarSize
   color?: string
   textColor?: string
   title?: string

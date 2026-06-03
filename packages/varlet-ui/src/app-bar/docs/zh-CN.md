@@ -6,11 +6,27 @@
 
 ### 基本使用
 
-通过 `title` 属性设置导航栏标题。
-
 ```html
 <template>
-  <var-app-bar title="标题" />
+  <var-app-bar>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
@@ -20,27 +36,51 @@
 
 ```html
 <template>
-  <var-app-bar title="开启圆角" title-position="center" round />
+  <var-app-bar round>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
-### 自定义背景色
+### 大尺寸
 
 ```html
 <template>
-  <var-app-bar
-    title="标题" 
-    title-position="center" 
-    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-  />
-</template>
-```
+  <var-app-bar size="large">
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
 
-### 添加标题插槽
-
-```html
-<template>
-  <var-app-bar>添加标题插槽</var-app-bar>
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
@@ -48,35 +88,51 @@
 
 ```html
 <template>
-  <var-app-bar title="标题">
+  <var-app-bar>
     <template #left>
-      <var-button
-        color="transparent"
-        text-color="#fff"
-        round
-        text
-      >
-        <var-icon name="chevron-left" :size="24" />
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
       </var-button>
     </template>
 
     <template #right>
-      <var-menu>
-        <var-button
-          color="transparent"
-          text-color="#fff"
-          round
-          text
-        >
-          <var-icon name="menu" :size="24" />
-        </var-button>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
+    </template>
+  </var-app-bar>
+</template>
+```
 
-        <template #menu>
-          <var-cell ripple>选项卡</var-cell>
-          <var-cell ripple>选项卡</var-cell>
-          <var-cell ripple>选项卡</var-cell>
-        </template>
-      </var-menu>
+### 弱背景色
+
+通过 `type="surface"` 使用弱背景色外观，适合桌面端或中后台页面。
+
+```html
+<template>
+  <var-app-bar type="surface" :elevation="false" border>
+    <template #left>
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
+      </var-button>
     </template>
   </var-app-bar>
 </template>
@@ -97,22 +153,21 @@ const active = ref(0)
     image="https://varletjs.org/tree.jpeg"
     image-linear-gradient="to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%"
   >
-    标题
     <template #left>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="menu" :size="24" />
+      <var-button round text>
+        <var-icon name="arrow-left" :size="24" />
       </var-button>
     </template>
 
     <template #right>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="map-marker-radius" :size="24" />
+      <var-button round text>
+        <var-icon name="magnify" :size="24" />
       </var-button>
-      <var-button round text color="transparent" text-color="#fff">
-        <var-icon name="star" :size="24" />
-      </var-button>
-      <var-button round text color="transparent" text-color="#fff">
+      <var-button round text>
         <var-icon name="heart" :size="24" />
+      </var-button>
+      <var-button round text>
+        <var-icon name="dots-vertical" :size="24" />
       </var-button>
     </template>
 
@@ -141,6 +196,8 @@ const active = ref(0)
 |------------------|-----------------------------------| ---- |---------|
 | `color`          | 背景颜色                              | _string_ | `-`     |
 | `text-color`     | 文字颜色                              | _string_ | `-`     |
+| `type` ***3.18.0*** | 外观类型，可选值为 `primary` `surface` | _string_ | `primary` |
+| `size` ***3.18.0*** | 尺寸，可选值为 `normal` `large` | _string_ | `normal` |
 | `title`          | 标题                                | _string_ | -       |
 | `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left`  |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
@@ -171,6 +228,10 @@ const active = ref(0)
 | `--app-bar-color`         | `var(--color-primary)` |
 | `--app-bar-text-color`    | `#fff` |
 | `--app-bar-height`        | `54px` |
+| `--app-bar-large-height` | `64px` |
+| `--app-bar-surface-color` | `#fff` |
+| `--app-bar-surface-text-color` | `rgba(0, 0, 0, 0.87)` |
+| `--app-bar-surface-border-bottom` | `thin solid var(--color-outline)` |
 | `--app-bar-title-padding` | `0 12px` |
 | `--app-bar-title-font-size` | `var(--font-size-lg)` |
 | `--app-bar-left-gap`      | `6px` |

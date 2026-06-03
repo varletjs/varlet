@@ -6,6 +6,8 @@
         n(),
         n('$--box'),
         [safeAreaTop, n('--safe-area-top')],
+        [type === 'surface', n('--surface')],
+        [size === 'large', n('--large')],
         [round, n('--round')],
         [fixed, n('--fixed')],
         [border, n('--border')],

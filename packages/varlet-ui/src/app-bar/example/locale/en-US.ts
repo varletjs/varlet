@@ -1,8 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
-  customStyle: 'Custom Background Color',
-  addTitleSlot: 'Add Title Slot',
-  title: 'Title',
+  surface: 'Surface App Bar',
+  largeSize: 'Large Size',
   addLeftAndRightSlot: 'Add Left And Right Slot',
   option: 'OPTION',
   search: 'search',

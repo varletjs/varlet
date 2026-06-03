@@ -1,5 +1,8 @@
 export default {
   '--app-bar-color': '#272727',
+  '--app-bar-surface-color': 'var(--color-surface-container-high)',
+  '--app-bar-surface-text-color': 'var(--color-inverse-surface)',
+  '--app-bar-surface-border-bottom': 'thin solid var(--color-outline)',
   '--app-bar-title-padding': '0 12px',
   '--app-bar-title-font-size': 'var(--font-size-lg)',
   '--app-bar-text-color': '#fff',

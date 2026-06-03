@@ -9,6 +9,7 @@ export default {
   '--bottom-navigation-item-line-height': '1',
   '--bottom-navigation-item-icon-size': '22px',
   '--bottom-navigation-item-icon-margin-bottom': '5px',
+  '--bottom-navigation-item-variant-icon-margin-bottom': '6px',
   '--bottom-navigation-item-variant-icon-container-height': '30px',
   '--bottom-navigation-item-variant-icon-container-border-radius': '100px',
   '--bottom-navigation-item-variant-icon-container-max-width': '58px',

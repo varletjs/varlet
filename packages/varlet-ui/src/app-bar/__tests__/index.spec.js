@@ -21,6 +21,49 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
+  test('app bar type', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--surface')).toBe(false)
+
+    await wrapper.setProps({
+      type: 'surface',
+    })
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--surface')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('app bar size', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--large')).toBe(false)
+
+    await wrapper.setProps({
+      size: 'large',
+    })
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--large')).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('app bar surface type with custom color and textColor', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        type: 'surface',
+        color: 'red',
+        textColor: 'blue',
+      },
+    })
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--surface')).toBe(true)
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('background: red;')
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('color: blue;')
+    wrapper.unmount()
+  })
+
   test('app bar round', () => {
     const wrapper = mount(VarAppBar, {
       props: {
