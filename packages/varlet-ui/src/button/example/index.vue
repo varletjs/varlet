@@ -115,6 +115,19 @@ function handleAutoLoadingClick() {
     </var-button>
   </var-space>
 
+  <app-type>{{ t('fabButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button type="primary" fab tonal>
+      <var-icon name="plus" :size="24" />
+    </var-button>
+    <var-button type="info" fab tonal>
+      <var-icon name="information" :size="24" />
+    </var-button>
+    <var-button type="success" fab tonal>
+      <var-icon name="check" :size="24" />
+    </var-button>
+  </var-space>
+
   <app-type>{{ t('event') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button type="success" @click="handleClick">{{ t('click') }}</var-button>

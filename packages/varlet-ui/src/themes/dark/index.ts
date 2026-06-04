@@ -48,6 +48,7 @@ import popup from './popup'
 import progress from './progress'
 import pullRefresh from './pullRefresh'
 import radio from './radio'
+import railNavigation from './railNavigation'
 import rate from './rate'
 import result from './result'
 import ripple from './ripple'
@@ -210,6 +211,7 @@ export default {
   ...overlay,
   ...paper,
   ...rate,
+  ...railNavigation,
   ...ripple,
   ...slider,
   ...snackbar,

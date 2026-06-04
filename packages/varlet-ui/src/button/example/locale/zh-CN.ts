@@ -29,6 +29,7 @@ export default {
   linearGradientColor: '使用渐变',
   verticalButtonGroup: '按钮组竖直排列',
   tonalRoundButton: 'Tonal 圆形按钮',
+  fabButton: 'FAB 按钮',
   event: '注册事件',
   click: '点击',
   touchstart: '触摸',

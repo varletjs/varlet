@@ -32,6 +32,8 @@ export default {
   '--button-normal-padding': '0 16px',
   '--button-large-padding': '0 22px',
   '--button-round-padding': '6px',
+  '--button-fab-size': '56px',
+  '--button-fab-border-radius': '16px',
   '--button-mini-height': '20px',
   '--button-small-height': '28px',
   '--button-normal-height': '36px',

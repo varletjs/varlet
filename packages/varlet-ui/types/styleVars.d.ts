@@ -155,6 +155,8 @@ interface BaseStyleVars {
   '--button-normal-padding'?: string
   '--button-large-padding'?: string
   '--button-round-padding'?: string
+  '--button-fab-size'?: string
+  '--button-fab-border-radius'?: string
   '--button-mini-height'?: string
   '--button-small-height'?: string
   '--button-normal-height'?: string
@@ -585,6 +587,22 @@ interface BaseStyleVars {
   '--pull-refresh-color'?: string
   '--pull-refresh-success-color'?: string
   '--pull-refresh-icon-size'?: string
+  '--rail-navigation-width'?: string
+  '--rail-navigation-background'?: string
+  '--rail-navigation-text-color'?: string
+  '--rail-navigation-item-height'?: string
+  '--rail-navigation-item-padding'?: string
+  '--rail-navigation-item-indicator-width'?: string
+  '--rail-navigation-item-indicator-height'?: string
+  '--rail-navigation-item-indicator-hover-background'?: string
+  '--rail-navigation-item-indicator-active-background'?: string
+  '--rail-navigation-item-active-text-color'?: string
+  '--rail-navigation-item-disabled-opacity'?: string
+  '--rail-navigation-item-icon-size'?: string
+  '--rail-navigation-item-label-font-size'?: string
+  '--rail-navigation-item-label-line-height'?: string
+  '--rail-navigation-section-padding'?: string
+  '--rail-navigation-slot-padding'?: string
   '--radio-checked-color'?: string
   '--radio-unchecked-color'?: string
   '--radio-disabled-color'?: string

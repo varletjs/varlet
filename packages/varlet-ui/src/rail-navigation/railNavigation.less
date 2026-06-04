@@ -1,0 +1,45 @@
+:root {
+  --rail-navigation-width: 80px;
+  --rail-navigation-background: var(--color-surface-container-high);
+  --rail-navigation-text-color: var(--color-on-surface-variant);
+  --rail-navigation-section-padding: 6px 0;
+  --rail-navigation-slot-padding: 4px 0;
+}
+
+.var-rail-navigation {
+  width: var(--rail-navigation-width);
+  min-height: 100%;
+  padding: var(--rail-navigation-section-padding);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: var(--rail-navigation-background);
+  color: var(--rail-navigation-text-color);
+  transition:
+    background-color 250ms,
+    color 250ms;
+  -webkit-tap-highlight-color: transparent;
+
+  &__section {
+    padding: var(--rail-navigation-slot-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__section > * + * {
+    margin-top: 4px;
+  }
+
+  &__content {
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__content > * + * {
+    margin-top: 4px;
+  }
+}

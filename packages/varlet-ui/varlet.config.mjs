@@ -457,6 +457,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'RailNavigation 单轨导航',
+          'en-US': 'RailNavigation',
+        },
+        doc: 'rail-navigation',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '功能指令',
           'en-US': 'Functional Directives',
         },

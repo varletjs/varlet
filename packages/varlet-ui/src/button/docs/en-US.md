@@ -142,6 +142,24 @@ Button component for triggering actions.
 </template>
 ```
 
+### FAB Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button type="primary" fab tonal>
+      <var-icon name="plus" :size="24" />
+    </var-button>
+    <var-button type="info" fab tonal>
+      <var-icon name="information" :size="24" />
+    </var-button>
+    <var-button type="success" fab tonal>
+      <var-icon name="check" :size="24" />
+    </var-button>
+  </var-space>
+</template>
+```
+
 ### Events
 
 ```html
@@ -341,6 +359,7 @@ function handleAutoLoadingClick() {
 | `loading-color`  | Loading color                                                                           | _string_  | `currentColor` |
 | `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                                   | _boolean_ | `false`        |
 | `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
+| `fab`            | Whether to be FAB button                                                                | _boolean_ | `false`        |
 | `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
 | `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
 | `icon-container` | Whether to serve as an icon container                                                        | _boolean_ | `false`        |
@@ -429,6 +448,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--button-normal-padding` | `0 15px` |
 | `--button-large-padding` | `0 22px` |
 | `--button-round-padding` | `6px` |
+| `--button-fab-size` | `56px` |
+| `--button-fab-border-radius` | `16px` |
 | `--button-mini-height` | `20px` |
 | `--button-small-height` | `28px` |
 | `--button-normal-height` | `36px` |
