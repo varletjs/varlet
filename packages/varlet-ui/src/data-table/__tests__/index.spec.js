@@ -225,6 +225,46 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should sync remote pagination when page is out of range', async () => {
+    const onUpdatePage = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data: [],
+        page: 3,
+        pageSize: 2,
+        total: 3,
+        remote: true,
+        'onUpdate:page': onUpdatePage,
+      },
+    })
+
+    await nextTick()
+
+    expect(wrapper.findComponent({ name: 'var-pagination' }).props('current')).toBe(2)
+    expect(onUpdatePage).toHaveBeenCalledWith(2)
+    wrapper.unmount()
+  })
+
+  test('should not sync remote pagination when total is not provided', async () => {
+    const onUpdatePage = vi.fn()
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        page: 3,
+        remote: true,
+        'onUpdate:page': onUpdatePage,
+      },
+    })
+
+    await nextTick()
+
+    expect(wrapper.findComponent({ name: 'var-pagination' }).exists()).toBe(false)
+    expect(onUpdatePage).not.toHaveBeenCalled()
+    wrapper.unmount()
+  })
+
   test('should disable pagination while loading', () => {
     const wrapper = mount(VarDataTable, {
       props: {

@@ -95,9 +95,9 @@ export function usePagination<Row = Record<string, any>>({
   })
 
   watch(
-    [pagination, remote, page, normalizedPage],
-    ([currentPagination, currentRemote, currentPage, nextPage]) => {
-      if (currentPagination === false || currentRemote || currentPage === nextPage) {
+    [pagination, remote, total, page, normalizedPage],
+    ([currentPagination, currentRemote, currentTotal, currentPage, nextPage]) => {
+      if (currentPagination === false || (currentRemote && currentTotal == null) || currentPage === nextPage) {
         return
       }
 

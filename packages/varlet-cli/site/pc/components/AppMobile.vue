@@ -1,5 +1,5 @@
 <template>
-  <div class="varlet-site-mobile varlet-site-mobile--375">
+  <div class="varlet-site-mobile">
     <div class="varlet-site-mobile-content">
       <iframe
         id="mobile"
@@ -41,7 +41,7 @@ export default {
 <style lang="less">
 .varlet-site-mobile {
   position: sticky;
-  flex: 0 0 330px;
+  flex: 0 0 375px;
   top: 80px;
   height: calc(100vh - 100px);
   margin-right: 38px;
@@ -49,12 +49,6 @@ export default {
   box-shadow: 0 0 14px 6px var(--site-config-color-shadow);
   border-radius: 2px;
   margin-top: 20px;
-
-  @media screen and (min-width: 1600px) {
-    &--375 {
-      flex: 0 0 375px;
-    }
-  }
 
   &-content {
     width: 100%;
