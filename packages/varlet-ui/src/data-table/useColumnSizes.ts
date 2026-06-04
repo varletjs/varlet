@@ -13,7 +13,7 @@ interface UseColumnSizesOptions {
 
 export interface DataTableResizableHeaderCell {
   column: DataTableColumn
-  columnIndex: number
+  startLeafColumnIndex: number
 }
 
 export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: UseColumnSizesOptions) {
@@ -113,7 +113,7 @@ export function useColumnSizes({ columns, isSelectionColumn, isExpandColumn }: U
 
     const startX = event.clientX
     const startWidth = headerCellElement.getBoundingClientRect().width
-    const columnId = getColumnId(headerCell.column, headerCell.columnIndex)
+    const columnId = getColumnId(headerCell.column, headerCell.startLeafColumnIndex)
 
     document.addEventListener('mousemove', handlePointerMove)
     document.addEventListener('mouseup', handlePointerUp)

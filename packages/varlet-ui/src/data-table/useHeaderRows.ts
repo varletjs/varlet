@@ -6,7 +6,6 @@ import { resolveSpan } from './span'
 export interface DataTableHeaderCell {
   key: string
   column: DataTableColumn
-  columnIndex: number
   startLeafColumnIndex: number
   endLeafColumnIndex: number
   colSpan?: number
@@ -22,27 +21,29 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
   const normalizedColumns = computed(() => flattenLeafColumns(columns()))
 
   const headerRows = computed<DataTableHeaderCell[][]>(() => {
-    const resolvedColumns = columns()
+    const rawColumns = columns()
     const rows: DataTableHeaderCell[][] = []
-    const maxDepth = getColumnDepth(resolvedColumns)
+    const maxDepth = getColumnDepth(rawColumns)
+
     let leafColumnIndex = 0
 
-    visitColumns(resolvedColumns, 0)
+    traverse(rawColumns, 0)
 
-    function visitColumns(currentColumns: DataTableColumn[], depth: number) {
+    function traverse(columns: DataTableColumn[], depth: number) {
       const startColumnIndex = leafColumnIndex
-      const endColumnIndex = startColumnIndex + countLeafColumns(currentColumns) - 1
+      const endColumnIndex = startColumnIndex + flattenLeafColumns(columns).length - 1
+
       let hiddenUntilColumnIndex = startColumnIndex
       let visibleColSpan = 0
 
-      currentColumns.forEach((column, columnIndex) => {
+      columns.forEach((column, columnIndex) => {
         if (!rows[depth]) {
           rows[depth] = []
         }
 
         if (isGroupColumn(column)) {
           const startLeafColumnIndex = leafColumnIndex
-          const colSpan = visitColumns(column.children, depth + 1)
+          const colSpan = traverse(column.children, depth + 1)
           const endLeafColumnIndex = leafColumnIndex - 1
 
           if (colSpan === 0) {
@@ -52,7 +53,6 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
           rows[depth].push({
             key: getHeaderCellKey(column, depth, columnIndex),
             column,
-            columnIndex: startLeafColumnIndex,
             startLeafColumnIndex,
             endLeafColumnIndex,
             colSpan,
@@ -84,7 +84,6 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
         rows[depth].push({
           key: getHeaderCellKey(column, depth, startLeafColumnIndex),
           column,
-          columnIndex: startLeafColumnIndex,
           startLeafColumnIndex,
           endLeafColumnIndex: startLeafColumnIndex + colSpan - 1,
           colSpan: colSpan > 1 ? colSpan : undefined,
@@ -109,10 +108,6 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
 
   function flattenLeafColumns(columns: DataTableColumn[]): DataTableColumn[] {
     return columns.flatMap((column) => (isGroupColumn(column) ? flattenLeafColumns(column.children) : [column]))
-  }
-
-  function countLeafColumns(columns: DataTableColumn[]) {
-    return flattenLeafColumns(columns).length
   }
 
   function getHeaderCellKey(column: DataTableColumn, depth: number, columnIndex: number) {
