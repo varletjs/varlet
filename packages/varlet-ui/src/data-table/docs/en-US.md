@@ -445,6 +445,8 @@ const data = ref([
 
 ### Cell Spans
 
+`titleColSpan` only applies to leaf columns. For grouped headers, group column span is derived from its `children`.
+
 ```html
 <script setup>
 import { ref } from 'vue'

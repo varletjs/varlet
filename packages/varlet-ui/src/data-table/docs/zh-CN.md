@@ -445,6 +445,8 @@ const data = ref([
 
 ### 单元格合并
 
+`titleColSpan` 仅对叶子列生效。对于分组表头，分组列的跨度由其 `children` 推导。
+
 ```html
 <script setup>
 import { ref } from 'vue'
