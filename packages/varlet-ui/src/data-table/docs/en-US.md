@@ -270,31 +270,6 @@ const data = computed(() => {
 </template>
 ```
 
-### Column Options
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const columns = ref([
-  { key: 'name', title: 'Name', minWidth: 96 },
-  { key: 'role', title: 'Role', titleAlign: 'center', align: 'center', width: 88 },
-  { key: 'status', title: 'Status', titleAlign: 'right', align: 'right', width: 84 },
-])
-
-const data = ref([
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
-])
-</script>
-
-<template>
-  <var-data-table :columns="columns" :data="data" />
-</template>
-```
-
 ### Grouped Header
 
 ```html

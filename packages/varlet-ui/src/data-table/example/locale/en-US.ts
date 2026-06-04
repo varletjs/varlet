@@ -1,7 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
   sizes: 'Sizes',
-  columnOptions: 'Column Options',
   groupedHeader: 'Grouped Header',
   customProps: 'Custom Row Props',
   rowClass: 'Row Class',

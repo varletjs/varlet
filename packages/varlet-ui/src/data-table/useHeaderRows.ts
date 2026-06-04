@@ -23,80 +23,101 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
   const headerRows = computed<DataTableHeaderCell[][]>(() => {
     const rawColumns = columns()
     const rows: DataTableHeaderCell[][] = []
-    const maxDepth = getColumnDepth(rawColumns)
+    const maxDepth = getColumnsMaxDepth(rawColumns)
 
-    let leafColumnIndex = 0
+    let nextLeafColumnIndex = 0
 
-    traverse(rawColumns, 0)
+    buildHeaderRows(rawColumns, 0)
 
-    function traverse(columns: DataTableColumn[], depth: number) {
-      const startColumnIndex = leafColumnIndex
-      const endColumnIndex = startColumnIndex + flattenLeafColumns(columns).length - 1
+    function buildHeaderRows(columns: DataTableColumn[], rowIndex: number) {
+      if (!rows[rowIndex]) {
+        rows[rowIndex] = []
+      }
 
-      let hiddenUntilColumnIndex = startColumnIndex
-      let visibleColSpan = 0
+      const headerRow = rows[rowIndex]
+      const leafRangeStart = nextLeafColumnIndex
+      const leafRangeEnd = leafRangeStart + flattenLeafColumns(columns).length - 1
+      let coveredUntilLeafColumnIndex = leafRangeStart
+      let visibleLeafColSpan = 0
 
       columns.forEach((column, columnIndex) => {
-        if (!rows[depth]) {
-          rows[depth] = []
-        }
-
         if (isGroupColumn(column)) {
-          const startLeafColumnIndex = leafColumnIndex
-          const colSpan = traverse(column.children, depth + 1)
-          const endLeafColumnIndex = leafColumnIndex - 1
-
-          if (colSpan === 0) {
-            return
-          }
-
-          rows[depth].push({
-            key: getHeaderCellKey(column, depth, columnIndex),
-            column,
-            startLeafColumnIndex,
-            endLeafColumnIndex,
-            colSpan,
-            fixed: resolveHeaderCellFixed(normalizedColumns.value.slice(startLeafColumnIndex, endLeafColumnIndex + 1)),
-          })
-
-          visibleColSpan += colSpan
+          visibleLeafColSpan += buildGroupHeaderCell(headerRow, column, rowIndex, columnIndex)
           return
         }
 
-        if (leafColumnIndex < hiddenUntilColumnIndex) {
-          leafColumnIndex += 1
-          return
-        }
-
-        const startLeafColumnIndex = leafColumnIndex
-        const maxColSpan = endColumnIndex - startLeafColumnIndex + 1
-        const colSpan = resolveSpan(column.titleColSpan, maxColSpan)
-        leafColumnIndex += 1
-
-        if (colSpan === 0) {
-          return
-        }
+        const colSpan = buildLeafHeaderCell(headerRow, column, rowIndex, leafRangeEnd, coveredUntilLeafColumnIndex)
 
         if (colSpan > 1) {
-          hiddenUntilColumnIndex = startLeafColumnIndex + colSpan
+          coveredUntilLeafColumnIndex = nextLeafColumnIndex - 1 + colSpan
         }
 
-        rows[depth].push({
-          key: getHeaderCellKey(column, depth, startLeafColumnIndex),
-          column,
-          startLeafColumnIndex,
-          endLeafColumnIndex: startLeafColumnIndex + colSpan - 1,
-          colSpan: colSpan > 1 ? colSpan : undefined,
-          rowSpan: maxDepth - depth > 1 ? maxDepth - depth : undefined,
-          fixed: resolveHeaderCellFixed(
-            normalizedColumns.value.slice(startLeafColumnIndex, startLeafColumnIndex + colSpan),
-          ),
-        })
-
-        visibleColSpan += colSpan
+        visibleLeafColSpan += colSpan
       })
 
-      return visibleColSpan
+      return visibleLeafColSpan
+    }
+
+    function buildGroupHeaderCell(
+      headerRow: DataTableHeaderCell[],
+      column: DataTableFieldColumn & { children: DataTableColumn[] },
+      rowIndex: number,
+      columnIndex: number,
+    ) {
+      const startLeafColumnIndex = nextLeafColumnIndex
+      const colSpan = buildHeaderRows(column.children, rowIndex + 1)
+      const endLeafColumnIndex = nextLeafColumnIndex - 1
+
+      if (colSpan === 0) {
+        return 0
+      }
+
+      headerRow.push({
+        key: getHeaderCellKey(column, rowIndex, columnIndex),
+        column,
+        colSpan,
+        startLeafColumnIndex,
+        endLeafColumnIndex,
+        fixed: resolveHeaderCellFixed(normalizedColumns.value.slice(startLeafColumnIndex, endLeafColumnIndex + 1)),
+      })
+
+      return colSpan
+    }
+
+    function buildLeafHeaderCell(
+      headerRow: DataTableHeaderCell[],
+      column: DataTableColumn,
+      rowIndex: number,
+      leafRangeEnd: number,
+      coveredUntilLeafColumnIndex: number,
+    ) {
+      if (nextLeafColumnIndex < coveredUntilLeafColumnIndex) {
+        nextLeafColumnIndex += 1
+        return 0
+      }
+
+      const startLeafColumnIndex = nextLeafColumnIndex
+      const maxColSpan = leafRangeEnd - startLeafColumnIndex + 1
+      const colSpan = resolveSpan(column.titleColSpan, maxColSpan)
+      nextLeafColumnIndex += 1
+
+      if (colSpan === 0) {
+        return 0
+      }
+
+      headerRow.push({
+        key: getHeaderCellKey(column, rowIndex, startLeafColumnIndex),
+        column,
+        colSpan: colSpan > 1 ? colSpan : undefined,
+        rowSpan: maxDepth - rowIndex > 1 ? maxDepth - rowIndex : undefined,
+        startLeafColumnIndex,
+        endLeafColumnIndex: startLeafColumnIndex + colSpan - 1,
+        fixed: resolveHeaderCellFixed(
+          normalizedColumns.value.slice(startLeafColumnIndex, startLeafColumnIndex + colSpan),
+        ),
+      })
+
+      return colSpan
     }
 
     return rows
@@ -114,12 +135,12 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
     return `${column.key ?? column.type ?? 'group'}-header-${depth}-${columnIndex}`
   }
 
-  function getColumnDepth(columns: DataTableColumn[]): number {
+  function getColumnsMaxDepth(columns: DataTableColumn[]): number {
     if (!columns.length) {
       return 0
     }
 
-    return Math.max(...columns.map((column) => (isGroupColumn(column) ? 1 + getColumnDepth(column.children) : 1)))
+    return Math.max(...columns.map((column) => (isGroupColumn(column) ? 1 + getColumnsMaxDepth(column.children) : 1)))
   }
 
   function resolveHeaderCellFixed(columns: DataTableColumn[]): DataTableColumnFixed | undefined {

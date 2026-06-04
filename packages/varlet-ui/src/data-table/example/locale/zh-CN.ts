@@ -1,7 +1,6 @@
 export default {
   basicUsage: '基本使用',
   sizes: '尺寸',
-  columnOptions: '列配置',
   groupedHeader: '分组表头',
   customProps: '自定义行属性',
   rowClass: '行类名',

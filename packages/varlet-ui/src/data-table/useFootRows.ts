@@ -1,4 +1,4 @@
-import { isArray } from '@varlet/shared'
+import { normalizeToArray } from '@varlet/shared'
 import { computed, type VNodeChild } from 'vue'
 import type { DataTableColumn, DataTableSummary, DataTableSummaryCell } from './props'
 import { createCellSpanMatrix, resolveSpan } from './span'
@@ -24,14 +24,10 @@ export function useFootRows({ columns, sourceRows, summary }: UseFootRowsOptions
       return []
     }
 
-    const summaryResult = summaryGetter({
-      data: sourceRows(),
-    })
-    const summaryRecords: DataTableSummaryRecord[] = isArray(summaryResult) ? summaryResult : [summaryResult]
+    const summaryResult = summaryGetter({ data: sourceRows() })
+    const summaryRecords: DataTableSummaryRecord[] = normalizeToArray(summaryResult)
     const resolvedColumns = columns()
-    const rowCount = summaryRecords.length
-    const columnCount = resolvedColumns.length
-    const matrix = createCellSpanMatrix(rowCount, columnCount)
+    const matrix = createCellSpanMatrix(summaryRecords.length, resolvedColumns.length)
 
     return summaryRecords.map((summaryRecord, rowIndex) =>
       resolvedColumns.flatMap((column, columnIndex) => {
@@ -39,10 +35,10 @@ export function useFootRows({ columns, sourceRows, summary }: UseFootRowsOptions
           return []
         }
 
-        const key = getColumnSummaryKey(column, columnIndex)
+        const key = column.key ?? column.type ?? String(columnIndex)
         const summaryCell = summaryRecord[key]
-        const maxColSpan = columnCount - columnIndex
-        const maxRowSpan = rowCount - rowIndex
+        const maxColSpan = resolvedColumns.length - columnIndex
+        const maxRowSpan = summaryRecords.length - rowIndex
         const colSpan = resolveSpan(summaryCell?.colSpan, maxColSpan)
         const rowSpan = resolveSpan(summaryCell?.rowSpan, maxRowSpan)
 
@@ -65,10 +61,6 @@ export function useFootRows({ columns, sourceRows, summary }: UseFootRowsOptions
       }),
     )
   })
-
-  function getColumnSummaryKey(column: DataTableColumn, columnIndex: number) {
-    return column.key ?? column.type ?? String(columnIndex)
-  }
 
   return {
     footRows,

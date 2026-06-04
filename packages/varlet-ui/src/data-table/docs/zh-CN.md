@@ -270,31 +270,6 @@ const data = computed(() => {
 </template>
 ```
 
-### 列配置
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const columns = ref([
-  { key: 'name', title: '姓名', minWidth: 96 },
-  { key: 'role', title: '角色', titleAlign: 'center', align: 'center', width: 88 },
-  { key: 'status', title: '状态', titleAlign: 'right', align: 'right', width: 84 },
-])
-
-const data = ref([
-  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
-  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
-  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
-  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
-])
-</script>
-
-<template>
-  <var-data-table :columns="columns" :data="data" />
-</template>
-```
-
 ### 分组表头
 
 ```html

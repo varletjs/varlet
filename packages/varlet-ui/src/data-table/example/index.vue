@@ -210,11 +210,6 @@ const selectedRowNames = computed(() =>
     .join(', '),
 )
 
-const alignedColumns = computed(() => [
-  { key: 'name', title: t('name'), minWidth: 96 },
-  { key: 'role', title: t('role'), titleAlign: 'center', align: 'center', width: 88 },
-  { key: 'status', title: t('status'), titleAlign: 'right', align: 'right', width: 84 },
-])
 const groupedHeaderColumns = computed(() => [
   {
     title: t('userInfo'),
@@ -345,9 +340,6 @@ watch(
     :pagination="false"
     sort-mode="multiple"
   />
-
-  <app-type>{{ t('columnOptions') }}</app-type>
-  <var-data-table :columns="alignedColumns" :data="data" />
 
   <app-type>{{ t('groupedHeader') }}</app-type>
   <var-data-table :columns="groupedHeaderColumns" :data="data" :pagination="false" cell-bordered />
