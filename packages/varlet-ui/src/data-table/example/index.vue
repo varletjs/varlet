@@ -17,10 +17,10 @@ const columns = computed(() => [
 ])
 
 const data = computed(() => [
-  { id: 1, name: 'Ada', role: t('admin'), status: t('online') },
-  { id: 2, name: 'Linus', role: t('maintainer'), status: t('offline') },
-  { id: 3, name: 'Taylor', role: t('designer'), status: t('online') },
-  { id: 4, name: 'Evan', role: t('reviewer'), status: t('busy') },
+  { id: 1, name: 'Ada', role: t('admin'), department: t('experience'), status: t('online') },
+  { id: 2, name: 'Linus', role: t('maintainer'), department: t('infrastructure'), status: t('offline') },
+  { id: 3, name: 'Taylor', role: t('designer'), department: t('design'), status: t('online') },
+  { id: 4, name: 'Evan', role: t('reviewer'), department: t('platform'), status: t('busy') },
 ])
 
 const renderStatus = ({ row }) =>
@@ -217,15 +217,29 @@ const alignedColumns = computed(() => [
 ])
 const groupedHeaderColumns = computed(() => [
   {
-    title: t('profile'),
+    title: t('userInfo'),
     children: [
-      { key: 'name', title: t('name') },
-      { key: 'role', title: t('role') },
+      {
+        title: t('profile'),
+        children: [
+          { key: 'name', title: t('name'), colSpan: 2 },
+          { key: 'role', title: t('role') },
+        ],
+      },
+      {
+        title: t('workInfo'),
+        children: [{ key: 'department', title: t('department') }],
+      },
     ],
   },
   {
-    title: t('state'),
-    children: [{ key: 'status', title: t('status') }],
+    title: t('activity'),
+    children: [
+      {
+        title: t('state'),
+        children: [{ key: 'status', title: t('status') }],
+      },
+    ],
   },
 ])
 

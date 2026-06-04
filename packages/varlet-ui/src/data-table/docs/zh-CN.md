@@ -303,23 +303,37 @@ import { ref } from 'vue'
 
 const columns = ref([
   {
-    title: '资料',
+    title: '用户信息',
     children: [
-      { key: 'name', title: '姓名' },
-      { key: 'role', title: '角色' },
+      {
+        title: '资料',
+        children: [
+          { key: 'name', title: '姓名' },
+          { key: 'role', title: '角色' },
+        ],
+      },
+      {
+        title: '工作信息',
+        children: [{ key: 'department', title: '部门' }],
+      },
     ],
   },
   {
-    title: '状态分组',
-    children: [{ key: 'status', title: '状态' }],
+    title: '动态',
+    children: [
+      {
+        title: '状态分组',
+        children: [{ key: 'status', title: '状态' }],
+      },
+    ],
   },
 ])
 
 const data = ref([
-  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
-  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
-  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
-  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
+  { id: 1, name: 'Ada', role: '管理员', department: '体验', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', department: '基础设施', status: '离线' },
+  { id: 3, name: 'Taylor', role: '设计师', department: '设计', status: '在线' },
+  { id: 4, name: 'Evan', role: '评审', department: '平台', status: '忙碌' },
 ])
 </script>
 

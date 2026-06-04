@@ -1,7 +1,7 @@
 import { isArray } from '@varlet/shared'
 import { computed } from 'vue'
 import type { DataTableColumn, DataTableColumnFixed, DataTableFieldColumn } from './props'
-import { createCellSpanMatrix, resolveSpan } from './span'
+import { resolveSpan } from './span'
 
 export interface DataTableHeaderCell {
   key: string
@@ -23,82 +23,82 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
 
   const headerRows = computed<DataTableHeaderCell[][]>(() => {
     const resolvedColumns = columns()
+    const rows: DataTableHeaderCell[][] = []
+    const maxDepth = getColumnDepth(resolvedColumns)
+    let leafColumnIndex = 0
 
-    if (!resolvedColumns.some(isGroupColumn)) {
-      const cells: DataTableHeaderCell[] = []
-      const matrix = createCellSpanMatrix(1, resolvedColumns.length)
+    visitColumns(resolvedColumns, 0)
 
-      resolvedColumns.forEach((column, columnIndex) => {
-        if (matrix.isCovered(0, columnIndex)) {
+    function visitColumns(currentColumns: DataTableColumn[], depth: number) {
+      const startColumnIndex = leafColumnIndex
+      const endColumnIndex = startColumnIndex + countLeafColumns(currentColumns) - 1
+      let hiddenUntilColumnIndex = startColumnIndex
+      let visibleColSpan = 0
+
+      currentColumns.forEach((column, columnIndex) => {
+        if (!rows[depth]) {
+          rows[depth] = []
+        }
+
+        if (isGroupColumn(column)) {
+          const startLeafColumnIndex = leafColumnIndex
+          const colSpan = visitColumns(column.children, depth + 1)
+          const endLeafColumnIndex = leafColumnIndex - 1
+
+          if (colSpan === 0) {
+            return
+          }
+
+          rows[depth].push({
+            key: getHeaderCellKey(column, depth, columnIndex),
+            column,
+            columnIndex: startLeafColumnIndex,
+            startLeafColumnIndex,
+            endLeafColumnIndex,
+            colSpan,
+            fixed: resolveHeaderCellFixed(normalizedColumns.value.slice(startLeafColumnIndex, endLeafColumnIndex + 1)),
+          })
+
+          visibleColSpan += colSpan
           return
         }
 
-        const maxColSpan = resolvedColumns.length - columnIndex
+        if (leafColumnIndex < hiddenUntilColumnIndex) {
+          leafColumnIndex += 1
+          return
+        }
+
+        const startLeafColumnIndex = leafColumnIndex
+        const maxColSpan = endColumnIndex - startLeafColumnIndex + 1
         const colSpan = resolveSpan(column.titleColSpan, maxColSpan)
+        leafColumnIndex += 1
 
         if (colSpan === 0) {
           return
         }
 
-        matrix.cover(0, columnIndex, 1, colSpan)
-        cells.push({
-          key: `${column.key ?? column.type ?? columnIndex}-header-${columnIndex}`,
-          column,
-          columnIndex,
-          startLeafColumnIndex: columnIndex,
-          endLeafColumnIndex: columnIndex + colSpan - 1,
-          colSpan: colSpan > 1 ? colSpan : undefined,
-          fixed: resolveHeaderCellFixed(normalizedColumns.value.slice(columnIndex, columnIndex + colSpan)),
-        })
-      })
-
-      return [cells]
-    }
-
-    const rows: DataTableHeaderCell[][] = []
-    const maxDepth = getColumnDepth(resolvedColumns)
-    let leafColumnIndex = 0
-
-    function visit(currentColumns: DataTableColumn[], depth: number) {
-      currentColumns.forEach((column, columnIndex) => {
-        rows[depth] ??= []
-
-        if (isGroupColumn(column)) {
-          const childColumns = column.children
-          const startLeafColumnIndex = leafColumnIndex
-          const leafCount = countLeafColumns(childColumns)
-          const endLeafColumnIndex = startLeafColumnIndex + leafCount - 1
-
-          rows[depth].push({
-            key: `${column.key ?? 'group'}-header-${depth}-${columnIndex}`,
-            column,
-            columnIndex: startLeafColumnIndex,
-            startLeafColumnIndex,
-            endLeafColumnIndex,
-            colSpan: leafCount,
-            fixed: resolveHeaderCellFixed(normalizedColumns.value.slice(startLeafColumnIndex, endLeafColumnIndex + 1)),
-          })
-
-          visit(childColumns, depth + 1)
-          return
+        if (colSpan > 1) {
+          hiddenUntilColumnIndex = startLeafColumnIndex + colSpan
         }
 
-        const startLeafColumnIndex = leafColumnIndex
-        leafColumnIndex += 1
-
         rows[depth].push({
-          key: `${column.key ?? column.type ?? columnIndex}-header-${depth}-${startLeafColumnIndex}`,
+          key: getHeaderCellKey(column, depth, startLeafColumnIndex),
           column,
           columnIndex: startLeafColumnIndex,
           startLeafColumnIndex,
-          endLeafColumnIndex: startLeafColumnIndex,
+          endLeafColumnIndex: startLeafColumnIndex + colSpan - 1,
+          colSpan: colSpan > 1 ? colSpan : undefined,
           rowSpan: maxDepth - depth > 1 ? maxDepth - depth : undefined,
-          fixed: column.fixed,
+          fixed: resolveHeaderCellFixed(
+            normalizedColumns.value.slice(startLeafColumnIndex, startLeafColumnIndex + colSpan),
+          ),
         })
-      })
-    }
 
-    visit(resolvedColumns, 0)
+        visibleColSpan += colSpan
+      })
+
+      return visibleColSpan
+    }
 
     return rows
   })
@@ -113,6 +113,10 @@ export function useHeaderRows({ columns }: UseHeaderRowsOptions) {
 
   function countLeafColumns(columns: DataTableColumn[]) {
     return flattenLeafColumns(columns).length
+  }
+
+  function getHeaderCellKey(column: DataTableColumn, depth: number, columnIndex: number) {
+    return `${column.key ?? column.type ?? 'group'}-header-${depth}-${columnIndex}`
   }
 
   function getColumnDepth(columns: DataTableColumn[]): number {

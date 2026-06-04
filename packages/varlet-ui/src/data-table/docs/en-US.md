@@ -303,23 +303,37 @@ import { ref } from 'vue'
 
 const columns = ref([
   {
-    title: 'Profile',
+    title: 'User Info',
     children: [
-      { key: 'name', title: 'Name' },
-      { key: 'role', title: 'Role' },
+      {
+        title: 'Profile',
+        children: [
+          { key: 'name', title: 'Name' },
+          { key: 'role', title: 'Role' },
+        ],
+      },
+      {
+        title: 'Work Info',
+        children: [{ key: 'department', title: 'Dept' }],
+      },
     ],
   },
   {
-    title: 'State',
-    children: [{ key: 'status', title: 'Status' }],
+    title: 'Activity',
+    children: [
+      {
+        title: 'State',
+        children: [{ key: 'status', title: 'Status' }],
+      },
+    ],
   },
 ])
 
 const data = ref([
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+  { id: 1, name: 'Ada', role: 'Admin', department: 'Exp', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', department: 'Infra', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', department: 'Design', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', department: 'Platform', status: 'Busy' },
 ])
 </script>
 

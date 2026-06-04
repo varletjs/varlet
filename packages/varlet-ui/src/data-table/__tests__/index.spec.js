@@ -1788,6 +1788,79 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support titleColSpan in grouped headers', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Profile',
+            children: [
+              { key: 'name', title: 'Name', titleColSpan: 2 },
+              { key: 'role', title: 'Role' },
+            ],
+          },
+          {
+            title: 'State',
+            children: [{ key: 'status', title: 'Status' }],
+          },
+        ],
+        data,
+        pagination: false,
+      },
+    })
+
+    const headerRows = wrapper.findAll('thead tr')
+    const firstRowCells = headerRows[0].findAll('th')
+    const secondRowCells = headerRows[1].findAll('th')
+
+    expect(firstRowCells).toHaveLength(2)
+    expect(firstRowCells[0].attributes('colspan')).toBe('2')
+    expect(firstRowCells[0].text()).toContain('Profile')
+    expect(firstRowCells[1].attributes('colspan')).toBe('1')
+    expect(firstRowCells[1].text()).toContain('State')
+
+    expect(secondRowCells).toHaveLength(2)
+    expect(secondRowCells[0].attributes('colspan')).toBe('2')
+    expect(secondRowCells[0].text()).toContain('Name')
+    expect(secondRowCells[1].text()).toContain('Status')
+    expect(secondRowCells.some((cell) => cell.text().includes('Role'))).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('should support body colSpan in grouped headers', () => {
+    const rows = [{ id: 1, name: 'Ada', role: 'Admin', status: 'Online' }]
+
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [
+          {
+            title: 'Profile',
+            children: [
+              { key: 'name', title: 'Name', colSpan: 2 },
+              { key: 'role', title: 'Role' },
+            ],
+          },
+          {
+            title: 'State',
+            children: [{ key: 'status', title: 'Status' }],
+          },
+        ],
+        data: rows,
+        pagination: false,
+      },
+    })
+
+    const firstRowCells = wrapper.findAll('tbody tr')[0].findAll('td')
+
+    expect(firstRowCells).toHaveLength(2)
+    expect(firstRowCells[0].attributes('colspan')).toBe('2')
+    expect(firstRowCells[0].text()).toContain(rows[0].name)
+    expect(firstRowCells[1].text()).toContain(rows[0].status)
+
+    wrapper.unmount()
+  })
+
   test('should render sortable title col span without absolute trigger style', () => {
     const wrapper = mount(VarDataTable, {
       props: {
