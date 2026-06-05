@@ -602,7 +602,9 @@ interface BaseStyleVars {
   '--rail-navigation-item-label-font-size'?: string
   '--rail-navigation-item-label-line-height'?: string
   '--rail-navigation-section-padding'?: string
-  '--rail-navigation-slot-padding'?: string
+  '--rail-navigation-start-padding'?: string
+  '--rail-navigation-end-padding'?: string
+  '--rail-navigation-item-gap'?: string
   '--radio-checked-color'?: string
   '--radio-unchecked-color'?: string
   '--radio-disabled-color'?: string

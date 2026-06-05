@@ -42,6 +42,8 @@ describe('rail-navigation component api', () => {
 
     expect(wrapper.find('.var-rail-navigation').exists()).toBe(true)
     expect(wrapper.findAll('.var-rail-navigation__section')).toHaveLength(2)
+    expect(wrapper.find('.var-rail-navigation__start').exists()).toBe(true)
+    expect(wrapper.find('.var-rail-navigation__end').exists()).toBe(true)
     expect(wrapper.find('.var-rail-navigation__content').exists()).toBe(true)
     expect(wrapper.find('.start').text()).toBe('start')
     expect(wrapper.find('.end').text()).toBe('end')
@@ -300,7 +302,9 @@ describe('rail-navigation public contract', () => {
     expect(railNavigationItemTypes).toContain('icon(context: RailNavigationItemSlotContext): VNode[]')
 
     expect(styleVarsTypes).toContain("'--rail-navigation-section-padding'?: string")
-    expect(styleVarsTypes).toContain("'--rail-navigation-slot-padding'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-start-padding'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-end-padding'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-item-gap'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-active-background'?: string")
   })
 
@@ -311,7 +315,9 @@ describe('rail-navigation public contract', () => {
       '--rail-navigation-background',
       '--rail-navigation-text-color',
       '--rail-navigation-section-padding',
-      '--rail-navigation-slot-padding',
+      '--rail-navigation-start-padding',
+      '--rail-navigation-end-padding',
+      '--rail-navigation-item-gap',
     ]
     const railNavigationItemKeys = [
       '--rail-navigation-item-indicator-hover-background',
@@ -325,6 +331,7 @@ describe('rail-navigation public contract', () => {
     railNavigationItemKeys.forEach((key) => {
       expect(railNavigationItemStyles).toContain(key)
     })
+    expect(railNavigationItemStyles).toContain('&--active &__indicator::after')
 
     ;[Themes.dark, Themes.md3Light, Themes.md3Dark].forEach((theme) => {
       railNavigationKeys.concat(railNavigationItemKeys).forEach((key) => {

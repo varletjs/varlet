@@ -286,7 +286,9 @@ The following CSS variables are used by the component and can be customized thro
 | `--rail-navigation-background` | `var(--color-surface-container-high)` |
 | `--rail-navigation-text-color` | `var(--color-on-surface-variant)` |
 | `--rail-navigation-section-padding` | `12px 0` |
-| `--rail-navigation-slot-padding` | `4px 0` |
+| `--rail-navigation-start-padding` | `4px 0` |
+| `--rail-navigation-end-padding` | `4px 0` |
+| `--rail-navigation-item-gap` | `4px` |
 
 #### RailNavigationItem Variables
 

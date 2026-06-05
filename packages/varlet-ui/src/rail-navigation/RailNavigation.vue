@@ -1,6 +1,6 @@
 <template>
   <aside :class="classes(n(), n('$--box'))" v-bind="$attrs">
-    <div v-if="$slots.start" :class="n('section')">
+    <div v-if="$slots.start" :class="classes(n('section'), n('start'))">
       <slot name="start"></slot>
     </div>
 
@@ -8,7 +8,7 @@
       <slot></slot>
     </nav>
 
-    <div v-if="$slots.end" :class="n('section')">
+    <div v-if="$slots.end" :class="classes(n('section'), n('end'))">
       <slot name="end"></slot>
     </div>
   </aside>
@@ -27,22 +27,24 @@ export default defineComponent({
   name,
   props,
   setup(props) {
+    const active = computed(() => props.active)
+    const ripple = computed(() => props.ripple)
     const { bindRailNavigationItem } = useRailNavigationItems()
     const railNavigationProvider: RailNavigationProvider = {
-      active: computed(() => props.active),
-      ripple: computed(() => props.ripple),
+      active,
+      ripple,
       onToggle,
     }
 
     bindRailNavigationItem(railNavigationProvider)
 
-    function onToggle(active: number | string) {
-      if (props.active === active) {
+    function onToggle(value: number | string) {
+      if (active.value === value) {
         return
       }
 
-      call(props['onUpdate:active'], active)
-      call(props.onChange, active)
+      call(props['onUpdate:active'], value)
+      call(props.onChange, value)
     }
 
     return {
@@ -55,9 +57,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import '../badge/badge';
-@import '../icon/icon';
-@import '../rail-navigation-item/railNavigationItem';
-@import '../ripple/ripple';
 @import './railNavigation';
 </style>
