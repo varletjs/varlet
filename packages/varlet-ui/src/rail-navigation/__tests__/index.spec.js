@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { doubleRaf } from '@varlet/shared'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
@@ -274,6 +275,26 @@ describe('rail-navigation component api', () => {
     expect(item.attributes('role')).toBe('button')
     wrapper.unmount()
   })
+
+  test('indicator transition is disabled on initial render', async () => {
+    const wrapper = mount({
+      components,
+      data: () => ({ active: 0 }),
+      template: `
+        <var-rail-navigation v-model:active="active">
+          <var-rail-navigation-item label="Home" icon="home" />
+          <var-rail-navigation-item label="Search" icon="magnify" />
+        </var-rail-navigation>
+      `,
+    })
+    const item = wrapper.find('.var-rail-navigation-item')
+
+    expect(item.attributes('style')).toContain('--rail-navigation-item-transition-duration-override: 0ms')
+    await doubleRaf()
+    await doubleRaf()
+    expect(item.attributes('style') ?? '').not.toContain('--rail-navigation-item-transition-duration-override: 0ms')
+    wrapper.unmount()
+  })
 })
 
 describe('rail-navigation public contract', () => {
@@ -315,6 +336,7 @@ describe('rail-navigation public contract', () => {
     const railNavigationStyles = readProjectFile('src/rail-navigation/railNavigation.less')
     const railNavigationItemStyles = readProjectFile('src/rail-navigation-item/railNavigationItem.less')
     const railNavigationKeys = [
+      '--rail-navigation-width',
       '--rail-navigation-background',
       '--rail-navigation-padding',
       '--rail-navigation-start-padding',

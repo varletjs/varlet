@@ -1,4 +1,5 @@
 export default {
+  '--rail-navigation-width': '80px',
   '--rail-navigation-background': 'var(--color-surface-container)',
   '--rail-navigation-padding': '12px 0',
   '--rail-navigation-start-padding': '4px 0',
