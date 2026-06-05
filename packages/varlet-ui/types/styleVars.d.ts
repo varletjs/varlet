@@ -587,8 +587,19 @@ interface BaseStyleVars {
   '--pull-refresh-color'?: string
   '--pull-refresh-success-color'?: string
   '--pull-refresh-icon-size'?: string
+  '--radio-checked-color'?: string
+  '--radio-unchecked-color'?: string
+  '--radio-disabled-color'?: string
+  '--radio-error-color'?: string
+  '--radio-action-padding'?: string
+  '--radio-icon-size'?: string
+  '--radio-text-color'?: string
   '--rail-navigation-width'?: string
   '--rail-navigation-background'?: string
+  '--rail-navigation-padding'?: string
+  '--rail-navigation-start-padding'?: string
+  '--rail-navigation-end-padding'?: string
+  '--rail-navigation-item-gap'?: string
   '--rail-navigation-item-height'?: string
   '--rail-navigation-item-padding'?: string
   '--rail-navigation-item-indicator-width'?: string
@@ -601,17 +612,6 @@ interface BaseStyleVars {
   '--rail-navigation-item-icon-size'?: string
   '--rail-navigation-item-label-font-size'?: string
   '--rail-navigation-item-label-line-height'?: string
-  '--rail-navigation-padding'?: string
-  '--rail-navigation-start-padding'?: string
-  '--rail-navigation-end-padding'?: string
-  '--rail-navigation-item-gap'?: string
-  '--radio-checked-color'?: string
-  '--radio-unchecked-color'?: string
-  '--radio-disabled-color'?: string
-  '--radio-error-color'?: string
-  '--radio-action-padding'?: string
-  '--radio-icon-size'?: string
-  '--radio-text-color'?: string
   '--rate-color'?: string
   '--rate-size'?: string
   '--rate-primary-color'?: string
