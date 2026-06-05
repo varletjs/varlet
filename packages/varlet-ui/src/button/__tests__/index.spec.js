@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, Fragment, h } from 'vue'
@@ -144,6 +146,23 @@ describe('test button component props', () => {
     expect(wrapper.find('button').classes()).toContain('var-button--round')
     await wrapper.setProps({ round: false })
     expect(wrapper.find('button').classes()).not.toContain('var-button--round')
+    wrapper.unmount()
+  })
+
+  test('button round fab compatibility', () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        round: true,
+        fab: true,
+      },
+    })
+    const button = wrapper.find('button')
+
+    expect(button.classes()).toContain('var-button--round')
+    expect(button.classes()).toContain('var-button--fab')
+    const buttonStyles = readFileSync(resolve(process.cwd(), 'src/button/button.less'), 'utf-8')
+
+    expect(buttonStyles).toMatch(/&--round&--fab\s*{\s*border-radius:\s*50%;\s*}/)
     wrapper.unmount()
   })
 

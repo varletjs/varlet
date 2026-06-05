@@ -3,11 +3,8 @@
     v-ripple="{ disabled: !railNavigation.ripple.value || isDisabled }"
     :class="classes(n(), [isActive, n('--active')], [isDisabled, n('--disabled')])"
     :aria-disabled="isDisabled"
-    :aria-current="isActive ? 'page' : undefined"
-    :tabindex="isDisabled ? undefined : 0"
     role="button"
     @click="handleClick"
-    @keydown.enter.space.prevent="handleClick"
   >
     <span v-if="$slots.icon || icon" :class="n('icon-container')">
       <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-rail-navigation-item-cover>

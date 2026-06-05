@@ -23,6 +23,25 @@ const active = ref(0)
 </template>
 ```
 
+### Ripple
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-rail-navigation v-model:active="active" ripple>
+    <var-rail-navigation-item label="Home" icon="home" />
+    <var-rail-navigation-item label="Search" icon="magnify" />
+    <var-rail-navigation-item label="Favorite" icon="heart" />
+    <var-rail-navigation-item label="Account" icon="account-circle" />
+  </var-rail-navigation>
+</template>
+```
+
 ### Match By Name
 
 ```html
@@ -135,7 +154,6 @@ function handleClick(active) {
 import { ref } from 'vue'
 
 const active = ref(0)
-const profileAction = ref()
 </script>
 
 <template>
@@ -151,41 +169,18 @@ const profileAction = ref()
     <var-rail-navigation-item label="Account" icon="account-circle" />
 
     <template #end>
-      <var-menu-select v-model="profileAction" placement="right" :offset-x="12">
-        <span v-ripple class="rail-navigation-profile">
-          <var-avatar class="rail-navigation-avatar" src="https://varletjs.org/cat.jpg" :size="32" />
-        </span>
-
-        <template #options>
-          <var-menu-option label="Profile" />
-          <var-menu-option label="Settings" />
-          <var-menu-option label="Logout" />
-        </template>
-      </var-menu-select>
+      <var-button outline text fab round>
+        <var-icon name="cog" :size="24" />
+      </var-button>
     </template>
   </var-rail-navigation>
 </template>
 
 <style>
 .rail-navigation-slots {
-  min-height: 360px;
+  min-height: 400px;
 }
 
-.rail-navigation-avatar {
-  flex: 0 0 auto;
-}
-
-.rail-navigation-profile {
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  border-radius: 50%;
-  overflow: hidden;
-}
 </style>
 ```
 
@@ -290,7 +285,7 @@ The following CSS variables are used by the component and can be customized thro
 | `--rail-navigation-width` | `80px` |
 | `--rail-navigation-background` | `var(--color-surface-container-high)` |
 | `--rail-navigation-text-color` | `var(--color-on-surface-variant)` |
-| `--rail-navigation-section-padding` | `6px 0` |
+| `--rail-navigation-section-padding` | `12px 0` |
 | `--rail-navigation-slot-padding` | `4px 0` |
 
 #### RailNavigationItem Variables

@@ -5,13 +5,13 @@ import { ref } from 'vue'
 import { t, use } from './locale'
 
 const basicUsageActive = ref(0)
+const rippleActive = ref(0)
 const matchByNameActive = ref('home')
 const disabledActive = ref(0)
 const badgeActive = ref(0)
 const changeEventActive = ref(0)
 const clickEventActive = ref(0)
 const slotsActive = ref(0)
-const profileAction = ref()
 const customNavigationActive = ref('tooltip')
 
 watchLang(use)
@@ -29,6 +29,14 @@ function handleClick(active) {
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-rail-navigation v-model:active="basicUsageActive">
+    <var-rail-navigation-item :label="t('home')" icon="home" />
+    <var-rail-navigation-item :label="t('search')" icon="magnify" />
+    <var-rail-navigation-item :label="t('favorite')" icon="heart" />
+    <var-rail-navigation-item :label="t('account')" icon="account-circle" />
+  </var-rail-navigation>
+
+  <app-type>{{ t('ripple') }}</app-type>
+  <var-rail-navigation v-model:active="rippleActive" ripple>
     <var-rail-navigation-item :label="t('home')" icon="home" />
     <var-rail-navigation-item :label="t('search')" icon="magnify" />
     <var-rail-navigation-item :label="t('favorite')" icon="heart" />
@@ -88,17 +96,9 @@ function handleClick(active) {
     <var-rail-navigation-item :label="t('account')" icon="account-circle" />
 
     <template #end>
-      <var-menu-select v-model="profileAction" placement="right" :offset-x="12">
-        <span v-ripple class="rail-navigation-example__profile">
-          <var-avatar class="rail-navigation-example__avatar" src="cat.jpg" :size="32" />
-        </span>
-
-        <template #options>
-          <var-menu-option :label="t('profile')" />
-          <var-menu-option :label="t('settings')" />
-          <var-menu-option :label="t('logout')" />
-        </template>
-      </var-menu-select>
+      <var-button outline text fab round>
+        <var-icon name="cog" :size="24" />
+      </var-button>
     </template>
   </var-rail-navigation>
 
@@ -127,22 +127,6 @@ function handleClick(active) {
 }
 
 .rail-navigation-example__slots {
-  min-height: 360px;
-}
-
-.rail-navigation-example__avatar {
-  flex: 0 0 auto;
-}
-
-.rail-navigation-example__profile {
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  border-radius: 50%;
-  overflow: hidden;
+  min-height: 400px;
 }
 </style>

@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  ripple: 'Ripple',
   matchByName: 'Match By Name',
   disabled: 'Disabled',
   badge: 'Badge',
@@ -14,7 +15,4 @@ export default {
   tooltip: 'Tooltip',
   routerLink: 'Router',
   anchor: 'Link',
-  profile: 'Profile',
-  settings: 'Settings',
-  logout: 'Logout',
 }

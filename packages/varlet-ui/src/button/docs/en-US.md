@@ -142,7 +142,7 @@ Button component for triggering actions.
 </template>
 ```
 
-### FAB Button
+### FAB Button ***3.18.0***
 
 ```html
 <template>
@@ -359,7 +359,7 @@ function handleAutoLoadingClick() {
 | `loading-color`  | Loading color                                                                           | _string_  | `currentColor` |
 | `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                                   | _boolean_ | `false`        |
 | `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
-| `fab`            | Whether to be FAB button                                                                | _boolean_ | `false`        |
+| `fab` ***3.18.0*** | Whether to be FAB button                                                             | _boolean_ | `false`        |
 | `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
 | `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
 | `icon-container` | Whether to serve as an icon container                                                        | _boolean_ | `false`        |

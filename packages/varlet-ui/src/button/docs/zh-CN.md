@@ -157,7 +157,7 @@
 </template>
 ```
 
-### FAB 按钮
+### FAB 按钮 ***3.18.0***
 
 ```html
 <template>
@@ -379,7 +379,7 @@ function handleAutoLoadingClick() {
 | `loading-color`  | loading 的颜色                                                     | _string_ | `currentColor` |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                          | _boolean_ | `false`        |
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |
-| `fab`            | 是否是 FAB 按钮                                                       | _boolean_ | `false`        |
+| `fab` ***3.18.0*** | 是否是 FAB 按钮                                                    | _boolean_ | `false`        |
 | `block`          | 是否是块级元素                                                         | _boolean_ | `false`        |
 | `text`           | 是否是文字按钮                                                         | _boolean_ | `false`        |
 | `icon-container` | 是否作为图标容器                                                        | _boolean_ | `false`        |

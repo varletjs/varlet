@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  ripple: '水波效果',
   matchByName: '通过名称匹配',
   disabled: '禁用选项',
   badge: '徽标提示',
@@ -14,7 +15,4 @@ export default {
   tooltip: '提示',
   routerLink: '路由',
   anchor: '链接',
-  profile: '个人资料',
-  settings: '设置',
-  logout: '退出登录',
 }
