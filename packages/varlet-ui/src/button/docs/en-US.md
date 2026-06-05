@@ -142,7 +142,7 @@ Button component for triggering actions.
 </template>
 ```
 
-### FAB Button ***3.18.0***
+### FAB Button
 
 ```html
 <template>

@@ -157,7 +157,7 @@
 </template>
 ```
 
-### FAB 按钮 ***3.18.0***
+### FAB 按钮
 
 ```html
 <template>
