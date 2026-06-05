@@ -104,8 +104,8 @@
     background-color: var(--rail-navigation-item-indicator-active-background);
     transform: translate(-50%, -50%) scaleX(1);
     transition:
-      transform 250ms,
-      background-color 250ms;
+      transform var(--rail-navigation-item-transition-duration-override, 250ms),
+      background-color var(--rail-navigation-item-transition-duration-override, 250ms);
   }
 
   &--active:hover &__indicator::before {

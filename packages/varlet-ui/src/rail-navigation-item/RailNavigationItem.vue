@@ -2,6 +2,7 @@
   <div
     v-ripple="{ disabled: !ripple || disabled }"
     :class="classes(n(), [isActive, n('--active')], [disabled, n('--disabled')])"
+    :style="{ '--rail-navigation-item-transition-duration-override': allowTransition ? undefined : '0ms' }"
     :aria-disabled="disabled"
     role="button"
     @click="handleClick"
@@ -24,8 +25,8 @@
 </template>
 
 <script lang="ts">
-import { call } from '@varlet/shared'
-import { computed, defineComponent } from 'vue'
+import { call, doubleRaf } from '@varlet/shared'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 import { type BadgeProps } from '../../types'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
@@ -55,8 +56,14 @@ export default defineComponent({
     const activeValue = computed(() => props.name ?? index.value)
     const isActive = computed(() => active.value === activeValue.value)
     const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
+    const allowTransition = ref(false)
 
     bindRailNavigation(null)
+
+    onMounted(async () => {
+      await doubleRaf()
+      allowTransition.value = true
+    })
 
     function handleClick() {
       if (props.disabled) {
@@ -71,6 +78,7 @@ export default defineComponent({
       isActive,
       badgeProps,
       ripple,
+      allowTransition,
       n,
       classes,
       handleClick,
