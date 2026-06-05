@@ -298,13 +298,16 @@ describe('rail-navigation public contract', () => {
     expect(railNavigationItemTypes).toContain('badge?: boolean | BadgeProps')
     expect(railNavigationItemTypes).toContain('disabled?: boolean')
     expect(railNavigationItemTypes).toContain('onClick?: ListenerProp<(active: number | string) => void>')
-    expect(railNavigationItemTypes).toContain('default(context: RailNavigationItemSlotContext): VNode[]')
-    expect(railNavigationItemTypes).toContain('icon(context: RailNavigationItemSlotContext): VNode[]')
+    expect(railNavigationItemTypes).toContain('export interface RailNavigationItemData')
+    expect(railNavigationItemTypes).toContain('export interface RailNavigationItemIconData')
+    expect(railNavigationItemTypes).toContain('default(data: RailNavigationItemData): VNode[]')
+    expect(railNavigationItemTypes).toContain('icon(data: RailNavigationItemIconData): VNode[]')
 
-    expect(styleVarsTypes).toContain("'--rail-navigation-section-padding'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-start-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-end-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-gap'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-item-inactive-text-color'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-active-background'?: string")
   })
 
@@ -313,16 +316,24 @@ describe('rail-navigation public contract', () => {
     const railNavigationItemStyles = readProjectFile('src/rail-navigation-item/railNavigationItem.less')
     const railNavigationKeys = [
       '--rail-navigation-background',
-      '--rail-navigation-text-color',
-      '--rail-navigation-section-padding',
+      '--rail-navigation-padding',
       '--rail-navigation-start-padding',
       '--rail-navigation-end-padding',
       '--rail-navigation-item-gap',
     ]
     const railNavigationItemKeys = [
+      '--rail-navigation-item-height',
+      '--rail-navigation-item-padding',
+      '--rail-navigation-item-indicator-width',
+      '--rail-navigation-item-indicator-height',
       '--rail-navigation-item-indicator-hover-background',
       '--rail-navigation-item-indicator-active-background',
+      '--rail-navigation-item-inactive-text-color',
       '--rail-navigation-item-active-text-color',
+      '--rail-navigation-item-disabled-opacity',
+      '--rail-navigation-item-icon-size',
+      '--rail-navigation-item-label-font-size',
+      '--rail-navigation-item-label-line-height',
     ]
 
     railNavigationKeys.forEach((key) => {
@@ -344,6 +355,8 @@ describe('rail-navigation public contract', () => {
     const example = readProjectFile('src/rail-navigation/example/index.vue')
     const enUS = readProjectFile('src/rail-navigation/docs/en-US.md')
     const zhCN = readProjectFile('src/rail-navigation/docs/zh-CN.md')
+    const itemEnUS = readProjectFile('src/rail-navigation-item/docs/en-US.md')
+    const itemZhCN = readProjectFile('src/rail-navigation-item/docs/zh-CN.md')
     const enLocale = readProjectFile('src/rail-navigation/example/locale/en-US.ts')
     const zhLocale = readProjectFile('src/rail-navigation/example/locale/zh-CN.ts')
 
@@ -380,6 +393,15 @@ describe('rail-navigation public contract', () => {
       expect(source).toContain('min-height: 400px')
       expect(source).not.toContain('profileAction')
       expect(source).not.toContain('rail-navigation-avatar')
+    })
+
+    ;[itemEnUS, itemZhCN].forEach((source) => {
+      expect(source).toContain('`name`')
+      expect(source).toContain('_number \\| string_')
+      expect(source).toContain('`disabled`')
+      expect(source).toContain('`click`')
+      expect(source).toContain('`active: boolean`')
+      expect(source).toContain('`--rail-navigation-item-indicator-active-background`')
     })
 
     expect(enLocale).not.toContain('Profile')

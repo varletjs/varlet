@@ -1,8 +1,7 @@
 :root {
   --rail-navigation-width: 80px;
   --rail-navigation-background: var(--color-surface-container-high);
-  --rail-navigation-text-color: var(--color-on-surface-variant);
-  --rail-navigation-section-padding: 12px 0;
+  --rail-navigation-padding: 12px 0;
   --rail-navigation-start-padding: 4px 0;
   --rail-navigation-end-padding: 4px 0;
   --rail-navigation-item-gap: 4px;
@@ -11,15 +10,12 @@
 .var-rail-navigation {
   width: var(--rail-navigation-width);
   min-height: 100%;
-  padding: var(--rail-navigation-section-padding);
+  padding: var(--rail-navigation-padding);
   display: inline-flex;
   flex-direction: column;
   align-items: stretch;
   background-color: var(--rail-navigation-background);
-  color: var(--rail-navigation-text-color);
-  transition:
-    background-color 250ms,
-    color 250ms;
+  transition: background-color 250ms;
   -webkit-tap-highlight-color: transparent;
 
   &__section {

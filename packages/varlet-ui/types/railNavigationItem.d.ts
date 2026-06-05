@@ -4,7 +4,11 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 
 export declare const railNavigationItemProps: Record<keyof RailNavigationItemProps, any>
 
-export interface RailNavigationItemSlotContext {
+export interface RailNavigationItemData {
+  active: boolean
+}
+
+export interface RailNavigationItemIconData {
   active: boolean
 }
 
@@ -24,8 +28,8 @@ export class RailNavigationItem extends VarComponent {
   $props: RailNavigationItemProps
 
   $slots: {
-    default(context: RailNavigationItemSlotContext): VNode[]
-    icon(context: RailNavigationItemSlotContext): VNode[]
+    default(data: RailNavigationItemData): VNode[]
+    icon(data: RailNavigationItemIconData): VNode[]
   }
 }
 

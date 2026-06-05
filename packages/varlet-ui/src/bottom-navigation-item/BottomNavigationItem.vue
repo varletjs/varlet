@@ -73,10 +73,11 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
+    const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
+
     const name = computed<string | undefined>(() => props.name)
     const isActive = computed<boolean>(() => [name.value, index.value].includes(active.value))
     const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
-    const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
     const { animated, active, activeColor, inactiveColor, variant } = bottomNavigation
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,

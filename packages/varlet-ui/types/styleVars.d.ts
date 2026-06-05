@@ -589,19 +589,19 @@ interface BaseStyleVars {
   '--pull-refresh-icon-size'?: string
   '--rail-navigation-width'?: string
   '--rail-navigation-background'?: string
-  '--rail-navigation-text-color'?: string
   '--rail-navigation-item-height'?: string
   '--rail-navigation-item-padding'?: string
   '--rail-navigation-item-indicator-width'?: string
   '--rail-navigation-item-indicator-height'?: string
   '--rail-navigation-item-indicator-hover-background'?: string
   '--rail-navigation-item-indicator-active-background'?: string
+  '--rail-navigation-item-inactive-text-color'?: string
   '--rail-navigation-item-active-text-color'?: string
   '--rail-navigation-item-disabled-opacity'?: string
   '--rail-navigation-item-icon-size'?: string
   '--rail-navigation-item-label-font-size'?: string
   '--rail-navigation-item-label-line-height'?: string
-  '--rail-navigation-section-padding'?: string
+  '--rail-navigation-padding'?: string
   '--rail-navigation-start-padding'?: string
   '--rail-navigation-end-padding'?: string
   '--rail-navigation-item-gap'?: string

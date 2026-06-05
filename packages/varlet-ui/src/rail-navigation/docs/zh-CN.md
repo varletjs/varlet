@@ -2,7 +2,7 @@
 
 ### 介绍
 
-垂直排列页面级导航入口，形态参考 Material Design 3 Navigation Rail。组件通过 `v-model:active` 维护基于索引的激活状态。MD3 主题下 hover 会显示浅色状态层，激活时显示带展开动画的图标指示器；默认 MD2 主题下不显示指示器背景。
+在页面侧边显示页面级导航入口。
 
 ### 基本使用
 
@@ -180,7 +180,6 @@ const active = ref(0)
 .rail-navigation-slots {
   min-height: 400px;
 }
-
 </style>
 ```
 
@@ -284,8 +283,7 @@ const active = ref('tooltip')
 | --- | --- |
 | `--rail-navigation-width` | `80px` |
 | `--rail-navigation-background` | `var(--color-surface-container-high)` |
-| `--rail-navigation-text-color` | `var(--color-on-surface-variant)` |
-| `--rail-navigation-section-padding` | `12px 0` |
+| `--rail-navigation-padding` | `12px 0` |
 | `--rail-navigation-start-padding` | `4px 0` |
 | `--rail-navigation-end-padding` | `4px 0` |
 | `--rail-navigation-item-gap` | `4px` |
@@ -300,8 +298,9 @@ const active = ref('tooltip')
 | `--rail-navigation-item-indicator-height` | `32px` |
 | `--rail-navigation-item-indicator-hover-background` | `transparent` |
 | `--rail-navigation-item-indicator-active-background` | `transparent` |
+| `--rail-navigation-item-inactive-text-color` | `var(--color-on-surface-variant)` |
 | `--rail-navigation-item-active-text-color` | `var(--color-primary)` |
 | `--rail-navigation-item-disabled-opacity` | `var(--opacity-disabled)` |
 | `--rail-navigation-item-icon-size` | `24px` |
 | `--rail-navigation-item-label-font-size` | `var(--font-size-sm)` |
-| `--rail-navigation-item-label-line-height` | `16px` |
+| `--rail-navigation-item-label-line-height` | `1.5` |
