@@ -1,6 +1,7 @@
 :root {
   --rail-navigation-width: 80px;
   --rail-navigation-background: var(--color-surface-container-high);
+  --rail-navigation-border-color: var(--color-outline);
   --rail-navigation-padding: 12px 0;
   --rail-navigation-start-padding: 4px 0;
   --rail-navigation-end-padding: 4px 0;
@@ -17,6 +18,10 @@
   background-color: var(--rail-navigation-background);
   transition: background-color 250ms;
   -webkit-tap-highlight-color: transparent;
+
+  &--border {
+    border-right: 1px solid var(--rail-navigation-border-color);
+  }
 
   &__section {
     display: flex;

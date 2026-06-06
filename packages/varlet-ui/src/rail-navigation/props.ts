@@ -9,6 +9,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  border: Boolean,
   onChange: defineListenerProp<(active: number | string) => void>(),
   'onUpdate:active': defineListenerProp<(active: number | string) => void>(),
 }

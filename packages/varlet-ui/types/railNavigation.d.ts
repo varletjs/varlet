@@ -6,6 +6,7 @@ export declare const railNavigationProps: Record<keyof RailNavigationProps, any>
 export interface RailNavigationProps extends BasicAttributes {
   active?: number | string
   ripple?: boolean
+  border?: boolean
   onChange?: ListenerProp<(active: number | string) => void>
   'onUpdate:active'?: ListenerProp<(active: number | string) => void>
 }

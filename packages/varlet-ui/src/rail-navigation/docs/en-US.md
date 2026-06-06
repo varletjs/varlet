@@ -42,6 +42,25 @@ const active = ref(0)
 </template>
 ```
 
+### Border
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-rail-navigation v-model:active="active" border>
+    <var-rail-navigation-item label="Home" icon="home" />
+    <var-rail-navigation-item label="Search" icon="magnify" />
+    <var-rail-navigation-item label="Favorite" icon="heart" />
+    <var-rail-navigation-item label="Account" icon="account-circle" />
+  </var-rail-navigation>
+</template>
+```
+
 ### Match By Name
 
 ```html
@@ -242,6 +261,7 @@ const active = ref('tooltip')
 | --- | --- | --- | --- |
 | `v-model:active` | Index or name of active item | _number \| string_ | `0` |
 | `ripple` | Whether to enable ripple | _boolean_ | `false` |
+| `border` | Whether to show the right border | _boolean_ | `false` |
 
 #### RailNavigationItem Props
 
@@ -297,6 +317,7 @@ The following CSS variables are used by the component and can be customized thro
 | --- | --- |
 | `--rail-navigation-width` | `80px` |
 | `--rail-navigation-background` | `var(--color-surface-container-high)` |
+| `--rail-navigation-border-color` | `var(--color-outline)` |
 | `--rail-navigation-padding` | `12px 0` |
 | `--rail-navigation-start-padding` | `4px 0` |
 | `--rail-navigation-end-padding` | `4px 0` |

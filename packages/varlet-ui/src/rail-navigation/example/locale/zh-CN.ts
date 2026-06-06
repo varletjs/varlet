@@ -1,6 +1,7 @@
 export default {
   basicUsage: '基本使用',
   ripple: '水波效果',
+  border: '边框',
   matchByName: '通过名称匹配',
   disabled: '禁用选项',
   badge: '徽标提示',

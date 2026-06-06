@@ -241,6 +241,19 @@ describe('rail-navigation component api', () => {
     wrapper.unmount()
   })
 
+  test('border prop', async () => {
+    const wrapper = mount(VarRailNavigation, {
+      props: {
+        border: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-rail-navigation--border')
+    await wrapper.setProps({ border: false })
+    expect(wrapper.classes()).not.toContain('var-rail-navigation--border')
+    wrapper.unmount()
+  })
+
   test('badge prop', () => {
     const wrapper = mount({
       components,
@@ -348,6 +361,7 @@ describe('rail-navigation public contract', () => {
 
     expect(railNavigationTypes).toContain('active?: number | string')
     expect(railNavigationTypes).toContain('ripple?: boolean')
+    expect(railNavigationTypes).toContain('border?: boolean')
     expect(railNavigationTypes).toContain('onChange?: ListenerProp<(active: number | string) => void>')
     expect(railNavigationTypes).toContain("'onUpdate:active'?: ListenerProp<(active: number | string) => void>")
     expect(railNavigationTypes).toContain('default(): VNode[]')
@@ -370,6 +384,7 @@ describe('rail-navigation public contract', () => {
     expect(railNavigationItemTypes).toContain('icon(data: RailNavigationItemIconData): VNode[]')
 
     expect(styleVarsTypes).toContain("'--rail-navigation-padding'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-border-color'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-start-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-end-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-gap'?: string")
@@ -383,6 +398,7 @@ describe('rail-navigation public contract', () => {
     const railNavigationKeys = [
       '--rail-navigation-width',
       '--rail-navigation-background',
+      '--rail-navigation-border-color',
       '--rail-navigation-padding',
       '--rail-navigation-start-padding',
       '--rail-navigation-end-padding',
@@ -430,6 +446,7 @@ describe('rail-navigation public contract', () => {
     ;[
       'Basic Usage',
       'Ripple',
+      'Border',
       'Match By Name',
       'Disabled',
       'Badge',
@@ -439,7 +456,7 @@ describe('rail-navigation public contract', () => {
     ].forEach((title) => {
       expect(enUS).toContain(`### ${title}`)
     })
-    ;['基本使用', '水波效果', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
+    ;['基本使用', '水波效果', '边框', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
       (title) => {
         expect(zhCN).toContain(`### ${title}`)
       },
@@ -447,6 +464,7 @@ describe('rail-navigation public contract', () => {
 
     ;[example, enUS, zhCN].forEach((source) => {
       expect(source).toContain('ripple')
+      expect(source).toContain('border')
       expect(source).toContain('@change')
       expect(source).toContain('@click')
       expect(source).toContain('@mouseenter')

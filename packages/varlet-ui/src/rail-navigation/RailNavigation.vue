@@ -1,5 +1,5 @@
 <template>
-  <aside :class="classes(n(), n('$--box'))" v-bind="$attrs">
+  <aside :class="classes(n(), n('$--box'), [border, n('--border')])" v-bind="$attrs">
     <div v-if="$slots.start" :class="classes(n('section'), n('start'))">
       <slot name="start"></slot>
     </div>

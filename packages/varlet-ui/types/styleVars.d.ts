@@ -596,6 +596,7 @@ interface BaseStyleVars {
   '--radio-text-color'?: string
   '--rail-navigation-width'?: string
   '--rail-navigation-background'?: string
+  '--rail-navigation-border-color'?: string
   '--rail-navigation-padding'?: string
   '--rail-navigation-start-padding'?: string
   '--rail-navigation-end-padding'?: string
