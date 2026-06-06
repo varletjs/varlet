@@ -99,7 +99,7 @@ const active = ref(0)
 </template>
 ```
 
-### 监听切换事件
+### 事件处理
 
 ```html
 <script setup>
@@ -111,38 +111,50 @@ const active = ref(0)
 function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" @change="handleChange">
-    <var-rail-navigation-item label="首页" icon="home" />
-    <var-rail-navigation-item label="搜索" icon="magnify" />
-    <var-rail-navigation-item label="收藏" icon="heart" />
-    <var-rail-navigation-item label="我的" icon="account-circle" />
-  </var-rail-navigation>
-</template>
-```
-
-### 监听点击事件
-
-```html
-<script setup>
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-
-const active = ref(0)
 
 function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
+
+function handleMouseenter(active) {
+  Snackbar.info(`mouseenter ${active}`)
+}
+
+function handleMouseleave(active) {
+  Snackbar.info(`mouseleave ${active}`)
+}
 </script>
 
 <template>
-  <var-rail-navigation v-model:active="active">
-    <var-rail-navigation-item label="首页" icon="home" @click="handleClick" />
-    <var-rail-navigation-item label="搜索" icon="magnify" @click="handleClick" />
-    <var-rail-navigation-item label="收藏" icon="heart" @click="handleClick" />
-    <var-rail-navigation-item label="我的" icon="account-circle" @click="handleClick" />
+  <var-rail-navigation v-model:active="active" @change="handleChange">
+    <var-rail-navigation-item
+      label="首页"
+      icon="home"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="搜索"
+      icon="magnify"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="收藏"
+      icon="heart"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="我的"
+      icon="account-circle"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
   </var-rail-navigation>
 </template>
 ```
@@ -255,6 +267,8 @@ const active = ref('tooltip')
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | `click` | 点击时触发 | `active: number \| string` |
+| `mouseenter` | 鼠标移入时触发 | `active: number \| string` |
+| `mouseleave` | 鼠标移出时触发 | `active: number \| string` |
 
 ### 插槽
 

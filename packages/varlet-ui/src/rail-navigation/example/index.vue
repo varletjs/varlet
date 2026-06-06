@@ -9,8 +9,7 @@ const rippleActive = ref(0)
 const matchByNameActive = ref('home')
 const disabledActive = ref(0)
 const badgeActive = ref(0)
-const changeEventActive = ref(0)
-const clickEventActive = ref(0)
+const eventHandlingActive = ref(0)
 const slotsActive = ref(0)
 const customNavigationActive = ref('tooltip')
 
@@ -23,6 +22,14 @@ function handleChange(active) {
 
 function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
+}
+
+function handleMouseenter(active) {
+  Snackbar.info(`mouseenter ${active}`)
+}
+
+function handleMouseleave(active) {
+  Snackbar.info(`mouseleave ${active}`)
 }
 </script>
 
@@ -67,20 +74,36 @@ function handleClick(active) {
     <var-rail-navigation-item :label="t('account')" icon="account-circle" />
   </var-rail-navigation>
 
-  <app-type>{{ t('changeEvent') }}</app-type>
-  <var-rail-navigation v-model:active="changeEventActive" @change="handleChange">
-    <var-rail-navigation-item :label="t('home')" icon="home" />
-    <var-rail-navigation-item :label="t('search')" icon="magnify" />
-    <var-rail-navigation-item :label="t('favorite')" icon="heart" />
-    <var-rail-navigation-item :label="t('account')" icon="account-circle" />
-  </var-rail-navigation>
-
-  <app-type>{{ t('clickEvent') }}</app-type>
-  <var-rail-navigation v-model:active="clickEventActive">
-    <var-rail-navigation-item :label="t('home')" icon="home" @click="handleClick" />
-    <var-rail-navigation-item :label="t('search')" icon="magnify" @click="handleClick" />
-    <var-rail-navigation-item :label="t('favorite')" icon="heart" @click="handleClick" />
-    <var-rail-navigation-item :label="t('account')" icon="account-circle" @click="handleClick" />
+  <app-type>{{ t('eventHandling') }}</app-type>
+  <var-rail-navigation v-model:active="eventHandlingActive" @change="handleChange">
+    <var-rail-navigation-item
+      :label="t('home')"
+      icon="home"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      :label="t('search')"
+      icon="magnify"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      :label="t('favorite')"
+      icon="heart"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      :label="t('account')"
+      icon="account-circle"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
   </var-rail-navigation>
 
   <app-type>{{ t('slots') }}</app-type>

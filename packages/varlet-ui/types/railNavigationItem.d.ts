@@ -20,6 +20,8 @@ export interface RailNavigationItemProps extends BasicAttributes {
   badge?: boolean | BadgeProps
   disabled?: boolean
   onClick?: ListenerProp<(active: number | string) => void>
+  onMouseenter?: ListenerProp<(active: number | string) => void>
+  onMouseleave?: ListenerProp<(active: number | string) => void>
 }
 
 export class RailNavigationItem extends VarComponent {

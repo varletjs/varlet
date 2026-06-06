@@ -14,6 +14,8 @@
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
 | `click` | 点击时触发 | `active: number \| string` |
+| `mouseenter` | 鼠标移入时触发 | `active: number \| string` |
+| `mouseleave` | 鼠标移出时触发 | `active: number \| string` |
 
 ### 插槽
 

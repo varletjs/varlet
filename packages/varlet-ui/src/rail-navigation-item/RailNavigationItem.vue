@@ -6,6 +6,8 @@
     :aria-disabled="disabled"
     role="button"
     @click="handleClick"
+    @mouseenter="handleMouseenter"
+    @mouseleave="handleMouseleave"
   >
     <span v-if="$slots.icon || icon" :class="n('indicator')">
       <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-rail-navigation-item-cover>
@@ -74,6 +76,22 @@ export default defineComponent({
       call(onToggle, activeValue.value)
     }
 
+    function handleMouseenter() {
+      if (props.disabled) {
+        return
+      }
+
+      call(props.onMouseenter, activeValue.value)
+    }
+
+    function handleMouseleave() {
+      if (props.disabled) {
+        return
+      }
+
+      call(props.onMouseleave, activeValue.value)
+    }
+
     return {
       isActive,
       badgeProps,
@@ -82,6 +100,8 @@ export default defineComponent({
       n,
       classes,
       handleClick,
+      handleMouseenter,
+      handleMouseleave,
     }
   },
 })

@@ -146,6 +146,49 @@ describe('rail-navigation component api', () => {
     wrapper.unmount()
   })
 
+  test('rail-navigation-item mouse events', async () => {
+    const handleMouseenter = vi.fn()
+    const handleMouseleave = vi.fn()
+    const wrapper = mount({
+      components,
+      data: () => ({ active: 0 }),
+      methods: { handleMouseenter, handleMouseleave },
+      template: `
+        <var-rail-navigation v-model:active="active">
+          <var-rail-navigation-item
+            name="home"
+            label="Home"
+            icon="home"
+            @mouseenter="handleMouseenter"
+            @mouseleave="handleMouseleave"
+          />
+          <var-rail-navigation-item
+            name="search"
+            label="Search"
+            icon="magnify"
+            disabled
+            @mouseenter="handleMouseenter"
+            @mouseleave="handleMouseleave"
+          />
+        </var-rail-navigation>
+      `,
+    })
+    const items = wrapper.findAll('.var-rail-navigation-item')
+
+    await trigger(items[0], 'mouseenter')
+    expect(handleMouseenter).toHaveBeenCalledTimes(1)
+    expect(handleMouseenter).toHaveBeenLastCalledWith('home')
+    await trigger(items[0], 'mouseleave')
+    expect(handleMouseleave).toHaveBeenCalledTimes(1)
+    expect(handleMouseleave).toHaveBeenLastCalledWith('home')
+
+    await trigger(items[1], 'mouseenter')
+    await trigger(items[1], 'mouseleave')
+    expect(handleMouseenter).toHaveBeenCalledTimes(1)
+    expect(handleMouseleave).toHaveBeenCalledTimes(1)
+    wrapper.unmount()
+  })
+
   test('disabled item blocks click and active change', async () => {
     const handleClick = vi.fn()
     const handleChange = vi.fn()
@@ -319,6 +362,8 @@ describe('rail-navigation public contract', () => {
     expect(railNavigationItemTypes).toContain('badge?: boolean | BadgeProps')
     expect(railNavigationItemTypes).toContain('disabled?: boolean')
     expect(railNavigationItemTypes).toContain('onClick?: ListenerProp<(active: number | string) => void>')
+    expect(railNavigationItemTypes).toContain('onMouseenter?: ListenerProp<(active: number | string) => void>')
+    expect(railNavigationItemTypes).toContain('onMouseleave?: ListenerProp<(active: number | string) => void>')
     expect(railNavigationItemTypes).toContain('export interface RailNavigationItemData')
     expect(railNavigationItemTypes).toContain('export interface RailNavigationItemIconData')
     expect(railNavigationItemTypes).toContain('default(data: RailNavigationItemData): VNode[]')
@@ -388,29 +433,24 @@ describe('rail-navigation public contract', () => {
       'Match By Name',
       'Disabled',
       'Badge',
-      'Change Event',
-      'Click Event',
+      'Event Handling',
       'Slots',
       'Custom Navigation',
     ].forEach((title) => {
       expect(enUS).toContain(`### ${title}`)
     })
-    ;[
-      '基本使用',
-      '水波效果',
-      '通过名称匹配',
-      '禁用选项',
-      '徽标提示',
-      '监听切换事件',
-      '监听点击事件',
-      '插槽',
-      '自定义导航',
-    ].forEach((title) => {
-      expect(zhCN).toContain(`### ${title}`)
-    })
+    ;['基本使用', '水波效果', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
+      (title) => {
+        expect(zhCN).toContain(`### ${title}`)
+      },
+    )
 
     ;[example, enUS, zhCN].forEach((source) => {
       expect(source).toContain('ripple')
+      expect(source).toContain('@change')
+      expect(source).toContain('@click')
+      expect(source).toContain('@mouseenter')
+      expect(source).toContain('@mouseleave')
       expect(source).toContain('outline text fab round')
       expect(source).toContain('min-height: 400px')
       expect(source).not.toContain('profileAction')
@@ -422,6 +462,8 @@ describe('rail-navigation public contract', () => {
       expect(source).toContain('_number \\| string_')
       expect(source).toContain('`disabled`')
       expect(source).toContain('`click`')
+      expect(source).toContain('`mouseenter`')
+      expect(source).toContain('`mouseleave`')
       expect(source).toContain('`active: boolean`')
       expect(source).toContain('`--rail-navigation-item-indicator-active-background`')
     })

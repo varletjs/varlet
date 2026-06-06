@@ -14,6 +14,8 @@
 | Event | Description | Arguments |
 | ---- | ---- | ---- |
 | `click` | Triggered when clicking the item | `active: number \| string` |
+| `mouseenter` | Triggered when the mouse enters the item | `active: number \| string` |
+| `mouseleave` | Triggered when the mouse leaves the item | `active: number \| string` |
 
 ### Slots
 

@@ -99,7 +99,7 @@ const active = ref(0)
 </template>
 ```
 
-### Change Event
+### Event Handling
 
 ```html
 <script setup>
@@ -111,38 +111,50 @@ const active = ref(0)
 function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" @change="handleChange">
-    <var-rail-navigation-item label="Home" icon="home" />
-    <var-rail-navigation-item label="Search" icon="magnify" />
-    <var-rail-navigation-item label="Favorite" icon="heart" />
-    <var-rail-navigation-item label="Account" icon="account-circle" />
-  </var-rail-navigation>
-</template>
-```
-
-### Click Event
-
-```html
-<script setup>
-import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
-
-const active = ref(0)
 
 function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
+
+function handleMouseenter(active) {
+  Snackbar.info(`mouseenter ${active}`)
+}
+
+function handleMouseleave(active) {
+  Snackbar.info(`mouseleave ${active}`)
+}
 </script>
 
 <template>
-  <var-rail-navigation v-model:active="active">
-    <var-rail-navigation-item label="Home" icon="home" @click="handleClick" />
-    <var-rail-navigation-item label="Search" icon="magnify" @click="handleClick" />
-    <var-rail-navigation-item label="Favorite" icon="heart" @click="handleClick" />
-    <var-rail-navigation-item label="Account" icon="account-circle" @click="handleClick" />
+  <var-rail-navigation v-model:active="active" @change="handleChange">
+    <var-rail-navigation-item
+      label="Home"
+      icon="home"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="Search"
+      icon="magnify"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="Favorite"
+      icon="heart"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
+    <var-rail-navigation-item
+      label="Account"
+      icon="account-circle"
+      @click="handleClick"
+      @mouseenter="handleMouseenter"
+      @mouseleave="handleMouseleave"
+    />
   </var-rail-navigation>
 </template>
 ```
@@ -255,6 +267,8 @@ const active = ref('tooltip')
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `click` | Triggered when clicking the item | `active: number \| string` |
+| `mouseenter` | Triggered when the mouse enters the item | `active: number \| string` |
+| `mouseleave` | Triggered when the mouse leaves the item | `active: number \| string` |
 
 ### Slots
 

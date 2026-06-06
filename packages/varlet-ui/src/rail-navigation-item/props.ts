@@ -14,4 +14,6 @@ export const props = {
   },
   disabled: Boolean,
   onClick: defineListenerProp<(active: number | string) => void>(),
+  onMouseenter: defineListenerProp<(active: number | string) => void>(),
+  onMouseleave: defineListenerProp<(active: number | string) => void>(),
 }
