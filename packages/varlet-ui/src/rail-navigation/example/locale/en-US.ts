@@ -1,7 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
   ripple: 'Ripple',
-  border: 'Border',
   matchByName: 'Match By Name',
   disabled: 'Disabled',
   badge: 'Badge',

@@ -42,25 +42,6 @@ const active = ref(0)
 </template>
 ```
 
-### Border
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" border>
-    <var-rail-navigation-item label="Home" icon="home" />
-    <var-rail-navigation-item label="Search" icon="magnify" />
-    <var-rail-navigation-item label="Favorite" icon="heart" />
-    <var-rail-navigation-item label="Account" icon="account-circle" />
-  </var-rail-navigation>
-</template>
-```
-
 ### Match By Name
 
 ```html

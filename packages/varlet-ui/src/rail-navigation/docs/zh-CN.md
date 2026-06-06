@@ -42,25 +42,6 @@ const active = ref(0)
 </template>
 ```
 
-### 边框
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" border>
-    <var-rail-navigation-item label="首页" icon="home" />
-    <var-rail-navigation-item label="搜索" icon="magnify" />
-    <var-rail-navigation-item label="收藏" icon="heart" />
-    <var-rail-navigation-item label="我的" icon="account-circle" />
-  </var-rail-navigation>
-</template>
-```
-
 ### 通过名称匹配
 
 ```html

@@ -6,7 +6,6 @@ import { t, use } from './locale'
 
 const basicUsageActive = ref(0)
 const rippleActive = ref(0)
-const borderActive = ref(0)
 const matchByNameActive = ref('home')
 const disabledActive = ref(0)
 const badgeActive = ref(0)
@@ -45,14 +44,6 @@ function handleMouseleave(active) {
 
   <app-type>{{ t('ripple') }}</app-type>
   <var-rail-navigation v-model:active="rippleActive" ripple>
-    <var-rail-navigation-item :label="t('home')" icon="home" />
-    <var-rail-navigation-item :label="t('search')" icon="magnify" />
-    <var-rail-navigation-item :label="t('favorite')" icon="heart" />
-    <var-rail-navigation-item :label="t('account')" icon="account-circle" />
-  </var-rail-navigation>
-
-  <app-type>{{ t('border') }}</app-type>
-  <var-rail-navigation v-model:active="borderActive" border>
     <var-rail-navigation-item :label="t('home')" icon="home" />
     <var-rail-navigation-item :label="t('search')" icon="magnify" />
     <var-rail-navigation-item :label="t('favorite')" icon="heart" />

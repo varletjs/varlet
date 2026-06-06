@@ -446,7 +446,6 @@ describe('rail-navigation public contract', () => {
     ;[
       'Basic Usage',
       'Ripple',
-      'Border',
       'Match By Name',
       'Disabled',
       'Badge',
@@ -456,7 +455,7 @@ describe('rail-navigation public contract', () => {
     ].forEach((title) => {
       expect(enUS).toContain(`### ${title}`)
     })
-    ;['基本使用', '水波效果', '边框', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
+    ;['基本使用', '水波效果', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
       (title) => {
         expect(zhCN).toContain(`### ${title}`)
       },
@@ -464,7 +463,6 @@ describe('rail-navigation public contract', () => {
 
     ;[example, enUS, zhCN].forEach((source) => {
       expect(source).toContain('ripple')
-      expect(source).toContain('border')
       expect(source).toContain('@change')
       expect(source).toContain('@click')
       expect(source).toContain('@mouseenter')
