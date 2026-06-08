@@ -9,6 +9,7 @@
           [isActivePath, n('item--active-path')],
           [isExpanded, n('item--expanded')],
           [isDisabled, n('item--disabled')],
+          [ripple, n('item--ripple')],
           [hasChildren, n('item--parent')],
         )
       "

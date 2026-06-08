@@ -318,13 +318,15 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-item-label-font-size` | `var(--font-size-md)` |
 | `--tree-menu-item-label-line-height` | `1.5` |
 | `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
-| `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.12)` |
+| `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.12)` |
+| `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |
 | `--tree-menu-item-active-text-color` | `var(--color-primary)` |
 | `--tree-menu-item-disabled-opacity` | `var(--opacity-disabled)` |
 | `--tree-menu-item-indicator-width` | `100%` |
 | `--tree-menu-item-indicator-height` | `100%` |
 | `--tree-menu-item-indicator-border-radius` | `0` |
 | `--tree-menu-item-indicator-hover-background` | `var(--tree-menu-item-hover-background)` |
+| `--tree-menu-item-indicator-pressed-background` | `var(--tree-menu-item-pressed-background)` |
 | `--tree-menu-item-indicator-active-background` | `var(--tree-menu-item-active-background)` |
 | `--tree-menu-item-indicator-active-transition-duration` | `0ms` |
 | `--tree-menu-expand-icon-color` | `var(--color-on-surface-variant)` |

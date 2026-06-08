@@ -999,6 +999,7 @@ interface BaseStyleVars {
   '--tree-menu-item-label-font-size'?: string
   '--tree-menu-item-label-line-height'?: string
   '--tree-menu-item-hover-background'?: string
+  '--tree-menu-item-pressed-background'?: string
   '--tree-menu-item-active-background'?: string
   '--tree-menu-item-active-text-color'?: string
   '--tree-menu-item-disabled-opacity'?: string
@@ -1006,6 +1007,7 @@ interface BaseStyleVars {
   '--tree-menu-item-indicator-height'?: string
   '--tree-menu-item-indicator-border-radius'?: string
   '--tree-menu-item-indicator-hover-background'?: string
+  '--tree-menu-item-indicator-pressed-background'?: string
   '--tree-menu-item-indicator-active-background'?: string
   '--tree-menu-item-indicator-active-transition-duration'?: string
   '--tree-menu-expand-icon-color'?: string
