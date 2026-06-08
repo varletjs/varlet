@@ -71,6 +71,8 @@ export * from './progress'
 export * from './pullRefresh'
 export * from './radio'
 export * from './radioGroup'
+export * from './railNavigation'
+export * from './railNavigationItem'
 export * from './rate'
 export * from './result'
 export * from './ripple'
@@ -172,6 +174,8 @@ declare module 'vue' {
     VarPullRefresh: typeof import('@varlet/ui')['_PullRefreshComponent']
     VarRadio: typeof import('@varlet/ui')['_RadioComponent']
     VarRadioGroup: typeof import('@varlet/ui')['_RadioGroupComponent']
+    VarRailNavigation: typeof import('@varlet/ui')['_RailNavigationComponent']
+    VarRailNavigationItem: typeof import('@varlet/ui')['_RailNavigationItemComponent']
     VarRate: typeof import('@varlet/ui')['_RateComponent']
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']

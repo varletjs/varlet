@@ -1,0 +1,17 @@
+export default {
+  basicUsage: '基本使用',
+  ripple: '水波效果',
+  matchByName: '通过名称匹配',
+  disabled: '禁用选项',
+  badge: '徽标提示',
+  eventHandling: '事件处理',
+  slots: '插槽',
+  customNavigation: '自定义导航',
+  home: '首页',
+  search: '搜索',
+  favorite: '收藏',
+  account: '我的',
+  tooltip: '提示',
+  routerLink: '路由',
+  anchor: '链接',
+}

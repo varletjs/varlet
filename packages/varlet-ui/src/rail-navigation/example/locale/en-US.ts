@@ -1,0 +1,17 @@
+export default {
+  basicUsage: 'Basic Usage',
+  ripple: 'Ripple',
+  matchByName: 'Match By Name',
+  disabled: 'Disabled',
+  badge: 'Badge',
+  eventHandling: 'Event Handling',
+  slots: 'Slots',
+  customNavigation: 'Custom Navigation',
+  home: 'Home',
+  search: 'Search',
+  favorite: 'Favorite',
+  account: 'Account',
+  tooltip: 'Tooltip',
+  routerLink: 'Router',
+  anchor: 'Link',
+}

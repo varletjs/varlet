@@ -116,7 +116,7 @@ Use `type="surface"` for a low-emphasis surface appearance, suitable for desktop
 
 ```html
 <template>
-  <var-app-bar type="surface" :elevation="false" border>
+  <var-app-bar type="surface" :elevation="false">
     <template #left>
       <var-button round text>
         <var-icon name="arrow-left" :size="24" />

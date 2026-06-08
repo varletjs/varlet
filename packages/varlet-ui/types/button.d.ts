@@ -19,6 +19,7 @@ export interface ButtonProps extends BasicAttributes {
   size?: ButtonSize
   loading?: boolean
   round?: boolean
+  fab?: boolean
   block?: boolean
   text?: boolean
   outline?: boolean

@@ -48,6 +48,8 @@ import popup from './popup'
 import progress from './progress'
 import pullRefresh from './pullRefresh'
 import radio from './radio'
+import railNavigation from './railNavigation'
+import railNavigationItem from './railNavigationItem'
 import rate from './rate'
 import result from './result'
 import ripple from './ripple'
@@ -195,6 +197,8 @@ export default {
   ...countdown,
   ...counter,
   ...dataTable,
+  ...railNavigation,
+  ...railNavigationItem,
   ...fab,
   ...floatingPanel,
   ...formDetails,

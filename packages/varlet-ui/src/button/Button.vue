@@ -14,6 +14,7 @@
         [states.iconContainer, n(`--icon-container-${states.type}`)],
         [states.filledDefault, n('--filled-default')],
         [round, n('--round')],
+        [fab, n('--fab')],
         [states.outline, n('--outline')],
         [loading || pending, n('--loading')],
         [disabled, n('--disabled')],

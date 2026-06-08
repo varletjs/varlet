@@ -15,6 +15,7 @@ export const props = {
   size: String as PropType<ButtonSize>,
   loading: Boolean,
   round: Boolean,
+  fab: Boolean,
   block: Boolean,
   text: Boolean,
   outline: Boolean,

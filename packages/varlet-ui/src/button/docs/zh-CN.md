@@ -157,6 +157,24 @@
 </template>
 ```
 
+### FAB 按钮
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button type="primary" fab tonal>
+      <var-icon name="plus" :size="24" />
+    </var-button>
+    <var-button type="info" fab tonal>
+      <var-icon name="information" :size="24" />
+    </var-button>
+    <var-button type="success" fab tonal>
+      <var-icon name="check" :size="24" />
+    </var-button>
+  </var-space>
+</template>
+```
+
 ### 注册事件
 
 ```html
@@ -361,6 +379,7 @@ function handleAutoLoadingClick() {
 | `loading-color`  | loading 的颜色                                                     | _string_ | `currentColor` |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                          | _boolean_ | `false`        |
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |
+| `fab` ***3.18.0*** | 是否是 FAB 按钮                                                    | _boolean_ | `false`        |
 | `block`          | 是否是块级元素                                                         | _boolean_ | `false`        |
 | `text`           | 是否是文字按钮                                                         | _boolean_ | `false`        |
 | `icon-container` | 是否作为图标容器                                                        | _boolean_ | `false`        |
@@ -447,6 +466,8 @@ function handleAutoLoadingClick() {
 | `--button-normal-padding` | `0 15px` |
 | `--button-large-padding` | `0 22px` |
 | `--button-round-padding` | `6px` |
+| `--button-fab-size` | `56px` |
+| `--button-fab-border-radius` | `16px` |
 | `--button-mini-height` | `20px` |
 | `--button-small-height` | `28px` |
 | `--button-normal-height` | `36px` |
