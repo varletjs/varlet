@@ -22,7 +22,9 @@ export default {
   '--tree-menu-item-indicator-hover-background': 'var(--tree-menu-item-hover-background)',
   '--tree-menu-item-indicator-pressed-background': 'var(--tree-menu-item-pressed-background)',
   '--tree-menu-item-indicator-active-background': 'var(--tree-menu-item-active-background)',
+  '--tree-menu-item-indicator-state-transition-duration': '150ms',
   '--tree-menu-item-indicator-active-transition-duration': '0ms',
+  '--tree-menu-item-indicator-active-transition-timing-function': 'cubic-bezier(0.2, 0, 0, 1)',
   '--tree-menu-expand-icon-color': 'var(--color-on-surface-variant)',
   '--tree-menu-expand-icon-size': '20px',
 }

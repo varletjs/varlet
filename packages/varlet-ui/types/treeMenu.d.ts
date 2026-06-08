@@ -42,6 +42,12 @@ export class TreeMenu extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<TreeMenuProps>
 
   $props: TreeMenuProps
+
+  $slots: {
+    start(): VNode[]
+    default(): VNode[]
+    end(): VNode[]
+  }
 }
 
 export class _TreeMenuComponent extends TreeMenu {}

@@ -12,18 +12,26 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
 
   // ensure to trigger transitionend
   let isInitToTrigger = true
+  let transitionVersion = 0
+  let startedTransitionVersion = 0
 
   watch(
     expand,
     (value) => {
+      const version = ++transitionVersion
+
       nextTick(() => {
-        value ? open() : close()
+        value ? open(version) : close(version)
       })
     },
     { immediate: true },
   )
 
-  async function open() {
+  function isLatestTransition(version: number) {
+    return version === transitionVersion
+  }
+
+  async function open(version: number) {
     if (!contentEl.value) {
       return
     }
@@ -32,7 +40,7 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
     showContent.value = true
     await raf()
 
-    if (!contentEl.value) {
+    if (!contentEl.value || !isLatestTransition(version)) {
       return
     }
 
@@ -40,7 +48,7 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
     contentEl.value.style.height = 0 + 'px'
     await raf()
 
-    if (!contentEl.value) {
+    if (!contentEl.value || !isLatestTransition(version)) {
       return
     }
 
@@ -52,12 +60,12 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
 
     await doubleRaf()
 
-    if (isInitToTrigger) {
+    if (isInitToTrigger && isLatestTransition(version)) {
       handleTransitionEnd()
     }
   }
 
-  const close = async () => {
+  const close = async (version: number) => {
     if (!contentEl.value) {
       return
     }
@@ -65,10 +73,23 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
     const { offsetHeight } = contentEl.value
     contentEl.value.style.height = offsetHeight + 'px'
     await raf()
+
+    if (!contentEl.value || !isLatestTransition(version)) {
+      return
+    }
+
     contentEl.value.style.height = 0 + 'px'
   }
 
-  const handleTransitionEnd = () => {
+  const handleTransitionEnd = (event?: TransitionEvent) => {
+    if (event && (event.target !== contentEl.value || event.propertyName !== 'height')) {
+      return
+    }
+
+    if (event && startedTransitionVersion !== transitionVersion) {
+      return
+    }
+
     if (!expand.value) {
       showContent.value = false
     }
@@ -76,7 +97,12 @@ export function useCollapseTransition(options: UseCollapseTransitionOptions) {
     contentEl.value!.style.height = ''
   }
 
-  const handleTransitionStart = () => {
+  const handleTransitionStart = (event?: TransitionEvent) => {
+    if (event && (event.target !== contentEl.value || event.propertyName !== 'height')) {
+      return
+    }
+
+    startedTransitionVersion = transitionVersion
     isInitToTrigger = false
   }
 

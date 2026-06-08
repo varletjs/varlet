@@ -1,22 +1,32 @@
 <template>
-  <nav :class="classes(n(), n('$--box'))" :style="styles" role="tree" v-bind="$attrs">
-    <tree-menu-node
-      v-for="node in nodes"
-      :key="node.value"
-      :node="node"
-      :active="active"
-      :expanded-value-set="expandedValueSet"
-      :active-path-value-set="activePathValueSet"
-      :disabled="disabled"
-      :ripple="ripple"
-      :on-select="handleSelect"
-      :on-toggle="handleToggle"
-    />
+  <nav :class="classes(n(), n('$--box'))" :style="styles" v-bind="$attrs">
+    <div v-if="$slots.start" :class="classes(n('section'), n('start'))">
+      <slot name="start"></slot>
+    </div>
+
+    <div :class="n('content')" role="tree">
+      <tree-menu-node
+        v-for="node in nodes"
+        :key="node.value"
+        :node="node"
+        :active="active"
+        :expanded-value-set="expandedValueSet"
+        :active-path-value-set="activePathValueSet"
+        :disabled="disabled"
+        :ripple="ripple"
+        :on-select="handleSelect"
+        :on-toggle="handleToggle"
+      />
+    </div>
+
+    <div v-if="$slots.end" :class="classes(n('section'), n('end'))">
+      <slot name="end"></slot>
+    </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { call, isArray } from '@varlet/shared'
+import { call, isArray, isNumber } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { computed, defineComponent, watch, type CSSProperties } from 'vue'
 import { createNamespace } from '../utils/components'
@@ -70,7 +80,7 @@ export default defineComponent({
         return {}
       }
 
-      const indent = typeof props.indent === 'number' ? `${props.indent}px` : props.indent
+      const indent = isNumber(props.indent) ? `${props.indent}px` : props.indent
 
       return {
         '--tree-menu-item-indent': indent,

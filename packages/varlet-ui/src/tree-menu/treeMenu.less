@@ -22,7 +22,9 @@
   --tree-menu-item-indicator-hover-background: var(--tree-menu-item-hover-background);
   --tree-menu-item-indicator-pressed-background: var(--tree-menu-item-pressed-background);
   --tree-menu-item-indicator-active-background: var(--tree-menu-item-active-background);
+  --tree-menu-item-indicator-state-transition-duration: 150ms;
   --tree-menu-item-indicator-active-transition-duration: 0ms;
+  --tree-menu-item-indicator-active-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
   --tree-menu-expand-icon-color: var(--color-on-surface-variant);
   --tree-menu-expand-icon-size: 20px;
 }
@@ -56,6 +58,14 @@
 
   &__children > &__node + &__node {
     margin-top: var(--tree-menu-item-gap);
+  }
+
+  &__section {
+    min-width: 0;
+  }
+
+  &__content {
+    min-width: 0;
   }
 
   &__item {
@@ -100,9 +110,11 @@
     }
 
     &::before {
-      background: var(--tree-menu-item-indicator-hover-background);
+      background-color: var(--tree-menu-item-indicator-hover-background);
       opacity: 0;
-      transition: opacity 150ms;
+      transition:
+        opacity var(--tree-menu-item-indicator-state-transition-duration),
+        background-color var(--tree-menu-item-indicator-state-transition-duration);
     }
 
     &::after {
@@ -116,8 +128,8 @@
     opacity: 1;
   }
 
-  &__item:active:not(.var-tree-menu__item--ripple) &__item-indicator::before {
-    background: var(--tree-menu-item-indicator-pressed-background);
+  &__item:active:not(.var-tree-menu__item--ripple):not(.var-tree-menu__item--disabled) &__item-indicator::before {
+    background-color: var(--tree-menu-item-indicator-pressed-background);
     opacity: 1;
   }
 
@@ -134,8 +146,10 @@
   &__item--active &__item-indicator::after {
     transform: scaleX(1);
     transition:
-      transform var(--tree-menu-item-indicator-active-transition-duration),
-      background-color var(--tree-menu-item-indicator-active-transition-duration);
+      transform var(--tree-menu-item-indicator-active-transition-duration)
+        var(--tree-menu-item-indicator-active-transition-timing-function),
+      background-color var(--tree-menu-item-indicator-active-transition-duration)
+        var(--tree-menu-item-indicator-active-transition-timing-function);
   }
 
   &__item--active:hover &__item-indicator::before {

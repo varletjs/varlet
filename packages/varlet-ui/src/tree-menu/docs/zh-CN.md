@@ -263,6 +263,48 @@ const options = [
 </template>
 ```
 
+### 插槽
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+
+const options = [
+  {
+    value: 'overview',
+    label: '概览',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: '工作台',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: '项目', icon: 'star' },
+      { value: 'tasks', label: '任务', icon: 'check' },
+    ],
+  },
+]
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options">
+    <template #start>
+      <div class="tree-menu-title">团队空间</div>
+    </template>
+
+    <template #end>
+      <var-button text block size="small" class="tree-menu-action">
+        <var-icon name="plus" />
+        <span>新建项目</span>
+      </var-button>
+    </template>
+  </var-tree-menu>
+</template>
+```
+
 ### API
 
 #### TreeMenu Props
@@ -291,6 +333,13 @@ const options = [
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |
+
+### 插槽
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `start` | 头部内容 | `-` |
+| `end` | 尾部内容 | `-` |
 
 ### 事件
 
@@ -328,6 +377,8 @@ const options = [
 | `--tree-menu-item-indicator-hover-background` | `var(--tree-menu-item-hover-background)` |
 | `--tree-menu-item-indicator-pressed-background` | `var(--tree-menu-item-pressed-background)` |
 | `--tree-menu-item-indicator-active-background` | `var(--tree-menu-item-active-background)` |
+| `--tree-menu-item-indicator-state-transition-duration` | `150ms` |
 | `--tree-menu-item-indicator-active-transition-duration` | `0ms` |
+| `--tree-menu-item-indicator-active-transition-timing-function` | `cubic-bezier(0.2, 0, 0, 1)` |
 | `--tree-menu-expand-icon-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-expand-icon-size` | `20px` |

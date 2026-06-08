@@ -9,6 +9,7 @@ const controlledActive = ref('reports')
 const customActive = ref('tasks')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
+const slotsActive = ref('overview')
 const controlledExpandedValues = ref(['analytics'])
 
 watchLang(use)
@@ -172,6 +173,20 @@ const disabledOptions = computed(() => [
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tree-menu v-model:active="disabledActive" :options="disabledOptions" class="tree-menu-example" />
+
+  <app-type>{{ t('slots') }}</app-type>
+  <var-tree-menu v-model:active="slotsActive" :options="options" class="tree-menu-example">
+    <template #start>
+      <div class="tree-menu-example__section-title">{{ t('teamSpace') }}</div>
+    </template>
+
+    <template #end>
+      <var-button text block size="small" class="tree-menu-example__action">
+        <var-icon name="plus" />
+        <span>{{ t('newProject') }}</span>
+      </var-button>
+    </template>
+  </var-tree-menu>
 </template>
 
 <style>
@@ -210,5 +225,20 @@ const disabledOptions = computed(() => [
   height: 10px;
   border-radius: 50%;
   background: var(--color-primary);
+}
+
+.tree-menu-example__section-title {
+  padding: 0 16px;
+  color: var(--color-on-surface-variant);
+  font-size: var(--font-size-sm);
+  line-height: 32px;
+}
+
+.tree-menu-example__action {
+  justify-content: flex-start;
+}
+
+.tree-menu-example__action .var-button__content > * + * {
+  margin-left: 8px;
 }
 </style>

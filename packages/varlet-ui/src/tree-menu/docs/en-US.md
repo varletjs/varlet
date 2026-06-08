@@ -263,6 +263,48 @@ const options = [
 </template>
 ```
 
+### Slots
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+
+const options = [
+  {
+    value: 'overview',
+    label: 'Overview',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: 'Projects', icon: 'star' },
+      { value: 'tasks', label: 'Tasks', icon: 'check' },
+    ],
+  },
+]
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options">
+    <template #start>
+      <div class="tree-menu-title">Team Space</div>
+    </template>
+
+    <template #end>
+      <var-button text block size="small" class="tree-menu-action">
+        <var-icon name="plus" />
+        <span>New Project</span>
+      </var-button>
+    </template>
+  </var-tree-menu>
+</template>
+```
+
 ### API
 
 #### TreeMenu Props
@@ -291,6 +333,13 @@ const options = [
 | `namespace` | Icon namespace | _string_ | `var-icon` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |
+
+### Slots
+
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| `start` | Start content | `-` |
+| `end` | End content | `-` |
 
 ### Events
 
@@ -328,6 +377,8 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-item-indicator-hover-background` | `var(--tree-menu-item-hover-background)` |
 | `--tree-menu-item-indicator-pressed-background` | `var(--tree-menu-item-pressed-background)` |
 | `--tree-menu-item-indicator-active-background` | `var(--tree-menu-item-active-background)` |
+| `--tree-menu-item-indicator-state-transition-duration` | `150ms` |
 | `--tree-menu-item-indicator-active-transition-duration` | `0ms` |
+| `--tree-menu-item-indicator-active-transition-timing-function` | `cubic-bezier(0.2, 0, 0, 1)` |
 | `--tree-menu-expand-icon-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-expand-icon-size` | `20px` |
