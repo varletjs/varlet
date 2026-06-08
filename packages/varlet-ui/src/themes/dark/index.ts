@@ -69,6 +69,7 @@ import table from './table'
 import tabs from './tabs'
 import timePicker from './timePicker'
 import tooltip from './tooltip'
+import treeMenu from './treeMenu'
 import uploader from './uploader'
 import watermark from './watermark'
 
@@ -220,6 +221,7 @@ export default {
   ...space,
   ...swipe,
   ...tooltip,
+  ...treeMenu,
   ...select,
   ...code,
   ...signature,

@@ -986,6 +986,30 @@ interface BaseStyleVars {
   '--tooltip-success-text-color'?: string
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
+  '--tree-menu-background'?: string
+  '--tree-menu-item-text-color'?: string
+  '--tree-menu-padding'?: string
+  '--tree-menu-item-gap'?: string
+  '--tree-menu-item-height'?: string
+  '--tree-menu-item-padding'?: string
+  '--tree-menu-item-border-radius'?: string
+  '--tree-menu-item-indent'?: string
+  '--tree-menu-item-icon-size'?: string
+  '--tree-menu-item-icon-margin-right'?: string
+  '--tree-menu-item-label-font-size'?: string
+  '--tree-menu-item-label-line-height'?: string
+  '--tree-menu-item-hover-background'?: string
+  '--tree-menu-item-active-background'?: string
+  '--tree-menu-item-active-text-color'?: string
+  '--tree-menu-item-disabled-opacity'?: string
+  '--tree-menu-item-indicator-width'?: string
+  '--tree-menu-item-indicator-height'?: string
+  '--tree-menu-item-indicator-border-radius'?: string
+  '--tree-menu-item-indicator-hover-background'?: string
+  '--tree-menu-item-indicator-active-background'?: string
+  '--tree-menu-item-indicator-active-transition-duration'?: string
+  '--tree-menu-expand-icon-color'?: string
+  '--tree-menu-expand-icon-size'?: string
   '--uploader-action-background'?: string
   '--uploader-action-icon-color'?: string
   '--uploader-action-icon-size'?: string
