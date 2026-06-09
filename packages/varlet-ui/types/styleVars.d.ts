@@ -1002,7 +1002,6 @@ interface BaseStyleVars {
   '--tree-menu-group-label-padding'?: string
   '--tree-menu-group-label-color'?: string
   '--tree-menu-group-label-font-size'?: string
-  '--tree-menu-group-label-line-height'?: string
   '--tree-menu-divider-margin'?: string
   '--tree-menu-divider-color'?: string
   '--tree-menu-item-hover-background'?: string
@@ -1010,15 +1009,7 @@ interface BaseStyleVars {
   '--tree-menu-item-active-background'?: string
   '--tree-menu-item-active-text-color'?: string
   '--tree-menu-item-disabled-opacity'?: string
-  '--tree-menu-item-indicator-width'?: string
-  '--tree-menu-item-indicator-height'?: string
   '--tree-menu-item-indicator-border-radius'?: string
-  '--tree-menu-item-indicator-hover-background'?: string
-  '--tree-menu-item-indicator-pressed-background'?: string
-  '--tree-menu-item-indicator-active-background'?: string
-  '--tree-menu-item-indicator-state-transition-duration'?: string
-  '--tree-menu-item-indicator-active-transition-duration'?: string
-  '--tree-menu-item-indicator-active-transition-timing-function'?: string
   '--tree-menu-expand-icon-color'?: string
   '--tree-menu-expand-icon-size'?: string
   '--uploader-action-background'?: string

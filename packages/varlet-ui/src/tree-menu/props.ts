@@ -3,14 +3,13 @@ import { defineListenerProp } from '../utils/components'
 
 export type TreeMenuValue = string | number
 
-export type TreeMenuOptionType = 'item' | 'group' | 'divider'
+export type TreeMenuOptionType = 'group' | 'divider'
 
 export type TreeMenuOptionLabelRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
 export type TreeMenuOptionIconRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
 export interface TreeMenuBaseOption {
-  type?: TreeMenuOptionType
   value?: TreeMenuValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
@@ -22,7 +21,7 @@ export interface TreeMenuBaseOption {
 }
 
 export interface TreeMenuItemOption extends TreeMenuBaseOption {
-  type?: 'item'
+  type?: undefined
 }
 
 export interface TreeMenuGroupOption extends TreeMenuBaseOption {
@@ -36,16 +35,19 @@ export interface TreeMenuDividerOption extends TreeMenuBaseOption {
 
 export type TreeMenuOption = TreeMenuItemOption | TreeMenuGroupOption | TreeMenuDividerOption
 
-export interface TreeMenuNode {
+export interface TreeMenuNormalizedOption {
   option: TreeMenuOption
-  type: TreeMenuOptionType
+  type?: TreeMenuOptionType
   value: TreeMenuValue
   label?: TreeMenuOption['label']
   icon?: TreeMenuOption['icon']
-  namespace?: string
-  disabled?: boolean
-  children: TreeMenuNode[]
-  parent?: TreeMenuNode
+  active: boolean
+  activePath: boolean
+  disabled: boolean
+  expanded: boolean
+  hasChildren: boolean
+  children: TreeMenuNormalizedOption[]
+  parent?: TreeMenuNormalizedOption
   level: number
 }
 
@@ -82,7 +84,6 @@ export const props = {
   },
   disabled: Boolean,
   onChange: defineListenerProp<(active: TreeMenuValue, option: TreeMenuOption) => void>(),
-  onExpand: defineListenerProp<(values: TreeMenuValue[]) => void>(),
   'onUpdate:active': defineListenerProp<(active: TreeMenuValue) => void>(),
   'onUpdate:expandedValues': defineListenerProp<(values: TreeMenuValue[]) => void>(),
 }

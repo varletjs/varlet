@@ -366,15 +366,13 @@ const options = [
 
 | 字段 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `type` | 选项类型。`group` 渲染分组标题和子选项，`divider` 渲染分割线。 | _'item' \| 'group' \| 'divider'_ | `'item'` |
+| `type` | 选项类型。`group` 渲染分组标题和子选项，`divider` 渲染分割线。 | _'group' \| 'divider'_ | `-` |
 | `value` | 选项值 | _string \| number_ | `-` |
 | `label` | 选项标签 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |
-
-当 `type` 为 `'group'` 时，`value` 必填。`divider` 选项不会触发激活或展开状态变化。
 
 ### 插槽
 
@@ -388,7 +386,6 @@ const options = [
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | `change` | 激活菜单项变化时触发 | `active: string \| number, option: TreeMenuOption` |
-| `expand` | 展开菜单项变化时触发 | `values: Array<string \| number>` |
 
 ### 样式变量
 
@@ -412,7 +409,6 @@ const options = [
 | `--tree-menu-group-label-padding` | `0 16px` |
 | `--tree-menu-group-label-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
-| `--tree-menu-group-label-line-height` | `1.5` |
 | `--tree-menu-divider-margin` | `8px 0` |
 | `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
 | `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
@@ -420,14 +416,6 @@ const options = [
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |
 | `--tree-menu-item-active-text-color` | `var(--color-primary)` |
 | `--tree-menu-item-disabled-opacity` | `var(--opacity-disabled)` |
-| `--tree-menu-item-indicator-width` | `100%` |
-| `--tree-menu-item-indicator-height` | `100%` |
 | `--tree-menu-item-indicator-border-radius` | `0` |
-| `--tree-menu-item-indicator-hover-background` | `var(--tree-menu-item-hover-background)` |
-| `--tree-menu-item-indicator-pressed-background` | `var(--tree-menu-item-pressed-background)` |
-| `--tree-menu-item-indicator-active-background` | `var(--tree-menu-item-active-background)` |
-| `--tree-menu-item-indicator-state-transition-duration` | `150ms` |
-| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |
-| `--tree-menu-item-indicator-active-transition-timing-function` | `cubic-bezier(0.2, 0, 0, 1)` |
 | `--tree-menu-expand-icon-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-expand-icon-size` | `20px` |

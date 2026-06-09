@@ -15,7 +15,6 @@
   --tree-menu-group-label-padding: 0 16px;
   --tree-menu-group-label-color: var(--color-on-surface-variant);
   --tree-menu-group-label-font-size: var(--font-size-sm);
-  --tree-menu-group-label-line-height: 1.5;
   --tree-menu-divider-margin: 8px 0;
   --tree-menu-divider-color: rgba(0, 0, 0, 0.12);
   --tree-menu-item-hover-background: rgba(85, 85, 85, 0.08);
@@ -23,15 +22,8 @@
   --tree-menu-item-active-background: hsla(var(--hsl-primary), 0.1);
   --tree-menu-item-active-text-color: var(--color-primary);
   --tree-menu-item-disabled-opacity: var(--opacity-disabled);
-  --tree-menu-item-indicator-width: 100%;
-  --tree-menu-item-indicator-height: 100%;
   --tree-menu-item-indicator-border-radius: 0;
-  --tree-menu-item-indicator-hover-background: var(--tree-menu-item-hover-background);
-  --tree-menu-item-indicator-pressed-background: var(--tree-menu-item-pressed-background);
-  --tree-menu-item-indicator-active-background: var(--tree-menu-item-active-background);
-  --tree-menu-item-indicator-state-transition-duration: 150ms;
   --tree-menu-item-indicator-active-transition-duration: 0ms;
-  --tree-menu-item-indicator-active-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
   --tree-menu-expand-icon-color: var(--color-on-surface-variant);
   --tree-menu-expand-icon-size: 20px;
 }
@@ -47,11 +39,11 @@
     color 0.25s,
     background-color 0.25s;
 
-  &__node {
+  &__option {
     display: block;
   }
 
-  &__node + &__node {
+  &__option + &__option {
     margin-top: var(--tree-menu-item-gap);
   }
 
@@ -59,15 +51,15 @@
     display: block;
   }
 
-  &__children > &__node:first-child {
+  &__children > &__option:first-child {
     margin-top: var(--tree-menu-item-gap);
   }
 
-  &__children > &__node + &__node {
+  &__children > &__option + &__option {
     margin-top: var(--tree-menu-item-gap);
   }
 
-  &__group-children > &__node + &__node {
+  &__group-children > &__option + &__option {
     margin-top: var(--tree-menu-item-gap);
   }
 
@@ -88,7 +80,7 @@
     align-items: center;
     color: var(--tree-menu-group-label-color);
     font-size: var(--tree-menu-group-label-font-size);
-    line-height: var(--tree-menu-group-label-line-height);
+    line-height: 1.5;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -123,8 +115,8 @@
     z-index: 0;
     top: 50%;
     left: 50%;
-    width: var(--tree-menu-item-indicator-width);
-    height: var(--tree-menu-item-indicator-height);
+    width: 100%;
+    height: 100%;
     border-radius: var(--tree-menu-item-indicator-border-radius);
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -142,15 +134,15 @@
     }
 
     &::before {
-      background-color: var(--tree-menu-item-indicator-hover-background);
+      background-color: var(--tree-menu-item-hover-background);
       opacity: 0;
       transition:
-        opacity var(--tree-menu-item-indicator-state-transition-duration),
-        background-color var(--tree-menu-item-indicator-state-transition-duration);
+        opacity 150ms,
+        background-color 150ms;
     }
 
     &::after {
-      background: var(--tree-menu-item-indicator-active-background);
+      background: var(--tree-menu-item-active-background);
       transform: scaleX(0);
       transform-origin: center;
     }
@@ -161,7 +153,7 @@
   }
 
   &__item:active:not(.var-tree-menu__item--ripple):not(.var-tree-menu__item--disabled) &__item-indicator::before {
-    background-color: var(--tree-menu-item-indicator-pressed-background);
+    background-color: var(--tree-menu-item-pressed-background);
     opacity: 1;
   }
 
@@ -178,10 +170,8 @@
   &__item--active &__item-indicator::after {
     transform: scaleX(1);
     transition:
-      transform var(--tree-menu-item-indicator-active-transition-duration)
-        var(--tree-menu-item-indicator-active-transition-timing-function),
-      background-color var(--tree-menu-item-indicator-active-transition-duration)
-        var(--tree-menu-item-indicator-active-transition-timing-function);
+      transform var(--tree-menu-item-indicator-active-transition-duration) cubic-bezier(0.2, 0, 0, 1),
+      background-color var(--tree-menu-item-indicator-active-transition-duration) cubic-bezier(0.2, 0, 0, 1);
   }
 
   &__item--active:hover &__item-indicator::before {

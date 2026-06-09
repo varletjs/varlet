@@ -366,15 +366,13 @@ const options = [
 
 | Field | Description | Type | Default |
 | --- | --- | --- | --- |
-| `type` | Option type. `group` renders a group label and its children. `divider` renders a divider. | _'item' \| 'group' \| 'divider'_ | `'item'` |
+| `type` | Option type. `group` renders a group label and its children. `divider` renders a divider. | _'group' \| 'divider'_ | `-` |
 | `value` | Option value | _string \| number_ | `-` |
 | `label` | Option label | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `namespace` | Icon namespace | _string_ | `var-icon` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |
-
-When `type` is `'group'`, `value` is required. `divider` options do not trigger active or expanded state changes.
 
 ### Slots
 
@@ -388,7 +386,6 @@ When `type` is `'group'`, `value` is required. `divider` options do not trigger 
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `change` | Triggered when active option changes | `active: string \| number, option: TreeMenuOption` |
-| `expand` | Triggered when expanded values change | `values: Array<string \| number>` |
 
 ### Style Variables
 
@@ -412,7 +409,6 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-group-label-padding` | `0 16px` |
 | `--tree-menu-group-label-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
-| `--tree-menu-group-label-line-height` | `1.5` |
 | `--tree-menu-divider-margin` | `8px 0` |
 | `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
 | `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
@@ -420,14 +416,6 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |
 | `--tree-menu-item-active-text-color` | `var(--color-primary)` |
 | `--tree-menu-item-disabled-opacity` | `var(--opacity-disabled)` |
-| `--tree-menu-item-indicator-width` | `100%` |
-| `--tree-menu-item-indicator-height` | `100%` |
 | `--tree-menu-item-indicator-border-radius` | `0` |
-| `--tree-menu-item-indicator-hover-background` | `var(--tree-menu-item-hover-background)` |
-| `--tree-menu-item-indicator-pressed-background` | `var(--tree-menu-item-pressed-background)` |
-| `--tree-menu-item-indicator-active-background` | `var(--tree-menu-item-active-background)` |
-| `--tree-menu-item-indicator-state-transition-duration` | `150ms` |
-| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |
-| `--tree-menu-item-indicator-active-transition-timing-function` | `cubic-bezier(0.2, 0, 0, 1)` |
 | `--tree-menu-expand-icon-color` | `var(--color-on-surface-variant)` |
 | `--tree-menu-expand-icon-size` | `20px` |
