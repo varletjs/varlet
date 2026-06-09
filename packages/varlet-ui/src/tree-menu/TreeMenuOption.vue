@@ -1,13 +1,13 @@
 <template>
   <div :class="n('option')">
-    <div v-if="option.type === 'divider'" :class="n('divider')" role="separator" />
+    <div v-if="option.type === 'divider'" :class="n('divider')" />
 
     <template v-else-if="option.type === 'group'">
       <div v-if="labelVNode" :class="n('group-label')">
         <maybe-v-node :is="labelVNode" />
       </div>
 
-      <div :class="n('group-children')" role="group">
+      <div :class="n('group-children')">
         <var-tree-menu-option
           v-for="child in option.children"
           :key="child.value"
@@ -25,24 +25,19 @@
       :class="
         classes(
           n('item'),
-          [option.active, n('item--active')],
-          [option.activePath, n('item--active-path')],
-          [option.disabled, n('item--disabled')],
-          [ripple && !option.disabled, n('item--ripple')],
+          [option.active, n('--item-active')],
+          [option.activePath, n('--item-active-path')],
+          [option.disabled, n('--item-disabled')],
+          [ripple && !option.disabled, n('--item-ripple-enabled')],
         )
       "
       :style="styles"
-      :tabindex="option.disabled ? -1 : 0"
-      :aria-selected="option.active"
-      :aria-disabled="option.disabled"
-      :aria-expanded="option.hasChildren ? option.expanded : undefined"
-      role="treeitem"
       @click="handleClick"
     >
       <span :class="n('item-indicator')" />
 
       <span :class="n('item-content')">
-        <span v-if="iconVNode" :class="n('icon-wrap')">
+        <span v-if="iconVNode" :class="n('icon-container')">
           <var-icon
             v-if="isString(iconVNode)"
             :class="n('icon')"
@@ -59,7 +54,7 @@
 
         <span
           v-if="option.hasChildren"
-          :class="classes(n('expand-icon'), [option.expanded, n('expand-icon--expanded')])"
+          :class="classes(n('expand-icon'), [option.expanded, n('--expand-icon-expanded')])"
         >
           <var-icon name="chevron-down" var-tree-menu-cover />
         </span>
@@ -68,7 +63,7 @@
     </div>
 
     <var-collapse-transition v-if="option.hasChildren" :expand="option.expanded">
-      <div :class="n('children')" role="group">
+      <div :class="n('children')">
         <var-tree-menu-option
           v-for="child in option.children"
           :key="child.value"
@@ -83,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { call, isFunction, isString } from '@varlet/shared'
+import { call, callOrReturn, isString } from '@varlet/shared'
 import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
 import VarCollapseTransition from '../collapse-transition'
 import VarIcon from '../icon'
@@ -111,14 +106,8 @@ export default defineComponent({
     onToggle: defineListenerProp<(option: TreeMenuNormalizedOption) => void>(),
   },
   setup(props) {
-    const iconVNode = computed(() =>
-      isFunction(props.option.icon) ? props.option.icon(props.option.option, props.option.active) : props.option.icon,
-    )
-    const labelVNode = computed(() =>
-      isFunction(props.option.label)
-        ? props.option.label(props.option.option, props.option.active)
-        : props.option.label,
-    )
+    const iconVNode = computed(() => callOrReturn(props.option.icon, props.option.option, props.option.active))
+    const labelVNode = computed(() => callOrReturn(props.option.label, props.option.option, props.option.active))
     const styles = computed<CSSProperties>(() => ({
       '--tree-menu-level': props.option.level,
     }))

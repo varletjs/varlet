@@ -1,7 +1,7 @@
 import { VNode, VNodeChild, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-export type TreeMenuValue = string | number
+export type TreeMenuOptionValue = string | number
 
 export type TreeMenuOptionType = 'group' | 'divider'
 
@@ -10,7 +10,7 @@ export type TreeMenuOptionLabelRender = (option: TreeMenuOption, active: boolean
 export type TreeMenuOptionIconRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
 export interface TreeMenuBaseOption {
-  value?: TreeMenuValue
+  value?: TreeMenuOptionValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
   namespace?: string
@@ -26,7 +26,7 @@ export interface TreeMenuItemOption extends TreeMenuBaseOption {
 
 export interface TreeMenuGroupOption extends TreeMenuBaseOption {
   type: 'group'
-  value: TreeMenuValue
+  value: TreeMenuOptionValue
 }
 
 export interface TreeMenuDividerOption extends TreeMenuBaseOption {
@@ -38,7 +38,7 @@ export type TreeMenuOption = TreeMenuItemOption | TreeMenuGroupOption | TreeMenu
 export interface TreeMenuNormalizedOption {
   option: TreeMenuOption
   type?: TreeMenuOptionType
-  value: TreeMenuValue
+  value: TreeMenuOptionValue
   label?: TreeMenuOption['label']
   icon?: TreeMenuOption['icon']
   active: boolean
@@ -52,12 +52,12 @@ export interface TreeMenuNormalizedOption {
 }
 
 export const props = {
-  active: [Number, String] as PropType<TreeMenuValue>,
+  active: [Number, String] as PropType<TreeMenuOptionValue>,
   options: {
     type: Array as PropType<TreeMenuOption[]>,
     default: () => [],
   },
-  expandedValues: Array as PropType<TreeMenuValue[]>,
+  expandedValues: Array as PropType<TreeMenuOptionValue[]>,
   valueKey: {
     type: String,
     default: 'value',
@@ -83,7 +83,7 @@ export const props = {
     default: false,
   },
   disabled: Boolean,
-  onChange: defineListenerProp<(active: TreeMenuValue, option: TreeMenuOption) => void>(),
-  'onUpdate:active': defineListenerProp<(active: TreeMenuValue) => void>(),
-  'onUpdate:expandedValues': defineListenerProp<(values: TreeMenuValue[]) => void>(),
+  onChange: defineListenerProp<(active: TreeMenuOptionValue, option: TreeMenuOption) => void>(),
+  'onUpdate:active': defineListenerProp<(active: TreeMenuOptionValue) => void>(),
+  'onUpdate:expandedValues': defineListenerProp<(values: TreeMenuOptionValue[]) => void>(),
 }

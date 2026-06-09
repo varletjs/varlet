@@ -1,23 +1,17 @@
 <template>
   <nav :class="classes(n(), n('$--box'))" :style="styles">
-    <div v-if="$slots.start" :class="n('section')">
-      <slot name="start"></slot>
-    </div>
+    <slot v-if="$slots.start" name="start"></slot>
 
-    <div :class="n('content')" role="tree">
-      <tree-menu-option
-        v-for="option in treeMeta.options"
-        :key="option.value"
-        :option="option"
-        :ripple="ripple"
-        @select="handleSelect"
-        @toggle="handleToggle"
-      />
-    </div>
+    <tree-menu-option
+      v-for="option in treeMeta.options"
+      :key="option.value"
+      :option="option"
+      :ripple="ripple"
+      @select="handleSelect"
+      @toggle="handleToggle"
+    />
 
-    <div v-if="$slots.end" :class="n('section')">
-      <slot name="end"></slot>
-    </div>
+    <slot v-if="$slots.end" name="end"></slot>
   </nav>
 </template>
 
@@ -27,7 +21,7 @@ import { useVModel } from '@varlet/use'
 import { computed, defineComponent, watch, type CSSProperties } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { props, type TreeMenuNormalizedOption, type TreeMenuOption, type TreeMenuValue } from './props'
+import { props, type TreeMenuNormalizedOption, type TreeMenuOption, type TreeMenuOptionValue } from './props'
 import TreeMenuOptionComponent from './TreeMenuOption.vue'
 
 const { name, n, classes } = createNamespace('tree-menu')
@@ -45,30 +39,10 @@ export default defineComponent({
     })
 
     const treeMeta = computed(() => {
-      const map = new Map<TreeMenuValue, TreeMenuNormalizedOption>()
+      const map = new Map<TreeMenuOptionValue, TreeMenuNormalizedOption>()
       const expandedValueSet = new Set(expandedValues.value)
-      const options = normalizeOptions(props.options)
 
-      function visit(option: TreeMenuNormalizedOption) {
-        map.set(option.value, option)
-        option.children.forEach(visit)
-      }
-
-      options.forEach(visit)
-
-      const activeOption = active.value == null ? undefined : map.get(active.value)
-
-      if (activeOption) {
-        getAncestorValues(activeOption).forEach((value) => {
-          const option = map.get(value)
-
-          if (option) {
-            option.activePath = true
-          }
-        })
-      }
-
-      function normalizeOptions(
+      function normalize(
         options: TreeMenuOption[],
         parent?: TreeMenuNormalizedOption,
         level = 0,
@@ -97,11 +71,30 @@ export default defineComponent({
 
           const childLevel = type === 'group' ? level : level + 1
 
-          normalizedOption.children = isArray(rawChildren)
-            ? normalizeOptions(rawChildren, normalizedOption, childLevel)
-            : []
+          normalizedOption.children = isArray(rawChildren) ? normalize(rawChildren, normalizedOption, childLevel) : []
 
           return normalizedOption
+        })
+      }
+
+      function visit(option: TreeMenuNormalizedOption) {
+        map.set(option.value, option)
+        option.children.forEach(visit)
+      }
+
+      const options = normalize(props.options)
+
+      options.forEach(visit)
+
+      const activeOption = active.value == null ? undefined : map.get(active.value)
+
+      if (activeOption) {
+        getAncestorValues(activeOption).forEach((value) => {
+          const option = map.get(value)
+
+          if (option) {
+            option.activePath = true
+          }
         })
       }
 
@@ -134,7 +127,7 @@ export default defineComponent({
     )
 
     function getDescendantValues(option: TreeMenuNormalizedOption) {
-      const values: TreeMenuValue[] = []
+      const values: TreeMenuOptionValue[] = []
 
       function visit(child: TreeMenuNormalizedOption) {
         values.push(child.value)
@@ -147,7 +140,7 @@ export default defineComponent({
     }
 
     function getAncestorValues(option: TreeMenuNormalizedOption) {
-      const values: TreeMenuValue[] = []
+      const values: TreeMenuOptionValue[] = []
       let parent = option.parent
 
       while (parent) {
@@ -158,7 +151,7 @@ export default defineComponent({
       return values
     }
 
-    function expandAncestors(value: TreeMenuValue) {
+    function expandAncestors(value: TreeMenuOptionValue) {
       const option = treeMeta.value.optionByValue.get(value)
 
       if (!option) {
@@ -214,7 +207,6 @@ export default defineComponent({
     return {
       n,
       classes,
-      active,
       treeMeta,
       styles,
       handleSelect,

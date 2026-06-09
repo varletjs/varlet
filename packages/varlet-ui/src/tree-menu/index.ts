@@ -6,7 +6,7 @@ withInstall(TreeMenu)
 withPropsDefaultsSetter(TreeMenu, treeMenuProps)
 
 export { treeMenuProps }
-export type { TreeMenuOption, TreeMenuOptionIconRender, TreeMenuOptionLabelRender, TreeMenuValue } from './props'
+export type { TreeMenuOption, TreeMenuOptionIconRender, TreeMenuOptionLabelRender, TreeMenuOptionValue } from './props'
 
 export const _TreeMenuComponent = TreeMenu
 

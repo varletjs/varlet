@@ -3,7 +3,7 @@ import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from '.
 
 export declare const treeMenuProps: Record<keyof TreeMenuProps, any>
 
-export type TreeMenuValue = string | number
+export type TreeMenuOptionValue = string | number
 
 export type TreeMenuOptionType = 'group' | 'divider'
 
@@ -12,7 +12,7 @@ export type TreeMenuOptionLabelRender = (option: TreeMenuOption, active: boolean
 export type TreeMenuOptionIconRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
 export interface TreeMenuBaseOption {
-  value?: TreeMenuValue
+  value?: TreeMenuOptionValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
   namespace?: string
@@ -28,7 +28,7 @@ export interface TreeMenuItemOption extends TreeMenuBaseOption {
 
 export interface TreeMenuGroupOption extends TreeMenuBaseOption {
   type: 'group'
-  value: TreeMenuValue
+  value: TreeMenuOptionValue
 }
 
 export interface TreeMenuDividerOption extends TreeMenuBaseOption {
@@ -38,9 +38,9 @@ export interface TreeMenuDividerOption extends TreeMenuBaseOption {
 export type TreeMenuOption = TreeMenuItemOption | TreeMenuGroupOption | TreeMenuDividerOption
 
 export interface TreeMenuProps extends BasicAttributes {
-  active?: TreeMenuValue
+  active?: TreeMenuOptionValue
   options?: TreeMenuOption[]
-  expandedValues?: TreeMenuValue[]
+  expandedValues?: TreeMenuOptionValue[]
   valueKey?: string
   labelKey?: string
   iconKey?: string
@@ -49,9 +49,9 @@ export interface TreeMenuProps extends BasicAttributes {
   indent?: string | number
   ripple?: boolean
   disabled?: boolean
-  onChange?: ListenerProp<(active: TreeMenuValue, option: TreeMenuOption) => void>
-  'onUpdate:active'?: ListenerProp<(active: TreeMenuValue) => void>
-  'onUpdate:expandedValues'?: ListenerProp<(values: TreeMenuValue[]) => void>
+  onChange?: ListenerProp<(active: TreeMenuOptionValue, option: TreeMenuOption) => void>
+  'onUpdate:active'?: ListenerProp<(active: TreeMenuOptionValue) => void>
+  'onUpdate:expandedValues'?: ListenerProp<(values: TreeMenuOptionValue[]) => void>
 }
 
 export class TreeMenu extends VarComponent {
