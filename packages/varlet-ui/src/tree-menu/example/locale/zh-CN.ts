@@ -3,6 +3,7 @@ export default {
   accordion: '手风琴',
   controlledExpandedValues: '受控展开',
   customRender: '自定义渲染',
+  groupAndDivider: '分组和分割线',
   fieldKeys: '字段映射',
   disabled: '禁用',
   slots: '插槽',
@@ -21,4 +22,6 @@ export default {
   system: '系统',
   users: '用户',
   roles: '角色',
+  main: '主要',
+  management: '管理',
 }

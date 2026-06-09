@@ -198,6 +198,45 @@ const options = [
 </template>
 ```
 
+### 分组和分割线
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+
+const options = [
+  {
+    type: 'group',
+    value: 'main',
+    label: '主要',
+    children: [
+      { value: 'overview', label: '概览', icon: 'home' },
+      { value: 'workspace', label: '工作台', icon: 'notebook' },
+    ],
+  },
+  {
+    type: 'divider',
+    value: 'main-divider',
+  },
+  {
+    type: 'group',
+    value: 'management',
+    label: '管理',
+    children: [
+      { value: 'settings', label: '设置', icon: 'cog' },
+      { value: 'security', label: '安全', icon: 'warning' },
+    ],
+  },
+]
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" />
+</template>
+```
+
 ### 字段映射
 
 ```html
@@ -327,12 +366,15 @@ const options = [
 
 | 字段 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| `type` | 选项类型。`group` 渲染分组标题和子选项，`divider` 渲染分割线。 | _'item' \| 'group' \| 'divider'_ | `'item'` |
 | `value` | 选项值 | _string \| number_ | `-` |
 | `label` | 选项标签 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |
+
+当 `type` 为 `'group'` 时，`value` 必填。`divider` 选项不会触发激活或展开状态变化。
 
 ### 插槽
 
@@ -366,6 +408,13 @@ const options = [
 | `--tree-menu-item-icon-margin-right` | `24px` |
 | `--tree-menu-item-label-font-size` | `var(--font-size-md)` |
 | `--tree-menu-item-label-line-height` | `1.5` |
+| `--tree-menu-group-label-height` | `32px` |
+| `--tree-menu-group-label-padding` | `0 16px` |
+| `--tree-menu-group-label-color` | `var(--color-on-surface-variant)` |
+| `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
+| `--tree-menu-group-label-line-height` | `1.5` |
+| `--tree-menu-divider-margin` | `8px 0` |
+| `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
 | `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
 | `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.12)` |
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |

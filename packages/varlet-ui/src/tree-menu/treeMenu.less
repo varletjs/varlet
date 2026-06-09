@@ -11,6 +11,13 @@
   --tree-menu-item-icon-margin-right: 24px;
   --tree-menu-item-label-font-size: var(--font-size-md);
   --tree-menu-item-label-line-height: 1.5;
+  --tree-menu-group-label-height: 32px;
+  --tree-menu-group-label-padding: 0 16px;
+  --tree-menu-group-label-color: var(--color-on-surface-variant);
+  --tree-menu-group-label-font-size: var(--font-size-sm);
+  --tree-menu-group-label-line-height: 1.5;
+  --tree-menu-divider-margin: 8px 0;
+  --tree-menu-divider-color: rgba(0, 0, 0, 0.12);
   --tree-menu-item-hover-background: rgba(85, 85, 85, 0.08);
   --tree-menu-item-pressed-background: rgba(85, 85, 85, 0.12);
   --tree-menu-item-active-background: hsla(var(--hsl-primary), 0.1);
@@ -60,12 +67,37 @@
     margin-top: var(--tree-menu-item-gap);
   }
 
+  &__group-children > &__node + &__node {
+    margin-top: var(--tree-menu-item-gap);
+  }
+
   &__section {
     min-width: 0;
   }
 
   &__content {
     min-width: 0;
+  }
+
+  &__group-label {
+    box-sizing: border-box;
+    min-width: 0;
+    height: var(--tree-menu-group-label-height);
+    padding: var(--tree-menu-group-label-padding);
+    display: flex;
+    align-items: center;
+    color: var(--tree-menu-group-label-color);
+    font-size: var(--tree-menu-group-label-font-size);
+    line-height: var(--tree-menu-group-label-line-height);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: var(--tree-menu-divider-margin);
+    background-color: var(--tree-menu-divider-color);
   }
 
   &__item {

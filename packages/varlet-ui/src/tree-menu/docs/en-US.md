@@ -198,6 +198,45 @@ const options = [
 </template>
 ```
 
+### Group and Divider
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+
+const options = [
+  {
+    type: 'group',
+    value: 'main',
+    label: 'Main',
+    children: [
+      { value: 'overview', label: 'Overview', icon: 'home' },
+      { value: 'workspace', label: 'Workspace', icon: 'notebook' },
+    ],
+  },
+  {
+    type: 'divider',
+    value: 'main-divider',
+  },
+  {
+    type: 'group',
+    value: 'management',
+    label: 'Management',
+    children: [
+      { value: 'settings', label: 'Settings', icon: 'cog' },
+      { value: 'security', label: 'Security', icon: 'warning' },
+    ],
+  },
+]
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" />
+</template>
+```
+
 ### Field Keys
 
 ```html
@@ -327,12 +366,15 @@ const options = [
 
 | Field | Description | Type | Default |
 | --- | --- | --- | --- |
+| `type` | Option type. `group` renders a group label and its children. `divider` renders a divider. | _'item' \| 'group' \| 'divider'_ | `'item'` |
 | `value` | Option value | _string \| number_ | `-` |
 | `label` | Option label | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `namespace` | Icon namespace | _string_ | `var-icon` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |
+
+When `type` is `'group'`, `value` is required. `divider` options do not trigger active or expanded state changes.
 
 ### Slots
 
@@ -366,6 +408,13 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-item-icon-margin-right` | `24px` |
 | `--tree-menu-item-label-font-size` | `var(--font-size-md)` |
 | `--tree-menu-item-label-line-height` | `1.5` |
+| `--tree-menu-group-label-height` | `32px` |
+| `--tree-menu-group-label-padding` | `0 16px` |
+| `--tree-menu-group-label-color` | `var(--color-on-surface-variant)` |
+| `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
+| `--tree-menu-group-label-line-height` | `1.5` |
+| `--tree-menu-divider-margin` | `8px 0` |
+| `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
 | `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
 | `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.12)` |
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |

@@ -998,6 +998,13 @@ interface BaseStyleVars {
   '--tree-menu-item-icon-margin-right'?: string
   '--tree-menu-item-label-font-size'?: string
   '--tree-menu-item-label-line-height'?: string
+  '--tree-menu-group-label-height'?: string
+  '--tree-menu-group-label-padding'?: string
+  '--tree-menu-group-label-color'?: string
+  '--tree-menu-group-label-font-size'?: string
+  '--tree-menu-group-label-line-height'?: string
+  '--tree-menu-divider-margin'?: string
+  '--tree-menu-divider-color'?: string
   '--tree-menu-item-hover-background'?: string
   '--tree-menu-item-pressed-background'?: string
   '--tree-menu-item-active-background'?: string

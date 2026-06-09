@@ -14,8 +14,8 @@
         :active-path-value-set="activePathValueSet"
         :disabled="disabled"
         :ripple="ripple"
-        :on-select="handleSelect"
-        :on-toggle="handleToggle"
+        @select="handleSelect"
+        @toggle="handleToggle"
       />
     </div>
 
@@ -101,11 +101,13 @@ export default defineComponent({
 
     function normalizeOptions(options: TreeMenuOption[], parent?: TreeMenuNode, level = 0): TreeMenuNode[] {
       return options.map((option, index) => {
+        const type = option.type ?? 'item'
         const rawValue = option[props.valueKey]
         const value = rawValue ?? index
         const rawChildren = option[props.childrenKey]
         const node: TreeMenuNode = {
           option,
+          type,
           value,
           label: option[props.labelKey],
           icon: option[props.iconKey],
@@ -116,7 +118,9 @@ export default defineComponent({
           level,
         }
 
-        node.children = isArray(rawChildren) ? normalizeOptions(rawChildren, node, level + 1) : []
+        const childLevel = type === 'group' ? level : level + 1
+
+        node.children = isArray(rawChildren) ? normalizeOptions(rawChildren, node, childLevel) : []
 
         return node
       })

@@ -5,11 +5,14 @@ export declare const treeMenuProps: Record<keyof TreeMenuProps, any>
 
 export type TreeMenuValue = string | number
 
+export type TreeMenuOptionType = 'item' | 'group' | 'divider'
+
 export type TreeMenuOptionLabelRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
 export type TreeMenuOptionIconRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
-export interface TreeMenuOption {
+export interface TreeMenuBaseOption {
+  type?: TreeMenuOptionType
   value?: TreeMenuValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
@@ -19,6 +22,21 @@ export interface TreeMenuOption {
 
   [key: PropertyKey]: any
 }
+
+export interface TreeMenuItemOption extends TreeMenuBaseOption {
+  type?: 'item'
+}
+
+export interface TreeMenuGroupOption extends TreeMenuBaseOption {
+  type: 'group'
+  value: TreeMenuValue
+}
+
+export interface TreeMenuDividerOption extends TreeMenuBaseOption {
+  type: 'divider'
+}
+
+export type TreeMenuOption = TreeMenuItemOption | TreeMenuGroupOption | TreeMenuDividerOption
 
 export interface TreeMenuProps extends BasicAttributes {
   active?: TreeMenuValue

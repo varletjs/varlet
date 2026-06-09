@@ -1,6 +1,30 @@
 <template>
   <div :class="n('node')" role="none">
+    <div v-if="isDivider" :class="n('divider')" role="separator" />
+
+    <template v-else-if="isGroup">
+      <div v-if="labelVNode" :class="n('group-label')">
+        <maybe-v-node :is="labelVNode" />
+      </div>
+
+      <div :class="n('group-children')" role="group">
+        <var-tree-menu-node
+          v-for="child in node.children"
+          :key="child.value"
+          :node="child"
+          :active="active"
+          :expanded-value-set="expandedValueSet"
+          :active-path-value-set="activePathValueSet"
+          :disabled="disabled"
+          :ripple="ripple"
+          @select="emitSelect"
+          @toggle="emitToggle"
+        />
+      </div>
+    </template>
+
     <div
+      v-else
       v-ripple="{ disabled: !ripple || isDisabled }"
       :class="
         classes(
@@ -58,8 +82,8 @@
           :active-path-value-set="activePathValueSet"
           :disabled="disabled"
           :ripple="ripple"
-          :on-select="onSelect"
-          :on-toggle="onToggle"
+          @select="emitSelect"
+          @toggle="emitToggle"
         />
       </div>
     </var-collapse-transition>
@@ -67,12 +91,12 @@
 </template>
 
 <script lang="ts">
-import { isFunction, isString } from '@varlet/shared'
+import { call, isFunction, isString } from '@varlet/shared'
 import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
 import VarCollapseTransition from '../collapse-transition'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { createNamespace, MaybeVNode } from '../utils/components'
+import { createNamespace, defineListenerProp, MaybeVNode } from '../utils/components'
 import type { TreeMenuNode, TreeMenuValue } from './props'
 
 const { n, classes } = createNamespace('tree-menu')
@@ -101,20 +125,16 @@ export default defineComponent({
     },
     disabled: Boolean,
     ripple: Boolean,
-    onSelect: {
-      type: Function as PropType<(node: TreeMenuNode) => void>,
-      required: true,
-    },
-    onToggle: {
-      type: Function as PropType<(node: TreeMenuNode) => void>,
-      required: true,
-    },
+    onSelect: defineListenerProp<(node: TreeMenuNode) => void>(),
+    onToggle: defineListenerProp<(node: TreeMenuNode) => void>(),
   },
   setup(props) {
+    const isGroup = computed(() => props.node.type === 'group')
+    const isDivider = computed(() => props.node.type === 'divider')
     const isActive = computed(() => props.active === props.node.value)
     const isActivePath = computed(() => props.activePathValueSet.has(props.node.value))
     const isDisabled = computed(() => props.disabled || props.node.disabled)
-    const hasChildren = computed(() => props.node.children.length > 0)
+    const hasChildren = computed(() => !isGroup.value && !isDivider.value && props.node.children.length > 0)
     const isExpanded = computed(() => props.expandedValueSet.has(props.node.value))
     const iconVNode = computed(() =>
       isFunction(props.node.icon) ? props.node.icon(props.node.option, isActive.value) : props.node.icon,
@@ -126,17 +146,25 @@ export default defineComponent({
       '--tree-menu-level': props.node.level,
     }))
 
+    function emitSelect(node: TreeMenuNode) {
+      call(props.onSelect, node)
+    }
+
+    function emitToggle(node: TreeMenuNode) {
+      call(props.onToggle, node)
+    }
+
     function handleClick() {
       if (isDisabled.value) {
         return
       }
 
       if (hasChildren.value) {
-        props.onToggle(props.node)
+        emitToggle(props.node)
         return
       }
 
-      props.onSelect(props.node)
+      emitSelect(props.node)
     }
 
     function handleKeydown(event: KeyboardEvent) {
@@ -150,6 +178,8 @@ export default defineComponent({
 
     return {
       isString,
+      isGroup,
+      isDivider,
       isActive,
       isActivePath,
       isDisabled,
@@ -160,6 +190,8 @@ export default defineComponent({
       styles,
       n,
       classes,
+      emitSelect,
+      emitToggle,
       handleClick,
       handleKeydown,
     }

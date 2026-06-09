@@ -3,6 +3,7 @@ export default {
   accordion: 'Accordion',
   controlledExpandedValues: 'Controlled Expanded Values',
   customRender: 'Custom Render',
+  groupAndDivider: 'Group and Divider',
   fieldKeys: 'Field Keys',
   disabled: 'Disabled',
   slots: 'Slots',
@@ -21,4 +22,6 @@ export default {
   system: 'System',
   users: 'Users',
   roles: 'Roles',
+  main: 'Main',
+  management: 'Management',
 }

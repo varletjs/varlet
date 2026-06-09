@@ -7,6 +7,7 @@ const basicActive = ref('overview')
 const accordionActive = ref('projects')
 const controlledActive = ref('reports')
 const customActive = ref('tasks')
+const groupActive = ref('overview')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
 const slotsActive = ref('overview')
@@ -94,6 +95,47 @@ const customOptions = computed(() => [
   },
 ])
 
+const groupOptions = computed(() => [
+  {
+    type: 'group',
+    value: 'main',
+    label: t('main'),
+    children: [
+      {
+        value: 'overview',
+        label: t('overview'),
+        icon: 'home',
+      },
+      {
+        value: 'workspace',
+        label: t('workspace'),
+        icon: 'notebook',
+      },
+    ],
+  },
+  {
+    type: 'divider',
+    value: 'main-divider',
+  },
+  {
+    type: 'group',
+    value: 'management',
+    label: t('management'),
+    children: [
+      {
+        value: 'settings',
+        label: t('settings'),
+        icon: 'cog',
+      },
+      {
+        value: 'security',
+        label: t('security'),
+        icon: 'warning',
+      },
+    ],
+  },
+])
+
 const fieldKeyOptions = computed(() => [
   {
     key: 'system',
@@ -159,6 +201,9 @@ const disabledOptions = computed(() => [
 
   <app-type>{{ t('customRender') }}</app-type>
   <var-tree-menu v-model:active="customActive" :options="customOptions" class="tree-menu-example" />
+
+  <app-type>{{ t('groupAndDivider') }}</app-type>
+  <var-tree-menu v-model:active="groupActive" :options="groupOptions" class="tree-menu-example" />
 
   <app-type>{{ t('fieldKeys') }}</app-type>
   <var-tree-menu
