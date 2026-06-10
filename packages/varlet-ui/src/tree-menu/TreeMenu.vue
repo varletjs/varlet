@@ -18,7 +18,7 @@
 <script lang="ts">
 import { call, isArray } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
-import { computed, defineComponent, reactive, shallowRef, watch, type CSSProperties } from 'vue'
+import { computed, defineComponent, ref, watch, type CSSProperties } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props, type TreeMenuNormalizedOption, type TreeMenuOption, type TreeMenuOptionValue } from './props'
@@ -38,7 +38,7 @@ export default defineComponent({
       defaultValue: [],
     })
 
-    const treeMeta = shallowRef<{
+    const treeMeta = ref<{
       options: TreeMenuNormalizedOption[]
       optionByValue: Map<TreeMenuOptionValue, TreeMenuNormalizedOption>
     }>({
@@ -97,12 +97,15 @@ export default defineComponent({
         parent?: TreeMenuNormalizedOption,
         level = 0,
       ): TreeMenuNormalizedOption[] {
-        return options.map((option, index) => {
+        return options.reduce<TreeMenuNormalizedOption[]>((normalizedOptions, option, index) => {
+          if (option.show === false) {
+            return normalizedOptions
+          }
+
           const type = option.type
           const value = option[props.valueKey] ?? index
           const rawChildren = option[props.childrenKey]
-          const hasChildren = !type && isArray(rawChildren) && rawChildren.length > 0
-          const normalizedOption = reactive<TreeMenuNormalizedOption>({
+          const normalizedOption: TreeMenuNormalizedOption = {
             option,
             type,
             value,
@@ -112,18 +115,21 @@ export default defineComponent({
             activePath: false,
             disabled: false,
             expanded: false,
-            hasChildren,
+            hasChildren: false,
             children: [],
             parent,
             level,
-          })
+          }
 
           const childLevel = type === 'group' ? level : level + 1
 
           normalizedOption.children = isArray(rawChildren) ? normalize(rawChildren, normalizedOption, childLevel) : []
+          normalizedOption.hasChildren = !type && normalizedOption.children.length > 0
 
-          return normalizedOption
-        })
+          normalizedOptions.push(normalizedOption)
+
+          return normalizedOptions
+        }, [])
       }
 
       function visit(option: TreeMenuNormalizedOption) {

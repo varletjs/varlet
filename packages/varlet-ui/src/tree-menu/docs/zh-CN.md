@@ -2,7 +2,7 @@
 
 ### 介绍
 
-展示带有激活状态和展开状态的递归导航菜单。
+在页面侧边显示层级导航入口。
 
 ### 基本使用
 
@@ -60,6 +60,8 @@ const options = ref([
 ```
 
 ### 手风琴
+
+同级菜单只允许展开一个。
 
 ```html
 <script setup>
@@ -195,6 +197,35 @@ const options = ref([
 </script>
 
 <template>
+  <var-tree-menu v-model:active="active" :options="options" />
+</template>
+```
+
+### 动态显示
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const active = ref('settings')
+const showSecurity = ref(true)
+const options = computed(() => [
+  {
+    value: 'settings',
+    label: '设置',
+    icon: 'cog',
+  },
+  {
+    value: 'security',
+    label: '安全',
+    icon: 'warning',
+    show: showSecurity.value,
+  },
+])
+</script>
+
+<template>
+  <var-switch v-model="showSecurity" variant />
   <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
@@ -376,6 +407,7 @@ const options = ref([
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `render` | 自定义选项渲染 | _({ node }, option, active) => VNodeChild_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
+| `show` | 是否显示当前选项 | _boolean_ | `true` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |
 

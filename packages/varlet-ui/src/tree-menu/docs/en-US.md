@@ -2,7 +2,7 @@
 
 ### Intro
 
-Display recursive navigation menu items with active and expanded states.
+Display hierarchical navigation destinations on the side of the page.
 
 ### Basic Usage
 
@@ -60,6 +60,8 @@ const options = ref([
 ```
 
 ### Accordion
+
+Only one sibling menu can be expanded.
 
 ```html
 <script setup>
@@ -195,6 +197,35 @@ const options = ref([
 </script>
 
 <template>
+  <var-tree-menu v-model:active="active" :options="options" />
+</template>
+```
+
+### Dynamic Show
+
+```html
+<script setup>
+import { computed, ref } from 'vue'
+
+const active = ref('settings')
+const showSecurity = ref(true)
+const options = computed(() => [
+  {
+    value: 'settings',
+    label: 'Settings',
+    icon: 'cog',
+  },
+  {
+    value: 'security',
+    label: 'Security',
+    icon: 'warning',
+    show: showSecurity.value,
+  },
+])
+</script>
+
+<template>
+  <var-switch v-model="showSecurity" variant />
   <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
@@ -376,6 +407,7 @@ const options = ref([
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `render` | Custom option render | _({ node }, option, active) => VNodeChild_ | `-` |
 | `namespace` | Icon namespace | _string_ | `var-icon` |
+| `show` | Whether to show the option | _boolean_ | `true` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |
 

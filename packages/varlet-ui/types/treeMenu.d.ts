@@ -27,6 +27,7 @@ export interface TreeMenuBaseOption {
   icon?: string | VNode | TreeMenuOptionIconRender
   render?: TreeMenuOptionRender
   namespace?: string
+  show?: boolean
   disabled?: boolean
   children?: TreeMenuOption[]
 

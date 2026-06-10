@@ -394,6 +394,46 @@ describe('tree-menu component api', () => {
     wrapper.unmount()
   })
 
+  test('hides options when show is false', async () => {
+    const wrapper = mount(VarTreeMenu, {
+      props: {
+        options: [
+          { value: 'visible', label: 'Visible' },
+          { value: 'hidden', label: 'Hidden', show: false },
+          {
+            value: 'parent',
+            label: 'Parent',
+            children: [
+              { value: 'shown-child', label: 'Shown Child' },
+              { value: 'hidden-child', label: 'Hidden Child', show: false },
+            ],
+          },
+          {
+            value: 'empty-parent',
+            label: 'Empty Parent',
+            children: [{ value: 'hidden-only-child', label: 'Hidden Only Child', show: false }],
+          },
+        ],
+      },
+    })
+
+    expect(findItemByText(wrapper, 'Visible').exists()).toBe(true)
+    expect(findItemByText(wrapper, 'Hidden')).toBeUndefined()
+    expect(findItemByText(wrapper, 'Shown Child').exists()).toBe(true)
+    expect(findItemByText(wrapper, 'Hidden Child')).toBeUndefined()
+    expect(findItemByText(wrapper, 'Empty Parent').find('.var-tree-menu__expand-placeholder').exists()).toBe(true)
+
+    await wrapper.setProps({
+      options: [
+        { value: 'visible', label: 'Visible' },
+        { value: 'hidden', label: 'Hidden', show: true },
+      ],
+    })
+
+    expect(findItemByText(wrapper, 'Hidden').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
   test('disabled option blocks select and toggle', async () => {
     const onChange = vi.fn()
     const onUpdateActive = vi.fn()

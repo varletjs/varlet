@@ -12,6 +12,8 @@ const customActive = ref('tooltip')
 const groupActive = ref('overview')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
+const dynamicActive = ref('settings')
+const showSecurity = ref(true)
 const slotsActive = ref('overview')
 const indentActive = ref('projects')
 
@@ -217,6 +219,20 @@ const disabledOptions = computed(() => [
     disabled: true,
   },
 ])
+
+const dynamicOptions = computed(() => [
+  {
+    value: 'settings',
+    label: t('settings'),
+    icon: 'cog',
+  },
+  {
+    value: 'security',
+    label: t('security'),
+    icon: 'warning',
+    show: showSecurity.value,
+  },
+])
 </script>
 
 <template>
@@ -242,6 +258,10 @@ const disabledOptions = computed(() => [
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tree-menu v-model:active="disabledActive" :options="disabledOptions" class="tree-menu-example" />
+
+  <app-type>{{ t('dynamicShow') }}</app-type>
+  <var-switch v-model="showSecurity" variant />
+  <var-tree-menu v-model:active="dynamicActive" :options="dynamicOptions" class="tree-menu-example" />
 
   <app-type>{{ t('slots') }}</app-type>
   <var-tree-menu v-model:active="slotsActive" :options="options" class="tree-menu-example">
