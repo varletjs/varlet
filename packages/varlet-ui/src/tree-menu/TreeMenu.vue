@@ -18,7 +18,7 @@
 <script lang="ts">
 import { call, isArray } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
-import { computed, defineComponent, watch, type CSSProperties } from 'vue'
+import { computed, defineComponent, reactive, shallowRef, watch, type CSSProperties } from 'vue'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props, type TreeMenuNormalizedOption, type TreeMenuOption, type TreeMenuOptionValue } from './props'
@@ -38,9 +38,59 @@ export default defineComponent({
       defaultValue: [],
     })
 
-    const treeMeta = computed(() => {
+    const treeMeta = shallowRef<{
+      options: TreeMenuNormalizedOption[]
+      optionByValue: Map<TreeMenuOptionValue, TreeMenuNormalizedOption>
+    }>({
+      options: [],
+      optionByValue: new Map(),
+    })
+
+    const styles = computed<CSSProperties>(() => {
+      if (props.indent == null) {
+        return {}
+      }
+
+      return {
+        '--tree-menu-item-indent': toSizeUnit(props.indent),
+      }
+    })
+
+    watch(
+      () => [props.options, props.valueKey, props.labelKey, props.iconKey, props.childrenKey] as const,
+      () => {
+        treeMeta.value = createTreeMeta()
+        updateTreeState()
+      },
+      { immediate: true },
+    )
+
+    watch(
+      () => active.value,
+      (value) => {
+        if (value == null) {
+          expandedValues.value = []
+          return
+        }
+
+        expandAncestors(value)
+      },
+      { immediate: true },
+    )
+
+    watch(
+      [active, expandedValues, () => props.disabled],
+      () => {
+        updateTreeState()
+      },
+      { immediate: true },
+    )
+
+    function createTreeMeta() {
       const map = new Map<TreeMenuOptionValue, TreeMenuNormalizedOption>()
-      const expandedValueSet = new Set(expandedValues.value)
+      const options = normalize(props.options)
+
+      options.forEach(visit)
 
       function normalize(
         options: TreeMenuOption[],
@@ -49,25 +99,24 @@ export default defineComponent({
       ): TreeMenuNormalizedOption[] {
         return options.map((option, index) => {
           const type = option.type
-          const rawValue = option[props.valueKey]
-          const value = rawValue ?? index
+          const value = option[props.valueKey] ?? index
           const rawChildren = option[props.childrenKey]
           const hasChildren = !type && isArray(rawChildren) && rawChildren.length > 0
-          const normalizedOption: TreeMenuNormalizedOption = {
+          const normalizedOption = reactive<TreeMenuNormalizedOption>({
             option,
             type,
             value,
             label: option[props.labelKey],
             icon: option[props.iconKey],
-            active: active.value === value,
+            active: false,
             activePath: false,
-            disabled: props.disabled || !!option.disabled,
-            expanded: expandedValueSet.has(value),
+            disabled: false,
+            expanded: false,
             hasChildren,
             children: [],
             parent,
             level,
-          }
+          })
 
           const childLevel = type === 'group' ? level : level + 1
 
@@ -82,49 +131,35 @@ export default defineComponent({
         option.children.forEach(visit)
       }
 
-      const options = normalize(props.options)
-
-      options.forEach(visit)
-
-      const activeOption = active.value == null ? undefined : map.get(active.value)
-
-      if (activeOption) {
-        getAncestorValues(activeOption).forEach((value) => {
-          const option = map.get(value)
-
-          if (option) {
-            option.activePath = true
-          }
-        })
-      }
-
       return {
         options,
         optionByValue: map,
       }
-    })
-    const styles = computed<CSSProperties>(() => {
-      if (props.indent == null) {
-        return {}
-      }
+    }
 
-      return {
-        '--tree-menu-item-indent': toSizeUnit(props.indent),
-      }
-    })
+    function updateTreeState() {
+      const expandedValueSet = new Set(expandedValues.value ?? [])
+      const activeOption = active.value == null ? undefined : treeMeta.value.optionByValue.get(active.value)
+      const activePathValueSet = new Set(activeOption ? getAncestorValues(activeOption) : [])
 
-    watch(
-      () => active.value,
-      (value) => {
-        if (value == null) {
-          expandedValues.value = []
-          return
-        }
+      treeMeta.value.options.forEach((option) => {
+        updateOptionState(option, expandedValueSet, activePathValueSet)
+      })
+    }
 
-        expandAncestors(value)
-      },
-      { immediate: true },
-    )
+    function updateOptionState(
+      option: TreeMenuNormalizedOption,
+      expandedValueSet: Set<TreeMenuOptionValue>,
+      activePathValueSet: Set<TreeMenuOptionValue>,
+    ) {
+      option.active = active.value === option.value
+      option.activePath = activePathValueSet.has(option.value)
+      option.disabled = props.disabled || !!option.option.disabled
+      option.expanded = expandedValueSet.has(option.value)
+      option.children.forEach((child) => {
+        updateOptionState(child, expandedValueSet, activePathValueSet)
+      })
+    }
 
     function getDescendantValues(option: TreeMenuNormalizedOption) {
       const values: TreeMenuOptionValue[] = []

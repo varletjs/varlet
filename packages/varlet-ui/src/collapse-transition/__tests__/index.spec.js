@@ -38,10 +38,20 @@ describe('test collapseTransition props', () => {
     expect(wrapper.vm.expand).toBeTruthy()
     expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('')
 
+    const content = wrapper.find('.var-collapse-transition__content')
+
     expand.value = false
-    await delay(200)
+    await delay(50)
+    const transitionStartEvent = new Event('transitionstart')
+    Object.assign(transitionStartEvent, { propertyName: 'height' })
+    content.element.dispatchEvent(transitionStartEvent)
+
+    const transitionEndEvent = new Event('transitionend')
+    Object.assign(transitionEndEvent, { propertyName: 'height' })
+    content.element.dispatchEvent(transitionEndEvent)
+    await delay(0)
     expect(wrapper.vm.expand).toBeFalsy()
-    expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('display: none;')
+    expect(content.attributes('style')).toBe('display: none;')
 
     wrapper.unmount()
   })
