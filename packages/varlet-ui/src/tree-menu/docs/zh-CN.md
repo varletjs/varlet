@@ -35,18 +35,6 @@ const options = ref([
     ],
   },
   {
-    value: 'analytics',
-    label: '分析',
-    icon: 'information',
-    children: [
-      {
-        value: 'reports',
-        label: '报表',
-        icon: 'bookmark',
-      },
-    ],
-  },
-  {
     value: 'settings',
     label: '设置',
     icon: 'cog',
@@ -94,12 +82,6 @@ const options = ref([
     ],
   },
   {
-    value: 'analytics',
-    label: '分析',
-    icon: 'information',
-    children: [{ value: 'reports', label: '报表', icon: 'bookmark' }],
-  },
-  {
     value: 'settings',
     label: '设置',
     icon: 'cog',
@@ -113,40 +95,6 @@ const options = ref([
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" accordion />
-</template>
-```
-
-### 自定义渲染
-
-```html
-<script setup>
-import { h, ref } from 'vue'
-
-const active = ref('projects')
-const options = ref([
-  {
-    value: 'workspace',
-    label: '工作台',
-    icon: 'notebook',
-    children: [
-      {
-        value: 'projects',
-        href: '#projects',
-        label: (option, active) =>
-          h('span', { class: ['custom-label', active && 'custom-label--active'] }, [
-            '项目',
-            h('span', { class: 'tag' }, '12'),
-          ]),
-        icon: () => h('span', { class: 'dot' }),
-        render: (option, active, { node }) => h('a', { href: option.href }, [node]),
-      },
-    ],
-  },
-])
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
 
@@ -279,16 +227,124 @@ const options = ref([
 <template>
   <var-tree-menu v-model:active="active" :options="options">
     <template #start>
-      <div class="tree-menu-title">团队空间</div>
+      <var-button fab type="primary">
+        <var-icon name="plus" />
+      </var-button>
     </template>
 
     <template #end>
-      <var-button text block size="small" class="tree-menu-action">
+      <var-button fab type="primary">
         <var-icon name="plus" />
-        <span>新建项目</span>
       </var-button>
     </template>
   </var-tree-menu>
+</template>
+```
+
+### 自定义缩进
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('projects')
+const options = ref([
+  {
+    value: 'overview',
+    label: '概览',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: '工作台',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: '项目', icon: 'star' },
+      { value: 'tasks', label: '任务', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" indent="32px" />
+</template>
+```
+
+### 自定义渲染
+
+```html
+<script setup>
+import { Badge as VarBadge, Tooltip as VarTooltip } from '@varlet/ui'
+import { h, ref } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const active = ref('tooltip')
+const options = ref([
+  {
+    value: 'workspace',
+    label: '工作台',
+    icon: 'notebook',
+    children: [
+      {
+        value: 'custom-label-icon',
+        label: () =>
+          h('span', { style: { display: 'inline-flex', alignItems: 'center' } }, [
+            '自定义文字图标',
+            h(VarBadge, { style: { marginLeft: '12px' }, type: 'primary', value: 12 }),
+          ]),
+        icon: () => h(VarBadge, { type: 'primary', dot: true }),
+      },
+      {
+        value: 'link',
+        label: '链接菜单',
+        icon: 'github',
+        render: ({ node }) =>
+          h(
+            'a',
+            {
+              href: 'https://github.com/varletjs/varlet',
+              target: '_blank',
+              rel: 'noreferrer',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
+              onClick: (event) => event.preventDefault(),
+            },
+            node,
+          ),
+      },
+      {
+        value: 'tooltip',
+        label: '悬浮提示',
+        icon: 'check',
+        render: ({ node }) =>
+          h(
+            VarTooltip,
+            { content: '悬浮提示', placement: 'bottom', style: { display: 'block', width: '100%' } },
+            { default: () => node },
+          ),
+      },
+      {
+        value: 'router-link',
+        label: '路由链接',
+        icon: 'bookmark',
+        render: ({ node }) =>
+          h(
+            RouterLink,
+            {
+              to: '/button',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
+              onClick: (event) => event.preventDefault(),
+            },
+            { default: () => node },
+          ),
+      },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
 
@@ -318,7 +374,7 @@ const options = ref([
 | `value` | 选项值 | _string \| number_ | `-` |
 | `label` | 选项标签 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
-| `render` | 自定义选项渲染 | _(option, active, { node }) => VNodeChild_ | `-` |
+| `render` | 自定义选项渲染 | _({ node }, option, active) => VNodeChild_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |

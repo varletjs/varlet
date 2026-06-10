@@ -89,7 +89,7 @@ export default defineComponent({
         return node
       }
 
-      return render(props.option.option, props.option.active, { node })
+      return render({ node }, props.option.option, props.option.active)
     }
 
     function renderDefaultItem() {

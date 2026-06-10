@@ -35,18 +35,6 @@ const options = ref([
     ],
   },
   {
-    value: 'analytics',
-    label: 'Analytics',
-    icon: 'information',
-    children: [
-      {
-        value: 'reports',
-        label: 'Reports',
-        icon: 'bookmark',
-      },
-    ],
-  },
-  {
     value: 'settings',
     label: 'Settings',
     icon: 'cog',
@@ -94,12 +82,6 @@ const options = ref([
     ],
   },
   {
-    value: 'analytics',
-    label: 'Analytics',
-    icon: 'information',
-    children: [{ value: 'reports', label: 'Reports', icon: 'bookmark' }],
-  },
-  {
     value: 'settings',
     label: 'Settings',
     icon: 'cog',
@@ -113,40 +95,6 @@ const options = ref([
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" accordion />
-</template>
-```
-
-### Custom Render
-
-```html
-<script setup>
-import { h, ref } from 'vue'
-
-const active = ref('projects')
-const options = ref([
-  {
-    value: 'workspace',
-    label: 'Workspace',
-    icon: 'notebook',
-    children: [
-      {
-        value: 'projects',
-        href: '#projects',
-        label: (option, active) =>
-          h('span', { class: ['custom-label', active && 'custom-label--active'] }, [
-            'Projects',
-            h('span', { class: 'tag' }, '12'),
-          ]),
-        icon: () => h('span', { class: 'dot' }),
-        render: (option, active, { node }) => h('a', { href: option.href }, [node]),
-      },
-    ],
-  },
-])
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
 
@@ -279,16 +227,124 @@ const options = ref([
 <template>
   <var-tree-menu v-model:active="active" :options="options">
     <template #start>
-      <div class="tree-menu-title">Team Space</div>
+      <var-button fab type="primary">
+        <var-icon name="plus" />
+      </var-button>
     </template>
 
     <template #end>
-      <var-button text block size="small" class="tree-menu-action">
+      <var-button fab type="primary">
         <var-icon name="plus" />
-        <span>New Project</span>
       </var-button>
     </template>
   </var-tree-menu>
+</template>
+```
+
+### Custom Indent
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('projects')
+const options = ref([
+  {
+    value: 'overview',
+    label: 'Overview',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: 'Projects', icon: 'star' },
+      { value: 'tasks', label: 'Tasks', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" indent="32px" />
+</template>
+```
+
+### Custom Render
+
+```html
+<script setup>
+import { Badge as VarBadge, Tooltip as VarTooltip } from '@varlet/ui'
+import { h, ref } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const active = ref('tooltip')
+const options = ref([
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    icon: 'notebook',
+    children: [
+      {
+        value: 'custom-label-icon',
+        label: () =>
+          h('span', { style: { display: 'inline-flex', alignItems: 'center' } }, [
+            'Custom Label Icon',
+            h(VarBadge, { style: { marginLeft: '12px' }, type: 'primary', value: 12 }),
+          ]),
+        icon: () => h(VarBadge, { type: 'primary', dot: true }),
+      },
+      {
+        value: 'link',
+        label: 'Link Menu',
+        icon: 'github',
+        render: ({ node }) =>
+          h(
+            'a',
+            {
+              href: 'https://github.com/varletjs/varlet',
+              target: '_blank',
+              rel: 'noreferrer',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
+              onClick: (event) => event.preventDefault(),
+            },
+            node,
+          ),
+      },
+      {
+        value: 'tooltip',
+        label: 'Tooltip',
+        icon: 'check',
+        render: ({ node }) =>
+          h(
+            VarTooltip,
+            { content: 'Tooltip', placement: 'bottom', style: { display: 'block', width: '100%' } },
+            { default: () => node },
+          ),
+      },
+      {
+        value: 'router-link',
+        label: 'Router Link',
+        icon: 'bookmark',
+        render: ({ node }) =>
+          h(
+            RouterLink,
+            {
+              to: '/button',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
+              onClick: (event) => event.preventDefault(),
+            },
+            { default: () => node },
+          ),
+      },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" />
 </template>
 ```
 
@@ -318,7 +374,7 @@ const options = ref([
 | `value` | Option value | _string \| number_ | `-` |
 | `label` | Option label | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
-| `render` | Custom option render | _(option, active, { node }) => VNodeChild_ | `-` |
+| `render` | Custom option render | _({ node }, option, active) => VNodeChild_ | `-` |
 | `namespace` | Icon namespace | _string_ | `var-icon` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |

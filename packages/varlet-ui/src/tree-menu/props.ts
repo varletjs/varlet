@@ -14,9 +14,9 @@ export interface TreeMenuOptionRenderContext {
 }
 
 export type TreeMenuOptionRender = (
+  context: TreeMenuOptionRenderContext,
   option: TreeMenuOption,
   active: boolean,
-  context: TreeMenuOptionRenderContext,
 ) => VNodeChild
 
 export interface TreeMenuBaseOption {

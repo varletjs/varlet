@@ -1,15 +1,19 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { computed, h, ref } from 'vue'
+import { RouterLink } from 'vue-router'
+import VarBadge from '../../badge'
+import VarTooltip from '../../tooltip'
 import { t, use } from './locale'
 
 const basicActive = ref('overview')
 const accordionActive = ref('projects')
-const customActive = ref('tasks')
+const customActive = ref('tooltip')
 const groupActive = ref('overview')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
 const slotsActive = ref('overview')
+const indentActive = ref('projects')
 
 watchLang(use)
 onThemeChange()
@@ -34,18 +38,6 @@ const options = computed(() => [
         value: 'tasks',
         label: t('tasks'),
         icon: 'check',
-      },
-    ],
-  },
-  {
-    value: 'analytics',
-    label: t('analytics'),
-    icon: 'information',
-    children: [
-      {
-        value: 'reports',
-        label: t('reports'),
-        icon: 'bookmark',
       },
     ],
   },
@@ -75,30 +67,64 @@ const customOptions = computed(() => [
     icon: 'notebook',
     children: [
       {
-        value: 'projects',
-        href: '#projects',
-        label: (option, active) =>
-          h(
-            'span',
-            { class: ['tree-menu-example__custom-label', active && 'tree-menu-example__custom-label--active'] },
-            [t('projects'), h('span', { class: 'tree-menu-example__tag' }, '12')],
-          ),
-        icon: () => h('span', { class: 'tree-menu-example__dot' }),
-        render: (option, active, { node }) =>
+        value: 'custom-label-icon',
+        label: () =>
+          h('span', { style: { display: 'inline-flex', alignItems: 'center' } }, [
+            t('customLabelIcon'),
+            h(VarBadge, { style: { marginLeft: '12px' }, type: 'primary', value: 12 }),
+          ]),
+        icon: () => h(VarBadge, { type: 'primary', dot: true }),
+      },
+      {
+        value: 'link',
+        label: t('linkMenu'),
+        icon: 'github',
+        render: ({ node }) =>
           h(
             'a',
             {
-              class: ['tree-menu-example__link', active && 'tree-menu-example__link--active'],
-              href: option.href,
+              href: 'https://github.com/varletjs/varlet',
+              target: '_blank',
+              rel: 'noreferrer',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
               onClick: (event) => event.preventDefault(),
             },
-            [node],
+            node,
           ),
       },
       {
-        value: 'tasks',
-        label: t('tasks'),
+        value: 'tooltip',
+        label: t('tooltipMenu'),
         icon: 'check',
+        render: ({ node }) =>
+          h(
+            VarTooltip,
+            {
+              content: t('tooltipMenu'),
+              placement: 'bottom',
+              style: { display: 'block', width: '100%' },
+            },
+            {
+              default: () => node,
+            },
+          ),
+      },
+      {
+        value: 'router-link',
+        label: t('routerLinkMenu'),
+        icon: 'bookmark',
+        render: ({ node }) =>
+          h(
+            RouterLink,
+            {
+              to: '/button',
+              style: { display: 'block', color: 'inherit', textDecoration: 'none' },
+              onClick: (event) => event.preventDefault(),
+            },
+            {
+              default: () => node,
+            },
+          ),
       },
     ],
   },
@@ -200,9 +226,6 @@ const disabledOptions = computed(() => [
   <app-type>{{ t('accordion') }}</app-type>
   <var-tree-menu v-model:active="accordionActive" :options="options" accordion class="tree-menu-example" />
 
-  <app-type>{{ t('customRender') }}</app-type>
-  <var-tree-menu v-model:active="customActive" :options="customOptions" class="tree-menu-example" />
-
   <app-type>{{ t('menuGroup') }}</app-type>
   <var-tree-menu v-model:active="groupActive" :options="groupOptions" class="tree-menu-example" />
 
@@ -223,74 +246,27 @@ const disabledOptions = computed(() => [
   <app-type>{{ t('slots') }}</app-type>
   <var-tree-menu v-model:active="slotsActive" :options="options" class="tree-menu-example">
     <template #start>
-      <div class="tree-menu-example__section-title">{{ t('teamSpace') }}</div>
+      <var-button fab type="primary">
+        <var-icon name="plus" />
+      </var-button>
     </template>
 
     <template #end>
-      <var-button text block size="small" class="tree-menu-example__action">
+      <var-button fab type="primary">
         <var-icon name="plus" />
-        <span>{{ t('newProject') }}</span>
       </var-button>
     </template>
   </var-tree-menu>
+
+  <app-type>{{ t('customIndent') }}</app-type>
+  <var-tree-menu v-model:active="indentActive" :options="options" indent="32px" class="tree-menu-example" />
+
+  <app-type>{{ t('customRender') }}</app-type>
+  <var-tree-menu v-model:active="customActive" :options="customOptions" class="tree-menu-example" />
 </template>
 
 <style>
 .tree-menu-example {
   width: 320px;
-}
-
-.tree-menu-example__link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.tree-menu-example__custom-label {
-  display: inline-flex;
-  max-width: 100%;
-  align-items: center;
-}
-
-.tree-menu-example__custom-label--active {
-  font-weight: 600;
-}
-
-.tree-menu-example__tag {
-  height: 18px;
-  min-width: 18px;
-  padding: 0 5px;
-  margin-left: 8px;
-  border-radius: 9px;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-size: 12px;
-  line-height: 18px;
-}
-
-.tree-menu-example__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-primary);
-}
-
-.tree-menu-example__section-title {
-  padding: 0 16px;
-  color: var(--color-on-surface-variant);
-  font-size: var(--font-size-sm);
-  line-height: 32px;
-}
-
-.tree-menu-example__action {
-  justify-content: flex-start;
-}
-
-.tree-menu-example__action .var-button__content > * + * {
-  margin-left: 8px;
 }
 </style>

@@ -352,7 +352,7 @@ describe('tree-menu component api', () => {
   })
 
   test('supports render function for option item', async () => {
-    const render = vi.fn((option, active, { node }) =>
+    const render = vi.fn(({ node }, option, active) =>
       h('a', { class: ['custom-link', active && 'custom-link--active'], href: option.href }, [node]),
     )
     const option = { value: 'docs', label: 'Docs', icon: 'book', href: '/docs', render }
@@ -369,7 +369,7 @@ describe('tree-menu component api', () => {
     expect(link.attributes('href')).toBe('/docs')
     expect(item.exists()).toBe(true)
     expect(item.text()).toContain('Docs')
-    expect(render).toHaveBeenCalledWith(option, false, { node: expect.any(Object) })
+    expect(render).toHaveBeenCalledWith({ node: expect.any(Object) }, option, false)
 
     await trigger(item, 'click')
     expect(onUpdateActive).toHaveBeenCalledWith('docs')
