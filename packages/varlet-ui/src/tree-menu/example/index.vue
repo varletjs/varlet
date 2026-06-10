@@ -5,13 +5,11 @@ import { t, use } from './locale'
 
 const basicActive = ref('overview')
 const accordionActive = ref('projects')
-const controlledActive = ref('reports')
 const customActive = ref('tasks')
 const groupActive = ref('overview')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
 const slotsActive = ref('overview')
-const controlledExpandedValues = ref(['analytics'])
 
 watchLang(use)
 onThemeChange()
@@ -78,6 +76,7 @@ const customOptions = computed(() => [
     children: [
       {
         value: 'projects',
+        href: '#projects',
         label: (option, active) =>
           h(
             'span',
@@ -85,6 +84,16 @@ const customOptions = computed(() => [
             [t('projects'), h('span', { class: 'tree-menu-example__tag' }, '12')],
           ),
         icon: () => h('span', { class: 'tree-menu-example__dot' }),
+        render: (option, active, { node }) =>
+          h(
+            'a',
+            {
+              class: ['tree-menu-example__link', active && 'tree-menu-example__link--active'],
+              href: option.href,
+              onClick: (event) => event.preventDefault(),
+            },
+            [node],
+          ),
       },
       {
         value: 'tasks',
@@ -191,18 +200,10 @@ const disabledOptions = computed(() => [
   <app-type>{{ t('accordion') }}</app-type>
   <var-tree-menu v-model:active="accordionActive" :options="options" accordion class="tree-menu-example" />
 
-  <app-type>{{ t('controlledExpandedValues') }}</app-type>
-  <var-tree-menu
-    v-model:active="controlledActive"
-    v-model:expanded-values="controlledExpandedValues"
-    :options="options"
-    class="tree-menu-example"
-  />
-
   <app-type>{{ t('customRender') }}</app-type>
   <var-tree-menu v-model:active="customActive" :options="customOptions" class="tree-menu-example" />
 
-  <app-type>{{ t('groupAndDivider') }}</app-type>
+  <app-type>{{ t('menuGroup') }}</app-type>
   <var-tree-menu v-model:active="groupActive" :options="groupOptions" class="tree-menu-example" />
 
   <app-type>{{ t('fieldKeys') }}</app-type>
@@ -237,6 +238,12 @@ const disabledOptions = computed(() => [
 <style>
 .tree-menu-example {
   width: 320px;
+}
+
+.tree-menu-example__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .tree-menu-example__custom-label {

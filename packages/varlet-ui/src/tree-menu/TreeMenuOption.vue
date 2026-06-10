@@ -3,8 +3,8 @@
     <div v-if="option.type === 'divider'" :class="n('divider')" />
 
     <template v-else-if="option.type === 'group'">
-      <div v-if="labelVNode" :class="n('group-label')">
-        <maybe-v-node :is="labelVNode" />
+      <div v-if="renderLabel()" :class="n('group-label')">
+        <maybe-v-node :is="renderLabel()" />
       </div>
 
       <div :class="n('group-children')">
@@ -19,48 +19,7 @@
       </div>
     </template>
 
-    <div
-      v-else
-      v-ripple="{ disabled: !ripple || option.disabled }"
-      :class="
-        classes(
-          n('item'),
-          [option.active, n('--item-active')],
-          [option.activePath, n('--item-active-path')],
-          [option.disabled, n('--item-disabled')],
-          [ripple && !option.disabled, n('--item-ripple-enabled')],
-        )
-      "
-      :style="styles"
-      @click="handleClick"
-    >
-      <span :class="n('item-indicator')" />
-
-      <span :class="n('item-content')">
-        <span v-if="iconVNode" :class="n('icon-container')">
-          <var-icon
-            v-if="isString(iconVNode)"
-            :class="n('icon')"
-            :name="iconVNode"
-            :namespace="option.option.namespace"
-            var-tree-menu-cover
-          />
-          <maybe-v-node v-else :class="n('icon')" :is="iconVNode" />
-        </span>
-
-        <span :class="n('label')">
-          <maybe-v-node :is="labelVNode" />
-        </span>
-
-        <span
-          v-if="option.hasChildren"
-          :class="classes(n('expand-icon'), [option.expanded, n('--expand-icon-expanded')])"
-        >
-          <var-icon name="chevron-down" var-tree-menu-cover />
-        </span>
-        <span v-else :class="n('expand-placeholder')" />
-      </span>
-    </div>
+    <maybe-v-node v-else :is="renderItem()" />
 
     <var-collapse-transition v-if="option.hasChildren" :expand="option.expanded">
       <div :class="n('children')">
@@ -79,7 +38,7 @@
 
 <script lang="ts">
 import { call, callOrReturn, isString } from '@varlet/shared'
-import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
+import { computed, defineComponent, h, withDirectives, type CSSProperties, type PropType } from 'vue'
 import VarCollapseTransition from '../collapse-transition'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
@@ -106,12 +65,9 @@ export default defineComponent({
     onToggle: defineListenerProp<(option: TreeMenuNormalizedOption) => void>(),
   },
   setup(props) {
-    const iconVNode = computed(() => callOrReturn(props.option.icon, props.option.option, props.option.active))
-    const labelVNode = computed(() => callOrReturn(props.option.label, props.option.option, props.option.active))
     const styles = computed<CSSProperties>(() => ({
       '--tree-menu-level': props.option.level,
     }))
-
     function handleClick() {
       if (props.option.disabled) {
         return
@@ -125,10 +81,81 @@ export default defineComponent({
       call(props.onSelect, props.option)
     }
 
+    function renderItem() {
+      const node = renderDefaultItem()
+      const render = props.option.option.render
+
+      if (!render) {
+        return node
+      }
+
+      return render(props.option.option, props.option.active, { node })
+    }
+
+    function renderDefaultItem() {
+      return withDirectives(
+        h(
+          'div',
+          {
+            class: classes(
+              n('item'),
+              [props.option.active, n('--item-active')],
+              [props.option.activePath, n('--item-active-path')],
+              [props.option.disabled, n('--item-disabled')],
+              [props.ripple && !props.option.disabled, n('--item-ripple-enabled')],
+            ),
+            style: styles.value,
+            onClick: handleClick,
+          },
+          [
+            h('span', { class: n('item-indicator') }),
+            h('span', { class: n('item-content') }, [
+              renderIcon(),
+              h('span', { class: n('label') }, [h(MaybeVNode, { is: renderLabel() })]),
+              renderExpandIcon(),
+            ]),
+          ],
+        ),
+        [[Ripple, { disabled: !props.ripple || props.option.disabled }]],
+      )
+    }
+
+    function renderIcon() {
+      const iconVNode = callOrReturn(props.option.icon, props.option.option, props.option.active)
+
+      if (!iconVNode) {
+        return null
+      }
+
+      return h('span', { class: n('icon-container') }, [
+        isString(iconVNode)
+          ? h(VarIcon, {
+              class: n('icon'),
+              name: iconVNode,
+              namespace: props.option.option.namespace,
+              varTreeMenuCover: '',
+            })
+          : h(MaybeVNode, { class: n('icon'), is: iconVNode }),
+      ])
+    }
+
+    function renderLabel() {
+      return callOrReturn(props.option.label, props.option.option, props.option.active)
+    }
+
+    function renderExpandIcon() {
+      if (!props.option.hasChildren) {
+        return h('span', { class: n('expand-placeholder') })
+      }
+
+      return h('span', { class: classes(n('expand-icon'), [props.option.expanded, n('--expand-icon-expanded')]) }, [
+        h(VarIcon, { name: 'chevron-down', varTreeMenuCover: '' }),
+      ])
+    }
+
     return {
-      isString,
-      iconVNode,
-      labelVNode,
+      renderLabel,
+      renderItem,
       styles,
       n,
       classes,

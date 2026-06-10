@@ -1,9 +1,8 @@
 export default {
   basicUsage: '基本使用',
   accordion: '手风琴',
-  controlledExpandedValues: '受控展开',
   customRender: '自定义渲染',
-  groupAndDivider: '分组和分割线',
+  menuGroup: '菜单分组',
   fieldKeys: '字段映射',
   disabled: '禁用',
   slots: '插槽',

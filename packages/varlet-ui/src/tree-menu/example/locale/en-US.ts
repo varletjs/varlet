@@ -1,9 +1,8 @@
 export default {
   basicUsage: 'Basic Usage',
   accordion: 'Accordion',
-  controlledExpandedValues: 'Controlled Expanded Values',
   customRender: 'Custom Render',
-  groupAndDivider: 'Group and Divider',
+  menuGroup: 'Menu Group',
   fieldKeys: 'Field Keys',
   disabled: 'Disabled',
   slots: 'Slots',

@@ -351,6 +351,31 @@ describe('tree-menu component api', () => {
     wrapper.unmount()
   })
 
+  test('supports render function for option item', async () => {
+    const render = vi.fn((option, active, { node }) =>
+      h('a', { class: ['custom-link', active && 'custom-link--active'], href: option.href }, [node]),
+    )
+    const option = { value: 'docs', label: 'Docs', icon: 'book', href: '/docs', render }
+    const onUpdateActive = vi.fn()
+    const wrapper = mount(VarTreeMenu, {
+      props: {
+        options: [option],
+        'onUpdate:active': onUpdateActive,
+      },
+    })
+    const link = wrapper.find('.custom-link')
+    const item = wrapper.find('.var-tree-menu__item')
+
+    expect(link.attributes('href')).toBe('/docs')
+    expect(item.exists()).toBe(true)
+    expect(item.text()).toContain('Docs')
+    expect(render).toHaveBeenCalledWith(option, false, { node: expect.any(Object) })
+
+    await trigger(item, 'click')
+    expect(onUpdateActive).toHaveBeenCalledWith('docs')
+    wrapper.unmount()
+  })
+
   test('supports vnode label and icon', () => {
     const wrapper = mount(VarTreeMenu, {
       props: {

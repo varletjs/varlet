@@ -11,8 +11,7 @@
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: '概览',
@@ -64,7 +63,7 @@ const options = [
       },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -79,8 +78,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('projects')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: '概览',
@@ -110,58 +108,11 @@ const options = [
       { value: 'security', label: '安全', icon: 'warning' },
     ],
   },
-]
+])
 </script>
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" accordion />
-</template>
-```
-
-### 受控展开
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref('reports')
-const expandedValues = ref(['analytics'])
-
-const options = [
-  {
-    value: 'overview',
-    label: '概览',
-    icon: 'home',
-  },
-  {
-    value: 'workspace',
-    label: '工作台',
-    icon: 'notebook',
-    children: [
-      { value: 'projects', label: '项目', icon: 'star' },
-      { value: 'tasks', label: '任务', icon: 'check' },
-    ],
-  },
-  {
-    value: 'analytics',
-    label: '分析',
-    icon: 'information',
-    children: [{ value: 'reports', label: '报表', icon: 'bookmark' }],
-  },
-  {
-    value: 'settings',
-    label: '设置',
-    icon: 'cog',
-    children: [
-      { value: 'profile', label: '个人资料', icon: 'account-circle' },
-      { value: 'security', label: '安全', icon: 'warning' },
-    ],
-  },
-]
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" v-model:expanded-values="expandedValues" :options="options" />
 </template>
 ```
 
@@ -172,8 +123,7 @@ const options = [
 import { h, ref } from 'vue'
 
 const active = ref('projects')
-
-const options = [
+const options = ref([
   {
     value: 'workspace',
     label: '工作台',
@@ -181,16 +131,18 @@ const options = [
     children: [
       {
         value: 'projects',
+        href: '#projects',
         label: (option, active) =>
           h('span', { class: ['custom-label', active && 'custom-label--active'] }, [
             '项目',
             h('span', { class: 'tag' }, '12'),
           ]),
         icon: () => h('span', { class: 'dot' }),
+        render: (option, active, { node }) => h('a', { href: option.href }, [node]),
       },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -198,15 +150,14 @@ const options = [
 </template>
 ```
 
-### 分组和分割线
+### 菜单分组
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     type: 'group',
     value: 'main',
@@ -229,7 +180,7 @@ const options = [
       { value: 'security', label: '安全', icon: 'warning' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -244,8 +195,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('users')
-
-const options = [
+const options = ref([
   {
     key: 'system',
     title: '系统',
@@ -255,7 +205,7 @@ const options = [
       { key: 'roles', title: '角色', iconName: 'information' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -277,8 +227,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('profile')
-
-const options = [
+const options = ref([
   {
     value: 'settings',
     label: '设置',
@@ -294,7 +243,7 @@ const options = [
     icon: 'delete',
     disabled: true,
   },
-]
+])
 </script>
 
 <template>
@@ -309,8 +258,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: '概览',
@@ -325,7 +273,7 @@ const options = [
       { value: 'tasks', label: '任务', icon: 'check' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -370,6 +318,7 @@ const options = [
 | `value` | 选项值 | _string \| number_ | `-` |
 | `label` | 选项标签 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
+| `render` | 自定义选项渲染 | _(option, active, { node }) => VNodeChild_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `var-icon` |
 | `disabled` | 是否禁用当前选项 | _boolean_ | `false` |
 | `children` | 子选项 | _TreeMenuOption[]_ | `-` |

@@ -37,7 +37,7 @@
       @click="toggleColumnSorter(headerCell.column.key)"
     >
       <span :class="n('sort-trigger-text')">
-        <maybe-v-node :is="headerTitle" />
+        <maybe-v-node :is="renderHeaderTitle()" />
       </span>
       <span :class="n('sort-trigger-icon')" aria-hidden="true">
         <var-icon
@@ -54,7 +54,7 @@
         />
       </span>
     </button>
-    <maybe-v-node v-else :is="headerTitle" />
+    <maybe-v-node v-else :is="renderHeaderTitle()" />
     <button
       v-if="
         isColumnResizable(headerCell.column) &&
@@ -72,7 +72,7 @@
 
 <script lang="ts">
 import { callOrReturn } from '@varlet/shared'
-import { computed, defineComponent, type CSSProperties, type PropType, type VNodeChild } from 'vue'
+import { computed, defineComponent, type CSSProperties, type PropType } from 'vue'
 import VarCheckbox from '../checkbox'
 import VarIcon from '../icon'
 import { createNamespace, MaybeVNode } from '../utils/components'
@@ -181,16 +181,6 @@ export default defineComponent({
       return props.headerCell.column.titleAlign ?? props.headerCell.column.align ?? 'left'
     })
 
-    const headerTitle = computed<VNodeChild>(() => {
-      const { column } = props.headerCell
-
-      if (props.isSelectionColumn(column) || props.isExpandColumn(column)) {
-        return ''
-      }
-
-      return callOrReturn(column.title)
-    })
-
     const sortTriggerStyle = computed<CSSProperties>(() => {
       if (props.headerCell.colSpan != null && props.headerCell.colSpan > 1) {
         return {}
@@ -205,11 +195,21 @@ export default defineComponent({
       }
     })
 
+    function renderHeaderTitle() {
+      const { column } = props.headerCell
+
+      if (props.isSelectionColumn(column) || props.isExpandColumn(column)) {
+        return ''
+      }
+
+      return callOrReturn(column.title)
+    }
+
     return {
       n,
       classes,
       columnSorterOrder,
-      headerTitle,
+      renderHeaderTitle,
       headerAlign,
       sortTriggerStyle,
     }

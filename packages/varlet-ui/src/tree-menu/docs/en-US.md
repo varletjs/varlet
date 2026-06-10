@@ -11,8 +11,7 @@ Display recursive navigation menu items with active and expanded states.
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: 'Overview',
@@ -64,7 +63,7 @@ const options = [
       },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -79,8 +78,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('projects')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: 'Overview',
@@ -110,58 +108,11 @@ const options = [
       { value: 'security', label: 'Security', icon: 'warning' },
     ],
   },
-]
+])
 </script>
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" accordion />
-</template>
-```
-
-### Controlled Expanded Values
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref('reports')
-const expandedValues = ref(['analytics'])
-
-const options = [
-  {
-    value: 'overview',
-    label: 'Overview',
-    icon: 'home',
-  },
-  {
-    value: 'workspace',
-    label: 'Workspace',
-    icon: 'notebook',
-    children: [
-      { value: 'projects', label: 'Projects', icon: 'star' },
-      { value: 'tasks', label: 'Tasks', icon: 'check' },
-    ],
-  },
-  {
-    value: 'analytics',
-    label: 'Analytics',
-    icon: 'information',
-    children: [{ value: 'reports', label: 'Reports', icon: 'bookmark' }],
-  },
-  {
-    value: 'settings',
-    label: 'Settings',
-    icon: 'cog',
-    children: [
-      { value: 'profile', label: 'Profile', icon: 'account-circle' },
-      { value: 'security', label: 'Security', icon: 'warning' },
-    ],
-  },
-]
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" v-model:expanded-values="expandedValues" :options="options" />
 </template>
 ```
 
@@ -172,8 +123,7 @@ const options = [
 import { h, ref } from 'vue'
 
 const active = ref('projects')
-
-const options = [
+const options = ref([
   {
     value: 'workspace',
     label: 'Workspace',
@@ -181,16 +131,18 @@ const options = [
     children: [
       {
         value: 'projects',
+        href: '#projects',
         label: (option, active) =>
           h('span', { class: ['custom-label', active && 'custom-label--active'] }, [
             'Projects',
             h('span', { class: 'tag' }, '12'),
           ]),
         icon: () => h('span', { class: 'dot' }),
+        render: (option, active, { node }) => h('a', { href: option.href }, [node]),
       },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -198,15 +150,14 @@ const options = [
 </template>
 ```
 
-### Group and Divider
+### Menu Group
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     type: 'group',
     value: 'main',
@@ -229,7 +180,7 @@ const options = [
       { value: 'security', label: 'Security', icon: 'warning' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -244,8 +195,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('users')
-
-const options = [
+const options = ref([
   {
     key: 'system',
     title: 'System',
@@ -255,7 +205,7 @@ const options = [
       { key: 'roles', title: 'Roles', iconName: 'information' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -277,8 +227,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('profile')
-
-const options = [
+const options = ref([
   {
     value: 'settings',
     label: 'Settings',
@@ -294,7 +243,7 @@ const options = [
     icon: 'delete',
     disabled: true,
   },
-]
+])
 </script>
 
 <template>
@@ -309,8 +258,7 @@ const options = [
 import { ref } from 'vue'
 
 const active = ref('overview')
-
-const options = [
+const options = ref([
   {
     value: 'overview',
     label: 'Overview',
@@ -325,7 +273,7 @@ const options = [
       { value: 'tasks', label: 'Tasks', icon: 'check' },
     ],
   },
-]
+])
 </script>
 
 <template>
@@ -370,6 +318,7 @@ const options = [
 | `value` | Option value | _string \| number_ | `-` |
 | `label` | Option label | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
+| `render` | Custom option render | _(option, active, { node }) => VNodeChild_ | `-` |
 | `namespace` | Icon namespace | _string_ | `var-icon` |
 | `disabled` | Whether the option is disabled | _boolean_ | `false` |
 | `children` | Child options | _TreeMenuOption[]_ | `-` |

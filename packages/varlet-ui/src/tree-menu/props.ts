@@ -9,10 +9,21 @@ export type TreeMenuOptionLabelRender = (option: TreeMenuOption, active: boolean
 
 export type TreeMenuOptionIconRender = (option: TreeMenuOption, active: boolean) => VNodeChild
 
+export interface TreeMenuOptionRenderContext {
+  node: VNode
+}
+
+export type TreeMenuOptionRender = (
+  option: TreeMenuOption,
+  active: boolean,
+  context: TreeMenuOptionRenderContext,
+) => VNodeChild
+
 export interface TreeMenuBaseOption {
   value?: TreeMenuOptionValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
+  render?: TreeMenuOptionRender
   namespace?: string
   disabled?: boolean
   children?: TreeMenuOption[]
