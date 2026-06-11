@@ -145,13 +145,13 @@ const treeCheckedRowKeys = ref([1, 11, 12])
 const treeNonCascadeCheckedRowKeys = ref([12])
 const treeSingleCheckedRowKeys = ref([21])
 const selectionColumns = computed(() => [
-  { type: 'selection' },
+  { type: 'selection', align: 'center' },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },
 ])
 const singleSelectionColumns = computed(() => [
-  { type: 'selection', multiple: false },
+  { type: 'selection', align: 'center', multiple: false },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },
@@ -172,13 +172,13 @@ const expandColumns = computed(() => [
   { key: 'status', title: t('status') },
 ])
 const treeColumns = computed(() => [
-  { type: 'selection' },
+  { type: 'selection', align: 'center' },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },
 ])
 const treeSingleColumns = computed(() => [
-  { type: 'selection', multiple: false },
+  { type: 'selection', align: 'center', multiple: false },
   { key: 'name', title: t('name') },
   { key: 'role', title: t('role') },
   { key: 'status', title: t('status') },

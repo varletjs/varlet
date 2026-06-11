@@ -461,7 +461,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([1, 3])
 
 const columns = ref([
-  { type: 'selection' },
+  { type: 'selection', align: 'center' },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -489,7 +489,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([2])
 
 const columns = ref([
-  { type: 'selection', multiple: false },
+  { type: 'selection', align: 'center', multiple: false },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -517,7 +517,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([12])
 
 const columns = ref([
-  { type: 'selection' },
+  { type: 'selection', align: 'center' },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -564,7 +564,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([12])
 
 const columns = ref([
-  { type: 'selection' },
+  { type: 'selection', align: 'center' },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },
@@ -612,7 +612,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([21])
 
 const columns = ref([
-  { type: 'selection', multiple: false },
+  { type: 'selection', align: 'center', multiple: false },
   { key: 'name', title: 'Name' },
   { key: 'role', title: 'Role' },
   { key: 'status', title: 'Status' },

@@ -2,20 +2,20 @@
 
 | Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
-| `name` | Item name, used as the matching identifier | _number \| string_ | `-` |
+| `name` | Item name, used as the matching identifier. The item index is used when not set | _number \| string_ | `-` |
 | `label` | Label text | _string_ | `-` |
 | `icon` | Icon name, same as the Icon component [name](/#/en-US/icon) | _string_ | `-` |
 | `namespace` | Icon namespace, same as the Icon component [namespace](/#/en-US/icon) | _string_ | `var-icon` |
 | `badge` | Badge in the upper right corner of the icon, same as Badge props | _boolean \| BadgeProps_ | `false` |
-| `disabled` | Whether the option is disabled | _boolean_ | `false` |
+| `disabled` | Whether the item is disabled | _boolean_ | `false` |
 
 ### Events
 
 | Event | Description | Arguments |
 | ---- | ---- | ---- |
-| `click` | Triggered when clicking the item | `active: number \| string` |
-| `mouseenter` | Triggered when the mouse enters the item | `active: number \| string` |
-| `mouseleave` | Triggered when the mouse leaves the item | `active: number \| string` |
+| `click` | Triggered when clicking the item | `name: number \| string` |
+| `mouseenter` | Triggered when the mouse enters the item | `name: number \| string` |
+| `mouseleave` | Triggered when the mouse leaves the item | `name: number \| string` |
 
 ### Slots
 

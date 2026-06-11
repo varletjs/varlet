@@ -2,7 +2,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
-| `name` | 导航项名称，作为匹配的标识符 | _number \| string_ | `-` |
+| `name` | 导航项名称，作为匹配的标识符，未设置时使用索引值 | _number \| string_ | `-` |
 | `label` | 标签文字内容 | _string_ | `-` |
 | `icon` | 图标名称，等同于 Icon 组件的 [name 属性](/#/zh-CN/icon) | _string_ | `-` |
 | `namespace` | 图标的命名空间，等同于 Icon 组件的 [namespace 属性](/#/zh-CN/icon) | _string_ | `var-icon` |
@@ -13,9 +13,9 @@
 
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| `click` | 点击时触发 | `active: number \| string` |
-| `mouseenter` | 鼠标移入时触发 | `active: number \| string` |
-| `mouseleave` | 鼠标移出时触发 | `active: number \| string` |
+| `click` | 点击时触发 | `name: number \| string` |
+| `mouseenter` | 鼠标移入时触发 | `name: number \| string` |
+| `mouseleave` | 鼠标移出时触发 | `name: number \| string` |
 
 ### 插槽
 
