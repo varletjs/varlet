@@ -354,6 +354,7 @@ The following CSS variables are used by the component and can be customized thro
 | `--rail-navigation-item-indicator-width` | `56px` |
 | `--rail-navigation-item-indicator-height` | `32px` |
 | `--rail-navigation-item-indicator-hover-background` | `transparent` |
+| `--rail-navigation-item-indicator-pressed-background` | `transparent` |
 | `--rail-navigation-item-indicator-active-background` | `transparent` |
 | `--rail-navigation-item-inactive-text-color` | `var(--color-on-surface-variant)` |
 | `--rail-navigation-item-active-text-color` | `var(--color-primary)` |

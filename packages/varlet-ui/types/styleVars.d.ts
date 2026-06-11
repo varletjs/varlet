@@ -606,6 +606,7 @@ interface BaseStyleVars {
   '--rail-navigation-item-indicator-width'?: string
   '--rail-navigation-item-indicator-height'?: string
   '--rail-navigation-item-indicator-hover-background'?: string
+  '--rail-navigation-item-indicator-pressed-background'?: string
   '--rail-navigation-item-indicator-active-background'?: string
   '--rail-navigation-item-inactive-text-color'?: string
   '--rail-navigation-item-active-text-color'?: string

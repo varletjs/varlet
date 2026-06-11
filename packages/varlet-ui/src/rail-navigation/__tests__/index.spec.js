@@ -427,6 +427,7 @@ describe('rail-navigation public contract', () => {
     expect(styleVarsTypes).toContain("'--rail-navigation-end-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-gap'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-inactive-text-color'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-pressed-background'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-active-background'?: string")
   })
 
@@ -448,6 +449,7 @@ describe('rail-navigation public contract', () => {
       '--rail-navigation-item-indicator-width',
       '--rail-navigation-item-indicator-height',
       '--rail-navigation-item-indicator-hover-background',
+      '--rail-navigation-item-indicator-pressed-background',
       '--rail-navigation-item-indicator-active-background',
       '--rail-navigation-item-inactive-text-color',
       '--rail-navigation-item-active-text-color',

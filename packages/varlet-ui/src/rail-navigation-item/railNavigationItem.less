@@ -4,6 +4,7 @@
   --rail-navigation-item-indicator-width: 56px;
   --rail-navigation-item-indicator-height: 32px;
   --rail-navigation-item-indicator-hover-background: transparent;
+  --rail-navigation-item-indicator-pressed-background: transparent;
   --rail-navigation-item-indicator-active-background: transparent;
   --rail-navigation-item-inactive-text-color: var(--color-on-surface-variant);
   --rail-navigation-item-active-text-color: var(--color-primary);
@@ -93,6 +94,12 @@
   }
 
   &:hover &__indicator::before {
+    opacity: 1;
+  }
+
+  &:active:not(.var-rail-navigation-item--ripple-enabled):not(.var-rail-navigation-item--disabled)
+    &__indicator::before {
+    background-color: var(--rail-navigation-item-indicator-pressed-background);
     opacity: 1;
   }
 
