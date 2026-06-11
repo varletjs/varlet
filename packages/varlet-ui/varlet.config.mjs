@@ -465,6 +465,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'TreeMenu 树形菜单',
+          'en-US': 'TreeMenu',
+        },
+        doc: 'tree-menu',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '功能指令',
           'en-US': 'Functional Directives',
         },

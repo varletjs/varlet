@@ -5,6 +5,8 @@ import { ref } from 'vue'
 import { t, use } from './locale'
 
 const basicUsageActive = ref(0)
+const showLabelActive = ref(0)
+const showLabel = ref(false)
 const rippleActive = ref(0)
 const matchByNameActive = ref('home')
 const disabledActive = ref(0)
@@ -49,6 +51,25 @@ function handleMouseleave(active) {
     <var-rail-navigation-item :label="t('favorite')" icon="heart" />
     <var-rail-navigation-item :label="t('account')" icon="account-circle" />
   </var-rail-navigation>
+
+  <app-type>{{ t('showLabel') }}</app-type>
+  <div class="rail-navigation-example__show-label">
+    <var-switch v-model="showLabel" variant />
+    <var-rail-navigation v-model:active="showLabelActive" :show-label="showLabel">
+      <var-tooltip :content="t('home')" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item :label="t('home')" icon="home" />
+      </var-tooltip>
+      <var-tooltip :content="t('search')" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item :label="t('search')" icon="magnify" />
+      </var-tooltip>
+      <var-tooltip :content="t('favorite')" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item :label="t('favorite')" icon="heart" />
+      </var-tooltip>
+      <var-tooltip :content="t('account')" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item :label="t('account')" icon="account-circle" />
+      </var-tooltip>
+    </var-rail-navigation>
+  </div>
 
   <app-type>{{ t('matchByName') }}</app-type>
   <var-rail-navigation v-model:active="matchByNameActive">
@@ -147,6 +168,13 @@ function handleMouseleave(active) {
   width: 100%;
   color: inherit;
   text-decoration: none;
+}
+
+.rail-navigation-example__show-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .rail-navigation-example__slots {

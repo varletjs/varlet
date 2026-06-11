@@ -42,6 +42,46 @@ const active = ref(0)
 </template>
 ```
 
+### 显示标签
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+const showLabel = ref(false)
+</script>
+
+<template>
+  <div class="rail-navigation-show-label">
+    <var-switch v-model="showLabel" variant />
+    <var-rail-navigation v-model:active="active" :show-label="showLabel">
+      <var-tooltip content="首页" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="首页" icon="home" />
+      </var-tooltip>
+      <var-tooltip content="搜索" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="搜索" icon="magnify" />
+      </var-tooltip>
+      <var-tooltip content="收藏" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="收藏" icon="heart" />
+      </var-tooltip>
+      <var-tooltip content="我的" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="我的" icon="account-circle" />
+      </var-tooltip>
+    </var-rail-navigation>
+  </div>
+</template>
+
+<style>
+.rail-navigation-show-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+</style>
+```
+
 ### 通过名称匹配
 
 ```html
@@ -242,6 +282,7 @@ const active = ref('tooltip')
 | --- | --- | --- | --- |
 | `v-model:active` | 激活导航项的索引或名称 | _number \| string_ | `0` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `false` |
+| `show-label` | 是否显示导航项标签 | _boolean_ | `true` |
 | `border` | 是否显示右侧边框 | _boolean_ | `false` |
 
 #### RailNavigationItem Props
@@ -313,6 +354,7 @@ const active = ref('tooltip')
 | `--rail-navigation-item-indicator-width` | `56px` |
 | `--rail-navigation-item-indicator-height` | `32px` |
 | `--rail-navigation-item-indicator-hover-background` | `transparent` |
+| `--rail-navigation-item-indicator-pressed-background` | `transparent` |
 | `--rail-navigation-item-indicator-active-background` | `transparent` |
 | `--rail-navigation-item-inactive-text-color` | `var(--color-on-surface-variant)` |
 | `--rail-navigation-item-active-text-color` | `var(--color-primary)` |

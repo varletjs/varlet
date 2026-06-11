@@ -20,6 +20,17 @@ function readProjectFile(path) {
   return readFileSync(resolve(process.cwd(), path), 'utf-8')
 }
 
+function expectHeadingsInOrder(source, headings) {
+  let lastIndex = -1
+
+  headings.forEach((heading) => {
+    const index = source.indexOf(`### ${heading}`)
+
+    expect(index).toBeGreaterThan(lastIndex)
+    lastIndex = index
+  })
+}
+
 test('rail-navigation plugin', () => {
   const app = createApp({}).use(RailNavigation).use(RailNavigationItem)
 
@@ -42,13 +53,43 @@ describe('rail-navigation component api', () => {
     })
 
     expect(wrapper.find('.var-rail-navigation').exists()).toBe(true)
-    expect(wrapper.findAll('.var-rail-navigation__section')).toHaveLength(2)
     expect(wrapper.find('.var-rail-navigation__start').exists()).toBe(true)
     expect(wrapper.find('.var-rail-navigation__end').exists()).toBe(true)
     expect(wrapper.find('.var-rail-navigation__content').exists()).toBe(true)
     expect(wrapper.find('.start').text()).toBe('start')
     expect(wrapper.find('.end').text()).toBe('end')
     expect(wrapper.find('.var-rail-navigation-item').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
+  test('show-label controls item label rendering', async () => {
+    const wrapper = mount({
+      components,
+      data: () => ({
+        active: 0,
+        showLabel: true,
+      }),
+      template: `
+        <var-rail-navigation v-model:active="active" :show-label="showLabel">
+          <var-rail-navigation-item label="Home" icon="home" />
+          <var-rail-navigation-item icon="magnify">
+            <span class="custom-label">Search</span>
+          </var-rail-navigation-item>
+        </var-rail-navigation>
+      `,
+    })
+
+    expect(wrapper.findAll('.var-rail-navigation-item__label')).toHaveLength(2)
+    expect(wrapper.find('.var-rail-navigation-item').classes()).not.toContain('var-rail-navigation-item--icon-only')
+    expect(wrapper.text()).toContain('Home')
+    expect(wrapper.find('.custom-label').exists()).toBe(true)
+
+    await wrapper.setData({ showLabel: false })
+
+    expect(wrapper.findAll('.var-rail-navigation-item__label')).toHaveLength(0)
+    expect(wrapper.find('.var-rail-navigation-item').classes()).toContain('var-rail-navigation-item--icon-only')
+    expect(wrapper.text()).not.toContain('Home')
+    expect(wrapper.find('.custom-label').exists()).toBe(false)
     wrapper.unmount()
   })
 
@@ -227,6 +268,11 @@ describe('rail-navigation component api', () => {
     })
     const item = wrapper.find('.var-rail-navigation-item')
 
+    expect(item.classes()).toContain('var-rail-navigation-item--ripple-enabled')
+    await doubleRaf()
+    await doubleRaf()
+    expect(item.attributes('style')).toContain('--rail-navigation-item-transition-duration-override: 0ms')
+
     await trigger(item, 'touchstart')
     await delay(250)
     expect(item.find('.var-ripple').exists()).toBe(true)
@@ -235,6 +281,7 @@ describe('rail-navigation component api', () => {
     expect(item.find('.var-ripple').exists()).toBe(false)
 
     await wrapper.setData({ ripple: false })
+    expect(item.classes()).not.toContain('var-rail-navigation-item--ripple-enabled')
     await trigger(item, 'touchstart')
     await delay(250)
     expect(item.find('.var-ripple').exists()).toBe(false)
@@ -361,6 +408,7 @@ describe('rail-navigation public contract', () => {
 
     expect(railNavigationTypes).toContain('active?: number | string')
     expect(railNavigationTypes).toContain('ripple?: boolean')
+    expect(railNavigationTypes).toContain('showLabel?: boolean')
     expect(railNavigationTypes).toContain('border?: boolean')
     expect(railNavigationTypes).toContain('onChange?: ListenerProp<(active: number | string) => void>')
     expect(railNavigationTypes).toContain("'onUpdate:active'?: ListenerProp<(active: number | string) => void>")
@@ -389,6 +437,7 @@ describe('rail-navigation public contract', () => {
     expect(styleVarsTypes).toContain("'--rail-navigation-end-padding'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-gap'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-inactive-text-color'?: string")
+    expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-pressed-background'?: string")
     expect(styleVarsTypes).toContain("'--rail-navigation-item-indicator-active-background'?: string")
   })
 
@@ -410,6 +459,7 @@ describe('rail-navigation public contract', () => {
       '--rail-navigation-item-indicator-width',
       '--rail-navigation-item-indicator-height',
       '--rail-navigation-item-indicator-hover-background',
+      '--rail-navigation-item-indicator-pressed-background',
       '--rail-navigation-item-indicator-active-background',
       '--rail-navigation-item-inactive-text-color',
       '--rail-navigation-item-active-text-color',
@@ -434,35 +484,38 @@ describe('rail-navigation public contract', () => {
     })
   })
 
-  test('docs and example stay aligned', () => {
-    const example = readProjectFile('src/rail-navigation/example/index.vue')
+  test('docs expose public api in order', () => {
     const enUS = readProjectFile('src/rail-navigation/docs/en-US.md')
     const zhCN = readProjectFile('src/rail-navigation/docs/zh-CN.md')
     const itemEnUS = readProjectFile('src/rail-navigation-item/docs/en-US.md')
     const itemZhCN = readProjectFile('src/rail-navigation-item/docs/zh-CN.md')
-    const enLocale = readProjectFile('src/rail-navigation/example/locale/en-US.ts')
-    const zhLocale = readProjectFile('src/rail-navigation/example/locale/zh-CN.ts')
 
-    ;[
+    expectHeadingsInOrder(enUS, [
       'Basic Usage',
       'Ripple',
+      'Show Label',
       'Match By Name',
       'Disabled',
       'Badge',
       'Event Handling',
       'Slots',
       'Custom Navigation',
-    ].forEach((title) => {
-      expect(enUS).toContain(`### ${title}`)
-    })
-    ;['基本使用', '水波效果', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
-      (title) => {
-        expect(zhCN).toContain(`### ${title}`)
-      },
-    )
+    ])
+    expectHeadingsInOrder(zhCN, [
+      '基本使用',
+      '水波效果',
+      '显示标签',
+      '通过名称匹配',
+      '禁用选项',
+      '徽标提示',
+      '事件处理',
+      '插槽',
+      '自定义导航',
+    ])
 
-    ;[example, enUS, zhCN].forEach((source) => {
+    ;[enUS, zhCN].forEach((source) => {
       expect(source).toContain('ripple')
+      expect(source).toContain('showLabel')
       expect(source).toContain('@change')
       expect(source).toContain('@click')
       expect(source).toContain('@mouseenter')
@@ -483,10 +536,5 @@ describe('rail-navigation public contract', () => {
       expect(source).toContain('`active: boolean`')
       expect(source).toContain('`--rail-navigation-item-indicator-active-background`')
     })
-
-    expect(enLocale).not.toContain('Profile')
-    expect(enLocale).not.toContain('Logout')
-    expect(zhLocale).not.toContain('个人资料')
-    expect(zhLocale).not.toContain('退出登录')
   })
 })

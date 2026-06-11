@@ -42,6 +42,46 @@ const active = ref(0)
 </template>
 ```
 
+### Show Label
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+const showLabel = ref(false)
+</script>
+
+<template>
+  <div class="rail-navigation-show-label">
+    <var-switch v-model="showLabel" variant />
+    <var-rail-navigation v-model:active="active" :show-label="showLabel">
+      <var-tooltip content="Home" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="Home" icon="home" />
+      </var-tooltip>
+      <var-tooltip content="Search" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="Search" icon="magnify" />
+      </var-tooltip>
+      <var-tooltip content="Favorite" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="Favorite" icon="heart" />
+      </var-tooltip>
+      <var-tooltip content="Account" placement="right" :disabled="showLabel">
+        <var-rail-navigation-item label="Account" icon="account-circle" />
+      </var-tooltip>
+    </var-rail-navigation>
+  </div>
+</template>
+
+<style>
+.rail-navigation-show-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+</style>
+```
+
 ### Match By Name
 
 ```html
@@ -242,6 +282,7 @@ const active = ref('tooltip')
 | --- | --- | --- | --- |
 | `v-model:active` | Index or name of active item | _number \| string_ | `0` |
 | `ripple` | Whether to enable ripple | _boolean_ | `false` |
+| `show-label` | Whether to show item labels | _boolean_ | `true` |
 | `border` | Whether to show the right border | _boolean_ | `false` |
 
 #### RailNavigationItem Props
@@ -313,6 +354,7 @@ The following CSS variables are used by the component and can be customized thro
 | `--rail-navigation-item-indicator-width` | `56px` |
 | `--rail-navigation-item-indicator-height` | `32px` |
 | `--rail-navigation-item-indicator-hover-background` | `transparent` |
+| `--rail-navigation-item-indicator-pressed-background` | `transparent` |
 | `--rail-navigation-item-indicator-active-background` | `transparent` |
 | `--rail-navigation-item-inactive-text-color` | `var(--color-on-surface-variant)` |
 | `--rail-navigation-item-active-text-color` | `var(--color-primary)` |

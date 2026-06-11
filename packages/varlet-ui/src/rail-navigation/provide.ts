@@ -4,6 +4,7 @@ import { type ComputedRef } from 'vue'
 export interface RailNavigationProvider {
   active: ComputedRef<number | string>
   ripple: ComputedRef<boolean>
+  showLabel: ComputedRef<boolean>
   onToggle(value: number | string): void
 }
 

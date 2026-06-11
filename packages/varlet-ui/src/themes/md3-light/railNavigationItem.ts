@@ -4,6 +4,7 @@ export default {
   '--rail-navigation-item-indicator-width': '56px',
   '--rail-navigation-item-indicator-height': '32px',
   '--rail-navigation-item-indicator-hover-background': 'rgba(0, 0, 0, 0.06)',
+  '--rail-navigation-item-indicator-pressed-background': 'rgba(0, 0, 0, 0.1)',
   '--rail-navigation-item-indicator-active-background': 'var(--color-info-container)',
   '--rail-navigation-item-inactive-text-color': 'var(--color-on-surface-variant)',
   '--rail-navigation-item-active-text-color': 'var(--color-on-info-container)',

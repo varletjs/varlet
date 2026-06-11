@@ -9,6 +9,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  showLabel: {
+    type: Boolean,
+    default: true,
+  },
   border: Boolean,
   onChange: defineListenerProp<(active: number | string) => void>(),
   'onUpdate:active': defineListenerProp<(active: number | string) => void>(),

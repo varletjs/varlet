@@ -21,18 +21,22 @@
 }
 
 .var-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   position: relative;
+  vertical-align: middle;
   transition: background-color 0.25s;
 
   &__content {
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: var(--badge-content-padding);
     border: var(--badge-content-border);
     border-radius: var(--badge-content-border-radius);
     font-size: var(--badge-content-font-size);
+    line-height: 1;
   }
 
   &--offset {

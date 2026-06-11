@@ -606,6 +606,7 @@ interface BaseStyleVars {
   '--rail-navigation-item-indicator-width'?: string
   '--rail-navigation-item-indicator-height'?: string
   '--rail-navigation-item-indicator-hover-background'?: string
+  '--rail-navigation-item-indicator-pressed-background'?: string
   '--rail-navigation-item-indicator-active-background'?: string
   '--rail-navigation-item-inactive-text-color'?: string
   '--rail-navigation-item-active-text-color'?: string
@@ -986,6 +987,33 @@ interface BaseStyleVars {
   '--tooltip-success-text-color'?: string
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
+  '--tree-menu-background'?: string
+  '--tree-menu-item-text-color'?: string
+  '--tree-menu-padding'?: string
+  '--tree-menu-item-gap'?: string
+  '--tree-menu-item-height'?: string
+  '--tree-menu-item-padding'?: string
+  '--tree-menu-item-border-radius'?: string
+  '--tree-menu-item-indent'?: string
+  '--tree-menu-item-icon-size'?: string
+  '--tree-menu-item-icon-margin-right'?: string
+  '--tree-menu-item-label-font-size'?: string
+  '--tree-menu-item-label-line-height'?: string
+  '--tree-menu-group-label-height'?: string
+  '--tree-menu-group-label-padding'?: string
+  '--tree-menu-group-label-color'?: string
+  '--tree-menu-group-label-font-size'?: string
+  '--tree-menu-divider-margin'?: string
+  '--tree-menu-divider-color'?: string
+  '--tree-menu-item-hover-background'?: string
+  '--tree-menu-item-pressed-background'?: string
+  '--tree-menu-item-active-background'?: string
+  '--tree-menu-item-active-text-color'?: string
+  '--tree-menu-item-disabled-opacity'?: string
+  '--tree-menu-item-indicator-border-radius'?: string
+  '--tree-menu-item-indicator-active-transition-duration'?: string
+  '--tree-menu-expand-icon-color'?: string
+  '--tree-menu-expand-icon-size'?: string
   '--uploader-action-background'?: string
   '--uploader-action-icon-color'?: string
   '--uploader-action-icon-size'?: string
