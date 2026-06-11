@@ -574,6 +574,7 @@ describe('tree-menu component api', () => {
   test('docs expose public api in order', () => {
     const enUS = readProjectFile('src/tree-menu/docs/en-US.md')
     const zhCN = readProjectFile('src/tree-menu/docs/zh-CN.md')
+    const styleVarsTypes = readProjectFile('types/styleVars.d.ts')
 
     expectHeadingsInOrder(enUS, [
       'Basic Usage',
@@ -610,5 +611,8 @@ describe('tree-menu component api', () => {
 
     expect(enUS).toContain('| `value` | Option value | _string \\| number_ | `-` |')
     expect(zhCN).toContain('| `value` | 选项值 | _string \\| number_ | `-` |')
+    expect(enUS).toContain('| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |')
+    expect(zhCN).toContain('| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |')
+    expect(styleVarsTypes).toContain("'--tree-menu-item-indicator-active-transition-duration'?: string")
   })
 })

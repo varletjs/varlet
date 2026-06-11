@@ -1011,6 +1011,7 @@ interface BaseStyleVars {
   '--tree-menu-item-active-text-color'?: string
   '--tree-menu-item-disabled-opacity'?: string
   '--tree-menu-item-indicator-border-radius'?: string
+  '--tree-menu-item-indicator-active-transition-duration'?: string
   '--tree-menu-expand-icon-color'?: string
   '--tree-menu-expand-icon-size'?: string
   '--uploader-action-background'?: string
