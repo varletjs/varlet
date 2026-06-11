@@ -38,19 +38,8 @@
     color 0.25s,
     background-color 0.25s;
 
-  &__option + &__option {
-    margin-top: var(--tree-menu-item-gap);
-  }
-
+  &__option + &__option,
   &__children > &__option:first-child {
-    margin-top: var(--tree-menu-item-gap);
-  }
-
-  &__children > &__option + &__option {
-    margin-top: var(--tree-menu-item-gap);
-  }
-
-  &__group-children > &__option + &__option {
     margin-top: var(--tree-menu-item-gap);
   }
 

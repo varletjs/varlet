@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { call, callOrReturn, isString } from '@varlet/shared'
-import { computed, defineComponent, h, withDirectives, type CSSProperties, type PropType } from 'vue'
+import { defineComponent, h, withDirectives, type PropType } from 'vue'
 import VarCollapseTransition from '../collapse-transition'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
@@ -63,9 +63,6 @@ export default defineComponent({
     onToggle: defineListenerProp<(option: TreeMenuNormalizedOption) => void>(),
   },
   setup(props) {
-    const styles = computed<CSSProperties>(() => ({
-      '--tree-menu-level': props.option.level,
-    }))
     function handleClick() {
       if (props.option.disabled) {
         return
@@ -112,7 +109,9 @@ export default defineComponent({
               [props.option.disabled, n('--item-disabled')],
               [props.ripple && !props.option.disabled, n('--item-ripple-enabled')],
             ),
-            style: styles.value,
+            style: {
+              '--tree-menu-level': props.option.level,
+            },
             onClick: handleClick,
           },
           [
@@ -162,13 +161,9 @@ export default defineComponent({
     }
 
     return {
-      renderLabel,
       renderGroupLabel,
       renderItem,
-      styles,
       n,
-      classes,
-      handleClick,
     }
   },
 })
