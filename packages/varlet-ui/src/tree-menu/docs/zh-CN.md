@@ -59,6 +59,36 @@ const options = ref([
 </template>
 ```
 
+### 水波纹
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+const options = ref([
+  {
+    value: 'overview',
+    label: '概览',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: '工作台',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: '项目', icon: 'star' },
+      { value: 'tasks', label: '任务', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" ripple />
+</template>
+```
+
 ### 手风琴
 
 同级菜单只允许展开一个。
@@ -198,36 +228,6 @@ const options = ref([
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" />
-</template>
-```
-
-### 水波纹
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref('overview')
-const options = ref([
-  {
-    value: 'overview',
-    label: '概览',
-    icon: 'home',
-  },
-  {
-    value: 'workspace',
-    label: '工作台',
-    icon: 'notebook',
-    children: [
-      { value: 'projects', label: '项目', icon: 'star' },
-      { value: 'tasks', label: '任务', icon: 'check' },
-    ],
-  },
-])
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" :options="options" ripple />
 </template>
 ```
 

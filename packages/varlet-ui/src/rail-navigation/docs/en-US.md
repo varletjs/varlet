@@ -23,6 +23,25 @@ const active = ref(0)
 </template>
 ```
 
+### Ripple
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-rail-navigation v-model:active="active" ripple>
+    <var-rail-navigation-item label="Home" icon="home" />
+    <var-rail-navigation-item label="Search" icon="magnify" />
+    <var-rail-navigation-item label="Favorite" icon="heart" />
+    <var-rail-navigation-item label="Account" icon="account-circle" />
+  </var-rail-navigation>
+</template>
+```
+
 ### Show Label
 
 ```html
@@ -61,25 +80,6 @@ const showLabel = ref(false)
   gap: 12px;
 }
 </style>
-```
-
-### Ripple
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" ripple>
-    <var-rail-navigation-item label="Home" icon="home" />
-    <var-rail-navigation-item label="Search" icon="magnify" />
-    <var-rail-navigation-item label="Favorite" icon="heart" />
-    <var-rail-navigation-item label="Account" icon="account-circle" />
-  </var-rail-navigation>
-</template>
 ```
 
 ### Match By Name

@@ -23,6 +23,25 @@ const active = ref(0)
 </template>
 ```
 
+### 水波效果
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-rail-navigation v-model:active="active" ripple>
+    <var-rail-navigation-item label="首页" icon="home" />
+    <var-rail-navigation-item label="搜索" icon="magnify" />
+    <var-rail-navigation-item label="收藏" icon="heart" />
+    <var-rail-navigation-item label="我的" icon="account-circle" />
+  </var-rail-navigation>
+</template>
+```
+
 ### 显示标签
 
 ```html
@@ -61,25 +80,6 @@ const showLabel = ref(false)
   gap: 12px;
 }
 </style>
-```
-
-### 水波效果
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-rail-navigation v-model:active="active" ripple>
-    <var-rail-navigation-item label="首页" icon="home" />
-    <var-rail-navigation-item label="搜索" icon="magnify" />
-    <var-rail-navigation-item label="收藏" icon="heart" />
-    <var-rail-navigation-item label="我的" icon="account-circle" />
-  </var-rail-navigation>
-</template>
 ```
 
 ### 通过名称匹配

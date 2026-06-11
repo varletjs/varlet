@@ -238,6 +238,9 @@ const dynamicOptions = computed(() => [
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-tree-menu v-model:active="basicActive" :options="options" class="tree-menu-example" />
 
+  <app-type>{{ t('ripple') }}</app-type>
+  <var-tree-menu v-model:active="rippleActive" :options="options" ripple class="tree-menu-example" />
+
   <app-type>{{ t('accordion') }}</app-type>
   <var-tree-menu v-model:active="accordionActive" :options="options" accordion class="tree-menu-example" />
 
@@ -257,9 +260,6 @@ const dynamicOptions = computed(() => [
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tree-menu v-model:active="disabledActive" :options="disabledOptions" class="tree-menu-example" />
-
-  <app-type>{{ t('ripple') }}</app-type>
-  <var-tree-menu v-model:active="rippleActive" :options="options" ripple class="tree-menu-example" />
 
   <app-type>{{ t('dynamicShow') }}</app-type>
   <var-switch v-model="showSecurity" variant />

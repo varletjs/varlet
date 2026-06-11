@@ -59,6 +59,36 @@ const options = ref([
 </template>
 ```
 
+### Ripple
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+const options = ref([
+  {
+    value: 'overview',
+    label: 'Overview',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: 'Projects', icon: 'star' },
+      { value: 'tasks', label: 'Tasks', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" ripple />
+</template>
+```
+
 ### Accordion
 
 Only one sibling menu can be expanded.
@@ -198,36 +228,6 @@ const options = ref([
 
 <template>
   <var-tree-menu v-model:active="active" :options="options" />
-</template>
-```
-
-### Ripple
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref('overview')
-const options = ref([
-  {
-    value: 'overview',
-    label: 'Overview',
-    icon: 'home',
-  },
-  {
-    value: 'workspace',
-    label: 'Workspace',
-    icon: 'notebook',
-    children: [
-      { value: 'projects', label: 'Projects', icon: 'star' },
-      { value: 'tasks', label: 'Tasks', icon: 'check' },
-    ],
-  },
-])
-</script>
-
-<template>
-  <var-tree-menu v-model:active="active" :options="options" ripple />
 </template>
 ```
 

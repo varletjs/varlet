@@ -44,6 +44,14 @@ function handleMouseleave(active) {
     <var-rail-navigation-item :label="t('account')" icon="account-circle" />
   </var-rail-navigation>
 
+  <app-type>{{ t('ripple') }}</app-type>
+  <var-rail-navigation v-model:active="rippleActive" ripple>
+    <var-rail-navigation-item :label="t('home')" icon="home" />
+    <var-rail-navigation-item :label="t('search')" icon="magnify" />
+    <var-rail-navigation-item :label="t('favorite')" icon="heart" />
+    <var-rail-navigation-item :label="t('account')" icon="account-circle" />
+  </var-rail-navigation>
+
   <app-type>{{ t('showLabel') }}</app-type>
   <div class="rail-navigation-example__show-label">
     <var-switch v-model="showLabel" variant />
@@ -62,14 +70,6 @@ function handleMouseleave(active) {
       </var-tooltip>
     </var-rail-navigation>
   </div>
-
-  <app-type>{{ t('ripple') }}</app-type>
-  <var-rail-navigation v-model:active="rippleActive" ripple>
-    <var-rail-navigation-item :label="t('home')" icon="home" />
-    <var-rail-navigation-item :label="t('search')" icon="magnify" />
-    <var-rail-navigation-item :label="t('favorite')" icon="heart" />
-    <var-rail-navigation-item :label="t('account')" icon="account-circle" />
-  </var-rail-navigation>
 
   <app-type>{{ t('matchByName') }}</app-type>
   <var-rail-navigation v-model:active="matchByNameActive">
