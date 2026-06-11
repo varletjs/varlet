@@ -1,6 +1,6 @@
 <template>
   <aside :class="classes(n(), n('$--box'), [border, n('--border')])" v-bind="$attrs">
-    <div v-if="$slots.start" :class="classes(n('section'), n('start'))">
+    <div v-if="$slots.start" :class="n('start')">
       <slot name="start"></slot>
     </div>
 
@@ -8,7 +8,7 @@
       <slot></slot>
     </nav>
 
-    <div v-if="$slots.end" :class="classes(n('section'), n('end'))">
+    <div v-if="$slots.end" :class="n('end')">
       <slot name="end"></slot>
     </div>
   </aside>

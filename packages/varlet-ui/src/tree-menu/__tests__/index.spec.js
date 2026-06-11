@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, h, nextTick } from 'vue'
@@ -28,6 +30,21 @@ const baseOptions = [
 
 const findItems = (wrapper) => wrapper.findAll('.var-tree-menu__item')
 const findItemByText = (wrapper, text) => findItems(wrapper).find((item) => item.text().includes(text))
+
+function readProjectFile(path) {
+  return readFileSync(resolve(process.cwd(), path), 'utf-8')
+}
+
+function expectHeadingsInOrder(source, headings) {
+  let lastIndex = -1
+
+  headings.forEach((heading) => {
+    const index = source.indexOf(`### ${heading}`)
+
+    expect(index).toBeGreaterThan(lastIndex)
+    lastIndex = index
+  })
+}
 
 test('tree-menu plugin', () => {
   const app = createApp({}).use(TreeMenu)
@@ -65,7 +82,7 @@ describe('tree-menu component api', () => {
             label: 'Main',
             children: [{ value: 'home', label: 'Home' }],
           },
-          { type: 'divider' },
+          { type: 'divider', value: 'main-divider' },
           { value: 'about', label: 'About' },
         ],
       },
@@ -90,7 +107,7 @@ describe('tree-menu component api', () => {
             label: 'Group',
             children: [{ value: 'home', label: 'Home' }],
           },
-          { type: 'divider' },
+          { type: 'divider', value: 'divider' },
         ],
         'onUpdate:active': onUpdateActive,
         'onUpdate:expandedValues': onUpdateExpandedValues,
@@ -319,17 +336,20 @@ describe('tree-menu component api', () => {
     wrapper.unmount()
   })
 
-  test('uses index as fallback option value', async () => {
+  test('requires option value for default value key', async () => {
     const onUpdateActive = vi.fn()
     const wrapper = mount(VarTreeMenu, {
       props: {
-        options: [{ label: 'First' }, { label: 'Second' }],
+        options: [
+          { value: 'first', label: 'First' },
+          { value: 'second', label: 'Second' },
+        ],
         'onUpdate:active': onUpdateActive,
       },
     })
 
     await trigger(findItemByText(wrapper, 'Second'), 'click')
-    expect(onUpdateActive).toHaveBeenCalledWith(1)
+    expect(onUpdateActive).toHaveBeenCalledWith('second')
     wrapper.unmount()
   })
 
@@ -549,5 +569,46 @@ describe('tree-menu component api', () => {
 
     expect(wrapper.attributes('style')).toContain('--tree-menu-item-indent: 2rem')
     wrapper.unmount()
+  })
+
+  test('docs expose public api in order', () => {
+    const enUS = readProjectFile('src/tree-menu/docs/en-US.md')
+    const zhCN = readProjectFile('src/tree-menu/docs/zh-CN.md')
+
+    expectHeadingsInOrder(enUS, [
+      'Basic Usage',
+      'Ripple',
+      'Accordion',
+      'Menu Group',
+      'Field Keys',
+      'Disabled',
+      'Dynamic Show',
+      'Slots',
+      'Custom Indent',
+      'Custom Render',
+    ])
+    expectHeadingsInOrder(zhCN, [
+      '基本使用',
+      '水波纹',
+      '手风琴',
+      '菜单分组',
+      '字段映射',
+      '禁用',
+      '动态显示',
+      '插槽',
+      '自定义缩进',
+      '自定义渲染',
+    ])
+
+    ;[enUS, zhCN].forEach((source) => {
+      expect(source).toContain('ripple')
+      expect(source).toContain('show:')
+      expect(source).toContain('render: ({ node })')
+      expect(source).toContain('indent')
+      expect(source).toContain('var-switch v-model')
+    })
+
+    expect(enUS).toContain('| `value` | Option value | _string \\| number_ | `-` |')
+    expect(zhCN).toContain('| `value` | 选项值 | _string \\| number_ | `-` |')
   })
 })

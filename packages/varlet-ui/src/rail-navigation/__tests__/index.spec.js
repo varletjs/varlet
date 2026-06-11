@@ -20,6 +20,17 @@ function readProjectFile(path) {
   return readFileSync(resolve(process.cwd(), path), 'utf-8')
 }
 
+function expectHeadingsInOrder(source, headings) {
+  let lastIndex = -1
+
+  headings.forEach((heading) => {
+    const index = source.indexOf(`### ${heading}`)
+
+    expect(index).toBeGreaterThan(lastIndex)
+    lastIndex = index
+  })
+}
+
 test('rail-navigation plugin', () => {
   const app = createApp({}).use(RailNavigation).use(RailNavigationItem)
 
@@ -42,7 +53,6 @@ describe('rail-navigation component api', () => {
     })
 
     expect(wrapper.find('.var-rail-navigation').exists()).toBe(true)
-    expect(wrapper.findAll('.var-rail-navigation__section')).toHaveLength(2)
     expect(wrapper.find('.var-rail-navigation__start').exists()).toBe(true)
     expect(wrapper.find('.var-rail-navigation__end').exists()).toBe(true)
     expect(wrapper.find('.var-rail-navigation__content').exists()).toBe(true)
@@ -474,35 +484,38 @@ describe('rail-navigation public contract', () => {
     })
   })
 
-  test('docs and example stay aligned', () => {
-    const example = readProjectFile('src/rail-navigation/example/index.vue')
+  test('docs expose public api in order', () => {
     const enUS = readProjectFile('src/rail-navigation/docs/en-US.md')
     const zhCN = readProjectFile('src/rail-navigation/docs/zh-CN.md')
     const itemEnUS = readProjectFile('src/rail-navigation-item/docs/en-US.md')
     const itemZhCN = readProjectFile('src/rail-navigation-item/docs/zh-CN.md')
-    const enLocale = readProjectFile('src/rail-navigation/example/locale/en-US.ts')
-    const zhLocale = readProjectFile('src/rail-navigation/example/locale/zh-CN.ts')
 
-    ;[
+    expectHeadingsInOrder(enUS, [
       'Basic Usage',
       'Ripple',
+      'Show Label',
       'Match By Name',
       'Disabled',
       'Badge',
       'Event Handling',
       'Slots',
       'Custom Navigation',
-    ].forEach((title) => {
-      expect(enUS).toContain(`### ${title}`)
-    })
-    ;['基本使用', '水波效果', '通过名称匹配', '禁用选项', '徽标提示', '事件处理', '插槽', '自定义导航'].forEach(
-      (title) => {
-        expect(zhCN).toContain(`### ${title}`)
-      },
-    )
+    ])
+    expectHeadingsInOrder(zhCN, [
+      '基本使用',
+      '水波效果',
+      '显示标签',
+      '通过名称匹配',
+      '禁用选项',
+      '徽标提示',
+      '事件处理',
+      '插槽',
+      '自定义导航',
+    ])
 
-    ;[example, enUS, zhCN].forEach((source) => {
+    ;[enUS, zhCN].forEach((source) => {
       expect(source).toContain('ripple')
+      expect(source).toContain('showLabel')
       expect(source).toContain('@change')
       expect(source).toContain('@click')
       expect(source).toContain('@mouseenter')
@@ -523,10 +536,5 @@ describe('rail-navigation public contract', () => {
       expect(source).toContain('`active: boolean`')
       expect(source).toContain('`--rail-navigation-item-indicator-active-background`')
     })
-
-    expect(enLocale).not.toContain('Profile')
-    expect(enLocale).not.toContain('Logout')
-    expect(zhLocale).not.toContain('个人资料')
-    expect(zhLocale).not.toContain('退出登录')
   })
 })

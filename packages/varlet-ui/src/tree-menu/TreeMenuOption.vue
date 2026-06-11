@@ -5,7 +5,7 @@
     <template v-else-if="option.type === 'group'">
       <maybe-v-node :is="renderGroupLabel()" />
 
-      <div :class="n('group-children')">
+      <div>
         <var-tree-menu-option
           v-for="child in option.children"
           :key="child.value"

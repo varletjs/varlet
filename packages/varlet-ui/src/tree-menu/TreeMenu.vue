@@ -103,7 +103,7 @@ export default defineComponent({
           }
 
           const type = option.type
-          const value = option[props.valueKey] ?? index
+          const value = option[props.valueKey]
           const rawChildren = option[props.childrenKey]
           const normalizedOption: TreeMenuNormalizedOption = {
             option,

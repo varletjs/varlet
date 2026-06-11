@@ -22,7 +22,7 @@ export type TreeMenuOptionRender = (
 ) => VNodeChild
 
 export interface TreeMenuBaseOption {
-  value?: TreeMenuOptionValue
+  value: TreeMenuOptionValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
   render?: TreeMenuOptionRender
