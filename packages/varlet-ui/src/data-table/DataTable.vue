@@ -247,15 +247,8 @@ export default defineComponent({
       }
 
       if (props.scrollX != null) {
-        const width = toSizeUnit(props.scrollX)
-        style.minWidth = hasResolvedColumnWidth.value
-          ? `max(${width}, ${toSizeUnit(totalResolvedColumnWidth.value)})`
-          : width
+        style.minWidth = toSizeUnit(props.scrollX)
         return style
-      }
-
-      if (hasResolvedColumnWidth.value) {
-        style.minWidth = toSizeUnit(totalResolvedColumnWidth.value)
       }
 
       return style

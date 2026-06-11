@@ -1320,7 +1320,7 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should respect configured column widths when all column widths are resolved', () => {
+  test('should use fixed layout when all column widths are resolved', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [
@@ -1337,7 +1337,7 @@ describe('test data-table component props', () => {
 
     expect(tableStyle).toContain('table-layout: fixed;')
     expect(tableStyle).toContain('width: 100%;')
-    expect(tableStyle).toContain('min-width: 300px;')
+    expect(tableStyle).not.toContain('min-width')
 
     wrapper.unmount()
   })
@@ -1360,7 +1360,7 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should respect configured column widths when scrollX is smaller than total resolved column width', () => {
+  test('should use scrollX as minimum horizontal width when it is smaller than total resolved column width', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [
@@ -1377,7 +1377,7 @@ describe('test data-table component props', () => {
     const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
 
     expect(tableStyle).toContain('width: 100%;')
-    expect(tableStyle).toContain('min-width: max(120px, 300px);')
+    expect(tableStyle).toContain('min-width: 120px;')
 
     wrapper.unmount()
   })
@@ -1446,7 +1446,7 @@ describe('test data-table component props', () => {
 
     expect(tableStyle).toContain('table-layout: fixed;')
     expect(tableStyle).toContain('width: 100%;')
-    expect(tableStyle).toContain('min-width: max(600px, 170px);')
+    expect(tableStyle).toContain('min-width: 600px;')
     expect(cols[0].attributes('style')).toContain('width: 120px;')
     expect(cols[1].attributes('style')).toContain('width: 50px;')
     expect(cols[2].attributes('style')).toBeUndefined()
