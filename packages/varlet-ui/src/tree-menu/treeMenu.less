@@ -17,12 +17,13 @@
   --tree-menu-group-label-font-size: var(--font-size-sm);
   --tree-menu-divider-margin: 8px 0;
   --tree-menu-divider-color: rgba(0, 0, 0, 0.12);
-  --tree-menu-item-hover-background: rgba(85, 85, 85, 0.08);
-  --tree-menu-item-pressed-background: rgba(85, 85, 85, 0.12);
+  --tree-menu-item-hover-background: rgba(85, 85, 85, 0.06);
+  --tree-menu-item-pressed-background: rgba(85, 85, 85, 0.1);
   --tree-menu-item-active-background: hsla(var(--hsl-primary), 0.1);
   --tree-menu-item-active-text-color: var(--color-primary);
   --tree-menu-item-disabled-opacity: var(--opacity-disabled);
   --tree-menu-item-indicator-border-radius: 0;
+  --tree-menu-item-indicator-active-transition-duration: 0ms;
   --tree-menu-expand-icon-color: var(--color-on-surface-variant);
   --tree-menu-expand-icon-size: 20px;
 }
@@ -140,8 +141,12 @@
   &--item-active &__item-indicator::after {
     transform: scaleX(1);
     transition:
-      transform 300ms cubic-bezier(0.2, 0, 0, 1),
-      background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+      transform var(--tree-menu-item-indicator-active-transition-duration) cubic-bezier(0.2, 0, 0, 1),
+      background-color var(--tree-menu-item-indicator-active-transition-duration) cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  &--item-ripple-enabled&--item-active &__item-indicator::after {
+    transition: none;
   }
 
   &--item-active:hover &__item-indicator::before {

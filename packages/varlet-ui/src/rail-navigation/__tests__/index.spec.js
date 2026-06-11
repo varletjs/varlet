@@ -258,6 +258,11 @@ describe('rail-navigation component api', () => {
     })
     const item = wrapper.find('.var-rail-navigation-item')
 
+    expect(item.classes()).toContain('var-rail-navigation-item--ripple-enabled')
+    await doubleRaf()
+    await doubleRaf()
+    expect(item.attributes('style')).toContain('--rail-navigation-item-transition-duration-override: 0ms')
+
     await trigger(item, 'touchstart')
     await delay(250)
     expect(item.find('.var-ripple').exists()).toBe(true)
@@ -266,6 +271,7 @@ describe('rail-navigation component api', () => {
     expect(item.find('.var-ripple').exists()).toBe(false)
 
     await wrapper.setData({ ripple: false })
+    expect(item.classes()).not.toContain('var-rail-navigation-item--ripple-enabled')
     await trigger(item, 'touchstart')
     await delay(250)
     expect(item.find('.var-ripple').exists()).toBe(false)

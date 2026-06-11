@@ -201,6 +201,36 @@ const options = ref([
 </template>
 ```
 
+### Ripple
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+const options = ref([
+  {
+    value: 'overview',
+    label: 'Overview',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: 'Workspace',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: 'Projects', icon: 'star' },
+      { value: 'tasks', label: 'Tasks', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" ripple />
+</template>
+```
+
 ### Dynamic Show
 
 ```html
@@ -446,8 +476,8 @@ The following CSS variables are used by the component and can be customized thro
 | `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
 | `--tree-menu-divider-margin` | `8px 0` |
 | `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
-| `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
-| `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.12)` |
+| `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.06)` |
+| `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.1)` |
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |
 | `--tree-menu-item-active-text-color` | `var(--color-primary)` |
 | `--tree-menu-item-disabled-opacity` | `var(--opacity-disabled)` |

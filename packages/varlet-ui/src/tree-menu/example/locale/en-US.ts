@@ -5,6 +5,7 @@ export default {
   menuGroup: 'Menu Group',
   fieldKeys: 'Field Keys',
   disabled: 'Disabled',
+  ripple: 'Ripple',
   dynamicShow: 'Dynamic Show',
   slots: 'Slots',
   customIndent: 'Custom Indent',

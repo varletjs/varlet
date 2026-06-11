@@ -1,8 +1,16 @@
 <template>
   <div
     v-ripple="{ disabled: !ripple || disabled }"
-    :class="classes(n(), [isActive, n('--active')], [disabled, n('--disabled')], [!showLabel, n('--icon-only')])"
-    :style="{ '--rail-navigation-item-transition-duration-override': allowTransition ? undefined : '0ms' }"
+    :class="
+      classes(
+        n(),
+        [isActive, n('--active')],
+        [disabled, n('--disabled')],
+        [ripple && !disabled, n('--ripple-enabled')],
+        [!showLabel, n('--icon-only')],
+      )
+    "
+    :style="{ '--rail-navigation-item-transition-duration-override': allowTransition && !ripple ? undefined : '0ms' }"
     :aria-disabled="disabled"
     role="button"
     @click="handleClick"

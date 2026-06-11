@@ -5,6 +5,7 @@ export default {
   menuGroup: '菜单分组',
   fieldKeys: '字段映射',
   disabled: '禁用',
+  ripple: '水波纹',
   dynamicShow: '动态显示',
   slots: '插槽',
   customIndent: '自定义缩进',

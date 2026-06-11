@@ -201,6 +201,36 @@ const options = ref([
 </template>
 ```
 
+### 水波纹
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref('overview')
+const options = ref([
+  {
+    value: 'overview',
+    label: '概览',
+    icon: 'home',
+  },
+  {
+    value: 'workspace',
+    label: '工作台',
+    icon: 'notebook',
+    children: [
+      { value: 'projects', label: '项目', icon: 'star' },
+      { value: 'tasks', label: '任务', icon: 'check' },
+    ],
+  },
+])
+</script>
+
+<template>
+  <var-tree-menu v-model:active="active" :options="options" ripple />
+</template>
+```
+
 ### 动态显示
 
 ```html
@@ -446,8 +476,8 @@ const options = ref([
 | `--tree-menu-group-label-font-size` | `var(--font-size-sm)` |
 | `--tree-menu-divider-margin` | `8px 0` |
 | `--tree-menu-divider-color` | `rgba(0, 0, 0, 0.12)` |
-| `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.08)` |
-| `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.12)` |
+| `--tree-menu-item-hover-background` | `rgba(85, 85, 85, 0.06)` |
+| `--tree-menu-item-pressed-background` | `rgba(85, 85, 85, 0.1)` |
 | `--tree-menu-item-active-background` | `hsla(var(--hsl-primary), 0.1)` |
 | `--tree-menu-item-active-text-color` | `var(--color-primary)` |
 | `--tree-menu-item-disabled-opacity` | `var(--opacity-disabled)` |

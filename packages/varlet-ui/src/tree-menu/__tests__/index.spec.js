@@ -512,6 +512,7 @@ describe('tree-menu component api', () => {
   test('ripple prop only applies to enabled options', () => {
     const wrapper = mount(VarTreeMenu, {
       props: {
+        active: 'enabled',
         ripple: true,
         options: [
           { value: 'enabled', label: 'Enabled' },
@@ -521,6 +522,7 @@ describe('tree-menu component api', () => {
     })
 
     expect(findItemByText(wrapper, 'Enabled').classes()).toContain('var-tree-menu--item-ripple-enabled')
+    expect(findItemByText(wrapper, 'Enabled').classes()).toContain('var-tree-menu--item-active')
     expect(findItemByText(wrapper, 'Disabled').classes()).not.toContain('var-tree-menu--item-ripple-enabled')
     wrapper.unmount()
   })

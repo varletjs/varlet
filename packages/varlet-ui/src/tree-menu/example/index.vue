@@ -12,6 +12,7 @@ const customActive = ref('tooltip')
 const groupActive = ref('overview')
 const fieldKeysActive = ref('users')
 const disabledActive = ref('profile')
+const rippleActive = ref('overview')
 const dynamicActive = ref('settings')
 const showSecurity = ref(true)
 const slotsActive = ref('overview')
@@ -256,6 +257,9 @@ const dynamicOptions = computed(() => [
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tree-menu v-model:active="disabledActive" :options="disabledOptions" class="tree-menu-example" />
+
+  <app-type>{{ t('ripple') }}</app-type>
+  <var-tree-menu v-model:active="rippleActive" :options="options" ripple class="tree-menu-example" />
 
   <app-type>{{ t('dynamicShow') }}</app-type>
   <var-switch v-model="showSecurity" variant />
