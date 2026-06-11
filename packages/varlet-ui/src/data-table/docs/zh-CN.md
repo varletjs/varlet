@@ -461,7 +461,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([1, 3])
 
 const columns = ref([
-  { type: 'selection', align: 'center' },
+  { type: 'selection' },
   { key: 'name', title: '姓名' },
   { key: 'role', title: '角色' },
   { key: 'status', title: '状态' },
@@ -489,7 +489,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([2])
 
 const columns = ref([
-  { type: 'selection', align: 'center', multiple: false },
+  { type: 'selection', multiple: false },
   { key: 'name', title: '姓名' },
   { key: 'role', title: '角色' },
   { key: 'status', title: '状态' },
@@ -517,7 +517,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([12])
 
 const columns = ref([
-  { type: 'selection', align: 'center' },
+  { type: 'selection' },
   { key: 'name', title: '姓名' },
   { key: 'role', title: '角色' },
   { key: 'status', title: '状态' },
@@ -564,7 +564,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([12])
 
 const columns = ref([
-  { type: 'selection', align: 'center' },
+  { type: 'selection' },
   { key: 'name', title: '姓名' },
   { key: 'role', title: '角色' },
   { key: 'status', title: '状态' },
@@ -612,7 +612,7 @@ import { ref } from 'vue'
 const checkedRowKeys = ref([21])
 
 const columns = ref([
-  { type: 'selection', align: 'center', multiple: false },
+  { type: 'selection', multiple: false },
   { key: 'name', title: '姓名' },
   { key: 'role', title: '角色' },
   { key: 'status', title: '状态' },
