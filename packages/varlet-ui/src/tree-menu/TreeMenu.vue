@@ -97,7 +97,7 @@ export default defineComponent({
         parent?: TreeMenuNormalizedOption,
         level = 0,
       ): TreeMenuNormalizedOption[] {
-        return options.reduce<TreeMenuNormalizedOption[]>((normalizedOptions, option, index) => {
+        return options.reduce<TreeMenuNormalizedOption[]>((normalizedOptions, option) => {
           if (option.show === false) {
             return normalizedOptions
           }

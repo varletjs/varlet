@@ -20,7 +20,7 @@ export type TreeMenuOptionRender = (
 ) => VNodeChild
 
 export interface TreeMenuBaseOption {
-  value: TreeMenuOptionValue
+  value?: TreeMenuOptionValue
   label?: string | VNode | TreeMenuOptionLabelRender
   icon?: string | VNode | TreeMenuOptionIconRender
   render?: TreeMenuOptionRender
@@ -38,7 +38,6 @@ export interface TreeMenuItemOption extends TreeMenuBaseOption {
 
 export interface TreeMenuGroupOption extends TreeMenuBaseOption {
   type: 'group'
-  value: TreeMenuOptionValue
 }
 
 export interface TreeMenuDividerOption extends TreeMenuBaseOption {
