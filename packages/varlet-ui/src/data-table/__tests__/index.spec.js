@@ -1315,7 +1315,7 @@ describe('test data-table component props', () => {
     })
 
     expect(wrapper.find('.var-data-table__container').attributes('style')).toContain('overflow-x: auto;')
-    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('width: 640px;')
+    expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('width: 100%;')
     expect(wrapper.find('.var-data-table__table').attributes('style')).toContain('min-width: 640px;')
     wrapper.unmount()
   })
@@ -1342,7 +1342,25 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
-  test('should prioritize scrollX as explicit horizontal width', () => {
+  test('should use scrollX as minimum horizontal width without shrinking below full container width', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        scrollX: 640,
+      },
+    })
+
+    const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
+
+    expect(tableStyle).toContain('width: 100%;')
+    expect(tableStyle).toContain('min-width: 640px;')
+
+    wrapper.unmount()
+  })
+
+  test('should respect configured column widths when scrollX is smaller than total resolved column width', () => {
     const wrapper = mount(VarDataTable, {
       props: {
         columns: [
@@ -1352,14 +1370,14 @@ describe('test data-table component props', () => {
         ],
         data,
         pagination: false,
-        scrollX: 640,
+        scrollX: 120,
       },
     })
 
     const tableStyle = wrapper.find('.var-data-table__table').attributes('style')
 
-    expect(tableStyle).toContain('width: 640px;')
-    expect(tableStyle).toContain('min-width: 640px;')
+    expect(tableStyle).toContain('width: 100%;')
+    expect(tableStyle).toContain('min-width: max(120px, 300px);')
 
     wrapper.unmount()
   })
@@ -1427,7 +1445,8 @@ describe('test data-table component props', () => {
     const cols = wrapper.findAll('col')
 
     expect(tableStyle).toContain('table-layout: fixed;')
-    expect(tableStyle).toContain('width: 600px;')
+    expect(tableStyle).toContain('width: 100%;')
+    expect(tableStyle).toContain('min-width: max(600px, 170px);')
     expect(cols[0].attributes('style')).toContain('width: 120px;')
     expect(cols[1].attributes('style')).toContain('width: 50px;')
     expect(cols[2].attributes('style')).toBeUndefined()

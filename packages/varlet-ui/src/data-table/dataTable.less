@@ -15,11 +15,12 @@
   --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
   --data-table-border-radius: 2px;
-  --data-table-cell-padding: 0 16px;
-  --data-table-selection-cell-padding: 0 8px;
-  --data-table-expand-cell-padding: 0 8px;
-  --data-table-cell-font-size: 16px;
+  --data-table-cell-padding: 8px 16px;
+  --data-table-selection-cell-padding: 8px 8px;
+  --data-table-expand-cell-padding: 8px 8px;
+  --data-table-cell-font-size: 14px;
   --data-table-header-font-size: 14px;
+  --data-table-header-font-weight: 500;
   --data-table-row-height: 46px;
   --data-table-row-small-height: 40px;
   --data-table-row-large-height: 52px;
@@ -98,7 +99,7 @@
   &__header-cell {
     color: var(--data-table-header-cell-text-color);
     font-size: var(--data-table-header-font-size);
-    font-weight: 500;
+    font-weight: var(--data-table-header-font-weight);
     background: var(--data-table-header-cell-background);
     box-shadow: inset 0 -1px 0 var(--data-table-border-color);
     position: sticky;

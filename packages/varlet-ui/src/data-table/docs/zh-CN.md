@@ -896,7 +896,7 @@ const data = ref([
 | `v-model:expanded-tree-row-keys` | `tree` 模式下展开树节点的 key 集合 | _Array<string \| number>_ | `[]` |
 | `total` | 远程分页总条数 | _number_ | `-` |
 | `max-height` | 表格主体最大高度。设置后表头固定，内容区域内部滚动 | _number \| string_ | `-` |
-| `scroll-x` | 用于开启横向滚动的表格宽度，通常和固定列一起使用 | _number \| string_ | `-` |
+| `scroll-x` | 用于开启横向滚动的表格最小宽度。当容器更宽时，表格仍会撑满容器 | _number \| string_ | `-` |
 | `v-model:sorters` | 受控排序状态集合 | _DataTableSorter[]_ | `[]` |
 | `sort-mode` | 排序器模式 | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
@@ -990,11 +990,12 @@ const data = ref([
 | `--data-table-resize-trigger-color` | `hsla(var(--hsl-on-surface-variant), 0.36)` |
 | `--data-table-fixed-shadow-color` | `rgba(0, 0, 0, 0.04)` |
 | `--data-table-border-radius` | `2px` |
-| `--data-table-cell-padding` | `0 16px` |
-| `--data-table-selection-cell-padding` | `0 8px` |
-| `--data-table-expand-cell-padding` | `0 8px` |
-| `--data-table-cell-font-size` | `16px` |
+| `--data-table-cell-padding` | `8px 16px` |
+| `--data-table-selection-cell-padding` | `8px 8px` |
+| `--data-table-expand-cell-padding` | `8px 8px` |
+| `--data-table-cell-font-size` | `14px` |
 | `--data-table-header-font-size` | `14px` |
+| `--data-table-header-font-weight` | `500` |
 | `--data-table-row-height` | `46px` |
 | `--data-table-row-small-height` | `40px` |
 | `--data-table-row-large-height` | `52px` |

@@ -262,12 +262,13 @@ function get(current, size) {
 | `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` |
 | `--table-thead-th-text-align` | `left` |
 | `--table-thead-th-font-size` | `14px` |
+| `--table-thead-th-font-weight` | `500` |
 | `--table-thead-tr-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-tbody-tr-hover-background` | `#f5f5f5` |
 | `--table-tbody-tr-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-tbody-td-text-color` | `#555` |
-| `--table-tbody-td-font-size` | `16px` |
+| `--table-tbody-td-font-size` | `14px` |
 | `--table-tbody-td-text-align` | `left`|
 | `--table-row-height` | `46px` |
-| `--table-row-padding` | `0 16px` |
+| `--table-row-padding` | `8px 16px` |
 | `--table-footer-border-top` | `thin solid var(--color-outline)` |

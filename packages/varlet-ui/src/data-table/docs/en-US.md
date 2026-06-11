@@ -896,7 +896,7 @@ const data = ref([
 | `v-model:expanded-tree-row-keys` | Expanded tree row keys for `tree` mode | _Array<string \| number>_ | `[]` |
 | `total` | Total item count in remote mode | _number_ | `-` |
 | `max-height` | Max height of the table body. When set, the header stays fixed and the body scrolls internally | _number \| string_ | `-` |
-| `scroll-x` | Table width used to enable horizontal scrolling. Usually paired with fixed columns | _number \| string_ | `-` |
+| `scroll-x` | Minimum table width used to enable horizontal scrolling. The table still fills its container when the container is wider | _number \| string_ | `-` |
 | `v-model:sorters` | Controlled sorter states | _DataTableSorter[]_ | `[]` |
 | `sort-mode` | Sorter mode | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | Whether to render as a plain table without card shadow, background, or radius | _boolean_ | `false` |
@@ -990,11 +990,12 @@ const data = ref([
 | `--data-table-resize-trigger-color` | `hsla(var(--hsl-on-surface-variant), 0.36)` |
 | `--data-table-fixed-shadow-color` | `rgba(0, 0, 0, 0.04)` |
 | `--data-table-border-radius` | `2px` |
-| `--data-table-cell-padding` | `0 16px` |
-| `--data-table-selection-cell-padding` | `0 8px` |
-| `--data-table-expand-cell-padding` | `0 8px` |
-| `--data-table-cell-font-size` | `16px` |
+| `--data-table-cell-padding` | `8px 16px` |
+| `--data-table-selection-cell-padding` | `8px 8px` |
+| `--data-table-expand-cell-padding` | `8px 8px` |
+| `--data-table-cell-font-size` | `14px` |
 | `--data-table-header-font-size` | `14px` |
+| `--data-table-header-font-weight` | `500` |
 | `--data-table-row-height` | `46px` |
 | `--data-table-row-small-height` | `40px` |
 | `--data-table-row-large-height` | `52px` |

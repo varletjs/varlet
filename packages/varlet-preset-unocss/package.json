@@ -42,6 +42,6 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "unocss": "^0.58.5"
+    "unocss": "^66.0.0"
   }
 }

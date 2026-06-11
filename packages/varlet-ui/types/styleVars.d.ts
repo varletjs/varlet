@@ -309,6 +309,7 @@ interface BaseStyleVars {
   '--data-table-expand-cell-padding'?: string
   '--data-table-cell-font-size'?: string
   '--data-table-header-font-size'?: string
+  '--data-table-header-font-weight'?: string
   '--data-table-row-height'?: string
   '--data-table-row-small-height'?: string
   '--data-table-row-large-height'?: string
@@ -811,6 +812,7 @@ interface BaseStyleVars {
   '--table-thead-th-text-color'?: string
   '--table-thead-th-text-align'?: string
   '--table-thead-th-font-size'?: string
+  '--table-thead-th-font-weight'?: string
   '--table-thead-tr-border-bottom'?: string
   '--table-tbody-tr-hover-background'?: string
   '--table-tbody-tr-border-bottom'?: string
