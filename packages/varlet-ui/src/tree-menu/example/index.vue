@@ -89,7 +89,6 @@ const customOptions = computed(() => [
               target: '_blank',
               rel: 'noreferrer',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             node,
           ),
@@ -121,7 +120,6 @@ const customOptions = computed(() => [
             {
               to: '/button',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             {
               default: () => node,

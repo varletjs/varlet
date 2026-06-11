@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  showLabel: 'Show Label',
   ripple: 'Ripple',
   matchByName: 'Match By Name',
   disabled: 'Disabled',

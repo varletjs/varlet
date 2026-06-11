@@ -23,7 +23,6 @@ export default {
   '--tree-menu-item-active-text-color': 'var(--color-primary)',
   '--tree-menu-item-disabled-opacity': 'var(--opacity-disabled)',
   '--tree-menu-item-indicator-border-radius': '0',
-  '--tree-menu-item-indicator-active-transition-duration': '0ms',
   '--tree-menu-expand-icon-color': 'var(--color-on-surface-variant)',
   '--tree-menu-expand-icon-size': '20px',
 }

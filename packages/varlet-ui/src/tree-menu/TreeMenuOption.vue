@@ -3,9 +3,7 @@
     <div v-if="option.type === 'divider'" :class="n('divider')" />
 
     <template v-else-if="option.type === 'group'">
-      <div v-if="renderLabel()" :class="n('group-label')">
-        <maybe-v-node :is="renderLabel()" />
-      </div>
+      <maybe-v-node :is="renderGroupLabel()" />
 
       <div :class="n('group-children')">
         <var-tree-menu-option
@@ -92,6 +90,16 @@ export default defineComponent({
       return render({ node }, props.option.option, props.option.active)
     }
 
+    function renderGroupLabel() {
+      const label = renderLabel()
+
+      if (!label) {
+        return
+      }
+
+      return h('div', { class: n('group-label') }, [h(MaybeVNode, { is: label })])
+    }
+
     function renderDefaultItem() {
       return withDirectives(
         h(
@@ -124,7 +132,7 @@ export default defineComponent({
       const iconVNode = callOrReturn(props.option.icon, props.option.option, props.option.active)
 
       if (!iconVNode) {
-        return null
+        return
       }
 
       return h('span', { class: n('icon-container') }, [
@@ -155,6 +163,7 @@ export default defineComponent({
 
     return {
       renderLabel,
+      renderGroupLabel,
       renderItem,
       styles,
       n,

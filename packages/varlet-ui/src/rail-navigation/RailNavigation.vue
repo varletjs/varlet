@@ -29,10 +29,12 @@ export default defineComponent({
   setup(props) {
     const active = computed(() => props.active)
     const ripple = computed(() => props.ripple)
+    const showLabel = computed(() => props.showLabel)
     const { bindRailNavigationItem } = useRailNavigationItems()
     const railNavigationProvider: RailNavigationProvider = {
       active,
       ripple,
+      showLabel,
       onToggle,
     }
 

@@ -1,7 +1,7 @@
 <template>
   <div
     v-ripple="{ disabled: !ripple || disabled }"
-    :class="classes(n(), [isActive, n('--active')], [disabled, n('--disabled')])"
+    :class="classes(n(), [isActive, n('--active')], [disabled, n('--disabled')], [!showLabel, n('--icon-only')])"
     :style="{ '--rail-navigation-item-transition-duration-override': allowTransition ? undefined : '0ms' }"
     :aria-disabled="disabled"
     role="button"
@@ -20,7 +20,7 @@
       </slot>
     </span>
 
-    <span v-if="$slots.default || label" :class="n('label')">
+    <span v-if="showLabel && ($slots.default || label)" :class="n('label')">
       <slot :active="isActive">{{ label }}</slot>
     </span>
   </div>
@@ -54,7 +54,7 @@ export default defineComponent({
   props,
   setup(props) {
     const { index, railNavigation, bindRailNavigation } = useRailNavigation()
-    const { active, ripple, onToggle } = railNavigation
+    const { active, ripple, showLabel, onToggle } = railNavigation
     const activeValue = computed(() => props.name ?? index.value)
     const isActive = computed(() => active.value === activeValue.value)
     const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
@@ -96,6 +96,7 @@ export default defineComponent({
       isActive,
       badgeProps,
       ripple,
+      showLabel,
       allowTransition,
       n,
       classes,

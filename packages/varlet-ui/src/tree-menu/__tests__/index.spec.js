@@ -351,11 +351,31 @@ describe('tree-menu component api', () => {
     wrapper.unmount()
   })
 
+  test('renders group label function once per render', () => {
+    const label = vi.fn(() => 'Group')
+    const wrapper = mount(VarTreeMenu, {
+      props: {
+        options: [
+          {
+            type: 'group',
+            value: 'group',
+            label,
+            children: [{ value: 'child', label: 'Child' }],
+          },
+        ],
+      },
+    })
+
+    expect(wrapper.find('.var-tree-menu__group-label').text()).toBe('Group')
+    expect(label).toHaveBeenCalledTimes(1)
+    wrapper.unmount()
+  })
+
   test('supports render function for option item', async () => {
     const render = vi.fn(({ node }, option, active) =>
-      h('a', { class: ['custom-link', active && 'custom-link--active'], href: option.href }, [node]),
+      h('a', { class: ['custom-link', active && 'custom-link--active'], href: '/docs' }, node),
     )
-    const option = { value: 'docs', label: 'Docs', icon: 'book', href: '/docs', render }
+    const option = { value: 'docs', label: 'Docs', icon: 'book', render }
     const onUpdateActive = vi.fn()
     const wrapper = mount(VarTreeMenu, {
       props: {

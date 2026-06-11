@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  showLabel: '显示标签',
   ripple: '水波效果',
   matchByName: '通过名称匹配',
   disabled: '禁用选项',

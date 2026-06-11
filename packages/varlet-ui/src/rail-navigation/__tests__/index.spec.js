@@ -52,6 +52,37 @@ describe('rail-navigation component api', () => {
     wrapper.unmount()
   })
 
+  test('show-label controls item label rendering', async () => {
+    const wrapper = mount({
+      components,
+      data: () => ({
+        active: 0,
+        showLabel: true,
+      }),
+      template: `
+        <var-rail-navigation v-model:active="active" :show-label="showLabel">
+          <var-rail-navigation-item label="Home" icon="home" />
+          <var-rail-navigation-item icon="magnify">
+            <span class="custom-label">Search</span>
+          </var-rail-navigation-item>
+        </var-rail-navigation>
+      `,
+    })
+
+    expect(wrapper.findAll('.var-rail-navigation-item__label')).toHaveLength(2)
+    expect(wrapper.find('.var-rail-navigation-item').classes()).not.toContain('var-rail-navigation-item--icon-only')
+    expect(wrapper.text()).toContain('Home')
+    expect(wrapper.find('.custom-label').exists()).toBe(true)
+
+    await wrapper.setData({ showLabel: false })
+
+    expect(wrapper.findAll('.var-rail-navigation-item__label')).toHaveLength(0)
+    expect(wrapper.find('.var-rail-navigation-item').classes()).toContain('var-rail-navigation-item--icon-only')
+    expect(wrapper.text()).not.toContain('Home')
+    expect(wrapper.find('.custom-label').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
   test('active and change by index', async () => {
     const handleChange = vi.fn()
     const wrapper = mount({
@@ -361,6 +392,7 @@ describe('rail-navigation public contract', () => {
 
     expect(railNavigationTypes).toContain('active?: number | string')
     expect(railNavigationTypes).toContain('ripple?: boolean')
+    expect(railNavigationTypes).toContain('showLabel?: boolean')
     expect(railNavigationTypes).toContain('border?: boolean')
     expect(railNavigationTypes).toContain('onChange?: ListenerProp<(active: number | string) => void>')
     expect(railNavigationTypes).toContain("'onUpdate:active'?: ListenerProp<(active: number | string) => void>")

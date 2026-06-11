@@ -2,7 +2,7 @@
 
 ### Intro
 
-Display hierarchical navigation destinations on the side of the page.
+A multi-level collapsible menu commonly used as a sidebar navigation.
 
 ### Basic Usage
 
@@ -338,7 +338,6 @@ const options = ref([
               target: '_blank',
               rel: 'noreferrer',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             node,
           ),
@@ -364,7 +363,6 @@ const options = ref([
             {
               to: '/button',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             { default: () => node },
           ),

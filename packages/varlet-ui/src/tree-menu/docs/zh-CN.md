@@ -2,7 +2,7 @@
 
 ### 介绍
 
-在页面侧边显示层级导航入口。
+多级折叠菜单，常用作侧边导航栏。
 
 ### 基本使用
 
@@ -338,7 +338,6 @@ const options = ref([
               target: '_blank',
               rel: 'noreferrer',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             node,
           ),
@@ -364,7 +363,6 @@ const options = ref([
             {
               to: '/button',
               style: { display: 'block', color: 'inherit', textDecoration: 'none' },
-              onClick: (event) => event.preventDefault(),
             },
             { default: () => node },
           ),
