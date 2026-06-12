@@ -196,6 +196,7 @@ export const props = {
     default: true,
   },
   cellBordered: Boolean,
+  bordered: Boolean,
   tableLayout: {
     type: String as PropType<DataTableTableLayout>,
     default: 'auto',

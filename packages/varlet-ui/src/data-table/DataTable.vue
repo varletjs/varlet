@@ -6,6 +6,7 @@
         [!plain, formatElevation(elevation, 1)],
         n('$--box'),
         [surface === 'low', n('--surface-low')],
+        [bordered, n('--bordered')],
         [cellBordered, n('--cell-bordered')],
         [plain, n('--plain')],
         [showPagination, n('--with-footer')],

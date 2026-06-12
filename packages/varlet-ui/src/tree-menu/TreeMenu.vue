@@ -1,5 +1,5 @@
 <template>
-  <nav :class="classes(n(), n('$--box'))" :style="styles">
+  <nav :class="classes(n(), n('$--box'), [bordered, n('--border')])" :style="styles">
     <slot v-if="$slots.start" name="start"></slot>
 
     <tree-menu-option

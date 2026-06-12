@@ -8,6 +8,7 @@ export default {
   '--table-tbody-td-text-color': '#fff',
   '--table-tbody-tr-hover-background': '#3a3a3a',
   '--table-border-radius': '2px',
+  '--table-border': 'thin solid var(--color-outline)',
   '--table-thead-border-bottom': 'thin solid var(--color-outline)',
   '--table-thead-th-font-size': '14px',
   '--table-thead-th-font-weight': '500',

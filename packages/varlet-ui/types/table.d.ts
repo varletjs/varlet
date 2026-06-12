@@ -9,6 +9,7 @@ export interface TableProps extends BasicAttributes {
   elevation?: boolean | string | number
   surface?: 'low'
   plain?: boolean
+  bordered?: boolean
 }
 
 export class Table extends VarComponent {

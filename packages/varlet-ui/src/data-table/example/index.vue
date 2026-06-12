@@ -425,6 +425,9 @@ watch(
 
   <app-type>{{ t('plainTable') }}</app-type>
   <var-data-table :columns="columns" :data="data" plain />
+
+  <app-type>{{ t('plainBordered') }}</app-type>
+  <var-data-table :columns="columns" :data="data" plain bordered />
 </template>
 
 <style scoped>

@@ -423,6 +423,7 @@ const options = ref([
 | `accordion` | 是否只允许同级一个选项展开 | _boolean_ | `false` |
 | `indent` | 每一级缩进 | _string \| number_ | `-` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `false` |
+| `bordered` | 是否显示右边框 | _boolean_ | `false` |
 | `disabled` | 是否禁用整个菜单 | _boolean_ | `false` |
 
 #### TreeMenuOption
@@ -459,6 +460,7 @@ const options = ref([
 | 变量名 | 默认值 |
 | --- | --- |
 | `--tree-menu-background` | `var(--color-surface-container-high)` |
+| `--tree-menu-border-color` | `var(--color-outline)` |
 | `--tree-menu-item-text-color` | `var(--color-text)` |
 | `--tree-menu-padding` | `8px 0` |
 | `--tree-menu-item-gap` | `0px` |

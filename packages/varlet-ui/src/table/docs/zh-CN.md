@@ -34,11 +34,41 @@
 
 ### 纯表格
 
-设置 `plain` 可以一并去掉卡片阴影、背景色和圆角，展示更纯粹的表格形态。
+设置 `plain` 可以一并去掉卡片阴影、背景色和圆角。
 
 ```html
 <template>
   <var-table plain>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>数学</th>
+        <th>英语</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>耗子君</td>
+        <td>124</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>火猫桑</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+</template>
+```
+
+### Plain + Bordered
+
+同时使用 `plain` 和 `bordered`，可以用外边框展示更纯粹的表格形态。
+
+```html
+<template>
+  <var-table plain bordered>
     <thead>
       <tr>
         <th>姓名</th>
@@ -237,6 +267,7 @@ function get(current, size) {
 | `full-width` | `table` 的宽度(包含可滚动部分) | _string \| number_ | `100%` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
+| `bordered` | 是否显示外边框 | _boolean_ | `false` |
 | `surface` | 弱背景色风格 | _'low'_ | `-` |
 | `scroller-height` ***3.2.0*** | 滚动容器高度，可用于实现纵向局部滚动，固定表头等功能 | _string \| number_ | `-` |
 
@@ -258,6 +289,7 @@ function get(current, size) {
 | `--table-surface-low-row-hover-background` | `var(--color-surface-container-highest)` |
 | `--table-plain-row-hover-background` | `hsla(var(--hsl-on-surface), 0.04)` |
 | `--table-border-radius` | `2px` |
+| `--table-border` | `thin solid var(--color-outline)` |
 | `--table-thead-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` |
 | `--table-thead-th-text-align` | `left` |

@@ -874,6 +874,31 @@ const data = ref([
 </template>
 ```
 
+### Plain + Bordered
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: '姓名' },
+  { key: 'role', title: '角色' },
+  { key: 'status', title: '状态' },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
+  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
+  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
+  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" plain bordered />
+</template>
+```
+
 ## API
 
 ### Props
@@ -900,6 +925,7 @@ const data = ref([
 | `v-model:sorters` | 受控排序状态集合 | _DataTableSorter[]_ | `[]` |
 | `sort-mode` | 排序器模式 | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | 是否以纯表格形态渲染，不带卡片阴影、背景色和圆角 | _boolean_ | `false` |
+| `bordered` | 是否显示外边框 | _boolean_ | `false` |
 | `table-layout` | 原生 `table-layout` 布局方式 | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | 是否显式开启树形数据 | _boolean_ | `false` |
 | `cascade` | 树形选择是否开启级联 | _boolean_ | `true` |

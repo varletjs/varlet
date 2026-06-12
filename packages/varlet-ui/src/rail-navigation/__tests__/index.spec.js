@@ -288,15 +288,15 @@ describe('rail-navigation component api', () => {
     wrapper.unmount()
   })
 
-  test('border prop', async () => {
+  test('bordered prop', async () => {
     const wrapper = mount(VarRailNavigation, {
       props: {
-        border: true,
+        bordered: true,
       },
     })
 
     expect(wrapper.classes()).toContain('var-rail-navigation--border')
-    await wrapper.setProps({ border: false })
+    await wrapper.setProps({ bordered: false })
     expect(wrapper.classes()).not.toContain('var-rail-navigation--border')
     wrapper.unmount()
   })
@@ -409,7 +409,7 @@ describe('rail-navigation public contract', () => {
     expect(railNavigationTypes).toContain('active?: number | string')
     expect(railNavigationTypes).toContain('ripple?: boolean')
     expect(railNavigationTypes).toContain('showLabel?: boolean')
-    expect(railNavigationTypes).toContain('border?: boolean')
+    expect(railNavigationTypes).toContain('bordered?: boolean')
     expect(railNavigationTypes).toContain('onChange?: ListenerProp<(active: number | string) => void>')
     expect(railNavigationTypes).toContain("'onUpdate:active'?: ListenerProp<(active: number | string) => void>")
     expect(railNavigationTypes).toContain('default(): VNode[]')

@@ -72,6 +72,18 @@ describe('tree-menu component api', () => {
     wrapper.unmount()
   })
 
+  test('supports bordered', () => {
+    const wrapper = mount(VarTreeMenu, {
+      props: {
+        bordered: true,
+        options: baseOptions,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-tree-menu--border')
+    wrapper.unmount()
+  })
+
   test('renders group and divider options', () => {
     const wrapper = mount(VarTreeMenu, {
       props: {

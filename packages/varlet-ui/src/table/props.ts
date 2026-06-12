@@ -16,4 +16,5 @@ export const props = {
   },
   surface: String as PropType<TableSurface>,
   plain: Boolean,
+  bordered: Boolean,
 }

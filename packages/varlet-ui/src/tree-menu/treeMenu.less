@@ -1,5 +1,6 @@
 :root {
   --tree-menu-background: var(--color-surface-container-high);
+  --tree-menu-border-color: var(--color-outline);
   --tree-menu-item-text-color: var(--color-text);
   --tree-menu-padding: 8px 0;
   --tree-menu-item-gap: 0px;
@@ -37,7 +38,12 @@
   -webkit-tap-highlight-color: transparent;
   transition:
     color 0.25s,
-    background-color 0.25s;
+    background-color 0.25s,
+    border-color 0.25s;
+
+  &--border {
+    border-right: 1px solid var(--tree-menu-border-color);
+  }
 
   &__option + &__option,
   &__children > &__option:first-child {

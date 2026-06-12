@@ -9,6 +9,7 @@ export default {
   customHeader: 'Custom Header',
   surfaceLow: 'Subtle Background',
   plainTable: 'Plain Table',
+  plainBordered: 'Plain + Bordered',
   sorter: 'Single Column Sorting',
   multipleSorter: 'Multiple Column Sorting',
   spans: 'Cell Spans',

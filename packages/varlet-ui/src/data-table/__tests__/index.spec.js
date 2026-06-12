@@ -605,6 +605,36 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support bordered table mode', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        bordered: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-data-table--bordered')
+    wrapper.unmount()
+  })
+
+  test('should support plain bordered table mode', () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        plain: true,
+        bordered: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-data-table--plain')
+    expect(wrapper.classes()).toContain('var-data-table--bordered')
+    wrapper.unmount()
+  })
+
   test('should support grouped header columns', () => {
     const wrapper = mount(VarDataTable, {
       props: {

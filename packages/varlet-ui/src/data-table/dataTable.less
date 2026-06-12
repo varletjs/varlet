@@ -83,6 +83,14 @@
     border-radius: 0;
   }
 
+  &--bordered {
+    border: 1px solid var(--data-table-border-color);
+  }
+
+  &--plain&--bordered {
+    border-radius: var(--data-table-border-radius);
+  }
+
   &__cell {
     height: var(--data-table-row-height);
     padding: var(--data-table-cell-padding);

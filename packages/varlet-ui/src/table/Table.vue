@@ -6,6 +6,7 @@
         [!plain, formatElevation(elevation, 1)],
         n('$--box'),
         [surfaceLow, n('--surface-low')],
+        [bordered, n('--bordered')],
         [plain, n('--plain')],
       )
     "

@@ -63,6 +63,32 @@ describe('test table component props', () => {
     wrapper.unmount()
   })
 
+  test('table bordered', () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        bordered: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-table--bordered')
+
+    wrapper.unmount()
+  })
+
+  test('table plain bordered', () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        plain: true,
+        bordered: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-table--plain')
+    expect(wrapper.classes()).toContain('var-table--bordered')
+
+    wrapper.unmount()
+  })
+
   test('table surface low', () => {
     const wrapper = mount(VarTable, {
       props: {

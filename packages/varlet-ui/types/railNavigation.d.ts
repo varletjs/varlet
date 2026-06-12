@@ -7,7 +7,7 @@ export interface RailNavigationProps extends BasicAttributes {
   active?: number | string
   ripple?: boolean
   showLabel?: boolean
-  border?: boolean
+  bordered?: boolean
   onChange?: ListenerProp<(active: number | string) => void>
   'onUpdate:active'?: ListenerProp<(active: number | string) => void>
 }

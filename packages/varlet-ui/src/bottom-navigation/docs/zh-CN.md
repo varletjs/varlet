@@ -198,7 +198,7 @@ const active = ref(0)
 |------------------|-----------------| ---- | ---- |
 | `v-model:active` | 选中标签的名称或者索引值    | _number \| string_ | `0` |
 | `fixed`          | 是否固定在底部         | _boolean_ | `false` |
-| `border`         | 是否显示外边框         | _boolean_ | `false` |
+| `bordered`       | 是否显示外边框         | _boolean_ | `false` |
 | `safe-area`       | 是否开启底部安全区适配 | _boolean_ | `false` |
 | `z-index`        | 元素 z-index      | _number \| string_ | `1` |
 | `active-color`   | 选中标签的颜色         | _string_ | `-` |

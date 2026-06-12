@@ -59,6 +59,7 @@ export interface TreeMenuProps extends BasicAttributes {
   accordion?: boolean
   indent?: string | number
   ripple?: boolean
+  bordered?: boolean
   disabled?: boolean
   onChange?: ListenerProp<(active: TreeMenuOptionValue, option: TreeMenuOption) => void>
   'onUpdate:active'?: ListenerProp<(active: TreeMenuOptionValue) => void>

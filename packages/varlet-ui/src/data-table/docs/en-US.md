@@ -874,6 +874,31 @@ const data = ref([
 </template>
 ```
 
+### Plain + Bordered
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const columns = ref([
+  { key: 'name', title: 'Name' },
+  { key: 'role', title: 'Role' },
+  { key: 'status', title: 'Status' },
+])
+
+const data = ref([
+  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
+  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
+  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
+  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
+])
+</script>
+
+<template>
+  <var-data-table :columns="columns" :data="data" plain bordered />
+</template>
+```
+
 ## API
 
 ### Props
@@ -900,6 +925,7 @@ const data = ref([
 | `v-model:sorters` | Controlled sorter states | _DataTableSorter[]_ | `[]` |
 | `sort-mode` | Sorter mode | _'single' \| 'multiple'_ | `'single'` |
 | `plain` | Whether to render as a plain table without card shadow, background, or radius | _boolean_ | `false` |
+| `bordered` | Whether to show outer border | _boolean_ | `false` |
 | `table-layout` | Native `table-layout` value | _'auto' \| 'fixed'_ | `'auto'` |
 | `tree` | Whether to explicitly enable tree data mode | _boolean_ | `false` |
 | `cascade` | Whether tree selection should cascade | _boolean_ | `true` |

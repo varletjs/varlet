@@ -93,6 +93,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  bordered: Boolean,
   disabled: Boolean,
   onChange: defineListenerProp<(active: TreeMenuOptionValue, option: TreeMenuOption) => void>(),
   'onUpdate:active': defineListenerProp<(active: TreeMenuOptionValue) => void>(),

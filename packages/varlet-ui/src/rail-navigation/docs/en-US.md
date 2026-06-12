@@ -283,7 +283,7 @@ const active = ref('tooltip')
 | `v-model:active` | Index or name of active item | _number \| string_ | `0` |
 | `ripple` | Whether to enable ripple | _boolean_ | `false` |
 | `show-label` | Whether to show item labels | _boolean_ | `true` |
-| `border` | Whether to show the right border | _boolean_ | `false` |
+| `bordered` | Whether to show the right border | _boolean_ | `false` |
 
 #### RailNavigationItem Props
 

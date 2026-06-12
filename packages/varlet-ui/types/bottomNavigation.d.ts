@@ -8,6 +8,8 @@ export interface BottomNavigationProps extends BasicAttributes {
   animated?: boolean
   active?: number | string
   fixed?: boolean
+  bordered?: boolean
+  /** @deprecated Use bordered instead. */
   border?: boolean
   safeArea?: boolean
   zIndex?: number | string

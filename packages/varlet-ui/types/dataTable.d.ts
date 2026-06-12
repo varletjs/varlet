@@ -145,6 +145,7 @@ export interface DataTableProps extends BasicAttributes {
   plain?: boolean
   elevation?: boolean | string | number
   cellBordered?: boolean
+  bordered?: boolean
   tableLayout?: DataTableTableLayout
   size?: 'small' | 'normal' | 'large'
   checkedRowKeys?: Array<string | number>

@@ -6,7 +6,7 @@
         n(),
         n('$--box'),
         [fixed, n('--fixed')],
-        [border, n('--border')],
+        [bordered || border, n('--border')],
         [safeArea, n('--safe-area')],
         [variant, n('--variant')],
       )

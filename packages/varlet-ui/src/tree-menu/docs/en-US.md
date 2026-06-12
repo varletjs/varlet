@@ -423,6 +423,7 @@ const options = ref([
 | `accordion` | Whether to only allow one sibling option expanded | _boolean_ | `false` |
 | `indent` | Indent per level | _string \| number_ | `-` |
 | `ripple` | Whether to enable ripple | _boolean_ | `false` |
+| `bordered` | Whether to show right border | _boolean_ | `false` |
 | `disabled` | Whether to disable the whole menu | _boolean_ | `false` |
 
 #### TreeMenuOption
@@ -459,6 +460,7 @@ The following CSS variables are used by the component and can be customized thro
 | Variable | Default |
 | --- | --- |
 | `--tree-menu-background` | `var(--color-surface-container-high)` |
+| `--tree-menu-border-color` | `var(--color-outline)` |
 | `--tree-menu-item-text-color` | `var(--color-text)` |
 | `--tree-menu-padding` | `8px 0` |
 | `--tree-menu-item-gap` | `0px` |

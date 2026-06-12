@@ -283,7 +283,7 @@ const active = ref('tooltip')
 | `v-model:active` | 激活导航项的索引或名称 | _number \| string_ | `0` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `false` |
 | `show-label` | 是否显示导航项标签 | _boolean_ | `true` |
-| `border` | 是否显示右侧边框 | _boolean_ | `false` |
+| `bordered` | 是否显示右侧边框 | _boolean_ | `false` |
 
 #### RailNavigationItem Props
 

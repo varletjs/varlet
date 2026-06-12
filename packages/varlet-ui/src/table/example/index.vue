@@ -79,6 +79,30 @@ onThemeChange()
     </tbody>
   </var-table>
 
+  <app-type>{{ t('plainBordered') }}</app-type>
+  <var-table plain bordered>
+    <thead>
+      <tr>
+        <th>{{ t('name') }}</th>
+        <th>{{ t('math') }}</th>
+        <th>{{ t('english') }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{ t('jerry') }}</td>
+        <td>124</td>
+        <td>38</td>
+      </tr>
+      <tr>
+        <td>{{ t('tom') }}</td>
+        <td>100</td>
+        <td>135</td>
+      </tr>
+    </tbody>
+  </var-table>
+
   <app-type>{{ t('surfaceLow') }}</app-type>
   <var-table surface="low">
     <thead>

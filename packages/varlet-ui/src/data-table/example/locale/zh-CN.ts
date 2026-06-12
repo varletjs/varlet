@@ -9,6 +9,7 @@ export default {
   customHeader: '自定义表头',
   surfaceLow: '弱背景色',
   plainTable: '纯表格',
+  plainBordered: 'Plain + Bordered',
   sorter: '单列排序',
   multipleSorter: '多列排序',
   spans: '单元格合并',

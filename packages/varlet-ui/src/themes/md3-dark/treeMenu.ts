@@ -1,5 +1,6 @@
 export default {
   '--tree-menu-background': 'var(--color-surface-container)',
+  '--tree-menu-border-color': 'var(--color-outline)',
   '--tree-menu-item-text-color': 'var(--color-on-surface-variant)',
   '--tree-menu-padding': '8px 8px',
   '--tree-menu-item-gap': '1px',

@@ -808,6 +808,7 @@ interface BaseStyleVars {
   '--table-surface-low-row-hover-background'?: string
   '--table-plain-row-hover-background'?: string
   '--table-border-radius'?: string
+  '--table-border'?: string
   '--table-thead-border-bottom'?: string
   '--table-thead-th-text-color'?: string
   '--table-thead-th-text-align'?: string
@@ -990,6 +991,7 @@ interface BaseStyleVars {
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
   '--tree-menu-background'?: string
+  '--tree-menu-border-color'?: string
   '--tree-menu-item-text-color'?: string
   '--tree-menu-padding'?: string
   '--tree-menu-item-gap'?: string

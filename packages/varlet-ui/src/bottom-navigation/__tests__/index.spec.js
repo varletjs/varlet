@@ -190,7 +190,20 @@ describe('test bottom-navigation component props', () => {
     wrapper.unmount()
   })
 
-  test('bottom-navigation border', async () => {
+  test('bottom-navigation bordered', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        bordered: true,
+      },
+    })
+
+    expect(wrapper.find('.var-bottom-navigation--border').exists()).toBe(true)
+    await wrapper.setProps({ bordered: false })
+    expect(wrapper.find('.var-bottom-navigation--border').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('bottom-navigation border compatibility', async () => {
     const wrapper = mount(Wrapper, {
       props: {
         border: true,
