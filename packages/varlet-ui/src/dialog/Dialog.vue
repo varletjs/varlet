@@ -89,6 +89,7 @@ export default defineComponent({
     const cancelButtonLoading = useVModel(props, 'cancelButtonLoading')
     const confirmButtonDisabled = useVModel(props, 'confirmButtonDisabled')
     const cancelButtonDisabled = useVModel(props, 'cancelButtonDisabled')
+
     const confirmButtonNormalizedProps = computed(() => ({
       text: true,
       ...props.confirmButtonProps,
@@ -106,6 +107,7 @@ export default defineComponent({
       loading: cancelButtonLoading.value || props.cancelButtonProps?.loading,
       disabled: cancelButtonDisabled.value || props.cancelButtonProps?.disabled,
     }))
+
     const exposedRefs = {
       confirmButtonLoading,
       cancelButtonLoading,
