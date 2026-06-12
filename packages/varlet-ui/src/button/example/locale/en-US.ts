@@ -12,7 +12,6 @@ export default {
   dangerButton: 'Danger Button',
   textButton: 'Text Button',
   modeButtonGroup: 'Button Group Mode',
-  plainTextButton: 'Plain Text Button',
   outlineButton: 'Outline Button',
   outline: 'Outline',
   disabledStatus: 'Disabled Status',

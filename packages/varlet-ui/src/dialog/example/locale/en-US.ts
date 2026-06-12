@@ -8,6 +8,7 @@ export default {
   componentCall: 'Component Call',
   title: 'Beat It',
   message: "Don't Wanna See No Blood, Don't Be A Macho Man",
+  customActionButtons: 'Custom Action Buttons',
   customSlots: 'Custom Slots',
   asyncCloseProgress: 'Asynchronous shutdown in progress',
 }

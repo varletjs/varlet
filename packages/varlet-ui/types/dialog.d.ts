@@ -1,4 +1,5 @@
 import { App, TeleportProps, VNode } from 'vue'
+import { ButtonProps } from './button'
 import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const dialogProps: Record<keyof DialogProps, any>
@@ -19,6 +20,8 @@ export interface DialogProps extends BasicAttributes {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonProps?: ButtonProps
+  cancelButtonProps?: ButtonProps
   confirmButtonLoading?: boolean
   cancelButtonLoading?: boolean
   confirmButtonDisabled?: boolean
@@ -75,6 +78,8 @@ export interface DialogOptions {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonProps?: ButtonProps
+  cancelButtonProps?: ButtonProps
   confirmButtonLoading?: boolean
   cancelButtonLoading?: boolean
   confirmButtonDisabled?: boolean

@@ -36,26 +36,18 @@
         <div :class="n('actions')">
           <var-button
             v-if="cancelButton"
-            :class="classes(n('button'), n('cancel-button'))"
+            v-bind="cancelButtonNormalizedProps"
+            :class="classes(n('button'), n('cancel-button'), [cancelButtonProps != null, n('--with-button-props')])"
             var-dialog-cover
-            text
-            :text-color="cancelButtonTextColor"
-            :color="cancelButtonColor"
-            :loading="cancelButtonLoading"
-            :disabled="cancelButtonDisabled"
             @click="cancel"
           >
             {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
           </var-button>
           <var-button
             v-if="confirmButton"
-            :class="classes(n('button'), n('confirm-button'))"
+            v-bind="confirmButtonNormalizedProps"
+            :class="classes(n('button'), n('confirm-button'), [confirmButtonProps != null, n('--with-button-props')])"
             var-dialog-cover
-            text
-            :text-color="confirmButtonTextColor"
-            :color="confirmButtonColor"
-            :loading="confirmButtonLoading"
-            :disabled="confirmButtonDisabled"
             @click="confirm"
           >
             {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
@@ -69,7 +61,7 @@
 <script lang="ts">
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
-import { defineComponent, ref, watch } from 'vue'
+import { computed, defineComponent, ref, watch } from 'vue'
 import VarButton from '../button'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
@@ -97,6 +89,23 @@ export default defineComponent({
     const cancelButtonLoading = useVModel(props, 'cancelButtonLoading')
     const confirmButtonDisabled = useVModel(props, 'confirmButtonDisabled')
     const cancelButtonDisabled = useVModel(props, 'cancelButtonDisabled')
+    const confirmButtonNormalizedProps = computed(() => ({
+      text: true,
+      ...props.confirmButtonProps,
+      textColor: props.confirmButtonTextColor ?? props.confirmButtonProps?.textColor,
+      color: props.confirmButtonColor ?? props.confirmButtonProps?.color,
+      loading: confirmButtonLoading.value || props.confirmButtonProps?.loading,
+      disabled: confirmButtonDisabled.value || props.confirmButtonProps?.disabled,
+    }))
+
+    const cancelButtonNormalizedProps = computed(() => ({
+      text: true,
+      ...props.cancelButtonProps,
+      textColor: props.cancelButtonTextColor ?? props.cancelButtonProps?.textColor,
+      color: props.cancelButtonColor ?? props.cancelButtonProps?.color,
+      loading: cancelButtonLoading.value || props.cancelButtonProps?.loading,
+      disabled: cancelButtonDisabled.value || props.cancelButtonProps?.disabled,
+    }))
     const exposedRefs = {
       confirmButtonLoading,
       cancelButtonLoading,
@@ -189,6 +198,8 @@ export default defineComponent({
       cancelButtonLoading,
       confirmButtonDisabled,
       cancelButtonDisabled,
+      confirmButtonNormalizedProps,
+      cancelButtonNormalizedProps,
       pt,
       t,
       n,

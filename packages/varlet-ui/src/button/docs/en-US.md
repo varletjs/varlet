@@ -49,13 +49,32 @@ Button component for triggering actions.
 </template>
 ```
 
+### Outline Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button text outline>Default Button</var-button>
+    <var-button text outline type="primary">Primary Button</var-button>
+    <var-button text outline type="info">Info Button</var-button>
+    <var-button text outline type="success">Success Button</var-button>
+    <var-button text outline type="warning">Warning Button</var-button>
+    <var-button text outline type="danger">Danger Button</var-button>
+  </var-space>
+</template>
+```
+
 ### Text Button
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button text outline type="primary">Outline Button</var-button>
-    <var-button text type="primary">Plain Text Button</var-button>
+    <var-button text>Default Button</var-button>
+    <var-button text type="primary">Primary Button</var-button>
+    <var-button text type="info">Info Button</var-button>
+    <var-button text type="success">Success Button</var-button>
+    <var-button text type="warning">Warning Button</var-button>
+    <var-button text type="danger">Danger Button</var-button>
   </var-space>
 </template>
 ```

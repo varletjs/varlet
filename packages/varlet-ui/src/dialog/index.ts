@@ -1,6 +1,8 @@
 import { call, inBrowser, isString } from '@varlet/shared'
 import { nextTick, reactive, type TeleportProps } from 'vue'
+import { props as buttonProps } from '../button/props'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import type { ExtractPublicPropTypes } from '../utils/components'
 import VarDialog from './Dialog.vue'
 import { props as dialogProps } from './props'
 
@@ -18,6 +20,8 @@ export interface DialogOptions {
   cancelButtonTextColor?: string
   confirmButtonColor?: string
   cancelButtonColor?: string
+  confirmButtonProps?: ExtractPublicPropTypes<typeof buttonProps>
+  cancelButtonProps?: ExtractPublicPropTypes<typeof buttonProps>
   confirmButtonLoading?: boolean
   cancelButtonLoading?: boolean
   confirmButtonDisabled?: boolean

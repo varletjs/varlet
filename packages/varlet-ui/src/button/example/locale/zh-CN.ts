@@ -11,7 +11,6 @@ export default {
   dangerButton: '危险按钮',
   textButton: '文字按钮',
   modeButtonGroup: '按钮组模式',
-  plainTextButton: '纯文字按钮',
   outlineButton: '外边框按钮',
   outline: '边框',
   disabledStatus: '禁用状态',

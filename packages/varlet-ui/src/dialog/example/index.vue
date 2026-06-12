@@ -7,6 +7,7 @@ import { t, use } from './locale'
 const show = ref(false)
 const show1 = ref(false)
 const show2 = ref(false)
+const show3 = ref(false)
 
 const actions = {
   confirm: () => Snackbar.success('confirm'),
@@ -37,6 +38,19 @@ function hideButton() {
     message: t('message'),
     confirmButton: false,
     cancelButton: false,
+  })
+}
+
+function customActionButtons() {
+  Dialog({
+    message: t('message'),
+    confirmButtonProps: {
+      type: 'primary',
+      text: false,
+    },
+    cancelButtonProps: {
+      outline: true,
+    },
   })
 }
 
@@ -78,6 +92,7 @@ function asyncClose() {
   <var-button type="primary" block @click="createBasic">{{ t('basicUsage') }}</var-button>
   <var-button type="primary" block @click="modifyTitle">{{ t('modifyTitle') }}</var-button>
   <var-button type="primary" block @click="hideButton">{{ t('hideButton') }}</var-button>
+  <var-button type="primary" block @click="customActionButtons">{{ t('customActionButtons') }}</var-button>
   <var-button type="primary" block @click="createAction">{{ t('handleUserBehavior') }}</var-button>
   <var-button type="primary" block @click="asyncClose">{{ t('asyncClose') }}</var-button>
 
@@ -90,6 +105,15 @@ function asyncClose() {
     @confirm="Snackbar.success('confirm')"
     @cancel="Snackbar.error('cancel')"
     @closed="Snackbar.info('closed')"
+  />
+
+  <var-button type="warning" block @click="show3 = true">{{ t('customActionButtons') }}</var-button>
+  <var-dialog
+    v-model:show="show3"
+    :title="t('title')"
+    :message="t('message')"
+    :confirm-button-props="{ type: 'primary', text: false }"
+    :cancel-button-props="{ outline: true }"
   />
 
   <var-button type="warning" block @click="show1 = true">{{ t('asyncClose') }}</var-button>

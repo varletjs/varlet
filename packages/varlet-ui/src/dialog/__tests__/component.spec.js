@@ -246,6 +246,102 @@ describe('test dialog component props', () => {
     wrapper.unmount()
   })
 
+  test('dialog component confirmButtonProps', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        confirmButtonProps: {
+          type: 'primary',
+          text: false,
+          round: true,
+          loading: true,
+          disabled: true,
+        },
+      },
+    })
+    const confirmButton = wrapper.find('.var-dialog__confirm-button[var-dialog-cover]')
+
+    expect(confirmButton.classes()).toContain('var-button--primary')
+    expect(confirmButton.classes()).toContain('var-button--round')
+    expect(confirmButton.classes()).toContain('var-button--loading')
+    expect(confirmButton.classes()).toContain('var-button--disabled')
+    expect(confirmButton.classes()).not.toContain('var-button--text')
+    expect(confirmButton.classes()).toContain('var-dialog--with-button-props')
+
+    wrapper.unmount()
+  })
+
+  test('dialog component cancelButtonProps', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        cancelButtonProps: {
+          type: 'warning',
+          text: false,
+          round: true,
+          loading: true,
+          disabled: true,
+        },
+      },
+    })
+    const cancelButton = wrapper.find('.var-dialog__cancel-button[var-dialog-cover]')
+
+    expect(cancelButton.classes()).toContain('var-button--warning')
+    expect(cancelButton.classes()).toContain('var-button--round')
+    expect(cancelButton.classes()).toContain('var-button--loading')
+    expect(cancelButton.classes()).toContain('var-button--disabled')
+    expect(cancelButton.classes()).not.toContain('var-button--text')
+    expect(cancelButton.classes()).toContain('var-dialog--with-button-props')
+
+    wrapper.unmount()
+  })
+
+  test('dialog component button props do not apply default button color', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        confirmButtonProps: {
+          type: 'default',
+          text: true,
+        },
+      },
+    })
+    const confirmButton = wrapper.find('.var-dialog__confirm-button[var-dialog-cover]')
+    const cancelButton = wrapper.find('.var-dialog__cancel-button[var-dialog-cover]')
+
+    expect(confirmButton.classes()).toContain('var-button--text-default')
+    expect(confirmButton.classes()).toContain('var-dialog--with-button-props')
+    expect(cancelButton.classes()).not.toContain('var-dialog--with-button-props')
+
+    wrapper.unmount()
+  })
+
+  test('dialog component button props priority', () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        confirmButtonColor: 'green',
+        confirmButtonTextColor: 'blue',
+        confirmButtonLoading: true,
+        confirmButtonDisabled: true,
+        confirmButtonProps: {
+          color: 'red',
+          textColor: 'red',
+          loading: false,
+          disabled: false,
+        },
+      },
+    })
+    const confirmButton = wrapper.find('.var-dialog__confirm-button[var-dialog-cover]')
+
+    expect(confirmButton.attributes('style')).toContain('background: green')
+    expect(confirmButton.attributes('style')).toContain('color: blue')
+    expect(confirmButton.classes()).toContain('var-button--loading')
+    expect(confirmButton.classes()).toContain('var-button--disabled')
+
+    wrapper.unmount()
+  })
+
   test('dialog component cancelButtonDisabled', () => {
     const wrapper = mount(Wrapper, {
       props: {

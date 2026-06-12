@@ -8,6 +8,7 @@ export default {
   componentCall: '组件调用',
   title: '兰亭序',
   message: '兰亭临帖 行书如行云流水',
+  customActionButtons: '自定义操作按钮',
   customSlots: '自定义插槽',
   asyncCloseProgress: '正在异步关闭',
 }

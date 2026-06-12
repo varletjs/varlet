@@ -48,19 +48,15 @@
 
   &__button[var-dialog-cover] {
     margin-left: var(--dialog-button-margin-left);
-    background-color: transparent;
-    box-shadow: none;
+  }
 
-    &:active {
-      box-shadow: none;
+  &__button[var-dialog-cover]:not(&--with-button-props) {
+    &.var-dialog__confirm-button:not(.var-button--disabled) {
+      color: var(--dialog-confirm-button-color);
     }
-  }
 
-  &__confirm-button[var-dialog-cover]:not(.var-button--disabled) {
-    color: var(--dialog-confirm-button-color);
-  }
-
-  &__cancel-button[var-dialog-cover]:not(.var-button--disabled) {
-    color: var(--dialog-cancel-button-color);
+    &.var-dialog__cancel-button:not(.var-button--disabled) {
+      color: var(--dialog-cancel-button-color);
+    }
   }
 }

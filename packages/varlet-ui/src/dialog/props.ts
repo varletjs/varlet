@@ -1,6 +1,7 @@
 import { type PropType, type Ref } from 'vue'
+import { props as buttonProps } from '../button/props'
 import { popupProps } from '../popup'
-import { defineListenerProp, pickProps } from '../utils/components'
+import { defineListenerProp, pickProps, type ExtractPublicPropTypes } from '../utils/components'
 import { DialogActions } from './index'
 
 export type DialogMessageAlign = 'left' | 'center' | 'right'
@@ -28,6 +29,8 @@ export const props = {
   cancelButtonTextColor: String,
   confirmButtonColor: String,
   cancelButtonColor: String,
+  confirmButtonProps: Object as PropType<ExtractPublicPropTypes<typeof buttonProps>>,
+  cancelButtonProps: Object as PropType<ExtractPublicPropTypes<typeof buttonProps>>,
   confirmButtonLoading: Boolean,
   cancelButtonLoading: Boolean,
   confirmButtonDisabled: Boolean,

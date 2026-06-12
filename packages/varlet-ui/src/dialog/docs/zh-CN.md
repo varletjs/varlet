@@ -58,6 +58,31 @@ function hideButton() {
 </template>
 ```
 
+### 自定义操作按钮
+
+```html
+<script setup>
+import { Dialog } from '@varlet/ui'
+
+function customActionButtons() {
+  Dialog({
+    message: '兰亭临帖 行书如行云流水',
+    confirmButtonProps: {
+      type: 'primary',
+      text: false,
+    },
+    cancelButtonProps: {
+      outline: true,
+    },
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="customActionButtons">自定义操作按钮</var-button>
+</template>
+```
+
 ### 处理用户行为
 
 可以通过 `Dialog` 方法的返回值获取用户行为, 返回值是一个 `promise`。
@@ -140,6 +165,27 @@ const show = ref(false)
     @confirm="Snackbar.success('confirm')"
     @cancel="Snackbar.error('cancel')"
     @closed="Snackbar.info('closed')"
+  />
+</template>
+```
+
+### 自定义操作按钮
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+</script>
+
+<template>
+  <var-button type="warning" block @click="show = true">自定义操作按钮</var-button>
+  <var-dialog
+    title="兰亭序"
+    message="兰亭临帖 行书如行云流水"
+    v-model:show="show"
+    :confirm-button-props="{ type: 'primary', text: false }"
+    :cancel-button-props="{ outline: true }"
   />
 </template>
 ```
@@ -245,6 +291,8 @@ const show = ref(false)
 | `cancel-button-text-color` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirm-button-color` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancel-button-color` | 取消按钮背景颜色 | _string_ | `-` |
+| `confirm-button-props` ***3.18.0*** | 确认按钮属性 | _[ButtonProps](/#/zh-CN/button#shu3xing4)_ | `-` |
+| `cancel-button-props` ***3.18.0*** | 取消按钮属性 | _[ButtonProps](/#/zh-CN/button#shu3xing4)_ | `-` |
 | `confirm-button-loading`  ***3.12.0***   | 确认按钮加载状态      | _boolean_             | `false`   |
 | `cancel-button-loading`   ***3.12.0***   | 取消按钮加载状态        | _boolean_             | `false`   |
 | `confirm-button-disabled` ***3.12.0***    | 确认按钮禁用状态       | _boolean_             | `false`   |
@@ -300,6 +348,8 @@ const show = ref(false)
 | `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
 | `confirmButtonColor` | 确认按钮背景颜色 | _string_ | `-` |
 | `cancelButtonColor` | 取消按钮背景颜色 | _string_ | `-` |
+| `confirmButtonProps` ***3.18.0*** | 确认按钮属性 | _[ButtonProps](/#/zh-CN/button#shu3xing4)_ | `-` |
+| `cancelButtonProps` ***3.18.0*** | 取消按钮属性 | _[ButtonProps](/#/zh-CN/button#shu3xing4)_ | `-` |
 | `confirmButtonLoading`  ***3.12.0***   | 确认按钮加载状态      | _boolean_             | `false`   |
 | `cancelButtonLoading`   ***3.12.0***   | 取消按钮加载状态        | _boolean_             | `false`   |
 | `confirmButtonDisabled` ***3.12.0***    | 确认按钮禁用状态       | _boolean_             | `false`   |

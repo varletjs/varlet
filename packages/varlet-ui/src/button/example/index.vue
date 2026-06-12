@@ -52,10 +52,24 @@ function handleAutoLoadingClick() {
     <var-button type="danger" tonal>{{ t('dangerButton') }}</var-button>
   </var-space>
 
+  <app-type>{{ t('outlineButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button text outline>{{ t('defaultButton') }}</var-button>
+    <var-button text outline type="primary">{{ t('primaryButton') }}</var-button>
+    <var-button text outline type="info">{{ t('infoButton') }}</var-button>
+    <var-button text outline type="success">{{ t('successButton') }}</var-button>
+    <var-button text outline type="warning">{{ t('warningButton') }}</var-button>
+    <var-button text outline type="danger">{{ t('dangerButton') }}</var-button>
+  </var-space>
+
   <app-type>{{ t('textButton') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button text outline type="primary">{{ t('outlineButton') }}</var-button>
-    <var-button text type="primary">{{ t('plainTextButton') }}</var-button>
+    <var-button text>{{ t('defaultButton') }}</var-button>
+    <var-button text type="primary">{{ t('primaryButton') }}</var-button>
+    <var-button text type="info">{{ t('infoButton') }}</var-button>
+    <var-button text type="success">{{ t('successButton') }}</var-button>
+    <var-button text type="warning">{{ t('warningButton') }}</var-button>
+    <var-button text type="danger">{{ t('dangerButton') }}</var-button>
   </var-space>
 
   <app-type>{{ t('disabledStatus') }}</app-type>

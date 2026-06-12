@@ -58,6 +58,31 @@ function hideButton() {
 </template>
 ```
 
+### Custom Action Buttons
+
+```html
+<script setup>
+import { Dialog } from '@varlet/ui'
+
+function customActionButtons() {
+  Dialog({
+    message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
+    confirmButtonProps: {
+      type: 'primary',
+      text: false,
+    },
+    cancelButtonProps: {
+      outline: true,
+    },
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="customActionButtons">Custom Action Buttons</var-button>
+</template>
+```
+
 ### Handler User Behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
@@ -140,6 +165,27 @@ const show = ref(false)
     @confirm="Snackbar.success('confirm')"
     @cancel="Snackbar.error('cancel')"
     @closed="Snackbar.info('closed')"
+  />
+</template>
+```
+
+### Custom Action Buttons
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+</script>
+
+<template>
+  <var-button type="warning" block @click="show = true">Custom Action Buttons</var-button>
+  <var-dialog
+    title="Beat It"
+    message="Don't Wanna See No Blood, Don't Be A Macho Man"
+    v-model:show="show"
+    :confirm-button-props="{ type: 'primary', text: false }"
+    :cancel-button-props="{ outline: true }"
   />
 </template>
 ```
@@ -245,6 +291,8 @@ const show = ref(false)
 | `cancel-button-text-color`  | Cancel button text color                                                                                       | _string_              | `-`       |
 | `confirm-button-color`      | Confirm button background color                                                                                | _string_              | `-`       |
 | `cancel-button-color`       | Cancel button background color                                                                                 | _string_              | `-`       |
+| `confirm-button-props` ***3.18.0*** | Confirm button props                                                                                           | _[ButtonProps](/#/en-US/button#Props)_ | `-`       |
+| `cancel-button-props` ***3.18.0***  | Cancel button props                                                                                            | _[ButtonProps](/#/en-US/button#Props)_ | `-`       |
 | `confirm-button-loading`  ***3.12.0***  | Confirm button loading state                                                                                | _boolean_             | `false`   |
 | `cancel-button-loading`   ***3.12.0***  | Cancel button loading state                                                                                  | _boolean_             | `false`   |
 | `confirm-button-disabled` ***3.12.0***   | Confirm button disabled state                                                                                 | _boolean_             | `false`   |
@@ -300,6 +348,8 @@ const show = ref(false)
 | `cancelButtonTextColor`  | Cancel button text color                                                                                       | _string_                                                       | `-`     |
 | `confirmButtonColor`     | Confirm button background color                                                                                | _string_                                                       | `-`     |
 | `cancelButtonColor`      | Cancel button background color                                                                                 | _string_                                                       | `-`     |
+| `confirmButtonProps` ***3.18.0*** | Confirm button props                                                                                           | _[ButtonProps](/#/en-US/button#Props)_                         | `-`     |
+| `cancelButtonProps` ***3.18.0***  | Cancel button props                                                                                            | _[ButtonProps](/#/en-US/button#Props)_                         | `-`     |
 | `confirmButtonLoading`  ***3.12.0***   | Confirm button loading state      | _boolean_             | `false`   |
 | `cancelButtonLoading`   ***3.12.0***   | Cancel button loading state        | _boolean_             | `false`   |
 | `confirmButtonDisabled` ***3.12.0***    | Confirm button disabled state       | _boolean_             | `false`   |

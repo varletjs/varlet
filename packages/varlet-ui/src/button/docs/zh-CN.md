@@ -49,13 +49,32 @@
 </template>
 ```
 
+### 外边框按钮
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button text outline>默认按钮</var-button>
+    <var-button text outline type="primary">主要按钮</var-button>
+    <var-button text outline type="info">信息按钮</var-button>
+    <var-button text outline type="success">成功按钮</var-button>
+    <var-button text outline type="warning">警告按钮</var-button>
+    <var-button text outline type="danger">危险按钮</var-button>
+  </var-space>
+</template>
+```
+
 ### 文字按钮
 
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button text outline type="primary">外边框按钮</var-button>
-    <var-button text type="primary">纯文字按钮</var-button>
+    <var-button text>默认按钮</var-button>
+    <var-button text type="primary">主要按钮</var-button>
+    <var-button text type="info">信息按钮</var-button>
+    <var-button text type="success">成功按钮</var-button>
+    <var-button text type="warning">警告按钮</var-button>
+    <var-button text type="danger">危险按钮</var-button>
   </var-space>
 </template>
 ```
