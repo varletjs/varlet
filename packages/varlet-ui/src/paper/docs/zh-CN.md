@@ -58,11 +58,18 @@
 </template>
 ```
 
-### 纸张变体
+### 外边框
 
 ```html
 <template>
   <var-paper variant="outlined" :width="100" :height="100" />
+</template>
+```
+
+### 填充
+
+```html
+<template>
   <var-paper variant="filled" :width="100" :height="100" />
 </template>
 ```

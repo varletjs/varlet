@@ -58,11 +58,18 @@ An easier container using elevation and water effects.
 </template>
 ```
 
-### Paper Variant
+### Outlined
 
 ```html
 <template>
   <var-paper variant="outlined" :width="100" :height="100" />
+</template>
+```
+
+### Filled
+
+```html
+<template>
   <var-paper variant="filled" :width="100" :height="100" />
 </template>
 ```
