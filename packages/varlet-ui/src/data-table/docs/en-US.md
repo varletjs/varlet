@@ -908,7 +908,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `data` | Data source. Full data in local mode, current page data in remote mode | _any[]_ | `[]` |
 | `columns` | Column definitions | _DataTableColumn[]_ | `[]` |
-| `row-key` | Row key field or getter | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
+| `row-key` | Row key field or getter. Selection, detail expansion, and tree expansion rely on stable unique row keys; configure it explicitly when rows do not have `id` | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
 | `row-props` | Custom row props, supports object or function | _object \| (context) => object_ | `-` |
 | `row-class` | Custom row class, supports string, array, object, or function | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
 | `summary` | Summary row render function. Return an array to render multiple summary rows | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |
@@ -942,12 +942,12 @@ const data = ref([
 | --- | --- | --- | --- |
 | `type` | Column type. Supports `selection` and `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | Unique column key | _string_ | `-` |
-| `title` | Column title. Supports render function | _VNodeChild \| () => VNodeChild_ | `-` |
+| `title` | Column title. Supports render function. Has no effect on `selection` and `expand` columns | _VNodeChild \| () => VNodeChild_ | `-` |
 | `children` | Child columns used to render a grouped header | _DataTableColumn[]_ | `-` |
 | `sorter` | Whether the field column shows sorter interaction | _boolean_ | `false` |
 | `multiple` | Whether the selection column allows multiple rows | _boolean_ | `true` |
 | `selectable` | Whether selection is enabled. Supports `boolean` or `(context) => boolean` | _boolean \| (context) => boolean_ | `true` |
-| `expandable` | Whether the row can be expanded. Only works on expand columns | _(context) => boolean_ | `-` |
+| `expandable` | Whether users can expand the row through the built-in expand button. Only works on expand columns; controlled `expanded-row-keys` takes precedence | _(context) => boolean_ | `-` |
 | `renderExpand` | Custom expanded content. Only works on expand columns | _(context) => VNodeChild_ | `-` |
 | `resizable` | Whether the column width can be resized by dragging | _boolean_ | `false` |
 | `fixed` | Fixed column position. Must be used with `width` | _'left' \| 'right'_ | `-` |

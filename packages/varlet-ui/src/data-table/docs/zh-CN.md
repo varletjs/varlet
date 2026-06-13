@@ -908,7 +908,7 @@ const data = ref([
 | --- | --- | --- | --- |
 | `data` | 数据源。前端分页下传全量数据，远程分页下传当前页数据 | _any[]_ | `[]` |
 | `columns` | 列配置 | _DataTableColumn[]_ | `[]` |
-| `row-key` | 行 key 字段或获取函数 | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
+| `row-key` | 行 key 字段或获取函数。选择、详情展开和树形展开依赖稳定唯一的行 key；如果数据没有 `id`，应显式配置该属性 | _string \| number \| ((context: { row, rowIndex }) => string \| number)_ | `'id'` |
 | `row-props` | 自定义行属性，支持对象或函数 | _object \| (context) => object_ | `-` |
 | `row-class` | 自定义行类名，支持字符串、数组、对象或函数 | _string \| array \| object \| (context) => string \| array \| object_ | `-` |
 | `summary` | 总结栏渲染函数。返回数组时渲染多行总结栏 | _(context) => Record<string, DataTableSummaryCell> \| Array<Record<string, DataTableSummaryCell>>_ | `-` |
@@ -942,12 +942,12 @@ const data = ref([
 | --- | --- | --- | --- |
 | `type` | 列类型。支持 `selection` 和 `expand` | _'selection' \| 'expand'_ | `-` |
 | `key` | 列唯一 key | _string_ | `-` |
-| `title` | 列标题，支持渲染函数 | _VNodeChild \| () => VNodeChild_ | `-` |
+| `title` | 列标题，支持渲染函数。对 `selection` 和 `expand` 列无效 | _VNodeChild \| () => VNodeChild_ | `-` |
 | `children` | 子列配置，用于渲染分组表头 | _DataTableColumn[]_ | `-` |
 | `sorter` | 字段列是否显示排序交互 | _boolean_ | `false` |
 | `multiple` | 选择列是否允许多选，仅对选择列生效 | _boolean_ | `true` |
 | `selectable` | 是否允许选择。支持 `boolean` 或 `(context) => boolean`，仅对选择列生效 | _boolean \| (context) => boolean_ | `true` |
-| `expandable` | 是否允许展开该行，仅对展开列生效 | _(context) => boolean_ | `-` |
+| `expandable` | 是否允许用户通过内置展开按钮展开该行，仅对展开列生效；受控的 `expanded-row-keys` 优先级更高 | _(context) => boolean_ | `-` |
 | `renderExpand` | 自定义展开内容，仅对展开列生效 | _(context) => VNodeChild_ | `-` |
 | `resizable` | 是否允许通过拖拽调整列宽 | _boolean_ | `false` |
 | `fixed` | 固定列位置，必须配合 `width` 使用 | _'left' \| 'right'_ | `-` |

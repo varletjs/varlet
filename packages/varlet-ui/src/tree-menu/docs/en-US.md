@@ -414,9 +414,9 @@ const options = ref([
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model:active` | Active option value | _string \| number_ | `-` |
-| `options` | Menu options | _TreeMenuOption[]_ | `[]` |
+| `options` | Menu options. Selectable or expandable options must provide `value`, or an equivalent field specified by `value-key` | _TreeMenuOption[]_ | `[]` |
 | `v-model:expanded-values` | Expanded option values | _Array<string \| number>_ | `-` |
-| `value-key` | Option value field | _string_ | `'value'` |
+| `value-key` | Option value field. Use it to point to the unique value field when options do not use `value` | _string_ | `'value'` |
 | `label-key` | Option label field | _string_ | `'label'` |
 | `icon-key` | Option icon field | _string_ | `'icon'` |
 | `children-key` | Option children field | _string_ | `'children'` |
@@ -431,7 +431,7 @@ const options = ref([
 | Field | Description | Type | Default |
 | --- | --- | --- | --- |
 | `type` | Option type. `group` renders a group label and its children. `divider` renders a divider. | _'group' \| 'divider'_ | `-` |
-| `value` | Option value | _string \| number_ | `-` |
+| `value` | Option value. Selectable or expandable options must provide it, or an equivalent field specified by `value-key`; `group` and `divider` can omit it | _string \| number_ | `-` |
 | `label` | Option label | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | Option icon | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `render` | Custom option render | _({ node }, option, active) => VNodeChild_ | `-` |

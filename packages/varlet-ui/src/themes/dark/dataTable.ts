@@ -13,7 +13,7 @@ export default {
   '--data-table-sort-trigger-hover-background': 'hsla(var(--hsl-primary), 0.12)',
   '--data-table-empty-text-color': 'var(--color-text-disabled)',
   '--data-table-resize-trigger-color': 'hsla(var(--hsl-on-surface-variant), 0.36)',
-  '--data-table-fixed-shadow-color': 'rgba(0, 0, 0, 0.04)',
+  '--data-table-fixed-shadow-color': 'rgba(0, 0, 0, 0.14)',
   '--data-table-border-radius': '2px',
   '--data-table-cell-normal-padding': '8px 16px',
   '--data-table-cell-small-padding': '4px 16px',

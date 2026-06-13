@@ -314,7 +314,7 @@ const show = ref(false)
 | --------------- | ---------------------------------------------------- | ---------------------------------------------------------- |
 | `open`          | Triggered when the Dialog is open                    | `-`                                                        |
 | `opened`        | Triggered when the Dialog open-animation ends        | `-`                                                        |
-| `before-close`  | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` |
+| `before-close`  | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` <br> `refs: DialogBeforeCloseRefs` |
 | `close`         | Triggered when the Dialog is close                   | `-`                                                        |
 | `closed`        | Triggered when the Dialog close-animation ends       | `-`                                                        |
 | `confirm`       | Triggered on confirm                                   | `-`                                                        |
@@ -365,7 +365,7 @@ const show = ref(false)
 | `closeOnKeyEscape` |  Whether to support keyboard ESC to close the dialog | _boolean_ | `true` |
 | `onOpen`                 | Dialog open callback                                                                                           | _() => void_                                                   | `-`     |
 | `onOpened`               | Dialog open-animation ends callback                                                                            | _() => void_                                                   | `-`     |
-| `onBeforeClose`          | Callbacks prevent closure before the Dialog closes                                                             | _(action: confirm \| cancel \| close, done: Function) => void_ | `-`     |
+| `onBeforeClose`          | Callbacks prevent closure before the Dialog closes                                                             | _(action: confirm \| cancel \| close, done: Function, refs: DialogBeforeCloseRefs) => void_ | `-`     |
 | `onClose`                | Dialog close callback                                                                                          | _() => void_                                                   | `-`     |
 | `onClosed`               | Dialog close-animation ends callback                                                                           | _() => void_                                                   | `-`     |
 | `onConfirm`              | Confirm callback                                                                                               | _() => void_                                                   | `-`     |

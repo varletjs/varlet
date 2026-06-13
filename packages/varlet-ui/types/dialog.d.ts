@@ -1,10 +1,17 @@
-import { App, TeleportProps, VNode } from 'vue'
+import { App, Ref, TeleportProps, VNode } from 'vue'
 import { ButtonProps } from './button'
 import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const dialogProps: Record<keyof DialogProps, any>
 
 export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
+
+export interface DialogBeforeCloseRefs {
+  confirmButtonLoading: Ref<boolean>
+  cancelButtonLoading: Ref<boolean>
+  confirmButtonDisabled: Ref<boolean>
+  cancelButtonDisabled: Ref<boolean>
+}
 
 export interface DialogProps extends BasicAttributes {
   show?: boolean
@@ -37,7 +44,7 @@ export interface DialogProps extends BasicAttributes {
   teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
-  onBeforeClose?: ListenerProp<(action: DialogActions, done: () => void) => void>
+  onBeforeClose?: ListenerProp<(action: DialogActions, done: () => void, refs: DialogBeforeCloseRefs) => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onConfirm?: ListenerProp<() => void>
@@ -94,7 +101,7 @@ export interface DialogOptions {
   closeOnKeyEscape?: boolean
   onOpen?: () => void
   onOpened?: () => void
-  onBeforeClose?: (action: DialogActions, done: () => void) => void
+  onBeforeClose?: (action: DialogActions, done: () => void, refs: DialogBeforeCloseRefs) => void
   onClose?: () => void
   onClosed?: () => void
   onConfirm?: () => void

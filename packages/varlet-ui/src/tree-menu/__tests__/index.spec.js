@@ -621,8 +621,12 @@ describe('tree-menu component api', () => {
       expect(source).toContain('var-switch v-model')
     })
 
-    expect(enUS).toContain('| `value` | Option value | _string \\| number_ | `-` |')
-    expect(zhCN).toContain('| `value` | 选项值 | _string \\| number_ | `-` |')
+    expect(enUS).toContain(
+      '| `value` | Option value. Selectable or expandable options must provide it, or an equivalent field specified by `value-key`; `group` and `divider` can omit it | _string \\| number_ | `-` |',
+    )
+    expect(zhCN).toContain(
+      '| `value` | 选项值。可选择或可展开的选项必须提供，或提供由 `value-key` 指定的等价字段；`group` 和 `divider` 可省略 | _string \\| number_ | `-` |',
+    )
     expect(enUS).toContain('| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |')
     expect(zhCN).toContain('| `--tree-menu-item-indicator-active-transition-duration` | `0ms` |')
     expect(styleVarsTypes).toContain("'--tree-menu-item-indicator-active-transition-duration'?: string")

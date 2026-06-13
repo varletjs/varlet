@@ -314,7 +314,7 @@ const show = ref(false)
 | --- | --- | --- |
 | `open` | 打开对话框时触发 | `-` |
 | `opened` | 打开对话框动画结束时触发 | `-` |
-| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close` <br> `done: Function` |
+| `before-close` | 对话框关闭前触发，会阻止关闭 | `action: confirm \| cancel \| close` <br> `done: Function` <br> `refs: DialogBeforeCloseRefs` |
 | `close` | 关闭对话框时触发 | `-` |
 | `closed` | 关闭对话框动画结束时触发 | `-` |
 | `confirm` | 确认时触发 | `-` |
@@ -365,7 +365,7 @@ const show = ref(false)
 | `closeOnKeyEscape` | 是否支持键盘 ESC 关闭弹窗 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |
 | `onOpened` | 对话框开启动画结束回调 | _() => void_ | `-` |
-| `onBeforeClose` | 对话框关闭前回调，会阻止关闭 | _(action: confirm \| cancel \| close, done: Function) => void_ | `-` |
+| `onBeforeClose` | 对话框关闭前回调，会阻止关闭 | _(action: confirm \| cancel \| close, done: Function, refs: DialogBeforeCloseRefs) => void_ | `-` |
 | `onClose` | 对话框关闭回调 | _() => void_ | `-` |
 | `onClosed` | 对话框关闭动画结束回调 | _() => void_ | `-` |
 | `onConfirm` | 确认回调 | _() => void_ | `-` |

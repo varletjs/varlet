@@ -1,8 +1,8 @@
-import { type PropType, type Ref } from 'vue'
+import { type PropType } from 'vue'
 import { props as buttonProps } from '../button/props'
 import { popupProps } from '../popup'
 import { defineListenerProp, pickProps, type ExtractPublicPropTypes } from '../utils/components'
-import { DialogActions } from './index'
+import type { DialogActions, DialogBeforeCloseRefs } from './index'
 
 export type DialogMessageAlign = 'left' | 'center' | 'right'
 
@@ -37,18 +37,7 @@ export const props = {
   cancelButtonDisabled: Boolean,
   dialogClass: String,
   dialogStyle: Object,
-  onBeforeClose: defineListenerProp<
-    (
-      action: DialogActions,
-      done: () => void,
-      refs: {
-        confirmButtonLoading: Ref<boolean>
-        cancelButtonLoading: Ref<boolean>
-        confirmButtonDisabled: Ref<boolean>
-        cancelButtonDisabled: Ref<boolean>
-      },
-    ) => void
-  >(),
+  onBeforeClose: defineListenerProp<(action: DialogActions, done: () => void, refs: DialogBeforeCloseRefs) => void>(),
   onConfirm: defineListenerProp<() => void>(),
   onCancel: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),

@@ -1,10 +1,19 @@
 import { call, inBrowser, isString } from '@varlet/shared'
-import { nextTick, reactive, type TeleportProps } from 'vue'
+import { nextTick, reactive, type Ref, type TeleportProps } from 'vue'
 import { props as buttonProps } from '../button/props'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import type { ExtractPublicPropTypes } from '../utils/components'
 import VarDialog from './Dialog.vue'
 import { props as dialogProps } from './props'
+
+export type DialogActions = 'confirm' | 'cancel' | 'close'
+
+export interface DialogBeforeCloseRefs {
+  confirmButtonLoading: Ref<boolean>
+  cancelButtonLoading: Ref<boolean>
+  confirmButtonDisabled: Ref<boolean>
+  cancelButtonDisabled: Ref<boolean>
+}
 
 export interface DialogOptions {
   show?: boolean
@@ -36,7 +45,7 @@ export interface DialogOptions {
   closeOnKeyEscape?: boolean
   onOpen?: () => void
   onOpened?: () => void
-  onBeforeClose?: (done: () => void) => void
+  onBeforeClose?: (action: DialogActions, done: () => void, refs: DialogBeforeCloseRefs) => void
   onClose?: () => void
   onClosed?: () => void
   onConfirm?: () => void
@@ -46,8 +55,6 @@ export interface DialogOptions {
   // internal
   teleport?: TeleportProps['to']
 }
-
-export type DialogActions = 'confirm' | 'cancel' | 'close'
 
 export type UserDialogOptions = DialogOptions | string
 

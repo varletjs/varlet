@@ -414,9 +414,9 @@ const options = ref([
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model:active` | 激活菜单项的值 | _string \| number_ | `-` |
-| `options` | 菜单选项 | _TreeMenuOption[]_ | `[]` |
+| `options` | 菜单选项。可选择或可展开的选项必须提供 `value`，或提供由 `value-key` 指定的等价字段 | _TreeMenuOption[]_ | `[]` |
 | `v-model:expanded-values` | 展开菜单项的值集合 | _Array<string \| number>_ | `-` |
-| `value-key` | 选项值字段 | _string_ | `'value'` |
+| `value-key` | 选项值字段。当选项不使用 `value` 字段时，必须通过该字段指定唯一值来源 | _string_ | `'value'` |
 | `label-key` | 选项标签字段 | _string_ | `'label'` |
 | `icon-key` | 选项图标字段 | _string_ | `'icon'` |
 | `children-key` | 子选项字段 | _string_ | `'children'` |
@@ -431,7 +431,7 @@ const options = ref([
 | 字段 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `type` | 选项类型。`group` 渲染分组标题和子选项，`divider` 渲染分割线。 | _'group' \| 'divider'_ | `-` |
-| `value` | 选项值 | _string \| number_ | `-` |
+| `value` | 选项值。可选择或可展开的选项必须提供，或提供由 `value-key` 指定的等价字段；`group` 和 `divider` 可省略 | _string \| number_ | `-` |
 | `label` | 选项标签 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `icon` | 选项图标 | _string \| VNode \| ((option, active) => VNodeChild)_ | `-` |
 | `render` | 自定义选项渲染 | _({ node }, option, active) => VNodeChild_ | `-` |
