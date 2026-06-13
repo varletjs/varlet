@@ -1,4 +1,4 @@
-# [3.18.0](https://github.com/varletjs/varlet/compare/v3.17.1...v3.18.0) (2026-06-13)
+## [3.18.1](https://github.com/varletjs/varlet/compare/v3.18.0...v3.18.1) (2026-06-13)
 
 
 ### Bug Fixes
@@ -13,7 +13,7 @@
 * **style-vars:** ensure newline at end of file in styleVars.d.ts ([bcb1fbf](https://github.com/varletjs/varlet/commit/bcb1fbf3bb50de283880ee4f06e6ccfc7769083e))
 * **tree-menu:** make value prop optional in TreeMenuBaseOption interface ([3033351](https://github.com/varletjs/varlet/commit/30333516c3e68ebdec3266b75f914a174f4779bc))
 * **types:** ensure newline at end of file in styleVars.d.ts ([0805fdd](https://github.com/varletjs/varlet/commit/0805fddc09223e3a5671ed7109e2ef9e793a28e4))
-* update rattail version from 2.0.7 to 2.0.9 in pnpm-lock and pnpm-workspace files ([8dea3a8](https://github.com/varletjs/varlet/commit/8dea3a82504f316e54f4311508d6cac299521fa6))
+* **ui:** improve docs and data table fixed column shadow ([848fedf](https://github.com/varletjs/varlet/commit/848fedfaf72b664f3620278266c2dda55524b295))
 
 
 ### Features
@@ -26,7 +26,6 @@
 * **data-table:** add support for grouped headers with colspan in DataTable component ([0d2d159](https://github.com/varletjs/varlet/commit/0d2d1591cd04a119f1ba616d43359f16e4c35a37))
 * **data-table:** enhance fixed column rendering and add container scroll handling ([10a5ee6](https://github.com/varletjs/varlet/commit/10a5ee690b5e11903028909e86a78e97cfd74ef9))
 * **dialog:** add custom action button props and update documentation ([326bf7a](https://github.com/varletjs/varlet/commit/326bf7a82a40e2e578c2520e4db8e0a168d40d65))
-* **docs:** update component count from 60+ to 70+ in README files ([7019b48](https://github.com/varletjs/varlet/commit/7019b487d21692043d1b24db29a2604dde023f50))
 * new component data table ([#1967](https://github.com/varletjs/varlet/issues/1967)) ([0c10c12](https://github.com/varletjs/varlet/commit/0c10c12a3a8c799f13a12d1f814a542f25bfb07d))
 * new component rail navigation and  new props "fab" for button ([#1969](https://github.com/varletjs/varlet/issues/1969)) ([0b90116](https://github.com/varletjs/varlet/commit/0b901169ff8fe55c276d4a635394df225f22035e))
 * new component tree-menu and enhance rail navigation ux ([#1970](https://github.com/varletjs/varlet/issues/1970)) ([9cc1ec3](https://github.com/varletjs/varlet/commit/9cc1ec39ab982df6e58d26e26be61e0e6ce0c335))
@@ -43,6 +42,18 @@
 * **data-table:** simplify minWidth logic and update related tests ([6e03e38](https://github.com/varletjs/varlet/commit/6e03e386a1aab979e6f3b9ddff876ce0dda4515b))
 * **data-table:** update column width handling and improve pointer event management ([2736834](https://github.com/varletjs/varlet/commit/2736834a55ee52607bf15ec6eb8976b88da12e8c))
 * **table:** optimize font size and font weight ([e5dd0aa](https://github.com/varletjs/varlet/commit/e5dd0aab12cca618d16da0e1646dd5891da1a8e3))
+
+## [3.17.1](https://github.com/varletjs/varlet/compare/v3.17.0...v3.17.1) (2026-05-25)
+
+
+### Bug Fixes
+
+* update rattail version from 2.0.7 to 2.0.9 in pnpm-lock and pnpm-workspace files ([8dea3a8](https://github.com/varletjs/varlet/commit/8dea3a82504f316e54f4311508d6cac299521fa6))
+
+
+### Features
+
+* **docs:** update component count from 60+ to 70+ in README files ([7019b48](https://github.com/varletjs/varlet/commit/7019b487d21692043d1b24db29a2604dde023f50))
 
 # [3.17.0](https://github.com/varletjs/varlet/compare/v3.16.2...v3.17.0) (2026-05-18)
 
