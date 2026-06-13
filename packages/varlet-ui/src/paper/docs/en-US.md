@@ -58,6 +58,15 @@ An easier container using elevation and water effects.
 </template>
 ```
 
+### Paper Variant
+
+```html
+<template>
+  <var-paper variant="outlined" :width="100" :height="100" />
+  <var-paper variant="filled" :width="100" :height="100" />
+</template>
+```
+
 ### Use Slot
 
 ```html
@@ -93,7 +102,8 @@ An easier container using elevation and water effects.
 | `height` | Paper height | _string \| number_ | `-` |
 | `round` | Whether to enable round paper | _boolean_ | `false` |
 | `inline` | Whether to use inline paper | _boolean_ | `false` |
-| `surface`  ***3.16.0*** | Background preset, optional value is `low`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
+| `variant` ***3.18.0*** | Paper variant, options `standard`, `outlined`, and `filled`. The `outlined` and `filled` modes do not mount elevation styles | _string_ | `standard` |
+| `surface`  ***3.16.0*** | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
 | `hoverable`  ***3.16.0*** | Whether to enable hover effect, supports object form `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 
 ### Events
@@ -116,4 +126,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | ------ | -------------|
 | `--paper-background`    | `var(--color-surface-container-highest)` |
 | `--paper-surface-low-background` | `var(--color-surface-container-highest)` |
+| `--paper-outlined-background` | `transparent` |
+| `--paper-filled-background` | `hsla(0, 0%, 93%, 1)` |
+| `--paper-outline-color` | `var(--color-outline)` |
 | `--paper-border-radius` | `4px` |

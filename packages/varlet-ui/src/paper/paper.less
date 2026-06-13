@@ -1,6 +1,9 @@
 :root {
   --paper-background: var(--color-surface-container-highest);
   --paper-surface-low-background: var(--color-surface-container-highest);
+  --paper-outlined-background: transparent;
+  --paper-filled-background: hsla(0, 0%, 93%, 1);
+  --paper-outline-color: var(--color-outline);
   --paper-border-radius: 4px;
 }
 
@@ -22,5 +25,14 @@
 
   &--surface-low {
     background: var(--paper-surface-low-background);
+  }
+
+  &--outlined {
+    border: thin solid var(--paper-outline-color);
+    background: var(--paper-outlined-background);
+  }
+
+  &--filled {
+    background: var(--paper-filled-background);
   }
 }

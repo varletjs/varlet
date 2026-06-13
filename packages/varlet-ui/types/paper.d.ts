@@ -5,6 +5,8 @@ export declare const paperProps: Record<keyof PaperProps, any>
 
 export type PaperSurface = 'low'
 
+export type PaperVariant = 'standard' | 'outlined' | 'filled'
+
 export interface PaperRipple {
   disabled?: boolean
   color?: string
@@ -23,6 +25,7 @@ export interface PaperProps extends BasicAttributes {
   height?: string | number
   round?: boolean
   inline?: boolean
+  variant?: PaperVariant
   surface?: PaperSurface
   hoverable?: boolean | PaperHoverable
   onClick?: ListenerProp<(e: Event) => void>

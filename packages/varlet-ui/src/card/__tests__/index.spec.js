@@ -115,16 +115,19 @@ describe('test card component props', () => {
   test('card outlined variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
+        elevation: 3,
         variant: 'outlined',
       },
     })
 
     expect(wrapper.find('.var-card--outline').exists()).toBe(true)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(false)
 
     await wrapper.setProps({
       variant: 'standard',
     })
     expect(wrapper.find('.var-card--outline').exists()).toBe(false)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
 
     wrapper.unmount()
   })
@@ -132,16 +135,19 @@ describe('test card component props', () => {
   test('card filled variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
+        elevation: 3,
         variant: 'filled',
       },
     })
 
     expect(wrapper.find('.var-card--filled').exists()).toBe(true)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(false)
 
     await wrapper.setProps({
       variant: 'standard',
     })
     expect(wrapper.find('.var-card--filled').exists()).toBe(false)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
 
     wrapper.unmount()
   })

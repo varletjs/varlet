@@ -4,6 +4,7 @@ export default {
   customInteraction: 'Custom Ripple / Hover Effect',
   round: 'Rounded Paper',
   radius: 'Custom Border Radius',
+  variant: 'Paper Variant',
   slot: 'Use Slot',
   paper: 'Paper',
   hoverable: 'Hoverable',

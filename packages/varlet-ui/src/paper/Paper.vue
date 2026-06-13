@@ -6,10 +6,12 @@
       classes(
         n(),
         n('$--box'),
-        formatElevation(elevation, 2),
+        [variant === 'standard', formatElevation(elevation, 2)],
         [onClick || !normalizedHoverable.disabled, n('--cursor')],
         [round, n('--round')],
         [surfaceLow, n('--surface-low')],
+        [variant === 'outlined', n('--outlined')],
+        [variant === 'filled', n('--filled')],
         [inline, n('$--inline-flex')],
       )
     "
@@ -48,7 +50,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const surfaceLow = computed(() => props.surface === 'low')
+    const surfaceLow = computed(() => props.surface === 'low' && props.variant !== 'filled')
     const { hovering, handleHovering } = useHoverOverlay()
     const normalizedRipple = computed(() => normalizeRipple(props.ripple))
     const normalizedHoverable = computed(() => normalizeHoverable(props.hoverable))

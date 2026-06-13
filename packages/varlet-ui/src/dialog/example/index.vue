@@ -49,6 +49,7 @@ function customActionButtons() {
       text: false,
     },
     cancelButtonProps: {
+      type: 'primary',
       outline: true,
     },
   })
@@ -113,7 +114,7 @@ function asyncClose() {
     :title="t('title')"
     :message="t('message')"
     :confirm-button-props="{ type: 'primary', text: false }"
-    :cancel-button-props="{ outline: true }"
+    :cancel-button-props="{ type: 'primary', outline: true }"
   />
 
   <var-button type="warning" block @click="show1 = true">{{ t('asyncClose') }}</var-button>

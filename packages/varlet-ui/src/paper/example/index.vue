@@ -31,6 +31,10 @@ onThemeChange()
   <app-type>{{ t('radius') }}</app-type>
   <var-paper :elevation="2" :radius="8" width="25vmin" height="25vmin" />
 
+  <app-type>{{ t('variant') }}</app-type>
+  <var-paper variant="outlined" width="25vmin" height="25vmin" />
+  <var-paper variant="filled" width="25vmin" height="25vmin" />
+
   <app-type>{{ t('slot') }}</app-type>
   <var-paper :elevation="2">
     <var-cell>{{ t('paper') }}</var-cell>

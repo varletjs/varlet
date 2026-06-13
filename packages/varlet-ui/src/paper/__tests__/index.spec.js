@@ -76,6 +76,34 @@ test('paper inline', async () => {
   wrapper.unmount()
 })
 
+test('paper variant', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      elevation: 2,
+      variant: 'standard',
+    },
+  })
+
+  expect(wrapper.find('.var-paper--outlined').exists()).toBeFalsy()
+  expect(wrapper.find('.var-paper--filled').exists()).toBeFalsy()
+  expect(wrapper.find('.var-elevation--2').exists()).toBeTruthy()
+
+  await wrapper.setProps({
+    variant: 'outlined',
+  })
+  expect(wrapper.find('.var-paper--outlined').exists()).toBeTruthy()
+  expect(wrapper.find('.var-paper--filled').exists()).toBeFalsy()
+  expect(wrapper.find('.var-elevation--2').exists()).toBeFalsy()
+
+  await wrapper.setProps({
+    variant: 'filled',
+  })
+  expect(wrapper.find('.var-paper--outlined').exists()).toBeFalsy()
+  expect(wrapper.find('.var-paper--filled').exists()).toBeTruthy()
+  expect(wrapper.find('.var-elevation--2').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
 test('paper radius', async () => {
   const wrapper = mount(VarPaper, {
     props: {
@@ -172,6 +200,14 @@ test('paper surface low', async () => {
   expect(wrapper.find('.var-paper--surface-low').exists()).toBeTruthy()
 
   await wrapper.setProps({
+    variant: 'filled',
+  })
+
+  expect(wrapper.find('.var-paper--surface-low').exists()).toBeFalsy()
+  expect(wrapper.find('.var-paper--filled').exists()).toBeTruthy()
+
+  await wrapper.setProps({
+    variant: 'standard',
     surface: undefined,
   })
 

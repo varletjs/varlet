@@ -72,6 +72,7 @@ function customActionButtons() {
       text: false,
     },
     cancelButtonProps: {
+      type: 'primary',
       outline: true,
     },
   })
@@ -185,7 +186,7 @@ const show = ref(false)
     message="Don't Wanna See No Blood, Don't Be A Macho Man"
     v-model:show="show"
     :confirm-button-props="{ type: 'primary', text: false }"
-    :cancel-button-props="{ outline: true }"
+    :cancel-button-props="{ type: 'primary', outline: true }"
   />
 </template>
 ```

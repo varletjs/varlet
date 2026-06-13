@@ -58,6 +58,15 @@
 </template>
 ```
 
+### 纸张变体
+
+```html
+<template>
+  <var-paper variant="outlined" :width="100" :height="100" />
+  <var-paper variant="filled" :width="100" :height="100" />
+</template>
+```
+
 ### 使用插槽
 
 ```html
@@ -93,7 +102,8 @@
 | `height` | 纸张高度  | _string \| number_  | `-` |
 | `round` | 是否启用圆形纸张  | _boolean_  | `false` |
 | `inline` | 是否使用行内纸张  | _boolean_  | `false` |
-| `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，目前只作用在 MD3 暗色主题 | _string_ | `-` |
+| `variant` ***3.18.0*** | 纸张变体，可选值为 `standard`、`outlined`、`filled`，`outlined` 和 `filled` 模式不挂载海拔样式 | _string_ | `standard` |
+| `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-` |
 | `hoverable`  ***3.16.0*** | 是否开启鼠标悬停效果，支持对象形式 `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
 
 ### 事件
@@ -116,4 +126,7 @@
 |-------------------------------------|----------------------|
 | `--paper-background`                 | `var(--color-surface-container-highest)`               |
 | `--paper-surface-low-background`     | `var(--color-surface-container-highest)`               |
+| `--paper-outlined-background`        | `transparent` |
+| `--paper-filled-background`          | `hsla(0, 0%, 93%, 1)` |
+| `--paper-outline-color`              | `var(--color-outline)` |
 | `--paper-border-radius`              | `4px` |
