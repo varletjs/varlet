@@ -1,4 +1,50 @@
-## [3.17.1](https://github.com/varletjs/varlet/compare/v3.17.0...v3.17.1) (2026-05-25)
+# [3.18.0](https://github.com/varletjs/varlet/compare/v3.17.1...v3.18.0) (2026-06-13)
+
+
+### Bug Fixes
+
+* **avatar:** ensure text alignment in avatar component ([92fa62f](https://github.com/varletjs/varlet/commit/92fa62f1617f2f0650327f65ce04b12e5861289b))
+* **data-table:** improve remote pagination handling in usePagination hook ([a9f721b](https://github.com/varletjs/varlet/commit/a9f721b3e1641a9a5e3535fb384b64634d769802))
+* **data-table:** update styles for busy rows and add normal size variant ([77a8c2a](https://github.com/varletjs/varlet/commit/77a8c2abc13e9f1273bb0cfa7b214dc8ac96ffbc))
+* **dialog:** add missing line breaks for better code readability ([77c9262](https://github.com/varletjs/varlet/commit/77c9262bbe2dcb88eefb0974277a1c9023922261))
+* **docs:** remove unnecessary alignment property from selection columns in DataTable documentation ([911e17e](https://github.com/varletjs/varlet/commit/911e17e971e3468f18ada60f912439b602bf7743))
+* **docs:** update prop descriptions for clarity in rail-navigation-item documentation ([8379b26](https://github.com/varletjs/varlet/commit/8379b26f0b2e6513043182160acd9b8ce7a6777f))
+* **otp-input:** support autofill on mobile ([#1966](https://github.com/varletjs/varlet/issues/1966)) ([9c9f5df](https://github.com/varletjs/varlet/commit/9c9f5dffe7cf56ef36a923afc429a83c806ae1dc))
+* **style-vars:** ensure newline at end of file in styleVars.d.ts ([bcb1fbf](https://github.com/varletjs/varlet/commit/bcb1fbf3bb50de283880ee4f06e6ccfc7769083e))
+* **tree-menu:** make value prop optional in TreeMenuBaseOption interface ([3033351](https://github.com/varletjs/varlet/commit/30333516c3e68ebdec3266b75f914a174f4779bc))
+* **types:** ensure newline at end of file in styleVars.d.ts ([0805fdd](https://github.com/varletjs/varlet/commit/0805fddc09223e3a5671ed7109e2ef9e793a28e4))
+* update rattail version from 2.0.7 to 2.0.9 in pnpm-lock and pnpm-workspace files ([8dea3a8](https://github.com/varletjs/varlet/commit/8dea3a82504f316e54f4311508d6cac299521fa6))
+
+
+### Features
+
+* **app-bar:** add type and size props, implement surface style and large size variant ([#1968](https://github.com/varletjs/varlet/issues/1968)) ([fc7a989](https://github.com/varletjs/varlet/commit/fc7a9893833b19b4a7a5b9ad247a6f9049670486))
+* **button:** add filled button mode with elevation support and update documentation ([569af2b](https://github.com/varletjs/varlet/commit/569af2b3eda647f40db974d578a1b166bc132cd1))
+* **button:** add tonal button mode and update related props and documentation ([45b5f60](https://github.com/varletjs/varlet/commit/45b5f60f4cdf4735750a91b71cf8dc82a86810ab))
+* **card, paper:** add outlined and filled variants with corresponding styles and tests ([1957356](https://github.com/varletjs/varlet/commit/1957356ad94eaab8f5b2b00269eb614828c29821))
+* **data-table:** add support for different table sizes and update styles ([dbb0447](https://github.com/varletjs/varlet/commit/dbb04476f0d8b37105001521355025c493327b9a))
+* **data-table:** add support for grouped headers with colspan in DataTable component ([0d2d159](https://github.com/varletjs/varlet/commit/0d2d1591cd04a119f1ba616d43359f16e4c35a37))
+* **data-table:** enhance fixed column rendering and add container scroll handling ([10a5ee6](https://github.com/varletjs/varlet/commit/10a5ee690b5e11903028909e86a78e97cfd74ef9))
+* **dialog:** add custom action button props and update documentation ([326bf7a](https://github.com/varletjs/varlet/commit/326bf7a82a40e2e578c2520e4db8e0a168d40d65))
+* **docs:** update component count from 60+ to 70+ in README files ([7019b48](https://github.com/varletjs/varlet/commit/7019b487d21692043d1b24db29a2604dde023f50))
+* new component data table ([#1967](https://github.com/varletjs/varlet/issues/1967)) ([0c10c12](https://github.com/varletjs/varlet/commit/0c10c12a3a8c799f13a12d1f814a542f25bfb07d))
+* new component rail navigation and  new props "fab" for button ([#1969](https://github.com/varletjs/varlet/issues/1969)) ([0b90116](https://github.com/varletjs/varlet/commit/0b901169ff8fe55c276d4a635394df225f22035e))
+* new component tree-menu and enhance rail navigation ux ([#1970](https://github.com/varletjs/varlet/issues/1970)) ([9cc1ec3](https://github.com/varletjs/varlet/commit/9cc1ec39ab982df6e58d26e26be61e0e6ce0c335))
+* **paper:** add outlined and filled variants with corresponding examples and translations ([97b4387](https://github.com/varletjs/varlet/commit/97b4387c263b512187d9cf429c6eda23c1eaf373))
+* replace 'border' prop with 'bordered' in BottomNavigation, DataTable, RailNavigation, Table, and TreeMenu components ([21e9005](https://github.com/varletjs/varlet/commit/21e90052d1ef525ea069724bbbddabc9151a0454))
+
+
+### Refactoring
+
+* **data-table:** remove debug console logs from DataTable component ([6ccbdc2](https://github.com/varletjs/varlet/commit/6ccbdc2b403944a602730050ba01f39596e5c5d2))
+* **data-table:** remove unused allColumnsHaveResolvedWidth computed property ([523c73f](https://github.com/varletjs/varlet/commit/523c73f9d7b08910ac4dc1f06a894173f30479a6))
+* **data-table:** remove unused column options and improve header row handling ([cd75501](https://github.com/varletjs/varlet/commit/cd75501f96188cd3bc6d68b23a413349a02a2eee))
+* **data-table:** rename columnIndex to startLeafColumnIndex for clarity and consistency ([9a54f27](https://github.com/varletjs/varlet/commit/9a54f27b685239a15f119c802dfaabcb98ab6bd4))
+* **data-table:** simplify minWidth logic and update related tests ([6e03e38](https://github.com/varletjs/varlet/commit/6e03e386a1aab979e6f3b9ddff876ce0dda4515b))
+* **data-table:** update column width handling and improve pointer event management ([2736834](https://github.com/varletjs/varlet/commit/2736834a55ee52607bf15ec6eb8976b88da12e8c))
+* **table:** optimize font size and font weight ([e5dd0aa](https://github.com/varletjs/varlet/commit/e5dd0aab12cca618d16da0e1646dd5891da1a8e3))
+
+# [3.17.0](https://github.com/varletjs/varlet/compare/v3.16.2...v3.17.0) (2026-05-18)
 
 
 ### Bug Fixes
@@ -7,12 +53,10 @@
 * **segmented-buttons:** update checked background and text color variables for consistency across themes ([be8da89](https://github.com/varletjs/varlet/commit/be8da893e53671198b262d671630a2c3649c09e4))
 * **segmented-buttons:** update default values for checked-value, ripple, and checkmark props in documentation ([debc2e6](https://github.com/varletjs/varlet/commit/debc2e6245749137fd91fdb51432340946844d8f))
 * **segmented-buttons:** update documentation for clarity, adjust variable names, and improve layout styles ([06723ea](https://github.com/varletjs/varlet/commit/06723eaa3e70f7559fb99d5cf821b4c698e213f7))
-* update rattail version from 2.0.7 to 2.0.9 in pnpm-lock and pnpm-workspace files ([8dea3a8](https://github.com/varletjs/varlet/commit/8dea3a82504f316e54f4311508d6cac299521fa6))
 
 
 ### Features
 
-* **docs:** update component count from 60+ to 70+ in README files ([7019b48](https://github.com/varletjs/varlet/commit/7019b487d21692043d1b24db29a2604dde023f50))
 * **form:** add segmented buttons for period selection and enhance form functionality ([0ac5a15](https://github.com/varletjs/varlet/commit/0ac5a15f871e0fb7236e1a2ca6936d8a00d6ebf3))
 * **segmented-buttons:** add disabled and readonly states, enhance form validation, and update documentation ([9cbfcde](https://github.com/varletjs/varlet/commit/9cbfcde3f6451a2d6fecd4c86def3a476eb052ae))
 * **segmented-buttons:** add error handling styles and validation logic ([0f99bca](https://github.com/varletjs/varlet/commit/0f99bcaa89b8d0fa85d26a6300589be156b17427))
