@@ -418,6 +418,8 @@ watch(
   <app-type>{{ t('sizes') }}</app-type>
   <var-data-table :columns="columns" :data="data" size="small" />
   <div style="height: 12px"></div>
+  <var-data-table :columns="columns" :data="data" size="normal" />
+  <div style="height: 12px"></div>
   <var-data-table :columns="columns" :data="data" size="large" />
 
   <app-type>{{ t('surfaceLow') }}</app-type>
@@ -440,7 +442,7 @@ watch(
 </style>
 
 <style>
-.data-table-example__row--busy {
-  --data-table-body-cell-text-color: var(--color-warning);
+.data-table-example__row--busy .var-data-table__body-cell {
+  color: var(--color-warning);
 }
 </style>

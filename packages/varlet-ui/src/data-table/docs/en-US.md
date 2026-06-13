@@ -378,8 +378,8 @@ const data = ref([
 </template>
 
 <style>
-.busy-row {
-  --data-table-body-cell-text-color: var(--color-warning);
+.busy-row .var-data-table__body-cell {
+  color: var(--color-warning);
 }
 </style>
 ```
@@ -818,6 +818,7 @@ const data = ref([
 
 <template>
   <var-data-table :columns="columns" :data="data" size="small" />
+  <var-data-table :columns="columns" :data="data" size="normal" />
   <var-data-table :columns="columns" :data="data" size="large" />
 </template>
 ```
