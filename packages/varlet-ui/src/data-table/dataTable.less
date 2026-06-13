@@ -15,9 +15,15 @@
   --data-table-resize-trigger-color: hsla(var(--hsl-on-surface-variant), 0.36);
   --data-table-fixed-shadow-color: rgba(0, 0, 0, 0.04);
   --data-table-border-radius: 2px;
-  --data-table-cell-padding: 8px 16px;
-  --data-table-selection-cell-padding: 8px 8px;
-  --data-table-expand-cell-padding: 8px 8px;
+  --data-table-cell-normal-padding: 8px 16px;
+  --data-table-cell-small-padding: 4px 16px;
+  --data-table-cell-large-padding: 11px 16px;
+  --data-table-selection-cell-normal-padding: 8px 8px;
+  --data-table-selection-cell-small-padding: 4px 8px;
+  --data-table-selection-cell-large-padding: 11px 8px;
+  --data-table-expand-cell-normal-padding: 8px 8px;
+  --data-table-expand-cell-small-padding: 4px 8px;
+  --data-table-expand-cell-large-padding: 11px 8px;
   --data-table-cell-font-size: 14px;
   --data-table-header-font-size: 14px;
   --data-table-header-font-weight: 500;
@@ -93,7 +99,7 @@
 
   &__cell {
     height: var(--data-table-row-height);
-    padding: var(--data-table-cell-padding);
+    padding: var(--data-table-cell-normal-padding);
     font-size: var(--data-table-cell-font-size);
     vertical-align: middle;
 
@@ -119,7 +125,7 @@
     align-items: center;
     width: auto;
     height: auto;
-    padding: var(--data-table-cell-padding);
+    padding: var(--data-table-cell-normal-padding);
     border: 0;
     border-radius: 0;
     background: transparent;
@@ -274,11 +280,11 @@
   }
 
   &__selection-cell {
-    padding: var(--data-table-selection-cell-padding);
+    padding: var(--data-table-selection-cell-normal-padding);
   }
 
   &__expand-cell {
-    padding: var(--data-table-expand-cell-padding);
+    padding: var(--data-table-expand-cell-normal-padding);
   }
 
   &__selection-cell {
@@ -374,12 +380,30 @@
   &--small {
     .var-data-table__cell {
       height: var(--data-table-row-small-height);
+      padding: var(--data-table-cell-small-padding);
+    }
+
+    .var-data-table__selection-cell {
+      padding: var(--data-table-selection-cell-small-padding);
+    }
+
+    .var-data-table__expand-cell {
+      padding: var(--data-table-expand-cell-small-padding);
     }
   }
 
   &--large {
     .var-data-table__cell {
       height: var(--data-table-row-large-height);
+      padding: var(--data-table-cell-large-padding);
+    }
+
+    .var-data-table__selection-cell {
+      padding: var(--data-table-selection-cell-large-padding);
+    }
+
+    .var-data-table__expand-cell {
+      padding: var(--data-table-expand-cell-large-padding);
     }
   }
 }

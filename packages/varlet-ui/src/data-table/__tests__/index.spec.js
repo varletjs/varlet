@@ -635,6 +635,26 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should support table sizes', async () => {
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        pagination: false,
+        size: 'small',
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-data-table--small')
+
+    await wrapper.setProps({ size: 'normal' })
+    expect(wrapper.classes()).toContain('var-data-table--normal')
+
+    await wrapper.setProps({ size: 'large' })
+    expect(wrapper.classes()).toContain('var-data-table--large')
+    wrapper.unmount()
+  })
+
   test('should support grouped header columns', () => {
     const wrapper = mount(VarDataTable, {
       props: {

@@ -305,9 +305,15 @@ interface BaseStyleVars {
   '--data-table-resize-trigger-color'?: string
   '--data-table-fixed-shadow-color'?: string
   '--data-table-border-radius'?: string
-  '--data-table-cell-padding'?: string
-  '--data-table-selection-cell-padding'?: string
-  '--data-table-expand-cell-padding'?: string
+  '--data-table-cell-normal-padding'?: string
+  '--data-table-cell-small-padding'?: string
+  '--data-table-cell-large-padding'?: string
+  '--data-table-selection-cell-normal-padding'?: string
+  '--data-table-selection-cell-small-padding'?: string
+  '--data-table-selection-cell-large-padding'?: string
+  '--data-table-expand-cell-normal-padding'?: string
+  '--data-table-expand-cell-small-padding'?: string
+  '--data-table-expand-cell-large-padding'?: string
   '--data-table-cell-font-size'?: string
   '--data-table-header-font-size'?: string
   '--data-table-header-font-weight'?: string
