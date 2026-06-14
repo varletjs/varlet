@@ -32,6 +32,7 @@ export default {
   '--year-picker-item-height': '48px',
   '--year-picker-item-button-max-width': '140px',
   '--day-picker-content-item-width': '14.28%',
+  '--day-picker-content-item-min-height': '21px',
   '--day-picker-content-item-font-size': 'var(--font-size-sm)',
   '--day-picker-content-item-padding': '2px 0',
   '--day-picker-content-item-button-width': '32px',
