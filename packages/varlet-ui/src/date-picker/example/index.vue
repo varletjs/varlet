@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { t, use } from './locale'
 
 const dates = reactive({
@@ -12,7 +12,10 @@ const dates = reactive({
   date5: '2021-05',
   date6: '2021',
   date7: '2021-04-08',
+  date8: '2021-04-08',
 })
+
+const datePicker = ref()
 
 watchLang(use)
 onThemeChange()
@@ -35,6 +38,13 @@ const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 
   <app-type>{{ t('hideTitle') }}</app-type>
   <var-date-picker v-model="dates.date7" :show-title="false" />
+
+  <app-type>{{ t('actionsSlot') }}</app-type>
+  <var-date-picker ref="datePicker" v-model="dates.date8">
+    <template #actions>
+      <var-button tonal type="primary" @click="datePicker.resetPreview()">{{ t('resetPreview') }}</var-button>
+    </template>
+  </var-date-picker>
 
   <app-type>{{ t('monthPicker') }}</app-type>
   <var-date-picker v-model="dates.date" type="month" />

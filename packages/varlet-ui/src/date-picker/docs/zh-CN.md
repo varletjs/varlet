@@ -91,6 +91,29 @@ const date = ref('2021-04-08')
 </template>
 ```
 
+### 操作插槽
+
+通过 `actions` 插槽可以自定义底部操作区域。`resetPreview` 方法可以将面板视图重置到当前绑定值对应的位置。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021-04-08')
+const datePicker = ref()
+</script>
+
+<template>
+  <var-date-picker ref="datePicker" v-model="date">
+    <template #actions>
+      <var-button tonal type="primary" @click="datePicker.resetPreview()">
+        重置视图
+      </var-button>
+    </template>
+  </var-date-picker>
+</template>
+```
+
 ### 月份选择器
 
 将 `type` 设置为 `month` 可以选择年份和月份，面板左侧的年份切换器可用于切换或选择年份。
@@ -145,7 +168,6 @@ const date = ref('2021')
 | `readonly`          | 是否只读                                         | _boolean_ | `false` |
 | `multiple`          | 是否支持选择多个日期                                   | _boolean_ | `false` |
 | `range`             | 是否支持选择一个范围                                   | _boolean_ | `false` |
-| `touchable`         | 是否支持拖动切换面板                                   | _boolean_ | `true` |
 | `fallback-view-date` ***3.15.2***      | 在没有可用选中值时，控制面板视图回退到的日期（不会写回 `v-model`） | _string_ | `-` |
 
 ### 事件
@@ -154,6 +176,12 @@ const date = ref('2021')
 |-----------|---------|-----------------------------------|
 | `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
+
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| ----- | -------------- | -------- | ------ |
+| `resetPreview` ***3.19.0*** | 将面板视图重置到当前绑定值对应的位置。没有有效绑定值时，会使用 `fallback-view-date` 或今天。 | `-` | `-` |
 
 ### 插槽
 `weekIndex` 表示一周的第 `n` 天，从周日的 `0` 开始
@@ -193,7 +221,7 @@ const date = ref('2021')
 | `--date-picker-body-padding` | `0 12px 16px` |
 | `--date-picker-header-padding` | `0 0 16px`          |
 | `--date-picker-header-padding-top-no-title` | `20px` |
-| `--date-picker-actions-padding` | `20px`              |
+| `--date-picker-actions-padding` | `10px 20px 20px`    |
 | `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`          |
 | `--month-picker-item-width` | `32%`                  |
@@ -219,7 +247,11 @@ const date = ref('2021')
 
 ### 注意
 
-自 `2.19.0` 起，以下 CSS 变量已废弃：
+自 `3.19.0` 起，以下属性和 CSS 变量已移除：
+
+| 已移除属性 |
+| --- |
+| `touchable` |
 
 | 已移除变量 |
 | --- |

@@ -6,4 +6,6 @@ export default {
   range: 'Range',
   dateLimit: 'Date Limit',
   hideTitle: 'Hide Title',
+  actionsSlot: 'Actions Slot',
+  resetPreview: 'Reset Preview',
 }

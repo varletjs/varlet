@@ -5,8 +5,6 @@ type AllowedDates = (val: string) => boolean
 
 type DatePickerType = 'year' | 'date' | 'month'
 
-export type TouchDirection = 'x' | 'y'
-
 export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12'
 
 export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
@@ -22,11 +20,6 @@ export type ComponentProps = {
   multiple: boolean
   range: boolean
   buttonElevation: boolean | string | number
-}
-
-export type PanelBtnDisabled = {
-  left: boolean
-  right: boolean
 }
 
 export type Choose = {
@@ -86,10 +79,6 @@ export const props = {
   readonly: Boolean,
   multiple: Boolean,
   range: Boolean,
-  touchable: {
-    type: Boolean,
-    default: true,
-  },
   onPreview: defineListenerProp<(year: number, month: number, day?: number) => void>(),
   onChange: defineListenerProp<(value: string | string[]) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),

@@ -129,7 +129,8 @@ export default defineComponent({
         activeRect.top - containerRect.top - (scrollContainer.clientHeight - activeRect.height) / 2
     }
 
-    function shiftYearPage(direction: string) {
+    // expose for internal
+    function shiftPreview(direction: string) {
       const isPrevType = direction === 'prev'
 
       if (isPrevType && yearList.value[0] <= 0) {
@@ -139,11 +140,6 @@ export default defineComponent({
       reverse.value = isPrevType
       panelKey.value += isPrevType ? -1 : 1
       page.value += isPrevType ? -1 : 1
-    }
-
-    // expose for internal
-    function shiftPreview(direction: string) {
-      shiftYearPage(direction)
     }
 
     onSmartMounted(scrollToView)
@@ -163,7 +159,6 @@ export default defineComponent({
       reverse,
       panelKey,
       nDate,
-      shiftYearPage,
       chooseYear,
       shiftPreview,
     }

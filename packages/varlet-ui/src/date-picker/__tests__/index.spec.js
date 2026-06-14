@@ -3,7 +3,7 @@ import dayjs from 'dayjs/esm'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import DatePicker from '..'
-import { delay, mockConsole, mockScrollIntoView, triggerDrag } from '../../utils/test'
+import { delay, mockConsole, mockScrollIntoView } from '../../utils/test'
 import VarDatePicker from '../DatePicker'
 
 mockScrollIntoView()
@@ -276,6 +276,39 @@ test('datePicker should update preview year from day panel header', async () => 
   await delay(200)
 
   expect(wrapper.find('.var-date-picker-header__year').text()).toContain('2022')
+  expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('datePicker resetPreview', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-04-08',
+    },
+  })
+
+  await delay(0)
+  await wrapper
+    .findAll('.var-date-picker-header__nav:not(.var-date-picker-header__nav--month) .var-date-picker-header__arrow')[1]
+    .trigger('click')
+  await delay(200)
+  await wrapper.findAll('.var-date-picker-header__nav--month .var-date-picker-header__arrow')[1].trigger('click')
+  await delay(200)
+
+  expect(wrapper.find('.var-date-picker-header__year').text()).toContain('2022')
+  expect(wrapper.find('.var-date-picker-header__month').text()).toBe('五月')
+
+  await wrapper.find('.var-date-picker-header__year').trigger('click')
+  await delay(200)
+  expect(wrapper.find('.var-year-picker').exists()).toBe(true)
+
+  wrapper.vm.resetPreview()
+  await delay(0)
+
+  expect(wrapper.find('.var-day-picker').exists()).toBe(true)
+  expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
+  expect(wrapper.find('.var-date-picker-header__month').text()).toBe('四月')
   expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
 
   wrapper.unmount()
@@ -704,33 +737,6 @@ test('datePicker readonly', async () => {
   await wrapper.find('.var-day-picker__button--usable').trigger('click')
   await delay(200)
   expect(wrapper.vm.date).toBe('2021-05-19')
-
-  wrapper.unmount()
-})
-
-test('datePicker touchable', async () => {
-  const wrapper = mount({
-    components: {
-      [VarDatePicker.name]: VarDatePicker,
-    },
-    data() {
-      return {
-        date: '2021-04-08',
-        type: 'date',
-      }
-    },
-    template: `<var-date-picker v-model="date" :type="type" />`,
-  })
-
-  const pickBodyEl = wrapper.find('.var-date-picker__body')
-  await triggerDrag(pickBodyEl, 0, 100)
-  expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
-  expect(wrapper.find('.var-date-picker-header__month').text()).toBe('四月')
-
-  await triggerDrag(pickBodyEl, 100, 0)
-  await delay(300)
-  expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
-  expect(wrapper.find('.var-date-picker-header__month').text()).toBe('三月')
 
   wrapper.unmount()
 })

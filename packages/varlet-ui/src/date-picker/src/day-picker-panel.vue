@@ -70,7 +70,7 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['shift-preview', 'choose-day'],
+  emits: ['choose-day'],
 
   setup(props, { emit }) {
     const [currentYear, currentMonth, currentDay] = props.current.split('-')
@@ -257,16 +257,16 @@ export default defineComponent({
       }
     }
 
-    function shiftMonthPreview(direction: string) {
+    // expose for internal
+    function shiftPreview(direction: string) {
       reverse.value = direction === 'prev'
       panelKey.value += direction === 'prev' ? -1 : 1
-      emit('shift-preview', 'month', direction)
     }
 
-    function shiftPreviewByYear(direction: string) {
+    // expose for internal
+    function shiftYearPreview(direction: string) {
       reverse.value = direction === 'prev'
       panelKey.value += direction === 'prev' ? -1 : 1
-      emit('shift-preview', 'year', direction)
     }
 
     function chooseDay(day: number, event: Event) {
@@ -276,15 +276,6 @@ export default defineComponent({
       }
 
       emit('choose-day', day)
-    }
-
-    // expose for internal
-    function shiftPreview(direction: string) {
-      shiftMonthPreview(direction)
-    }
-
-    function shiftYearPreview(direction: string) {
-      shiftPreviewByYear(direction)
     }
 
     onSmartMounted(() => {
@@ -309,8 +300,6 @@ export default defineComponent({
       shiftYearPreview,
       filterDay,
       getDayAbbr,
-      shiftMonthPreview,
-      shiftPreviewByYear,
       chooseDay,
       buttonProps,
     }

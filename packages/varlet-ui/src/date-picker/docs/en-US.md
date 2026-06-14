@@ -88,6 +88,29 @@ const date = ref('2021-04-08')
 </template>
 ```
 
+### Actions Slot
+
+Use the `actions` slot to customize the bottom action area. The `resetPreview` method can reset the panel view to the current bound value.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021-04-08')
+const datePicker = ref()
+</script>
+
+<template>
+  <var-date-picker ref="datePicker" v-model="date">
+    <template #actions>
+      <var-button tonal type="primary" @click="datePicker.resetPreview()">
+        Reset Preview
+      </var-button>
+    </template>
+  </var-date-picker>
+</template>
+```
+
 ### Month Picker
 
 Set `type` to `month` to select a year and month. Use the year switcher on the left side of the panel to switch or select the year.
@@ -142,7 +165,6 @@ const date = ref('2021')
 | `readonly` | readonly                                                                                                          | _boolean_ | `false` |
 | `multiple` | Allow the selection of multiple dates                                                                             | _boolean_ | `false` |
 | `range` | Allow the selection of date range                                                                                 | _boolean_ | `false` |
-| `touchable`  | Allow switch panel by touch                                                                                       | _boolean_ | `true` |
 | `fallback-view-date` ***3.15.2*** | Controls the panel view fallback date when there is no usable selected value. It does not update `v-model`. | _string_ | `-` |
 
 ### Events
@@ -151,6 +173,12 @@ const date = ref('2021')
 | ----- |-----------------------------| -------- |
 | `preview` | Emitted after date switched | `year: number` <br>`month: number` <br>`day?: number` |
 | `change` | Emitted after date changed  | `value: string \| string[]` |
+
+### Methods
+
+| Method | Description | Arguments | Return |
+| ----- | -------------- | -------- | ------ |
+| `resetPreview` ***3.19.0*** | Reset the panel view to the current bound value. If there is no valid value, `fallback-view-date` or today will be used. | `-` | `-` |
 
 ### Slots
 
@@ -191,7 +219,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-header-arrow-filter` | `opacity(1)` |
 | `--date-picker-header-padding` | `0 0 16px`          |
 | `--date-picker-header-padding-top-no-title` | `20px` |
-| `--date-picker-actions-padding` | `20px`              |
+| `--date-picker-actions-padding` | `10px 20px 20px`    |
 | `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`          |
 | `--month-picker-item-width` | `32%`                  |
@@ -217,7 +245,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 ### Note
 
-Since `2.19.0`, the following CSS variables are deprecated:
+Since `3.19.0`, the following prop and CSS variables have been removed:
+
+| Removed Prop |
+| --- |
+| `touchable` |
 
 | Removed Variable |
 | --- |

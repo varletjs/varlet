@@ -6,4 +6,6 @@ export default {
   range: '选择范围',
   dateLimit: '日期限制',
   hideTitle: '隐藏标题',
+  actionsSlot: '操作插槽',
+  resetPreview: '重置视图',
 }

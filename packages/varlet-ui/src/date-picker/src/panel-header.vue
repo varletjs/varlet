@@ -7,8 +7,7 @@
           var-date-picker-header-cover
           round
           text
-          :disabled="yearDisabled.left"
-          @click="shiftYearPreview('prev')"
+          @click="$emit('shift-year-preview', 'prev')"
         >
           <var-icon name="chevron-left" />
         </var-button>
@@ -28,21 +27,13 @@
           var-date-picker-header-cover
           round
           text
-          :disabled="yearDisabled.right"
-          @click="shiftYearPreview('next')"
+          @click="$emit('shift-year-preview', 'next')"
         >
           <var-icon name="chevron-right" />
         </var-button>
       </div>
       <div :class="[n('nav'), n('nav--month')]">
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.left"
-          @click="shiftPreview('prev')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'prev')">
           <var-icon name="chevron-left" />
         </var-button>
         <var-button
@@ -54,28 +45,14 @@
           {{ getMonthName() }}
           <var-icon :class="n('text-button-icon')" name="chevron-down" />
         </var-button>
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.right"
-          @click="shiftPreview('next')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'next')">
           <var-icon name="chevron-right" />
         </var-button>
       </div>
     </template>
-    <template v-else-if="type === 'month' && !monthPanelInDateMode">
+    <template v-else-if="type === 'month' && !showPanelToggle">
       <div :class="n('nav')">
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.left"
-          @click="shiftPreview('prev')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'prev')">
           <var-icon name="chevron-left" />
         </var-button>
         <var-button
@@ -89,28 +66,14 @@
             <var-icon :class="n('text-button-icon')" name="chevron-down" />
           </span>
         </var-button>
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.right"
-          @click="shiftPreview('next')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'next')">
           <var-icon name="chevron-right" />
         </var-button>
       </div>
     </template>
     <template v-else>
       <div :class="[n('nav'), n(`nav--${type}`)]">
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.left"
-          @click="shiftPreview('prev')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'prev')">
           <var-icon name="chevron-left" />
         </var-button>
         <var-button
@@ -126,14 +89,7 @@
         <div v-else :class="[n('text-button'), n('panel-label')]" var-date-picker-header-cover>
           {{ getPanelLabel() }}
         </div>
-        <var-button
-          :class="n('arrow')"
-          var-date-picker-header-cover
-          round
-          text
-          :disabled="disabled.right"
-          @click="shiftPreview('next')"
-        >
+        <var-button :class="n('arrow')" var-date-picker-header-cover round text @click="$emit('shift-preview', 'next')">
           <var-icon name="chevron-right" />
         </var-button>
       </div>
@@ -149,7 +105,7 @@ import VarIcon from '../../icon'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import type { PanelBtnDisabled, Preview } from '../props'
+import type { Preview } from '../props'
 
 const { n } = createNamespace('date-picker-header')
 
@@ -168,20 +124,11 @@ export default defineComponent({
       type: String,
       default: 'date',
     },
-    disabled: {
-      type: Object as PropType<PanelBtnDisabled>,
-      default: () => ({ left: false, right: false }),
-    },
-    yearDisabled: {
-      type: Object as PropType<PanelBtnDisabled>,
-      default: () => ({ left: false, right: false }),
-    },
     showPanelToggle: Boolean,
-    monthPanelInDateMode: Boolean,
   },
   emits: ['open-date-panel', 'open-year-panel', 'open-month-panel', 'shift-year-preview', 'shift-preview'],
 
-  setup(props, { emit }) {
+  setup(props) {
     const { t: pt } = injectLocaleProvider()
 
     function getMonthName() {
@@ -191,31 +138,13 @@ export default defineComponent({
     }
 
     function getPanelLabel() {
-      return props.type === 'month' && props.monthPanelInDateMode ? getMonthName() : props.date.previewYear
-    }
-
-    function shiftPreview(direction: string) {
-      if ((direction === 'prev' && props.disabled.left) || (direction === 'next' && props.disabled.right)) {
-        return
-      }
-
-      emit('shift-preview', direction)
-    }
-
-    function shiftYearPreview(direction: string) {
-      if ((direction === 'prev' && props.yearDisabled.left) || (direction === 'next' && props.yearDisabled.right)) {
-        return
-      }
-
-      emit('shift-year-preview', direction)
+      return props.type === 'month' && props.showPanelToggle ? getMonthName() : props.date.previewYear
     }
 
     return {
       n,
       getMonthName,
       getPanelLabel,
-      shiftPreview,
-      shiftYearPreview,
     }
   },
 })

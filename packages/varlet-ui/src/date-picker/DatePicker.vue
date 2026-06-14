@@ -52,12 +52,11 @@
         </transition>
       </div>
     </div>
-    <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
+    <div :class="n('body')">
       <panel-header
         v-if="panelType"
         :type="headerType"
         :date="headerPreview"
-        :month-panel-in-date-mode="type === 'date' && panelType === 'month'"
         :show-panel-toggle="type === 'date' && panelType !== 'date'"
         @open-date-panel="switchPanel('date')"
         @open-year-panel="switchPanel('year')"
@@ -80,7 +79,6 @@
             :preview="previewDate"
             :component-props="componentProps"
             @choose-month="chooseMonthFromPanel"
-            @shift-preview="shiftPreview"
           />
           <day-picker-panel
             v-else-if="panelType === 'date'"
@@ -90,7 +88,6 @@
             :preview="previewDate"
             :component-props="componentProps"
             @choose-day="chooseDayFromPanel"
-            @shift-preview="shiftPreview"
           />
         </transition>
       </div>
@@ -102,7 +99,7 @@
 </template>
 
 <script lang="ts">
-import { call, doubleRaf, error, isArray, toNumber } from '@varlet/shared'
+import { call, error, isArray, toNumber } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
 import { computed, defineComponent, ref, watch, type RendererNode } from 'vue'
 import { t } from '../locale'
@@ -117,7 +114,6 @@ import {
   type ComponentProps,
   type Month,
   type Preview,
-  type TouchDirection,
   type Week,
 } from './props'
 import DayPickerPanel from './src/day-picker-panel.vue'
@@ -263,7 +259,6 @@ export default defineComponent({
       }
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
-    const isUntouchable = computed(() => !props.touchable || !panelType.value)
     const dateSlotProps = computed<Record<string, string>>(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
       const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
@@ -281,11 +276,7 @@ export default defineComponent({
     const isSameYear = computed(() => chooseYear.value === previewYear.value)
     const isSameMonth = computed(() => chooseMonth.value === previewMonth.value)
 
-    let startX = 0
-    let startY = 0
-    let previewShiftDirection = ''
     let keepPreviewOnModelValueChange = false
-    let touchDirection: TouchDirection | undefined
 
     watch(
       () => props.modelValue,
@@ -317,8 +308,6 @@ export default defineComponent({
       { immediate: true },
     )
 
-    watch(panelType, resetState)
-
     function switchPanel(type: string) {
       if (type === 'year') {
         isYearPanel.value = true
@@ -348,47 +337,17 @@ export default defineComponent({
 
     function shiftCurrentPanelPreview(direction: string) {
       getActivePanelRef().value!.shiftPreview(direction)
+
+      if (panelType.value === 'date') {
+        shiftPreview('month', direction)
+      } else if (panelType.value === 'month') {
+        shiftPreview('year', direction)
+      }
     }
 
     function shiftDatePanelYearPreview(direction: string) {
       dayPanelEl.value!.shiftYearPreview(direction)
-    }
-
-    function handleTouchstart(event: TouchEvent) {
-      if (isUntouchable.value) {
-        return
-      }
-
-      const { clientX, clientY } = event.touches[0]
-      startX = clientX
-      startY = clientY
-    }
-
-    function getDirection(x: number, y: number): TouchDirection {
-      return x >= y && x > 20 ? 'x' : 'y'
-    }
-
-    function handleTouchmove(event: TouchEvent) {
-      if (isUntouchable.value) {
-        return
-      }
-
-      const { clientX, clientY } = event.touches[0]
-      const x = clientX - startX
-      const y = clientY - startY
-
-      touchDirection = getDirection(Math.abs(x), Math.abs(y))
-      previewShiftDirection = x > 0 ? 'prev' : 'next'
-    }
-
-    async function handleTouchend() {
-      if (isUntouchable.value || touchDirection !== 'x') {
-        return
-      }
-
-      await doubleRaf()
-      getActivePanelRef().value!.shiftPreview(previewShiftDirection)
-      resetState()
+      shiftPreview('year', direction)
     }
 
     function updateRange(date: string, type: string) {
@@ -677,11 +636,22 @@ export default defineComponent({
       previewYear.value = yearValue
     }
 
-    function resetState() {
-      startY = 0
-      startX = 0
-      previewShiftDirection = ''
-      touchDirection = undefined
+    // expose
+    function resetPreview() {
+      isYearPanel.value = false
+      isMonthPanel.value = false
+
+      if (props.range || props.multiple) {
+        if (isArray(props.modelValue)) {
+          previewInit(getFirstValidDate(props.modelValue, props.type) ?? getFallbackDate())
+        } else {
+          previewInit(getFallbackDate())
+        }
+
+        return
+      }
+
+      previewInit(getSingleDate(props.modelValue as string | undefined))
     }
 
     return {
@@ -713,13 +683,11 @@ export default defineComponent({
       switchPanel,
       shiftCurrentPanelPreview,
       shiftDatePanelYearPreview,
-      handleTouchstart,
-      handleTouchmove,
-      handleTouchend,
       chooseDayFromPanel,
       chooseMonthFromPanel,
       chooseYearFromPanel,
       shiftPreview,
+      resetPreview,
       formatElevation,
     }
   },

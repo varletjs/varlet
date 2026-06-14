@@ -6,7 +6,7 @@ export default {
   '--date-picker-main-color': 'var(--color-inverse-surface)',
   '--date-picker-border-radius': '20px',
   '--date-picker-title-padding': '20px 20px 16px',
-  '--date-picker-actions-padding': '20px',
+  '--date-picker-actions-padding': '10px 20px 20px',
   '--day-picker-head-item-color': 'var(--color-inverse-surface)',
   '--date-picker-header-arrow-filter': 'opacity(1)',
   '--date-picker-header-padding': '0 0 16px',

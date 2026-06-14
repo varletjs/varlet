@@ -22,7 +22,6 @@ export interface DatePickerProps extends BasicAttributes {
   readonly?: boolean
   multiple?: boolean
   range?: boolean
-  touchable?: boolean
   fallbackViewDate?: string
   onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
@@ -54,6 +53,8 @@ export class DatePicker extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<DatePickerProps>
 
   $props: DatePickerProps
+
+  resetPreview(): void
 
   $slots: {
     year(data: DatePickerYear): VNode[]

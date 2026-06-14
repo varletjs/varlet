@@ -21,7 +21,7 @@ export default {
   '--date-picker-body-padding': '0 12px 16px',
   '--date-picker-header-padding': '0 0 16px',
   '--date-picker-header-padding-top-no-title': '20px',
-  '--date-picker-actions-padding': '20px',
+  '--date-picker-actions-padding': '10px 20px 20px',
   '--date-picker-header-arrow-filter': 'opacity(1)',
   '--month-picker-padding': '0 12px',
   '--month-picker-item-width': '32%',
