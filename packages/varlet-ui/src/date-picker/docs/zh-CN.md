@@ -20,38 +20,6 @@ const date = ref('2021-04-08')
 </template>
 ```
 
-### 月份选择器
-
-将 `type` 设置为 `month` 可以选择年份和月份，面板左侧的年份切换器可用于切换或选择年份。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-04')
-</script>
-
-<template>
-  <var-date-picker type="month" v-model="date" elevation />
-</template>
-```
-
-### 年份选择器
-
-将 `type` 设置为 `year` 可以选择年份。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021')
-</script>
-
-<template>
-  <var-date-picker type="year" v-model="date" />
-</template>
-```
-
 ### 多选
 
 通过 `multiple` 属性选择多个日期，此时 `date` 为一个数组。
@@ -120,6 +88,38 @@ const date = ref('2021-04-08')
 
 <template>
   <var-date-picker v-model="date" :show-title="false" />
+</template>
+```
+
+### 月份选择器
+
+将 `type` 设置为 `month` 可以选择年份和月份，面板左侧的年份切换器可用于切换或选择年份。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021-04')
+</script>
+
+<template>
+  <var-date-picker type="month" v-model="date" elevation />
+</template>
+```
+
+### 年份选择器
+
+将 `type` 设置为 `year` 可以选择年份。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021')
+</script>
+
+<template>
+  <var-date-picker type="year" v-model="date" />
 </template>
 ```
 

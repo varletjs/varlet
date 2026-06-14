@@ -19,38 +19,6 @@ const date = ref('2021-04-08')
 </template>
 ```
 
-### Month Picker
-
-Set `type` to `month` to select a year and month. Use the year switcher on the left side of the panel to switch or select the year.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-04')
-</script>
-
-<template>
-  <var-date-picker type="month" v-model="date" elevation />
-</template>
-```
-
-### Year Picker
-
-Set `type` to `year` to select a year.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021')
-</script>
-
-<template>
-  <var-date-picker type="year" v-model="date" />
-</template>
-```
-
 ### Multiple
 
 Use `multiple` prop to select multiple dates, at this time, `date` is an array.
@@ -117,6 +85,38 @@ const date = ref('2021-04-08')
 
 <template>
   <var-date-picker v-model="date" :show-title="false" />
+</template>
+```
+
+### Month Picker
+
+Set `type` to `month` to select a year and month. Use the year switcher on the left side of the panel to switch or select the year.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021-04')
+</script>
+
+<template>
+  <var-date-picker type="month" v-model="date" elevation />
+</template>
+```
+
+### Year Picker
+
+Set `type` to `year` to select a year.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2021')
+</script>
+
+<template>
+  <var-date-picker type="year" v-model="date" />
 </template>
 ```
 

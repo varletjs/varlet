@@ -24,12 +24,6 @@ const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-date-picker v-model="dates.date1" />
 
-  <app-type>{{ t('monthPicker') }}</app-type>
-  <var-date-picker v-model="dates.date" type="month" />
-
-  <app-type>{{ t('yearPicker') }}</app-type>
-  <var-date-picker v-model="dates.date6" type="year" />
-
   <app-type>{{ t('multiple') }}</app-type>
   <var-date-picker v-model="dates.date2" type="date" multiple />
 
@@ -41,4 +35,10 @@ const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 
   <app-type>{{ t('hideTitle') }}</app-type>
   <var-date-picker v-model="dates.date7" :show-title="false" />
+
+  <app-type>{{ t('monthPicker') }}</app-type>
+  <var-date-picker v-model="dates.date" type="month" />
+
+  <app-type>{{ t('yearPicker') }}</app-type>
+  <var-date-picker v-model="dates.date6" type="year" />
 </template>
