@@ -20,7 +20,6 @@ export default {
   '--date-picker-title-date-justify-content': 'normal',
   '--date-picker-body-height': '300px',
   '--date-picker-body-padding': '0 12px',
-  '--date-picker-body-padding-no-title': '0 12px',
   '--date-picker-header-padding': '4px 0',
   '--date-picker-header-padding-top-no-title': '20px',
   '--date-picker-actions-padding': '0 12px 12px',

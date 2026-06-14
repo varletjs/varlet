@@ -129,7 +129,7 @@ const date = ref('2021-04-08')
 
 | 参数                  | 说明                                           | 类型 | 默认值 |
 |---------------------|----------------------------------------------| -------- | ---------- |
-| `v-model`           | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`） | _string[] \| string_ | `undefined` |
+| `v-model`           | 选中值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`），`multiple` 或 `range` 时为数组 | _string[] \| string_ | `undefined` |
 | `type`              | 选择器类型，可选值为 `date month year`                      | _string_ | `date` |
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `-` |
@@ -156,15 +156,15 @@ const date = ref('2021-04-08')
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
 
 ### 插槽
-`weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
+`weekIndex` 表示一周的第 `n` 天，从周日的 `0` 开始
 
 | 名称 | 说明 | 参数                                                                   |
 | ----- | -------------- |----------------------------------------------------------------------|
 | `year` | 自定义 `type="year"` 时的标题文字 | `year: YYYY`                                                         |
 | `month` | 自定义 `type="month"` 时的标题文字 | `year: YYYY` <br> `month: MM`                                        |
 | `date` | 自定义 `type="date"` 时的标题文字 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | 自定义范围选择时的标题文字 | `choose: [startData, endDate]`                                       |
-| `multiple` | 自定义多选时的标题文字 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `range` | 自定义范围选择时的标题文字 | `choose: [startDate, endDate]`，元素格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） |
+| `multiple` | 自定义多选时的标题文字 | `choose: string[]`，元素格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） |
 | `actions` | 自定义操作面板 | `-`                                                                  |
 
 ### 样式变量
@@ -190,17 +190,16 @@ const date = ref('2021-04-08')
 | `--date-picker-header-arrow-filter` | `opacity(0.54)` |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `300px`                |
-| `--date-picker-body-padding` | `0` |
-| `--date-picker-body-padding-no-title` | `0 14px` |
-| `--date-picker-header-padding` | `4px 16px`             |
+| `--date-picker-body-padding` | `0 12px` |
+| `--date-picker-header-padding` | `4px 0`             |
 | `--date-picker-header-padding-top-no-title` | `20px` |
-| `--date-picker-actions-padding` | `0 8px 12px 8px`             |
+| `--date-picker-actions-padding` | `0 12px 12px`             |
 | `--date-picker-header-color` | `#555`             |
-| `--month-picker-padding` | `0 12px`               |
+| `--month-picker-padding` | `0`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `48px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-padding` | `0`               |
 | `--year-picker-item-width` | `33%`                  |
 | `--year-picker-item-height` | `48px`                 |
 | `--year-picker-item-button-max-width` | `140px`                |
@@ -217,7 +216,7 @@ const date = ref('2021-04-08')
 
 ### 注意
 
-自 `2.19.0` 起，`DatePicker` 进行了一次体验优化。以下旧版顶部年份入口相关 CSS 变量已移除，不再生效：
+自 `2.19.0` 起，以下 CSS 变量已废弃：
 
 | 已移除变量 |
 | --- |

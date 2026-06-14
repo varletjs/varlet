@@ -341,7 +341,6 @@ interface BaseStyleVars {
   '--date-picker-body-background-color'?: string
   '--date-picker-body-height'?: string
   '--date-picker-body-padding'?: string
-  '--date-picker-body-padding-no-title'?: string
   '--date-picker-header-padding'?: string
   '--date-picker-header-padding-top-no-title'?: string
   '--date-picker-actions-padding'?: string

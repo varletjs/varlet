@@ -17,7 +17,6 @@
   --date-picker-body-background-color: #fff;
   --date-picker-body-height: 300px;
   --date-picker-body-padding: 0 12px;
-  --date-picker-body-padding-no-title: 0 12px;
   --date-picker-header-padding: 4px 0;
   --date-picker-header-padding-top-no-title: 20px;
   --date-picker-header-color: #555;
@@ -129,7 +128,6 @@
 
   &--no-title &__body {
     height: calc(var(--date-picker-body-height) + var(--date-picker-header-padding-top-no-title));
-    padding: var(--date-picker-body-padding-no-title);
   }
 
   &__actions {
@@ -161,19 +159,6 @@
       padding-right: 4px;
     }
 
-    &__month-nav {
-      display: flex;
-      align-items: center;
-      height: 32px;
-      margin-left: auto;
-    }
-
-    &__year-nav {
-      display: flex;
-      align-items: center;
-      height: 32px;
-    }
-
     &__year-value {
       display: flex;
       align-items: center;
@@ -201,11 +186,6 @@
       font-weight: 700;
       user-select: none;
       white-space: nowrap;
-    }
-
-    &__month-value {
-      min-width: 72px;
-      text-align: center;
     }
 
     &__text-button[var-date-picker-header-cover] {

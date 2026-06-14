@@ -13,7 +13,6 @@ export default {
   '--date-picker-header-padding-top-no-title': '20px',
   '--date-picker-body-height': '316px',
   '--date-picker-body-padding': '0 14px 16px',
-  '--date-picker-body-padding-no-title': '0 14px',
   '--date-picker-header-color': 'var(--color-on-surface-variant)',
   '--date-picker-font-size': 'var(--font-size-md)',
   '--date-picker-min-width': '290px',

@@ -1,7 +1,7 @@
 <template>
   <div :class="[n(), n(`--${type}`)]">
     <template v-if="type === 'day'">
-      <div :class="n('year-nav')">
+      <div :class="n('nav')">
         <var-button
           :class="n('arrow')"
           var-date-picker-header-cover
@@ -34,7 +34,7 @@
           <var-icon name="chevron-right" />
         </var-button>
       </div>
-      <div :class="n('month-nav')">
+      <div :class="[n('nav'), n('nav--month')]">
         <var-button
           :class="n('arrow')"
           var-date-picker-header-cover
@@ -45,17 +45,15 @@
         >
           <var-icon name="chevron-left" />
         </var-button>
-        <div :class="n('month-value')">
-          <var-button
-            :class="[n('text-button'), n('month')]"
-            var-date-picker-header-cover
-            text
-            @click="$emit('check-month-panel')"
-          >
-            {{ getMonthName() }}
-            <var-icon :class="n('text-button-icon')" name="chevron-down" />
-          </var-button>
-        </div>
+        <var-button
+          :class="[n('text-button'), n('month')]"
+          var-date-picker-header-cover
+          text
+          @click="$emit('check-month-panel')"
+        >
+          {{ getMonthName() }}
+          <var-icon :class="n('text-button-icon')" name="chevron-down" />
+        </var-button>
         <var-button
           :class="n('arrow')"
           var-date-picker-header-cover
@@ -69,7 +67,7 @@
       </div>
     </template>
     <template v-else-if="type === 'month' && !monthPanelInDateMode">
-      <div :class="n('year-nav')">
+      <div :class="n('nav')">
         <var-button
           :class="n('arrow')"
           var-date-picker-header-cover

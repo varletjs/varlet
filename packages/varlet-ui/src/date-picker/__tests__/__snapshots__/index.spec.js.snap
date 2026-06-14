@@ -14,7 +14,7 @@ exports[`datePicker allowedDates 1`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--day">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -27,42 +27,42 @@ exports[`datePicker allowedDates 1`] = `
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
         </button></div>
-      <div class="var-date-picker-header__month-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav var-date-picker-header__nav--month"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-        <div class="var-date-picker-header__month-value"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
-            <!--v-if-->
-            <div class="var-button__content">三月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
-            <div class="var-hover-overlay"></div>
-          </button></div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
+          <!--v-if-->
+          <div class="var-button__content">三月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-hover-overlay"></div>
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-      </div>
+        </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-day-picker">
-        <div class="var-day-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <div>
-              <ul class="var-day-picker__head">
-                <li>日</li>
-                <li>一</li>
-                <li>二</li>
-                <li>三</li>
-                <li>四</li>
-                <li>五</li>
-                <li>六</li>
-              </ul>
-              <ul class="var-day-picker__body"></ul>
-            </div>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-day-picker">
+          <div class="var-day-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <div>
+                <ul class="var-day-picker__head">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="var-day-picker__body"></ul>
+              </div>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -82,7 +82,7 @@ exports[`datePicker rerender date panel when max or min changes 1`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--day">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -95,208 +95,208 @@ exports[`datePicker rerender date panel when max or min changes 1`] = `
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
         </button></div>
-      <div class="var-date-picker-header__month-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav var-date-picker-header__nav--month"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-        <div class="var-date-picker-header__month-value"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
-            <!--v-if-->
-            <div class="var-button__content">十二月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
-            <div class="var-hover-overlay"></div>
-          </button></div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
+          <!--v-if-->
+          <div class="var-button__content">十二月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-hover-overlay"></div>
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-      </div>
+        </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-day-picker">
-        <div class="var-day-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <div>
-              <ul class="var-day-picker__head">
-                <li>日</li>
-                <li>一</li>
-                <li>二</li>
-                <li>三</li>
-                <li>四</li>
-                <li>五</li>
-                <li>六</li>
-              </ul>
-              <ul class="var-day-picker__body">
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">1</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">2</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">3</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">4</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">5</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">6</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">7</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">8</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">9</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">10</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">11</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">12</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">13</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">14</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">15</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">16</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">17</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">18</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">19</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">20</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">21</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">22</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">23</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">24</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">25</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">26</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">27</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">28</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">29</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">30</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">31</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-              </ul>
-            </div>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-day-picker">
+          <div class="var-day-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <div>
+                <ul class="var-day-picker__head">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="var-day-picker__body">
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">1</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">2</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">3</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">4</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">5</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">6</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">7</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">8</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">9</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">10</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">11</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">12</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">13</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">14</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">15</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">16</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">17</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">18</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">19</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">20</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">21</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">22</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">23</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">24</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">25</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">26</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">27</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">28</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">29</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">30</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">31</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                </ul>
+              </div>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -316,7 +316,7 @@ exports[`datePicker rerender date panel when max or min changes 2`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--day">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -329,213 +329,213 @@ exports[`datePicker rerender date panel when max or min changes 2`] = `
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
         </button></div>
-      <div class="var-date-picker-header__month-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav var-date-picker-header__nav--month"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-        <div class="var-date-picker-header__month-value"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
-            <!--v-if-->
-            <div class="var-button__content">一月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
-            <div class="var-hover-overlay"></div>
-          </button></div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
+          <!--v-if-->
+          <div class="var-button__content">一月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-hover-overlay"></div>
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-      </div>
+        </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-day-picker">
-        <div class="var-day-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <div>
-              <ul class="var-day-picker__head">
-                <li>日</li>
-                <li>一</li>
-                <li>二</li>
-                <li>三</li>
-                <li>四</li>
-                <li>五</li>
-                <li>六</li>
-              </ul>
-              <ul class="var-day-picker__body">
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">1</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">2</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">3</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">4</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">5</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">6</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">7</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">8</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">9</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">10</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">11</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">12</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">13</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">14</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">15</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">16</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">17</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">18</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">19</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">20</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
-                    <!--v-if-->
-                    <div class="var-button__content">21</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
-                    <!--v-if-->
-                    <div class="var-button__content">22</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
-                    <!--v-if-->
-                    <div class="var-button__content">23</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">24</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">25</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">26</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">27</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">28</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">29</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">30</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">31</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-              </ul>
-            </div>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-day-picker">
+          <div class="var-day-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <div>
+                <ul class="var-day-picker__head">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="var-day-picker__body">
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">1</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">2</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">3</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">4</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">5</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">6</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">7</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">8</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">9</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">10</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">11</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">12</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">13</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">14</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">15</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">16</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">17</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">18</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">19</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">20</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
+                      <!--v-if-->
+                      <div class="var-button__content">21</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
+                      <!--v-if-->
+                      <div class="var-button__content">22</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" var-day-picker-cover="" var-date-picker-color-cover="false" disabled="">
+                      <!--v-if-->
+                      <div class="var-button__content">23</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">24</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">25</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">26</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">27</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">28</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">29</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">30</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button var-day-picker__button--usable var-day-picker__button--disabled" type="button" disabled="" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">31</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                </ul>
+              </div>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -555,7 +555,7 @@ exports[`datePicker style and type 1`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--month">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -569,76 +569,78 @@ exports[`datePicker style and type 1`] = `
           <div class="var-hover-overlay"></div>
         </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-month-picker">
-        <div class="var-month-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <ul>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">一月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">二月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">三月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">四月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-month-picker__button" style="background: rgb(123, 184, 114);" type="button" var-month-picker-cover="" var-date-picker-color-cover="false">
-                  <!--v-if-->
-                  <div class="var-button__content">五月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">六月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">七月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">八月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">九月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十一月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十二月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-            </ul>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-month-picker">
+          <div class="var-month-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <ul>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">一月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">二月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">三月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">四月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-month-picker__button" style="background: rgb(123, 184, 114);" type="button" var-month-picker-cover="" var-date-picker-color-cover="false">
+                    <!--v-if-->
+                    <div class="var-button__content">五月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">六月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">七月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">八月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">九月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十一月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十二月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+              </ul>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -658,7 +660,7 @@ exports[`datePicker style and type 2`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--day">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -671,228 +673,228 @@ exports[`datePicker style and type 2`] = `
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
         </button></div>
-      <div class="var-date-picker-header__month-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav var-date-picker-header__nav--month"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-        <div class="var-date-picker-header__month-value"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
-            <!--v-if-->
-            <div class="var-button__content">五月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
-            <div class="var-hover-overlay"></div>
-          </button></div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
+          <!--v-if-->
+          <div class="var-button__content">五月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-hover-overlay"></div>
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-      </div>
+        </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-day-picker">
-        <div class="var-day-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <div>
-              <ul class="var-day-picker__head">
-                <li>日</li>
-                <li>一</li>
-                <li>二</li>
-                <li>三</li>
-                <li>四</li>
-                <li>五</li>
-                <li>六</li>
-              </ul>
-              <ul class="var-day-picker__body">
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">1</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">2</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">3</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">4</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">5</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">6</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">7</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">8</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">9</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">10</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">11</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">12</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">13</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">14</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">15</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">16</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">17</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">18</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">19</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">20</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">21</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">22</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">23</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">24</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">25</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">26</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">27</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">28</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">29</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">30</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">31</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-              </ul>
-            </div>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-day-picker">
+          <div class="var-day-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <div>
+                <ul class="var-day-picker__head">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="var-day-picker__body">
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">1</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">2</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">3</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">4</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">5</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">6</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">7</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">8</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">9</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">10</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">11</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">12</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">13</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">14</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">15</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">16</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">17</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">18</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">19</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">20</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">21</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">22</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">23</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">24</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">25</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">26</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">27</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">28</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">29</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">30</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">31</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                </ul>
+              </div>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -912,7 +914,7 @@ exports[`test datePicker style and type > datePicker style and date 1`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--day">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -925,213 +927,213 @@ exports[`test datePicker style and type > datePicker style and date 1`] = `
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
         </button></div>
-      <div class="var-date-picker-header__month-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav var-date-picker-header__nav--month"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-        <div class="var-date-picker-header__month-value"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
-            <!--v-if-->
-            <div class="var-button__content">四月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
-            <div class="var-hover-overlay"></div>
-          </button></div><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-date-picker-header__text-button var-date-picker-header__month" type="button" var-date-picker-header-cover="">
+          <!--v-if-->
+          <div class="var-button__content">四月 <i class="var-icon var-icon--set var-icon-chevron-down var-date-picker-header__text-button-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-hover-overlay"></div>
+        </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
-        </button>
-      </div>
+        </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-day-picker">
-        <div class="var-day-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <div>
-              <ul class="var-day-picker__head">
-                <li>日</li>
-                <li>一</li>
-                <li>二</li>
-                <li>三</li>
-                <li>四</li>
-                <li>五</li>
-                <li>六</li>
-              </ul>
-              <ul class="var-day-picker__body">
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
-                    <!--v-if-->
-                    <div class="var-button__content"></div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">1</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">2</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">3</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">4</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">5</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">6</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">7</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
-                    <!--v-if-->
-                    <div class="var-button__content">8</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">9</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">10</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">11</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">12</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">13</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">14</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">15</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">16</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">17</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">18</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">19</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">20</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">21</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">22</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">23</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">24</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">25</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">26</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">27</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">28</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">29</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
-                    <!--v-if-->
-                    <div class="var-button__content">30</div>
-                    <div class="var-hover-overlay"></div>
-                  </button></li>
-              </ul>
-            </div>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-day-picker">
+          <div class="var-day-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <div>
+                <ul class="var-day-picker__head">
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ul class="var-day-picker__body">
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-button--disabled var-button--text-disabled var-day-picker__button" type="button" disabled="" var-day-picker-cover="">
+                      <!--v-if-->
+                      <div class="var-button__content"></div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">1</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">2</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">3</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">4</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">5</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">6</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">7</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="false">
+                      <!--v-if-->
+                      <div class="var-button__content">8</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">9</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">10</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">11</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">12</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">13</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">14</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">15</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">16</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">17</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">18</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">19</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">20</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">21</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">22</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">23</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">24</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">25</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">26</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">27</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">28</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">29</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                  <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-button--round var-day-picker__button var-day-picker__button--usable" type="button" var-day-picker-cover="" var-date-picker-color-cover="true">
+                      <!--v-if-->
+                      <div class="var-button__content">30</div>
+                      <div class="var-hover-overlay"></div>
+                    </button></li>
+                </ul>
+              </div>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"
@@ -1151,7 +1153,7 @@ exports[`test datePicker style and type > datePicker style and month 1`] = `
   </div>
   <div class="var-date-picker__body">
     <div class="var-date-picker-header var-date-picker-header--month">
-      <div class="var-date-picker-header__year-nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
+      <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
           <div class="var-button__content"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></div>
           <div class="var-hover-overlay"></div>
@@ -1165,76 +1167,78 @@ exports[`test datePicker style and type > datePicker style and month 1`] = `
           <div class="var-hover-overlay"></div>
         </button></div>
     </div>
-    <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
-      <div class="var-month-picker">
-        <div class="var-month-picker__content">
-          <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
-            <ul>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">一月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">二月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">三月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-month-picker__button" style="background: rgb(123, 184, 114);" type="button" var-month-picker-cover="" var-date-picker-color-cover="false">
-                  <!--v-if-->
-                  <div class="var-button__content">四月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">五月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">六月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">七月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">八月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">九月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十一月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-              <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
-                  <!--v-if-->
-                  <div class="var-button__content">十二月</div>
-                  <div class="var-hover-overlay"></div>
-                </button></li>
-            </ul>
-          </transition-stub>
+    <div class="var-date-picker__panel">
+      <transition-stub name="var-date-picker-panel-fade" appear="false" persisted="false" css="true">
+        <div class="var-month-picker">
+          <div class="var-month-picker__content">
+            <transition-stub name="var-date-picker-translatex" appear="false" persisted="false" css="true">
+              <ul>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">一月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">二月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">三月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--primary var-month-picker__button" style="background: rgb(123, 184, 114);" type="button" var-month-picker-cover="" var-date-picker-color-cover="false">
+                    <!--v-if-->
+                    <div class="var-button__content">四月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">五月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">六月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">七月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">八月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">九月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十一月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+                <li><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-primary var-month-picker__button" type="button" var-month-picker-cover="" var-date-picker-color-cover="true">
+                    <!--v-if-->
+                    <div class="var-button__content">十二月</div>
+                    <div class="var-hover-overlay"></div>
+                  </button></li>
+              </ul>
+            </transition-stub>
+          </div>
         </div>
-      </div>
-    </transition-stub>
+      </transition-stub>
+    </div>
   </div>
   <!--v-if-->
 </div>"

@@ -126,7 +126,7 @@ const date = ref('2021-04-08')
 
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
-| `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
+| `v-model` | Selected value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`), and is an array when `multiple` or `range` | _string[] \| string_ | `undefined` |
 | `type` | Picker type, optional values `date` `month` `year`                                                                         | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `-` |
@@ -161,8 +161,8 @@ const date = ref('2021-04-08')
 | `year` | Custom title text when `type="year"` | `year: YYYY`                                                         |
 | `month` | Custom title text when `type="month"` | `year: YYYY` <br> `month: MM`                                        |
 | `date` | Custom title text when `type="date"` | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | Custom title text when selecting a range | `choose: [startData, endDate]`                                       |
-| `multiple` | Custom title text when selecting multiple values | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `range` | Custom title text when selecting a range | `choose: [startDate, endDate]`, item format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) |
+| `multiple` | Custom title text when selecting multiple values | `choose: string[]`, item format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) |
 | `actions` | Custom the views in the action panel | `-`                                                                  |
 
 ### Style Variables
@@ -185,20 +185,19 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-title-date-justify-content` | `normal` |
-| `--date-picker-body-padding` | `0` |
+| `--date-picker-body-padding` | `0 12px` |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `300px`                |
-| `--date-picker-body-padding-no-title` | `0 14px` |
 | `--date-picker-header-arrow-filter` | `opacity(0.54)` |
-| `--date-picker-header-padding` | `4px 16px`             |
+| `--date-picker-header-padding` | `4px 0`             |
 | `--date-picker-header-padding-top-no-title` | `20px` |
-| `--date-picker-actions-padding` | `0 8px 12px 8px`       |
+| `--date-picker-actions-padding` | `0 12px 12px`       |
 | `--date-picker-header-color` | `#555`             |
-| `--month-picker-padding` | `0 12px`               |
+| `--month-picker-padding` | `0`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `48px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-padding` | `0`               |
 | `--year-picker-item-width` | `33%`                  |
 | `--year-picker-item-height` | `48px`                 |
 | `--year-picker-item-button-max-width` | `140px`                |
@@ -215,7 +214,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 ### Note
 
-Since `2.19.0`, `DatePicker` has received an interaction improvement. The following CSS variables for the old title year entry were removed and no longer take effect:
+Since `2.19.0`, the following CSS variables are deprecated:
 
 | Removed Variable |
 | --- |

@@ -270,7 +270,9 @@ test('datePicker should update preview year from day panel header', async () => 
   })
 
   await delay(0)
-  await wrapper.findAll('.var-date-picker-header__year-nav .var-date-picker-header__arrow')[1].trigger('click')
+  await wrapper
+    .findAll('.var-date-picker-header__nav:not(.var-date-picker-header__nav--month) .var-date-picker-header__arrow')[1]
+    .trigger('click')
   await delay(200)
 
   expect(wrapper.find('.var-date-picker-header__year').text()).toContain('2022')
@@ -288,7 +290,9 @@ test('datePicker should allow switching preview year when target year has select
   })
 
   await delay(0)
-  const nextYearButton = wrapper.findAll('.var-date-picker-header__year-nav .var-date-picker-header__arrow')[1]
+  const nextYearButton = wrapper.findAll(
+    '.var-date-picker-header__nav:not(.var-date-picker-header__nav--month) .var-date-picker-header__arrow',
+  )[1]
 
   expect(nextYearButton.attributes('disabled')).toBeUndefined()
 
@@ -324,7 +328,7 @@ test('datePicker v-model', async () => {
   expect(wrapper.vm.date).toBe('2020-01')
 
   await wrapper.setData({ type: 'date', date: '2021-05-19' })
-  await wrapper.find('.var-date-picker-header__month-nav .var-date-picker-header__arrow').trigger('click')
+  await wrapper.find('.var-date-picker-header__nav--month .var-date-picker-header__arrow').trigger('click')
   await delay(200)
   await wrapper.find('.var-day-picker__button--usable').trigger('click')
   expect(wrapper.vm.date).toBe('2021-04-01')
@@ -366,7 +370,9 @@ test('datePicker month type should switch preview year without updating model', 
   await delay(0)
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
 
-  await wrapper.find('.var-date-picker-header__year-nav .var-date-picker-header__arrow').trigger('click')
+  await wrapper
+    .find('.var-date-picker-header__nav:not(.var-date-picker-header__nav--month) .var-date-picker-header__arrow')
+    .trigger('click')
   await delay(200)
 
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2020')
@@ -581,7 +587,7 @@ test('datePicker multiple should keep preview after choosing date in switched pa
   })
 
   await delay(0)
-  await wrapper.findAll('.var-date-picker-header__month-nav .var-date-picker-header__arrow')[1].trigger('click')
+  await wrapper.findAll('.var-date-picker-header__nav--month .var-date-picker-header__arrow')[1].trigger('click')
   await delay(200)
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('六月')
 
@@ -657,7 +663,7 @@ test('datePicker range should keep preview after choosing date in switched panel
   })
 
   await delay(0)
-  await wrapper.findAll('.var-date-picker-header__month-nav .var-date-picker-header__arrow')[1].trigger('click')
+  await wrapper.findAll('.var-date-picker-header__nav--month .var-date-picker-header__arrow')[1].trigger('click')
   await delay(200)
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('六月')
 
