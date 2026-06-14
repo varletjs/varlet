@@ -23,7 +23,7 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   fallbackViewDate?: string
-  onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
+  onPreview?: ListenerProp<(year: number, month: number, dayOfMonth?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>
 }

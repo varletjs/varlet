@@ -174,7 +174,7 @@ const date = ref('2021')
 
 | 事件名       | 说明      | 回调参数                              |
 |-----------|---------|-----------------------------------|
-| `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
+| `preview` | 面板视图切换时触发。`dayOfMonth` 为当前选中的月内日期；没有可用选中日期时为 `undefined` | `year: number` <br>`month: number` <br>`dayOfMonth?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
 
 ### 方法

@@ -381,13 +381,12 @@ export default defineComponent({
       call(props.onChange, value)
     }
 
+    function getPreviewDayOfMonth() {
+      return props.type === 'date' && chooseDay.value ? toNumber(chooseDay.value) : undefined
+    }
+
     function emitPreview() {
-      call(
-        props.onPreview,
-        toNumber(previewYear.value),
-        toNumber(previewMonth.value),
-        props.type === 'date' ? toNumber(chooseDay.value) : undefined,
-      )
+      call(props.onPreview, toNumber(previewYear.value), toNumber(previewMonth.value), getPreviewDayOfMonth())
     }
 
     function updateRange(value: string, type: string) {

@@ -171,7 +171,7 @@ const date = ref('2021')
 
 | Event | Description                 | arguments |
 | ----- |-----------------------------| -------- |
-| `preview` | Emitted after date switched | `year: number` <br>`month: number` <br>`day?: number` |
+| `preview` | Emitted after the preview panel changes. `dayOfMonth` is available when the date picker has a selected day. | `year: number` <br>`month: number` <br>`dayOfMonth?: number` |
 | `change` | Emitted after date changed  | `value: string \| string[]` |
 
 ### Methods

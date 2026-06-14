@@ -79,7 +79,7 @@ export const props = {
   readonly: Boolean,
   multiple: Boolean,
   range: Boolean,
-  onPreview: defineListenerProp<(year: number, month: number, day?: number) => void>(),
+  onPreview: defineListenerProp<(year: number, month: number, dayOfMonth?: number) => void>(),
   onChange: defineListenerProp<(value: string | string[]) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),
 }
