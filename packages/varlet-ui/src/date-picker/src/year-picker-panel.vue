@@ -114,11 +114,19 @@ export default defineComponent({
     }
 
     function scrollToView() {
-      const activeEl = panel.value!.querySelector('.var-button--primary')
+      const activeEl = panel.value!.querySelector<HTMLElement>('.var-button--primary')
+      const scrollContainer = panel.value!.closest<HTMLElement>(`.${nDate('body')}`)
 
-      activeEl?.scrollIntoView({
-        block: 'center',
-      })
+      if (!activeEl || !scrollContainer) {
+        return
+      }
+
+      const containerRect = scrollContainer.getBoundingClientRect()
+      const activeRect = activeEl.getBoundingClientRect()
+
+      // Only scroll the picker body itself, avoid scrollIntoView bubbling up to the page
+      scrollContainer.scrollTop +=
+        activeRect.top - containerRect.top - (scrollContainer.clientHeight - activeRect.height) / 2
     }
 
     function checkDate(checkType: string) {

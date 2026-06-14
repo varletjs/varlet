@@ -65,33 +65,35 @@
         @check-year-date="checkHeaderYearDate"
         @check-date="checkHeaderDate"
       />
-      <transition :name="`${n()}-panel-fade`">
-        <year-picker-panel
-          v-if="panelType === 'year'"
-          ref="yearPanelEl"
-          :component-props="componentProps"
-          :preview="previewYear"
-          @choose-year="chooseYearFromPanel"
-        />
-        <month-picker-panel
-          v-else-if="panelType === 'month'"
-          ref="monthPanelEl"
-          :preview="previewDate"
-          :component-props="componentProps"
-          @choose-month="chooseMonthFromPanel"
-          @check-preview="checkPreview"
-        />
-        <day-picker-panel
-          v-else-if="panelType === 'date'"
-          ref="dayPanelEl"
-          :current="currentDate"
-          :choose="selectedDate"
-          :preview="previewDate"
-          :component-props="componentProps"
-          @choose-day="chooseDayFromPanel"
-          @check-preview="checkPreview"
-        />
-      </transition>
+      <div :class="n('panel')">
+        <transition :name="`${n()}-panel-fade`">
+          <year-picker-panel
+            v-if="panelType === 'year'"
+            ref="yearPanelEl"
+            :component-props="componentProps"
+            :preview="previewYear"
+            @choose-year="chooseYearFromPanel"
+          />
+          <month-picker-panel
+            v-else-if="panelType === 'month'"
+            ref="monthPanelEl"
+            :preview="previewDate"
+            :component-props="componentProps"
+            @choose-month="chooseMonthFromPanel"
+            @check-preview="checkPreview"
+          />
+          <day-picker-panel
+            v-else-if="panelType === 'date'"
+            ref="dayPanelEl"
+            :current="currentDate"
+            :choose="selectedDate"
+            :preview="previewDate"
+            :component-props="componentProps"
+            @choose-day="chooseDayFromPanel"
+            @check-preview="checkPreview"
+          />
+        </transition>
+      </div>
     </div>
     <div v-if="$slots.actions" :class="n('actions')">
       <slot name="actions" />

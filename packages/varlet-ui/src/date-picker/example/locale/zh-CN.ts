@@ -6,8 +6,4 @@ export default {
   range: '选择范围',
   dateLimit: '日期限制',
   hideTitle: '隐藏标题',
-  customTitle: '自定义标题',
-  year: ' 年',
-  month: ' 月',
-  divider: ' ',
 }

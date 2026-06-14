@@ -16,18 +16,18 @@
   --date-picker-title-date-justify-content: normal;
   --date-picker-body-background-color: #fff;
   --date-picker-body-height: 300px;
-  --date-picker-body-padding: 0;
-  --date-picker-body-padding-no-title: 0 14px;
-  --date-picker-header-padding: 4px 16px;
+  --date-picker-body-padding: 0 12px;
+  --date-picker-body-padding-no-title: 0 12px;
+  --date-picker-header-padding: 4px 0;
   --date-picker-header-padding-top-no-title: 20px;
   --date-picker-header-color: #555;
-  --date-picker-actions-padding: 0 8px 12px 8px;
+  --date-picker-actions-padding: 0 12px 12px;
   --date-picker-header-arrow-filter: opacity(0.54);
-  --month-picker-padding: 0 12px;
+  --month-picker-padding: 0;
   --month-picker-item-width: 33%;
   --month-picker-item-height: 48px;
   --month-picker-item-button-max-width: 140px;
-  --year-picker-padding: 0 12px;
+  --year-picker-padding: 0;
   --year-picker-item-width: 33%;
   --year-picker-item-height: 48px;
   --year-picker-item-button-max-width: 140px;
@@ -122,6 +122,11 @@
     }
   }
 
+  &__panel {
+    position: relative;
+    z-index: 0;
+  }
+
   &--no-title &__body {
     height: calc(var(--date-picker-body-height) + var(--date-picker-header-padding-top-no-title));
     padding: var(--date-picker-body-padding-no-title);
@@ -141,7 +146,7 @@
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     color: var(--date-picker-header-color);
     background-color: var(--date-picker-body-background-color);
 
@@ -170,7 +175,6 @@
     }
 
     &__year-value {
-      min-width: 72px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -380,6 +384,9 @@
 
   &-panel-fade-leave-active {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 
   &-translatex-enter-from {

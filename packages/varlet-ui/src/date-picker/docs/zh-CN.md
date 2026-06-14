@@ -123,40 +123,6 @@ const date = ref('2021-04-08')
 </template>
 ```
 
-### 自定义标题
-
-通过 `date`、`month`、`year` 插槽自定义不同类型选择器的标题内容。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-04-08')
-const month = ref('2021-04')
-const year = ref('2021')
-</script>
-
-<template>
-  <var-date-picker v-model="date">
-    <template #date="{ year, month, date, week }">
-      {{ year }}-{{ month }}-{{ date }} / {{ week }}
-    </template>
-  </var-date-picker>
-
-  <var-date-picker v-model="month" type="month">
-    <template #month="{ year, month }">
-      {{ year }} 年 {{ month }} 月
-    </template>
-  </var-date-picker>
-
-  <var-date-picker v-model="year" type="year">
-    <template #year="{ year }">
-      {{ year }} 年
-    </template>
-  </var-date-picker>
-</template>
-```
-
 ## API
 
 ### 属性

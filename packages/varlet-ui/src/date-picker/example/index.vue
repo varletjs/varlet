@@ -12,9 +12,6 @@ const dates = reactive({
   date5: '2021-05',
   date6: '2021',
   date7: '2021-04-08',
-  date8: '2021-04-08',
-  date9: '2021-04',
-  date10: '2021',
 })
 
 watchLang(use)
@@ -44,17 +41,4 @@ const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 
   <app-type>{{ t('hideTitle') }}</app-type>
   <var-date-picker v-model="dates.date7" :show-title="false" />
-
-  <app-type>{{ t('customTitle') }}</app-type>
-  <var-date-picker v-model="dates.date8">
-    <template #date="{ year, month, date, week }"> {{ year }}-{{ month }}-{{ date }} / {{ week }} </template>
-  </var-date-picker>
-  <var-date-picker v-model="dates.date9" type="month">
-    <template #month="{ year, month }">
-      {{ year }}{{ t('year') }}{{ t('divider') }}{{ month }}{{ t('month') }}
-    </template>
-  </var-date-picker>
-  <var-date-picker v-model="dates.date10" type="year">
-    <template #year="{ year }"> {{ year }}{{ t('year') }} </template>
-  </var-date-picker>
 </template>

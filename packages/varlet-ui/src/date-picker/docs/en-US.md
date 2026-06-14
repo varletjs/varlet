@@ -120,40 +120,6 @@ const date = ref('2021-04-08')
 </template>
 ```
 
-### Custom Title
-
-Use the `date`, `month`, and `year` slots to customize title content for different picker types.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-04-08')
-const month = ref('2021-04')
-const year = ref('2021')
-</script>
-
-<template>
-  <var-date-picker v-model="date">
-    <template #date="{ year, month, date, week }">
-      {{ year }}-{{ month }}-{{ date }} / {{ week }}
-    </template>
-  </var-date-picker>
-
-  <var-date-picker v-model="month" type="month">
-    <template #month="{ year, month }">
-      {{ year }}-{{ month }}
-    </template>
-  </var-date-picker>
-
-  <var-date-picker v-model="year" type="year">
-    <template #year="{ year }">
-      {{ year }}
-    </template>
-  </var-date-picker>
-</template>
-```
-
 ## API
 
 ### Props

@@ -6,8 +6,4 @@ export default {
   range: 'Range',
   dateLimit: 'Date Limit',
   hideTitle: 'Hide Title',
-  customTitle: 'Custom Title',
-  year: '',
-  month: '',
-  divider: '-',
 }
