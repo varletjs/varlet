@@ -187,7 +187,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-date-justify-content` | `normal` |
 | `--date-picker-body-padding` | `0 12px` |
 | `--date-picker-body-background-color` | `#fff`                 |
-| `--date-picker-body-height` | `300px`                |
+| `--date-picker-body-height` | `280px`                |
 | `--date-picker-header-arrow-filter` | `opacity(0.54)` |
 | `--date-picker-header-padding` | `4px 0`             |
 | `--date-picker-header-padding-top-no-title` | `20px` |

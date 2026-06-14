@@ -18,7 +18,7 @@ export default {
   '--date-picker-title-date-font-weight': '500',
   '--date-picker-title-date-range-font-size': '20px',
   '--date-picker-title-date-justify-content': 'normal',
-  '--date-picker-body-height': '300px',
+  '--date-picker-body-height': '280px',
   '--date-picker-body-padding': '0 12px',
   '--date-picker-header-padding': '4px 0',
   '--date-picker-header-padding-top-no-title': '20px',

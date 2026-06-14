@@ -11,7 +11,7 @@ export default {
   '--date-picker-header-arrow-filter': 'opacity(1)',
   '--date-picker-header-padding': '0 0 16px',
   '--date-picker-header-padding-top-no-title': '20px',
-  '--date-picker-body-height': '316px',
+  '--date-picker-body-height': '300px',
   '--date-picker-body-padding': '0 14px 16px',
   '--date-picker-header-color': 'var(--color-on-surface-variant)',
   '--date-picker-font-size': 'var(--font-size-md)',
