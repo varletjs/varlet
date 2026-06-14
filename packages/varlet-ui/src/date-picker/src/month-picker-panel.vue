@@ -7,11 +7,11 @@
             <var-button
               type="primary"
               var-month-picker-cover
-              :elevation="componentProps.buttonElevation"
+              :elevation="datePickerProps.buttonElevation"
               v-bind="{
                 ...buttonProps(month),
               }"
-              @click="chooseMonth(month, $event)"
+              @click="chooseMonth(month)"
             >
               {{ getMonthAbbr(month) }}
             </var-button>
@@ -33,11 +33,11 @@ import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
 import { MONTH_LIST } from '../props'
-import type { ComponentProps, Month, Preview } from '../props'
+import type { DatePickerProps, Month, Preview } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
-const { n, classes } = createNamespace('month-picker')
+const { n } = createNamespace('month-picker')
 const { n: nDate } = createNamespace('date-picker')
 
 export default defineComponent({
@@ -50,8 +50,8 @@ export default defineComponent({
       type: Object as PropType<Preview>,
       required: true,
     },
-    componentProps: {
-      type: Object as PropType<ComponentProps>,
+    datePickerProps: {
+      type: Object as PropType<DatePickerProps>,
       required: true,
     },
   },
@@ -70,40 +70,25 @@ export default defineComponent({
     function inRange(key: string): boolean {
       const {
         preview: { previewYear },
-        componentProps: { min, max },
-      }: { preview: Preview; componentProps: ComponentProps } = props
-      let isBeforeMax = true
-      let isAfterMin = true
+        datePickerProps: { min, max },
+      }: { preview: Preview; datePickerProps: DatePickerProps } = props
+
       const previewDate = `${previewYear}-${key}`
-      if (max) {
-        isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'month')
-      }
-      if (min) {
-        isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'month')
-      }
+      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), 'month') : true
+      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), 'month') : true
+
       return isBeforeMax && isAfterMin
     }
 
     function buttonProps(key: string) {
       const {
         preview: { previewYear, previewMonth },
-        componentProps: { allowedDates, color },
-      }: { preview: Preview; componentProps: ComponentProps } = props
+        datePickerProps: { allowedDates, color },
+      }: { preview: Preview; datePickerProps: DatePickerProps } = props
 
       const val = `${previewYear}-${key}`
       const active = previewMonth === key
-
-      function computeDisabled(): boolean {
-        if (!inRange(key)) {
-          return true
-        }
-        if (!allowedDates) {
-          return false
-        }
-
-        return !allowedDates(val)
-      }
-      const disabled = computeDisabled()
+      const disabled = !inRange(key) || (allowedDates ? !allowedDates(val) : false)
 
       return {
         outline: false,
@@ -111,17 +96,12 @@ export default defineComponent({
         color: active && !disabled ? color : '',
         textColor: '',
         [`${nDate()}-color-cover`]: !active && !disabled,
-        class: classes(n('button'), [disabled, n('button--disabled')]),
+        class: n('button'),
         disabled,
       }
     }
 
-    function chooseMonth(month: Month, event: Event) {
-      const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains(n('button--disabled'))) {
-        return
-      }
-
+    function chooseMonth(month: Month) {
       emit('choose-month', month)
     }
 

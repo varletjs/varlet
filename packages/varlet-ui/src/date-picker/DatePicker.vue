@@ -69,7 +69,7 @@
           <year-picker-panel
             v-if="panelType === 'year'"
             ref="yearPanelEl"
-            :component-props="componentProps"
+            :date-picker-props="datePickerProps"
             :preview="previewYear"
             @choose-year="chooseYearFromPanel"
           />
@@ -77,7 +77,7 @@
             v-else-if="panelType === 'month'"
             ref="monthPanelEl"
             :preview="previewDate"
-            :component-props="componentProps"
+            :date-picker-props="datePickerProps"
             @choose-month="chooseMonthFromPanel"
           />
           <day-picker-panel
@@ -86,7 +86,7 @@
             :current="currentDate"
             :choose="selectedDate"
             :preview="previewDate"
-            :component-props="componentProps"
+            :date-picker-props="datePickerProps"
             @choose-day="chooseDayFromPanel"
           />
         </transition>
@@ -111,7 +111,7 @@ import {
   props,
   WEEK_HEADER,
   type Choose,
-  type ComponentProps,
+  type DatePickerProps,
   type Month,
   type Preview,
   type Week,
@@ -155,7 +155,7 @@ export default defineComponent({
     const yearPanelEl = ref<RendererNode | null>(null)
     const monthPanelEl = ref<RendererNode | null>(null)
     const dayPanelEl = ref<RendererNode | null>(null)
-    const componentProps = computed<ComponentProps>(() => ({
+    const datePickerProps = computed<DatePickerProps>(() => ({
       allowedDates: props.allowedDates,
       type: props.type,
       color: props.color,
@@ -675,7 +675,7 @@ export default defineComponent({
       headerPreview,
       selectedDate,
       previewDate,
-      componentProps,
+      datePickerProps,
       dateSlotProps,
       formattedRangeDays,
       n,

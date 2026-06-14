@@ -6,11 +6,11 @@
           <var-button
             type="primary"
             var-year-picker-cover
-            :elevation="componentProps.buttonElevation"
+            :elevation="datePickerProps.buttonElevation"
             v-bind="{
               ...buttonProps(`${year}`),
             }"
-            @click="chooseYear(year, $event)"
+            @click="chooseYear(year)"
           >
             {{ year }}
           </var-button>
@@ -27,9 +27,9 @@ import dayjs from 'dayjs/esm/index.js'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import VarButton from '../../button'
 import { createNamespace } from '../../utils/components'
-import { type ComponentProps } from '../props'
+import { type DatePickerProps } from '../props'
 
-const { n, classes } = createNamespace('year-picker')
+const { n } = createNamespace('year-picker')
 const { n: nDate } = createNamespace('date-picker')
 
 export default defineComponent({
@@ -41,8 +41,8 @@ export default defineComponent({
     preview: {
       type: String,
     },
-    componentProps: {
-      type: Object as PropType<ComponentProps>,
+    datePickerProps: {
+      type: Object as PropType<DatePickerProps>,
       required: true,
     },
   },
@@ -65,8 +65,8 @@ export default defineComponent({
 
     function inRange(year: string): boolean {
       const {
-        componentProps: { min, max },
-      }: { componentProps: ComponentProps } = props
+        datePickerProps: { min, max },
+      }: { datePickerProps: DatePickerProps } = props
 
       const isBeforeMax = max ? dayjs(year).isSameOrBefore(dayjs(max), 'year') : true
       const isAfterMin = min ? dayjs(year).isSameOrAfter(dayjs(min), 'year') : true
@@ -76,22 +76,11 @@ export default defineComponent({
 
     function buttonProps(year: string) {
       const {
-        componentProps: { allowedDates, color },
-      }: { componentProps: ComponentProps } = props
+        datePickerProps: { allowedDates, color },
+      }: { datePickerProps: DatePickerProps } = props
 
       const active = props.preview === year
-
-      function computeDisabled(): boolean {
-        if (!inRange(year)) {
-          return true
-        }
-        if (!allowedDates) {
-          return false
-        }
-
-        return !allowedDates(year)
-      }
-      const disabled = computeDisabled()
+      const disabled = !inRange(year) || (allowedDates ? !allowedDates(year) : false)
 
       return {
         outline: false,
@@ -99,17 +88,12 @@ export default defineComponent({
         color: active && !disabled ? color : '',
         textColor: '',
         [`${nDate()}-color-cover`]: !active && !disabled,
-        class: classes(n('button'), [disabled, n('button--disabled')]),
+        class: n('button'),
         disabled,
       }
     }
 
-    function chooseYear(year: number, event: Event) {
-      const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains(n('button--disabled'))) {
-        return
-      }
-
+    function chooseYear(year: number) {
       emit('choose-year', year)
     }
 

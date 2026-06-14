@@ -12,11 +12,11 @@
                 type="primary"
                 var-day-picker-cover
                 round
-                :elevation="componentProps.buttonElevation"
+                :elevation="datePickerProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="chooseDay(day, $event)"
+                @click="chooseDay(day)"
               >
                 {{ filterDay(day) }}
               </var-button>
@@ -39,12 +39,12 @@ import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { WEEK_HEADER, type Choose, type ComponentProps, type Preview, type Week } from '../props'
+import { WEEK_HEADER, type Choose, type DatePickerProps, type Preview, type Week } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
 
-const { n, classes } = createNamespace('day-picker')
+const { n } = createNamespace('day-picker')
 const { n: nDate } = createNamespace('date-picker')
 
 export default defineComponent({
@@ -65,8 +65,8 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    componentProps: {
-      type: Object as PropType<ComponentProps>,
+    datePickerProps: {
+      type: Object as PropType<DatePickerProps>,
       required: true,
     },
   },
@@ -91,7 +91,7 @@ export default defineComponent({
     )
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
-      const index = WEEK_HEADER.findIndex((week: Week) => week === props.componentProps.firstDayOfWeek)
+      const index = WEEK_HEADER.findIndex((week: Week) => week === props.datePickerProps.firstDayOfWeek)
 
       if (index === -1 || index === 0) {
         return WEEK_HEADER
@@ -122,8 +122,8 @@ export default defineComponent({
     function inRange(day: number) {
       const {
         preview: { previewYear, previewMonth },
-        componentProps: { min, max },
-      }: { preview: Preview; componentProps: ComponentProps } = props
+        datePickerProps: { min, max },
+      }: { preview: Preview; datePickerProps: DatePickerProps } = props
 
       let isBeforeMax = true
       let isAfterMin = true
@@ -132,6 +132,7 @@ export default defineComponent({
       if (max) {
         isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
       }
+
       if (min) {
         isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
       }
@@ -142,8 +143,8 @@ export default defineComponent({
     function shouldChoose(val: string): boolean {
       const {
         choose: { chooseDays, chooseRangeDay },
-        componentProps: { range },
-      }: { choose: Choose; componentProps: ComponentProps } = props
+        datePickerProps: { range },
+      }: { choose: Choose; datePickerProps: DatePickerProps } = props
 
       if (range) {
         if (!chooseRangeDay.length) {
@@ -172,87 +173,27 @@ export default defineComponent({
       const {
         choose: { chooseDay },
         preview: { previewYear, previewMonth },
-        componentProps: { allowedDates, color, multiple, range },
-      }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
+        datePickerProps: { allowedDates, color, multiple, range, showCurrent },
+      }: { choose: Choose; preview: Preview; datePickerProps: DatePickerProps } = props
 
       const val = `${previewYear}-${previewMonth}-${day}`
-
-      function dayExist(): boolean {
-        if (range || multiple) {
-          return shouldChoose(val)
-        }
-
-        return toNumber(chooseDay) === day && isSame.value
-      }
-
-      function computeDisabled(): boolean {
-        if (!inRange(day)) {
-          return true
-        }
-        if (!allowedDates) {
-          return false
-        }
-
-        return !allowedDates(val)
-      }
-      const disabled = computeDisabled()
-
-      function computeText(): boolean {
-        if (disabled) {
-          return true
-        }
-        if (range || multiple) {
-          return !shouldChoose(val)
-        }
-
-        return !isSame.value || toNumber(chooseDay) !== day
-      }
-
-      function computeOutline(): boolean {
-        // Not satisfied with the basic conditions, the basic conditions are the current year, the current month, the current day, and the showCurrent as true
-        if (!(isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent)) {
-          return false
-        }
-
-        if ((range || multiple || isSame.value) && disabled) {
-          return true
-        }
-
-        // Outside the selection range
-        if (range || multiple) {
-          return !shouldChoose(val)
-        }
-
-        // In the same year but not selected
-        if (isSame.value) {
-          return chooseDay !== currentDay
-        }
-
-        return true
-      }
-
-      function textColorOrCover(): string {
-        if (disabled) {
-          return ''
-        }
-        if (computeOutline()) {
-          return color ?? ''
-        }
-        if (dayExist()) {
-          return ''
-        }
-
-        return `${nDate()}-color-cover`
-      }
-
-      const isCover = textColorOrCover().startsWith(nDate())
+      const selected = range || multiple ? shouldChoose(val) : toNumber(chooseDay) === day && isSame.value
+      const disabled = !inRange(day) || (allowedDates ? !allowedDates(val) : false)
+      const text = disabled || (range || multiple ? !selected : !isSame.value || toNumber(chooseDay) !== day)
+      const current = isCurrent.value && toNumber(currentDay) === day && showCurrent
+      const outline =
+        current &&
+        (((range || multiple || isSame.value) && disabled) ||
+          (range || multiple ? !selected : isSame.value ? chooseDay !== currentDay : true))
+      const cover = !disabled && !outline && !selected
+      const textColor = !disabled && outline ? (color ?? '') : ''
 
       return {
-        text: computeText(),
-        outline: computeOutline(),
-        textColor: isCover ? '' : textColorOrCover(),
-        [`${nDate()}-color-cover`]: isCover,
-        class: classes(n('button'), n('button--usable'), [disabled, n('button--disabled')]),
+        text,
+        outline,
+        textColor,
+        [`${nDate()}-color-cover`]: cover,
+        class: [n('button'), n('button--usable')],
         disabled,
       }
     }
@@ -269,12 +210,7 @@ export default defineComponent({
       panelKey.value += direction === 'prev' ? -1 : 1
     }
 
-    function chooseDay(day: number, event: Event) {
-      const buttonEl = event.currentTarget as HTMLButtonElement
-      if (buttonEl.classList.contains(n('button--disabled'))) {
-        return
-      }
-
+    function chooseDay(day: number) {
       emit('choose-day', day)
     }
 

@@ -9,7 +9,7 @@ export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09'
 
 export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
 
-export type ComponentProps = {
+export type DatePickerProps = {
   type: string
   allowedDates: AllowedDates | undefined
   color: string | undefined
