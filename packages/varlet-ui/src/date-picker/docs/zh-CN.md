@@ -196,13 +196,13 @@ const date = ref('2021-04-08')
 | `--date-picker-actions-padding` | `20px`              |
 | `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`          |
-| `--month-picker-item-width` | `33%`                  |
-| `--month-picker-item-height` | `48px`                 |
+| `--month-picker-item-width` | `32%`                  |
+| `--month-picker-item-height` | `46px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
 | `--month-picker-item-button-font-weight` | `normal`               |
 | `--year-picker-padding` | `0 12px`          |
-| `--year-picker-item-width` | `33%`                  |
-| `--year-picker-item-height` | `48px`                 |
+| `--year-picker-item-width` | `32%`                  |
+| `--year-picker-item-height` | `46px`                 |
 | `--year-picker-item-button-max-width` | `140px`                |
 | `--year-picker-item-button-font-weight` | `normal`               |
 | `--day-picker-content-item-width` | `14.28%`               |
