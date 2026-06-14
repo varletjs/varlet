@@ -8,7 +8,7 @@
           round
           text
           :disabled="yearDisabled.left"
-          @click="checkYearDate('prev')"
+          @click="shiftYearPreview('prev')"
         >
           <var-icon name="chevron-left" />
         </var-button>
@@ -16,7 +16,7 @@
           :class="[n('text-button'), n('year')]"
           var-date-picker-header-cover
           text
-          @click="$emit('check-year-panel')"
+          @click="$emit('open-year-panel')"
         >
           <span :class="n('year-value')">
             {{ date.previewYear }}
@@ -29,7 +29,7 @@
           round
           text
           :disabled="yearDisabled.right"
-          @click="checkYearDate('next')"
+          @click="shiftYearPreview('next')"
         >
           <var-icon name="chevron-right" />
         </var-button>
@@ -41,7 +41,7 @@
           round
           text
           :disabled="disabled.left"
-          @click="checkDate('prev')"
+          @click="shiftPreview('prev')"
         >
           <var-icon name="chevron-left" />
         </var-button>
@@ -49,7 +49,7 @@
           :class="[n('text-button'), n('month')]"
           var-date-picker-header-cover
           text
-          @click="$emit('check-month-panel')"
+          @click="$emit('open-month-panel')"
         >
           {{ getMonthName() }}
           <var-icon :class="n('text-button-icon')" name="chevron-down" />
@@ -60,7 +60,7 @@
           round
           text
           :disabled="disabled.right"
-          @click="checkDate('next')"
+          @click="shiftPreview('next')"
         >
           <var-icon name="chevron-right" />
         </var-button>
@@ -74,7 +74,7 @@
           round
           text
           :disabled="disabled.left"
-          @click="checkDate('prev')"
+          @click="shiftPreview('prev')"
         >
           <var-icon name="chevron-left" />
         </var-button>
@@ -82,7 +82,7 @@
           :class="[n('text-button'), n('year')]"
           var-date-picker-header-cover
           text
-          @click="$emit('check-year-panel')"
+          @click="$emit('open-year-panel')"
         >
           <span :class="n('year-value')">
             {{ date.previewYear }}
@@ -95,7 +95,7 @@
           round
           text
           :disabled="disabled.right"
-          @click="checkDate('next')"
+          @click="shiftPreview('next')"
         >
           <var-icon name="chevron-right" />
         </var-button>
@@ -109,7 +109,7 @@
           round
           text
           :disabled="disabled.left"
-          @click="checkDate('prev')"
+          @click="shiftPreview('prev')"
         >
           <var-icon name="chevron-left" />
         </var-button>
@@ -118,7 +118,7 @@
           :class="[n('text-button'), n('panel-label')]"
           var-date-picker-header-cover
           text
-          @click="$emit('check-panel')"
+          @click="$emit('open-date-panel')"
         >
           {{ getPanelLabel() }}
           <var-icon :class="n('text-button-icon')" name="chevron-up" />
@@ -132,7 +132,7 @@
           round
           text
           :disabled="disabled.right"
-          @click="checkDate('next')"
+          @click="shiftPreview('next')"
         >
           <var-icon name="chevron-right" />
         </var-button>
@@ -179,7 +179,7 @@ export default defineComponent({
     showPanelToggle: Boolean,
     monthPanelInDateMode: Boolean,
   },
-  emits: ['check-panel', 'check-year-panel', 'check-month-panel', 'check-year-date', 'check-date'],
+  emits: ['open-date-panel', 'open-year-panel', 'open-month-panel', 'shift-year-preview', 'shift-preview'],
 
   setup(props, { emit }) {
     const { t: pt } = injectLocaleProvider()
@@ -194,28 +194,28 @@ export default defineComponent({
       return props.type === 'month' && props.monthPanelInDateMode ? getMonthName() : props.date.previewYear
     }
 
-    function checkDate(checkType: string) {
-      if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) {
+    function shiftPreview(direction: string) {
+      if ((direction === 'prev' && props.disabled.left) || (direction === 'next' && props.disabled.right)) {
         return
       }
 
-      emit('check-date', checkType)
+      emit('shift-preview', direction)
     }
 
-    function checkYearDate(checkType: string) {
-      if ((checkType === 'prev' && props.yearDisabled.left) || (checkType === 'next' && props.yearDisabled.right)) {
+    function shiftYearPreview(direction: string) {
+      if ((direction === 'prev' && props.yearDisabled.left) || (direction === 'next' && props.yearDisabled.right)) {
         return
       }
 
-      emit('check-year-date', checkType)
+      emit('shift-year-preview', direction)
     }
 
     return {
       n,
       getMonthName,
       getPanelLabel,
-      checkDate,
-      checkYearDate,
+      shiftPreview,
+      shiftYearPreview,
     }
   },
 })

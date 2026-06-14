@@ -59,11 +59,11 @@
         :date="headerPreview"
         :month-panel-in-date-mode="type === 'date' && panelType === 'month'"
         :show-panel-toggle="type === 'date' && panelType !== 'date'"
-        @check-panel="switchPanel('date')"
-        @check-year-panel="switchPanel('year')"
-        @check-month-panel="switchPanel('month')"
-        @check-year-date="checkHeaderYearDate"
-        @check-date="checkHeaderDate"
+        @open-date-panel="switchPanel('date')"
+        @open-year-panel="switchPanel('year')"
+        @open-month-panel="switchPanel('month')"
+        @shift-year-preview="shiftDatePanelYearPreview"
+        @shift-preview="shiftCurrentPanelPreview"
       />
       <div :class="n('panel')">
         <transition :name="`${n()}-panel-fade`">
@@ -80,7 +80,7 @@
             :preview="previewDate"
             :component-props="componentProps"
             @choose-month="chooseMonthFromPanel"
-            @check-preview="checkPreview"
+            @shift-preview="shiftPreview"
           />
           <day-picker-panel
             v-else-if="panelType === 'date'"
@@ -90,7 +90,7 @@
             :preview="previewDate"
             :component-props="componentProps"
             @choose-day="chooseDayFromPanel"
-            @check-preview="checkPreview"
+            @shift-preview="shiftPreview"
           />
         </transition>
       </div>
@@ -283,7 +283,7 @@ export default defineComponent({
 
     let startX = 0
     let startY = 0
-    let checkType = ''
+    let previewShiftDirection = ''
     let keepPreviewOnModelValueChange = false
     let touchDirection: TouchDirection | undefined
 
@@ -342,16 +342,16 @@ export default defineComponent({
       return (pt || t)('datePickerHint')
     }
 
-    function getCurrentPanelRef() {
+    function getActivePanelRef() {
       return panelType.value === 'year' ? yearPanelEl : panelType.value === 'month' ? monthPanelEl : dayPanelEl
     }
 
-    function checkHeaderDate(checkType: string) {
-      getCurrentPanelRef().value!.forwardRef(checkType)
+    function shiftCurrentPanelPreview(direction: string) {
+      getActivePanelRef().value!.shiftPreview(direction)
     }
 
-    function checkHeaderYearDate(checkType: string) {
-      dayPanelEl.value!.forwardYearRef(checkType)
+    function shiftDatePanelYearPreview(direction: string) {
+      dayPanelEl.value!.shiftYearPreview(direction)
     }
 
     function handleTouchstart(event: TouchEvent) {
@@ -378,7 +378,7 @@ export default defineComponent({
       const y = clientY - startY
 
       touchDirection = getDirection(Math.abs(x), Math.abs(y))
-      checkType = x > 0 ? 'prev' : 'next'
+      previewShiftDirection = x > 0 ? 'prev' : 'next'
     }
 
     async function handleTouchend() {
@@ -387,7 +387,7 @@ export default defineComponent({
       }
 
       await doubleRaf()
-      getCurrentPanelRef().value!.forwardRef(checkType)
+      getActivePanelRef().value!.shiftPreview(previewShiftDirection)
       resetState()
     }
 
@@ -521,10 +521,10 @@ export default defineComponent({
       isYearPanel.value = false
     }
 
-    function checkPreview(type: string, checkType: string) {
-      const changeValue = checkType === 'prev' ? -1 : 1
+    function shiftPreview(unit: string, direction: string) {
+      const changeValue = direction === 'prev' ? -1 : 1
 
-      if (type === 'year') {
+      if (unit === 'year') {
         previewYear.value = `${toNumber(previewYear.value) + changeValue}`
       } else {
         let checkIndex = toNumber(previewMonth.value) + changeValue
@@ -680,7 +680,7 @@ export default defineComponent({
     function resetState() {
       startY = 0
       startX = 0
-      checkType = ''
+      previewShiftDirection = ''
       touchDirection = undefined
     }
 
@@ -711,15 +711,15 @@ export default defineComponent({
       n,
       classes,
       switchPanel,
-      checkHeaderDate,
-      checkHeaderYearDate,
+      shiftCurrentPanelPreview,
+      shiftDatePanelYearPreview,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
       chooseDayFromPanel,
       chooseMonthFromPanel,
       chooseYearFromPanel,
-      checkPreview,
+      shiftPreview,
       formatElevation,
     }
   },

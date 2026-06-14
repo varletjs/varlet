@@ -55,7 +55,7 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['check-preview', 'choose-month'],
+  emits: ['shift-preview', 'choose-month'],
 
   setup(props, { emit }) {
     const reverse: Ref<boolean> = ref(false)
@@ -125,15 +125,15 @@ export default defineComponent({
       emit('choose-month', month)
     }
 
-    function checkDate(checkType: string) {
-      reverse.value = checkType === 'prev'
-      panelKey.value += checkType === 'prev' ? -1 : 1
-      emit('check-preview', 'year', checkType)
+    function shiftYearPreview(direction: string) {
+      reverse.value = direction === 'prev'
+      panelKey.value += direction === 'prev' ? -1 : 1
+      emit('shift-preview', 'year', direction)
     }
 
     // expose for internal
-    function forwardRef(checkType: string) {
-      checkDate(checkType)
+    function shiftPreview(direction: string) {
+      shiftYearPreview(direction)
     }
 
     return {
@@ -142,11 +142,11 @@ export default defineComponent({
       MONTH_LIST,
       reverse,
       panelKey,
-      forwardRef,
+      shiftPreview,
       buttonProps,
       getMonthAbbr,
       chooseMonth,
-      checkDate,
+      shiftYearPreview,
     }
   },
 })

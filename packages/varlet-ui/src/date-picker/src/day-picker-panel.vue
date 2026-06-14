@@ -70,7 +70,7 @@ export default defineComponent({
       required: true,
     },
   },
-  emits: ['check-preview', 'choose-day'],
+  emits: ['shift-preview', 'choose-day'],
 
   setup(props, { emit }) {
     const [currentYear, currentMonth, currentDay] = props.current.split('-')
@@ -257,16 +257,16 @@ export default defineComponent({
       }
     }
 
-    function checkDate(checkType: string) {
-      reverse.value = checkType === 'prev'
-      panelKey.value += checkType === 'prev' ? -1 : 1
-      emit('check-preview', 'month', checkType)
+    function shiftMonthPreview(direction: string) {
+      reverse.value = direction === 'prev'
+      panelKey.value += direction === 'prev' ? -1 : 1
+      emit('shift-preview', 'month', direction)
     }
 
-    function checkYearDate(checkType: string) {
-      reverse.value = checkType === 'prev'
-      panelKey.value += checkType === 'prev' ? -1 : 1
-      emit('check-preview', 'year', checkType)
+    function shiftPreviewByYear(direction: string) {
+      reverse.value = direction === 'prev'
+      panelKey.value += direction === 'prev' ? -1 : 1
+      emit('shift-preview', 'year', direction)
     }
 
     function chooseDay(day: number, event: Event) {
@@ -279,12 +279,12 @@ export default defineComponent({
     }
 
     // expose for internal
-    function forwardRef(checkType: string) {
-      checkDate(checkType)
+    function shiftPreview(direction: string) {
+      shiftMonthPreview(direction)
     }
 
-    function forwardYearRef(checkType: string) {
-      checkYearDate(checkType)
+    function shiftYearPreview(direction: string) {
+      shiftPreviewByYear(direction)
     }
 
     onSmartMounted(() => {
@@ -305,12 +305,12 @@ export default defineComponent({
       reverse,
       panelKey,
       sortWeekList,
-      forwardRef,
-      forwardYearRef,
+      shiftPreview,
+      shiftYearPreview,
       filterDay,
       getDayAbbr,
-      checkDate,
-      checkYearDate,
+      shiftMonthPreview,
+      shiftPreviewByYear,
       chooseDay,
       buttonProps,
     }
