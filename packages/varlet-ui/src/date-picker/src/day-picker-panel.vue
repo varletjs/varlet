@@ -1,14 +1,6 @@
 <template>
   <div :class="n()">
     <div :class="n('content')">
-      <panel-header
-        ref="headerEl"
-        type="day"
-        :date="preview"
-        :disabled="panelBtnDisabled"
-        @check-panel="clickMonth"
-        @check-date="checkDate"
-      />
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul :class="n('head')">
@@ -20,12 +12,11 @@
                 type="primary"
                 var-day-picker-cover
                 round
-                :ripple="false"
                 :elevation="componentProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="(event: Event) => chooseDay(day, event)"
+                @click="chooseDay(day, $event)"
               >
                 {{ filterDay(day) }}
               </var-button>
@@ -43,24 +34,12 @@ import { onSmartMounted } from '@varlet/use'
 import dayjs from 'dayjs/esm/index.js'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
 import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
-import {
-  computed,
-  defineComponent,
-  reactive,
-  ref,
-  watch,
-  type ComputedRef,
-  type PropType,
-  type Ref,
-  type RendererNode,
-  type UnwrapRef,
-} from 'vue'
+import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { WEEK_HEADER, type Choose, type ComponentProps, type PanelBtnDisabled, type Preview, type Week } from '../props'
-import PanelHeader from './panel-header.vue'
+import { WEEK_HEADER, type Choose, type ComponentProps, type Preview, type Week } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -72,7 +51,6 @@ export default defineComponent({
   name: 'DayPickerPanel',
   components: {
     VarButton,
-    PanelHeader,
   },
   props: {
     choose: {
@@ -87,10 +65,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    clickMonth: {
-      type: Function as PropType<() => void>,
-      required: true,
-    },
     componentProps: {
       type: Object as PropType<ComponentProps>,
       required: true,
@@ -103,11 +77,6 @@ export default defineComponent({
     const days: Ref<Array<number>> = ref([])
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
-    const headerEl: Ref<RendererNode | null> = ref(null)
-    const panelBtnDisabled: UnwrapRef<PanelBtnDisabled> = reactive({
-      left: false,
-      right: false,
-    })
 
     const { t: pt } = injectLocaleProvider()
 
@@ -131,11 +100,15 @@ export default defineComponent({
       return [...WEEK_HEADER.slice(index), ...WEEK_HEADER.slice(0, index)]
     })
 
-    const getDayAbbr = (key: Week): string => (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
+    function getDayAbbr(key: Week): string {
+      return (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
+    }
 
-    const filterDay = (day: number): number | string => (day > 0 ? day : '')
+    function filterDay(day: number): number | string {
+      return day > 0 ? day : ''
+    }
 
-    const initDate = () => {
+    function initDate() {
       const {
         preview: { previewMonth, previewYear },
       }: { preview: Preview } = props
@@ -146,24 +119,7 @@ export default defineComponent({
       days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
     }
 
-    const initHeader = () => {
-      const {
-        preview: { previewYear, previewMonth },
-        componentProps: { max, min },
-      }: { preview: Preview; componentProps: ComponentProps } = props
-
-      if (max) {
-        const date = `${previewYear}-${toNumber(previewMonth) + 1}`
-        panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
-      }
-
-      if (min) {
-        const date = `${previewYear}-${toNumber(previewMonth) - 1}`
-        panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
-      }
-    }
-
-    const inRange = (day: number) => {
+    function inRange(day: number) {
       const {
         preview: { previewYear, previewMonth },
         componentProps: { min, max },
@@ -183,7 +139,7 @@ export default defineComponent({
       return isBeforeMax && isAfterMin
     }
 
-    const shouldChoose = (val: string): boolean => {
+    function shouldChoose(val: string): boolean {
       const {
         choose: { chooseDays, chooseRangeDay },
         componentProps: { range },
@@ -202,7 +158,7 @@ export default defineComponent({
       return chooseDays.includes(val)
     }
 
-    const buttonProps = (day: number) => {
+    function buttonProps(day: number) {
       if (day < 0) {
         return {
           text: true,
@@ -221,7 +177,7 @@ export default defineComponent({
 
       const val = `${previewYear}-${previewMonth}-${day}`
 
-      const dayExist = (): boolean => {
+      function dayExist(): boolean {
         if (range || multiple) {
           return shouldChoose(val)
         }
@@ -229,7 +185,7 @@ export default defineComponent({
         return toNumber(chooseDay) === day && isSame.value
       }
 
-      const computeDisabled = (): boolean => {
+      function computeDisabled(): boolean {
         if (!inRange(day)) {
           return true
         }
@@ -241,7 +197,7 @@ export default defineComponent({
       }
       const disabled = computeDisabled()
 
-      const computeText = (): boolean => {
+      function computeText(): boolean {
         if (disabled) {
           return true
         }
@@ -252,7 +208,7 @@ export default defineComponent({
         return !isSame.value || toNumber(chooseDay) !== day
       }
 
-      const computeOutline = (): boolean => {
+      function computeOutline(): boolean {
         // Not satisfied with the basic conditions, the basic conditions are the current year, the current month, the current day, and the showCurrent as true
         if (!(isCurrent.value && toNumber(currentDay) === day && props.componentProps.showCurrent)) {
           return false
@@ -275,7 +231,7 @@ export default defineComponent({
         return true
       }
 
-      const textColorOrCover = (): string => {
+      function textColorOrCover(): string {
         if (disabled) {
           return ''
         }
@@ -301,13 +257,19 @@ export default defineComponent({
       }
     }
 
-    const checkDate = (checkType: string) => {
+    function checkDate(checkType: string) {
       reverse.value = checkType === 'prev'
       panelKey.value += checkType === 'prev' ? -1 : 1
       emit('check-preview', 'month', checkType)
     }
 
-    const chooseDay = (day: number, event: Event) => {
+    function checkYearDate(checkType: string) {
+      reverse.value = checkType === 'prev'
+      panelKey.value += checkType === 'prev' ? -1 : 1
+      emit('check-preview', 'year', checkType)
+    }
+
+    function chooseDay(day: number, event: Event) {
       const buttonEl = event.currentTarget as HTMLButtonElement
       if (buttonEl.classList.contains(n('button--disabled'))) {
         return
@@ -317,38 +279,38 @@ export default defineComponent({
     }
 
     // expose for internal
-    const forwardRef = (checkType: string) => {
-      headerEl.value!.checkDate(checkType)
+    function forwardRef(checkType: string) {
+      checkDate(checkType)
+    }
+
+    function forwardYearRef(checkType: string) {
+      checkYearDate(checkType)
     }
 
     onSmartMounted(() => {
       initDate()
-      initHeader()
     })
 
     watch(
       () => props.preview,
       () => {
         initDate()
-        initHeader()
       },
     )
-
-    watch(() => [props.componentProps.max, props.componentProps.min], initHeader)
 
     return {
       n,
       nDate,
       days,
       reverse,
-      headerEl,
       panelKey,
       sortWeekList,
-      panelBtnDisabled,
       forwardRef,
+      forwardYearRef,
       filterDay,
       getDayAbbr,
       checkDate,
+      checkYearDate,
       chooseDay,
       buttonProps,
     }

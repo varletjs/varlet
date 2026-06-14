@@ -98,6 +98,8 @@ export default {
   },
   datePickerSelected: '件選択済み',
   datePickerHint: '日付を選択',
+  datePickerYearHint: '年を選択',
+  datePickerMonthHint: '月を選択',
   // pagination
   paginationItem: '件',
   paginationPage: 'ページ',

@@ -1,37 +1,151 @@
 <template>
-  <div :class="n()">
-    <var-button
-      :class="n('arrow')"
-      var-date-picker-header-cover
-      round
-      text
-      :disabled="disabled.left"
-      @click="checkDate('prev')"
-    >
-      <var-icon name="chevron-left" />
-    </var-button>
-    <div :class="n('value')" @click="$emit('check-panel')">
-      <transition :name="`var-date-picker${reverse ? '-reverse' : ''}-translatex`">
-        <div :key="showDate">{{ showDate }}</div>
-      </transition>
-    </div>
-    <var-button
-      :class="n('arrow')"
-      var-date-picker-header-cover
-      round
-      text
-      :disabled="disabled.right"
-      @click="checkDate('next')"
-    >
-      <var-icon name="chevron-right" />
-    </var-button>
+  <div :class="[n(), n(`--${type}`)]">
+    <template v-if="type === 'day'">
+      <div :class="n('year-nav')">
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="yearDisabled.left"
+          @click="checkYearDate('prev')"
+        >
+          <var-icon name="chevron-left" />
+        </var-button>
+        <var-button
+          :class="[n('text-button'), n('year')]"
+          var-date-picker-header-cover
+          text
+          @click="$emit('check-year-panel')"
+        >
+          <span :class="n('year-value')">
+            {{ date.previewYear }}
+            <var-icon :class="n('text-button-icon')" name="chevron-down" />
+          </span>
+        </var-button>
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="yearDisabled.right"
+          @click="checkYearDate('next')"
+        >
+          <var-icon name="chevron-right" />
+        </var-button>
+      </div>
+      <div :class="n('month-nav')">
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.left"
+          @click="checkDate('prev')"
+        >
+          <var-icon name="chevron-left" />
+        </var-button>
+        <div :class="n('month-value')">
+          <var-button
+            :class="[n('text-button'), n('month')]"
+            var-date-picker-header-cover
+            text
+            @click="$emit('check-month-panel')"
+          >
+            {{ getMonthName() }}
+            <var-icon :class="n('text-button-icon')" name="chevron-down" />
+          </var-button>
+        </div>
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.right"
+          @click="checkDate('next')"
+        >
+          <var-icon name="chevron-right" />
+        </var-button>
+      </div>
+    </template>
+    <template v-else-if="type === 'month' && !monthPanelInDateMode">
+      <div :class="n('year-nav')">
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.left"
+          @click="checkDate('prev')"
+        >
+          <var-icon name="chevron-left" />
+        </var-button>
+        <var-button
+          :class="[n('text-button'), n('year')]"
+          var-date-picker-header-cover
+          text
+          @click="$emit('check-year-panel')"
+        >
+          <span :class="n('year-value')">
+            {{ date.previewYear }}
+            <var-icon :class="n('text-button-icon')" name="chevron-down" />
+          </span>
+        </var-button>
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.right"
+          @click="checkDate('next')"
+        >
+          <var-icon name="chevron-right" />
+        </var-button>
+      </div>
+    </template>
+    <template v-else>
+      <div :class="[n('nav'), n(`nav--${type}`)]">
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.left"
+          @click="checkDate('prev')"
+        >
+          <var-icon name="chevron-left" />
+        </var-button>
+        <var-button
+          v-if="showPanelToggle"
+          :class="[n('text-button'), n('panel-label')]"
+          var-date-picker-header-cover
+          text
+          @click="$emit('check-panel')"
+        >
+          {{ getPanelLabel() }}
+          <var-icon :class="n('text-button-icon')" name="chevron-up" />
+        </var-button>
+        <div v-else :class="[n('text-button'), n('panel-label')]" var-date-picker-header-cover>
+          {{ getPanelLabel() }}
+        </div>
+        <var-button
+          :class="n('arrow')"
+          var-date-picker-header-cover
+          round
+          text
+          :disabled="disabled.right"
+          @click="checkDate('next')"
+        >
+          <var-icon name="chevron-right" />
+        </var-button>
+      </div>
+    </template>
   </div>
 </template>
 
 <script lang="ts">
-import { toNumber } from '@varlet/shared'
-import { computed, defineComponent, ref, watch } from 'vue'
-import type { ComputedRef, PropType, Ref } from 'vue'
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
 import { t } from '../../locale'
@@ -58,54 +172,52 @@ export default defineComponent({
     },
     disabled: {
       type: Object as PropType<PanelBtnDisabled>,
-      required: true,
+      default: () => ({ left: false, right: false }),
     },
+    yearDisabled: {
+      type: Object as PropType<PanelBtnDisabled>,
+      default: () => ({ left: false, right: false }),
+    },
+    showPanelToggle: Boolean,
+    monthPanelInDateMode: Boolean,
   },
-  emits: ['check-panel', 'check-date'],
+  emits: ['check-panel', 'check-year-panel', 'check-month-panel', 'check-year-date', 'check-date'],
 
   setup(props, { emit }) {
-    const reverse: Ref<boolean> = ref(false)
-    const forwardOrBackNum: Ref<number> = ref(0)
     const { t: pt } = injectLocaleProvider()
 
-    const showDate: ComputedRef<number | string> = computed(() => {
-      const { date, type } = props
-      const { previewMonth, previewYear }: Preview = date
+    function getMonthName() {
+      const month = (pt || t)('datePickerMonthDict')?.[props.date.previewMonth!]
 
-      if (type === 'year') {
-        return previewYear
-      }
+      return (pt || t)('lang') === 'zh-CN' ? (month?.name ?? '') : (month?.abbr ?? '')
+    }
 
-      if (type === 'month') {
-        return toNumber(previewYear) + forwardOrBackNum.value
-      }
+    function getPanelLabel() {
+      return props.type === 'month' && props.monthPanelInDateMode ? getMonthName() : props.date.previewYear
+    }
 
-      const monthName = (pt || t)('datePickerMonthDict')?.[previewMonth!].name
-      return (pt || t)('lang') === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
-    })
-
-    const checkDate = (checkType: string) => {
+    function checkDate(checkType: string) {
       if ((checkType === 'prev' && props.disabled.left) || (checkType === 'next' && props.disabled.right)) {
         return
       }
 
       emit('check-date', checkType)
-      reverse.value = checkType === 'prev'
-      forwardOrBackNum.value += checkType === 'prev' ? -1 : 1
     }
 
-    watch(
-      () => props.date,
-      () => {
-        forwardOrBackNum.value = 0
-      },
-    )
+    function checkYearDate(checkType: string) {
+      if ((checkType === 'prev' && props.yearDisabled.left) || (checkType === 'next' && props.yearDisabled.right)) {
+        return
+      }
+
+      emit('check-year-date', checkType)
+    }
 
     return {
       n,
-      reverse,
-      showDate,
+      getMonthName,
+      getPanelLabel,
       checkDate,
+      checkYearDate,
     }
   },
 })

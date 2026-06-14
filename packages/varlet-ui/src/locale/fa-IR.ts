@@ -98,6 +98,8 @@ export default {
   },
   datePickerSelected: ' انتخاب شده',
   datePickerHint: 'انتخاب تاریخ',
+  datePickerYearHint: 'انتخاب سال',
+  datePickerMonthHint: 'انتخاب ماه',
   // pagination
   paginationItem: '',
   paginationPage: 'صفحه',

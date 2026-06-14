@@ -98,6 +98,8 @@ export default {
   },
   datePickerSelected: ' selected',
   datePickerHint: 'SELECT DATE',
+  datePickerYearHint: 'SELECT YEAR',
+  datePickerMonthHint: 'SELECT MONTH',
   // pagination
   paginationItem: '',
   paginationPage: 'page',

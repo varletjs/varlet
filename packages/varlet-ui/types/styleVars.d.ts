@@ -332,10 +332,6 @@ interface BaseStyleVars {
   '--date-picker-title-padding'?: string
   '--date-picker-title-background'?: string
   '--date-picker-title-color'?: string
-  '--date-picker-title-year-font-size'?: string
-  '--date-picker-title-year-font-weight'?: string
-  '--date-picker-title-year-margin-bottom'?: string
-  '--date-picker-title-year-min-height'?: string
   '--date-picker-title-date-height'?: string
   '--date-picker-title-date-font-size'?: string
   '--date-picker-title-date-font-weight'?: string
@@ -345,7 +341,9 @@ interface BaseStyleVars {
   '--date-picker-body-background-color'?: string
   '--date-picker-body-height'?: string
   '--date-picker-body-padding'?: string
+  '--date-picker-body-padding-no-title'?: string
   '--date-picker-header-padding'?: string
+  '--date-picker-header-padding-top-no-title'?: string
   '--date-picker-actions-padding'?: string
   '--date-picker-header-color'?: string
   '--month-picker-padding'?: string

@@ -1,17 +1,8 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 2))">
-    <div :class="n('title')" :style="{ background: titleColor || color }">
+  <div :class="classes(n(), formatElevation(elevation, 2), [!showTitle, n('--no-title')])">
+    <div v-if="showTitle" :class="n('title')" :style="{ background: titleColor || color }">
       <div :class="n('title-select')">
-        <div :class="n('title-hint')">{{ hint ?? (pt ? pt : t)('datePickerHint') }}</div>
-        <div
-          v-if="type !== 'year'"
-          :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
-          @click="clickEl('year')"
-        >
-          <slot name="year" :year="displayYear">
-            {{ displayYear }}
-          </slot>
-        </div>
+        <div :class="n('title-hint')">{{ titleHint }}</div>
       </div>
 
       <div
@@ -22,76 +13,82 @@
             [range, n('title-date--range')],
           )
         "
-        @click="clickEl('date')"
+        @click="switchPanel('date')"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
           <div v-if="type === 'year'" :key="`${chooseYear}`">
-            <slot v-if="range" name="range" :choose="getChoose.chooseRangeYear">
-              {{ getYearTitle }}
+            <slot v-if="range" name="range" :choose="selectedDate.chooseRangeYear">
+              {{ yearTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseYears">
-              {{ getYearTitle }}
+            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseYears">
+              {{ yearTitle }}
             </slot>
             <slot v-else name="year" :year="chooseYear">
-              {{ getYearTitle }}
+              {{ yearTitle }}
             </slot>
           </div>
           <div v-else-if="type === 'month'" :key="`${chooseYear}${chooseMonth}`">
-            <slot v-if="range" name="range" :choose="getChoose.chooseRangeMonth">
-              {{ getMonthTitle }}
+            <slot v-if="range" name="range" :choose="selectedDate.chooseRangeMonth">
+              {{ monthTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseMonths">
-              {{ getMonthTitle }}
+            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseMonths">
+              {{ monthTitle }}
             </slot>
             <slot v-else name="month" :month="chooseMonth" :year="chooseYear">
-              {{ getMonthTitle }}
+              {{ monthTitle }}
             </slot>
           </div>
           <div v-else :key="`${chooseYear}${chooseMonth}${chooseDay}`">
-            <slot v-if="range" name="range" :choose="formatRange">
-              {{ getDateTitle }}
+            <slot v-if="range" name="range" :choose="formattedRangeDays">
+              {{ dateTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="getChoose.chooseDays">
-              {{ getDateTitle }}
+            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseDays">
+              {{ dateTitle }}
             </slot>
-            <slot v-else name="date" v-bind="slotProps">
-              {{ getDateTitle }}
+            <slot v-else name="date" v-bind="dateSlotProps">
+              {{ dateTitle }}
             </slot>
           </div>
         </transition>
       </div>
     </div>
     <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
+      <panel-header
+        v-if="panelType"
+        :type="headerType"
+        :date="headerPreview"
+        :month-panel-in-date-mode="type === 'date' && panelType === 'month'"
+        :show-panel-toggle="type === 'date' && panelType !== 'date'"
+        @check-panel="switchPanel('date')"
+        @check-year-panel="switchPanel('year')"
+        @check-month-panel="switchPanel('month')"
+        @check-year-date="checkHeaderYearDate"
+        @check-date="checkHeaderDate"
+      />
       <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
-          v-if="getPanelType === 'year'"
+          v-if="panelType === 'year'"
           ref="yearPanelEl"
-          :choose="getChoose"
-          :current="currentDate"
           :component-props="componentProps"
           :preview="previewYear"
-          @choose-year="getChooseYear"
+          @choose-year="chooseYearFromPanel"
         />
         <month-picker-panel
-          v-else-if="getPanelType === 'month'"
+          v-else-if="panelType === 'month'"
           ref="monthPanelEl"
-          :current="currentDate"
-          :choose="getChoose"
-          :preview="getPreview"
-          :click-year="() => clickEl('year')"
+          :preview="previewDate"
           :component-props="componentProps"
-          @choose-month="getChooseMonth"
+          @choose-month="chooseMonthFromPanel"
           @check-preview="checkPreview"
         />
         <day-picker-panel
-          v-else-if="getPanelType === 'date'"
+          v-else-if="panelType === 'date'"
           ref="dayPanelEl"
           :current="currentDate"
-          :choose="getChoose"
-          :preview="getPreview"
+          :choose="selectedDate"
+          :preview="previewDate"
           :component-props="componentProps"
-          :click-month="() => clickEl('month')"
-          @choose-day="getChooseDay"
+          @choose-day="chooseDayFromPanel"
           @check-preview="checkPreview"
         />
       </transition>
@@ -123,6 +120,7 @@ import {
 } from './props'
 import DayPickerPanel from './src/day-picker-panel.vue'
 import MonthPickerPanel from './src/month-picker-panel.vue'
+import PanelHeader from './src/panel-header.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 
 const { name, n, classes } = createNamespace('date-picker')
@@ -133,6 +131,7 @@ export default defineComponent({
     MonthPickerPanel,
     YearPickerPanel,
     DayPickerPanel,
+    PanelHeader,
   },
   props,
   setup(props) {
@@ -170,7 +169,7 @@ export default defineComponent({
       range: props.range,
       buttonElevation: props.buttonElevation,
     }))
-    const getChoose = computed<Choose>(() => ({
+    const selectedDate = computed<Choose>(() => ({
       chooseMonth: chooseMonth.value,
       chooseYear: chooseYear.value,
       chooseDay: chooseDay.value,
@@ -181,13 +180,36 @@ export default defineComponent({
       chooseRangeMonth: chooseRangeMonth.value,
       chooseRangeDay: chooseRangeDay.value,
     }))
-    const getPreview = computed<Preview>(() => ({
+    const previewDate = computed<Preview>(() => ({
       previewMonth: previewMonth.value,
       previewYear: previewYear.value,
     }))
-    const displayYear = computed<string>(() => previewYear.value || chooseYear.value || '')
+    const panelType = computed<string>(() => {
+      if (props.type === 'year' || isYearPanel.value) {
+        return 'year'
+      }
 
-    const getYearTitle = computed<string>(() => {
+      if (props.type === 'month' || isMonthPanel.value) {
+        return 'month'
+      }
+
+      if (props.type === 'date') {
+        return 'date'
+      }
+
+      return ''
+    })
+    const headerType = computed<string>(() => (panelType.value === 'date' ? 'day' : panelType.value))
+    const headerPreview = computed<Preview>(() =>
+      panelType.value === 'year'
+        ? ({
+            previewYear: previewYear.value,
+          } as Preview)
+        : previewDate.value,
+    )
+    const titleHint = computed<string>(() => props.hint ?? getDefaultHint())
+
+    const yearTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
@@ -197,7 +219,7 @@ export default defineComponent({
       return multiple ? `${chooseYears.value.length}${(pt || t)('datePickerSelected')}` : (chooseYear.value ?? '')
     })
 
-    const getMonthTitle = computed<string>(() => {
+    const monthTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
@@ -211,13 +233,13 @@ export default defineComponent({
       return multiple ? `${chooseMonths.value.length}${(pt || t)('datePickerSelected')}` : monthName
     })
 
-    const getDateTitle = computed<string>(() => {
+    const dateTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
-        const formatRangeDays = chooseRangeDay.value.map((date) => dayjs(date).format('YYYY-MM-DD'))
+        const formattedDays = chooseRangeDay.value.map((date) => dayjs(date).format('YYYY-MM-DD'))
 
-        return formatRangeDays.length ? `${formatRangeDays[0]} ~ ${formatRangeDays[1]}` : ''
+        return formattedDays.length ? `${formattedDays[0]} ~ ${formattedDays[1]}` : ''
       }
 
       if (multiple) {
@@ -239,23 +261,8 @@ export default defineComponent({
       }
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
-    const getPanelType = computed<string>(() => {
-      if (props.type === 'year' || isYearPanel.value) {
-        return 'year'
-      }
-
-      if (props.type === 'month' || isMonthPanel.value) {
-        return 'month'
-      }
-
-      if (props.type === 'date') {
-        return 'date'
-      }
-
-      return ''
-    })
-    const isUntouchable = computed(() => !props.touchable || !getPanelType.value)
-    const slotProps = computed<Record<string, string>>(() => {
+    const isUntouchable = computed(() => !props.touchable || !panelType.value)
+    const dateSlotProps = computed<Record<string, string>>(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
       const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
 
@@ -266,8 +273,8 @@ export default defineComponent({
         date,
       }
     })
-    const formatRange = computed<string[]>(() =>
-      getChoose.value.chooseRangeDay.map((choose) => dayjs(choose).format('YYYY-MM-DD')),
+    const formattedRangeDays = computed<string[]>(() =>
+      selectedDate.value.chooseRangeDay.map((choose) => dayjs(choose).format('YYYY-MM-DD')),
     )
     const isSameYear = computed(() => chooseYear.value === previewYear.value)
     const isSameMonth = computed(() => chooseMonth.value === previewMonth.value)
@@ -275,11 +282,15 @@ export default defineComponent({
     let startX = 0
     let startY = 0
     let checkType = ''
+    let keepPreviewOnModelValueChange = false
     let touchDirection: TouchDirection | undefined
 
     watch(
       () => props.modelValue,
       (value) => {
+        const syncPreview = !keepPreviewOnModelValueChange
+        keepPreviewOnModelValueChange = false
+
         if (!checkValue()) {
           return
         }
@@ -290,23 +301,23 @@ export default defineComponent({
           }
 
           rangeDone.value = value.length !== 1
-          rangeInit(value, props.type)
+          rangeInit(value, props.type, syncPreview)
         } else if (props.multiple) {
           if (!isArray(value)) {
             return
           }
 
-          multipleInit(value, props.type)
+          multipleInit(value, props.type, syncPreview)
         } else {
-          dateInit(getSingleDate(value as string | undefined))
+          dateInit(getSingleDate(value as string | undefined), syncPreview)
         }
       },
       { immediate: true },
     )
 
-    watch(getPanelType, resetState)
+    watch(panelType, resetState)
 
-    function clickEl(type: string) {
+    function switchPanel(type: string) {
       if (type === 'year') {
         isYearPanel.value = true
       } else if (type === 'month') {
@@ -315,6 +326,30 @@ export default defineComponent({
         isYearPanel.value = false
         isMonthPanel.value = false
       }
+    }
+
+    function getDefaultHint() {
+      if (props.type === 'year') {
+        return (pt || t)('datePickerYearHint')
+      }
+
+      if (props.type === 'month') {
+        return (pt || t)('datePickerMonthHint')
+      }
+
+      return (pt || t)('datePickerHint')
+    }
+
+    function getCurrentPanelRef() {
+      return panelType.value === 'year' ? yearPanelEl : panelType.value === 'month' ? monthPanelEl : dayPanelEl
+    }
+
+    function checkHeaderDate(checkType: string) {
+      getCurrentPanelRef().value!.forwardRef(checkType)
+    }
+
+    function checkHeaderYearDate(checkType: string) {
+      dayPanelEl.value!.forwardYearRef(checkType)
     }
 
     function handleTouchstart(event: TouchEvent) {
@@ -349,10 +384,8 @@ export default defineComponent({
         return
       }
 
-      const componentRef =
-        getPanelType.value === 'year' ? yearPanelEl : getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
       await doubleRaf()
-      componentRef.value!.forwardRef(checkType)
+      getCurrentPanelRef().value!.forwardRef(checkType)
       resetState()
     }
 
@@ -365,6 +398,7 @@ export default defineComponent({
         const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
         const date = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
 
+        markPreviewKeep()
         call(props['onUpdate:modelValue'], date)
         call(props.onChange, date)
       }
@@ -383,6 +417,7 @@ export default defineComponent({
         formatDates.splice(index, 1)
       }
 
+      markPreviewKeep()
       call(props['onUpdate:modelValue'], formatDates)
       call(props.onChange, formatDates)
     }
@@ -406,7 +441,7 @@ export default defineComponent({
       return isSameMonth.value ? (date as number) < toNumber(chooseDay.value) : chooseMonth.value > previewMonth.value
     }
 
-    function getChooseDay(day: number) {
+    function chooseDayFromPanel(day: number) {
       const { readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
       if (day < 0 || readonly) {
         return
@@ -422,12 +457,13 @@ export default defineComponent({
       } else if (multiple) {
         updateMultiple(formatDate, 'day')
       } else {
+        markPreviewKeep()
         call(updateModelValue, formatDate)
         call(onChange, formatDate)
       }
     }
 
-    function getChooseMonth(month: Month) {
+    function chooseMonthFromPanel(month: Month) {
       const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
       reverse.value = getReverse('month', month)
 
@@ -439,6 +475,7 @@ export default defineComponent({
         } else if (multiple) {
           updateMultiple(date, 'month')
         } else {
+          markPreviewKeep()
           call(updateModelValue, date)
           call(onChange, date)
         }
@@ -455,7 +492,7 @@ export default defineComponent({
       isMonthPanel.value = false
     }
 
-    function getChooseYear(year: number) {
+    function chooseYearFromPanel(year: number) {
       const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
       reverse.value = getReverse('year', year)
 
@@ -465,6 +502,7 @@ export default defineComponent({
         } else if (multiple) {
           updateMultiple(`${year}`, 'year')
         } else {
+          markPreviewKeep()
           call(updateModelValue, `${year}`)
           call(onChange, `${year}`)
         }
@@ -563,7 +601,11 @@ export default defineComponent({
       return value.find((choose) => !invalidFormatDate(dayjs(choose).format(formatType)))
     }
 
-    function rangeInit(value: Array<string>, type: string) {
+    function markPreviewKeep() {
+      keepPreviewOnModelValueChange = props.type === 'date'
+    }
+
+    function rangeInit(value: Array<string>, type: string, syncPreview = true) {
       const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
       const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
       const formatDateList = value
@@ -579,10 +621,12 @@ export default defineComponent({
         rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
       }
 
-      previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+      if (syncPreview) {
+        previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+      }
     }
 
-    function multipleInit(value: Array<string>, type: string) {
+    function multipleInit(value: Array<string>, type: string, syncPreview = true) {
       const rangeDate = type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
       const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
 
@@ -590,10 +634,12 @@ export default defineComponent({
       const formatDateList = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
       rangeDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
 
-      previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+      if (syncPreview) {
+        previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+      }
     }
 
-    function dateInit(value: string | undefined) {
+    function dateInit(value: string | undefined, syncPreview = true) {
       const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
       const formatDate = handleValue.format('YYYY-MM-D')
 
@@ -608,7 +654,10 @@ export default defineComponent({
       chooseMonth.value = monthDes
       chooseYear.value = yearValue
       chooseDay.value = dayValue
-      previewInit(formatDate)
+
+      if (syncPreview) {
+        previewInit(formatDate)
+      }
     }
 
     function previewInit(value: string | undefined) {
@@ -643,29 +692,31 @@ export default defineComponent({
       chooseYear,
       chooseDay,
       previewYear,
-      displayYear,
       isYearPanel,
       isMonthPanel,
-      getMonthTitle,
-      getDateTitle,
-      getYearTitle,
-      getPanelType,
-      getChoose,
-      getPreview,
+      monthTitle,
+      dateTitle,
+      yearTitle,
+      titleHint,
+      panelType,
+      headerType,
+      headerPreview,
+      selectedDate,
+      previewDate,
       componentProps,
-      slotProps,
-      formatRange,
-      pt,
-      t,
+      dateSlotProps,
+      formattedRangeDays,
       n,
       classes,
-      clickEl,
+      switchPanel,
+      checkHeaderDate,
+      checkHeaderYearDate,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
-      getChooseDay,
-      getChooseMonth,
-      getChooseYear,
+      chooseDayFromPanel,
+      chooseMonthFromPanel,
+      chooseYearFromPanel,
       checkPreview,
       formatElevation,
     }
@@ -678,7 +729,6 @@ export default defineComponent({
 @import '../styles/elevation';
 @import '../ripple/ripple';
 @import '../button/button';
-@import '../sticky/sticky';
 @import '../icon/icon';
 @import './date-picker';
 </style>

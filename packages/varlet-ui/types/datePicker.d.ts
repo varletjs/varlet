@@ -18,6 +18,7 @@ export interface DatePickerProps extends BasicAttributes {
   min?: string
   max?: string
   showCurrent?: boolean
+  showTitle?: boolean
   readonly?: boolean
   multiple?: boolean
   range?: boolean

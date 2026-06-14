@@ -98,6 +98,8 @@ export default {
   },
   datePickerSelected: '个被选择',
   datePickerHint: '选择日期',
+  datePickerYearHint: '选择年份',
+  datePickerMonthHint: '选择月份',
   // pagination
   paginationItem: '条',
   paginationPage: '页',

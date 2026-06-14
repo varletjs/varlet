@@ -79,6 +79,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  showTitle: {
+    type: Boolean,
+    default: true,
+  },
   readonly: Boolean,
   multiple: Boolean,
   range: Boolean,
