@@ -174,43 +174,46 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
-| `--date-picker-title-hint-color` | `#fff` |
+| `--date-picker-title-hint-color` | `var(--color-on-surface-variant)` |
 | `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
 | `--date-picker-title-height` | `105px` |
-| `--date-picker-title-padding` | `16px`                 |
-| `--date-picker-title-background` | `var(--color-primary)` |
-| `--date-picker-title-color` | `#fff`                 |
+| `--date-picker-title-padding` | `20px 20px 16px`       |
+| `--date-picker-title-background` | `#fff` |
+| `--date-picker-title-color` | `rgba(0, 0, 0, .87)`   |
 | `--date-picker-title-date-height` | `48px`                 |
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-title-date-justify-content` | `normal` |
-| `--date-picker-body-padding` | `0 12px` |
+| `--date-picker-body-padding` | `0 12px 16px` |
 | `--date-picker-body-background-color` | `#fff`                 |
-| `--date-picker-body-height` | `280px`                |
-| `--date-picker-header-arrow-filter` | `opacity(0.54)` |
-| `--date-picker-header-padding` | `4px 0`             |
+| `--date-picker-body-height` | `304px`                |
+| `--date-picker-header-arrow-filter` | `opacity(1)` |
+| `--date-picker-header-padding` | `0 0 16px`          |
 | `--date-picker-header-padding-top-no-title` | `20px` |
-| `--date-picker-actions-padding` | `0 12px 12px`       |
+| `--date-picker-actions-padding` | `20px`              |
 | `--date-picker-header-color` | `#555`             |
-| `--month-picker-padding` | `0`               |
+| `--month-picker-padding` | `0 12px`          |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `48px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-padding` | `0`               |
+| `--month-picker-item-button-font-weight` | `normal`               |
+| `--year-picker-padding` | `0 12px`          |
 | `--year-picker-item-width` | `33%`                  |
 | `--year-picker-item-height` | `48px`                 |
 | `--year-picker-item-button-max-width` | `140px`                |
+| `--year-picker-item-button-font-weight` | `normal`               |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-min-height` | `21px`               |
-| `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
+| `--day-picker-content-item-font-size` | `var(--font-size-md)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |
 | `--day-picker-content-item-button-width` | `32px`                 |
 | `--day-picker-content-item-button-height` | `32px`                 |
-| `--day-picker-content-item-button-font-size` | `var(--font-size-sm)`  |
+| `--day-picker-content-item-button-font-size` | `var(--font-size-md)`  |
 | `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)`  |
+| `--day-picker-head-item-font-size` | `var(--font-size-md)`  |
 | `--day-picker-head-item-padding` | `8px 0`                |
-| `--day-picker-head-item-font-weight` | `600`                  |
+| `--day-picker-head-item-font-weight` | `normal`               |
 
 ### Note
 

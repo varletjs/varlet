@@ -349,10 +349,12 @@ interface BaseStyleVars {
   '--month-picker-item-width'?: string
   '--month-picker-item-height'?: string
   '--month-picker-item-button-max-width'?: string
+  '--month-picker-item-button-font-weight'?: string
   '--year-picker-padding'?: string
   '--year-picker-item-width'?: string
   '--year-picker-item-height'?: string
   '--year-picker-item-button-max-width'?: string
+  '--year-picker-item-button-font-weight'?: string
   '--day-picker-content-item-width'?: string
   '--day-picker-content-item-min-height'?: string
   '--day-picker-content-item-font-size'?: string
@@ -361,6 +363,7 @@ interface BaseStyleVars {
   '--day-picker-content-item-button-height'?: string
   '--day-picker-content-item-button-font-size'?: string
   '--day-picker-head-item-color'?: string
+  '--day-picker-head-item-font-size'?: string
   '--day-picker-head-item-padding'?: string
   '--day-picker-head-item-font-weight'?: string
   '--dialog-width'?: string
