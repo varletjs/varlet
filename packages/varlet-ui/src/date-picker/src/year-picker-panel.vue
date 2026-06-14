@@ -63,7 +63,7 @@ export default defineComponent({
       return Array.from(Array(100), (_v, k) => Math.max(0, startYear) + k)
     })
 
-    function inRange(year: string): boolean {
+    function isInRange(year: string): boolean {
       const {
         datePickerProps: { min, max },
       }: { datePickerProps: DatePickerProps } = props
@@ -80,7 +80,7 @@ export default defineComponent({
       }: { datePickerProps: DatePickerProps } = props
 
       const active = props.preview === year
-      const disabled = !inRange(year) || (allowedDates ? !allowedDates(year) : false)
+      const disabled = !isInRange(year) || (allowedDates ? !allowedDates(year) : false)
 
       return {
         outline: false,

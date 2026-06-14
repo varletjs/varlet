@@ -18,7 +18,7 @@
                 }"
                 @click="chooseDay(day)"
               >
-                {{ filterDay(day) }}
+                {{ getDayText(day) }}
               </var-button>
             </li>
           </ul>
@@ -80,11 +80,11 @@ export default defineComponent({
 
     const { t: pt } = injectLocaleProvider()
 
-    const isCurrent: ComputedRef<boolean> = computed(
+    const previewIsCurrentMonth: ComputedRef<boolean> = computed(
       () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth,
     )
 
-    const isSame: ComputedRef<boolean> = computed(
+    const previewIsSelectedMonth: ComputedRef<boolean> = computed(
       () =>
         props.choose.chooseYear === props.preview.previewYear &&
         props.choose.chooseMonth === props.preview.previewMonth,
@@ -104,59 +104,92 @@ export default defineComponent({
       return (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
     }
 
-    function filterDay(day: number): number | string {
+    function getDayText(day: number): number | string {
       return day > 0 ? day : ''
     }
 
-    function initDate() {
+    function initDays() {
       const {
         preview: { previewMonth, previewYear },
       }: { preview: Preview } = props
 
-      const monthNum = dayjs(`${previewYear}-${previewMonth}`).daysInMonth()
-      const firstDayToWeek = dayjs(`${previewYear}-${previewMonth}-01`).day()
-      const index = sortWeekList.value.findIndex((week: Week) => week === `${firstDayToWeek}`)
-      days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
+      const daysInMonth = dayjs(`${previewYear}-${previewMonth}`).daysInMonth()
+      const firstWeekday = dayjs(`${previewYear}-${previewMonth}-01`).day()
+      const leadingEmptyDays = sortWeekList.value.findIndex((week: Week) => week === `${firstWeekday}`)
+      const emptyDays = Array(leadingEmptyDays).fill(-1)
+      const monthDays = Array.from({ length: daysInMonth }, (_v, index) => index + 1)
+
+      days.value = [...emptyDays, ...monthDays]
     }
 
-    function inRange(day: number) {
+    function isInRange(day: number) {
       const {
         preview: { previewYear, previewMonth },
         datePickerProps: { min, max },
       }: { preview: Preview; datePickerProps: DatePickerProps } = props
 
-      let isBeforeMax = true
-      let isAfterMin = true
       const previewDate = `${previewYear}-${previewMonth}-${day}`
-
-      if (max) {
-        isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
-      }
-
-      if (min) {
-        isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
-      }
+      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), 'day') : true
+      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), 'day') : true
 
       return isBeforeMax && isAfterMin
     }
 
-    function shouldChoose(val: string): boolean {
+    function getDayValue(day: number) {
+      return `${props.preview.previewYear}-${props.preview.previewMonth}-${day}`
+    }
+
+    function isSingleSelectedDate(day: number) {
+      return toNumber(props.choose.chooseDay) === day && previewIsSelectedMonth.value
+    }
+
+    function isSelectedDate(value: string): boolean {
       const {
         choose: { chooseDays, chooseRangeDay },
         datePickerProps: { range },
       }: { choose: Choose; datePickerProps: DatePickerProps } = props
 
-      if (range) {
-        if (!chooseRangeDay.length) {
-          return false
-        }
-
-        const isBeforeMax = dayjs(val).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
-        const isAfterMin = dayjs(val).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
-        return isBeforeMax && isAfterMin
+      if (!range) {
+        return chooseDays.includes(value)
       }
 
-      return chooseDays.includes(val)
+      if (!chooseRangeDay.length) {
+        return false
+      }
+
+      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
+      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
+
+      return isBeforeMax && isAfterMin
+    }
+
+    function isDateDisabled(day: number, value: string) {
+      const { allowedDates } = props.datePickerProps
+
+      return !isInRange(day) || (allowedDates ? !allowedDates(value) : false)
+    }
+
+    function shouldShowOutline(day: number, selected: boolean, disabled: boolean) {
+      const {
+        choose: { chooseDay },
+        datePickerProps: { multiple, range, showCurrent },
+      }: { choose: Choose; datePickerProps: DatePickerProps } = props
+
+      const current = previewIsCurrentMonth.value && toNumber(currentDay) === day && showCurrent
+
+      if (!current) {
+        return false
+      }
+
+      if ((range || multiple || previewIsSelectedMonth.value) && disabled) {
+        return true
+      }
+
+      if (range || multiple) {
+        return !selected
+      }
+
+      return previewIsSelectedMonth.value ? chooseDay !== currentDay : true
     }
 
     function buttonProps(day: number) {
@@ -171,20 +204,15 @@ export default defineComponent({
       }
 
       const {
-        choose: { chooseDay },
-        preview: { previewYear, previewMonth },
-        datePickerProps: { allowedDates, color, multiple, range, showCurrent },
-      }: { choose: Choose; preview: Preview; datePickerProps: DatePickerProps } = props
+        datePickerProps: { color, multiple, range },
+      }: { datePickerProps: DatePickerProps } = props
 
-      const val = `${previewYear}-${previewMonth}-${day}`
-      const selected = range || multiple ? shouldChoose(val) : toNumber(chooseDay) === day && isSame.value
-      const disabled = !inRange(day) || (allowedDates ? !allowedDates(val) : false)
-      const text = disabled || (range || multiple ? !selected : !isSame.value || toNumber(chooseDay) !== day)
-      const current = isCurrent.value && toNumber(currentDay) === day && showCurrent
-      const outline =
-        current &&
-        (((range || multiple || isSame.value) && disabled) ||
-          (range || multiple ? !selected : isSame.value ? chooseDay !== currentDay : true))
+      const value = getDayValue(day)
+      const singleSelected = isSingleSelectedDate(day)
+      const selected = range || multiple ? isSelectedDate(value) : singleSelected
+      const disabled = isDateDisabled(day, value)
+      const text = disabled || (range || multiple ? !selected : !singleSelected)
+      const outline = shouldShowOutline(day, selected, disabled)
       const cover = !disabled && !outline && !selected
       const textColor = !disabled && outline ? (color ?? '') : ''
 
@@ -215,13 +243,13 @@ export default defineComponent({
     }
 
     onSmartMounted(() => {
-      initDate()
+      initDays()
     })
 
     watch(
       () => props.preview,
       () => {
-        initDate()
+        initDays()
       },
     )
 
@@ -234,7 +262,7 @@ export default defineComponent({
       sortWeekList,
       shiftPreview,
       shiftYearPreview,
-      filterDay,
+      getDayText,
       getDayAbbr,
       chooseDay,
       buttonProps,

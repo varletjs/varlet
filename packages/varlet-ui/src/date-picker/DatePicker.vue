@@ -123,6 +123,10 @@ import YearPickerPanel from './src/year-picker-panel.vue'
 
 const { name, n, classes } = createNamespace('date-picker')
 
+type PanelType = 'year' | 'month' | 'date'
+type DateUnit = 'year' | 'month' | 'day'
+type ShiftDirection = 'prev' | 'next'
+
 export default defineComponent({
   name,
   components: {
@@ -295,28 +299,38 @@ export default defineComponent({
 
           rangeDone.value = value.length !== 1
           rangeInit(value, props.type, syncPreview)
-        } else if (props.multiple) {
+          return
+        }
+
+        if (props.multiple) {
           if (!isArray(value)) {
             return
           }
 
           multipleInit(value, props.type, syncPreview)
-        } else {
-          dateInit(getSingleDate(value as string | undefined), syncPreview)
+          return
         }
+
+        dateInit(getSingleDate(value as string | undefined), syncPreview)
       },
       { immediate: true },
     )
 
-    function switchPanel(type: string) {
+    function switchPanel(type: PanelType) {
       if (type === 'year') {
         isYearPanel.value = true
-      } else if (type === 'month') {
-        isMonthPanel.value = true
-      } else {
-        isYearPanel.value = false
         isMonthPanel.value = false
+        return
       }
+
+      if (type === 'month') {
+        isYearPanel.value = false
+        isMonthPanel.value = true
+        return
+      }
+
+      isYearPanel.value = false
+      isMonthPanel.value = false
     }
 
     function getDefaultHint() {
@@ -335,7 +349,7 @@ export default defineComponent({
       return panelType.value === 'year' ? yearPanelEl : panelType.value === 'month' ? monthPanelEl : dayPanelEl
     }
 
-    function shiftCurrentPanelPreview(direction: string) {
+    function shiftCurrentPanelPreview(direction: ShiftDirection) {
       getActivePanelRef().value!.shiftPreview(direction)
 
       if (panelType.value === 'date') {
@@ -345,45 +359,89 @@ export default defineComponent({
       }
     }
 
-    function shiftDatePanelYearPreview(direction: string) {
+    function shiftDatePanelYearPreview(direction: ShiftDirection) {
       dayPanelEl.value!.shiftYearPreview(direction)
       shiftPreview('year', direction)
     }
 
-    function updateRange(date: string, type: string) {
-      const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
-      rangeDate.value = rangeDone.value ? [date, date] : [rangeDate.value[0], date]
-      rangeDone.value = !rangeDone.value
-
-      if (rangeDone.value) {
-        const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
-        const date = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
-
-        markPreviewKeep()
-        call(props['onUpdate:modelValue'], date)
-        call(props.onChange, date)
-      }
+    function getFormatByType(type: string) {
+      return type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
     }
 
-    function updateMultiple(date: string, type: string) {
-      const multipleDates = type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
+    function getRangeRefByType(type: string) {
+      return type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
+    }
+
+    function getMultipleRefByType(type: string) {
+      return type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
+    }
+
+    function emitModelValueChange(value: string | string[]) {
+      call(props['onUpdate:modelValue'], value)
+      call(props.onChange, value)
+    }
+
+    function emitPreview() {
+      call(
+        props.onPreview,
+        toNumber(previewYear.value),
+        toNumber(previewMonth.value),
+        props.type === 'date' ? toNumber(chooseDay.value) : undefined,
+      )
+    }
+
+    function updateRange(value: string, type: string) {
+      const rangeDate = getRangeRefByType(type)
+      rangeDate.value = rangeDone.value ? [value, value] : [rangeDate.value[0], value]
+      rangeDone.value = !rangeDone.value
+
+      if (!rangeDone.value) {
+        return
+      }
+
+      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+      const nextValue = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
+
+      markPreviewKeep()
+      emitModelValueChange(nextValue)
+    }
+
+    function updateMultiple(value: string, type: string) {
+      const multipleDates = getMultipleRefByType(type)
       const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD'
       const formatDates = multipleDates.value.map((date) => dayjs(date).format(formatType))
 
-      const index = formatDates.findIndex((choose) => choose === date)
+      const index = formatDates.findIndex((choose) => choose === value)
+      const selected = index !== -1
 
-      if (index === -1) {
-        formatDates.push(date)
-      } else {
+      if (selected) {
         formatDates.splice(index, 1)
       }
 
+      if (!selected) {
+        formatDates.push(value)
+      }
+
       markPreviewKeep()
-      call(props['onUpdate:modelValue'], formatDates)
-      call(props.onChange, formatDates)
+      emitModelValueChange(formatDates)
     }
 
-    function getReverse(dateType: string, date: Month | number) {
+    function selectValue(value: string, type: PanelType) {
+      if (props.range) {
+        updateRange(value, type)
+        return
+      }
+
+      if (props.multiple) {
+        updateMultiple(value, type)
+        return
+      }
+
+      markPreviewKeep()
+      emitModelValueChange(value)
+    }
+
+    function getReverse(dateType: DateUnit, date: Month | number) {
       if (!chooseYear.value || !chooseMonth.value) {
         return false
       }
@@ -403,7 +461,7 @@ export default defineComponent({
     }
 
     function chooseDayFromPanel(day: number) {
-      const { readonly, range, multiple, onChange, 'onUpdate:modelValue': updateModelValue } = props
+      const { readonly } = props
       if (day < 0 || readonly) {
         return
       }
@@ -413,100 +471,62 @@ export default defineComponent({
       const date = `${previewYear.value}-${previewMonth.value}-${day}`
       const formatDate = dayjs(date).format('YYYY-MM-DD')
 
-      if (range) {
-        updateRange(formatDate, 'day')
-      } else if (multiple) {
-        updateMultiple(formatDate, 'day')
-      } else {
-        markPreviewKeep()
-        call(updateModelValue, formatDate)
-        call(onChange, formatDate)
-      }
+      selectValue(formatDate, 'date')
     }
 
     function chooseMonthFromPanel(month: Month) {
-      const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
+      const { type, readonly } = props
       reverse.value = getReverse('month', month)
 
       if (type === 'month' && !readonly) {
-        const date = `${previewYear.value}-${month}`
-
-        if (range) {
-          updateRange(date, 'month')
-        } else if (multiple) {
-          updateMultiple(date, 'month')
-        } else {
-          markPreviewKeep()
-          call(updateModelValue, date)
-          call(onChange, date)
-        }
-      } else {
-        previewMonth.value = month
-        call(
-          onPreview,
-          toNumber(previewYear.value),
-          toNumber(previewMonth.value),
-          type === 'date' ? toNumber(chooseDay.value) : undefined,
-        )
+        selectValue(`${previewYear.value}-${month}`, 'month')
+        isMonthPanel.value = false
+        return
       }
 
+      previewMonth.value = month
+      emitPreview()
       isMonthPanel.value = false
     }
 
     function chooseYearFromPanel(year: number) {
-      const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
+      const { type, readonly } = props
       reverse.value = getReverse('year', year)
 
       if (type === 'year' && !readonly) {
-        if (range) {
-          updateRange(`${year}`, 'year')
-        } else if (multiple) {
-          updateMultiple(`${year}`, 'year')
-        } else {
-          markPreviewKeep()
-          call(updateModelValue, `${year}`)
-          call(onChange, `${year}`)
-        }
-      } else {
-        previewYear.value = `${year}`
-        call(
-          onPreview,
-          toNumber(previewYear.value),
-          toNumber(previewMonth.value),
-          type === 'date' ? toNumber(chooseDay.value) : undefined,
-        )
+        selectValue(`${year}`, 'year')
+        isYearPanel.value = false
+        return
       }
 
+      previewYear.value = `${year}`
+      emitPreview()
       isYearPanel.value = false
     }
 
-    function shiftPreview(unit: string, direction: string) {
+    function shiftPreview(unit: 'year' | 'month', direction: ShiftDirection) {
       const changeValue = direction === 'prev' ? -1 : 1
 
       if (unit === 'year') {
         previewYear.value = `${toNumber(previewYear.value) + changeValue}`
-      } else {
-        let checkIndex = toNumber(previewMonth.value) + changeValue
-
-        if (checkIndex < 1) {
-          previewYear.value = `${toNumber(previewYear.value) - 1}`
-          checkIndex = 12
-        }
-
-        if (checkIndex > 12) {
-          previewYear.value = `${toNumber(previewYear.value) + 1}`
-          checkIndex = 1
-        }
-
-        previewMonth.value = MONTH_LIST.find((month) => toNumber(month) === checkIndex) as Month
+        emitPreview()
+        return
       }
 
-      call(
-        props.onPreview,
-        toNumber(previewYear.value),
-        toNumber(previewMonth.value),
-        props.type === 'date' ? toNumber(chooseDay.value) : undefined,
-      )
+      let nextMonth = toNumber(previewMonth.value) + changeValue
+
+      if (nextMonth < 1) {
+        previewYear.value = `${toNumber(previewYear.value) - 1}`
+        nextMonth = 12
+      }
+
+      if (nextMonth > 12) {
+        previewYear.value = `${toNumber(previewYear.value) + 1}`
+        nextMonth = 1
+      }
+
+      previewMonth.value = MONTH_LIST.find((month) => toNumber(month) === nextMonth) as Month
+      emitPreview()
     }
 
     function checkValue() {
@@ -557,7 +577,7 @@ export default defineComponent({
     }
 
     function getFirstValidDate(value: Array<string>, type: string) {
-      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const formatType = getFormatByType(type)
 
       return value.find((choose) => !invalidFormatDate(dayjs(choose).format(formatType)))
     }
@@ -567,8 +587,8 @@ export default defineComponent({
     }
 
     function rangeInit(value: Array<string>, type: string, syncPreview = true) {
-      const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
-      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const rangeDate = getRangeRefByType(type)
+      const formatType = getFormatByType(type)
       const formatDateList = value
         .map((choose) => dayjs(choose).format(formatType))
         .filter((date) => !invalidFormatDate(date))
@@ -588,12 +608,12 @@ export default defineComponent({
     }
 
     function multipleInit(value: Array<string>, type: string, syncPreview = true) {
-      const rangeDate = type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
-      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const multipleDate = getMultipleRefByType(type)
+      const formatType = getFormatByType(type)
 
       // need uniq
       const formatDateList = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
-      rangeDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
+      multipleDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
 
       if (syncPreview) {
         previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
@@ -641,17 +661,16 @@ export default defineComponent({
       isYearPanel.value = false
       isMonthPanel.value = false
 
-      if (props.range || props.multiple) {
-        if (isArray(props.modelValue)) {
-          previewInit(getFirstValidDate(props.modelValue, props.type) ?? getFallbackDate())
-        } else {
-          previewInit(getFallbackDate())
-        }
-
+      if (!props.range && !props.multiple) {
+        previewInit(getSingleDate(props.modelValue as string | undefined))
         return
       }
 
-      previewInit(getSingleDate(props.modelValue as string | undefined))
+      const previewValue = isArray(props.modelValue)
+        ? (getFirstValidDate(props.modelValue, props.type) ?? getFallbackDate())
+        : getFallbackDate()
+
+      previewInit(previewValue)
     }
 
     return {

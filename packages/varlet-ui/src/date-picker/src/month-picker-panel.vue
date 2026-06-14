@@ -67,28 +67,28 @@ export default defineComponent({
       return (pt || t)('datePickerMonthDict')?.[key].abbr ?? ''
     }
 
-    function inRange(key: string): boolean {
+    function isInRange(month: Month): boolean {
       const {
         preview: { previewYear },
         datePickerProps: { min, max },
       }: { preview: Preview; datePickerProps: DatePickerProps } = props
 
-      const previewDate = `${previewYear}-${key}`
+      const previewDate = `${previewYear}-${month}`
       const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), 'month') : true
       const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), 'month') : true
 
       return isBeforeMax && isAfterMin
     }
 
-    function buttonProps(key: string) {
+    function buttonProps(month: Month) {
       const {
         preview: { previewYear, previewMonth },
         datePickerProps: { allowedDates, color },
       }: { preview: Preview; datePickerProps: DatePickerProps } = props
 
-      const val = `${previewYear}-${key}`
-      const active = previewMonth === key
-      const disabled = !inRange(key) || (allowedDates ? !allowedDates(val) : false)
+      const value = `${previewYear}-${month}`
+      const active = previewMonth === month
+      const disabled = !isInRange(month) || (allowedDates ? !allowedDates(value) : false)
 
       return {
         outline: false,
