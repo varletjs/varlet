@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { toNumber } from '@varlet/shared'
+import { times, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import dayjs from 'dayjs/esm/index.js'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
@@ -39,7 +39,8 @@ import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { WEEK_HEADER, type Choose, type DatePickerProps, type Preview, type Week } from '../props'
+import { DatePickerUnits, ShiftDirections, WeekHeader, type Week } from '../constants'
+import { type DatePickerSelectionState, type PanelDatePickerProps, type DatePickerPreviewState } from '../types'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -54,11 +55,11 @@ export default defineComponent({
   },
   props: {
     choose: {
-      type: Object as PropType<Choose>,
+      type: Object as PropType<DatePickerSelectionState>,
       required: true,
     },
     preview: {
-      type: Object as PropType<Preview>,
+      type: Object as PropType<DatePickerPreviewState>,
       required: true,
     },
     current: {
@@ -66,7 +67,7 @@ export default defineComponent({
       required: true,
     },
     datePickerProps: {
-      type: Object as PropType<DatePickerProps>,
+      type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
   },
@@ -91,13 +92,13 @@ export default defineComponent({
     )
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
-      const index = WEEK_HEADER.findIndex((week: Week) => week === props.datePickerProps.firstDayOfWeek)
+      const index = WeekHeader.findIndex((week: Week) => week === props.datePickerProps.firstDayOfWeek)
 
       if (index === -1 || index === 0) {
-        return WEEK_HEADER
+        return [...WeekHeader]
       }
 
-      return [...WEEK_HEADER.slice(index), ...WEEK_HEADER.slice(0, index)]
+      return [...WeekHeader.slice(index), ...WeekHeader.slice(0, index)]
     })
 
     function getDayAbbr(key: Week): string {
@@ -111,13 +112,13 @@ export default defineComponent({
     function initDays() {
       const {
         preview: { previewMonth, previewYear },
-      }: { preview: Preview } = props
+      }: { preview: DatePickerPreviewState } = props
 
       const daysInMonth = dayjs(`${previewYear}-${previewMonth}`).daysInMonth()
       const firstWeekday = dayjs(`${previewYear}-${previewMonth}-01`).day()
       const leadingEmptyDays = sortWeekList.value.findIndex((week: Week) => week === `${firstWeekday}`)
-      const emptyDays = Array(leadingEmptyDays).fill(-1)
-      const monthDays = Array.from({ length: daysInMonth }, (_v, index) => index + 1)
+      const emptyDays = times(leadingEmptyDays, () => -1)
+      const monthDays = times(daysInMonth, (index) => index + 1)
 
       days.value = [...emptyDays, ...monthDays]
     }
@@ -126,11 +127,11 @@ export default defineComponent({
       const {
         preview: { previewYear, previewMonth },
         datePickerProps: { min, max },
-      }: { preview: Preview; datePickerProps: DatePickerProps } = props
+      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
 
       const previewDate = `${previewYear}-${previewMonth}-${day}`
-      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), 'day') : true
-      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), 'day') : true
+      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
+      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
 
       return isBeforeMax && isAfterMin
     }
@@ -147,7 +148,7 @@ export default defineComponent({
       const {
         choose: { chooseDays, chooseRangeDay },
         datePickerProps: { range },
-      }: { choose: Choose; datePickerProps: DatePickerProps } = props
+      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
 
       if (!range) {
         return chooseDays.includes(value)
@@ -157,8 +158,8 @@ export default defineComponent({
         return false
       }
 
-      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeDay[1]), 'day')
-      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeDay[0]), 'day')
+      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeDay[1]), DatePickerUnits.Day)
+      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeDay[0]), DatePickerUnits.Day)
 
       return isBeforeMax && isAfterMin
     }
@@ -173,7 +174,7 @@ export default defineComponent({
       const {
         choose: { chooseDay },
         datePickerProps: { multiple, range, showCurrent },
-      }: { choose: Choose; datePickerProps: DatePickerProps } = props
+      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
 
       const current = previewIsCurrentMonth.value && toNumber(currentDay) === day && showCurrent
 
@@ -205,7 +206,7 @@ export default defineComponent({
 
       const {
         datePickerProps: { color, multiple, range },
-      }: { datePickerProps: DatePickerProps } = props
+      }: { datePickerProps: PanelDatePickerProps } = props
 
       const value = getDayValue(day)
       const singleSelected = isSingleSelectedDate(day)
@@ -227,15 +228,15 @@ export default defineComponent({
     }
 
     // expose for internal
-    function shiftPreview(direction: string) {
-      reverse.value = direction === 'prev'
-      panelKey.value += direction === 'prev' ? -1 : 1
+    function shiftPreview(direction: ShiftDirections) {
+      reverse.value = direction === ShiftDirections.Prev
+      panelKey.value += direction === ShiftDirections.Prev ? -1 : 1
     }
 
     // expose for internal
-    function shiftYearPreview(direction: string) {
-      reverse.value = direction === 'prev'
-      panelKey.value += direction === 'prev' ? -1 : 1
+    function shiftYearPreview(direction: ShiftDirections) {
+      reverse.value = direction === ShiftDirections.Prev
+      panelKey.value += direction === ShiftDirections.Prev ? -1 : 1
     }
 
     function chooseDay(day: number) {

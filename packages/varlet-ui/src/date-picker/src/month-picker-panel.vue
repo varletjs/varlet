@@ -3,7 +3,7 @@
     <div :class="n('content')">
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <ul :key="panelKey">
-          <li v-for="month in MONTH_LIST" :key="month">
+          <li v-for="month in MonthList" :key="month">
             <var-button
               type="primary"
               var-month-picker-cover
@@ -32,8 +32,8 @@ import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { MONTH_LIST } from '../props'
-import type { DatePickerProps, Month, Preview } from '../props'
+import { DatePickerUnits, MonthList, ShiftDirections, type Month } from '../constants'
+import type { PanelDatePickerProps, DatePickerPreviewState } from '../types'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -47,11 +47,11 @@ export default defineComponent({
   },
   props: {
     preview: {
-      type: Object as PropType<Preview>,
+      type: Object as PropType<DatePickerPreviewState>,
       required: true,
     },
     datePickerProps: {
-      type: Object as PropType<DatePickerProps>,
+      type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
   },
@@ -71,11 +71,11 @@ export default defineComponent({
       const {
         preview: { previewYear },
         datePickerProps: { min, max },
-      }: { preview: Preview; datePickerProps: DatePickerProps } = props
+      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
 
       const previewDate = `${previewYear}-${month}`
-      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), 'month') : true
-      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), 'month') : true
+      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), DatePickerUnits.Month) : true
+      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), DatePickerUnits.Month) : true
 
       return isBeforeMax && isAfterMin
     }
@@ -84,7 +84,7 @@ export default defineComponent({
       const {
         preview: { previewYear, previewMonth },
         datePickerProps: { allowedDates, color },
-      }: { preview: Preview; datePickerProps: DatePickerProps } = props
+      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
 
       const value = `${previewYear}-${month}`
       const active = previewMonth === month
@@ -106,15 +106,15 @@ export default defineComponent({
     }
 
     // expose for internal
-    function shiftPreview(direction: string) {
-      reverse.value = direction === 'prev'
-      panelKey.value += direction === 'prev' ? -1 : 1
+    function shiftPreview(direction: ShiftDirections) {
+      reverse.value = direction === ShiftDirections.Prev
+      panelKey.value += direction === ShiftDirections.Prev ? -1 : 1
     }
 
     return {
       n,
       nDate,
-      MONTH_LIST,
+      MonthList,
       reverse,
       panelKey,
       shiftPreview,

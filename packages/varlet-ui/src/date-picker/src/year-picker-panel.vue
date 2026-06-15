@@ -21,13 +21,14 @@
 </template>
 
 <script lang="ts">
-import { toNumber } from '@varlet/shared'
+import { times, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import dayjs from 'dayjs/esm/index.js'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import VarButton from '../../button'
 import { createNamespace } from '../../utils/components'
-import { type DatePickerProps } from '../props'
+import { DatePickerUnits, ShiftDirections } from '../constants'
+import { type PanelDatePickerProps } from '../types'
 
 const { n } = createNamespace('year-picker')
 const { n: nDate } = createNamespace('date-picker')
@@ -42,7 +43,7 @@ export default defineComponent({
       type: String,
     },
     datePickerProps: {
-      type: Object as PropType<DatePickerProps>,
+      type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
   },
@@ -60,16 +61,16 @@ export default defineComponent({
       }
 
       const startYear = Math.floor(toNumber(props.preview) / 100 + page.value) * 100
-      return Array.from(Array(100), (_v, k) => Math.max(0, startYear) + k)
+      return times(100, (index) => Math.max(0, startYear) + index)
     })
 
     function isInRange(year: string): boolean {
       const {
         datePickerProps: { min, max },
-      }: { datePickerProps: DatePickerProps } = props
+      }: { datePickerProps: PanelDatePickerProps } = props
 
-      const isBeforeMax = max ? dayjs(year).isSameOrBefore(dayjs(max), 'year') : true
-      const isAfterMin = min ? dayjs(year).isSameOrAfter(dayjs(min), 'year') : true
+      const isBeforeMax = max ? dayjs(year).isSameOrBefore(dayjs(max), DatePickerUnits.Year) : true
+      const isAfterMin = min ? dayjs(year).isSameOrAfter(dayjs(min), DatePickerUnits.Year) : true
 
       return isBeforeMax && isAfterMin
     }
@@ -77,7 +78,7 @@ export default defineComponent({
     function buttonProps(year: string) {
       const {
         datePickerProps: { allowedDates, color },
-      }: { datePickerProps: DatePickerProps } = props
+      }: { datePickerProps: PanelDatePickerProps } = props
 
       const active = props.preview === year
       const disabled = !isInRange(year) || (allowedDates ? !allowedDates(year) : false)
@@ -114,8 +115,8 @@ export default defineComponent({
     }
 
     // expose for internal
-    function shiftPreview(direction: string) {
-      const isPrevType = direction === 'prev'
+    function shiftPreview(direction: ShiftDirections) {
+      const isPrevType = direction === ShiftDirections.Prev
 
       if (isPrevType && yearList.value[0] <= 0) {
         return

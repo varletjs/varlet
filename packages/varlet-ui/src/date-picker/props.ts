@@ -1,53 +1,16 @@
 import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
+import { DatePickerTypes } from './constants'
+import { type AllowedDates } from './types'
 
-type AllowedDates = (val: string) => boolean
-
-type DatePickerType = 'year' | 'date' | 'month'
-
-export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12'
-
-export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
-
-export type DatePickerProps = {
-  type: string
-  allowedDates: AllowedDates | undefined
-  color: string | undefined
-  firstDayOfWeek: string | number
-  max: string | undefined
-  min: string | undefined
-  showCurrent: boolean
-  multiple: boolean
-  range: boolean
-  buttonElevation: boolean | string | number
-}
-
-export type Choose = {
-  chooseMonth: Month | undefined
-  chooseYear: string | undefined
-  chooseDay: string | undefined
-  chooseYears: Array<string>
-  chooseMonths: Array<string>
-  chooseDays: Array<string>
-  chooseRangeYear: Array<string>
-  chooseRangeMonth: Array<string>
-  chooseRangeDay: Array<string>
-}
-
-export type Preview = {
-  previewMonth?: Month
-  previewYear: string
-}
-
-export const MONTH_LIST: Array<Month> = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
-
-export const WEEK_HEADER: Array<Week> = ['0', '1', '2', '3', '4', '5', '6']
+export type { DatePickerTypes, Month, Week } from './constants'
+export type { AllowedDates, DatePickerSelectionState, PanelDatePickerProps, DatePickerPreviewState } from './types'
 
 export const props = {
   modelValue: [String, Array] as PropType<string | Array<string>>,
   type: {
-    type: String as PropType<DatePickerType>,
-    default: 'date',
+    type: String as PropType<DatePickerTypes>,
+    default: DatePickerTypes.Date,
   },
   hint: String,
   fallbackViewDate: String,
