@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, type PropType } from 'vue'
-import { fieldDecoratorProps } from '../field-decorator'
+import { props as fieldDecoratorProps } from '../field-decorator/props'
 import { defineListenerProp, pickProps } from '../utils/components'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'

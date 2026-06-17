@@ -1,0 +1,28 @@
+:root {
+  --date-input-picker-width: var(--date-picker-min-width);
+}
+
+.var-date-input {
+  text-align: left;
+
+  .var-menu[var-date-input-cover] {
+    width: 100%;
+    background: transparent;
+    display: block;
+  }
+
+  &__picker {
+    --date-picker-border-radius: 2px;
+
+    width: var(--date-input-picker-width);
+  }
+
+  &__icon {
+    cursor: pointer;
+    margin-left: 6px;
+  }
+
+  &__icon--disabled {
+    cursor: not-allowed;
+  }
+}

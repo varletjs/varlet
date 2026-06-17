@@ -694,6 +694,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'DateInput 日期输入框',
+          'en-US': 'DateInput',
+        },
+        doc: 'date-input',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'OtpInput 验证码输入框',
           'en-US': 'OtpInput',
         },

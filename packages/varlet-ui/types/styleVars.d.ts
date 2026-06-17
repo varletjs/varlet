@@ -322,6 +322,7 @@ interface BaseStyleVars {
   '--data-table-row-large-height'?: string
   '--data-table-footer-padding'?: string
   '--data-table-empty-padding'?: string
+  '--date-input-picker-width'?: string
   '--date-picker-border-radius'?: string
   '--date-picker-font-size'?: string
   '--date-picker-min-width'?: string
