@@ -129,6 +129,34 @@ describe('test dateInput input behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput keeps empty display value on change after manual deletion', async () => {
+    const wrapper = mount(
+      defineComponent({
+        components: {
+          VarDateInput,
+        },
+        setup() {
+          const value = ref('2021-04-08')
+
+          return {
+            value,
+          }
+        },
+        template: '<var-date-input v-model="value" />',
+      }),
+    )
+
+    await wrapper.find('input').trigger('focus')
+    await triggerInput(wrapper, '')
+    await wrapper.find('input').trigger('change')
+
+    expect(wrapper.vm.value).toBe('')
+    expect(wrapper.find('input').element.value).toBe('')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
+
+    wrapper.unmount()
+  })
+
   test('dateInput keeps invalid format typing text when parent controls model value', async () => {
     const wrapper = mount(
       defineComponent({
@@ -373,6 +401,28 @@ describe('test dateInput input behavior', () => {
 
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-10'])
     expect(onUpdateModelValue).lastCalledWith(['2021-04-08', '2021-04-10'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput handles mismatched model value shape safely', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+        multiple: true,
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual([])
+
+    await wrapper.setProps({
+      modelValue: ['2021-04-08'],
+      multiple: false,
+    })
+
+    expect(wrapper.find('input').element.value).toBe('')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
 
     wrapper.unmount()
   })
@@ -655,7 +705,7 @@ describe('test dateInput picker behavior', () => {
     wrapper.unmount()
   })
 
-  test('dateInput closes picker after range end selection', async () => {
+  test('dateInput keeps picker open after range selection', async () => {
     const wrapper = mount(VarDateInput, {
       props: {
         modelValue: [],
@@ -670,33 +720,8 @@ describe('test dateInput picker behavior', () => {
 
     wrapper.findComponent(DatePicker).vm.$emit('change', ['2021-04-08', '2021-04-10'])
     await delay(0)
-    expect(wrapper.vm.showMenu).toBe(false)
+    expect(wrapper.vm.showMenu).toBe(true)
     expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
-
-    wrapper.unmount()
-  })
-
-  test('dateInput resets range selecting state when picker closes early', async () => {
-    const wrapper = mount(VarDateInput, {
-      props: {
-        modelValue: [],
-        range: true,
-      },
-    })
-
-    await wrapper.find('input').trigger('click')
-    wrapper.findComponent(DatePicker).vm.$emit('change', ['2021-04-08', '2021-04-08'])
-    await delay(0)
-    expect(wrapper.vm.showMenu).toBe(true)
-
-    await wrapper.find('input').trigger('blur')
-    expect(wrapper.vm.showMenu).toBe(false)
-
-    await wrapper.find('input').trigger('click')
-    wrapper.findComponent(DatePicker).vm.$emit('change', ['2021-04-09', '2021-04-09'])
-    await delay(0)
-
-    expect(wrapper.vm.showMenu).toBe(true)
 
     wrapper.unmount()
   })

@@ -126,14 +126,16 @@ export default defineComponent({
     const pickerValue = ref<string | string[]>()
     const showMenu = ref(false)
     const isFocusing = ref(false)
-    const rangeSelecting = ref(false)
+
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+
     const formDisabled = computed(() => form?.disabled.value ?? false)
     const formReadonly = computed(() => form?.readonly.value ?? false)
     const isDisabled = computed(() => props.disabled || formDisabled.value)
     const isReadonly = computed(() => props.readonly || formReadonly.value)
     const isMultipleOrRange = computed(() => props.multiple || props.range)
+
     const menuPopoverClass = computed(() => {
       const marginClass =
         props.variant === 'standard'
@@ -144,6 +146,7 @@ export default defineComponent({
 
       return [n('--menu'), marginClass].filter(isTruthy).join(' ')
     })
+
     const displayValues = computed(() => {
       const separator = props.range ? props.rangeSeparator : props.separator
 
@@ -231,8 +234,8 @@ export default defineComponent({
     function updateStatesByModelValue() {
       const { modelValue, range } = props
 
-      if (isMultipleOrRange.value && isArray(modelValue)) {
-        const dayjsObjects = modelValue.map(modelValueToDayjsObject).filter(isTruthy)
+      if (isMultipleOrRange.value) {
+        const dayjsObjects = (isArray(modelValue) ? modelValue : []).map(modelValueToDayjsObject).filter(isTruthy)
         pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
 
         if (!isFocusing.value) {
@@ -244,27 +247,12 @@ export default defineComponent({
         return
       }
 
-      if (!isMultipleOrRange.value && !isArray(modelValue)) {
-        const dayjsObject = modelValueToDayjsObject(modelValue)
-        pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
-
-        if (!isFocusing.value) {
-          displayValue.value = dayjsObject ? dayjsObject.format(getDisplayFormat()) : ''
-        }
-
-        return
-      }
-
-      pickerValue.value = isMultipleOrRange.value ? [] : undefined
+      const dayjsObject = isArray(modelValue) ? undefined : modelValueToDayjsObject(modelValue)
+      pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
 
       if (!isFocusing.value) {
-        displayValue.value = ''
+        displayValue.value = dayjsObject ? dayjsObject.format(getDisplayFormat()) : ''
       }
-    }
-
-    function closeMenu() {
-      showMenu.value = false
-      rangeSelecting.value = false
     }
 
     function updateModelValue(value: DateInputValue | DateInputValue[]) {
@@ -292,7 +280,7 @@ export default defineComponent({
 
     function handleBlur(e: FocusEvent) {
       isFocusing.value = false
-      closeMenu()
+      showMenu.value = false
       call(props.onBlur, e)
       validateWithTrigger('onBlur')
     }
@@ -315,6 +303,36 @@ export default defineComponent({
       showMenu.value = true
     }
 
+    function updateSingleStatesByDisplayValue(value: string) {
+      const dayjsObject = stringToDayjsObject(value, getDisplayFormat())
+
+      if (!dayjsObject) {
+        return
+      }
+
+      pickerValue.value = dayjsObject.format(getDefaultFormat())
+      updateModelValue(dayjsObjectToModelValue(dayjsObject))
+    }
+
+    function updateMultipleOrRangeStatesByDisplayValue() {
+      const isInvalidDisplayValueCount = props.range ? displayValues.value.length !== 2 : !displayValues.value.length
+
+      if (isInvalidDisplayValueCount) {
+        return
+      }
+
+      const dayjsObjects = displayValues.value.map((item) => stringToDayjsObject(item, getDisplayFormat()))
+
+      if (dayjsObjects.some((dayjsObject) => !dayjsObject)) {
+        return
+      }
+
+      const validDayjsObjects = dayjsObjects.filter(isTruthy)
+      const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
+      pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
+      updateModelValue(modelValue)
+    }
+
     function handleInput(value: string) {
       if (isDisabled.value || isReadonly.value) {
         return
@@ -322,30 +340,17 @@ export default defineComponent({
 
       displayValue.value = value
 
-      if (value !== '') {
-        if (isMultipleOrRange.value) {
-          const isInvalidDisplayValueCount = props.range
-            ? displayValues.value.length !== 2
-            : !displayValues.value.length
+      if (value === '') {
+        clearValue()
+        updateModelValue(getEmptyModelValue())
+        validateWithTrigger('onInput')
+        return
+      }
 
-          if (!isInvalidDisplayValueCount) {
-            const dayjsObjects = displayValues.value.map((item) => stringToDayjsObject(item, getDisplayFormat()))
-
-            if (!dayjsObjects.some((dayjsObject) => !dayjsObject)) {
-              const validDayjsObjects = dayjsObjects.filter(isTruthy)
-              const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
-              pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
-              updateModelValue(modelValue)
-            }
-          }
-        } else {
-          const dayjsObject = stringToDayjsObject(value, getDisplayFormat())
-
-          if (dayjsObject) {
-            pickerValue.value = dayjsObject.format(getDefaultFormat())
-            updateModelValue(dayjsObjectToModelValue(dayjsObject))
-          }
-        }
+      if (isMultipleOrRange.value) {
+        updateMultipleOrRangeStatesByDisplayValue()
+      } else {
+        updateSingleStatesByDisplayValue(value)
       }
 
       validateWithTrigger('onInput')
@@ -360,19 +365,6 @@ export default defineComponent({
       updateStatesByModelValue()
     }
 
-    function syncRangeSelectingState() {
-      if (!props.range) {
-        return
-      }
-
-      if (rangeSelecting.value) {
-        closeMenu()
-        return
-      }
-
-      rangeSelecting.value = true
-    }
-
     function handlePickerChange(value: string | string[]) {
       if (isDisabled.value || isReadonly.value) {
         return
@@ -384,12 +376,14 @@ export default defineComponent({
         const dayjsObjects = value
           .map((item) => dayjs(item, getDefaultFormat(), true))
           .filter((dayjsObject) => dayjsObject.isValid())
+
         const modelValue = dayjsObjects.map(dayjsObjectToModelValue)
+
         displayValue.value = dayjsObjects
           .map((dayjsObject) => dayjsObject.format(getDisplayFormat()))
           .join(props.range ? props.rangeSeparator : props.separator)
+
         updateModelValue(modelValue)
-        syncRangeSelectingState()
 
         return
       }
@@ -404,16 +398,17 @@ export default defineComponent({
       updateModelValue(dayjsObjectToModelValue(dayjsObject))
 
       if (!isMultipleOrRange.value) {
-        closeMenu()
+        showMenu.value = false
       }
     }
 
+    function getEmptyModelValue() {
+      return isMultipleOrRange.value ? [] : ''
+    }
+
     function clearValue() {
-      const value = isMultipleOrRange.value ? [] : ''
       displayValue.value = ''
       pickerValue.value = isMultipleOrRange.value ? [] : undefined
-      closeMenu()
-      call(props['onUpdate:modelValue'], value)
     }
 
     function handleClear() {
@@ -422,6 +417,8 @@ export default defineComponent({
       }
 
       clearValue()
+      showMenu.value = false
+      call(props['onUpdate:modelValue'], getEmptyModelValue())
       call(props.onClear, '')
       validateWithTrigger('onClear')
     }
@@ -444,6 +441,7 @@ export default defineComponent({
 
     function reset() {
       clearValue()
+      showMenu.value = false
       resetValidation()
     }
 
