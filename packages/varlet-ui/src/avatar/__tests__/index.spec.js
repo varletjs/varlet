@@ -153,6 +153,26 @@ test('avatar onError', async () => {
   wrapper.unmount()
 })
 
+test('avatar text scale when avatar wider than text', async () => {
+  const wrapper = mount(VarAvatar, {
+    slots: {
+      default: () => 'A',
+    },
+  })
+
+  const avatarEl = wrapper.find('.var-avatar').element
+  const textEl = wrapper.find('.var-avatar__text').element
+
+  Object.defineProperty(avatarEl, 'offsetWidth', { value: 100, configurable: true })
+  Object.defineProperty(textEl, 'offsetWidth', { value: 50, configurable: true })
+
+  await wrapper.setProps({ round: true })
+
+  expect(wrapper.vm.scale).toBe(1)
+
+  wrapper.unmount()
+})
+
 test('avatar lazy onLoad', async () => {
   const onLoad = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', lazy: true, onLoad } })
@@ -160,6 +180,16 @@ test('avatar lazy onLoad', async () => {
 
   await wrapper.find('img').trigger('load')
   expect(onLoad).toBeCalledTimes(1)
+  wrapper.unmount()
+})
+
+test('avatar lazy onError', async () => {
+  const onError = vi.fn()
+  const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', lazy: true, onError } })
+  wrapper.find('img').element._lazy.state = 'error'
+
+  await wrapper.find('img').trigger('load')
+  expect(onError).toBeCalledTimes(1)
   wrapper.unmount()
 })
 
@@ -199,5 +229,33 @@ test('avatar group offset', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('avatar group classes and offset style', async () => {
+  const wrapper = mount(VarAvatarGroup, {
+    props: {
+      vertical: true,
+      offset: 12,
+    },
+  })
+
+  expect(wrapper.classes()).toContain('var-avatar-group')
+  expect(wrapper.classes()).toContain('var-avatar-group--column')
+  expect(wrapper.classes()).not.toContain('var-avatar-group--row')
+  expect(wrapper.element.style.getPropertyValue('--avatar-group-offset')).toBe('12px')
+
+  await wrapper.setProps({ vertical: false })
+  expect(wrapper.classes()).toContain('var-avatar-group--row')
+  expect(wrapper.classes()).not.toContain('var-avatar-group--column')
+
+  wrapper.unmount()
+})
+
+test('avatar group without offset', () => {
+  const wrapper = mount(VarAvatarGroup)
+
+  expect(wrapper.element.style.getPropertyValue('--avatar-group-offset')).toBe('')
+
   wrapper.unmount()
 })
