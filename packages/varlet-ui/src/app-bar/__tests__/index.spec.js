@@ -167,6 +167,23 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
+  test('app bar image without image-linear-gradient', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        image: 'https://1.png',
+      },
+    })
+
+    expect(wrapper.vm.rootStyles).toMatchObject({
+      'background-image': 'url(https://1.png)',
+      'background-position': 'center center',
+      'background-size': 'cover',
+      'z-index': 1,
+    })
+
+    wrapper.unmount()
+  })
+
   test('app bar fixed', async () => {
     const wrapper = mount(VarAppBar)
 
