@@ -16,6 +16,7 @@ const formData = reactive({
   password: '',
   otp: '',
   email: '',
+  date: '',
   department: '',
   period: undefined,
   gender: undefined,
@@ -68,6 +69,11 @@ const suggestions = computed(() =>
         placeholder="Please input email"
         :rules="[(v) => !!v || 'The email cannot be empty']"
         :options="suggestions"
+      />
+      <var-date-input
+        v-model="formData.date"
+        placeholder="Please select date"
+        :rules="[(v) => !!v || 'A date must be selected']"
       />
       <var-select
         v-model="formData.department"

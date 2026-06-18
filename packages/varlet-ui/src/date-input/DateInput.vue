@@ -6,8 +6,7 @@
       trigger="manual"
       placement="bottom-start"
       :disabled="disabled || readonly || formDisabled || formReadonly"
-      :elevation="false"
-      :default-style="false"
+      :popover-class="menuPopoverClass"
     >
       <var-input
         ref="inputEl"
@@ -40,16 +39,16 @@
         </template>
 
         <template #clear-icon="{ clear }">
-          <slot name="clear-icon" :clear="clear" />
+          <span :class="n('clear-icon-container')" @mousedown.stop @click.stop>
+            <slot name="clear-icon" :clear="clear">
+              <var-icon :class="n('clear-icon')" name="close-circle" @click="clear" />
+            </slot>
+          </span>
         </template>
 
         <template #append-icon>
           <slot name="append-icon">
-            <var-icon
-              :class="classes(n('icon'), [disabled || readonly || formDisabled || formReadonly, n('icon--disabled')])"
-              name="calendar-month"
-              @click.stop="handleClick"
-            />
+            <var-icon :class="n('calendar-icon')" name="calendar-month" @click.stop />
           </slot>
         </template>
 
@@ -61,7 +60,7 @@
       <template #menu>
         <div @mousedown.prevent>
           <var-date-picker
-            :class="classes(n('picker'), n('$-elevation--3'))"
+            :class="n('picker')"
             :model-value="pickerValue"
             :type="type"
             :multiple="multiple"
@@ -134,6 +133,24 @@ export default defineComponent({
     const formReadonly = computed(() => form?.readonly.value ?? false)
     const isDisabled = computed(() => props.disabled || formDisabled.value)
     const isReadonly = computed(() => props.readonly || formReadonly.value)
+    const menuPopoverClass = computed(() => {
+      const marginClass =
+        props.variant === 'standard'
+          ? n('--standard-menu-margin')
+          : props.variant === 'filled'
+            ? n('--filled-menu-margin')
+            : ''
+
+      return [n('--menu'), marginClass].filter(isTruthy).join(' ')
+    })
+    const displayValues = computed(() => {
+      const separator = props.range ? props.rangeSeparator : props.separator
+
+      return displayValue.value
+        .split(separator)
+        .map((item) => item.trim())
+        .filter(isTruthy)
+    })
 
     const dateInputProvider = {
       reset,
@@ -152,7 +169,7 @@ export default defineComponent({
         props.separator,
         props.rangeSeparator,
       ],
-      syncFromModelValue,
+      () => updateStatesByModelValue(),
       { immediate: true },
     )
 
@@ -210,7 +227,7 @@ export default defineComponent({
       return dayjsObject.format(props.valueFormat)
     }
 
-    function syncFromModelValue() {
+    function updateStatesByModelValue() {
       const { modelValue, multiple, range } = props
 
       if ((multiple || range) && isArray(modelValue)) {
@@ -274,78 +291,6 @@ export default defineComponent({
       })
     }
 
-    function parseDisplayItems(value: string, separator: string) {
-      return value
-        .split(separator)
-        .map((item) => item.trim())
-        .filter(isTruthy)
-    }
-
-    function syncValidInputValue(value: string) {
-      if (value === '') {
-        return
-      }
-
-      if (props.multiple || props.range) {
-        const items = parseDisplayItems(value, props.range ? props.rangeSeparator : props.separator)
-        const isInvalidItemCount = props.range ? items.length !== 2 : !items.length
-
-        if (isInvalidItemCount) {
-          return
-        }
-
-        const dayjsObjects = items.map((item) => stringToDayjsObject(item, getDisplayFormat()))
-
-        if (dayjsObjects.some((dayjsObject) => !dayjsObject)) {
-          return
-        }
-
-        const validDayjsObjects = dayjsObjects.filter(isTruthy)
-        const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
-        pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
-        updateModelValue(modelValue)
-        return
-      }
-
-      const dayjsObject = stringToDayjsObject(value, getDisplayFormat())
-
-      if (!dayjsObject) {
-        return
-      }
-
-      pickerValue.value = dayjsObject.format(getDefaultFormat())
-      updateModelValue(dayjsObjectToModelValue(dayjsObject))
-    }
-
-    function formatCurrentDisplayValue() {
-      if (props.multiple || props.range) {
-        const items = parseDisplayItems(displayValue.value, props.range ? props.rangeSeparator : props.separator)
-        const isInvalidItemCount = props.range ? items.length !== 2 : !items.length
-
-        if (isInvalidItemCount) {
-          return
-        }
-
-        const dayjsObjects = items.map((item) => stringToDayjsObject(item, getDisplayFormat()))
-
-        if (dayjsObjects.some((dayjsObject) => !dayjsObject)) {
-          return
-        }
-
-        displayValue.value = dayjsObjects
-          .filter(isTruthy)
-          .map((dayjsObject) => dayjsObject.format(getDisplayFormat()))
-          .join(props.range ? props.rangeSeparator : props.separator)
-        return
-      }
-
-      const dayjsObject = stringToDayjsObject(displayValue.value, getDisplayFormat())
-
-      if (dayjsObject) {
-        displayValue.value = dayjsObject.format(getDisplayFormat())
-      }
-    }
-
     function handleFocus(e: FocusEvent) {
       isFocusing.value = true
       call(props.onFocus, e)
@@ -364,7 +309,6 @@ export default defineComponent({
         return
       }
 
-      focus()
       openMenu()
       validateWithTrigger('onClick')
     }
@@ -384,7 +328,33 @@ export default defineComponent({
       }
 
       displayValue.value = value
-      syncValidInputValue(value)
+
+      if (value !== '') {
+        if (props.multiple || props.range) {
+          const isInvalidDisplayValueCount = props.range
+            ? displayValues.value.length !== 2
+            : !displayValues.value.length
+
+          if (!isInvalidDisplayValueCount) {
+            const dayjsObjects = displayValues.value.map((item) => stringToDayjsObject(item, getDisplayFormat()))
+
+            if (!dayjsObjects.some((dayjsObject) => !dayjsObject)) {
+              const validDayjsObjects = dayjsObjects.filter(isTruthy)
+              const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
+              pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
+              updateModelValue(modelValue)
+            }
+          }
+        } else {
+          const dayjsObject = stringToDayjsObject(value, getDisplayFormat())
+
+          if (dayjsObject) {
+            pickerValue.value = dayjsObject.format(getDefaultFormat())
+            updateModelValue(dayjsObjectToModelValue(dayjsObject))
+          }
+        }
+      }
+
       validateWithTrigger('onInput')
     }
 
@@ -393,7 +363,8 @@ export default defineComponent({
         return
       }
 
-      formatCurrentDisplayValue()
+      isFocusing.value = false
+      updateStatesByModelValue()
     }
 
     function syncRangeSelectingState() {
@@ -492,6 +463,7 @@ export default defineComponent({
       formDisabled,
       formReadonly,
       errorMessage,
+      menuPopoverClass,
       n,
       classes,
       handleFocus,

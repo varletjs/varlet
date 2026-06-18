@@ -16,6 +16,7 @@ const formData = reactive({
   password: '',
   otp: '',
   email: '',
+  date: '',
   department: '',
   period: undefined,
   gender: undefined,
@@ -68,6 +69,11 @@ const suggestions = computed(() =>
         placeholder="请输入邮箱"
         :rules="[(v) => !!v || '邮箱不能为空']"
         :options="suggestions"
+      />
+      <var-date-input
+        v-model="formData.date"
+        placeholder="请选择日期"
+        :rules="[(v) => !!v || '必须选择一个日期']"
       />
       <var-select
         v-model="formData.department"

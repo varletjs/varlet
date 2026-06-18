@@ -290,4 +290,4 @@ const filledValue14 = ref('2021-04-08')
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--date-input-picker-width` | `var(--date-picker-min-width)` |
+| `--date-input-picker-width` | `320px` |

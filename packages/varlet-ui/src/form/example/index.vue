@@ -9,6 +9,7 @@ const formData = reactive({
   password: '',
   otp: '',
   email: '',
+  date: '',
   department: '',
   period: undefined,
   gender: undefined,
@@ -71,6 +72,7 @@ onThemeChange()
         :rules="[(v) => !!v || t('emailMessage')]"
         :options="suggestions"
       />
+      <var-date-input v-model="formData.date" :placeholder="t('date')" :rules="[(v) => !!v || t('dateMessage')]" />
       <var-select
         v-model="formData.department"
         :placeholder="t('department')"

@@ -8,6 +8,8 @@ export default {
   otpLengthMessage: 'The OTP length must be 6',
   email: 'Please input email',
   emailMessage: 'The email cannot be empty',
+  date: 'Please select date',
+  dateMessage: 'A date must be selected',
   passwordMinLengthMessage: 'The password cannot be less than 8 characters',
   department: 'Please select department',
   departmentMessage: 'The select cannot be empty',

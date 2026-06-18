@@ -290,4 +290,4 @@ The following are the css variables used by the component. You can use [StylePro
 
 | Variable | Default |
 | --- | --- |
-| `--date-input-picker-width` | `var(--date-picker-min-width)` |
+| `--date-input-picker-width` | `320px` |

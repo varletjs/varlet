@@ -1,5 +1,5 @@
 :root {
-  --date-input-picker-width: var(--date-picker-min-width);
+  --date-input-picker-width: 320px;
 }
 
 .var-date-input {
@@ -12,17 +12,40 @@
   }
 
   &__picker {
-    --date-picker-border-radius: 2px;
-
     width: var(--date-input-picker-width);
+
+    --date-picker-body-background-color: transparent;
+    --date-picker-title-background: transparent;
+
+    .var-date-picker-header {
+      background-color: var(--menu-background-color);
+    }
   }
 
-  &__icon {
-    cursor: pointer;
+  &__calendar-icon {
     margin-left: 6px;
   }
 
-  &__icon--disabled {
-    cursor: not-allowed;
+  &__clear-icon-container {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+
+  &__clear-icon {
+    font-size: var(--field-decorator-icon-size);
+  }
+
+  &--menu {
+    overflow: hidden;
+  }
+
+  &--standard-menu-margin {
+    margin-top: var(--field-decorator-line-focus-size) !important;
+  }
+
+  &--filled-menu-margin {
+    margin-top: var(--field-decorator-line-focus-size) !important;
   }
 }

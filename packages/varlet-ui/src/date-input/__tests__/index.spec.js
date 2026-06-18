@@ -4,6 +4,7 @@ import { createApp, defineComponent, ref } from 'vue'
 import DateInput from '..'
 import DatePicker from '../../date-picker/DatePicker'
 import VarForm from '../../form/Form'
+import VarMenu from '../../menu/Menu'
 import { delay } from '../../utils/test'
 import VarDateInput from '../DateInput'
 
@@ -108,6 +109,26 @@ describe('test dateInput input behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput restores model display value on change when input format is invalid', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.find('input').trigger('focus')
+    await triggerInput(wrapper, '2021-04-15222')
+    await wrapper.find('input').trigger('change')
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-04-08')
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    wrapper.unmount()
+  })
+
   test('dateInput keeps invalid format typing text when parent controls model value', async () => {
     const wrapper = mount(
       defineComponent({
@@ -129,6 +150,36 @@ describe('test dateInput input behavior', () => {
 
     expect(wrapper.find('input').element.value).toBe('2020-12-2')
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not treat watch dependencies as forced display sync', async () => {
+    const wrapper = mount(
+      defineComponent({
+        components: {
+          VarDateInput,
+        },
+        setup() {
+          const value = ref('')
+          const separator = ref(', ')
+
+          return {
+            value,
+            separator,
+          }
+        },
+        template: '<var-date-input v-model="value" :separator="separator" multiple />',
+      }),
+    )
+
+    await wrapper.find('input').trigger('focus')
+    await triggerInput(wrapper, '2021-04-15222')
+    wrapper.vm.separator = ' / '
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-15222')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual([])
 
     wrapper.unmount()
   })
@@ -183,6 +234,28 @@ describe('test dateInput input behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput supports date value format', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: new Date(2021, 3, 8),
+        valueFormat: 'date',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08')
+    await triggerInput(wrapper, '2021-04-09')
+
+    const emittedValue = onUpdateModelValue.mock.calls.at(-1)[0]
+    expect(emittedValue).toBeInstanceOf(Date)
+    expect(emittedValue.getFullYear()).toBe(2021)
+    expect(emittedValue.getMonth()).toBe(3)
+    expect(emittedValue.getDate()).toBe(9)
+
+    wrapper.unmount()
+  })
+
   test('dateInput supports custom value format', async () => {
     const onUpdateModelValue = vi.fn()
     const wrapper = mount(VarDateInput, {
@@ -229,6 +302,99 @@ describe('test dateInput input behavior', () => {
 
     wrapper.unmount()
   })
+
+  test('dateInput supports month type', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'month',
+        modelValue: '2021-04',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021-04')
+    await triggerInput(wrapper, '2021-05')
+
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-05')
+    expect(onUpdateModelValue).lastCalledWith('2021-05')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput supports year type', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'year',
+        modelValue: '2021',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021')
+    await triggerInput(wrapper, '2022')
+
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2022')
+    expect(onUpdateModelValue).lastCalledWith('2022')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput syncs valid multiple input to picker and model value', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: [],
+        multiple: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08, 2021-04-09')
+
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-09'])
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08', '2021-04-09'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput syncs valid range input to picker and model value', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: [],
+        range: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08 ~ 2021-04-10')
+
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-10'])
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08', '2021-04-10'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not sync incomplete range input to picker and model value', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: ['2021-04-08', '2021-04-10'],
+        range: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-09')
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-09')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-10'])
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    wrapper.unmount()
+  })
 })
 
 describe('test dateInput picker behavior', () => {
@@ -259,6 +425,40 @@ describe('test dateInput picker behavior', () => {
     await delay(0)
 
     expect(wrapper.vm.showMenu).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not open picker when clicking calendar icon', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+      },
+    })
+
+    await wrapper.find('.var-date-input__calendar-icon').trigger('click')
+    await delay(0)
+
+    expect(wrapper.vm.showMenu).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not open picker when clicking clear icon', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+        clearable: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.find('.var-date-input__clear-icon').trigger('click')
+    await delay(0)
+
+    expect(wrapper.vm.showMenu).toBe(false)
+    expect(onUpdateModelValue).lastCalledWith('')
 
     wrapper.unmount()
   })
@@ -330,6 +530,71 @@ describe('test dateInput picker behavior', () => {
     expect(wrapper.find('input').element.value).toBe('2021-04-09')
     expect(onUpdateModelValue).lastCalledWith('2021-04-09')
     expect(wrapper.vm.showMenu).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput passes constraints to picker', () => {
+    const allowedDates = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        min: '2021-04-01',
+        max: '2021-04-30',
+        firstDayOfWeek: 1,
+        allowedDates,
+      },
+    })
+
+    const datePickerProps = wrapper.findComponent(DatePicker).props()
+    expect(datePickerProps.min).toBe('2021-04-01')
+    expect(datePickerProps.max).toBe('2021-04-30')
+    expect(datePickerProps.firstDayOfWeek).toBe(1)
+    expect(datePickerProps.allowedDates).toBe(allowedDates)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput sets menu margin class by input variant', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        variant: 'standard',
+      },
+    })
+
+    expect(wrapper.findComponent(VarMenu).props('popoverClass')).toContain('var-date-input--menu')
+    expect(wrapper.findComponent(VarMenu).props('popoverClass')).toContain('var-date-input--standard-menu-margin')
+    expect(wrapper.findComponent(VarMenu).props('defaultStyle')).toBe(true)
+    expect(wrapper.findComponent(VarMenu).props('elevation')).toBe(true)
+
+    await wrapper.setProps({ variant: 'filled' })
+    expect(wrapper.findComponent(VarMenu).props('popoverClass')).toContain('var-date-input--menu')
+    expect(wrapper.findComponent(VarMenu).props('popoverClass')).toContain('var-date-input--filled-menu-margin')
+
+    await wrapper.setProps({ variant: 'outlined' })
+    expect(wrapper.findComponent(VarMenu).props('popoverClass')).toBe('var-date-input--menu')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput clears model value and picker value', async () => {
+    const onUpdateModelValue = vi.fn()
+    const onClear = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+        clearable: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+        onClear,
+      },
+    })
+
+    wrapper.vm.handleClear()
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
+    expect(onUpdateModelValue).lastCalledWith('')
+    expect(onClear).lastCalledWith('')
 
     wrapper.unmount()
   })
