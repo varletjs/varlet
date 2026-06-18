@@ -77,13 +77,17 @@ onThemeChange()
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="standardValue10" multiple :placeholder="t('multiplePlaceholder')" />
     <var-date-input v-model="standardValue11" range :placeholder="t('rangePlaceholder')" />
-    <var-date-input v-model="standardValue12" value-format="timestamp" :placeholder="t('valueFormat')" />
-    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" :placeholder="t('customValueFormat')" />
+    <var-date-input v-model="standardValue12" value-format="timestamp" :placeholder="t('valueFormat')">
+      <template #extra-message>{{ t('currentValue') }}{{ standardValue12 }}</template>
+    </var-date-input>
+    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" :placeholder="t('customValueFormat')">
+      <template #extra-message>{{ t('currentValue') }}{{ standardValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="standardValue14" size="small" :placeholder="t('smallSize')" />
   </var-space>
 
@@ -112,7 +116,7 @@ onThemeChange()
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="outlinedValue10" variant="outlined" multiple :placeholder="t('multiplePlaceholder')" />
@@ -122,13 +126,17 @@ onThemeChange()
       variant="outlined"
       value-format="timestamp"
       :placeholder="t('valueFormat')"
-    />
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ outlinedValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="outlinedValue13"
       variant="outlined"
       value-format="YYYY/MM/DD"
       :placeholder="t('customValueFormat')"
-    />
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ outlinedValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="outlinedValue14" variant="outlined" size="small" :placeholder="t('smallSize')" />
   </var-space>
 
@@ -157,18 +165,22 @@ onThemeChange()
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="filledValue10" variant="filled" multiple :placeholder="t('multiplePlaceholder')" />
     <var-date-input v-model="filledValue11" variant="filled" range :placeholder="t('rangePlaceholder')" />
-    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" :placeholder="t('valueFormat')" />
+    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" :placeholder="t('valueFormat')">
+      <template #extra-message>{{ t('currentValue') }}{{ filledValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="filledValue13"
       variant="filled"
       value-format="YYYY/MM/DD"
       :placeholder="t('customValueFormat')"
-    />
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ filledValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" :placeholder="t('smallSize')" />
   </var-space>
 

@@ -313,7 +313,7 @@ export default defineComponent({
           return
         }
 
-        dateInit(getSingleDate(value as string | undefined), syncPreview)
+        dateInit(value as string | undefined, syncPreview)
       },
       { immediate: true },
     )
@@ -642,7 +642,19 @@ export default defineComponent({
     }
 
     function dateInit(value: string | undefined, syncPreview = true) {
-      const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
+      if (!value) {
+        chooseMonth.value = undefined
+        chooseYear.value = undefined
+        chooseDay.value = undefined
+
+        if (syncPreview) {
+          previewInit(getFallbackDate())
+        }
+
+        return
+      }
+
+      const handleValue = dayjs(value)
       const formatDate = handleValue.format(DatePickerFormats.Day)
 
       if (invalidFormatDate(formatDate)) {

@@ -255,7 +255,7 @@ export default defineComponent({
       }
     }
 
-    function updateModelValue(value: DateInputValue | DateInputValue[]) {
+    function updateModelValue(value: DateInputValue | DateInputValue[] | undefined) {
       if (isEqual(value, props.modelValue)) {
         return
       }
@@ -403,7 +403,7 @@ export default defineComponent({
     }
 
     function getEmptyModelValue() {
-      return isMultipleOrRange.value ? [] : ''
+      return isMultipleOrRange.value ? [] : undefined
     }
 
     function clearValue() {

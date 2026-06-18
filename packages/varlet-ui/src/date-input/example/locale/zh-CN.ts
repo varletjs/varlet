@@ -13,6 +13,7 @@ export default {
   validateWithZod: '使用 Zod 进行校验',
   valueFormat: '时间戳绑定值',
   customValueFormat: '自定义绑定值格式',
+  currentValue: '当前值：',
   placeholder: '请选择日期',
   monthPlaceholder: '请选择月份',
   yearPlaceholder: '请选择年份',

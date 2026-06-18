@@ -50,13 +50,17 @@ const standardValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="standardValue10" multiple placeholder="Select dates" />
     <var-date-input v-model="standardValue11" range placeholder="Select date range" />
-    <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="Timestamp Value" />
-    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" placeholder="Custom Value Format" />
+    <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="Timestamp Value">
+      <template #extra-message>Current value: {{ standardValue12 }}</template>
+    </var-date-input>
+    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" placeholder="Custom Value Format">
+      <template #extra-message>Current value: {{ standardValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="standardValue14" size="small" placeholder="Small Size" />
   </var-space>
 </template>
@@ -69,6 +73,7 @@ const standardValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -120,18 +125,22 @@ const outlinedValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="outlinedValue10" variant="outlined" multiple placeholder="Select dates" />
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="Select date range" />
-    <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="Timestamp Value" />
+    <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="Timestamp Value">
+      <template #extra-message>Current value: {{ outlinedValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="outlinedValue13"
       variant="outlined"
       value-format="YYYY/MM/DD"
       placeholder="Custom Value Format"
-    />
+    >
+      <template #extra-message>Current value: {{ outlinedValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="outlinedValue14" variant="outlined" size="small" placeholder="Small Size" />
   </var-space>
 </template>
@@ -144,6 +153,7 @@ const outlinedValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -195,18 +205,22 @@ const filledValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="filledValue10" variant="filled" multiple placeholder="Select dates" />
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="Select date range" />
-    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="Timestamp Value" />
+    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="Timestamp Value">
+      <template #extra-message>Current value: {{ filledValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="filledValue13"
       variant="filled"
       value-format="YYYY/MM/DD"
       placeholder="Custom Value Format"
-    />
+    >
+      <template #extra-message>Current value: {{ filledValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" placeholder="Small Size" />
   </var-space>
 </template>
@@ -219,6 +233,7 @@ const filledValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -228,7 +243,7 @@ const filledValue14 = ref('2021-04-08')
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `v-model` | Binding value, depending on `value-format` | _string \| number \| Date \| Array<string \| number \| Date>_ | `-` |
+| `v-model` | Binding value, depending on `value-format` | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
 | `type` | Input type, can be `date` `month` `year` | _string_ | `date` |
 | `format` | Format used to display and parse input text | _string_ | inferred from `type` |
 | `value-format` | Binding value format, can be `timestamp` `date` or a date format string. Uses `format` to output a string when not set | _string_ | `-` |
@@ -273,7 +288,7 @@ const filledValue14 = ref('2021-04-08')
 | `focus` | Emitted on focus | `event: Event` |
 | `blur` | Emitted on blur | `event: Event` |
 | `clear` | Emitted on clear | `value: string` |
-| `change` | Emitted when binding value changes | `value: string \| number \| Date \| Array<string \| number \| Date>` |
+| `change` | Emitted when binding value changes | `value: string \| number \| Date \| Array<string \| number \| Date> \| undefined` |
 
 ### Slots
 

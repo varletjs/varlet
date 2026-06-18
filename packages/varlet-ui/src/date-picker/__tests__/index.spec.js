@@ -510,6 +510,9 @@ test('datePicker fallbackViewDate should control initial panel when modelValue i
   await delay(0)
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2026')
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('四月')
+  expect(wrapper.vm.chooseYear).toBe(undefined)
+  expect(wrapper.vm.chooseMonth).toBe(undefined)
+  expect(wrapper.vm.chooseDay).toBe(undefined)
   expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
 
   wrapper.unmount()

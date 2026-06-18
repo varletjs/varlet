@@ -50,13 +50,17 @@ const standardValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="standardValue10" multiple placeholder="请选择日期" />
     <var-date-input v-model="standardValue11" range placeholder="请选择日期范围" />
-    <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="时间戳绑定值" />
-    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" placeholder="自定义绑定值格式" />
+    <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="时间戳绑定值">
+      <template #extra-message>当前值：{{ standardValue12 }}</template>
+    </var-date-input>
+    <var-date-input v-model="standardValue13" value-format="YYYY/MM/DD" placeholder="自定义绑定值格式">
+      <template #extra-message>当前值：{{ standardValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="standardValue14" size="small" placeholder="小尺寸" />
   </var-space>
 </template>
@@ -69,6 +73,7 @@ const standardValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -120,18 +125,22 @@ const outlinedValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="outlinedValue10" variant="outlined" multiple placeholder="请选择日期" />
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="请选择日期范围" />
-    <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="时间戳绑定值" />
+    <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="时间戳绑定值">
+      <template #extra-message>当前值：{{ outlinedValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="outlinedValue13"
       variant="outlined"
       value-format="YYYY/MM/DD"
       placeholder="自定义绑定值格式"
-    />
+    >
+      <template #extra-message>当前值：{{ outlinedValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="outlinedValue14" variant="outlined" size="small" placeholder="小尺寸" />
   </var-space>
 </template>
@@ -144,6 +153,7 @@ const outlinedValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -195,18 +205,22 @@ const filledValue14 = ref('2021-04-08')
         <var-icon class="prepend-icon" name="calendar-month" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="clock-outline" />
+        <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
     <var-date-input v-model="filledValue10" variant="filled" multiple placeholder="请选择日期" />
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="请选择日期范围" />
-    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="时间戳绑定值" />
+    <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="时间戳绑定值">
+      <template #extra-message>当前值：{{ filledValue12 }}</template>
+    </var-date-input>
     <var-date-input
       v-model="filledValue13"
       variant="filled"
       value-format="YYYY/MM/DD"
       placeholder="自定义绑定值格式"
-    />
+    >
+      <template #extra-message>当前值：{{ filledValue13 }}</template>
+    </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" placeholder="小尺寸" />
   </var-space>
 </template>
@@ -219,6 +233,7 @@ const filledValue14 = ref('2021-04-08')
 .append-icon {
   margin-left: 6px;
 }
+
 </style>
 ```
 
@@ -228,7 +243,7 @@ const filledValue14 = ref('2021-04-08')
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `v-model` | 绑定的值，具体类型由 `value-format` 决定 | _string \| number \| Date \| Array<string \| number \| Date>_ | `-` |
+| `v-model` | 绑定的值，具体类型由 `value-format` 决定 | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
 | `type` | 输入类型，可选值为 `date` `month` `year` | _string_ | `date` |
 | `format` | 输入框展示和解析用户输入时使用的格式 | _string_ | 根据 `type` 推导 |
 | `value-format` | 绑定值格式，可选值为 `timestamp` `date`，也可传入日期格式字符串。不传时使用 `format` 输出字符串 | _string_ | `-` |
@@ -273,7 +288,7 @@ const filledValue14 = ref('2021-04-08')
 | `focus` | 聚焦时触发 | `event: Event` |
 | `blur` | 失焦时触发 | `event: Event` |
 | `clear` | 清除时触发 | `value: string` |
-| `change` | 绑定值变化时触发 | `value: string \| number \| Date \| Array<string \| number \| Date>` |
+| `change` | 绑定值变化时触发 | `value: string \| number \| Date \| Array<string \| number \| Date> \| undefined` |
 
 ### 插槽
 

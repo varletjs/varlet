@@ -13,6 +13,7 @@ export default {
   validateWithZod: 'Validate with Zod',
   valueFormat: 'Timestamp Value',
   customValueFormat: 'Custom Value Format',
+  currentValue: 'Current value: ',
   placeholder: 'Select date',
   monthPlaceholder: 'Select month',
   yearPlaceholder: 'Select year',

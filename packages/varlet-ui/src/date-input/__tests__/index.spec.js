@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp, defineComponent, ref } from 'vue'
+import { createApp, defineComponent, h, ref } from 'vue'
 import DateInput from '..'
 import DatePicker from '../../date-picker/DatePicker'
 import VarForm from '../../form/Form'
@@ -150,7 +150,7 @@ describe('test dateInput input behavior', () => {
     await triggerInput(wrapper, '')
     await wrapper.find('input').trigger('change')
 
-    expect(wrapper.vm.value).toBe('')
+    expect(wrapper.vm.value).toBe(undefined)
     expect(wrapper.find('input').element.value).toBe('')
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
 
@@ -240,6 +240,19 @@ describe('test dateInput input behavior', () => {
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08')
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-04-08')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput replaces calendar icon with append icon slot', () => {
+    const wrapper = mount(VarDateInput, {
+      slots: {
+        'append-icon': () => h('span', { class: 'custom-append-icon' }),
+      },
+    })
+
+    expect(wrapper.find('.var-date-input__calendar-icon').exists()).toBe(false)
+    expect(wrapper.find('.custom-append-icon').exists()).toBe(true)
 
     wrapper.unmount()
   })
@@ -508,7 +521,7 @@ describe('test dateInput picker behavior', () => {
     await delay(0)
 
     expect(wrapper.vm.showMenu).toBe(false)
-    expect(onUpdateModelValue).lastCalledWith('')
+    expect(onUpdateModelValue).lastCalledWith(undefined)
 
     wrapper.unmount()
   })
@@ -643,7 +656,7 @@ describe('test dateInput picker behavior', () => {
 
     expect(wrapper.find('input').element.value).toBe('')
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
-    expect(onUpdateModelValue).lastCalledWith('')
+    expect(onUpdateModelValue).lastCalledWith(undefined)
     expect(onClear).lastCalledWith('')
 
     wrapper.unmount()
@@ -782,6 +795,35 @@ describe('test dateInput form behavior', () => {
 
     await wrapper.setData({ value: '2021-04-08' })
     expect(await wrapper.vm.$refs.form.validate()).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput clears validation error after picker selection', async () => {
+    const wrapper = mount({
+      components: {
+        VarDateInput,
+        VarForm,
+      },
+      data: () => ({
+        value: '2021-04-08',
+      }),
+      template: `
+        <var-form>
+          <var-date-input v-model="value" clearable :rules="[(v) => !!v || 'Please select date']" />
+        </var-form>
+      `,
+    })
+
+    wrapper.findComponent(VarDateInput).vm.handleClear()
+    await delay(0)
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('Please select date')
+
+    wrapper.findComponent(DatePicker).vm.$emit('change', '2021-04-09')
+    await delay(0)
+
+    expect(wrapper.vm.value).toBe('2021-04-09')
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBe(false)
 
     wrapper.unmount()
   })

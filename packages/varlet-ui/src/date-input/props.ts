@@ -1,5 +1,5 @@
 import { type PropType } from 'vue'
-import { props as inputProps } from '../input/props'
+import { props as inputProps, type InputValidateTrigger } from '../input/props'
 import { defineListenerProp, pickProps } from '../utils/components'
 
 export type DateInputType = 'year' | 'month' | 'date'
@@ -38,11 +38,15 @@ export const props = {
   readonly: Boolean,
   disabled: Boolean,
   clearable: Boolean,
+  validateTrigger: {
+    type: Array as PropType<InputValidateTrigger[]>,
+    default: () => ['onInput', 'onClear', 'onChange'],
+  },
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
-  onChange: defineListenerProp<(value: DateInputValue | DateInputValue[]) => void>(),
+  onChange: defineListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
-  'onUpdate:modelValue': defineListenerProp<(value: DateInputValue | DateInputValue[]) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>(),
   ...pickProps(inputProps, [
     'size',
     'variant',
@@ -54,6 +58,5 @@ export const props = {
     'blurColor',
     'rules',
     'tabindex',
-    'validateTrigger',
   ]),
 }
