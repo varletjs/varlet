@@ -133,6 +133,7 @@ export default defineComponent({
     const formReadonly = computed(() => form?.readonly.value ?? false)
     const isDisabled = computed(() => props.disabled || formDisabled.value)
     const isReadonly = computed(() => props.readonly || formReadonly.value)
+    const isMultipleOrRange = computed(() => props.multiple || props.range)
     const menuPopoverClass = computed(() => {
       const marginClass =
         props.variant === 'standard'
@@ -228,9 +229,9 @@ export default defineComponent({
     }
 
     function updateStatesByModelValue() {
-      const { modelValue, multiple, range } = props
+      const { modelValue, range } = props
 
-      if ((multiple || range) && isArray(modelValue)) {
+      if (isMultipleOrRange.value && isArray(modelValue)) {
         const dayjsObjects = modelValue.map(modelValueToDayjsObject).filter(isTruthy)
         pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
 
@@ -243,7 +244,7 @@ export default defineComponent({
         return
       }
 
-      if (!multiple && !range && !isArray(modelValue)) {
+      if (!isMultipleOrRange.value && !isArray(modelValue)) {
         const dayjsObject = modelValueToDayjsObject(modelValue)
         pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
 
@@ -254,19 +255,11 @@ export default defineComponent({
         return
       }
 
-      pickerValue.value = multiple || range ? [] : undefined
+      pickerValue.value = isMultipleOrRange.value ? [] : undefined
 
       if (!isFocusing.value) {
         displayValue.value = ''
       }
-    }
-
-    function openMenu() {
-      if (isDisabled.value || isReadonly.value) {
-        return
-      }
-
-      showMenu.value = true
     }
 
     function closeMenu() {
@@ -309,7 +302,7 @@ export default defineComponent({
         return
       }
 
-      openMenu()
+      showMenu.value = true
       validateWithTrigger('onClick')
     }
 
@@ -319,7 +312,7 @@ export default defineComponent({
       }
 
       preventDefault(e)
-      openMenu()
+      showMenu.value = true
     }
 
     function handleInput(value: string) {
@@ -330,7 +323,7 @@ export default defineComponent({
       displayValue.value = value
 
       if (value !== '') {
-        if (props.multiple || props.range) {
+        if (isMultipleOrRange.value) {
           const isInvalidDisplayValueCount = props.range
             ? displayValues.value.length !== 2
             : !displayValues.value.length
@@ -410,15 +403,15 @@ export default defineComponent({
       displayValue.value = dayjsObject.format(getDisplayFormat())
       updateModelValue(dayjsObjectToModelValue(dayjsObject))
 
-      if (!props.multiple && !props.range) {
+      if (!isMultipleOrRange.value) {
         closeMenu()
       }
     }
 
     function clearValue() {
-      const value = props.multiple || props.range ? [] : ''
+      const value = isMultipleOrRange.value ? [] : ''
       displayValue.value = ''
-      pickerValue.value = props.multiple || props.range ? [] : undefined
+      pickerValue.value = isMultipleOrRange.value ? [] : undefined
       closeMenu()
       call(props['onUpdate:modelValue'], value)
     }
