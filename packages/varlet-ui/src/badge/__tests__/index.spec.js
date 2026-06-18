@@ -78,6 +78,41 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
+  test('badge maxValue with string values', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        maxValue: '9',
+        value: '10',
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').html()).toContain('<span>9+</span>')
+    wrapper.unmount()
+  })
+
+  test('badge maxValue not provided', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        value: 8,
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').html()).toContain('<span>8</span>')
+    wrapper.unmount()
+  })
+
+  test('badge value not provided', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        maxValue: 9,
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content span').exists()).toBe(true)
+    expect(wrapper.find('.var-badge__content span').text()).toBe('0')
+    wrapper.unmount()
+  })
+
   test('badge position', () => {
     ;['right-top', 'right-bottom', 'left-top', 'left-bottom'].forEach((position) => {
       const wrapper = mount(VarBadge, {
@@ -152,7 +187,30 @@ describe('test badge component props', () => {
     })
 
     expect(wrapper.find('.var-icon').classes()).toContain('var-icon-notebook')
+    expect(wrapper.find('.var-badge__icon').exists()).toBe(true)
     wrapper.unmount()
+  })
+
+  test('badge computed value respects maxValue', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        maxValue: 9,
+        value: 10,
+      },
+    })
+
+    expect(wrapper.vm.value).toBe('9+')
+    wrapper.unmount()
+
+    const wrapperEqual = mount(VarBadge, {
+      props: {
+        maxValue: 9,
+        value: 9,
+      },
+    })
+
+    expect(wrapperEqual.vm.value).toBe(9)
+    wrapperEqual.unmount()
   })
 })
 
