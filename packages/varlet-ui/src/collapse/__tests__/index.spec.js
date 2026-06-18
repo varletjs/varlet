@@ -41,6 +41,66 @@ describe('test collapse and collapseItem props', () => {
     await delay(100)
     await wrapper.find('.var-collapse-item__header').trigger('click')
     expect(wrapper.vm.value).toBe('1')
+
+    await wrapper.find('.var-collapse-item__header').trigger('click')
+    expect(wrapper.vm.value).toBeUndefined()
+  })
+
+  test('collapse accordion with null value keeps items collapsed', async () => {
+    const template = `
+     <var-collapse v-model="value" accordion>
+      <var-collapse-item title="test1">test1</var-collapse-item>
+      <var-collapse-item title="test2">test2</var-collapse-item>
+     </var-collapse>
+    `
+
+    const wrapper = mount({
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: null,
+        }
+      },
+      template,
+    })
+
+    await delay(100)
+    const collapseItemList = wrapper.findAll('.var-collapse-item')
+    expect(collapseItemList[0].classes()).not.toContain('var-collapse-item--active')
+    expect(collapseItemList[1].classes()).not.toContain('var-collapse-item--active')
+
+    wrapper.unmount()
+  })
+
+  test('collapse accordion matches item by index when name is empty', async () => {
+    const template = `
+     <var-collapse v-model="value" accordion>
+      <var-collapse-item title="test1">test1</var-collapse-item>
+      <var-collapse-item title="test2">test2</var-collapse-item>
+     </var-collapse>
+    `
+
+    const wrapper = mount({
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: 1,
+        }
+      },
+      template,
+    })
+
+    await delay(100)
+    const collapseItemList = wrapper.findAll('.var-collapse-item')
+    expect(collapseItemList[1].classes()).toContain('var-collapse-item--active')
+
+    wrapper.unmount()
   })
 
   test('collapse elevation', async () => {
@@ -158,6 +218,34 @@ describe('test collapse and collapseItem props', () => {
     wrapper.unmount()
   })
 
+  test('collapse matches unnamed items by index', async () => {
+    const template = `
+      <var-collapse v-model="value">
+        <var-collapse-item title="test1">test1</var-collapse-item>
+        <var-collapse-item title="test2">test2</var-collapse-item>
+      </var-collapse>
+    `
+
+    const wrapper = mount({
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: [1],
+        }
+      },
+      template,
+    })
+
+    await delay(100)
+    const collapseItemList = wrapper.findAll('.var-collapse-item')
+    expect(collapseItemList[1].classes()).toContain('var-collapse-item--active')
+
+    wrapper.unmount()
+  })
+
   test('collapseItem title and name', async () => {
     const title = ref('test1')
     const name = ref('1')
@@ -232,6 +320,88 @@ describe('test collapse and collapseItem props', () => {
     expect(wrapper.find('.var-icon-checkbox-marked-circle').exists()).toBe(true)
   })
 
+  // toggling an unnamed item falls back to its index (CollapseItem.vue line 96 `props.name ?? index.value`)
+  test('collapseItem toggle uses index when name is absent', async () => {
+    const template = `
+      <var-collapse v-model="value">
+        <var-collapse-item title="test1">test1</var-collapse-item>
+        <var-collapse-item title="test2">test2</var-collapse-item>
+      </var-collapse>
+    `
+
+    const wrapper = mount(
+      {
+        components: {
+          [VarCollapse.name]: VarCollapse,
+          [VarCollapseItem.name]: VarCollapseItem,
+        },
+        data() {
+          return {
+            value: [],
+          }
+        },
+        template,
+      },
+      { attachTo: document.body },
+    )
+
+    await delay(100)
+    const collapseItemList = wrapper.findAll('.var-collapse-item')
+    await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
+    expect(wrapper.vm.value).toStrictEqual([0])
+
+    await collapseItemList[1].find('.var-collapse-item__header').trigger('click')
+    expect(wrapper.vm.value).toStrictEqual([0, 1])
+
+    wrapper.unmount()
+  })
+
+  // collapsing content fires the height transitionend handler that hides the content
+  // (CollapseItem.vue lines 37-38 wiring handleTransitionStart/handleTransitionEnd)
+  test('collapseItem hides content after collapse transition ends', async () => {
+    const template = `
+      <var-collapse v-model="value">
+        <var-collapse-item title="test1" name="1">test1</var-collapse-item>
+      </var-collapse>
+    `
+
+    const wrapper = mount(
+      {
+        components: {
+          [VarCollapse.name]: VarCollapse,
+          [VarCollapseItem.name]: VarCollapseItem,
+        },
+        data() {
+          return {
+            value: ['1'],
+          }
+        },
+        template,
+      },
+      { attachTo: document.body },
+    )
+
+    await delay(100)
+    const content = wrapper.find('.var-collapse-item__content')
+    expect(content.attributes('style')).not.toBe('display: none;')
+
+    await wrapper.setData({ value: [] })
+    await delay(50)
+
+    const transitionStartEvent = new Event('transitionstart')
+    Object.assign(transitionStartEvent, { propertyName: 'height' })
+    content.element.dispatchEvent(transitionStartEvent)
+
+    const transitionEndEvent = new Event('transitionend')
+    Object.assign(transitionEndEvent, { propertyName: 'height' })
+    content.element.dispatchEvent(transitionEndEvent)
+    await delay(0)
+
+    expect(content.attributes('style')).toBe('display: none;')
+
+    wrapper.unmount()
+  })
+
   test('collapseItem disabled', async () => {
     const template = `
       <var-collapse v-model="value">
@@ -265,6 +435,7 @@ describe('test collapse and collapseItem props', () => {
 
     wrapper.unmount()
   })
+
 })
 
 describe('test collapse Events', () => {
@@ -375,6 +546,74 @@ describe('test collapse Events', () => {
       await wrapper.setData({ value: ['1', '3'] })
       collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
       expect(wrapper.vm.value).toEqual(['3'])
+    })
+
+    test('collapse toggleAll uses index when name is empty', async () => {
+      const collapseRef = ref(null)
+
+      const template = `
+        <var-collapse v-model="value" ref="collapseRef">
+          <var-collapse-item title="test1">test1</var-collapse-item>
+          <var-collapse-item title="test2">test2</var-collapse-item>
+        </var-collapse>
+      `
+      const wrapper = mount({
+        components: {
+          [VarCollapse.name]: VarCollapse,
+          [VarCollapseItem.name]: VarCollapseItem,
+        },
+        data() {
+          return {
+            value: [],
+          }
+        },
+        template,
+        setup() {
+          return {
+            collapseRef,
+          }
+        },
+      })
+
+      await wrapper.vm.$nextTick()
+      collapseRef.value.toggleAll({ expand: true })
+      expect(wrapper.vm.value).toEqual([0, 1])
+
+      wrapper.unmount()
+    })
+
+    test('collapse toggleAll ignores accordion', async () => {
+      const collapseRef = ref(null)
+
+      const template = `
+      <var-collapse v-model="value" ref="collapseRef" accordion>
+        <var-collapse-item title="test1">test1</var-collapse-item>
+        <var-collapse-item title="test2">test2</var-collapse-item>
+      </var-collapse>
+    `
+      const wrapper = mount({
+        components: {
+          [VarCollapse.name]: VarCollapse,
+          [VarCollapseItem.name]: VarCollapseItem,
+        },
+        data() {
+          return {
+            value: 1,
+          }
+        },
+        template,
+        setup() {
+          return {
+            collapseRef,
+          }
+        },
+      })
+
+      await wrapper.vm.$nextTick()
+      collapseRef.value.toggleAll({ expand: true })
+      expect(wrapper.vm.value).toEqual(1)
+
+      wrapper.unmount()
     })
   })
 
