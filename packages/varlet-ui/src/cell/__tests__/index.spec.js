@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, expect, test } from 'vite-plus/test'
+import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp, h } from 'vue'
 import Cell from '..'
 import VarIcon from '../../icon/Icon'
@@ -54,6 +54,33 @@ describe('test cell component props', () => {
     expect(wrapper.classes('var-cell--border')).toBe(true)
     await wrapper.setProps({ border: false })
     expect(wrapper.classes('var-cell--border')).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('cell borderOffset', async () => {
+    const wrapper = mount(VarCell, {
+      props: {
+        borderOffset: 4,
+      },
+    })
+
+    expect(wrapper.attributes('style')).toContain('--cell-border-left: 4px;')
+    expect(wrapper.attributes('style')).toContain('--cell-border-right: 4px;')
+    await wrapper.setProps({ borderOffset: undefined })
+    expect(wrapper.attributes('style') || '').not.toContain('--cell-border-left')
+    wrapper.unmount()
+  })
+
+  test('cell click', async () => {
+    const onClick = vi.fn()
+    const wrapper = mount(VarCell, {
+      props: {
+        onClick,
+      },
+    })
+
+    await wrapper.trigger('click')
+    expect(onClick).toHaveBeenCalledTimes(1)
     wrapper.unmount()
   })
 
