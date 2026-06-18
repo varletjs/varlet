@@ -83,3 +83,21 @@ describe('test backTop events', () => {
     wrapper.unmount()
   })
 })
+
+test('backTop unmount guard when scroller missing', async () => {
+  vi.resetModules()
+  vi.doMock('@varlet/use', async (importOriginal) => {
+    const actual = await importOriginal()
+    return {
+      ...actual,
+      onSmartUnmounted: (hook) => hook(),
+    }
+  })
+
+  const { default: MockBackTop } = await import('../BackTop')
+  const wrapper = mount(MockBackTop)
+
+  wrapper.unmount()
+
+  vi.doUnmock('@varlet/use')
+})
