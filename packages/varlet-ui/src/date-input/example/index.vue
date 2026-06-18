@@ -18,6 +18,8 @@ const standardValue11 = ref(['2021-04-08', '2021-04-20'])
 const standardValue12 = ref(1617811200000)
 const standardValue13 = ref('2021/04/08')
 const standardValue14 = ref('2021-04-08')
+const standardValue15 = ref(['2021-04', '2021-09'])
+const standardValue16 = ref(['2021', '2025'])
 
 const outlinedValue = ref('2021-04-08')
 const outlinedValue2 = ref('2021-04')
@@ -33,6 +35,8 @@ const outlinedValue11 = ref(['2021-04-08', '2021-04-20'])
 const outlinedValue12 = ref(1617811200000)
 const outlinedValue13 = ref('2021/04/08')
 const outlinedValue14 = ref('2021-04-08')
+const outlinedValue15 = ref(['2021-04', '2021-09'])
+const outlinedValue16 = ref(['2021', '2025'])
 
 const filledValue = ref('2021-04-08')
 const filledValue2 = ref('2021-04')
@@ -48,6 +52,8 @@ const filledValue11 = ref(['2021-04-08', '2021-04-20'])
 const filledValue12 = ref(1617811200000)
 const filledValue13 = ref('2021/04/08')
 const filledValue14 = ref('2021-04-08')
+const filledValue15 = ref(['2021-04', '2021-09'])
+const filledValue16 = ref(['2021', '2025'])
 
 watchLang(use)
 onThemeChange()
@@ -82,6 +88,8 @@ onThemeChange()
     </var-date-input>
     <var-date-input v-model="standardValue10" multiple :placeholder="t('multiplePlaceholder')" />
     <var-date-input v-model="standardValue11" range :placeholder="t('rangePlaceholder')" />
+    <var-date-input v-model="standardValue15" type="month" range :placeholder="t('monthRangePlaceholder')" />
+    <var-date-input v-model="standardValue16" type="year" range :placeholder="t('yearRangePlaceholder')" />
     <var-date-input v-model="standardValue12" value-format="timestamp" :placeholder="t('valueFormat')">
       <template #extra-message>{{ t('currentValue') }}{{ standardValue12 }}</template>
     </var-date-input>
@@ -121,6 +129,20 @@ onThemeChange()
     </var-date-input>
     <var-date-input v-model="outlinedValue10" variant="outlined" multiple :placeholder="t('multiplePlaceholder')" />
     <var-date-input v-model="outlinedValue11" variant="outlined" range :placeholder="t('rangePlaceholder')" />
+    <var-date-input
+      v-model="outlinedValue15"
+      variant="outlined"
+      type="month"
+      range
+      :placeholder="t('monthRangePlaceholder')"
+    />
+    <var-date-input
+      v-model="outlinedValue16"
+      variant="outlined"
+      type="year"
+      range
+      :placeholder="t('yearRangePlaceholder')"
+    />
     <var-date-input
       v-model="outlinedValue12"
       variant="outlined"
@@ -170,6 +192,20 @@ onThemeChange()
     </var-date-input>
     <var-date-input v-model="filledValue10" variant="filled" multiple :placeholder="t('multiplePlaceholder')" />
     <var-date-input v-model="filledValue11" variant="filled" range :placeholder="t('rangePlaceholder')" />
+    <var-date-input
+      v-model="filledValue15"
+      variant="filled"
+      type="month"
+      range
+      :placeholder="t('monthRangePlaceholder')"
+    />
+    <var-date-input
+      v-model="filledValue16"
+      variant="filled"
+      type="year"
+      range
+      :placeholder="t('yearRangePlaceholder')"
+    />
     <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" :placeholder="t('valueFormat')">
       <template #extra-message>{{ t('currentValue') }}{{ filledValue12 }}</template>
     </var-date-input>

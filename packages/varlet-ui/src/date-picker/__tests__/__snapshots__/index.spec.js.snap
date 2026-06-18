@@ -12,7 +12,7 @@ exports[`datePicker allowedDates 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--day">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -80,7 +80,7 @@ exports[`datePicker rerender date panel when max or min changes 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--day">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -314,7 +314,7 @@ exports[`datePicker rerender date panel when max or min changes 2`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--day">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -553,7 +553,7 @@ exports[`datePicker style and type 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--month">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -658,7 +658,7 @@ exports[`datePicker style and type 2`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--day">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -912,7 +912,7 @@ exports[`test datePicker style and type > datePicker style and date 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--day">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->
@@ -1151,7 +1151,7 @@ exports[`test datePicker style and type > datePicker style and month 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div class="var-date-picker__body">
+  <div class="var-date-picker__body var--scrollbar">
     <div class="var-date-picker-header var-date-picker-header--month">
       <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
           <!--v-if-->

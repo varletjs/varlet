@@ -28,7 +28,7 @@ import { computed, defineComponent, ref, watch, type ComputedRef, type PropType,
 import VarButton from '../../button'
 import { createNamespace } from '../../utils/components'
 import { DatePickerUnits, ShiftDirections } from '../constants'
-import { type PanelDatePickerProps } from '../types'
+import { type DatePickerSelectionState, type PanelDatePickerProps } from '../types'
 
 const { n } = createNamespace('year-picker')
 const { n: nDate } = createNamespace('date-picker')
@@ -41,6 +41,10 @@ export default defineComponent({
   props: {
     preview: {
       type: String,
+    },
+    choose: {
+      type: Object as PropType<DatePickerSelectionState>,
+      required: true,
     },
     datePickerProps: {
       type: Object as PropType<PanelDatePickerProps>,
@@ -75,12 +79,32 @@ export default defineComponent({
       return isBeforeMax && isAfterMin
     }
 
+    function isSelectedYear(year: string): boolean {
+      const {
+        choose: { chooseYear, chooseYears, chooseRangeYear },
+        datePickerProps: { multiple, range },
+      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
+
+      if (range) {
+        if (!chooseRangeYear.length) {
+          return false
+        }
+
+        const isBeforeMax = dayjs(year).isSameOrBefore(dayjs(chooseRangeYear[1]), DatePickerUnits.Year)
+        const isAfterMin = dayjs(year).isSameOrAfter(dayjs(chooseRangeYear[0]), DatePickerUnits.Year)
+
+        return isBeforeMax && isAfterMin
+      }
+
+      return multiple ? chooseYears.includes(year) : chooseYear === year
+    }
+
     function buttonProps(year: string) {
       const {
         datePickerProps: { allowedDates, color },
       }: { datePickerProps: PanelDatePickerProps } = props
 
-      const active = props.preview === year
+      const active = isSelectedYear(year)
       const disabled = !isInRange(year) || (allowedDates ? !allowedDates(year) : false)
 
       return {

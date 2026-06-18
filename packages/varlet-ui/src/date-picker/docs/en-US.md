@@ -1,7 +1,7 @@
 # DatePicker
 
 ### Intro
-Used to select a date or date range.
+Used to select a date, month, year, or corresponding range.
 
 ### Basic Usage
 
@@ -34,21 +34,27 @@ const date = ref([])
   <var-date-picker v-model="date" multiple />
 </template>
 ```
+
 ### Range
 
-Use `range` prop to select date range, at this time, `date` is `[startDate, endDate]`.
+Use the `range` prop to select a range. The bound value is `[start, end]`, and each item format follows `type`.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const date = ref(['2021-04-08', '2021-04-20'])
+const month = ref(['2021-02', '2021-05'])
+const year = ref(['2021', '2025'])
 </script>
 
 <template>
   <var-date-picker type="date" v-model="date" range />
+  <var-date-picker type="month" v-model="month" range />
+  <var-date-picker type="year" v-model="year" range />
 </template>
 ```
+
 ### Date Limit
 
 Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
@@ -158,8 +164,8 @@ const date = ref('2021')
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
-| `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
-| `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
+| `min` | Minimum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`)                              | _string_ | `-` |
+| `max` | Maximum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`)                              | _string_ | `-` |
 | `show-current` | Whether to display the current date                                                                               | _boolean_ | `true` |
 | `show-title` | Whether to display the top title area                                                                             | _boolean_ | `true` |
 | `readonly` | readonly                                                                                                          | _boolean_ | `false` |
@@ -213,7 +219,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-title-date-justify-content` | `normal` |
-| `--date-picker-body-padding` | `0 12px 16px` |
+| `--date-picker-body-padding-horizontal` | `12px` |
+| `--date-picker-body-padding` | `0 var(--date-picker-body-padding-horizontal) 16px` |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `304px`                |
 | `--date-picker-header-arrow-filter` | `opacity(1)` |

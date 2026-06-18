@@ -175,7 +175,11 @@ export default defineComponent({
     }
 
     function getPanelLabel() {
-      return props.type === DatePickerTypes.Month && props.showPanelToggle ? getMonthName() : props.date.previewYear
+      if (props.type === DatePickerTypes.Month && props.showPanelToggle) {
+        return getMonthName()
+      }
+
+      return props.date.previewYear
     }
 
     return {

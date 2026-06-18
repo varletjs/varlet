@@ -2,7 +2,7 @@
 
 ### Intro
 
-Used to input or select dates. A date picker panel opens when focused.
+Used to input or select dates.
 
 ### Standard Variant
 
@@ -25,6 +25,8 @@ const standardValue11 = ref(['2021-04-08', '2021-04-20'])
 const standardValue12 = ref(1617811200000)
 const standardValue13 = ref('2021/04/08')
 const standardValue14 = ref('2021-04-08')
+const standardValue15 = ref(['2021-04', '2021-09'])
+const standardValue16 = ref(['2021', '2025'])
 </script>
 
 <template>
@@ -55,6 +57,8 @@ const standardValue14 = ref('2021-04-08')
     </var-date-input>
     <var-date-input v-model="standardValue10" multiple placeholder="Select dates" />
     <var-date-input v-model="standardValue11" range placeholder="Select date range" />
+    <var-date-input v-model="standardValue15" type="month" range placeholder="Select month range" />
+    <var-date-input v-model="standardValue16" type="year" range placeholder="Select year range" />
     <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ standardValue12 }}</template>
     </var-date-input>
@@ -98,6 +102,8 @@ const outlinedValue11 = ref(['2021-04-08', '2021-04-20'])
 const outlinedValue12 = ref(1617811200000)
 const outlinedValue13 = ref('2021/04/08')
 const outlinedValue14 = ref('2021-04-08')
+const outlinedValue15 = ref(['2021-04', '2021-09'])
+const outlinedValue16 = ref(['2021', '2025'])
 </script>
 
 <template>
@@ -130,6 +136,8 @@ const outlinedValue14 = ref('2021-04-08')
     </var-date-input>
     <var-date-input v-model="outlinedValue10" variant="outlined" multiple placeholder="Select dates" />
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="Select date range" />
+    <var-date-input v-model="outlinedValue15" variant="outlined" type="month" range placeholder="Select month range" />
+    <var-date-input v-model="outlinedValue16" variant="outlined" type="year" range placeholder="Select year range" />
     <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ outlinedValue12 }}</template>
     </var-date-input>
@@ -178,6 +186,8 @@ const filledValue11 = ref(['2021-04-08', '2021-04-20'])
 const filledValue12 = ref(1617811200000)
 const filledValue13 = ref('2021/04/08')
 const filledValue14 = ref('2021-04-08')
+const filledValue15 = ref(['2021-04', '2021-09'])
+const filledValue16 = ref(['2021', '2025'])
 </script>
 
 <template>
@@ -210,6 +220,8 @@ const filledValue14 = ref('2021-04-08')
     </var-date-input>
     <var-date-input v-model="filledValue10" variant="filled" multiple placeholder="Select dates" />
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="Select date range" />
+    <var-date-input v-model="filledValue15" variant="filled" type="month" range placeholder="Select month range" />
+    <var-date-input v-model="filledValue16" variant="filled" type="year" range placeholder="Select year range" />
     <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ filledValue12 }}</template>
     </var-date-input>
@@ -259,14 +271,14 @@ const filledValue14 = ref('2021-04-08')
 | `text-color` | Text color | _string_ | `-` |
 | `focus-color` | Main color when focused | _string_ | `-` |
 | `blur-color` | Main color when blurred | _string_ | `-` |
-| `readonly` | Whether to be readonly. The panel can still be opened | _boolean_ | `false` |
+| `readonly` | Whether to be readonly. Input and panel selection are disabled when readonly | _boolean_ | `false` |
 | `disabled` | Whether to disable the input | _boolean_ | `false` |
 | `clearable` | Whether to show clear icon | _boolean_ | `false` |
-| `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear']` |
+| `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | Validation rules. Return `true` to pass validation, other values are converted into user messages. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `allowed-dates` | Restrict selectable dates | _(value: string) => boolean_ | `-` |
-| `min` | Minimum date, month, or year | _string_ | `-` |
-| `max` | Maximum date, month, or year | _string_ | `-` |
+| `min` | Minimum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
+| `max` | Maximum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
 | `first-day-of-week` | First day of week, starts from Sunday `0` | _string \| number_ | `0` |
 | `tabindex` | Same as native input tabindex | _string_ | `-` |
 

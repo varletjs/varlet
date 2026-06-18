@@ -19,5 +19,7 @@ export default {
   yearPlaceholder: 'Select year',
   multiplePlaceholder: 'Select dates',
   rangePlaceholder: 'Select date range',
+  monthRangePlaceholder: 'Select month range',
+  yearRangePlaceholder: 'Select year range',
   requiredMessage: 'Please select date',
 }

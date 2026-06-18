@@ -18,7 +18,7 @@ exports[`localeProvider locale 2`] = `
           </transition-stub>
         </div>
       </div>
-      <div class="var-date-picker__body">
+      <div class="var-date-picker__body var--scrollbar">
         <div class="var-date-picker-header var-date-picker-header--day">
           <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
               <!--v-if-->
@@ -94,7 +94,7 @@ exports[`localeProvider locale 4`] = `
           </transition-stub>
         </div>
       </div>
-      <div class="var-date-picker__body">
+      <div class="var-date-picker__body var--scrollbar">
         <div class="var-date-picker-header var-date-picker-header--day">
           <div class="var-date-picker-header__nav"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--round var-date-picker-header__arrow" type="button" var-date-picker-header-cover="">
               <!--v-if-->

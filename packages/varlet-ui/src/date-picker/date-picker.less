@@ -16,7 +16,8 @@
   --date-picker-title-date-justify-content: normal;
   --date-picker-body-background-color: #fff;
   --date-picker-body-height: 304px;
-  --date-picker-body-padding: 0 12px 16px;
+  --date-picker-body-padding-horizontal: 12px;
+  --date-picker-body-padding: 0 var(--date-picker-body-padding-horizontal) 16px;
   --date-picker-header-padding: 0 0 16px;
   --date-picker-header-padding-top-no-title: 20px;
   --date-picker-header-color: #555;
@@ -111,18 +112,14 @@
   }
 
   &__body {
+    --scrollbar-track-background: var(--date-picker-body-background-color);
+
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
     height: var(--date-picker-body-height);
     background-color: var(--date-picker-body-background-color);
     padding: var(--date-picker-body-padding);
-
-    &::-webkit-scrollbar {
-      display: none;
-      width: 0;
-      background: transparent;
-    }
   }
 
   &__panel {
@@ -151,6 +148,10 @@
     z-index: 2;
     color: var(--date-picker-header-color);
     background-color: var(--date-picker-body-background-color);
+    box-sizing: border-box;
+    width: calc(100% + var(--date-picker-body-padding-horizontal) * 2);
+    margin-left: calc(var(--date-picker-body-padding-horizontal) * -1);
+    margin-right: calc(var(--date-picker-body-padding-horizontal) * -1);
 
     .var-date-picker--no-title & {
       padding-top: var(--date-picker-header-padding-top-no-title);
@@ -159,8 +160,8 @@
     &--day,
     &--month,
     &--year {
-      padding-left: 4px;
-      padding-right: 4px;
+      padding-left: calc(var(--date-picker-body-padding-horizontal) + 4px);
+      padding-right: calc(var(--date-picker-body-padding-horizontal) + 4px);
     }
 
     &__year-value {

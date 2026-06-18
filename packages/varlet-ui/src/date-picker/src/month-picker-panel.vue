@@ -33,7 +33,7 @@ import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
 import { DatePickerUnits, MonthList, ShiftDirections, type Month } from '../constants'
-import type { PanelDatePickerProps, DatePickerPreviewState } from '../types'
+import type { DatePickerPreviewState, DatePickerSelectionState, PanelDatePickerProps } from '../types'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -48,6 +48,10 @@ export default defineComponent({
   props: {
     preview: {
       type: Object as PropType<DatePickerPreviewState>,
+      required: true,
+    },
+    choose: {
+      type: Object as PropType<DatePickerSelectionState>,
       required: true,
     },
     datePickerProps: {
@@ -80,14 +84,39 @@ export default defineComponent({
       return isBeforeMax && isAfterMin
     }
 
+    function isSelectedMonth(value: string, month: Month): boolean {
+      const {
+        preview: { previewYear },
+        choose: { chooseMonth, chooseYear, chooseMonths, chooseRangeMonth },
+        datePickerProps: { multiple, range },
+      }: {
+        preview: DatePickerPreviewState
+        choose: DatePickerSelectionState
+        datePickerProps: PanelDatePickerProps
+      } = props
+
+      if (range) {
+        if (!chooseRangeMonth.length) {
+          return false
+        }
+
+        const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeMonth[1]), DatePickerUnits.Month)
+        const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeMonth[0]), DatePickerUnits.Month)
+
+        return isBeforeMax && isAfterMin
+      }
+
+      return multiple ? chooseMonths.includes(value) : chooseYear === previewYear && chooseMonth === month
+    }
+
     function buttonProps(month: Month) {
       const {
-        preview: { previewYear, previewMonth },
+        preview: { previewYear },
         datePickerProps: { allowedDates, color },
       }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
 
       const value = `${previewYear}-${month}`
-      const active = previewMonth === month
+      const active = isSelectedMonth(value, month)
       const disabled = !isInRange(month) || (allowedDates ? !allowedDates(value) : false)
 
       return {

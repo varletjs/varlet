@@ -52,7 +52,7 @@
         </transition>
       </div>
     </div>
-    <div :class="n('body')">
+    <div :class="classes(n('body'), n('$--scrollbar'))">
       <panel-header
         v-if="panelType"
         :type="headerType"
@@ -70,12 +70,14 @@
             v-if="panelType === DatePickerTypes.Year"
             ref="yearPanelEl"
             :date-picker-props="datePickerProps"
+            :choose="selectedDate"
             :preview="previewYear"
             @choose-year="chooseYearFromPanel"
           />
           <month-picker-panel
             v-else-if="panelType === DatePickerTypes.Month"
             ref="monthPanelEl"
+            :choose="selectedDate"
             :preview="previewDate"
             :date-picker-props="datePickerProps"
             @choose-month="chooseMonthFromPanel"
@@ -604,7 +606,7 @@ export default defineComponent({
     }
 
     function markPreviewKeep() {
-      keepPreviewOnModelValueChange = props.type === DatePickerTypes.Date
+      keepPreviewOnModelValueChange = props.type === DatePickerTypes.Date || props.range || props.multiple
     }
 
     function rangeInit(value: Array<string>, type: DatePickerTypes, syncPreview = true) {

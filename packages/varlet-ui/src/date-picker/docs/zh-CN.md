@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于选择日期或日期范围。
+用于选择日期、月份、年份或对应范围。
 
 ### 基本使用
 
@@ -38,17 +38,21 @@ const date = ref([])
 
 ### 选择范围
 
-通过 `range` 属性选择一个日期范围，此时 `date` 为 `[startDate, endDate]`。
+通过 `range` 属性选择一个范围，此时绑定值为 `[start, end]`，元素格式随 `type` 变化。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const date = ref(['2021-04-08', '2021-04-20'])
+const month = ref(['2021-02', '2021-05'])
+const year = ref(['2021', '2025'])
 </script>
 
 <template>
   <var-date-picker type="date" v-model="date" range />
+  <var-date-picker type="month" v-model="month" range />
+  <var-date-picker type="year" v-model="year" range />
 </template>
 ```
 
@@ -161,8 +165,8 @@ const date = ref('2021')
 | `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级         | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Button 的海拔高度                                 | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。                          | _string \| number_ | `0` |
-| `min`               | 允许的最小日期/月份（ISO 8601格式）                       | _string_ | `-` |
-| `max`               | 允许的最大日期/月份（ISO 8601格式）                       | _string_ | `-` |
+| `min`               | 允许的最小值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
+| `max`               | 允许的最大值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
 | `show-current`      | 是否显示当前日期                                     | _boolean_ | `true` |
 | `show-title`        | 是否显示顶部标题区域                                   | _boolean_ | `true` |
 | `readonly`          | 是否只读                                         | _boolean_ | `false` |
@@ -218,7 +222,8 @@ const date = ref('2021')
 | `--date-picker-header-arrow-filter` | `opacity(1)` |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `304px`                |
-| `--date-picker-body-padding` | `0 12px 16px` |
+| `--date-picker-body-padding-horizontal` | `12px` |
+| `--date-picker-body-padding` | `0 var(--date-picker-body-padding-horizontal) 16px` |
 | `--date-picker-header-padding` | `0 0 16px`          |
 | `--date-picker-header-padding-top-no-title` | `20px` |
 | `--date-picker-actions-padding` | `10px 20px 20px`    |

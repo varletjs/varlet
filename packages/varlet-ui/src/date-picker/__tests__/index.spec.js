@@ -253,6 +253,7 @@ test('datePicker should close month and year panel from panel header label', asy
   await wrapper.find('.var-date-picker-header__year').trigger('click')
   await delay(200)
   expect(wrapper.find('.var-year-picker').exists()).toBe(true)
+  expect(wrapper.find('.var-date-picker-header__panel-label').text()).toBe('2021')
   expect(wrapper.find('.var-date-picker-header__panel-label .var-icon-chevron-up').exists()).toBe(true)
 
   await wrapper.find('.var-date-picker-header__panel-label').trigger('click')
@@ -488,11 +489,21 @@ test('datePicker year type should update preview after choosing year', async () 
   })
 
   await delay(0)
+  const currentYearStart = `${currentYear.slice(0, 2)}00`
+
+  expect(wrapper.find('.var-date-picker-header__panel-label').text()).toBe('2021')
+
+  await wrapper.findAll('.var-date-picker-header__arrow')[1].trigger('click')
+  await delay(200)
+  expect(wrapper.find('.var-date-picker-header__panel-label').text()).toBe('2021')
+
+  await wrapper.findAll('.var-date-picker-header__arrow')[0].trigger('click')
+  await delay(200)
   const firstYear = wrapper.find('.var-year-picker').find('button')
   await firstYear.trigger('click')
   await delay(0)
 
-  const year = `${currentYear.slice(0, 2)}00`
+  const year = currentYearStart
   expect(wrapper.vm.date).toBe(year)
   expect(wrapper.find('.var-date-picker-header__panel-label').text()).toBe(year)
   expect(firstYear.attributes('var-date-picker-color-cover')).toBe('false')
@@ -667,15 +678,26 @@ test('datePicker range', async () => {
   await delay(0)
 
   const lis = wrapper.find('.var-month-picker__content').find('ul').findAll('li').slice(0, 3)
+  const getSelectedMonthButtons = () =>
+    wrapper.findAll('.var-month-picker__button').filter((button) => !button.classes('var-button--text'))
+
+  expect(getSelectedMonthButtons()).toHaveLength(2)
+
   await lis[0].find('button').trigger('click')
   await lis[2].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual(['2021-01', '2021-03'])
+  expect(getSelectedMonthButtons()).toHaveLength(3)
   expect(fn).toHaveBeenCalledTimes(1)
 
   await wrapper.setData({ type: 'year', date: [currentYear, `${+currentYear + 2}`] })
   await delay(0)
 
   const lis1 = wrapper.find('.var-year-picker').findAll('li').slice(0, 2)
+  const getSelectedYearButtons = () =>
+    wrapper.findAll('.var-year-picker__button').filter((button) => !button.classes('var-button--text'))
+
+  expect(getSelectedYearButtons()).toHaveLength(3)
+
   await lis1[0].find('button').trigger('click')
   await lis1[1].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual([`${currentYear.slice(0, 2)}00`, `${currentYear.slice(0, 2)}01`])
@@ -711,6 +733,45 @@ test('datePicker range should keep preview after choosing date in switched panel
   expect(wrapper.vm.date).toEqual(['2021-06-01', '2021-06-03'])
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('六月')
+
+  wrapper.unmount()
+})
+
+test('datePicker range should keep preview after choosing month or year across pages', async () => {
+  const wrapper = mount({
+    components: {
+      [VarDatePicker.name]: VarDatePicker,
+    },
+    data() {
+      return {
+        date: ['2021-05', '2021-06'],
+        type: 'month',
+      }
+    },
+    template: '<var-date-picker range :type="type" v-model="date" />',
+  })
+
+  await delay(0)
+  await wrapper.find('.var-month-picker__content').find('ul').findAll('li')[0].find('button').trigger('click')
+  await wrapper.findAll('.var-date-picker-header__arrow')[1].trigger('click')
+  await delay(200)
+  await wrapper.find('.var-month-picker__content').find('ul').findAll('li')[2].find('button').trigger('click')
+  await delay(0)
+
+  expect(wrapper.vm.date).toEqual(['2021-01', '2022-03'])
+  expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2022')
+
+  await wrapper.setData({ type: 'year', date: [currentYear, `${+currentYear + 2}`] })
+  await delay(0)
+
+  await wrapper.find('.var-year-picker').findAll('li')[0].find('button').trigger('click')
+  await wrapper.findAll('.var-date-picker-header__arrow')[1].trigger('click')
+  await delay(200)
+  await wrapper.find('.var-year-picker').findAll('li')[1].find('button').trigger('click')
+  await delay(0)
+
+  expect(wrapper.vm.date).toEqual([`${currentYear.slice(0, 2)}00`, `${+currentYear.slice(0, 2) + 1}01`])
+  expect(wrapper.find('.var-year-picker').findAll('li')[0].text()).toBe(`${+currentYear.slice(0, 2) + 1}00`)
 
   wrapper.unmount()
 })

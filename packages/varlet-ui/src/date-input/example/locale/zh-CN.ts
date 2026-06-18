@@ -19,5 +19,7 @@ export default {
   yearPlaceholder: '请选择年份',
   multiplePlaceholder: '请选择日期',
   rangePlaceholder: '请选择日期范围',
+  monthRangePlaceholder: '请选择月份范围',
+  yearRangePlaceholder: '请选择年份范围',
   requiredMessage: '请选择日期',
 }
