@@ -27,6 +27,11 @@ const standardValue13 = ref('2021/04/08')
 const standardValue14 = ref('2021-04-08')
 const standardValue15 = ref(['2021-04', '2021-09'])
 const standardValue16 = ref(['2021', '2025'])
+const standardValue17 = ref('2021-04-08')
+const standardValue18 = ref(['2021-04-08', '2021-04-12'])
+const standardValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -49,7 +54,7 @@ const standardValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="standardValue9" placeholder="Display Icon">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -59,6 +64,14 @@ const standardValue16 = ref(['2021', '2025'])
     <var-date-input v-model="standardValue11" range placeholder="Select date range" />
     <var-date-input v-model="standardValue15" type="month" range placeholder="Select month range" />
     <var-date-input v-model="standardValue16" type="year" range placeholder="Select year range" />
+    <var-date-input v-model="standardValue17" min="2021-04-05" max="2021-04-20" placeholder="Min And Max" />
+    <var-date-input
+      v-model="standardValue18"
+      range
+      range-separator=" to "
+      placeholder="Custom Separator"
+    />
+    <var-date-input v-model="standardValue19" :allowed-dates="allowedDates" placeholder="Allowed Dates" />
     <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ standardValue12 }}</template>
     </var-date-input>
@@ -104,6 +117,11 @@ const outlinedValue13 = ref('2021/04/08')
 const outlinedValue14 = ref('2021-04-08')
 const outlinedValue15 = ref(['2021-04', '2021-09'])
 const outlinedValue16 = ref(['2021', '2025'])
+const outlinedValue17 = ref('2021-04-08')
+const outlinedValue18 = ref(['2021-04-08', '2021-04-12'])
+const outlinedValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -128,7 +146,7 @@ const outlinedValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="outlinedValue9" variant="outlined" placeholder="Display Icon">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -138,6 +156,26 @@ const outlinedValue16 = ref(['2021', '2025'])
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="Select date range" />
     <var-date-input v-model="outlinedValue15" variant="outlined" type="month" range placeholder="Select month range" />
     <var-date-input v-model="outlinedValue16" variant="outlined" type="year" range placeholder="Select year range" />
+    <var-date-input
+      v-model="outlinedValue17"
+      variant="outlined"
+      min="2021-04-05"
+      max="2021-04-20"
+      placeholder="Min And Max"
+    />
+    <var-date-input
+      v-model="outlinedValue18"
+      variant="outlined"
+      range
+      range-separator=" to "
+      placeholder="Custom Separator"
+    />
+    <var-date-input
+      v-model="outlinedValue19"
+      variant="outlined"
+      :allowed-dates="allowedDates"
+      placeholder="Allowed Dates"
+    />
     <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ outlinedValue12 }}</template>
     </var-date-input>
@@ -188,6 +226,11 @@ const filledValue13 = ref('2021/04/08')
 const filledValue14 = ref('2021-04-08')
 const filledValue15 = ref(['2021-04', '2021-09'])
 const filledValue16 = ref(['2021', '2025'])
+const filledValue17 = ref('2021-04-08')
+const filledValue18 = ref(['2021-04-08', '2021-04-12'])
+const filledValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -212,7 +255,7 @@ const filledValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="filledValue9" variant="filled" placeholder="Display Icon">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -222,6 +265,26 @@ const filledValue16 = ref(['2021', '2025'])
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="Select date range" />
     <var-date-input v-model="filledValue15" variant="filled" type="month" range placeholder="Select month range" />
     <var-date-input v-model="filledValue16" variant="filled" type="year" range placeholder="Select year range" />
+    <var-date-input
+      v-model="filledValue17"
+      variant="filled"
+      min="2021-04-05"
+      max="2021-04-20"
+      placeholder="Min And Max"
+    />
+    <var-date-input
+      v-model="filledValue18"
+      variant="filled"
+      range
+      range-separator=" to "
+      placeholder="Custom Separator"
+    />
+    <var-date-input
+      v-model="filledValue19"
+      variant="filled"
+      :allowed-dates="allowedDates"
+      placeholder="Allowed Dates"
+    />
     <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="Timestamp Value">
       <template #extra-message>Current value: {{ filledValue12 }}</template>
     </var-date-input>
@@ -276,7 +339,7 @@ const filledValue16 = ref(['2021', '2025'])
 | `clearable` | Whether to show clear icon | _boolean_ | `false` |
 | `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | Validation rules. Return `true` to pass validation, other values are converted into user messages. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | Restrict selectable dates | _(value: string) => boolean_ | `-` |
+| `allowed-dates` | Restrict selectable values. The value format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _(value: string) => boolean_ | `-` |
 | `min` | Minimum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
 | `max` | Maximum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
 | `first-day-of-week` | First day of week, starts from Sunday `0` | _string \| number_ | `0` |

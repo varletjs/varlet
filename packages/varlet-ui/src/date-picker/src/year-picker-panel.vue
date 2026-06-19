@@ -27,7 +27,7 @@ import dayjs from 'dayjs/esm/index.js'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import VarButton from '../../button'
 import { createNamespace } from '../../utils/components'
-import { DatePickerUnits, ShiftDirections } from '../constants'
+import { DatePickerTypes, DatePickerUnits, ShiftDirections } from '../constants'
 import { type DatePickerSelectionState, type PanelDatePickerProps } from '../types'
 
 const { n } = createNamespace('year-picker')
@@ -101,11 +101,11 @@ export default defineComponent({
 
     function buttonProps(year: string) {
       const {
-        datePickerProps: { allowedDates, color },
+        datePickerProps: { allowedDates, color, type },
       }: { datePickerProps: PanelDatePickerProps } = props
 
       const active = isSelectedYear(year)
-      const disabled = !isInRange(year) || (allowedDates ? !allowedDates(year) : false)
+      const disabled = !isInRange(year) || (type === DatePickerTypes.Year && allowedDates ? !allowedDates(year) : false)
 
       return {
         outline: false,

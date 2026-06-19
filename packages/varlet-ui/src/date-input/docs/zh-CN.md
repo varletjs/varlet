@@ -27,6 +27,11 @@ const standardValue13 = ref('2021/04/08')
 const standardValue14 = ref('2021-04-08')
 const standardValue15 = ref(['2021-04', '2021-09'])
 const standardValue16 = ref(['2021', '2025'])
+const standardValue17 = ref('2021-04-08')
+const standardValue18 = ref(['2021-04-08', '2021-04-12'])
+const standardValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -49,7 +54,7 @@ const standardValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="standardValue9" placeholder="显示图标">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -59,6 +64,14 @@ const standardValue16 = ref(['2021', '2025'])
     <var-date-input v-model="standardValue11" range placeholder="请选择日期范围" />
     <var-date-input v-model="standardValue15" type="month" range placeholder="请选择月份范围" />
     <var-date-input v-model="standardValue16" type="year" range placeholder="请选择年份范围" />
+    <var-date-input v-model="standardValue17" min="2021-04-05" max="2021-04-20" placeholder="限制日期范围" />
+    <var-date-input
+      v-model="standardValue18"
+      range
+      range-separator=" 至 "
+      placeholder="自定义分隔符"
+    />
+    <var-date-input v-model="standardValue19" :allowed-dates="allowedDates" placeholder="限制可选日期" />
     <var-date-input v-model="standardValue12" value-format="timestamp" placeholder="时间戳绑定值">
       <template #extra-message>当前值：{{ standardValue12 }}</template>
     </var-date-input>
@@ -104,6 +117,11 @@ const outlinedValue13 = ref('2021/04/08')
 const outlinedValue14 = ref('2021-04-08')
 const outlinedValue15 = ref(['2021-04', '2021-09'])
 const outlinedValue16 = ref(['2021', '2025'])
+const outlinedValue17 = ref('2021-04-08')
+const outlinedValue18 = ref(['2021-04-08', '2021-04-12'])
+const outlinedValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -128,7 +146,7 @@ const outlinedValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="outlinedValue9" variant="outlined" placeholder="显示图标">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -138,6 +156,26 @@ const outlinedValue16 = ref(['2021', '2025'])
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="请选择日期范围" />
     <var-date-input v-model="outlinedValue15" variant="outlined" type="month" range placeholder="请选择月份范围" />
     <var-date-input v-model="outlinedValue16" variant="outlined" type="year" range placeholder="请选择年份范围" />
+    <var-date-input
+      v-model="outlinedValue17"
+      variant="outlined"
+      min="2021-04-05"
+      max="2021-04-20"
+      placeholder="限制日期范围"
+    />
+    <var-date-input
+      v-model="outlinedValue18"
+      variant="outlined"
+      range
+      range-separator=" 至 "
+      placeholder="自定义分隔符"
+    />
+    <var-date-input
+      v-model="outlinedValue19"
+      variant="outlined"
+      :allowed-dates="allowedDates"
+      placeholder="限制可选日期"
+    />
     <var-date-input v-model="outlinedValue12" variant="outlined" value-format="timestamp" placeholder="时间戳绑定值">
       <template #extra-message>当前值：{{ outlinedValue12 }}</template>
     </var-date-input>
@@ -188,6 +226,11 @@ const filledValue13 = ref('2021/04/08')
 const filledValue14 = ref('2021-04-08')
 const filledValue15 = ref(['2021-04', '2021-09'])
 const filledValue16 = ref(['2021', '2025'])
+const filledValue17 = ref('2021-04-08')
+const filledValue18 = ref(['2021-04-08', '2021-04-12'])
+const filledValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
 
 <template>
@@ -212,7 +255,7 @@ const filledValue16 = ref(['2021', '2025'])
     />
     <var-date-input v-model="filledValue9" variant="filled" placeholder="显示图标">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -222,6 +265,26 @@ const filledValue16 = ref(['2021', '2025'])
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="请选择日期范围" />
     <var-date-input v-model="filledValue15" variant="filled" type="month" range placeholder="请选择月份范围" />
     <var-date-input v-model="filledValue16" variant="filled" type="year" range placeholder="请选择年份范围" />
+    <var-date-input
+      v-model="filledValue17"
+      variant="filled"
+      min="2021-04-05"
+      max="2021-04-20"
+      placeholder="限制日期范围"
+    />
+    <var-date-input
+      v-model="filledValue18"
+      variant="filled"
+      range
+      range-separator=" 至 "
+      placeholder="自定义分隔符"
+    />
+    <var-date-input
+      v-model="filledValue19"
+      variant="filled"
+      :allowed-dates="allowedDates"
+      placeholder="限制可选日期"
+    />
     <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" placeholder="时间戳绑定值">
       <template #extra-message>当前值：{{ filledValue12 }}</template>
     </var-date-input>
@@ -276,7 +339,7 @@ const filledValue16 = ref(['2021', '2025'])
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation) | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | 限制可以选择的日期 | _(value: string) => boolean_ | `-` |
+| `allowed-dates` | 限制可以选择的值，参数格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _(value: string) => boolean_ | `-` |
 | `min` | 允许的最小值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
 | `max` | 允许的最大值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
 | `first-day-of-week` | 设置一周的第一天，从周日的 `0` 开始 | _string \| number_ | `0` |

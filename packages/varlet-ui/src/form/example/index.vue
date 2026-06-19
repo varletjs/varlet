@@ -57,24 +57,33 @@ onThemeChange()
     <var-space direction="column" :size="['4vmin', 0]">
       <var-input
         v-model="formData.username"
+        variant="outlined"
         :placeholder="t('username')"
         :rules="[(v) => !!v || t('usernameMessage')]"
       />
       <var-input
         v-model="formData.password"
+        variant="outlined"
         type="password"
         :placeholder="t('password')"
         :rules="[(v) => !!v || t('passwordMessage'), (v) => v.length >= 8 || t('passwordMinLengthMessage')]"
       />
       <var-auto-complete
         v-model="formData.email"
+        variant="outlined"
         :placeholder="t('email')"
         :rules="[(v) => !!v || t('emailMessage')]"
         :options="suggestions"
       />
-      <var-date-input v-model="formData.date" :placeholder="t('date')" :rules="[(v) => !!v || t('dateMessage')]" />
+      <var-date-input
+        v-model="formData.date"
+        variant="outlined"
+        :placeholder="t('date')"
+        :rules="[(v) => !!v || t('dateMessage')]"
+      />
       <var-select
         v-model="formData.department"
+        variant="outlined"
         :placeholder="t('department')"
         :rules="[(v) => !!v || t('departmentMessage')]"
       >
@@ -84,6 +93,7 @@ onThemeChange()
       </var-select>
       <var-select
         v-model="formData.group"
+        variant="outlined"
         multiple
         :placeholder="t('group')"
         :rules="[(v) => v.length >= 1 || t('groupMessage')]"
@@ -112,6 +122,7 @@ onThemeChange()
       <var-slider v-model="formData.range" :rules="[(v) => v > 10 || t('rangeMessage')]" />
       <var-otp-input
         v-model="formData.otp"
+        variant="outlined"
         :rules="[(v) => !!v || t('otpMessage'), (v) => v.length === 6 || t('otpLengthMessage')]"
       />
       <var-uploader v-model="formData.files" :rules="[(v) => v.length >= 1 || t('filesMessage')]" />

@@ -20,6 +20,9 @@ const standardValue13 = ref('2021/04/08')
 const standardValue14 = ref('2021-04-08')
 const standardValue15 = ref(['2021-04', '2021-09'])
 const standardValue16 = ref(['2021', '2025'])
+const standardValue17 = ref('2021-04-08')
+const standardValue18 = ref(['2021-04-08', '2021-04-12'])
+const standardValue19 = ref('2021-04-09')
 
 const outlinedValue = ref('2021-04-08')
 const outlinedValue2 = ref('2021-04')
@@ -37,6 +40,9 @@ const outlinedValue13 = ref('2021/04/08')
 const outlinedValue14 = ref('2021-04-08')
 const outlinedValue15 = ref(['2021-04', '2021-09'])
 const outlinedValue16 = ref(['2021', '2025'])
+const outlinedValue17 = ref('2021-04-08')
+const outlinedValue18 = ref(['2021-04-08', '2021-04-12'])
+const outlinedValue19 = ref('2021-04-09')
 
 const filledValue = ref('2021-04-08')
 const filledValue2 = ref('2021-04')
@@ -54,6 +60,11 @@ const filledValue13 = ref('2021/04/08')
 const filledValue14 = ref('2021-04-08')
 const filledValue15 = ref(['2021-04', '2021-09'])
 const filledValue16 = ref(['2021', '2025'])
+const filledValue17 = ref('2021-04-08')
+const filledValue18 = ref(['2021-04-08', '2021-04-12'])
+const filledValue19 = ref('2021-04-09')
+
+const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 
 watchLang(use)
 onThemeChange()
@@ -80,7 +91,7 @@ onThemeChange()
     />
     <var-date-input v-model="standardValue9" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -90,6 +101,9 @@ onThemeChange()
     <var-date-input v-model="standardValue11" range :placeholder="t('rangePlaceholder')" />
     <var-date-input v-model="standardValue15" type="month" range :placeholder="t('monthRangePlaceholder')" />
     <var-date-input v-model="standardValue16" type="year" range :placeholder="t('yearRangePlaceholder')" />
+    <var-date-input v-model="standardValue17" min="2021-04-05" max="2021-04-20" :placeholder="t('minMax')" />
+    <var-date-input v-model="standardValue18" range range-separator=" 至 " :placeholder="t('customSeparator')" />
+    <var-date-input v-model="standardValue19" :allowed-dates="allowedDates" :placeholder="t('allowedDates')" />
     <var-date-input v-model="standardValue12" value-format="timestamp" :placeholder="t('valueFormat')">
       <template #extra-message>{{ t('currentValue') }}{{ standardValue12 }}</template>
     </var-date-input>
@@ -121,7 +135,7 @@ onThemeChange()
     />
     <var-date-input v-model="outlinedValue9" variant="outlined" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -142,6 +156,26 @@ onThemeChange()
       type="year"
       range
       :placeholder="t('yearRangePlaceholder')"
+    />
+    <var-date-input
+      v-model="outlinedValue17"
+      variant="outlined"
+      min="2021-04-05"
+      max="2021-04-20"
+      :placeholder="t('minMax')"
+    />
+    <var-date-input
+      v-model="outlinedValue18"
+      variant="outlined"
+      range
+      range-separator=" 至 "
+      :placeholder="t('customSeparator')"
+    />
+    <var-date-input
+      v-model="outlinedValue19"
+      variant="outlined"
+      :allowed-dates="allowedDates"
+      :placeholder="t('allowedDates')"
     />
     <var-date-input
       v-model="outlinedValue12"
@@ -184,7 +218,7 @@ onThemeChange()
     />
     <var-date-input v-model="filledValue9" variant="filled" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar-month" />
+        <var-icon class="prepend-icon" name="calendar" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -205,6 +239,26 @@ onThemeChange()
       type="year"
       range
       :placeholder="t('yearRangePlaceholder')"
+    />
+    <var-date-input
+      v-model="filledValue17"
+      variant="filled"
+      min="2021-04-05"
+      max="2021-04-20"
+      :placeholder="t('minMax')"
+    />
+    <var-date-input
+      v-model="filledValue18"
+      variant="filled"
+      range
+      range-separator=" 至 "
+      :placeholder="t('customSeparator')"
+    />
+    <var-date-input
+      v-model="filledValue19"
+      variant="filled"
+      :allowed-dates="allowedDates"
+      :placeholder="t('allowedDates')"
     />
     <var-date-input v-model="filledValue12" variant="filled" value-format="timestamp" :placeholder="t('valueFormat')">
       <template #extra-message>{{ t('currentValue') }}{{ filledValue12 }}</template>

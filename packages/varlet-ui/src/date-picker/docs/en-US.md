@@ -57,7 +57,7 @@ const year = ref(['2021', '2025'])
 
 ### Date Limit
 
-Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit the dates that can be selected.
+Use `min` and `max` prop to allow the maximum and minimum date, and use `allowed-dates` prop to limit selectable values. The callback value format follows `type`.
 
 ```html
 <script setup>
@@ -157,7 +157,7 @@ const date = ref('2021')
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`), and is an array when `multiple` or `range` | _string[] \| string_ | `undefined` |
 | `type` | Picker type, optional values `date` `month` `year`                                                                         | _string_ | `date` |
-| `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
+| `allowed-dates` | Restricts selectable values. The value format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`)                  | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `-` |
 | `title-color` | Color of picker title. If not specified it will use `color` prop or the default picker color. | _string_ | `-` |
 | `hint`              | Picker hint. Inferred by `type` when not set                                  | _string_ | `-` |

@@ -32,7 +32,7 @@ import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { DatePickerUnits, MonthList, ShiftDirections, type Month } from '../constants'
+import { DatePickerTypes, DatePickerUnits, MonthList, ShiftDirections, type Month } from '../constants'
 import type { DatePickerPreviewState, DatePickerSelectionState, PanelDatePickerProps } from '../types'
 
 dayjs.extend(isSameOrBefore)
@@ -112,12 +112,13 @@ export default defineComponent({
     function buttonProps(month: Month) {
       const {
         preview: { previewYear },
-        datePickerProps: { allowedDates, color },
+        datePickerProps: { allowedDates, color, type },
       }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
 
       const value = `${previewYear}-${month}`
       const active = isSelectedMonth(value, month)
-      const disabled = !isInRange(month) || (allowedDates ? !allowedDates(value) : false)
+      const disabled =
+        !isInRange(month) || (type === DatePickerTypes.Month && allowedDates ? !allowedDates(value) : false)
 
       return {
         outline: false,

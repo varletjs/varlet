@@ -123,6 +123,7 @@ describe('test dateInput input behavior', () => {
     await wrapper.find('input').trigger('change')
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08')
+    expect(wrapper.vm.isFocusing).toBe(true)
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-04-08')
     expect(onUpdateModelValue).not.toHaveBeenCalled()
 
@@ -492,7 +493,7 @@ describe('test dateInput picker behavior', () => {
     wrapper.unmount()
   })
 
-  test('dateInput does not open picker when clicking calendar icon', async () => {
+  test('dateInput opens picker when clicking calendar icon', async () => {
     const wrapper = mount(VarDateInput, {
       props: {
         modelValue: '2021-04-08',
@@ -502,7 +503,7 @@ describe('test dateInput picker behavior', () => {
     await wrapper.find('.var-date-input__calendar-icon').trigger('click')
     await delay(0)
 
-    expect(wrapper.vm.showMenu).toBe(false)
+    expect(wrapper.vm.showMenu).toBe(true)
 
     wrapper.unmount()
   })
@@ -597,6 +598,29 @@ describe('test dateInput picker behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput keeps picker open when clicking disabled date', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+        allowedDates: (val) => val !== '2021-04-9' && val !== '2021-04-09',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+
+    await wrapper.findComponent(DatePicker).trigger('pointerdown')
+    wrapper.findComponent(DatePicker).vm.chooseDayFromPanel(9)
+    await delay(0)
+
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+    expect(wrapper.vm.showMenu).toBe(true)
+
+    wrapper.unmount()
+  })
+
   test('dateInput passes constraints to picker', () => {
     const allowedDates = vi.fn()
     const wrapper = mount(VarDateInput, {
@@ -658,6 +682,42 @@ describe('test dateInput picker behavior', () => {
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
     expect(onUpdateModelValue).lastCalledWith(undefined)
     expect(onClear).lastCalledWith('')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not validate again when form resets', async () => {
+    const wrapper = mount(
+      defineComponent({
+        components: {
+          VarForm,
+          VarDateInput,
+        },
+        setup() {
+          const value = ref('')
+          const form = ref(null)
+
+          return {
+            value,
+            form,
+          }
+        },
+        template: `
+          <var-form ref="form">
+            <var-date-input v-model="value" :rules="[(v) => !!v || 'required']" />
+          </var-form>
+        `,
+      }),
+    )
+
+    await delay(0)
+    await wrapper.vm.form.validate()
+    await delay(10)
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('required')
+
+    wrapper.vm.form.reset()
+    await delay(10)
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBe(false)
 
     wrapper.unmount()
   })

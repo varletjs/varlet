@@ -48,7 +48,7 @@
 
         <template #append-icon>
           <slot name="append-icon">
-            <var-icon :class="n('calendar-icon')" name="calendar-month" @click.stop />
+            <var-icon :class="n('calendar-icon')" name="calendar" />
           </slot>
         </template>
 
@@ -231,27 +231,34 @@ export default defineComponent({
       return dayjsObject.format(props.valueFormat)
     }
 
-    function updateStatesByModelValue() {
-      const { modelValue, range } = props
-
+    function getDayjsObjectsByModelValue() {
       if (isMultipleOrRange.value) {
-        const dayjsObjects = (isArray(modelValue) ? modelValue : []).map(modelValueToDayjsObject).filter(isTruthy)
-        pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
-
-        if (!isFocusing.value) {
-          displayValue.value = dayjsObjects
-            .map((dayjsObject) => dayjsObject.format(getDisplayFormat()))
-            .join(range ? props.rangeSeparator : props.separator)
-        }
-
-        return
+        return (isArray(props.modelValue) ? props.modelValue : []).map(modelValueToDayjsObject).filter(isTruthy)
       }
 
-      const dayjsObject = isArray(modelValue) ? undefined : modelValueToDayjsObject(modelValue)
-      pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
+      const dayjsObject = isArray(props.modelValue) ? undefined : modelValueToDayjsObject(props.modelValue)
+
+      return dayjsObject ? [dayjsObject] : []
+    }
+
+    function updateDisplayValueByDayjsObjects(dayjsObjects: Dayjs[]) {
+      displayValue.value = dayjsObjects
+        .map((dayjsObject) => dayjsObject.format(getDisplayFormat()))
+        .join(props.range ? props.rangeSeparator : props.separator)
+    }
+
+    function updateStatesByModelValue() {
+      const dayjsObjects = getDayjsObjectsByModelValue()
+
+      if (isMultipleOrRange.value) {
+        pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
+      } else {
+        const [dayjsObject] = dayjsObjects
+        pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
+      }
 
       if (!isFocusing.value) {
-        displayValue.value = dayjsObject ? dayjsObject.format(getDisplayFormat()) : ''
+        updateDisplayValueByDayjsObjects(dayjsObjects)
       }
     }
 
@@ -338,6 +345,10 @@ export default defineComponent({
         return
       }
 
+      if (value === displayValue.value) {
+        return
+      }
+
       displayValue.value = value
 
       if (value === '') {
@@ -361,8 +372,7 @@ export default defineComponent({
         return
       }
 
-      isFocusing.value = false
-      updateStatesByModelValue()
+      updateDisplayValueByDayjsObjects(getDayjsObjectsByModelValue())
     }
 
     function handlePickerChange(value: string | string[]) {
@@ -440,8 +450,11 @@ export default defineComponent({
     }
 
     function reset() {
+      const emptyModelValue = getEmptyModelValue()
+
       clearValue()
       showMenu.value = false
+      !isEqual(props.modelValue, emptyModelValue) && call(props['onUpdate:modelValue'], emptyModelValue)
       resetValidation()
     }
 
@@ -460,6 +473,7 @@ export default defineComponent({
       handleFocus,
       handleBlur,
       handleClick,
+      handleCalendarIconClick,
       handleKeydown,
       handleInput,
       handleChange,

@@ -58,7 +58,7 @@ const year = ref(['2021', '2025'])
 
 ### 日期限制
 
-通过 `min` 和 `max` 属性来控制可选择的日期范围，使用 `allowed-dates` 属性限制可以选择的日期。
+通过 `min` 和 `max` 属性来控制可选择的日期范围，使用 `allowed-dates` 属性限制可以选择的值，回调参数格式随 `type` 变化。
 
 ```html
 <script setup>
@@ -158,7 +158,7 @@ const date = ref('2021')
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `v-model`           | 选中值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`），`multiple` 或 `range` 时为数组 | _string[] \| string_ | `undefined` |
 | `type`              | 选择器类型，可选值为 `date month year`                      | _string_ | `date` |
-| `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
+| `allowed-dates`     | 限制可以选择的值，参数格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `-` |
 | `title-color`       | 标题背景色。如果未指定，将使用 `color` 属性或默认颜色。              | _string_ | `-` |
 | `hint`              | 选择器提示语，未设置时会根据 `type` 推导                     | _string_ | `-` |

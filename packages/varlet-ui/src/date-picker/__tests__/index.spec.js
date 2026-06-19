@@ -120,6 +120,81 @@ test('datePicker allowedDates', () => {
   wrapper.unmount()
 })
 
+test('datePicker does not emit change when choosing disabled value', async () => {
+  const onUpdateModelValue = vi.fn()
+  const onChange = vi.fn()
+
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-03-01',
+      allowedDates: (val) => val !== '2021-03-2',
+      'onUpdate:modelValue': onUpdateModelValue,
+      onChange,
+    },
+  })
+
+  wrapper.vm.chooseDayFromPanel(2)
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+  expect(onChange).not.toHaveBeenCalled()
+
+  await wrapper.setProps({
+    type: 'month',
+    modelValue: '2021-03',
+    allowedDates: (val) => val !== '2021-04',
+  })
+
+  wrapper.vm.chooseMonthFromPanel('04')
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+  expect(onChange).not.toHaveBeenCalled()
+
+  await wrapper.setProps({
+    type: 'year',
+    modelValue: '2021',
+    allowedDates: (val) => val !== '2022',
+  })
+
+  wrapper.vm.chooseYearFromPanel(2022)
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+  expect(onChange).not.toHaveBeenCalled()
+
+  wrapper.unmount()
+})
+
+test('datePicker prevents pointerdown default behavior', () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-03-01',
+    },
+  })
+  const event = new Event('pointerdown', { cancelable: true })
+
+  wrapper.element.dispatchEvent(event)
+  expect(event.defaultPrevented).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('datePicker allowedDates does not block year or month navigation in date type', () => {
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      modelValue: '2021-03-01',
+      allowedDates: (val) => val.endsWith('-01'),
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  wrapper.vm.chooseMonthFromPanel('04')
+  expect(wrapper.vm.previewDate.previewMonth).toBe('04')
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+  wrapper.vm.chooseYearFromPanel(2022)
+  expect(wrapper.vm.previewYear).toBe('2022')
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+  wrapper.unmount()
+})
+
 test('datePicker firstDayOfWeek', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
