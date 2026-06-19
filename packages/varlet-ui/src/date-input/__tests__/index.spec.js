@@ -611,7 +611,7 @@ describe('test dateInput picker behavior', () => {
     await wrapper.find('input').trigger('click')
     await delay(0)
 
-    await wrapper.findComponent(DatePicker).trigger('pointerdown')
+    await wrapper.findComponent(DatePicker).trigger('mousedown')
     wrapper.findComponent(DatePicker).vm.chooseDayFromPanel(9)
     await delay(0)
 

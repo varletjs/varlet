@@ -473,7 +473,6 @@ export default defineComponent({
       handleFocus,
       handleBlur,
       handleClick,
-      handleCalendarIconClick,
       handleKeydown,
       handleInput,
       handleChange,

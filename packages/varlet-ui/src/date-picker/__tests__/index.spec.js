@@ -160,13 +160,13 @@ test('datePicker does not emit change when choosing disabled value', async () =>
   wrapper.unmount()
 })
 
-test('datePicker prevents pointerdown default behavior', () => {
+test('datePicker prevents mousedown default behavior', () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       modelValue: '2021-03-01',
     },
   })
-  const event = new Event('pointerdown', { cancelable: true })
+  const event = new Event('mousedown', { cancelable: true })
 
   wrapper.element.dispatchEvent(event)
   expect(event.defaultPrevented).toBe(true)

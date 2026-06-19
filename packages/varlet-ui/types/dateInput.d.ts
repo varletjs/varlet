@@ -42,9 +42,9 @@ export interface DateInputProps extends BasicAttributes {
   tabindex?: InputHTMLAttributes['tabindex']
   onFocus?: ListenerProp<(e: FocusEvent) => void>
   onBlur?: ListenerProp<(e: FocusEvent) => void>
-  onChange?: ListenerProp<(value: DateInputValue | DateInputValue[]) => void>
+  onChange?: ListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>
   onClear?: ListenerProp<(value: string) => void>
-  'onUpdate:modelValue'?: ListenerProp<(value: DateInputValue | DateInputValue[]) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>
 }
 
 export interface DateInputClearIconData {

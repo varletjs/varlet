@@ -249,6 +249,10 @@
       width: 100%;
       max-width: var(--month-picker-item-button-max-width);
       font-weight: var(--month-picker-item-button-font-weight);
+
+      &:disabled {
+        pointer-events: none;
+      }
     }
 
     &__button[var-date-picker-color-cover='true'] {
@@ -274,6 +278,10 @@
       width: 100%;
       max-width: var(--year-picker-item-button-max-width);
       font-weight: var(--year-picker-item-button-font-weight);
+
+      &:disabled {
+        pointer-events: none;
+      }
     }
 
     &__button[var-date-picker-color-cover='true'] {
@@ -312,6 +320,10 @@
       width: var(--day-picker-content-item-button-width);
       height: var(--day-picker-content-item-button-height);
       font-size: var(--day-picker-content-item-button-font-size);
+
+      &:disabled {
+        pointer-events: none;
+      }
     }
 
     &__button:not(.var-day-picker__button--usable) {

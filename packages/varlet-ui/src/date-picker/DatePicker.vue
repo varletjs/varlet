@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="classes(n(), formatElevation(elevation, 2), [!showTitle, n('--no-title')])"
-    @pointerdown.capture="handlePointerdown"
-  >
+  <div :class="classes(n(), formatElevation(elevation, 2), [!showTitle, n('--no-title')])" @mousedown.capture.prevent>
     <div v-if="showTitle" :class="n('title')" :style="{ background: titleColor || color }">
       <div :class="n('title-select')">
         <div :class="n('title-hint')">{{ titleHint }}</div>
@@ -104,7 +101,7 @@
 </template>
 
 <script lang="ts">
-import { call, error, isArray, preventDefault, toNumber, uniq } from '@varlet/shared'
+import { call, error, isArray, toNumber, uniq } from '@varlet/shared'
 import dayjs from 'dayjs/esm/index.js'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
 import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
@@ -469,10 +466,6 @@ export default defineComponent({
       emitModelValueChange(value)
     }
 
-    function handlePointerdown(e: PointerEvent) {
-      preventDefault(e)
-    }
-
     function isSelectableDate(value: string, unit: DatePickerUnits, checkAllowedDates = true) {
       const { min, max, allowedDates } = props
       const isBeforeMax = max ? dayjs(value).isSameOrBefore(dayjs(max), unit) : true
@@ -507,13 +500,13 @@ export default defineComponent({
         return
       }
 
-      reverse.value = getReverse(DatePickerUnits.Day, day)
-
       const date = `${previewYear.value}-${previewMonth.value}-${day}`
 
       if (!isSelectableDate(date, DatePickerUnits.Day)) {
         return
       }
+
+      reverse.value = getReverse(DatePickerUnits.Day, day)
 
       const formatDate = dayjs(date).format(DatePickerFormats.DayPadded)
 
@@ -773,7 +766,6 @@ export default defineComponent({
       n,
       classes,
       switchPanel,
-      handlePointerdown,
       shiftCurrentPanelPreview,
       shiftDatePanelYearPreview,
       chooseDayFromPanel,
