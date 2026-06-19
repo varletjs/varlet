@@ -160,13 +160,13 @@ test('datePicker does not emit change when choosing disabled value', async () =>
   wrapper.unmount()
 })
 
-test('datePicker prevents mousedown default behavior', () => {
+test('datePicker prevents pointerdown default behavior', () => {
   const wrapper = mount(VarDatePicker, {
     props: {
       modelValue: '2021-03-01',
     },
   })
-  const event = new Event('mousedown', { cancelable: true })
+  const event = new Event('pointerdown', { cancelable: true })
 
   wrapper.element.dispatchEvent(event)
   expect(event.defaultPrevented).toBe(true)
@@ -782,6 +782,43 @@ test('datePicker range', async () => {
   wrapper.unmount()
 })
 
+test('datePicker range should handle single endpoint model value', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      range: true,
+      modelValue: ['2021-05-19'],
+    },
+  })
+
+  await delay(0)
+  expect(wrapper.vm.dateTitle).toBe('2021-05-19')
+  expect(
+    wrapper.findAll('.var-day-picker__button').filter((button) => !button.classes('var-button--text')),
+  ).toHaveLength(1)
+
+  await wrapper.setProps({
+    type: 'month',
+    modelValue: ['2021-05'],
+  })
+  await delay(0)
+  expect(wrapper.vm.monthTitle).toBe('2021-05')
+  expect(
+    wrapper.findAll('.var-month-picker__button').filter((button) => !button.classes('var-button--text')),
+  ).toHaveLength(1)
+
+  await wrapper.setProps({
+    type: 'year',
+    modelValue: ['2021'],
+  })
+  await delay(0)
+  expect(wrapper.vm.yearTitle).toBe('2021')
+  expect(
+    wrapper.findAll('.var-year-picker__button').filter((button) => !button.classes('var-button--text')),
+  ).toHaveLength(1)
+
+  wrapper.unmount()
+})
+
 test('datePicker range should keep preview after choosing date in switched panel', async () => {
   const wrapper = mount({
     components: {
@@ -808,6 +845,32 @@ test('datePicker range should keep preview after choosing date in switched panel
   expect(wrapper.vm.date).toEqual(['2021-06-01', '2021-06-03'])
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2021')
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('六月')
+
+  wrapper.unmount()
+})
+
+test('datePicker should sync preview without panel transition when choosing adjacent month day', async () => {
+  const wrapper = mount({
+    components: {
+      [VarDatePicker.name]: VarDatePicker,
+    },
+    data() {
+      return {
+        date: '2021-05-19',
+      }
+    },
+    template: '<var-date-picker v-model="date" />',
+  })
+
+  await delay(0)
+  const panelKey = wrapper.findComponent({ name: 'DayPickerPanel' }).vm.panelKey
+
+  wrapper.findComponent(VarDatePicker).vm.chooseDayFromPanel(1, 1)
+  await delay(0)
+
+  expect(wrapper.vm.date).toBe('2021-06-01')
+  expect(wrapper.findComponent(VarDatePicker).vm.previewDate.previewMonth).toBe('06')
+  expect(wrapper.findComponent({ name: 'DayPickerPanel' }).vm.panelKey).toBe(panelKey)
 
   wrapper.unmount()
 })

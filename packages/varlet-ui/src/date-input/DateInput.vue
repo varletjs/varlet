@@ -58,7 +58,7 @@
       </var-input>
 
       <template #menu>
-        <div @mousedown.prevent>
+        <div @pointerdown.prevent>
           <var-date-picker
             ref="picker"
             :class="n('picker')"
@@ -179,7 +179,7 @@ export default defineComponent({
   props,
   setup(props) {
     const inputEl = ref<InstanceType<typeof VarInput> | null>(null)
-    const picker = ref<{ rangeSelecting: boolean } | null>(null)
+    const picker = ref<{ rangeSelecting: boolean; syncModelValue: () => void } | null>(null)
     const displayValue = ref('')
     const pickerValue = ref<string | string[]>()
     const showMenu = ref(false)
@@ -512,6 +512,7 @@ export default defineComponent({
       }
 
       showMenu.value = true
+      nextTick(() => picker.value?.syncModelValue())
       validateWithTrigger('onClick')
     }
 
@@ -522,6 +523,7 @@ export default defineComponent({
 
       preventDefault(e)
       showMenu.value = true
+      nextTick(() => picker.value?.syncModelValue())
     }
 
     function updateSingleStatesByDisplayValue(value: string) {

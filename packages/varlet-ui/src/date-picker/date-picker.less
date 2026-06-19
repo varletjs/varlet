@@ -44,7 +44,8 @@
   --day-picker-head-item-color: rgba(0, 0, 0, 0.38);
   --day-picker-head-item-padding: 8px 0;
   --day-picker-head-item-font-weight: normal;
-  --day-picker-adjacent-item-color: rgba(0, 0, 0, 0.38);
+  --day-picker-adjacent-item-color: rgba(0, 0, 0, 0.54);
+  --day-picker-disabled-item-color: var(--color-text-disabled);
 }
 
 .var-date-picker {
@@ -327,6 +328,7 @@
 
       &:disabled {
         pointer-events: none;
+        color: var(--day-picker-disabled-item-color);
       }
     }
 

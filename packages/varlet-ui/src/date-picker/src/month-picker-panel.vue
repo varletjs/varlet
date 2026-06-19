@@ -97,6 +97,10 @@ export default defineComponent({
           return false
         }
 
+        if (chooseRangeMonth.length === 1) {
+          return dayjs(value).isSame(dayjs(chooseRangeMonth[0]), DatePickerUnits.Month)
+        }
+
         const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeMonth[1]), DatePickerUnits.Month)
         const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeMonth[0]), DatePickerUnits.Month)
 

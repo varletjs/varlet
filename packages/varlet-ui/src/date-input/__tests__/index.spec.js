@@ -799,6 +799,87 @@ describe('test dateInput picker behavior', () => {
 
     wrapper.unmount()
   })
+
+  test('dateInput resets uncommitted range selection when picker reopens', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: ['2021-04-08', '2021-04-10'],
+        range: true,
+      },
+    })
+
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.chooseDayFromPanel(9)
+    await wrapper.find('input').trigger('blur')
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
+    expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
+    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeDay).toEqual(['2021-04-8', '2021-04-10'])
+
+    await wrapper.setProps({
+      type: 'month',
+      modelValue: ['2021-04', '2021-06'],
+    })
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.chooseMonthFromPanel('05')
+    await wrapper.find('input').trigger('blur')
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04 ~ 2021-06')
+    expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
+    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeMonth).toEqual(['2021-04', '2021-06'])
+
+    await wrapper.setProps({
+      type: 'year',
+      modelValue: ['2021', '2023'],
+    })
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.chooseYearFromPanel(2022)
+    await wrapper.find('input').trigger('blur')
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021 ~ 2023')
+    expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
+    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeYear).toEqual(['2021', '2023'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput resets temporary picker panel when picker reopens', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        modelValue: '2021-04-08',
+      },
+    })
+
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.switchPanel('year')
+    expect(wrapper.findComponent(DatePicker).vm.panelType).toBe('year')
+
+    await wrapper.find('input').trigger('blur')
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+    expect(wrapper.findComponent(DatePicker).vm.panelType).toBe('date')
+
+    await wrapper.setProps({
+      type: 'month',
+      modelValue: '2021-04',
+    })
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.switchPanel('year')
+    expect(wrapper.findComponent(DatePicker).vm.panelType).toBe('year')
+
+    await wrapper.find('input').trigger('blur')
+    await wrapper.find('input').trigger('click')
+    await delay(0)
+    expect(wrapper.findComponent(DatePicker).vm.panelType).toBe('month')
+
+    wrapper.unmount()
+  })
 })
 
 describe('test dateInput datetime behavior', () => {

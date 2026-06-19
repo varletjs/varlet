@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 2), [!showTitle, n('--no-title')])" @mousedown.capture.prevent>
+  <div :class="classes(n(), formatElevation(elevation, 2), [!showTitle, n('--no-title')])" @pointerdown.capture.prevent>
     <div v-if="showTitle" :class="n('title')" :style="{ background: titleColor || color }">
       <div :class="n('title-select')">
         <div :class="n('title-hint')">{{ titleHint }}</div>
@@ -221,7 +221,7 @@ export default defineComponent({
       const { multiple, range } = props
 
       if (range) {
-        return chooseRangeYear.value.length ? `${chooseRangeYear.value[0]} ~ ${chooseRangeYear.value[1]}` : ''
+        return chooseRangeYear.value.length ? chooseRangeYear.value.join(' ~ ') : ''
       }
 
       return multiple ? `${chooseYears.value.length}${(pt || t)('datePickerSelected')}` : (chooseYear.value ?? '')
@@ -231,7 +231,7 @@ export default defineComponent({
       const { multiple, range } = props
 
       if (range) {
-        return chooseRangeMonth.value.length ? `${chooseRangeMonth.value[0]} ~ ${chooseRangeMonth.value[1]}` : ''
+        return chooseRangeMonth.value.length ? chooseRangeMonth.value.join(' ~ ') : ''
       }
 
       let monthName = ''
@@ -247,7 +247,7 @@ export default defineComponent({
       if (range) {
         const formattedDays = chooseRangeDay.value.map((date) => dayjs(date).format(DatePickerFormats.DayPadded))
 
-        return formattedDays.length ? `${formattedDays[0]} ~ ${formattedDays[1]}` : ''
+        return formattedDays.length ? formattedDays.join(' ~ ') : ''
       }
 
       if (multiple) {
@@ -290,37 +290,43 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (value) => {
+      () => {
         const syncPreview = !keepPreviewOnModelValueChange
         keepPreviewOnModelValueChange = false
 
-        if (!checkValue()) {
-          return
-        }
-
-        if (props.range) {
-          if (!isArray(value)) {
-            return
-          }
-
-          rangeDone.value = value.length !== 1
-          rangeInit(value, props.type, syncPreview)
-          return
-        }
-
-        if (props.multiple) {
-          if (!isArray(value)) {
-            return
-          }
-
-          multipleInit(value, props.type, syncPreview)
-          return
-        }
-
-        dateInit(value as string | undefined, syncPreview)
+        syncFromModelValue(syncPreview)
       },
       { immediate: true },
     )
+
+    function syncFromModelValue(syncPreview = true) {
+      if (!checkValue()) {
+        return
+      }
+
+      const { modelValue, type } = props
+
+      if (props.range) {
+        if (!isArray(modelValue)) {
+          return
+        }
+
+        rangeDone.value = modelValue.length !== 1
+        syncRangeValue(modelValue, type, syncPreview)
+        return
+      }
+
+      if (props.multiple) {
+        if (!isArray(modelValue)) {
+          return
+        }
+
+        syncMultipleValue(modelValue, type, syncPreview)
+        return
+      }
+
+      syncSingleValue(modelValue as string | undefined, syncPreview)
+    }
 
     function switchPanel(type: PanelType) {
       if (type === DatePickerTypes.Year) {
@@ -504,10 +510,12 @@ export default defineComponent({
         return
       }
 
+      reverse.value = monthOffset !== 0 ? monthOffset < 0 : getReverse(DatePickerUnits.Day, day)
+
       if (monthOffset !== 0) {
-        shiftCurrentPanelPreview(monthOffset < 0 ? ShiftDirections.Prev : ShiftDirections.Next)
-      } else {
-        reverse.value = getReverse(DatePickerUnits.Day, day)
+        previewYear.value = targetMonth.format(DatePickerFormats.Year)
+        previewMonth.value = targetMonth.format(DatePickerFormats.Month).split('-')[1] as Month
+        emitPreview()
       }
 
       selectValue(dayjs(date).format(DatePickerFormats.DayPadded), DatePickerTypes.Date)
@@ -640,7 +648,7 @@ export default defineComponent({
       keepPreviewOnModelValueChange = props.type === DatePickerTypes.Date || props.range || props.multiple
     }
 
-    function rangeInit(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
+    function syncRangeValue(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
       const rangeDate = getRangeRefByType(type)
       const formatType = getFormatByType(type)
       const formatDateList = value
@@ -650,18 +658,20 @@ export default defineComponent({
 
       rangeDate.value = formatDateList
 
-      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+      if (rangeDate.value.length === 2) {
+        const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
 
-      if (rangeDate.value.length === 2 && isChangeOrder) {
-        rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
+        if (isChangeOrder) {
+          rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
+        }
       }
 
       if (syncPreview) {
-        previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+        syncPreviewValue(getFirstValidDate(value, type) ?? getFallbackDate())
       }
     }
 
-    function multipleInit(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
+    function syncMultipleValue(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
       const multipleDate = getMultipleRefByType(type)
       const formatType = getFormatByType(type)
 
@@ -670,18 +680,18 @@ export default defineComponent({
       multipleDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
 
       if (syncPreview) {
-        previewInit(getFirstValidDate(value, type) ?? getFallbackDate())
+        syncPreviewValue(getFirstValidDate(value, type) ?? getFallbackDate())
       }
     }
 
-    function dateInit(value: string | undefined, syncPreview = true) {
+    function syncSingleValue(value: string | undefined, syncPreview = true) {
       if (!value) {
         chooseMonth.value = undefined
         chooseYear.value = undefined
         chooseDay.value = undefined
 
         if (syncPreview) {
-          previewInit(getFallbackDate())
+          syncPreviewValue(getFallbackDate())
         }
 
         return
@@ -703,11 +713,11 @@ export default defineComponent({
       chooseDay.value = dayValue
 
       if (syncPreview) {
-        previewInit(formatDate)
+        syncPreviewValue(formatDate)
       }
     }
 
-    function previewInit(value: string | undefined) {
+    function syncPreviewValue(value: string | undefined) {
       const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
       const formatDate = handleValue.format(DatePickerFormats.Day)
 
@@ -728,7 +738,7 @@ export default defineComponent({
       isMonthPanel.value = false
 
       if (!props.range && !props.multiple) {
-        previewInit(getSingleDate(props.modelValue as string | undefined))
+        syncPreviewValue(getSingleDate(props.modelValue as string | undefined))
         return
       }
 
@@ -736,7 +746,14 @@ export default defineComponent({
         ? (getFirstValidDate(props.modelValue, props.type) ?? getFallbackDate())
         : getFallbackDate()
 
-      previewInit(previewValue)
+      syncPreviewValue(previewValue)
+    }
+
+    function syncModelValue() {
+      isYearPanel.value = false
+      isMonthPanel.value = false
+      keepPreviewOnModelValueChange = false
+      syncFromModelValue(true)
     }
 
     return {
@@ -773,6 +790,7 @@ export default defineComponent({
       chooseYearFromPanel,
       shiftPreview,
       resetPreview,
+      syncModelValue,
       rangeSelecting,
       formatElevation,
       DatePickerTypes,

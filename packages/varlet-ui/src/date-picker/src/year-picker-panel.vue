@@ -92,6 +92,10 @@ export default defineComponent({
           return false
         }
 
+        if (chooseRangeYear.length === 1) {
+          return dayjs(year).isSame(dayjs(chooseRangeYear[0]), DatePickerUnits.Year)
+        }
+
         const isBeforeMax = dayjs(year).isSameOrBefore(dayjs(chooseRangeYear[1]), DatePickerUnits.Year)
         const isAfterMin = dayjs(year).isSameOrAfter(dayjs(chooseRangeYear[0]), DatePickerUnits.Year)
 
