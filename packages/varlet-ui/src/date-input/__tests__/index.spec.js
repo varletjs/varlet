@@ -263,7 +263,7 @@ describe('test dateInput input behavior', () => {
     const onUpdateModelValue = vi.fn()
     const wrapper = mount(VarDateInput, {
       props: {
-        modelValue: 1617811200000,
+        modelValue: new Date(2021, 3, 8).getTime(),
         valueFormat: 'timestamp',
         'onUpdate:modelValue': onUpdateModelValue,
       },
