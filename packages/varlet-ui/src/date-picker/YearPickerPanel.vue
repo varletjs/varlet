@@ -107,11 +107,12 @@ export default defineComponent({
 
     function buttonProps(year: string) {
       const {
-        panelProps: { allowedDates, color, type },
+        panelProps: { allowedDates, color, type: pickerType },
       }: { panelProps: PanelDatePickerProps } = props
 
       const active = isSelectedYear(year)
-      const disabled = !isInRange(year) || (type === DatePickerTypes.Year && allowedDates ? !allowedDates(year) : false)
+      const disabled =
+        !isInRange(year) || (pickerType === DatePickerTypes.Year && allowedDates ? !allowedDates(year) : false)
 
       return {
         outline: false,

@@ -55,7 +55,7 @@ const MonthOffset = {
 type MonthOffset = (typeof MonthOffset)[keyof typeof MonthOffset]
 
 type DayCell = {
-  value: string
+  dateValue: string
   day: number
   monthOffset: MonthOffset
 }
@@ -116,10 +116,10 @@ export default defineComponent({
       return (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
     }
 
-    function createCell(date: Dayjs, monthOffset: MonthOffset): DayCell {
+    function createCell(dayjsObject: Dayjs, monthOffset: MonthOffset): DayCell {
       return {
-        value: date.format(DatePickerFormats.Day),
-        day: date.date(),
+        dateValue: dayjsObject.format(DatePickerFormats.Day),
+        day: dayjsObject.date(),
         monthOffset,
       }
     }
@@ -129,37 +129,37 @@ export default defineComponent({
         preview: { previewMonth, previewYear },
       }: { preview: DatePickerPreviewState } = props
 
-      const firstDay = dayjs(`${previewYear}-${previewMonth}-01`)
-      const lastDay = firstDay.endOf(DatePickerUnits.Month)
-      const daysInMonth = firstDay.daysInMonth()
+      const firstDayjsObject = dayjs(`${previewYear}-${previewMonth}-01`)
+      const lastDayjsObject = firstDayjsObject.endOf(DatePickerUnits.Month)
+      const daysInMonth = firstDayjsObject.daysInMonth()
 
       const leadingCount = Math.max(
         0,
-        sortWeekList.value.findIndex((week: Week) => week === `${firstDay.day()}`),
+        sortWeekList.value.findIndex((week: Week) => week === `${firstDayjsObject.day()}`),
       )
       const trailingCount = WEEKS_PER_PANEL * DAYS_PER_WEEK - leadingCount - daysInMonth
 
       const cells: Array<DayCell> = []
 
       for (let offset = leadingCount; offset > 0; offset--) {
-        cells.push(createCell(firstDay.subtract(offset, DatePickerUnits.Day), MonthOffset.Prev))
+        cells.push(createCell(firstDayjsObject.subtract(offset, DatePickerUnits.Day), MonthOffset.Prev))
       }
 
       for (let day = 1; day <= daysInMonth; day++) {
-        cells.push(createCell(firstDay.date(day), MonthOffset.Current))
+        cells.push(createCell(firstDayjsObject.date(day), MonthOffset.Current))
       }
 
       for (let offset = 1; offset <= trailingCount; offset++) {
-        cells.push(createCell(lastDay.add(offset, DatePickerUnits.Day), MonthOffset.Next))
+        cells.push(createCell(lastDayjsObject.add(offset, DatePickerUnits.Day), MonthOffset.Next))
       }
 
       days.value = cells
     }
 
-    function isInRange(value: string) {
+    function isInRange(dateValue: string) {
       const { min, max } = props.panelProps
-      const isBeforeMax = max ? dayjs(value).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
-      const isAfterMin = min ? dayjs(value).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
+      const isBeforeMax = max ? dayjs(dateValue).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
+      const isAfterMin = min ? dayjs(dateValue).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
 
       return isBeforeMax && isAfterMin
     }
@@ -172,20 +172,20 @@ export default defineComponent({
         : undefined
     }
 
-    function isSingleSelectedDate(value: string) {
-      const selectedValue = getSelectedValue()
+    function isSingleSelectedDate(dateValue: string) {
+      const selectedDateValue = getSelectedValue()
 
-      return selectedValue ? dayjs(value).isSame(dayjs(selectedValue), DatePickerUnits.Day) : false
+      return selectedDateValue ? dayjs(dateValue).isSame(dayjs(selectedDateValue), DatePickerUnits.Day) : false
     }
 
-    function isSelectedDate(value: string): boolean {
+    function isSelectedDate(dateValue: string): boolean {
       const {
         selection: { selectedDays, selectedRangeDays },
         panelProps: { range },
       }: { selection: DatePickerSelectionState; panelProps: PanelDatePickerProps } = props
 
       if (!range) {
-        return selectedDays.includes(value)
+        return selectedDays.includes(dateValue)
       }
 
       if (!selectedRangeDays.length) {
@@ -193,24 +193,24 @@ export default defineComponent({
       }
 
       if (selectedRangeDays.length === 1) {
-        return dayjs(value).isSame(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
+        return dayjs(dateValue).isSame(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
       }
 
-      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(selectedRangeDays[1]), DatePickerUnits.Day)
-      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
+      const isBeforeMax = dayjs(dateValue).isSameOrBefore(dayjs(selectedRangeDays[1]), DatePickerUnits.Day)
+      const isAfterMin = dayjs(dateValue).isSameOrAfter(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
 
       return isBeforeMax && isAfterMin
     }
 
-    function isDateDisabled(value: string) {
+    function isDateDisabled(dateValue: string) {
       const { allowedDates } = props.panelProps
 
-      return !isInRange(value) || (allowedDates ? !allowedDates(value) : false)
+      return !isInRange(dateValue) || (allowedDates ? !allowedDates(dateValue) : false)
     }
 
-    function shouldShowOutline(value: string, selected: boolean, disabled: boolean) {
+    function shouldShowOutline(dateValue: string, selected: boolean, disabled: boolean) {
       const { multiple, range, showCurrent } = props.panelProps
-      const current = showCurrent && dayjs(value).isSame(dayjs(props.current), DatePickerUnits.Day)
+      const current = showCurrent && dayjs(dateValue).isSame(dayjs(props.current), DatePickerUnits.Day)
 
       if (!current) {
         return false
@@ -232,13 +232,13 @@ export default defineComponent({
         panelProps: { color, multiple, range },
       }: { panelProps: PanelDatePickerProps } = props
 
-      const { value, monthOffset } = cell
+      const { dateValue, monthOffset } = cell
       const isCurrentMonth = monthOffset === MonthOffset.Current
-      const singleSelected = isSingleSelectedDate(value)
-      const selected = range || multiple ? isSelectedDate(value) : singleSelected
-      const disabled = isDateDisabled(value)
+      const singleSelected = isSingleSelectedDate(dateValue)
+      const selected = range || multiple ? isSelectedDate(dateValue) : singleSelected
+      const disabled = isDateDisabled(dateValue)
       const text = disabled || (range || multiple ? !selected : !singleSelected)
-      const outline = shouldShowOutline(value, selected, disabled)
+      const outline = shouldShowOutline(dateValue, selected, disabled)
       const cover = !disabled && !outline && !selected
       const textColor = !disabled && outline ? (color ?? '') : ''
 

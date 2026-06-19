@@ -81,7 +81,7 @@ export default defineComponent({
       return isBeforeMax && isAfterMin
     }
 
-    function isSelectedMonth(value: string, month: Month): boolean {
+    function isSelectedMonth(monthValue: string, month: Month): boolean {
       const {
         preview: { previewYear },
         selection: { selectedMonth, selectedYear, selectedMonths, selectedRangeMonths },
@@ -98,28 +98,28 @@ export default defineComponent({
         }
 
         if (selectedRangeMonths.length === 1) {
-          return dayjs(value).isSame(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
+          return dayjs(monthValue).isSame(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
         }
 
-        const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(selectedRangeMonths[1]), DatePickerUnits.Month)
-        const isAfterMin = dayjs(value).isSameOrAfter(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
+        const isBeforeMax = dayjs(monthValue).isSameOrBefore(dayjs(selectedRangeMonths[1]), DatePickerUnits.Month)
+        const isAfterMin = dayjs(monthValue).isSameOrAfter(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
 
         return isBeforeMax && isAfterMin
       }
 
-      return multiple ? selectedMonths.includes(value) : selectedYear === previewYear && selectedMonth === month
+      return multiple ? selectedMonths.includes(monthValue) : selectedYear === previewYear && selectedMonth === month
     }
 
     function buttonProps(month: Month) {
       const {
         preview: { previewYear },
-        panelProps: { allowedDates, color, type },
+        panelProps: { allowedDates, color, type: pickerType },
       }: { preview: DatePickerPreviewState; panelProps: PanelDatePickerProps } = props
 
-      const value = `${previewYear}-${month}`
-      const active = isSelectedMonth(value, month)
+      const monthValue = `${previewYear}-${month}`
+      const active = isSelectedMonth(monthValue, month)
       const disabled =
-        !isInRange(month) || (type === DatePickerTypes.Month && allowedDates ? !allowedDates(value) : false)
+        !isInRange(month) || (pickerType === DatePickerTypes.Month && allowedDates ? !allowedDates(monthValue) : false)
 
       return {
         outline: false,
