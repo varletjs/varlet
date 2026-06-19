@@ -737,8 +737,13 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
+@import '../ripple/ripple';
+@import '../button/button';
 @import '../icon/icon';
 @import '../menu/menu';
+@import '../menu-option/menuOption';
+@import '../menu-select/menuSelect';
+@import '../field-decorator/fieldDecorator';
 @import '../form-details/formDetails';
 @import '../input/input';
 @import '../date-picker/date-picker';
