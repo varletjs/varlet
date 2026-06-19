@@ -31,13 +31,13 @@
 <script lang="ts">
 import { onSmartMounted } from '@varlet/use'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
-import VarButton from '../../button'
-import { t } from '../../locale'
-import { injectLocaleProvider } from '../../locale-provider/provide'
-import { createNamespace } from '../../utils/components'
-import { createDayjs } from '../../utils/shared'
-import { DatePickerFormats, DatePickerUnits, ShiftDirections, WeekHeader, type Week } from '../constants'
-import { type DatePickerSelectionState, type PanelDatePickerProps, type DatePickerPreviewState } from '../types'
+import VarButton from '../button'
+import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
+import { createNamespace } from '../utils/components'
+import { createDayjs } from '../utils/shared'
+import { DatePickerFormats, DatePickerUnits, ShiftDirections, WeekHeader, type Week } from './constants'
+import { type DatePickerSelectionState, type PanelDatePickerProps, type DatePickerPreviewState } from './types'
 
 const dayjs = createDayjs()
 

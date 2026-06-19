@@ -77,7 +77,7 @@
             <template v-if="isDatetime" #actions>
               <div :class="n('datetime')">
                 <div v-if="range" :class="classes(n('datetime-row'), n('datetime-row--range'))">
-                  <time-field
+                  <time-select
                     :hour="rangeTimes[0].hour"
                     :minute="rangeTimes[0].minute"
                     :second="rangeTimes[0].second"
@@ -90,7 +90,7 @@
                     @change="(time) => handleRangeTimeChange(0, time)"
                   />
                   <var-icon :class="n('datetime-arrow')" name="arrow-right" />
-                  <time-field
+                  <time-select
                     :hour="rangeTimes[1].hour"
                     :minute="rangeTimes[1].minute"
                     :second="rangeTimes[1].second"
@@ -104,7 +104,7 @@
                   />
                 </div>
                 <div v-else :class="n('datetime-row')">
-                  <time-field
+                  <time-select
                     :hour="singleTime.hour"
                     :minute="singleTime.minute"
                     :second="singleTime.second"
@@ -146,7 +146,7 @@ import VarMenu from '../menu'
 import { createNamespace, useValidation } from '../utils/components'
 import { createDayjs } from '../utils/shared'
 import { props, type DateInputType, type DateInputValue } from './props'
-import TimeField from './src/time-field.vue'
+import TimeSelect from './TimeSelect.vue'
 
 const DateInputDefaultFormats = {
   Year: 'YYYY',
@@ -174,7 +174,7 @@ export default defineComponent({
     VarMenu,
     VarFormDetails,
     VarDatePicker,
-    TimeField,
+    TimeSelect,
   },
   props,
   setup(props) {

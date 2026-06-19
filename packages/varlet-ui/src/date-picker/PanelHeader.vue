@@ -136,13 +136,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import VarButton from '../../button'
-import VarIcon from '../../icon'
-import { t } from '../../locale'
-import { injectLocaleProvider } from '../../locale-provider/provide'
-import { createNamespace } from '../../utils/components'
-import { DatePickerTypes, DatePickerUnits, ShiftDirections } from '../constants'
-import type { DatePickerPreviewState } from '../types'
+import VarButton from '../button'
+import VarIcon from '../icon'
+import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
+import { createNamespace } from '../utils/components'
+import { DatePickerTypes, DatePickerUnits, ShiftDirections } from './constants'
+import type { DatePickerPreviewState } from './types'
 
 const { n } = createNamespace('date-picker-header')
 

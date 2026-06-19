@@ -60,7 +60,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
         <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
-    <var-date-input v-model="standardValue10" multiple placeholder="Select dates" />
+    <var-date-input v-model="standardValue10" multiple placeholder="Select multiple dates" />
     <var-date-input v-model="standardValue11" range placeholder="Select date range" />
     <var-date-input v-model="standardValue15" type="month" range placeholder="Select month range" />
     <var-date-input v-model="standardValue16" type="year" range placeholder="Select year range" />
@@ -152,7 +152,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
         <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
-    <var-date-input v-model="outlinedValue10" variant="outlined" multiple placeholder="Select dates" />
+    <var-date-input v-model="outlinedValue10" variant="outlined" multiple placeholder="Select multiple dates" />
     <var-date-input v-model="outlinedValue11" variant="outlined" range placeholder="Select date range" />
     <var-date-input v-model="outlinedValue15" variant="outlined" type="month" range placeholder="Select month range" />
     <var-date-input v-model="outlinedValue16" variant="outlined" type="year" range placeholder="Select year range" />
@@ -261,7 +261,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
         <var-icon class="append-icon" name="heart-outline" />
       </template>
     </var-date-input>
-    <var-date-input v-model="filledValue10" variant="filled" multiple placeholder="Select dates" />
+    <var-date-input v-model="filledValue10" variant="filled" multiple placeholder="Select multiple dates" />
     <var-date-input v-model="filledValue11" variant="filled" range placeholder="Select date range" />
     <var-date-input v-model="filledValue15" variant="filled" type="month" range placeholder="Select month range" />
     <var-date-input v-model="filledValue16" variant="filled" type="year" range placeholder="Select year range" />
@@ -445,6 +445,6 @@ The following are the css variables used by the component. You can use [StylePro
 | Variable | Default |
 | --- | --- |
 | `--date-input-picker-width` | `320px` |
-| `--date-input-time-field-separator-color` | `var(--color-on-surface-variant)` |
-| `--date-input-time-field-border-color` | `var(--color-outline)` |
-| `--date-input-time-field-active-color` | `var(--color-primary)` |
+| `--date-input-time-select-separator-color` | `var(--color-on-surface-variant)` |
+| `--date-input-time-select-border-color` | `var(--color-outline)` |
+| `--date-input-time-select-active-color` | `var(--color-primary)` |

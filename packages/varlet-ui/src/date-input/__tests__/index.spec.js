@@ -7,7 +7,7 @@ import VarForm from '../../form/Form'
 import VarMenu from '../../menu/Menu'
 import { delay } from '../../utils/test'
 import VarDateInput from '../DateInput'
-import TimeField from '../src/time-field.vue'
+import TimeSelect from '../TimeSelect.vue'
 
 async function triggerInput(wrapper, value) {
   const input = wrapper.find('input')
@@ -929,7 +929,7 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    wrapper.findComponent(TimeField).vm.$emit('change', { hour: 8, minute: 5, second: 1 })
+    wrapper.findComponent(TimeSelect).vm.$emit('change', { hour: 8, minute: 5, second: 1 })
     await delay(0)
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08 08:05:01')
@@ -965,7 +965,7 @@ describe('test dateInput datetime behavior', () => {
     })
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08 12:30')
-    expect(wrapper.findComponent(TimeField).props('useSeconds')).toBe(false)
+    expect(wrapper.findComponent(TimeSelect).props('useSeconds')).toBe(false)
 
     wrapper.unmount()
   })
@@ -981,7 +981,7 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    wrapper.findComponent(TimeField).vm.$emit('change', { hour: 8, minute: 0, second: 0 })
+    wrapper.findComponent(TimeSelect).vm.$emit('change', { hour: 8, minute: 0, second: 0 })
     await delay(0)
 
     expect(onUpdateModelValue).lastCalledWith('2021-04-08 09:30:00')
@@ -999,10 +999,10 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    const timeField = wrapper.findComponent(TimeField)
-    expect(timeField.props('isHourAllowed')(8)).toBe(false)
-    expect(timeField.props('isHourAllowed')(12)).toBe(true)
-    expect(timeField.props('isHourAllowed')(19)).toBe(false)
+    const timeSelect = wrapper.findComponent(TimeSelect)
+    expect(timeSelect.props('isHourAllowed')(8)).toBe(false)
+    expect(timeSelect.props('isHourAllowed')(12)).toBe(true)
+    expect(timeSelect.props('isHourAllowed')(19)).toBe(false)
 
     wrapper.unmount()
   })
@@ -1018,7 +1018,7 @@ describe('test dateInput datetime behavior', () => {
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08 09:00:00 ~ 2021-04-12 18:30:00')
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-12'])
-    expect(wrapper.findAllComponents(TimeField)).toHaveLength(2)
+    expect(wrapper.findAllComponents(TimeSelect)).toHaveLength(2)
 
     wrapper.unmount()
   })
@@ -1053,7 +1053,7 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    wrapper.findAllComponents(TimeField)[1].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
+    wrapper.findAllComponents(TimeSelect)[1].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
     await delay(0)
 
     expect(onUpdateModelValue).lastCalledWith(['2021-04-08 09:00:00', '2021-04-12 20:00:00'])
@@ -1072,7 +1072,7 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    wrapper.findAllComponents(TimeField)[0].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
+    wrapper.findAllComponents(TimeSelect)[0].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
     await delay(0)
 
     expect(onUpdateModelValue).lastCalledWith(['2021-04-08 18:00:00', '2021-04-08 20:00:00'])
@@ -1089,9 +1089,9 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    const timeField = wrapper.findComponent(TimeField)
-    expect(timeField.props('isHourAllowed')(8)).toBe(false)
-    expect(timeField.props('isHourAllowed')(9)).toBe(true)
+    const timeSelect = wrapper.findComponent(TimeSelect)
+    expect(timeSelect.props('isHourAllowed')(8)).toBe(false)
+    expect(timeSelect.props('isHourAllowed')(9)).toBe(true)
 
     wrapper.unmount()
   })

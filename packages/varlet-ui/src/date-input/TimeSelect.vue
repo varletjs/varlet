@@ -36,9 +36,9 @@
 <script lang="ts">
 import { times } from '@varlet/shared'
 import { computed, defineComponent, onBeforeUnmount, onMounted, ref, type PropType } from 'vue'
-import VarMenuSelect from '../../menu-select'
-import { createNamespace } from '../../utils/components'
-import { padStart } from '../../utils/shared'
+import VarMenuSelect from '../menu-select'
+import { createNamespace } from '../utils/components'
+import { padStart } from '../utils/shared'
 
 type TimeUnit = 'hour' | 'minute' | 'second'
 
@@ -48,7 +48,7 @@ type TimeValue = {
   second: number
 }
 
-const { name, n, classes } = createNamespace('date-input-time-field')
+const { name, n, classes } = createNamespace('date-input-time-select')
 
 export default defineComponent({
   name,

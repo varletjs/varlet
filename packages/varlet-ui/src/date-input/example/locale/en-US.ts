@@ -25,7 +25,7 @@ export default {
   placeholder: 'Select date',
   monthPlaceholder: 'Select month',
   yearPlaceholder: 'Select year',
-  multiplePlaceholder: 'Select dates',
+  multiplePlaceholder: 'Select multiple dates',
   rangePlaceholder: 'Select date range',
   monthRangePlaceholder: 'Select month range',
   yearRangePlaceholder: 'Select year range',

@@ -1,8 +1,8 @@
 :root {
   --date-input-picker-width: 320px;
-  --date-input-time-field-separator-color: var(--color-on-surface-variant);
-  --date-input-time-field-border-color: var(--color-outline);
-  --date-input-time-field-active-color: var(--color-primary);
+  --date-input-time-select-separator-color: var(--color-on-surface-variant);
+  --date-input-time-select-border-color: var(--color-outline);
+  --date-input-time-select-active-color: var(--color-primary);
 }
 
 .var-date-input {
@@ -70,24 +70,24 @@
   &__datetime-arrow {
     flex: none;
     font-size: 12px;
-    color: var(--date-input-time-field-separator-color);
+    color: var(--date-input-time-select-separator-color);
   }
 }
 
-.var-date-input-time-field {
+.var-date-input-time-select {
   display: inline-flex;
   align-items: center;
 
   &__separator {
     margin: 0 4px;
-    color: var(--date-input-time-field-separator-color);
+    color: var(--date-input-time-select-separator-color);
   }
 
   &__box {
     min-width: 36px;
     height: 30px;
     padding: 0 8px;
-    border: thin solid var(--date-input-time-field-border-color);
+    border: thin solid var(--date-input-time-select-border-color);
     border-radius: 4px;
     background: transparent;
     color: inherit;
@@ -97,12 +97,12 @@
     transition: border-color 0.2s var(--cubic-bezier);
 
     &:not(&--disabled):hover {
-      border-color: var(--date-input-time-field-active-color);
+      border-color: var(--date-input-time-select-active-color);
     }
 
     &--active {
-      border-color: var(--date-input-time-field-active-color);
-      color: var(--date-input-time-field-active-color);
+      border-color: var(--date-input-time-select-active-color);
+      color: var(--date-input-time-select-active-color);
     }
 
     &--disabled {

@@ -117,12 +117,12 @@ import {
   type Month,
   type Week,
 } from './constants'
+import DayPickerPanel from './DayPickerPanel.vue'
+import MonthPickerPanel from './MonthPickerPanel.vue'
+import PanelHeader from './PanelHeader.vue'
 import { props } from './props'
-import DayPickerPanel from './src/day-picker-panel.vue'
-import MonthPickerPanel from './src/month-picker-panel.vue'
-import PanelHeader from './src/panel-header.vue'
-import YearPickerPanel from './src/year-picker-panel.vue'
 import { type DatePickerSelectionState, type PanelDatePickerProps, type DatePickerPreviewState } from './types'
+import YearPickerPanel from './YearPickerPanel.vue'
 
 const { name, n, classes } = createNamespace('date-picker')
 
