@@ -10,7 +10,7 @@ import {
 
 export declare const dateInputProps: Record<keyof DateInputProps, any>
 
-export type DateInputType = 'date' | 'month' | 'year'
+export type DateInputType = 'date' | 'month' | 'year' | 'datetime'
 
 export type DateInputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
@@ -18,11 +18,14 @@ export type DateInputValue = string | number | Date
 
 export type DateInputValueFormat = 'timestamp' | 'date' | string
 
+export type DateInputAllowedTimes = (value: string) => boolean
+
 export interface DateInputProps extends BasicAttributes {
   modelValue?: DateInputValue | DateInputValue[]
   type?: DateInputType
   format?: string
   valueFormat?: DateInputValueFormat
+  useSeconds?: boolean
   multiple?: boolean
   range?: boolean
   separator?: string
@@ -36,6 +39,7 @@ export interface DateInputProps extends BasicAttributes {
   validateTrigger?: DateInputValidateTrigger[]
   rules?: DateInputRules
   allowedDates?: (value: string) => boolean
+  allowedTimes?: DateInputAllowedTimes
   min?: string
   max?: string
   firstDayOfWeek?: string | number

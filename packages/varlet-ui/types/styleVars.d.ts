@@ -367,6 +367,7 @@ interface BaseStyleVars {
   '--day-picker-head-item-font-size'?: string
   '--day-picker-head-item-padding'?: string
   '--day-picker-head-item-font-weight'?: string
+  '--day-picker-adjacent-item-color'?: string
   '--dialog-width'?: string
   '--dialog-background'?: string
   '--dialog-border-radius'?: string

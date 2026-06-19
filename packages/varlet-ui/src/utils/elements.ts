@@ -261,6 +261,17 @@ export function isDisplayNoneElement(element: HTMLElement) {
   return false
 }
 
+export function scrollSelectedIntoView(
+  scroller: HTMLElement | null | undefined,
+  selected: HTMLElement | null | undefined,
+) {
+  if (!scroller || !selected) {
+    return
+  }
+
+  scroller.scrollTop = selected.offsetTop - scroller.clientHeight / 2 + selected.offsetHeight / 2
+}
+
 const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]', '[href]']
   .map((s) => `${s}:not([disabled])`)
   .join(', ')

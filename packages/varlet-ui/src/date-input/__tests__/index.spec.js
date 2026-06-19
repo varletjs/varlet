@@ -7,6 +7,7 @@ import VarForm from '../../form/Form'
 import VarMenu from '../../menu/Menu'
 import { delay } from '../../utils/test'
 import VarDateInput from '../DateInput'
+import TimeField from '../src/time-field.vue'
 
 async function triggerInput(wrapper, value) {
   const input = wrapper.find('input')
@@ -795,6 +796,221 @@ describe('test dateInput picker behavior', () => {
     await delay(0)
     expect(wrapper.vm.showMenu).toBe(true)
     expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
+
+    wrapper.unmount()
+  })
+})
+
+describe('test dateInput datetime behavior', () => {
+  test('dateInput syncs datetime model value to display value', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:30:45',
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 12:30:45')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-04-08')
+    expect(wrapper.findComponent(DatePicker).props('type')).toBe('date')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput combines picked date with current time and keeps menu open', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:30:45',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.find('input').trigger('click')
+    wrapper.findComponent(DatePicker).vm.$emit('change', '2021-04-09')
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-09 12:30:45')
+    expect(onUpdateModelValue).lastCalledWith('2021-04-09 12:30:45')
+    expect(wrapper.vm.showMenu).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput combines current date with picked time', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:30:45',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(TimeField).vm.$emit('change', { hour: 8, minute: 5, second: 1 })
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 08:05:01')
+    expect(onUpdateModelValue).lastCalledWith('2021-04-08 08:05:01')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput passes day truncated min and max to picker for datetime', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:00:00',
+        min: '2021-04-08 09:30:00',
+        max: '2021-04-20 18:00:00',
+      },
+    })
+
+    const datePickerProps = wrapper.findComponent(DatePicker).props()
+    expect(datePickerProps.min).toBe('2021-04-08')
+    expect(datePickerProps.max).toBe('2021-04-20')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput supports datetime without seconds', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        useSeconds: false,
+        modelValue: '2021-04-08 12:30',
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 12:30')
+    expect(wrapper.findComponent(TimeField).props('useSeconds')).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput clamps datetime to min when picked time is out of range', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:00:00',
+        min: '2021-04-08 09:30:00',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(TimeField).vm.$emit('change', { hour: 8, minute: 0, second: 0 })
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith('2021-04-08 09:30:00')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput disables time units out of min and max on boundary day', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 12:00:00',
+        min: '2021-04-08 09:30:00',
+        max: '2021-04-08 18:00:00',
+      },
+    })
+
+    const timeField = wrapper.findComponent(TimeField)
+    expect(timeField.props('isHourAllowed')(8)).toBe(false)
+    expect(timeField.props('isHourAllowed')(12)).toBe(true)
+    expect(timeField.props('isHourAllowed')(19)).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput syncs datetime range model value to display and picker', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-12 18:30:00'],
+      },
+    })
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 09:00:00 ~ 2021-04-12 18:30:00')
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toEqual(['2021-04-08', '2021-04-12'])
+    expect(wrapper.findAllComponents(TimeField)).toHaveLength(2)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput combines picked range dates with current start and end times', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-12 18:30:00'],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(DatePicker).vm.$emit('change', ['2021-04-09', '2021-04-15'])
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-09 09:00:00', '2021-04-15 18:30:00'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput updates the end endpoint when end time changes', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-12 18:30:00'],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findAllComponents(TimeField)[1].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08 09:00:00', '2021-04-12 20:00:00'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput sorts datetime range endpoints after time edit', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-08 18:00:00'],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findAllComponents(TimeField)[0].vm.$emit('change', { hour: 20, minute: 0, second: 0 })
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08 18:00:00', '2021-04-08 20:00:00'])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput respects allowedTimes predicate', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 10:00:00',
+        allowedTimes: (value) => Number(value.split(' ')[1].split(':')[0]) >= 9,
+      },
+    })
+
+    const timeField = wrapper.findComponent(TimeField)
+    expect(timeField.props('isHourAllowed')(8)).toBe(false)
+    expect(timeField.props('isHourAllowed')(9)).toBe(true)
 
     wrapper.unmount()
   })

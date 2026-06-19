@@ -7,18 +7,18 @@
             <li v-for="week in sortWeekList" :key="week">{{ getDayAbbr(week) }}</li>
           </ul>
           <ul :class="n('body')">
-            <li v-for="(day, index) in days" :key="index">
+            <li v-for="(cell, index) in days" :key="index">
               <var-button
                 type="primary"
                 var-day-picker-cover
                 round
                 :elevation="datePickerProps.buttonElevation"
                 v-bind="{
-                  ...buttonProps(day),
+                  ...buttonProps(cell),
                 }"
-                @click="chooseDay(day)"
+                @click="chooseDay(cell)"
               >
-                {{ getDayText(day) }}
+                {{ cell.day }}
               </var-button>
             </li>
           </ul>
@@ -29,21 +29,36 @@
 </template>
 
 <script lang="ts">
-import { times, toNumber } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
-import dayjs from 'dayjs/esm/index.js'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import VarButton from '../../button'
 import { t } from '../../locale'
 import { injectLocaleProvider } from '../../locale-provider/provide'
 import { createNamespace } from '../../utils/components'
-import { DatePickerUnits, ShiftDirections, WeekHeader, type Week } from '../constants'
+import { createDayjs } from '../../utils/shared'
+import { DatePickerFormats, DatePickerUnits, ShiftDirections, WeekHeader, type Week } from '../constants'
 import { type DatePickerSelectionState, type PanelDatePickerProps, type DatePickerPreviewState } from '../types'
 
-dayjs.extend(isSameOrBefore)
-dayjs.extend(isSameOrAfter)
+const dayjs = createDayjs()
+
+type Dayjs = ReturnType<typeof dayjs>
+
+const DAYS_PER_WEEK = 7
+const WEEKS_PER_PANEL = 6
+
+const MonthOffset = {
+  Prev: -1,
+  Current: 0,
+  Next: 1,
+} as const
+
+type MonthOffset = (typeof MonthOffset)[keyof typeof MonthOffset]
+
+type DayCell = {
+  value: string
+  day: number
+  monthOffset: MonthOffset
+}
 
 const { n } = createNamespace('day-picker')
 const { n: nDate } = createNamespace('date-picker')
@@ -74,16 +89,12 @@ export default defineComponent({
   emits: ['choose-day'],
 
   setup(props, { emit }) {
-    const [currentYear, currentMonth, currentDay] = props.current.split('-')
-    const days: Ref<Array<number>> = ref([])
+    const [, , currentDay] = props.current.split('-')
+    const days: Ref<Array<DayCell>> = ref([])
     const reverse: Ref<boolean> = ref(false)
     const panelKey: Ref<number> = ref(0)
 
     const { t: pt } = injectLocaleProvider()
-
-    const previewIsCurrentMonth: ComputedRef<boolean> = computed(
-      () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth,
-    )
 
     const previewIsSelectedMonth: ComputedRef<boolean> = computed(
       () =>
@@ -105,8 +116,12 @@ export default defineComponent({
       return (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
     }
 
-    function getDayText(day: number): number | string {
-      return day > 0 ? day : ''
+    function createCell(date: Dayjs, monthOffset: MonthOffset): DayCell {
+      return {
+        value: date.format(DatePickerFormats.Day),
+        day: date.date(),
+        monthOffset,
+      }
     }
 
     function initDays() {
@@ -114,34 +129,51 @@ export default defineComponent({
         preview: { previewMonth, previewYear },
       }: { preview: DatePickerPreviewState } = props
 
-      const daysInMonth = dayjs(`${previewYear}-${previewMonth}`).daysInMonth()
-      const firstWeekday = dayjs(`${previewYear}-${previewMonth}-01`).day()
-      const leadingEmptyDays = sortWeekList.value.findIndex((week: Week) => week === `${firstWeekday}`)
-      const emptyDays = times(leadingEmptyDays, () => -1)
-      const monthDays = times(daysInMonth, (index) => index + 1)
+      const firstDay = dayjs(`${previewYear}-${previewMonth}-01`)
+      const lastDay = firstDay.endOf(DatePickerUnits.Month)
+      const daysInMonth = firstDay.daysInMonth()
 
-      days.value = [...emptyDays, ...monthDays]
+      const leadingCount = Math.max(
+        0,
+        sortWeekList.value.findIndex((week: Week) => week === `${firstDay.day()}`),
+      )
+      const trailingCount = WEEKS_PER_PANEL * DAYS_PER_WEEK - leadingCount - daysInMonth
+
+      const cells: Array<DayCell> = []
+
+      for (let offset = leadingCount; offset > 0; offset--) {
+        cells.push(createCell(firstDay.subtract(offset, DatePickerUnits.Day), MonthOffset.Prev))
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        cells.push(createCell(firstDay.date(day), MonthOffset.Current))
+      }
+
+      for (let offset = 1; offset <= trailingCount; offset++) {
+        cells.push(createCell(lastDay.add(offset, DatePickerUnits.Day), MonthOffset.Next))
+      }
+
+      days.value = cells
     }
 
-    function isInRange(day: number) {
-      const {
-        preview: { previewYear, previewMonth },
-        datePickerProps: { min, max },
-      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
-
-      const previewDate = `${previewYear}-${previewMonth}-${day}`
-      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
-      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
+    function isInRange(value: string) {
+      const { min, max } = props.datePickerProps
+      const isBeforeMax = max ? dayjs(value).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
+      const isAfterMin = min ? dayjs(value).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
 
       return isBeforeMax && isAfterMin
     }
 
-    function getDayValue(day: number) {
-      return `${props.preview.previewYear}-${props.preview.previewMonth}-${day}`
+    function getChooseValue() {
+      const { chooseYear, chooseMonth, chooseDay } = props.choose
+
+      return chooseYear && chooseMonth && chooseDay ? `${chooseYear}-${chooseMonth}-${chooseDay}` : undefined
     }
 
-    function isSingleSelectedDate(day: number) {
-      return toNumber(props.choose.chooseDay) === day && previewIsSelectedMonth.value
+    function isSingleSelectedDate(value: string) {
+      const choose = getChooseValue()
+
+      return choose ? dayjs(value).isSame(dayjs(choose), DatePickerUnits.Day) : false
     }
 
     function isSelectedDate(value: string): boolean {
@@ -164,19 +196,15 @@ export default defineComponent({
       return isBeforeMax && isAfterMin
     }
 
-    function isDateDisabled(day: number, value: string) {
+    function isDateDisabled(value: string) {
       const { allowedDates } = props.datePickerProps
 
-      return !isInRange(day) || (allowedDates ? !allowedDates(value) : false)
+      return !isInRange(value) || (allowedDates ? !allowedDates(value) : false)
     }
 
-    function shouldShowOutline(day: number, selected: boolean, disabled: boolean) {
-      const {
-        choose: { chooseDay },
-        datePickerProps: { multiple, range, showCurrent },
-      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
-
-      const current = previewIsCurrentMonth.value && toNumber(currentDay) === day && showCurrent
+    function shouldShowOutline(value: string, selected: boolean, disabled: boolean) {
+      const { multiple, range, showCurrent } = props.datePickerProps
+      const current = showCurrent && dayjs(value).isSame(dayjs(props.current), DatePickerUnits.Day)
 
       if (!current) {
         return false
@@ -190,30 +218,21 @@ export default defineComponent({
         return !selected
       }
 
-      return previewIsSelectedMonth.value ? chooseDay !== currentDay : true
+      return previewIsSelectedMonth.value ? props.choose.chooseDay !== currentDay : true
     }
 
-    function buttonProps(day: number) {
-      if (day < 0) {
-        return {
-          text: true,
-          outline: false,
-          textColor: '',
-          class: n('button'),
-          disabled: true,
-        }
-      }
-
+    function buttonProps(cell: DayCell) {
       const {
         datePickerProps: { color, multiple, range },
       }: { datePickerProps: PanelDatePickerProps } = props
 
-      const value = getDayValue(day)
-      const singleSelected = isSingleSelectedDate(day)
+      const { value, monthOffset } = cell
+      const isCurrentMonth = monthOffset === MonthOffset.Current
+      const singleSelected = isSingleSelectedDate(value)
       const selected = range || multiple ? isSelectedDate(value) : singleSelected
-      const disabled = isDateDisabled(day, value)
+      const disabled = isDateDisabled(value)
       const text = disabled || (range || multiple ? !selected : !singleSelected)
-      const outline = shouldShowOutline(day, selected, disabled)
+      const outline = shouldShowOutline(value, selected, disabled)
       const cover = !disabled && !outline && !selected
       const textColor = !disabled && outline ? (color ?? '') : ''
 
@@ -222,7 +241,7 @@ export default defineComponent({
         outline,
         textColor,
         [`${nDate()}-color-cover`]: cover,
-        class: [n('button'), n('button--usable')],
+        class: [n('button'), { [n('button--usable')]: isCurrentMonth, [n('button--adjacent')]: !isCurrentMonth }],
         disabled,
       }
     }
@@ -239,8 +258,8 @@ export default defineComponent({
       panelKey.value += direction === ShiftDirections.Prev ? -1 : 1
     }
 
-    function chooseDay(day: number) {
-      emit('choose-day', day)
+    function chooseDay(cell: DayCell) {
+      emit('choose-day', cell.day, cell.monthOffset)
     }
 
     onSmartMounted(() => {
@@ -263,7 +282,6 @@ export default defineComponent({
       sortWeekList,
       shiftPreview,
       shiftYearPreview,
-      getDayText,
       getDayAbbr,
       chooseDay,
       buttonProps,

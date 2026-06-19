@@ -1,4 +1,8 @@
 import { isString, removeItem } from '@varlet/shared'
+import dayjs from 'dayjs/esm/index.js'
+import customParseFormat from 'dayjs/esm/plugin/customParseFormat/index.js'
+import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
+import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
 
 export interface CacheInstance<T> {
   cache: T[]
@@ -55,6 +59,19 @@ export const createCache = <T>(max: number): CacheInstance<T> => {
       this.cache.length = 0
     },
   }
+}
+
+let dayjsExtended = false
+
+export const createDayjs = () => {
+  if (!dayjsExtended) {
+    dayjs.extend(customParseFormat)
+    dayjs.extend(isSameOrAfter)
+    dayjs.extend(isSameOrBefore)
+    dayjsExtended = true
+  }
+
+  return dayjs
 }
 
 export const linear = (value: number): number => value

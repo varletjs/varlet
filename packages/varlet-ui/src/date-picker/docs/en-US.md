@@ -249,6 +249,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--day-picker-head-item-font-size` | `var(--font-size-md)`  |
 | `--day-picker-head-item-padding` | `8px 0`                |
 | `--day-picker-head-item-font-weight` | `normal`               |
+| `--day-picker-adjacent-item-color` | `rgba(0, 0, 0, 0.38)`  |
 
 ### Note
 

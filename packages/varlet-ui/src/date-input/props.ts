@@ -2,11 +2,13 @@ import { type PropType } from 'vue'
 import { props as inputProps, type InputValidateTrigger } from '../input/props'
 import { defineListenerProp, pickProps } from '../utils/components'
 
-export type DateInputType = 'year' | 'month' | 'date'
+export type DateInputType = 'year' | 'month' | 'date' | 'datetime'
 
 export type DateInputValue = string | number | Date
 
 export type DateInputValueFormat = 'timestamp' | 'date' | string
+
+export type DateInputAllowedTimes = (value: string) => boolean
 
 export const props = {
   modelValue: [String, Number, Date, Array] as PropType<DateInputValue | DateInputValue[]>,
@@ -17,6 +19,10 @@ export const props = {
   format: String,
   valueFormat: {
     type: String as PropType<DateInputValueFormat>,
+  },
+  useSeconds: {
+    type: Boolean,
+    default: true,
   },
   multiple: Boolean,
   range: Boolean,
@@ -29,6 +35,7 @@ export const props = {
     default: ' ~ ',
   },
   allowedDates: Function as PropType<(value: string) => boolean>,
+  allowedTimes: Function as PropType<DateInputAllowedTimes>,
   min: String,
   max: String,
   firstDayOfWeek: {

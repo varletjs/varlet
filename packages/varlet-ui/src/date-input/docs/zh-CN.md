@@ -312,6 +312,68 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </style>
 ```
 
+### 日期时间选择
+
+通过 `type="datetime"` 选择日期与时间，日历下方提供 `时 : 分 : 秒` 的时间选择，绑定值默认格式为 `YYYY-MM-DD HH:mm:ss`，仅支持 24 小时制。设置 `use-seconds` 为 `false` 可只精确到分钟。`min` / `max` 接收完整时间串，会同时限制日历可选天和时间列表可选项；通过 `allowed-times` 限制可选时间，参数为完整的 `YYYY-MM-DD HH:mm:ss`，可直接用 `dayjs` 解析。配合 `range` 可选择日期时间范围，开始与结束时间在同一行编辑，最终按完整时间排序起止。
+
+```html
+<script setup>
+import { ref } from 'vue'
+import dayjs from 'dayjs'
+
+const datetimeValue = ref('2021-04-08 12:30:45')
+const datetimeNoSecondsValue = ref('2021-04-08 12:30')
+const datetimeMinMaxValue = ref('2021-04-08 12:00:00')
+const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
+const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
+
+// 只允许 09:00 - 17:59
+const allowedTimes = (value) => {
+  const hour = dayjs(value).hour()
+  return hour >= 9 && hour < 18
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-date-input v-model="datetimeValue" type="datetime" placeholder="请选择日期时间">
+      <template #extra-message>当前值：{{ datetimeValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeNoSecondsValue"
+      type="datetime"
+      :use-seconds="false"
+      variant="outlined"
+      placeholder="请选择日期时间（到分钟）"
+    >
+      <template #extra-message>当前值：{{ datetimeNoSecondsValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeMinMaxValue"
+      type="datetime"
+      variant="filled"
+      min="2021-04-08 09:30:00"
+      max="2021-04-20 18:00:00"
+      placeholder="限制日期时间范围"
+    >
+      <template #extra-message>当前值：{{ datetimeMinMaxValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeAllowedTimesValue"
+      type="datetime"
+      variant="outlined"
+      :allowed-times="allowedTimes"
+      placeholder="限制可选时间"
+    >
+      <template #extra-message>当前值：{{ datetimeAllowedTimesValue }}</template>
+    </var-date-input>
+    <var-date-input v-model="datetimeRangeValue" type="datetime" range variant="filled" placeholder="请选择日期时间范围">
+      <template #extra-message>当前值：{{ datetimeRangeValue.join(' ~ ') }}</template>
+    </var-date-input>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -319,9 +381,10 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值，具体类型由 `value-format` 决定 | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
-| `type` | 输入类型，可选值为 `date` `month` `year` | _string_ | `date` |
+| `type` | 输入类型，可选值为 `date` `month` `year` `datetime` | _string_ | `date` |
 | `format` | 输入框展示和解析用户输入时使用的格式 | _string_ | 根据 `type` 推导 |
 | `value-format` | 绑定值格式，可选值为 `timestamp` `date`，也可传入日期格式字符串。不传时使用 `format` 输出字符串 | _string_ | `-` |
+| `use-seconds` | `type` 为 `datetime` 时是否精确到秒 | _boolean_ | `true` |
 | `multiple` | 是否支持多选 | _boolean_ | `false` |
 | `range` | 是否支持范围选择 | _boolean_ | `false` |
 | `separator` | 多选展示分隔符 | _string_ | `, ` |
@@ -340,8 +403,9 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation) | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `allowed-dates` | 限制可以选择的值，参数格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _(value: string) => boolean_ | `-` |
-| `min` | 允许的最小值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
-| `max` | 允许的最大值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _string_ | `-` |
+| `allowed-times` | `type` 为 `datetime` 时限制可选择的时间，参数为完整的 `YYYY-MM-DD HH:mm:ss` | _(value: string) => boolean_ | `-` |
+| `min` | 允许的最小值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`） | _string_ | `-` |
+| `max` | 允许的最大值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`） | _string_ | `-` |
 | `first-day-of-week` | 设置一周的第一天，从周日的 `0` 开始 | _string \| number_ | `0` |
 | `tabindex` | 与原生 input 的 tabindex 属性一致 | _string_ | `-` |
 
@@ -381,3 +445,6 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | 变量名 | 默认值 |
 | --- | --- |
 | `--date-input-picker-width` | `320px` |
+| `--date-input-time-field-separator-color` | `var(--color-on-surface-variant)` |
+| `--date-input-time-field-border-color` | `var(--color-outline)` |
+| `--date-input-time-field-active-color` | `var(--color-primary)` |

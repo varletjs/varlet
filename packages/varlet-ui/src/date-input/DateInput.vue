@@ -60,19 +60,66 @@
       <template #menu>
         <div @mousedown.prevent>
           <var-date-picker
+            ref="picker"
             :class="n('picker')"
             :model-value="pickerValue"
-            :type="type"
+            :type="pickerType"
             :multiple="multiple"
             :range="range"
             :allowed-dates="allowedDates"
-            :min="min"
-            :max="max"
+            :min="pickerMin"
+            :max="pickerMax"
             :first-day-of-week="firstDayOfWeek"
             :show-title="false"
             :elevation="false"
             @change="handlePickerChange"
-          />
+          >
+            <template v-if="isDatetime" #actions>
+              <div :class="n('datetime')">
+                <div v-if="range" :class="classes(n('datetime-row'), n('datetime-row--range'))">
+                  <time-field
+                    :hour="rangeTimes[0].hour"
+                    :minute="rangeTimes[0].minute"
+                    :second="rangeTimes[0].second"
+                    :use-seconds="useSeconds"
+                    :readonly="readonly || formReadonly"
+                    :disabled="disabled || formDisabled || rangeSelecting"
+                    :is-hour-allowed="startAllowFns.isHourAllowed"
+                    :is-minute-allowed="startAllowFns.isMinuteAllowed"
+                    :is-second-allowed="startAllowFns.isSecondAllowed"
+                    @change="(time) => handleRangeTimeChange(0, time)"
+                  />
+                  <var-icon :class="n('datetime-arrow')" name="arrow-right" />
+                  <time-field
+                    :hour="rangeTimes[1].hour"
+                    :minute="rangeTimes[1].minute"
+                    :second="rangeTimes[1].second"
+                    :use-seconds="useSeconds"
+                    :readonly="readonly || formReadonly"
+                    :disabled="disabled || formDisabled || rangeSelecting"
+                    :is-hour-allowed="endAllowFns.isHourAllowed"
+                    :is-minute-allowed="endAllowFns.isMinuteAllowed"
+                    :is-second-allowed="endAllowFns.isSecondAllowed"
+                    @change="(time) => handleRangeTimeChange(1, time)"
+                  />
+                </div>
+                <div v-else :class="n('datetime-row')">
+                  <time-field
+                    :hour="singleTime.hour"
+                    :minute="singleTime.minute"
+                    :second="singleTime.second"
+                    :use-seconds="useSeconds"
+                    :readonly="readonly || formReadonly"
+                    :disabled="disabled || formDisabled"
+                    :is-hour-allowed="singleAllowFns.isHourAllowed"
+                    :is-minute-allowed="singleAllowFns.isMinuteAllowed"
+                    :is-second-allowed="singleAllowFns.isSecondAllowed"
+                    @change="handleTimeChange"
+                  />
+                </div>
+              </div>
+            </template>
+          </var-date-picker>
         </div>
       </template>
     </var-menu>
@@ -87,8 +134,7 @@
 
 <script lang="ts">
 import { call, isArray, isDate, isEqual, isNumber, isTruthy, preventDefault } from '@varlet/shared'
-import dayjs, { type Dayjs } from 'dayjs/esm/index.js'
-import customParseFormat from 'dayjs/esm/plugin/customParseFormat/index.js'
+import { type Dayjs } from 'dayjs/esm/index.js'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarDatePicker from '../date-picker'
 import VarFormDetails from '../form-details'
@@ -98,15 +144,25 @@ import VarInput from '../input'
 import { type InputValidateTrigger } from '../input/props'
 import VarMenu from '../menu'
 import { createNamespace, useValidation } from '../utils/components'
-import { props, type DateInputValue } from './props'
+import { createDayjs } from '../utils/shared'
+import { props, type DateInputType, type DateInputValue } from './props'
+import TimeField from './src/time-field.vue'
 
 const DateInputDefaultFormats = {
   Year: 'YYYY',
   Month: 'YYYY-MM',
   Date: 'YYYY-MM-DD',
+  Datetime: 'YYYY-MM-DD HH:mm:ss',
+  DatetimeMinute: 'YYYY-MM-DD HH:mm',
 } as const
 
-dayjs.extend(customParseFormat)
+const dayjs = createDayjs()
+
+type TimeParts = {
+  hour: number
+  minute: number
+  second: number
+}
 
 const { name, n, classes } = createNamespace('date-input')
 
@@ -118,10 +174,12 @@ export default defineComponent({
     VarMenu,
     VarFormDetails,
     VarDatePicker,
+    TimeField,
   },
   props,
   setup(props) {
     const inputEl = ref<InstanceType<typeof VarInput> | null>(null)
+    const picker = ref<{ rangeSelecting: boolean } | null>(null)
     const displayValue = ref('')
     const pickerValue = ref<string | string[]>()
     const showMenu = ref(false)
@@ -135,6 +193,17 @@ export default defineComponent({
     const isDisabled = computed(() => props.disabled || formDisabled.value)
     const isReadonly = computed(() => props.readonly || formReadonly.value)
     const isMultipleOrRange = computed(() => props.multiple || props.range)
+    const isDatetime = computed(() => props.type === 'datetime')
+    const pickerType = computed(() => (isDatetime.value ? 'date' : props.type) as 'year' | 'month' | 'date')
+    const pickerMin = computed(() => truncateBound(props.min))
+    const pickerMax = computed(() => truncateBound(props.max))
+    const rangeSelecting = computed(() => Boolean(picker.value?.rangeSelecting))
+    const singleTime = computed(() => getTimeParts(getDayjsObjectsByModelValue()[0]))
+    const rangeTimes = computed(() => {
+      const dayjsObjects = getDayjsObjectsByModelValue()
+
+      return [getTimeParts(dayjsObjects[0]), getTimeParts(dayjsObjects[1])]
+    })
 
     const menuPopoverClass = computed(() => {
       const marginClass =
@@ -168,6 +237,7 @@ export default defineComponent({
         props.format,
         props.valueFormat,
         props.type,
+        props.useSeconds,
         props.multiple,
         props.range,
         props.separator,
@@ -179,7 +249,7 @@ export default defineComponent({
 
     call(bindForm, dateInputProvider)
 
-    function getDefaultFormat(type: 'year' | 'month' | 'date' = props.type) {
+    function getDefaultFormat(type: DateInputType = props.type) {
       if (type === 'year') {
         return DateInputDefaultFormats.Year
       }
@@ -188,11 +258,155 @@ export default defineComponent({
         return DateInputDefaultFormats.Month
       }
 
+      if (type === 'datetime') {
+        return props.useSeconds ? DateInputDefaultFormats.Datetime : DateInputDefaultFormats.DatetimeMinute
+      }
+
       return DateInputDefaultFormats.Date
+    }
+
+    function getPickerFormat() {
+      return isDatetime.value ? DateInputDefaultFormats.Date : getDefaultFormat()
     }
 
     function getDisplayFormat() {
       return props.format || getDefaultFormat()
+    }
+
+    function truncateBound(value: string | undefined) {
+      if (!value || !isDatetime.value) {
+        return value
+      }
+
+      const dayjsObject = dayjs(value)
+
+      return dayjsObject.isValid() ? dayjsObject.format(DateInputDefaultFormats.Date) : value
+    }
+
+    function getBoundObject(value: string | undefined) {
+      if (!value) {
+        return
+      }
+
+      const dayjsObject = dayjs(value)
+
+      return dayjsObject.isValid() ? dayjsObject : undefined
+    }
+
+    function getTimeParts(dayjsObject?: Dayjs): TimeParts {
+      return {
+        hour: dayjsObject?.hour() ?? 0,
+        minute: dayjsObject?.minute() ?? 0,
+        second: dayjsObject?.second() ?? 0,
+      }
+    }
+
+    function clampDatetime(dayjsObject: Dayjs) {
+      const min = getBoundObject(props.min)
+      const max = getBoundObject(props.max)
+
+      if (min && dayjsObject.isBefore(min)) {
+        return min
+      }
+
+      if (max && dayjsObject.isAfter(max)) {
+        return max
+      }
+
+      return dayjsObject
+    }
+
+    function createTimeAllowFns(getObject: () => Dayjs | undefined, getTime: () => TimeParts) {
+      function isAllowed(unit: 'hour' | 'minute' | 'second', value: number) {
+        const time = getTime()
+        const candidate = (getObject() ?? dayjs())
+          .hour(unit === 'hour' ? value : time.hour)
+          .minute(unit === 'minute' ? value : time.minute)
+          .second(unit === 'second' ? value : time.second)
+
+        const min = getBoundObject(props.min)
+        const max = getBoundObject(props.max)
+
+        if (min && candidate.endOf(unit).isBefore(min)) {
+          return false
+        }
+
+        if (max && candidate.startOf(unit).isAfter(max)) {
+          return false
+        }
+
+        return props.allowedTimes ? props.allowedTimes(candidate.format(DateInputDefaultFormats.Datetime)) : true
+      }
+
+      return {
+        isHourAllowed: (hour: number) => isAllowed('hour', hour),
+        isMinuteAllowed: (minute: number) => isAllowed('minute', minute),
+        isSecondAllowed: (second: number) => isAllowed('second', second),
+      }
+    }
+
+    const singleAllowFns = createTimeAllowFns(
+      () => getDayjsObjectsByModelValue()[0],
+      () => singleTime.value,
+    )
+    const startAllowFns = createTimeAllowFns(
+      () => getDayjsObjectsByModelValue()[0],
+      () => rangeTimes.value[0],
+    )
+    const endAllowFns = createTimeAllowFns(
+      () => getDayjsObjectsByModelValue()[1],
+      () => rangeTimes.value[1],
+    )
+
+    function applyTime(base: Dayjs, time: TimeParts) {
+      return clampDatetime(base.hour(time.hour).minute(time.minute).second(time.second).millisecond(0))
+    }
+
+    function commitDateTimes(dayjsObjects: Dayjs[]) {
+      if (props.range) {
+        const sorted = [...dayjsObjects].sort((a, b) => a.valueOf() - b.valueOf())
+
+        pickerValue.value = sorted.map((dayjsObject) => dayjsObject.format(getPickerFormat()))
+        displayValue.value = sorted
+          .map((dayjsObject) => dayjsObject.format(getDisplayFormat()))
+          .join(props.rangeSeparator)
+        updateModelValue(sorted.map(dayjsObjectToModelValue))
+
+        return
+      }
+
+      const [dayjsObject] = dayjsObjects
+
+      pickerValue.value = dayjsObject.format(getPickerFormat())
+      displayValue.value = dayjsObject.format(getDisplayFormat())
+      updateModelValue(dayjsObjectToModelValue(dayjsObject))
+    }
+
+    function handleTimeChange(time: TimeParts) {
+      if (isDisabled.value || isReadonly.value) {
+        return
+      }
+
+      const [dayjsObject] = getDayjsObjectsByModelValue()
+
+      commitDateTimes([applyTime(dayjsObject ?? dayjs(), time)])
+    }
+
+    function handleRangeTimeChange(index: number, time: TimeParts) {
+      if (isDisabled.value || isReadonly.value) {
+        return
+      }
+
+      const dayjsObjects = getDayjsObjectsByModelValue()
+
+      if (dayjsObjects.length < 2) {
+        return
+      }
+
+      const next = [...dayjsObjects]
+      next[index] = applyTime(dayjsObjects[index], time)
+
+      commitDateTimes(next)
     }
 
     function stringToDayjsObject(value: string, format: string) {
@@ -251,10 +465,10 @@ export default defineComponent({
       const dayjsObjects = getDayjsObjectsByModelValue()
 
       if (isMultipleOrRange.value) {
-        pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
+        pickerValue.value = dayjsObjects.map((dayjsObject) => dayjsObject.format(getPickerFormat()))
       } else {
         const [dayjsObject] = dayjsObjects
-        pickerValue.value = dayjsObject ? dayjsObject.format(getDefaultFormat()) : undefined
+        pickerValue.value = dayjsObject ? dayjsObject.format(getPickerFormat()) : undefined
       }
 
       if (!isFocusing.value) {
@@ -317,7 +531,7 @@ export default defineComponent({
         return
       }
 
-      pickerValue.value = dayjsObject.format(getDefaultFormat())
+      pickerValue.value = dayjsObject.format(getPickerFormat())
       updateModelValue(dayjsObjectToModelValue(dayjsObject))
     }
 
@@ -336,7 +550,7 @@ export default defineComponent({
 
       const validDayjsObjects = dayjsObjects.filter(isTruthy)
       const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
-      pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getDefaultFormat()))
+      pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getPickerFormat()))
       updateModelValue(modelValue)
     }
 
@@ -384,8 +598,18 @@ export default defineComponent({
 
       if (isArray(value)) {
         const dayjsObjects = value
-          .map((item) => dayjs(item, getDefaultFormat(), true))
+          .map((item) => dayjs(item, getPickerFormat(), true))
           .filter((dayjsObject) => dayjsObject.isValid())
+
+        if (isDatetime.value && props.range) {
+          const times = rangeTimes.value
+
+          commitDateTimes(
+            dayjsObjects.map((dayjsObject, index) => applyTime(dayjsObject, times[index] ?? getTimeParts())),
+          )
+
+          return
+        }
 
         const modelValue = dayjsObjects.map(dayjsObjectToModelValue)
 
@@ -398,9 +622,15 @@ export default defineComponent({
         return
       }
 
-      const dayjsObject = dayjs(value, getDefaultFormat(), true)
+      const dayjsObject = dayjs(value, getPickerFormat(), true)
 
       if (!dayjsObject.isValid()) {
+        return
+      }
+
+      if (isDatetime.value) {
+        commitDateTimes([applyTime(dayjsObject, singleTime.value)])
+
         return
       }
 
@@ -460,16 +690,29 @@ export default defineComponent({
 
     return {
       inputEl,
+      picker,
       displayValue,
       pickerValue,
       showMenu,
       isFocusing,
+      rangeSelecting,
       formDisabled,
       formReadonly,
       errorMessage,
       menuPopoverClass,
+      isDatetime,
+      pickerType,
+      pickerMin,
+      pickerMax,
+      singleTime,
+      rangeTimes,
+      singleAllowFns,
+      startAllowFns,
+      endAllowFns,
       n,
       classes,
+      handleTimeChange,
+      handleRangeTimeChange,
       handleFocus,
       handleBlur,
       handleClick,

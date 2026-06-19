@@ -312,6 +312,68 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </style>
 ```
 
+### Datetime
+
+Use `type="datetime"` to pick both date and time. A `HH : mm : ss` time selector is rendered below the calendar. The bound value defaults to `YYYY-MM-DD HH:mm:ss` and only the 24-hour clock is supported. Set `use-seconds` to `false` to keep precision to the minute. `min` / `max` accept full datetime strings and constrain both the selectable days and the time options. Use `allowed-times` to limit the selectable time; its argument is a full `YYYY-MM-DD HH:mm:ss` string that can be parsed with `dayjs`. Combine with `range` to pick a datetime range, where the start and end times are edited on the same row and the endpoints are sorted by the full datetime.
+
+```html
+<script setup>
+import { ref } from 'vue'
+import dayjs from 'dayjs'
+
+const datetimeValue = ref('2021-04-08 12:30:45')
+const datetimeNoSecondsValue = ref('2021-04-08 12:30')
+const datetimeMinMaxValue = ref('2021-04-08 12:00:00')
+const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
+const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
+
+// Only allow 09:00 - 17:59
+const allowedTimes = (value) => {
+  const hour = dayjs(value).hour()
+  return hour >= 9 && hour < 18
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-date-input v-model="datetimeValue" type="datetime" placeholder="Select datetime">
+      <template #extra-message>Current value: {{ datetimeValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeNoSecondsValue"
+      type="datetime"
+      :use-seconds="false"
+      variant="outlined"
+      placeholder="Select datetime to minute"
+    >
+      <template #extra-message>Current value: {{ datetimeNoSecondsValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeMinMaxValue"
+      type="datetime"
+      variant="filled"
+      min="2021-04-08 09:30:00"
+      max="2021-04-20 18:00:00"
+      placeholder="Datetime min and max"
+    >
+      <template #extra-message>Current value: {{ datetimeMinMaxValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeAllowedTimesValue"
+      type="datetime"
+      variant="outlined"
+      :allowed-times="allowedTimes"
+      placeholder="Allowed times"
+    >
+      <template #extra-message>Current value: {{ datetimeAllowedTimesValue }}</template>
+    </var-date-input>
+    <var-date-input v-model="datetimeRangeValue" type="datetime" range variant="filled" placeholder="Select datetime range">
+      <template #extra-message>Current value: {{ datetimeRangeValue.join(' ~ ') }}</template>
+    </var-date-input>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
@@ -319,9 +381,10 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model` | Binding value, depending on `value-format` | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
-| `type` | Input type, can be `date` `month` `year` | _string_ | `date` |
+| `type` | Input type, can be `date` `month` `year` `datetime` | _string_ | `date` |
 | `format` | Format used to display and parse input text | _string_ | inferred from `type` |
 | `value-format` | Binding value format, can be `timestamp` `date` or a date format string. Uses `format` to output a string when not set | _string_ | `-` |
+| `use-seconds` | Whether to keep precision to seconds when `type` is `datetime` | _boolean_ | `true` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `range` | Whether to enable range selection | _boolean_ | `false` |
 | `separator` | Separator for multiple display | _string_ | `, ` |
@@ -340,8 +403,9 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | Validation rules. Return `true` to pass validation, other values are converted into user messages. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `allowed-dates` | Restrict selectable values. The value format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _(value: string) => boolean_ | `-` |
-| `min` | Minimum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
-| `max` | Maximum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`) | _string_ | `-` |
+| `allowed-times` | Restrict selectable times when `type` is `datetime`. The argument is a full `YYYY-MM-DD HH:mm:ss` string | _(value: string) => boolean_ | `-` |
+| `min` | Minimum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`) | _string_ | `-` |
+| `max` | Maximum allowed value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`) | _string_ | `-` |
 | `first-day-of-week` | First day of week, starts from Sunday `0` | _string \| number_ | `0` |
 | `tabindex` | Same as native input tabindex | _string_ | `-` |
 
@@ -381,3 +445,6 @@ The following are the css variables used by the component. You can use [StylePro
 | Variable | Default |
 | --- | --- |
 | `--date-input-picker-width` | `320px` |
+| `--date-input-time-field-separator-color` | `var(--color-on-surface-variant)` |
+| `--date-input-time-field-border-color` | `var(--color-outline)` |
+| `--date-input-time-field-active-color` | `var(--color-primary)` |

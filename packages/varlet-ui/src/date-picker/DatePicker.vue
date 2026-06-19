@@ -52,7 +52,7 @@
         </transition>
       </div>
     </div>
-    <div :class="classes(n('body'), n('$--scrollbar'))">
+    <div :class="n('body')">
       <panel-header
         v-if="panelType"
         :type="headerType"
@@ -102,14 +102,11 @@
 
 <script lang="ts">
 import { call, error, isArray, toNumber, uniq } from '@varlet/shared'
-import dayjs from 'dayjs/esm/index.js'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
 import { computed, defineComponent, ref, watch, type RendererNode } from 'vue'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import { createNamespace, formatElevation } from '../utils/components'
-import { padStart } from '../utils/shared'
+import { createDayjs, padStart } from '../utils/shared'
 import {
   DatePickerFormats,
   DatePickerTypes,
@@ -131,8 +128,7 @@ const { name, n, classes } = createNamespace('date-picker')
 
 type PanelType = DatePickerTypes
 
-dayjs.extend(isSameOrAfter)
-dayjs.extend(isSameOrBefore)
+const dayjs = createDayjs()
 
 export default defineComponent({
   name,
@@ -151,6 +147,7 @@ export default defineComponent({
     const isYearPanel = ref(false)
     const isMonthPanel = ref(false)
     const rangeDone = ref(true)
+    const rangeSelecting = computed(() => props.range && !rangeDone.value)
     const chooseMonth = ref<Month | undefined>()
     const chooseYear = ref<string | undefined>()
     const chooseDay = ref<string | undefined>()
@@ -494,23 +491,26 @@ export default defineComponent({
       return isSameMonth.value ? (date as number) < toNumber(chooseDay.value) : chooseMonth.value > previewMonth.value
     }
 
-    function chooseDayFromPanel(day: number) {
+    function chooseDayFromPanel(day: number, monthOffset = 0) {
       const { readonly } = props
-      if (day < 0 || readonly) {
+      if (readonly) {
         return
       }
 
-      const date = `${previewYear.value}-${previewMonth.value}-${day}`
+      const targetMonth = dayjs(`${previewYear.value}-${previewMonth.value}-01`).add(monthOffset, DatePickerUnits.Month)
+      const date = `${targetMonth.format(DatePickerFormats.Month)}-${day}`
 
       if (!isSelectableDate(date, DatePickerUnits.Day)) {
         return
       }
 
-      reverse.value = getReverse(DatePickerUnits.Day, day)
+      if (monthOffset !== 0) {
+        shiftCurrentPanelPreview(monthOffset < 0 ? ShiftDirections.Prev : ShiftDirections.Next)
+      } else {
+        reverse.value = getReverse(DatePickerUnits.Day, day)
+      }
 
-      const formatDate = dayjs(date).format(DatePickerFormats.DayPadded)
-
-      selectValue(formatDate, DatePickerTypes.Date)
+      selectValue(dayjs(date).format(DatePickerFormats.DayPadded), DatePickerTypes.Date)
     }
 
     function chooseMonthFromPanel(month: Month) {
@@ -773,6 +773,7 @@ export default defineComponent({
       chooseYearFromPanel,
       shiftPreview,
       resetPreview,
+      rangeSelecting,
       formatElevation,
       DatePickerTypes,
     }

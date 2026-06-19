@@ -44,6 +44,7 @@
   --day-picker-head-item-color: rgba(0, 0, 0, 0.38);
   --day-picker-head-item-padding: 8px 0;
   --day-picker-head-item-font-weight: normal;
+  --day-picker-adjacent-item-color: rgba(0, 0, 0, 0.38);
 }
 
 .var-date-picker {
@@ -112,14 +113,17 @@
   }
 
   &__body {
-    --scrollbar-track-background: var(--date-picker-body-background-color);
-
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
     height: var(--date-picker-body-height);
     background-color: var(--date-picker-body-background-color);
     padding: var(--date-picker-body-padding);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__panel {
@@ -326,12 +330,16 @@
       }
     }
 
-    &__button:not(.var-day-picker__button--usable) {
+    &__button:not(.var-day-picker__button--usable):not(.var-day-picker__button--adjacent) {
       cursor: unset;
     }
 
     &__button[var-date-picker-color-cover='true'] {
       color: var(--date-picker-main-color);
+    }
+
+    &__button--adjacent[var-date-picker-color-cover='true'] {
+      color: var(--day-picker-adjacent-item-color);
     }
   }
 

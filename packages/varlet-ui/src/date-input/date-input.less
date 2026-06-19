@@ -1,5 +1,8 @@
 :root {
   --date-input-picker-width: 320px;
+  --date-input-time-field-separator-color: var(--color-on-surface-variant);
+  --date-input-time-field-border-color: var(--color-outline);
+  --date-input-time-field-active-color: var(--color-primary);
 }
 
 .var-date-input {
@@ -48,5 +51,77 @@
 
   &--filled-menu-margin {
     margin-top: var(--field-decorator-line-focus-size) !important;
+  }
+
+  &__datetime {
+    width: 100%;
+  }
+
+  &__datetime-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--range {
+      justify-content: center;
+    }
+  }
+
+  &__datetime-arrow {
+    flex: none;
+    font-size: 12px;
+    color: var(--date-input-time-field-separator-color);
+  }
+}
+
+.var-date-input-time-field {
+  display: inline-flex;
+  align-items: center;
+
+  &__separator {
+    margin: 0 4px;
+    color: var(--date-input-time-field-separator-color);
+  }
+
+  &__box {
+    min-width: 36px;
+    height: 30px;
+    padding: 0 8px;
+    border: thin solid var(--date-input-time-field-border-color);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    transition: border-color 0.2s var(--cubic-bezier);
+
+    &:not(&--disabled):hover {
+      border-color: var(--date-input-time-field-active-color);
+    }
+
+    &--active {
+      border-color: var(--date-input-time-field-active-color);
+      color: var(--date-input-time-field-active-color);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: var(--opacity-disabled);
+    }
+  }
+
+  &__popover {
+    min-width: 64px;
+
+    --menu-select-menu-max-height: 200px;
+
+    .var-menu-select__menu {
+      scrollbar-width: none;
+    }
+
+    .var-menu-select__menu::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

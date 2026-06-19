@@ -2,6 +2,7 @@ export default {
   '--date-picker-main-color': '#fff',
   '--date-picker-body-background-color': '#303030',
   '--day-picker-head-item-color': '#aaaaaa',
+  '--day-picker-adjacent-item-color': 'rgba(255, 255, 255, 0.38)',
   '--date-picker-header-color': '#fff',
   '--date-picker-border-radius': '4px',
   '--date-picker-font-size': 'var(--font-size-md)',

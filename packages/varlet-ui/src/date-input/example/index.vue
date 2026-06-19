@@ -64,7 +64,18 @@ const filledValue17 = ref('2021-04-08')
 const filledValue18 = ref(['2021-04-08', '2021-04-12'])
 const filledValue19 = ref('2021-04-09')
 
+const datetimeValue = ref('2021-04-08 12:30:45')
+const datetimeNoSecondsValue = ref('2021-04-08 12:30')
+const datetimeMinMaxValue = ref('2021-04-08 12:00:00')
+const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
+const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
+
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
+
+const allowedTimes = (value) => {
+  const hour = Number(value.split(' ')[1].split(':')[0])
+  return hour >= 9 && hour < 18
+}
 
 watchLang(use)
 onThemeChange()
@@ -272,6 +283,50 @@ onThemeChange()
       <template #extra-message>{{ t('currentValue') }}{{ filledValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" :placeholder="t('smallSize')" />
+  </var-space>
+
+  <app-type style="margin-top: 10vmin">{{ t('datetime') }}</app-type>
+  <var-space direction="column" :size="['3vmin', 0]">
+    <var-date-input v-model="datetimeValue" type="datetime" :placeholder="t('datetimePlaceholder')">
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeNoSecondsValue"
+      type="datetime"
+      :use-seconds="false"
+      variant="outlined"
+      :placeholder="t('datetimeNoSecondsPlaceholder')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeNoSecondsValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeMinMaxValue"
+      type="datetime"
+      variant="filled"
+      min="2021-04-08 09:30:00"
+      max="2021-04-20 18:00:00"
+      :placeholder="t('datetimeMinMax')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeMinMaxValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeAllowedTimesValue"
+      type="datetime"
+      variant="outlined"
+      :allowed-times="allowedTimes"
+      :placeholder="t('datetimeAllowedTimes')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeAllowedTimesValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeRangeValue"
+      type="datetime"
+      range
+      variant="filled"
+      :placeholder="t('datetimeRange')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeRangeValue.join(' ~ ') }}</template>
+    </var-date-input>
   </var-space>
 
   <div style="height: 20px"></div>

@@ -8,6 +8,7 @@ export default {
   '--date-picker-title-padding': '20px 20px 16px',
   '--date-picker-actions-padding': '10px 20px 20px',
   '--day-picker-head-item-color': '#1D1B20',
+  '--day-picker-adjacent-item-color': 'var(--color-on-surface-variant)',
   '--date-picker-header-arrow-filter': 'opacity(1)',
   '--date-picker-header-padding': '0 0 16px',
   '--date-picker-header-padding-top-no-title': '20px',
