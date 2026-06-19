@@ -9,40 +9,46 @@
         :class="
           classes(
             n('title-date'),
-            [!isYearPanel || type === DatePickerTypes.Year, n('title-date--active')],
+            [!showYearPanel || type === DatePickerTypes.Year, n('title-date--active')],
             [range, n('title-date--range')],
           )
         "
         @click="switchPanel(DatePickerTypes.Date)"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
-          <div v-if="type === DatePickerTypes.Year" :key="`${chooseYear}`">
-            <slot v-if="range" name="range" :choose="selectedDate.chooseRangeYear">
+          <div v-if="type === DatePickerTypes.Year" :key="`${selectionState.selectedYear}`">
+            <slot v-if="range" name="range" :choose="selectionState.selectedRangeYears">
               {{ yearTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseYears">
+            <slot v-else-if="multiple" name="multiple" :choose="selectionState.selectedYears">
               {{ yearTitle }}
             </slot>
-            <slot v-else name="year" :year="chooseYear">
+            <slot v-else name="year" :year="selectionState.selectedYear">
               {{ yearTitle }}
             </slot>
           </div>
-          <div v-else-if="type === DatePickerTypes.Month" :key="`${chooseYear}${chooseMonth}`">
-            <slot v-if="range" name="range" :choose="selectedDate.chooseRangeMonth">
+          <div
+            v-else-if="type === DatePickerTypes.Month"
+            :key="`${selectionState.selectedYear}${selectionState.selectedMonth}`"
+          >
+            <slot v-if="range" name="range" :choose="selectionState.selectedRangeMonths">
               {{ monthTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseMonths">
+            <slot v-else-if="multiple" name="multiple" :choose="selectionState.selectedMonths">
               {{ monthTitle }}
             </slot>
-            <slot v-else name="month" :month="chooseMonth" :year="chooseYear">
+            <slot v-else name="month" :month="selectionState.selectedMonth" :year="selectionState.selectedYear">
               {{ monthTitle }}
             </slot>
           </div>
-          <div v-else :key="`${chooseYear}${chooseMonth}${chooseDay}`">
+          <div
+            v-else
+            :key="`${selectionState.selectedYear}${selectionState.selectedMonth}${selectionState.selectedDay}`"
+          >
             <slot v-if="range" name="range" :choose="formattedRangeDays">
               {{ dateTitle }}
             </slot>
-            <slot v-else-if="multiple" name="multiple" :choose="selectedDate.chooseDays">
+            <slot v-else-if="multiple" name="multiple" :choose="selectionState.selectedDays">
               {{ dateTitle }}
             </slot>
             <slot v-else name="date" v-bind="dateSlotProps">
@@ -69,27 +75,27 @@
           <year-picker-panel
             v-if="panelType === DatePickerTypes.Year"
             ref="yearPanelEl"
-            :date-picker-props="datePickerProps"
-            :choose="selectedDate"
+            :panel-props="panelProps"
+            :selection="selectionState"
             :preview="previewYear"
-            @choose-year="chooseYearFromPanel"
+            @choose-year="selectYearFromPanel"
           />
           <month-picker-panel
             v-else-if="panelType === DatePickerTypes.Month"
             ref="monthPanelEl"
-            :choose="selectedDate"
-            :preview="previewDate"
-            :date-picker-props="datePickerProps"
-            @choose-month="chooseMonthFromPanel"
+            :selection="selectionState"
+            :preview="previewState"
+            :panel-props="panelProps"
+            @choose-month="selectMonthFromPanel"
           />
           <day-picker-panel
             v-else-if="panelType === DatePickerTypes.Date"
             ref="dayPanelEl"
             :current="currentDate"
-            :choose="selectedDate"
-            :preview="previewDate"
-            :date-picker-props="datePickerProps"
-            @choose-day="chooseDayFromPanel"
+            :selection="selectionState"
+            :preview="previewState"
+            :panel-props="panelProps"
+            @choose-day="selectDayFromPanel"
           />
         </transition>
       </div>
@@ -102,7 +108,7 @@
 
 <script lang="ts">
 import { call, error, isArray, toNumber, uniq } from '@varlet/shared'
-import { computed, defineComponent, ref, watch, type RendererNode } from 'vue'
+import { computed, defineComponent, reactive, ref, watch, type RendererNode } from 'vue'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import { createNamespace, formatElevation } from '../utils/components'
@@ -143,27 +149,31 @@ export default defineComponent({
     const { t: pt } = injectLocaleProvider()
     const currentDate = dayjs().format(DatePickerFormats.Day)
     const [currentYear, currentMonth] = currentDate.split('-')
-    const monthDes = MonthList.find((month) => month === currentMonth) as Month
-    const isYearPanel = ref(false)
-    const isMonthPanel = ref(false)
-    const rangeDone = ref(true)
-    const rangeSelecting = computed(() => props.range && !rangeDone.value)
-    const chooseMonth = ref<Month | undefined>()
-    const chooseYear = ref<string | undefined>()
-    const chooseDay = ref<string | undefined>()
-    const previewMonth = ref<Month>(monthDes)
+    const currentMonthValue = MonthList.find((month) => month === currentMonth) as Month
+    const showYearPanel = ref(false)
+    const showMonthPanel = ref(false)
+    const rangeSelectionComplete = ref(true)
+    const rangeSelecting = computed(() => props.range && !rangeSelectionComplete.value)
+    const previewMonth = ref<Month>(currentMonthValue)
     const previewYear = ref(currentYear)
     const reverse = ref(false)
-    const chooseYears = ref<string[]>([])
-    const chooseMonths = ref<string[]>([])
-    const chooseDays = ref<string[]>([])
-    const chooseRangeYear = ref<string[]>([])
-    const chooseRangeMonth = ref<string[]>([])
-    const chooseRangeDay = ref<string[]>([])
     const yearPanelEl = ref<RendererNode | null>(null)
     const monthPanelEl = ref<RendererNode | null>(null)
     const dayPanelEl = ref<RendererNode | null>(null)
-    const datePickerProps = computed<PanelDatePickerProps>(() => ({
+
+    const selectionState = reactive<DatePickerSelectionState>({
+      selectedMonth: undefined,
+      selectedYear: undefined,
+      selectedDay: undefined,
+      selectedYears: [],
+      selectedMonths: [],
+      selectedDays: [],
+      selectedRangeYears: [],
+      selectedRangeMonths: [],
+      selectedRangeDays: [],
+    })
+
+    const panelProps = computed<PanelDatePickerProps>(() => ({
       allowedDates: props.allowedDates,
       type: props.type,
       color: props.color,
@@ -175,27 +185,18 @@ export default defineComponent({
       range: props.range,
       buttonElevation: props.buttonElevation,
     }))
-    const selectedDate = computed<DatePickerSelectionState>(() => ({
-      chooseMonth: chooseMonth.value,
-      chooseYear: chooseYear.value,
-      chooseDay: chooseDay.value,
-      chooseYears: chooseYears.value,
-      chooseMonths: chooseMonths.value,
-      chooseDays: chooseDays.value,
-      chooseRangeYear: chooseRangeYear.value,
-      chooseRangeMonth: chooseRangeMonth.value,
-      chooseRangeDay: chooseRangeDay.value,
-    }))
-    const previewDate = computed<DatePickerPreviewState>(() => ({
+
+    const previewState = computed<DatePickerPreviewState>(() => ({
       previewMonth: previewMonth.value,
       previewYear: previewYear.value,
     }))
+
     const panelType = computed<DatePickerTypes | undefined>(() => {
-      if (props.type === DatePickerTypes.Year || isYearPanel.value) {
+      if (props.type === DatePickerTypes.Year || showYearPanel.value) {
         return DatePickerTypes.Year
       }
 
-      if (props.type === DatePickerTypes.Month || isMonthPanel.value) {
+      if (props.type === DatePickerTypes.Month || showMonthPanel.value) {
         return DatePickerTypes.Month
       }
 
@@ -205,94 +206,113 @@ export default defineComponent({
 
       return undefined
     })
+
     const headerType = computed<DatePickerTypes | DatePickerUnits | undefined>(() =>
       panelType.value === DatePickerTypes.Date ? DatePickerUnits.Day : panelType.value,
     )
+
     const headerPreview = computed<DatePickerPreviewState>(() =>
       panelType.value === DatePickerTypes.Year
         ? ({
             previewYear: previewYear.value,
           } as DatePickerPreviewState)
-        : previewDate.value,
+        : previewState.value,
     )
+
     const titleHint = computed<string>(() => props.hint ?? getDefaultHint())
 
     const yearTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
-        return chooseRangeYear.value.length ? chooseRangeYear.value.join(' ~ ') : ''
+        return selectionState.selectedRangeYears.length ? selectionState.selectedRangeYears.join(' ~ ') : ''
       }
 
-      return multiple ? `${chooseYears.value.length}${(pt || t)('datePickerSelected')}` : (chooseYear.value ?? '')
+      return multiple
+        ? `${selectionState.selectedYears.length}${(pt || t)('datePickerSelected')}`
+        : (selectionState.selectedYear ?? '')
     })
 
     const monthTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
-        return chooseRangeMonth.value.length ? chooseRangeMonth.value.join(' ~ ') : ''
+        return selectionState.selectedRangeMonths.length ? selectionState.selectedRangeMonths.join(' ~ ') : ''
       }
 
       let monthName = ''
-      if (chooseMonth.value) {
-        monthName = (pt || t)('datePickerMonthDict')?.[chooseMonth.value].name ?? ''
+
+      if (selectionState.selectedMonth) {
+        monthName = (pt || t)('datePickerMonthDict')?.[selectionState.selectedMonth].name ?? ''
       }
-      return multiple ? `${chooseMonths.value.length}${(pt || t)('datePickerSelected')}` : monthName
+
+      return multiple ? `${selectionState.selectedMonths.length}${(pt || t)('datePickerSelected')}` : monthName
     })
 
     const dateTitle = computed<string>(() => {
       const { multiple, range } = props
 
       if (range) {
-        const formattedDays = chooseRangeDay.value.map((date) => dayjs(date).format(DatePickerFormats.DayPadded))
+        const formattedDays = selectionState.selectedRangeDays.map((date) =>
+          dayjs(date).format(DatePickerFormats.DayPadded),
+        )
 
         return formattedDays.length ? formattedDays.join(' ~ ') : ''
       }
 
       if (multiple) {
-        return `${chooseDays.value.length}${(pt || t)('datePickerSelected')}`
+        return `${selectionState.selectedDays.length}${(pt || t)('datePickerSelected')}`
       }
 
-      if (!chooseYear.value || !chooseMonth.value || !chooseDay.value) {
+      if (!selectionState.selectedYear || !selectionState.selectedMonth || !selectionState.selectedDay) {
         return ''
       }
-      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
+
+      const weekIndex = dayjs(
+        `${selectionState.selectedYear}-${selectionState.selectedMonth}-${selectionState.selectedDay}`,
+      ).day()
+
       const week: Week = WeekHeader.find((value) => value === `${weekIndex}`) as Week
       const weekName = (pt || t)('datePickerWeekDict')?.[week].name ?? ''
-
-      const monthName = (pt || t)('datePickerMonthDict')?.[chooseMonth.value].name ?? ''
-      const showDay = padStart(chooseDay.value, 2, '0')
+      const monthName = (pt || t)('datePickerMonthDict')?.[selectionState.selectedMonth].name ?? ''
+      const showDay = padStart(selectionState.selectedDay, 2, '0')
 
       if ((pt || t)('lang') === 'zh-CN') {
-        return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
+        return `${selectionState.selectedMonth}-${showDay} ${weekName.slice(0, 3)}`
       }
-      return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
+
+      return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${selectionState.selectedDay}`
     })
     const dateSlotProps = computed<Record<string, string>>(() => {
-      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
-      const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
+      const weekIndex = dayjs(
+        `${selectionState.selectedYear}-${selectionState.selectedMonth}-${selectionState.selectedDay}`,
+      ).day()
+
+      const date = selectionState.selectedDay ? padStart(selectionState.selectedDay, 2, '0') : ''
 
       return {
         week: `${weekIndex}`,
-        year: chooseYear.value ?? '',
-        month: chooseMonth.value ?? '',
+        year: selectionState.selectedYear ?? '',
+        month: selectionState.selectedMonth ?? '',
         date,
       }
     })
-    const formattedRangeDays = computed<string[]>(() =>
-      selectedDate.value.chooseRangeDay.map((choose) => dayjs(choose).format(DatePickerFormats.DayPadded)),
-    )
-    const isSameYear = computed(() => chooseYear.value === previewYear.value)
-    const isSameMonth = computed(() => chooseMonth.value === previewMonth.value)
 
-    let keepPreviewOnModelValueChange = false
+    const formattedRangeDays = computed<string[]>(() =>
+      selectionState.selectedRangeDays.map((date) => dayjs(date).format(DatePickerFormats.DayPadded)),
+    )
+
+    const selectedYearInPreview = computed(() => selectionState.selectedYear === previewYear.value)
+
+    const selectedMonthInPreview = computed(() => selectionState.selectedMonth === previewMonth.value)
+
+    let shouldKeepPreviewOnModelValueChange = false
 
     watch(
       () => props.modelValue,
       () => {
-        const syncPreview = !keepPreviewOnModelValueChange
-        keepPreviewOnModelValueChange = false
+        const syncPreview = !shouldKeepPreviewOnModelValueChange
+        shouldKeepPreviewOnModelValueChange = false
 
         syncFromModelValue(syncPreview)
       },
@@ -311,7 +331,7 @@ export default defineComponent({
           return
         }
 
-        rangeDone.value = modelValue.length !== 1
+        rangeSelectionComplete.value = modelValue.length !== 1
         syncRangeValue(modelValue, type, syncPreview)
         return
       }
@@ -330,19 +350,19 @@ export default defineComponent({
 
     function switchPanel(type: PanelType) {
       if (type === DatePickerTypes.Year) {
-        isYearPanel.value = true
-        isMonthPanel.value = false
+        showYearPanel.value = true
+        showMonthPanel.value = false
         return
       }
 
       if (type === DatePickerTypes.Month) {
-        isYearPanel.value = false
-        isMonthPanel.value = true
+        showYearPanel.value = false
+        showMonthPanel.value = true
         return
       }
 
-      isYearPanel.value = false
-      isMonthPanel.value = false
+      showYearPanel.value = false
+      showMonthPanel.value = false
     }
 
     function getDefaultHint() {
@@ -388,16 +408,48 @@ export default defineComponent({
           : DatePickerFormats.Day
     }
 
-    function getRangeRefByType(type: DatePickerTypes) {
+    function getRangeValuesByType(type: DatePickerTypes) {
       return type === DatePickerTypes.Year
-        ? chooseRangeYear
+        ? selectionState.selectedRangeYears
         : type === DatePickerTypes.Month
-          ? chooseRangeMonth
-          : chooseRangeDay
+          ? selectionState.selectedRangeMonths
+          : selectionState.selectedRangeDays
     }
 
-    function getMultipleRefByType(type: DatePickerTypes) {
-      return type === DatePickerTypes.Year ? chooseYears : type === DatePickerTypes.Month ? chooseMonths : chooseDays
+    function setRangeValuesByType(type: DatePickerTypes, value: string[]) {
+      if (type === DatePickerTypes.Year) {
+        selectionState.selectedRangeYears = value
+        return
+      }
+
+      if (type === DatePickerTypes.Month) {
+        selectionState.selectedRangeMonths = value
+        return
+      }
+
+      selectionState.selectedRangeDays = value
+    }
+
+    function getMultipleValuesByType(type: DatePickerTypes) {
+      return type === DatePickerTypes.Year
+        ? selectionState.selectedYears
+        : type === DatePickerTypes.Month
+          ? selectionState.selectedMonths
+          : selectionState.selectedDays
+    }
+
+    function setMultipleValuesByType(type: DatePickerTypes, value: string[]) {
+      if (type === DatePickerTypes.Year) {
+        selectionState.selectedYears = value
+        return
+      }
+
+      if (type === DatePickerTypes.Month) {
+        selectionState.selectedMonths = value
+        return
+      }
+
+      selectionState.selectedDays = value
     }
 
     function emitModelValueChange(value: string | string[]) {
@@ -406,7 +458,9 @@ export default defineComponent({
     }
 
     function getPreviewDayOfMonth() {
-      return props.type === DatePickerTypes.Date && chooseDay.value ? toNumber(chooseDay.value) : undefined
+      return props.type === DatePickerTypes.Date && selectionState.selectedDay
+        ? toNumber(selectionState.selectedDay)
+        : undefined
     }
 
     function emitPreview() {
@@ -414,44 +468,46 @@ export default defineComponent({
     }
 
     function updateRange(value: string, type: DatePickerTypes) {
-      const rangeDate = getRangeRefByType(type)
-      rangeDate.value = rangeDone.value ? [value, value] : [rangeDate.value[0], value]
-      rangeDone.value = !rangeDone.value
+      const selectedRangeValues = getRangeValuesByType(type)
+      const nextRangeValues = rangeSelectionComplete.value ? [value, value] : [selectedRangeValues[0], value]
 
-      if (!rangeDone.value) {
+      setRangeValuesByType(type, nextRangeValues)
+      rangeSelectionComplete.value = !rangeSelectionComplete.value
+
+      if (!rangeSelectionComplete.value) {
         return
       }
 
-      const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
-      const nextValue = isChangeOrder ? [rangeDate.value[1], rangeDate.value[0]] : [...rangeDate.value]
+      const shouldSwapRange = dayjs(nextRangeValues[0]).isAfter(nextRangeValues[1])
+      const nextValue = shouldSwapRange ? [nextRangeValues[1], nextRangeValues[0]] : [...nextRangeValues]
 
       markPreviewKeep()
       emitModelValueChange(nextValue)
     }
 
     function updateMultiple(value: string, type: DatePickerTypes) {
-      const multipleDates = getMultipleRefByType(type)
+      const selectedValues = getMultipleValuesByType(type)
       const formatType =
         type === DatePickerTypes.Year
           ? DatePickerFormats.Year
           : type === DatePickerTypes.Month
             ? DatePickerFormats.Month
             : DatePickerFormats.DayPadded
-      const formatDates = multipleDates.value.map((date) => dayjs(date).format(formatType))
+      const formattedValues = selectedValues.map((date) => dayjs(date).format(formatType))
 
-      const index = formatDates.findIndex((choose) => choose === value)
+      const index = formattedValues.findIndex((selectedValue) => selectedValue === value)
       const selected = index !== -1
 
       if (selected) {
-        formatDates.splice(index, 1)
+        formattedValues.splice(index, 1)
       }
 
       if (!selected) {
-        formatDates.push(value)
+        formattedValues.push(value)
       }
 
       markPreviewKeep()
-      emitModelValueChange(formatDates)
+      emitModelValueChange(formattedValues)
     }
 
     function selectValue(value: string, type: PanelType) {
@@ -479,25 +535,27 @@ export default defineComponent({
     }
 
     function getReverse(dateType: DatePickerUnits, date: Month | number) {
-      if (!chooseYear.value || !chooseMonth.value) {
+      if (!selectionState.selectedYear || !selectionState.selectedMonth) {
         return false
       }
-      if (!isSameYear.value) {
-        return chooseYear.value > previewYear.value
+      if (!selectedYearInPreview.value) {
+        return selectionState.selectedYear > previewYear.value
       }
 
       if (dateType === DatePickerUnits.Year) {
-        return (date as number) < toNumber(chooseYear.value)
+        return (date as number) < toNumber(selectionState.selectedYear)
       }
 
       if (dateType === DatePickerUnits.Month) {
-        return (date as Month) < chooseMonth.value
+        return (date as Month) < selectionState.selectedMonth
       }
 
-      return isSameMonth.value ? (date as number) < toNumber(chooseDay.value) : chooseMonth.value > previewMonth.value
+      return selectedMonthInPreview.value
+        ? (date as number) < toNumber(selectionState.selectedDay)
+        : selectionState.selectedMonth > previewMonth.value
     }
 
-    function chooseDayFromPanel(day: number, monthOffset = 0) {
+    function selectDayFromPanel(day: number, monthOffset = 0) {
       const { readonly } = props
       if (readonly) {
         return
@@ -521,7 +579,7 @@ export default defineComponent({
       selectValue(dayjs(date).format(DatePickerFormats.DayPadded), DatePickerTypes.Date)
     }
 
-    function chooseMonthFromPanel(month: Month) {
+    function selectMonthFromPanel(month: Month) {
       const { type, readonly } = props
       const date = `${previewYear.value}-${month}`
 
@@ -533,16 +591,16 @@ export default defineComponent({
 
       if (type === DatePickerTypes.Month) {
         selectValue(date, DatePickerTypes.Month)
-        isMonthPanel.value = false
+        showMonthPanel.value = false
         return
       }
 
       previewMonth.value = month
       emitPreview()
-      isMonthPanel.value = false
+      showMonthPanel.value = false
     }
 
-    function chooseYearFromPanel(year: number) {
+    function selectYearFromPanel(year: number) {
       const { type, readonly } = props
       const date = `${year}`
 
@@ -554,13 +612,13 @@ export default defineComponent({
 
       if (type === DatePickerTypes.Year) {
         selectValue(date, DatePickerTypes.Year)
-        isYearPanel.value = false
+        showYearPanel.value = false
         return
       }
 
       previewYear.value = `${year}`
       emitPreview()
-      isYearPanel.value = false
+      showYearPanel.value = false
     }
 
     function shiftPreview(
@@ -641,28 +699,27 @@ export default defineComponent({
     function getFirstValidDate(value: Array<string>, type: DatePickerTypes) {
       const formatType = getFormatByType(type)
 
-      return value.find((choose) => !invalidFormatDate(dayjs(choose).format(formatType)))
+      return value.find((date) => !invalidFormatDate(dayjs(date).format(formatType)))
     }
 
     function markPreviewKeep() {
-      keepPreviewOnModelValueChange = props.type === DatePickerTypes.Date || props.range || props.multiple
+      shouldKeepPreviewOnModelValueChange = props.type === DatePickerTypes.Date || props.range || props.multiple
     }
 
     function syncRangeValue(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
-      const rangeDate = getRangeRefByType(type)
       const formatType = getFormatByType(type)
-      const formatDateList = value
-        .map((choose) => dayjs(choose).format(formatType))
+      const formattedValues = value
+        .map((date) => dayjs(date).format(formatType))
         .filter((date) => !invalidFormatDate(date))
         .slice(0, 2)
 
-      rangeDate.value = formatDateList
+      setRangeValuesByType(type, formattedValues)
 
-      if (rangeDate.value.length === 2) {
-        const isChangeOrder = dayjs(rangeDate.value[0]).isAfter(rangeDate.value[1])
+      if (formattedValues.length === 2) {
+        const shouldSwapRange = dayjs(formattedValues[0]).isAfter(formattedValues[1])
 
-        if (isChangeOrder) {
-          rangeDate.value = [rangeDate.value[1], rangeDate.value[0]]
+        if (shouldSwapRange) {
+          setRangeValuesByType(type, [formattedValues[1], formattedValues[0]])
         }
       }
 
@@ -672,12 +729,14 @@ export default defineComponent({
     }
 
     function syncMultipleValue(value: Array<string>, type: DatePickerTypes, syncPreview = true) {
-      const multipleDate = getMultipleRefByType(type)
       const formatType = getFormatByType(type)
 
       // need uniq
-      const formatDateList = uniq(value.map((choose) => dayjs(choose).format(formatType)))
-      multipleDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
+      const formattedValues = uniq(value.map((date) => dayjs(date).format(formatType)))
+      setMultipleValuesByType(
+        type,
+        formattedValues.filter((date) => date !== 'Invalid Date'),
+      )
 
       if (syncPreview) {
         syncPreviewValue(getFirstValidDate(value, type) ?? getFallbackDate())
@@ -686,9 +745,9 @@ export default defineComponent({
 
     function syncSingleValue(value: string | undefined, syncPreview = true) {
       if (!value) {
-        chooseMonth.value = undefined
-        chooseYear.value = undefined
-        chooseDay.value = undefined
+        selectionState.selectedMonth = undefined
+        selectionState.selectedYear = undefined
+        selectionState.selectedDay = undefined
 
         if (syncPreview) {
           syncPreviewValue(getFallbackDate())
@@ -697,8 +756,8 @@ export default defineComponent({
         return
       }
 
-      const handleValue = dayjs(value)
-      const formatDate = handleValue.format(DatePickerFormats.Day)
+      const parsedDate = dayjs(value)
+      const formatDate = parsedDate.format(DatePickerFormats.Day)
 
       if (invalidFormatDate(formatDate)) {
         return
@@ -706,11 +765,11 @@ export default defineComponent({
 
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
 
-      const monthDes: Month = MonthList.find((month) => month === monthValue) as Month
+      const selectedMonthValue: Month = MonthList.find((month) => month === monthValue) as Month
 
-      chooseMonth.value = monthDes
-      chooseYear.value = yearValue
-      chooseDay.value = dayValue
+      selectionState.selectedMonth = selectedMonthValue
+      selectionState.selectedYear = yearValue
+      selectionState.selectedDay = dayValue
 
       if (syncPreview) {
         syncPreviewValue(formatDate)
@@ -718,24 +777,24 @@ export default defineComponent({
     }
 
     function syncPreviewValue(value: string | undefined) {
-      const handleValue = value ? dayjs(value) : dayjs(getFallbackDate())
-      const formatDate = handleValue.format(DatePickerFormats.Day)
+      const parsedDate = value ? dayjs(value) : dayjs(getFallbackDate())
+      const formatDate = parsedDate.format(DatePickerFormats.Day)
 
       if (invalidFormatDate(formatDate)) {
         return
       }
 
       const [yearValue, monthValue] = formatDate.split('-')
-      const monthDes: Month = MonthList.find((month) => month === monthValue) as Month
+      const previewMonthValue: Month = MonthList.find((month) => month === monthValue) as Month
 
-      previewMonth.value = monthDes
+      previewMonth.value = previewMonthValue
       previewYear.value = yearValue
     }
 
     // expose
     function resetPreview() {
-      isYearPanel.value = false
-      isMonthPanel.value = false
+      showYearPanel.value = false
+      showMonthPanel.value = false
 
       if (!props.range && !props.multiple) {
         syncPreviewValue(getSingleDate(props.modelValue as string | undefined))
@@ -750,9 +809,9 @@ export default defineComponent({
     }
 
     function syncModelValue() {
-      isYearPanel.value = false
-      isMonthPanel.value = false
-      keepPreviewOnModelValueChange = false
+      showYearPanel.value = false
+      showMonthPanel.value = false
+      shouldKeepPreviewOnModelValueChange = false
       syncFromModelValue(true)
     }
 
@@ -762,12 +821,9 @@ export default defineComponent({
       dayPanelEl,
       reverse,
       currentDate,
-      chooseMonth,
-      chooseYear,
-      chooseDay,
       previewYear,
-      isYearPanel,
-      isMonthPanel,
+      showYearPanel,
+      showMonthPanel,
       monthTitle,
       dateTitle,
       yearTitle,
@@ -775,9 +831,9 @@ export default defineComponent({
       panelType,
       headerType,
       headerPreview,
-      selectedDate,
-      previewDate,
-      datePickerProps,
+      selectionState,
+      previewState,
+      panelProps,
       dateSlotProps,
       formattedRangeDays,
       n,
@@ -785,9 +841,9 @@ export default defineComponent({
       switchPanel,
       shiftCurrentPanelPreview,
       shiftDatePanelYearPreview,
-      chooseDayFromPanel,
-      chooseMonthFromPanel,
-      chooseYearFromPanel,
+      selectDayFromPanel,
+      selectMonthFromPanel,
+      selectYearFromPanel,
       shiftPreview,
       resetPreview,
       syncModelValue,

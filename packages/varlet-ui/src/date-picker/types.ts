@@ -16,15 +16,15 @@ export type PanelDatePickerProps = {
 }
 
 export type DatePickerSelectionState = {
-  chooseMonth: Month | undefined
-  chooseYear: string | undefined
-  chooseDay: string | undefined
-  chooseYears: Array<string>
-  chooseMonths: Array<string>
-  chooseDays: Array<string>
-  chooseRangeYear: Array<string>
-  chooseRangeMonth: Array<string>
-  chooseRangeDay: Array<string>
+  selectedMonth: Month | undefined
+  selectedYear: string | undefined
+  selectedDay: string | undefined
+  selectedYears: Array<string>
+  selectedMonths: Array<string>
+  selectedDays: Array<string>
+  selectedRangeYears: Array<string>
+  selectedRangeMonths: Array<string>
+  selectedRangeDays: Array<string>
 }
 
 export type DatePickerPreviewState = {

@@ -7,11 +7,11 @@
             <var-button
               type="primary"
               var-month-picker-cover
-              :elevation="datePickerProps.buttonElevation"
+              :elevation="panelProps.buttonElevation"
               v-bind="{
                 ...buttonProps(month),
               }"
-              @click="chooseMonth(month)"
+              @click="selectMonth(month)"
             >
               {{ getMonthAbbr(month) }}
             </var-button>
@@ -47,11 +47,11 @@ export default defineComponent({
       type: Object as PropType<DatePickerPreviewState>,
       required: true,
     },
-    choose: {
+    selection: {
       type: Object as PropType<DatePickerSelectionState>,
       required: true,
     },
-    datePickerProps: {
+    panelProps: {
       type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
@@ -71,12 +71,12 @@ export default defineComponent({
     function isInRange(month: Month): boolean {
       const {
         preview: { previewYear },
-        datePickerProps: { min, max },
-      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
+        panelProps: { min, max },
+      }: { preview: DatePickerPreviewState; panelProps: PanelDatePickerProps } = props
 
-      const previewDate = `${previewYear}-${month}`
-      const isBeforeMax = max ? dayjs(previewDate).isSameOrBefore(dayjs(max), DatePickerUnits.Month) : true
-      const isAfterMin = min ? dayjs(previewDate).isSameOrAfter(dayjs(min), DatePickerUnits.Month) : true
+      const monthValue = `${previewYear}-${month}`
+      const isBeforeMax = max ? dayjs(monthValue).isSameOrBefore(dayjs(max), DatePickerUnits.Month) : true
+      const isAfterMin = min ? dayjs(monthValue).isSameOrAfter(dayjs(min), DatePickerUnits.Month) : true
 
       return isBeforeMax && isAfterMin
     }
@@ -84,37 +84,37 @@ export default defineComponent({
     function isSelectedMonth(value: string, month: Month): boolean {
       const {
         preview: { previewYear },
-        choose: { chooseMonth, chooseYear, chooseMonths, chooseRangeMonth },
-        datePickerProps: { multiple, range },
+        selection: { selectedMonth, selectedYear, selectedMonths, selectedRangeMonths },
+        panelProps: { multiple, range },
       }: {
         preview: DatePickerPreviewState
-        choose: DatePickerSelectionState
-        datePickerProps: PanelDatePickerProps
+        selection: DatePickerSelectionState
+        panelProps: PanelDatePickerProps
       } = props
 
       if (range) {
-        if (!chooseRangeMonth.length) {
+        if (!selectedRangeMonths.length) {
           return false
         }
 
-        if (chooseRangeMonth.length === 1) {
-          return dayjs(value).isSame(dayjs(chooseRangeMonth[0]), DatePickerUnits.Month)
+        if (selectedRangeMonths.length === 1) {
+          return dayjs(value).isSame(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
         }
 
-        const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeMonth[1]), DatePickerUnits.Month)
-        const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeMonth[0]), DatePickerUnits.Month)
+        const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(selectedRangeMonths[1]), DatePickerUnits.Month)
+        const isAfterMin = dayjs(value).isSameOrAfter(dayjs(selectedRangeMonths[0]), DatePickerUnits.Month)
 
         return isBeforeMax && isAfterMin
       }
 
-      return multiple ? chooseMonths.includes(value) : chooseYear === previewYear && chooseMonth === month
+      return multiple ? selectedMonths.includes(value) : selectedYear === previewYear && selectedMonth === month
     }
 
     function buttonProps(month: Month) {
       const {
         preview: { previewYear },
-        datePickerProps: { allowedDates, color, type },
-      }: { preview: DatePickerPreviewState; datePickerProps: PanelDatePickerProps } = props
+        panelProps: { allowedDates, color, type },
+      }: { preview: DatePickerPreviewState; panelProps: PanelDatePickerProps } = props
 
       const value = `${previewYear}-${month}`
       const active = isSelectedMonth(value, month)
@@ -132,7 +132,7 @@ export default defineComponent({
       }
     }
 
-    function chooseMonth(month: Month) {
+    function selectMonth(month: Month) {
       emit('choose-month', month)
     }
 
@@ -151,7 +151,7 @@ export default defineComponent({
       shiftPreview,
       buttonProps,
       getMonthAbbr,
-      chooseMonth,
+      selectMonth,
     }
   },
 })

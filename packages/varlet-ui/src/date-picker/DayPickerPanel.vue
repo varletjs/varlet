@@ -12,11 +12,11 @@
                 type="primary"
                 var-day-picker-cover
                 round
-                :elevation="datePickerProps.buttonElevation"
+                :elevation="panelProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(cell),
                 }"
-                @click="chooseDay(cell)"
+                @click="selectDay(cell)"
               >
                 {{ cell.day }}
               </var-button>
@@ -69,7 +69,7 @@ export default defineComponent({
     VarButton,
   },
   props: {
-    choose: {
+    selection: {
       type: Object as PropType<DatePickerSelectionState>,
       required: true,
     },
@@ -81,7 +81,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    datePickerProps: {
+    panelProps: {
       type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
@@ -98,12 +98,12 @@ export default defineComponent({
 
     const previewIsSelectedMonth: ComputedRef<boolean> = computed(
       () =>
-        props.choose.chooseYear === props.preview.previewYear &&
-        props.choose.chooseMonth === props.preview.previewMonth,
+        props.selection.selectedYear === props.preview.previewYear &&
+        props.selection.selectedMonth === props.preview.previewMonth,
     )
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
-      const index = WeekHeader.findIndex((week: Week) => week === props.datePickerProps.firstDayOfWeek)
+      const index = WeekHeader.findIndex((week: Week) => week === props.panelProps.firstDayOfWeek)
 
       if (index === -1 || index === 0) {
         return [...WeekHeader]
@@ -157,57 +157,59 @@ export default defineComponent({
     }
 
     function isInRange(value: string) {
-      const { min, max } = props.datePickerProps
+      const { min, max } = props.panelProps
       const isBeforeMax = max ? dayjs(value).isSameOrBefore(dayjs(max), DatePickerUnits.Day) : true
       const isAfterMin = min ? dayjs(value).isSameOrAfter(dayjs(min), DatePickerUnits.Day) : true
 
       return isBeforeMax && isAfterMin
     }
 
-    function getChooseValue() {
-      const { chooseYear, chooseMonth, chooseDay } = props.choose
+    function getSelectedValue() {
+      const { selectedYear, selectedMonth, selectedDay } = props.selection
 
-      return chooseYear && chooseMonth && chooseDay ? `${chooseYear}-${chooseMonth}-${chooseDay}` : undefined
+      return selectedYear && selectedMonth && selectedDay
+        ? `${selectedYear}-${selectedMonth}-${selectedDay}`
+        : undefined
     }
 
     function isSingleSelectedDate(value: string) {
-      const choose = getChooseValue()
+      const selectedValue = getSelectedValue()
 
-      return choose ? dayjs(value).isSame(dayjs(choose), DatePickerUnits.Day) : false
+      return selectedValue ? dayjs(value).isSame(dayjs(selectedValue), DatePickerUnits.Day) : false
     }
 
     function isSelectedDate(value: string): boolean {
       const {
-        choose: { chooseDays, chooseRangeDay },
-        datePickerProps: { range },
-      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
+        selection: { selectedDays, selectedRangeDays },
+        panelProps: { range },
+      }: { selection: DatePickerSelectionState; panelProps: PanelDatePickerProps } = props
 
       if (!range) {
-        return chooseDays.includes(value)
+        return selectedDays.includes(value)
       }
 
-      if (!chooseRangeDay.length) {
+      if (!selectedRangeDays.length) {
         return false
       }
 
-      if (chooseRangeDay.length === 1) {
-        return dayjs(value).isSame(dayjs(chooseRangeDay[0]), DatePickerUnits.Day)
+      if (selectedRangeDays.length === 1) {
+        return dayjs(value).isSame(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
       }
 
-      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(chooseRangeDay[1]), DatePickerUnits.Day)
-      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(chooseRangeDay[0]), DatePickerUnits.Day)
+      const isBeforeMax = dayjs(value).isSameOrBefore(dayjs(selectedRangeDays[1]), DatePickerUnits.Day)
+      const isAfterMin = dayjs(value).isSameOrAfter(dayjs(selectedRangeDays[0]), DatePickerUnits.Day)
 
       return isBeforeMax && isAfterMin
     }
 
     function isDateDisabled(value: string) {
-      const { allowedDates } = props.datePickerProps
+      const { allowedDates } = props.panelProps
 
       return !isInRange(value) || (allowedDates ? !allowedDates(value) : false)
     }
 
     function shouldShowOutline(value: string, selected: boolean, disabled: boolean) {
-      const { multiple, range, showCurrent } = props.datePickerProps
+      const { multiple, range, showCurrent } = props.panelProps
       const current = showCurrent && dayjs(value).isSame(dayjs(props.current), DatePickerUnits.Day)
 
       if (!current) {
@@ -222,13 +224,13 @@ export default defineComponent({
         return !selected
       }
 
-      return previewIsSelectedMonth.value ? props.choose.chooseDay !== currentDay : true
+      return previewIsSelectedMonth.value ? props.selection.selectedDay !== currentDay : true
     }
 
     function buttonProps(cell: DayCell) {
       const {
-        datePickerProps: { color, multiple, range },
-      }: { datePickerProps: PanelDatePickerProps } = props
+        panelProps: { color, multiple, range },
+      }: { panelProps: PanelDatePickerProps } = props
 
       const { value, monthOffset } = cell
       const isCurrentMonth = monthOffset === MonthOffset.Current
@@ -262,7 +264,7 @@ export default defineComponent({
       panelKey.value += direction === ShiftDirections.Prev ? -1 : 1
     }
 
-    function chooseDay(cell: DayCell) {
+    function selectDay(cell: DayCell) {
       emit('choose-day', cell.day, cell.monthOffset)
     }
 
@@ -287,7 +289,7 @@ export default defineComponent({
       shiftPreview,
       shiftYearPreview,
       getDayAbbr,
-      chooseDay,
+      selectDay,
       buttonProps,
     }
   },

@@ -133,7 +133,7 @@ test('datePicker does not emit change when choosing disabled value', async () =>
     },
   })
 
-  wrapper.vm.chooseDayFromPanel(2)
+  wrapper.vm.selectDayFromPanel(2)
   expect(onUpdateModelValue).not.toHaveBeenCalled()
   expect(onChange).not.toHaveBeenCalled()
 
@@ -143,7 +143,7 @@ test('datePicker does not emit change when choosing disabled value', async () =>
     allowedDates: (val) => val !== '2021-04',
   })
 
-  wrapper.vm.chooseMonthFromPanel('04')
+  wrapper.vm.selectMonthFromPanel('04')
   expect(onUpdateModelValue).not.toHaveBeenCalled()
   expect(onChange).not.toHaveBeenCalled()
 
@@ -153,7 +153,7 @@ test('datePicker does not emit change when choosing disabled value', async () =>
     allowedDates: (val) => val !== '2022',
   })
 
-  wrapper.vm.chooseYearFromPanel(2022)
+  wrapper.vm.selectYearFromPanel(2022)
   expect(onUpdateModelValue).not.toHaveBeenCalled()
   expect(onChange).not.toHaveBeenCalled()
 
@@ -184,11 +184,11 @@ test('datePicker allowedDates does not block year or month navigation in date ty
     },
   })
 
-  wrapper.vm.chooseMonthFromPanel('04')
-  expect(wrapper.vm.previewDate.previewMonth).toBe('04')
+  wrapper.vm.selectMonthFromPanel('04')
+  expect(wrapper.vm.previewState.previewMonth).toBe('04')
   expect(onUpdateModelValue).not.toHaveBeenCalled()
 
-  wrapper.vm.chooseYearFromPanel(2022)
+  wrapper.vm.selectYearFromPanel(2022)
   expect(wrapper.vm.previewYear).toBe('2022')
   expect(onUpdateModelValue).not.toHaveBeenCalled()
 
@@ -596,9 +596,9 @@ test('datePicker fallbackViewDate should control initial panel when modelValue i
   await delay(0)
   expect(wrapper.find('.var-date-picker-header__year').text()).toBe('2026')
   expect(wrapper.find('.var-date-picker-header__month').text()).toBe('四月')
-  expect(wrapper.vm.chooseYear).toBe(undefined)
-  expect(wrapper.vm.chooseMonth).toBe(undefined)
-  expect(wrapper.vm.chooseDay).toBe(undefined)
+  expect(wrapper.vm.selectionState.selectedYear).toBe(undefined)
+  expect(wrapper.vm.selectionState.selectedMonth).toBe(undefined)
+  expect(wrapper.vm.selectionState.selectedDay).toBe(undefined)
   expect(wrapper.emitted()['update:modelValue']).toBeFalsy()
 
   wrapper.unmount()
@@ -865,11 +865,11 @@ test('datePicker should sync preview without panel transition when choosing adja
   await delay(0)
   const panelKey = wrapper.findComponent({ name: 'DayPickerPanel' }).vm.panelKey
 
-  wrapper.findComponent(VarDatePicker).vm.chooseDayFromPanel(1, 1)
+  wrapper.findComponent(VarDatePicker).vm.selectDayFromPanel(1, 1)
   await delay(0)
 
   expect(wrapper.vm.date).toBe('2021-06-01')
-  expect(wrapper.findComponent(VarDatePicker).vm.previewDate.previewMonth).toBe('06')
+  expect(wrapper.findComponent(VarDatePicker).vm.previewState.previewMonth).toBe('06')
   expect(wrapper.findComponent({ name: 'DayPickerPanel' }).vm.panelKey).toBe(panelKey)
 
   wrapper.unmount()

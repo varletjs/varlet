@@ -6,11 +6,11 @@
           <var-button
             type="primary"
             var-year-picker-cover
-            :elevation="datePickerProps.buttonElevation"
+            :elevation="panelProps.buttonElevation"
             v-bind="{
               ...buttonProps(`${year}`),
             }"
-            @click="chooseYear(year)"
+            @click="selectYear(year)"
           >
             {{ year }}
           </var-button>
@@ -44,11 +44,11 @@ export default defineComponent({
     preview: {
       type: String,
     },
-    choose: {
+    selection: {
       type: Object as PropType<DatePickerSelectionState>,
       required: true,
     },
-    datePickerProps: {
+    panelProps: {
       type: Object as PropType<PanelDatePickerProps>,
       required: true,
     },
@@ -72,8 +72,8 @@ export default defineComponent({
 
     function isInRange(year: string): boolean {
       const {
-        datePickerProps: { min, max },
-      }: { datePickerProps: PanelDatePickerProps } = props
+        panelProps: { min, max },
+      }: { panelProps: PanelDatePickerProps } = props
 
       const isBeforeMax = max ? dayjs(year).isSameOrBefore(dayjs(max), DatePickerUnits.Year) : true
       const isAfterMin = min ? dayjs(year).isSameOrAfter(dayjs(min), DatePickerUnits.Year) : true
@@ -83,32 +83,32 @@ export default defineComponent({
 
     function isSelectedYear(year: string): boolean {
       const {
-        choose: { chooseYear, chooseYears, chooseRangeYear },
-        datePickerProps: { multiple, range },
-      }: { choose: DatePickerSelectionState; datePickerProps: PanelDatePickerProps } = props
+        selection: { selectedYear, selectedYears, selectedRangeYears },
+        panelProps: { multiple, range },
+      }: { selection: DatePickerSelectionState; panelProps: PanelDatePickerProps } = props
 
       if (range) {
-        if (!chooseRangeYear.length) {
+        if (!selectedRangeYears.length) {
           return false
         }
 
-        if (chooseRangeYear.length === 1) {
-          return dayjs(year).isSame(dayjs(chooseRangeYear[0]), DatePickerUnits.Year)
+        if (selectedRangeYears.length === 1) {
+          return dayjs(year).isSame(dayjs(selectedRangeYears[0]), DatePickerUnits.Year)
         }
 
-        const isBeforeMax = dayjs(year).isSameOrBefore(dayjs(chooseRangeYear[1]), DatePickerUnits.Year)
-        const isAfterMin = dayjs(year).isSameOrAfter(dayjs(chooseRangeYear[0]), DatePickerUnits.Year)
+        const isBeforeMax = dayjs(year).isSameOrBefore(dayjs(selectedRangeYears[1]), DatePickerUnits.Year)
+        const isAfterMin = dayjs(year).isSameOrAfter(dayjs(selectedRangeYears[0]), DatePickerUnits.Year)
 
         return isBeforeMax && isAfterMin
       }
 
-      return multiple ? chooseYears.includes(year) : chooseYear === year
+      return multiple ? selectedYears.includes(year) : selectedYear === year
     }
 
     function buttonProps(year: string) {
       const {
-        datePickerProps: { allowedDates, color, type },
-      }: { datePickerProps: PanelDatePickerProps } = props
+        panelProps: { allowedDates, color, type },
+      }: { panelProps: PanelDatePickerProps } = props
 
       const active = isSelectedYear(year)
       const disabled = !isInRange(year) || (type === DatePickerTypes.Year && allowedDates ? !allowedDates(year) : false)
@@ -124,7 +124,7 @@ export default defineComponent({
       }
     }
 
-    function chooseYear(year: number) {
+    function selectYear(year: number) {
       emit('choose-year', year)
     }
 
@@ -174,7 +174,7 @@ export default defineComponent({
       reverse,
       panelKey,
       nDate,
-      chooseYear,
+      selectYear,
       shiftPreview,
     }
   },

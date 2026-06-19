@@ -613,7 +613,7 @@ describe('test dateInput picker behavior', () => {
     await delay(0)
 
     await wrapper.findComponent(DatePicker).trigger('mousedown')
-    wrapper.findComponent(DatePicker).vm.chooseDayFromPanel(9)
+    wrapper.findComponent(DatePicker).vm.selectDayFromPanel(9)
     await delay(0)
 
     expect(onUpdateModelValue).not.toHaveBeenCalled()
@@ -633,11 +633,11 @@ describe('test dateInput picker behavior', () => {
       },
     })
 
-    const datePickerProps = wrapper.findComponent(DatePicker).props()
-    expect(datePickerProps.min).toBe('2021-04-01')
-    expect(datePickerProps.max).toBe('2021-04-30')
-    expect(datePickerProps.firstDayOfWeek).toBe(1)
-    expect(datePickerProps.allowedDates).toBe(allowedDates)
+    const panelProps = wrapper.findComponent(DatePicker).props()
+    expect(panelProps.min).toBe('2021-04-01')
+    expect(panelProps.max).toBe('2021-04-30')
+    expect(panelProps.firstDayOfWeek).toBe(1)
+    expect(panelProps.allowedDates).toBe(allowedDates)
 
     wrapper.unmount()
   })
@@ -809,42 +809,42 @@ describe('test dateInput picker behavior', () => {
     })
 
     await wrapper.find('input').trigger('click')
-    wrapper.findComponent(DatePicker).vm.chooseDayFromPanel(9)
+    wrapper.findComponent(DatePicker).vm.selectDayFromPanel(9)
     await wrapper.find('input').trigger('blur')
     await wrapper.find('input').trigger('click')
     await delay(0)
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
     expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
-    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeDay).toEqual(['2021-04-8', '2021-04-10'])
+    expect(wrapper.findComponent(DatePicker).vm.selectionState.selectedRangeDays).toEqual(['2021-04-8', '2021-04-10'])
 
     await wrapper.setProps({
       type: 'month',
       modelValue: ['2021-04', '2021-06'],
     })
     await wrapper.find('input').trigger('click')
-    wrapper.findComponent(DatePicker).vm.chooseMonthFromPanel('05')
+    wrapper.findComponent(DatePicker).vm.selectMonthFromPanel('05')
     await wrapper.find('input').trigger('blur')
     await wrapper.find('input').trigger('click')
     await delay(0)
 
     expect(wrapper.find('input').element.value).toBe('2021-04 ~ 2021-06')
     expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
-    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeMonth).toEqual(['2021-04', '2021-06'])
+    expect(wrapper.findComponent(DatePicker).vm.selectionState.selectedRangeMonths).toEqual(['2021-04', '2021-06'])
 
     await wrapper.setProps({
       type: 'year',
       modelValue: ['2021', '2023'],
     })
     await wrapper.find('input').trigger('click')
-    wrapper.findComponent(DatePicker).vm.chooseYearFromPanel(2022)
+    wrapper.findComponent(DatePicker).vm.selectYearFromPanel(2022)
     await wrapper.find('input').trigger('blur')
     await wrapper.find('input').trigger('click')
     await delay(0)
 
     expect(wrapper.find('input').element.value).toBe('2021 ~ 2023')
     expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
-    expect(wrapper.findComponent(DatePicker).vm.selectedDate.chooseRangeYear).toEqual(['2021', '2023'])
+    expect(wrapper.findComponent(DatePicker).vm.selectionState.selectedRangeYears).toEqual(['2021', '2023'])
 
     wrapper.unmount()
   })
@@ -948,9 +948,9 @@ describe('test dateInput datetime behavior', () => {
       },
     })
 
-    const datePickerProps = wrapper.findComponent(DatePicker).props()
-    expect(datePickerProps.min).toBe('2021-04-08')
-    expect(datePickerProps.max).toBe('2021-04-20')
+    const panelProps = wrapper.findComponent(DatePicker).props()
+    expect(panelProps.min).toBe('2021-04-08')
+    expect(panelProps.max).toBe('2021-04-20')
 
     wrapper.unmount()
   })
