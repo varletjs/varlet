@@ -2,5 +2,8 @@
   "cSpell.words": ["hoverable", "checkmark"],
   "eslint.enable": false,
   "prettier.enable": false,
-  "editor.defaultFormatter": "oxc.oxc-vscode"
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "vitest.configSearchPatternInclude": "**/vitest.config*.{ts,js,mjs,cjs,cts,mts}",
+  "vitest.configSearchPatternExclude": "{**/node_modules/**,**/lib/**,**/dist/**,**/varlet-cli/**}",
+  "bun.test.enable": false
 }
