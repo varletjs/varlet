@@ -333,6 +333,39 @@ test('auto-complete variant', () => {
   wrapper.unmount()
 })
 
+test('auto-complete popover class by variant', () => {
+  const standard = mount(AutoComplete, {
+    props: {
+      variant: 'standard',
+    },
+  })
+
+  expect(standard.findComponent({ name: 'VarMenuSelect' }).props('popoverClass')).toBe(
+    'var-auto-complete--standard-menu-margin',
+  )
+  standard.unmount()
+
+  const filled = mount(AutoComplete, {
+    props: {
+      variant: 'filled',
+    },
+  })
+
+  expect(filled.findComponent({ name: 'VarMenuSelect' }).props('popoverClass')).toBe(
+    'var-auto-complete--filled-menu-margin',
+  )
+  filled.unmount()
+
+  const outlined = mount(AutoComplete, {
+    props: {
+      variant: 'outlined',
+    },
+  })
+
+  expect(outlined.findComponent({ name: 'VarMenuSelect' }).props('popoverClass')).toBe('')
+  outlined.unmount()
+})
+
 test('auto-complete slots', () => {
   const wrapper = mount(AutoComplete, {
     slots: {
@@ -347,6 +380,65 @@ test('auto-complete slots', () => {
   wrapper.unmount()
 })
 
+test('auto-complete extra-message slot renders', async () => {
+  const wrapper = mount(AutoComplete, {
+    slots: {
+      'extra-message': () => 'extra-message',
+    },
+  })
+
+  await nextTick()
+  expect(wrapper.vm.$slots['extra-message']).toBeTruthy()
+  expect(wrapper.findComponent({ name: 'VarInput' }).vm.$slots['extra-message']).toBeTruthy()
+  wrapper.unmount()
+})
+
+test('auto-complete passes extra-message slot to input', () => {
+  const wrapper = mount(AutoComplete, {
+    slots: {
+      'extra-message': () => 'extra-message',
+    },
+    global: {
+      stubs: {
+        VarMenuSelect: {
+          template: '<div><slot /><slot name="options" /></div>',
+        },
+        VarInput: {
+          template: '<div class="stub-input"><slot name="extra-message" /></div>',
+        },
+        VarFormDetails: true,
+      },
+    },
+  })
+
+  expect(wrapper.find('.stub-input').text()).toContain('extra-message')
+  wrapper.unmount()
+})
+
+test('auto-complete tabindex behavior', () => {
+  const defaultTab = mount(AutoComplete)
+
+  expect(defaultTab.attributes('tabindex')).toBe('0')
+  defaultTab.unmount()
+
+  const disabledTab = mount(AutoComplete, {
+    props: {
+      disabled: true,
+    },
+  })
+
+  expect(disabledTab.attributes('tabindex')).toBeUndefined()
+  disabledTab.unmount()
+
+  const customTab = mount(AutoComplete, {
+    props: {
+      tabindex: '3',
+    },
+  })
+
+  expect(customTab.attributes('tabindex')).toBe('3')
+  customTab.unmount()
+})
 test('auto-complete validation', async () => {
   const onUpdateModelValue = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -389,10 +481,36 @@ test('auto-complete click outside', async () => {
 
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
   await wrapper.trigger('focusin')
+  await nextTick()
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
 
   await trigger(document, 'click')
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
+
+  wrapper.unmount()
+})
+
+test('auto-complete ignore click outside after clear', async () => {
+  const onBlur = vi.fn()
+  const wrapper = mount(AutoComplete, {
+    props: {
+      modelValue: 'a',
+      clearable: true,
+      onBlur,
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1',
+        },
+      ],
+    },
+  })
+
+  await wrapper.trigger('focusin')
+  await wrapper.find('.var-icon-close-circle').trigger('click')
+  await trigger(document, 'click')
+
+  expect(onBlur).not.toHaveBeenCalled()
 
   wrapper.unmount()
 })
@@ -418,6 +536,7 @@ test('auto-complete select option by keyboard', async () => {
 
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
   await wrapper.trigger('focusin')
+  await nextTick()
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
 
   await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
@@ -447,6 +566,7 @@ test('auto-complete close menu by keyboard tab', async () => {
 
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
   await wrapper.trigger('focusin')
+  await nextTick()
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
 
   await triggerKeyboard(window, 'keydown', { key: 'Tab' })
@@ -455,6 +575,81 @@ test('auto-complete close menu by keyboard tab', async () => {
   wrapper.unmount()
 })
 
+test('auto-complete keyboard ignores when menu hidden', async () => {
+  const wrapper = mount(AutoComplete, {
+    props: {
+      modelValue: 'a',
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1',
+        },
+      ],
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
+  expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
+
+  wrapper.unmount()
+})
+
+test('auto-complete keyboard focuses input for other keys', async () => {
+  const wrapper = mount(AutoComplete, {
+    props: {
+      modelValue: 'a',
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1',
+        },
+      ],
+    },
+  })
+
+  const focusSpy = vi.fn()
+  wrapper.vm.input.focus = focusSpy
+
+  await wrapper.trigger('focusin')
+  await triggerKeyboard(window, 'keydown', { key: 'A' })
+
+  expect(focusSpy).toHaveBeenCalled()
+
+  wrapper.unmount()
+})
+
+test('auto-complete blur ignored when menu open', async () => {
+  const onBlur = vi.fn()
+  const wrapper = mount(AutoComplete, {
+    props: {
+      modelValue: 'a',
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1',
+        },
+      ],
+      onBlur,
+    },
+  })
+
+  await wrapper.trigger('focusin')
+  await wrapper.find('input').trigger('blur')
+  expect(onBlur).not.toHaveBeenCalled()
+
+  wrapper.unmount()
+})
+
+test('auto-complete key-escape focuses input', () => {
+  const wrapper = mount(AutoComplete)
+  const focusSpy = vi.fn()
+  wrapper.vm.input.focus = focusSpy
+
+  wrapper.vm.handleKeyEscape()
+  expect(focusSpy).toHaveBeenCalled()
+
+  wrapper.unmount()
+})
 test('auto-complete handle same value by option', async () => {
   const onChange = vi.fn()
   const wrapper = mount(AutoComplete, {
@@ -472,6 +667,7 @@ test('auto-complete handle same value by option', async () => {
 
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
   await wrapper.trigger('focusin')
+  await nextTick()
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
 
   await trigger(document.querySelector('.var-menu-option'), 'click')
