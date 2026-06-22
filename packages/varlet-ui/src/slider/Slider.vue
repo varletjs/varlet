@@ -313,8 +313,8 @@ export default defineComponent({
     }
 
     function emitChange(value: number | number[]) {
-      call(props.onChange, value)
       call(props['onUpdate:modelValue'], value)
+      call(props.onChange, value)
       validateWithTrigger()
     }
 

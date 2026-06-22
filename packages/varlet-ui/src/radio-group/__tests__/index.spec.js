@@ -77,6 +77,29 @@ test('radio onClick & onChange', async () => {
   wrapper.unmount()
 })
 
+test('radio emits update before change', async () => {
+  const calls = []
+  const onUpdateModelValue = vi.fn((value) => {
+    calls.push('update')
+    wrapper.setProps({ modelValue: value })
+  })
+  const onChange = vi.fn(() => calls.push('change'))
+
+  const wrapper = mount(VarRadio, {
+    props: {
+      modelValue: false,
+      onChange,
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-radio').trigger('click')
+
+  expect(calls).toStrictEqual(['update', 'change'])
+
+  wrapper.unmount()
+})
+
 test('radio toggle method', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -168,6 +191,40 @@ test('radio with radio group', async () => {
 
   await wrapper.find('.var-radio').trigger('click')
   expect(wrapper.vm.value).toBe(1)
+
+  wrapper.unmount()
+})
+
+test('radio group emits update before child change', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: 2,
+      calls: [],
+    }),
+    methods: {
+      handleUpdate(value) {
+        this.value = value
+        this.calls.push('update')
+      },
+      handleChange() {
+        this.calls.push('change')
+      },
+    },
+    template: `
+      <var-radio-group :model-value="value" @update:model-value="handleUpdate">
+        <var-radio :checked-value="1" @change="handleChange" />
+        <var-radio :checked-value="2" />
+      </var-radio-group>
+    `,
+  })
+
+  await wrapper.find('.var-radio').trigger('click')
+
+  expect(wrapper.vm.calls).toStrictEqual(['update', 'change'])
 
   wrapper.unmount()
 })

@@ -164,6 +164,38 @@ describe('test switch events', () => {
     wrapper.unmount()
   })
 
+  test('switch emits update before change', async () => {
+    const calls = []
+
+    const wrapper = mount({
+      components: {
+        [VarSwitch.name]: VarSwitch,
+      },
+      data() {
+        return {
+          value: true,
+          calls,
+        }
+      },
+      methods: {
+        handleUpdate(value) {
+          this.value = value
+          this.calls.push('update')
+        },
+        handleChange() {
+          this.calls.push('change')
+        },
+      },
+      template: `<var-switch :model-value="value" @update:model-value="handleUpdate" @change="handleChange" />`,
+    })
+
+    await wrapper.find('.var-switch__block').trigger('click')
+
+    expect(calls).toStrictEqual(['update', 'change'])
+
+    wrapper.unmount()
+  })
+
   test('switch event not trigger', async () => {
     const clickFn = vi.fn()
     const changeFn = vi.fn()

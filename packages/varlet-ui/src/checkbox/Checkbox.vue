@@ -123,16 +123,17 @@ export default defineComponent({
       })
     }
 
-    function change(changedValue: any) {
+    async function change(changedValue: any) {
       const { checkedValue, onChange } = props
 
       value.value = changedValue
-      call(onChange, value.value, isIndeterminate.value)
-      validateWithTrigger('onChange')
       changedValue === checkedValue ? checkboxGroup?.onChecked(checkedValue) : checkboxGroup?.onUnchecked(checkedValue)
+      await nextTick()
+      call(onChange, changedValue, isIndeterminate.value)
+      validateWithTrigger('onChange')
     }
 
-    function handleClick(e: Event) {
+    async function handleClick(e: Event) {
       const { disabled, readonly, checkedValue, uncheckedValue, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -147,6 +148,7 @@ export default defineComponent({
 
       if (isIndeterminate.value === true) {
         isIndeterminate.value = false
+        await nextTick()
         call(props.onChange, value.value, isIndeterminate.value)
         validateWithTrigger('onChange')
         return

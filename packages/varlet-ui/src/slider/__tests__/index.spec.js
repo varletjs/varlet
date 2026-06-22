@@ -211,6 +211,32 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
+  test('slider emits update before change', async () => {
+    const calls = []
+    const onUpdateModelValue = vi.fn((value) => {
+      calls.push('update')
+      wrapper.setProps({ modelValue: value })
+    })
+    const onChange = vi.fn(() => calls.push('change'))
+
+    const wrapper = mount(VarSlider, {
+      props: {
+        modelValue: 0,
+        onChange,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    const el = wrapper.find('.var-slider__horizontal-thumb')
+    await trigger(el, 'touchstart', 0, 0)
+    await trigger(document, 'touchmove', 50, 0)
+    await trigger(document, 'touchend', 50, 0)
+
+    expect(calls).toStrictEqual(['update', 'change'])
+
+    wrapper.unmount()
+  })
+
   test('thumbSize prop', () => {
     const wrapper = mount(VarSlider, {
       props: {

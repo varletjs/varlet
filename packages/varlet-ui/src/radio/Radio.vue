@@ -174,7 +174,7 @@ export default defineComponent({
       })
     }
 
-    function change(changedValue: any) {
+    async function change(changedValue: any) {
       const { checkedValue, onChange } = props
 
       if (radioGroup && value.value === checkedValue) {
@@ -182,9 +182,9 @@ export default defineComponent({
       }
 
       value.value = changedValue
-
-      call(onChange, value.value)
       radioGroup?.onToggle(checkedValue)
+      await nextTick()
+      call(onChange, changedValue)
       validateWithTrigger('onChange')
     }
 
