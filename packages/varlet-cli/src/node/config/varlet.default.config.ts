@@ -7,7 +7,6 @@ export default defineConfig({
   port: 8080,
   title: 'VARLET',
   logo: 'varlet_icon.png',
-  defaultLanguage: 'zh-CN',
   themeKey: 'VARLET_V3_THEME',
   defaultLightTheme: 'md3LightTheme',
   defaultDarkTheme: 'md3DarkTheme',

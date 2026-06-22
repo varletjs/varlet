@@ -30,3 +30,7 @@ export function inIframe() {
 export function utoa(data: string): string {
   return btoa(unescape(encodeURIComponent(data)))
 }
+
+export function getBrowserLanguage(): string {
+  return navigator.language.startsWith('zh') ? 'zh-CN' : 'en-US'
+}
