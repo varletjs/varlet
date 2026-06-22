@@ -33,7 +33,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@babel/core": "^7.25.2",
+    "@babel/core": "^7.29.6",
     "@babel/preset-typescript": "^7.24.7",
     "@inquirer/prompts": "^6.0.1",
     "@varlet/icon-builder": "0.2.14",
