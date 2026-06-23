@@ -213,8 +213,8 @@ export default defineComponent({
           validateWithTrigger('onLazyChange')
         })
       } else {
-        call(onChange, newValue)
         call(updateModelValue, newValue)
+        call(onChange, newValue)
         validateWithTrigger('onChange')
       }
     }

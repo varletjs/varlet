@@ -1,4 +1,13 @@
-## [3.18.1](https://github.com/varletjs/varlet/compare/v3.18.0...v3.18.1) (2026-06-13)
+## [3.18.2](https://github.com/varletjs/varlet/compare/v3.18.1...v3.18.2) (2026-06-22)
+
+
+### Bug Fixes
+
+* **checkbox, radio, slider, switch:** fixed onChange event emit timing ([f3b9504](https://github.com/varletjs/varlet/commit/f3b95049aa425bb223d252c2333c9775f598db05))
+* **cli:** restore test coverage report by adding explicit include ([#1975](https://github.com/varletjs/varlet/issues/1975)) ([4d08c18](https://github.com/varletjs/varlet/commit/4d08c182ab2c11844d49573d60b9fbb49347be8f))
+* **ui:** improve docs and data table fixed column shadow ([848fedf](https://github.com/varletjs/varlet/commit/848fedfaf72b664f3620278266c2dda55524b295))
+
+# [3.18.0](https://github.com/varletjs/varlet/compare/v3.17.1...v3.18.0) (2026-06-13)
 
 
 ### Bug Fixes
@@ -13,7 +22,6 @@
 * **style-vars:** ensure newline at end of file in styleVars.d.ts ([bcb1fbf](https://github.com/varletjs/varlet/commit/bcb1fbf3bb50de283880ee4f06e6ccfc7769083e))
 * **tree-menu:** make value prop optional in TreeMenuBaseOption interface ([3033351](https://github.com/varletjs/varlet/commit/30333516c3e68ebdec3266b75f914a174f4779bc))
 * **types:** ensure newline at end of file in styleVars.d.ts ([0805fdd](https://github.com/varletjs/varlet/commit/0805fddc09223e3a5671ed7109e2ef9e793a28e4))
-* **ui:** improve docs and data table fixed column shadow ([848fedf](https://github.com/varletjs/varlet/commit/848fedfaf72b664f3620278266c2dda55524b295))
 
 
 ### Features

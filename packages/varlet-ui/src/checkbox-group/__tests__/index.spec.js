@@ -77,6 +77,29 @@ test('checkbox onClick & onChange', async () => {
   wrapper.unmount()
 })
 
+test('checkbox emits update before change', async () => {
+  const calls = []
+  const onUpdateModelValue = vi.fn((value) => {
+    calls.push('update')
+    wrapper.setProps({ modelValue: value })
+  })
+  const onChange = vi.fn(() => calls.push('change'))
+
+  const wrapper = mount(VarCheckbox, {
+    props: {
+      modelValue: false,
+      onChange,
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-checkbox').trigger('click')
+
+  expect(calls).toStrictEqual(['update', 'change'])
+
+  wrapper.unmount()
+})
+
 test('checkbox toggle method', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -184,6 +207,39 @@ test('checkbox with checkbox group', async () => {
   expect(wrapper.vm.value).toStrictEqual([1])
   await wrapper.find('.var-checkbox').trigger('click')
   expect(wrapper.vm.value).toStrictEqual([])
+
+  wrapper.unmount()
+})
+
+test('checkbox group emits update before child change', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      calls: [],
+    }),
+    methods: {
+      handleUpdate(value) {
+        this.value = value
+        this.calls.push('update')
+      },
+      handleChange() {
+        this.calls.push('change')
+      },
+    },
+    template: `
+      <var-checkbox-group :model-value="value" @update:model-value="handleUpdate">
+        <var-checkbox :checked-value="1" @change="handleChange" />
+      </var-checkbox-group>
+    `,
+  })
+
+  await wrapper.find('.var-checkbox').trigger('click')
+
+  expect(wrapper.vm.calls).toStrictEqual(['update', 'change'])
 
   wrapper.unmount()
 })
