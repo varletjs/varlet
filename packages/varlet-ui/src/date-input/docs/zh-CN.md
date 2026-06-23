@@ -4,6 +4,8 @@
 
 用于输入或选择日期。
 
+通过 `type="datetime"` 选择日期与时间，日历下方提供 `时 : 分 : 秒` 的时间选择。设置 `use-seconds` 为 `false` 可只精确到分钟。`min` / `max` 设置整体可选边界。`allowed-dates` 用于禁用日历单元格，`allowed-times` 用于禁用时间选择器选项。
+
 ### 标准外观
 
 ```html
@@ -30,6 +32,7 @@ const standardValue16 = ref(['2021', '2025'])
 const standardValue17 = ref('2021-04-08')
 const standardValue18 = ref(['2021-04-08', '2021-04-12'])
 const standardValue19 = ref('2021-04-09')
+const datetimeValue = ref('2021-04-08 12:30:45')
 
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
@@ -79,6 +82,9 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
       <template #extra-message>当前值：{{ standardValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="standardValue14" size="small" placeholder="小尺寸" />
+    <var-date-input v-model="datetimeValue" type="datetime" placeholder="请选择日期时间">
+      <template #extra-message>当前值：{{ datetimeValue }}</template>
+    </var-date-input>
   </var-space>
 </template>
 
@@ -120,8 +126,14 @@ const outlinedValue16 = ref(['2021', '2025'])
 const outlinedValue17 = ref('2021-04-08')
 const outlinedValue18 = ref(['2021-04-08', '2021-04-12'])
 const outlinedValue19 = ref('2021-04-09')
+const datetimeNoSecondsValue = ref('2021-04-08 12:30')
+const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
 
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
+const allowedTimes = (value) => {
+  const hour = Number(value.split(' ')[1].split(':')[0])
+  return hour >= 9 && hour < 18
+}
 </script>
 
 <template>
@@ -188,6 +200,24 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
       <template #extra-message>当前值：{{ outlinedValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="outlinedValue14" variant="outlined" size="small" placeholder="小尺寸" />
+    <var-date-input
+      v-model="datetimeNoSecondsValue"
+      type="datetime"
+      :use-seconds="false"
+      variant="outlined"
+      placeholder="请选择日期时间（到分钟）"
+    >
+      <template #extra-message>当前值：{{ datetimeNoSecondsValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeAllowedTimesValue"
+      type="datetime"
+      variant="outlined"
+      :allowed-times="allowedTimes"
+      placeholder="限制可选时间"
+    >
+      <template #extra-message>当前值：{{ datetimeAllowedTimesValue }}</template>
+    </var-date-input>
   </var-space>
 </template>
 
@@ -229,6 +259,8 @@ const filledValue16 = ref(['2021', '2025'])
 const filledValue17 = ref('2021-04-08')
 const filledValue18 = ref(['2021-04-08', '2021-04-12'])
 const filledValue19 = ref('2021-04-09')
+const datetimeMinMaxValue = ref('2021-04-08 12:00:00')
+const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
 
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 </script>
@@ -297,6 +329,19 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
       <template #extra-message>当前值：{{ filledValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" placeholder="小尺寸" />
+    <var-date-input
+      v-model="datetimeMinMaxValue"
+      type="datetime"
+      variant="filled"
+      min="2021-04-08 09:30:00"
+      max="2021-04-20 18:00:00"
+      placeholder="限制日期时间范围"
+    >
+      <template #extra-message>当前值：{{ datetimeMinMaxValue }}</template>
+    </var-date-input>
+    <var-date-input v-model="datetimeRangeValue" type="datetime" range variant="filled" placeholder="请选择日期时间范围">
+      <template #extra-message>当前值：{{ datetimeRangeValue.join(' ~ ') }}</template>
+    </var-date-input>
   </var-space>
 </template>
 
@@ -310,68 +355,6 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 }
 
 </style>
-```
-
-### 日期时间选择
-
-通过 `type="datetime"` 选择日期与时间，日历下方提供 `时 : 分 : 秒` 的时间选择，绑定值默认格式为 `YYYY-MM-DD HH:mm:ss`，仅支持 24 小时制。设置 `use-seconds` 为 `false` 可只精确到分钟。`min` / `max` 接收完整时间串，会同时限制日历可选天和时间列表可选项；通过 `allowed-times` 限制可选时间，参数为完整的 `YYYY-MM-DD HH:mm:ss`，可直接用 `dayjs` 解析。配合 `range` 可选择日期时间范围，开始与结束时间在同一行编辑，最终按完整时间排序起止。
-
-```html
-<script setup>
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-
-const datetimeValue = ref('2021-04-08 12:30:45')
-const datetimeNoSecondsValue = ref('2021-04-08 12:30')
-const datetimeMinMaxValue = ref('2021-04-08 12:00:00')
-const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
-const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
-
-// 只允许 09:00 - 17:59
-const allowedTimes = (value) => {
-  const hour = dayjs(value).hour()
-  return hour >= 9 && hour < 18
-}
-</script>
-
-<template>
-  <var-space direction="column" size="large">
-    <var-date-input v-model="datetimeValue" type="datetime" placeholder="请选择日期时间">
-      <template #extra-message>当前值：{{ datetimeValue }}</template>
-    </var-date-input>
-    <var-date-input
-      v-model="datetimeNoSecondsValue"
-      type="datetime"
-      :use-seconds="false"
-      variant="outlined"
-      placeholder="请选择日期时间（到分钟）"
-    >
-      <template #extra-message>当前值：{{ datetimeNoSecondsValue }}</template>
-    </var-date-input>
-    <var-date-input
-      v-model="datetimeMinMaxValue"
-      type="datetime"
-      variant="filled"
-      min="2021-04-08 09:30:00"
-      max="2021-04-20 18:00:00"
-      placeholder="限制日期时间范围"
-    >
-      <template #extra-message>当前值：{{ datetimeMinMaxValue }}</template>
-    </var-date-input>
-    <var-date-input
-      v-model="datetimeAllowedTimesValue"
-      type="datetime"
-      variant="outlined"
-      :allowed-times="allowedTimes"
-      placeholder="限制可选时间"
-    >
-      <template #extra-message>当前值：{{ datetimeAllowedTimesValue }}</template>
-    </var-date-input>
-    <var-date-input v-model="datetimeRangeValue" type="datetime" range variant="filled" placeholder="请选择日期时间范围">
-      <template #extra-message>当前值：{{ datetimeRangeValue.join(' ~ ') }}</template>
-    </var-date-input>
-  </var-space>
-</template>
 ```
 
 ## API
@@ -402,10 +385,10 @@ const allowedTimes = (value) => {
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation) | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | 限制可以选择的值，参数格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _(value: string) => boolean_ | `-` |
-| `allowed-times` | `type` 为 `datetime` 时限制可选择的时间，参数为完整的 `YYYY-MM-DD HH:mm:ss` | _(value: string) => boolean_ | `-` |
-| `min` | 允许的最小值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`） | _string_ | `-` |
-| `max` | 允许的最大值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`） | _string_ | `-` |
+| `allowed-dates` | 限制日历单元格是否可选，参数格式随日历粒度变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`）。当 `type` 为 `datetime` 时，参数只有日期部分（`YYYY-MM-DD`），不控制时 / 分 / 秒选项 | _(value: string) => boolean_ | `-` |
+| `allowed-times` | `type` 为 `datetime` 时限制时间选择器选项是否可选，参数为完整的 `YYYY-MM-DD HH:mm:ss`。它只控制时 / 分 / 秒选项，不禁用日历单元格 | _(value: string) => boolean_ | `-` |
+| `min` | 最小可选边界，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`）。当 `type` 为 `datetime` 时，会禁用边界日期之前的日历日期，并禁用边界日期上更早的时间选项 | _string_ | `-` |
+| `max` | 最大可选边界，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`）。当 `type` 为 `datetime` 时，会禁用边界日期之后的日历日期，并禁用边界日期上更晚的时间选项 | _string_ | `-` |
 | `first-day-of-week` | 设置一周的第一天，从周日的 `0` 开始 | _string \| number_ | `0` |
 | `tabindex` | 与原生 input 的 tabindex 属性一致 | _string_ | `-` |
 

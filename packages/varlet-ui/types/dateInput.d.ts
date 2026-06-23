@@ -33,6 +33,11 @@ export interface DateInputProps extends BasicAttributes {
   placeholder?: string
   variant?: DateInputVariant
   size?: 'normal' | 'small'
+  line?: boolean
+  hint?: boolean
+  textColor?: string
+  focusColor?: string
+  blurColor?: string
   clearable?: boolean
   readonly?: boolean
   disabled?: boolean

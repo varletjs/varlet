@@ -19,6 +19,7 @@ import collapse from './collapse'
 import countdown from './countdown'
 import counter from './counter'
 import dataTable from './dataTable'
+import dateInput from './dateInput'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
@@ -157,6 +158,7 @@ export default {
   ...cell,
   ...card,
   ...timePicker,
+  ...dateInput,
   ...datePicker,
   ...skeleton,
   ...tabs,

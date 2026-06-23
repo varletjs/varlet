@@ -511,10 +511,12 @@ describe('test dateInput picker behavior', () => {
 
   test('dateInput does not open picker when clicking clear icon', async () => {
     const onUpdateModelValue = vi.fn()
+    const onChange = vi.fn()
     const wrapper = mount(VarDateInput, {
       props: {
         modelValue: '2021-04-08',
         clearable: true,
+        onChange,
         'onUpdate:modelValue': onUpdateModelValue,
       },
     })
@@ -524,6 +526,7 @@ describe('test dateInput picker behavior', () => {
 
     expect(wrapper.vm.showMenu).toBe(false)
     expect(onUpdateModelValue).lastCalledWith(undefined)
+    expect(onChange).lastCalledWith(undefined)
 
     wrapper.unmount()
   })
@@ -667,12 +670,14 @@ describe('test dateInput picker behavior', () => {
   test('dateInput clears model value and picker value', async () => {
     const onUpdateModelValue = vi.fn()
     const onClear = vi.fn()
+    const onChange = vi.fn()
     const wrapper = mount(VarDateInput, {
       props: {
         modelValue: '2021-04-08',
         clearable: true,
         'onUpdate:modelValue': onUpdateModelValue,
         onClear,
+        onChange,
       },
     })
 
@@ -683,6 +688,7 @@ describe('test dateInput picker behavior', () => {
     expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe(undefined)
     expect(onUpdateModelValue).lastCalledWith(undefined)
     expect(onClear).lastCalledWith('')
+    expect(onChange).lastCalledWith(undefined)
 
     wrapper.unmount()
   })

@@ -323,6 +323,9 @@ interface BaseStyleVars {
   '--data-table-footer-padding'?: string
   '--data-table-empty-padding'?: string
   '--date-input-picker-width'?: string
+  '--date-input-time-select-separator-color'?: string
+  '--date-input-time-select-border-color'?: string
+  '--date-input-time-select-active-color'?: string
   '--date-picker-border-radius'?: string
   '--date-picker-font-size'?: string
   '--date-picker-min-width'?: string

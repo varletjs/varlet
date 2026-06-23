@@ -122,6 +122,9 @@ onThemeChange()
       <template #extra-message>{{ t('currentValue') }}{{ standardValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="standardValue14" size="small" :placeholder="t('smallSize')" />
+    <var-date-input v-model="datetimeValue" type="datetime" :placeholder="t('datetimePlaceholder')">
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeValue }}</template>
+    </var-date-input>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
@@ -205,6 +208,24 @@ onThemeChange()
       <template #extra-message>{{ t('currentValue') }}{{ outlinedValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="outlinedValue14" variant="outlined" size="small" :placeholder="t('smallSize')" />
+    <var-date-input
+      v-model="datetimeNoSecondsValue"
+      type="datetime"
+      :use-seconds="false"
+      variant="outlined"
+      :placeholder="t('datetimeNoSecondsPlaceholder')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeNoSecondsValue }}</template>
+    </var-date-input>
+    <var-date-input
+      v-model="datetimeAllowedTimesValue"
+      type="datetime"
+      variant="outlined"
+      :allowed-times="allowedTimes"
+      :placeholder="t('datetimeAllowedTimes')"
+    >
+      <template #extra-message>{{ t('currentValue') }}{{ datetimeAllowedTimesValue }}</template>
+    </var-date-input>
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('filled') }}</app-type>
@@ -283,22 +304,6 @@ onThemeChange()
       <template #extra-message>{{ t('currentValue') }}{{ filledValue13 }}</template>
     </var-date-input>
     <var-date-input v-model="filledValue14" variant="filled" size="small" :placeholder="t('smallSize')" />
-  </var-space>
-
-  <app-type style="margin-top: 10vmin">{{ t('datetime') }}</app-type>
-  <var-space direction="column" :size="['3vmin', 0]">
-    <var-date-input v-model="datetimeValue" type="datetime" :placeholder="t('datetimePlaceholder')">
-      <template #extra-message>{{ t('currentValue') }}{{ datetimeValue }}</template>
-    </var-date-input>
-    <var-date-input
-      v-model="datetimeNoSecondsValue"
-      type="datetime"
-      :use-seconds="false"
-      variant="outlined"
-      :placeholder="t('datetimeNoSecondsPlaceholder')"
-    >
-      <template #extra-message>{{ t('currentValue') }}{{ datetimeNoSecondsValue }}</template>
-    </var-date-input>
     <var-date-input
       v-model="datetimeMinMaxValue"
       type="datetime"
@@ -308,15 +313,6 @@ onThemeChange()
       :placeholder="t('datetimeMinMax')"
     >
       <template #extra-message>{{ t('currentValue') }}{{ datetimeMinMaxValue }}</template>
-    </var-date-input>
-    <var-date-input
-      v-model="datetimeAllowedTimesValue"
-      type="datetime"
-      variant="outlined"
-      :allowed-times="allowedTimes"
-      :placeholder="t('datetimeAllowedTimes')"
-    >
-      <template #extra-message>{{ t('currentValue') }}{{ datetimeAllowedTimesValue }}</template>
     </var-date-input>
     <var-date-input
       v-model="datetimeRangeValue"

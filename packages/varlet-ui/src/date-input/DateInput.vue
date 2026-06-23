@@ -660,8 +660,11 @@ export default defineComponent({
 
       clearValue()
       showMenu.value = false
-      call(props['onUpdate:modelValue'], getEmptyModelValue())
+      const emptyModelValue = getEmptyModelValue()
+      call(props['onUpdate:modelValue'], emptyModelValue)
       call(props.onClear, '')
+      call(props.onChange, emptyModelValue)
+      validateWithTrigger('onChange')
       validateWithTrigger('onClear')
     }
 

@@ -17,7 +17,6 @@ export default {
   valueFormat: 'Timestamp Value',
   customValueFormat: 'Custom Value Format',
   currentValue: 'Current value: ',
-  datetime: 'Datetime',
   datetimeNoSeconds: 'Datetime Without Seconds',
   datetimeMinMax: 'Datetime Min And Max',
   datetimeAllowedTimes: 'Allowed Times',

@@ -17,7 +17,6 @@ export default {
   valueFormat: '时间戳绑定值',
   customValueFormat: '自定义绑定值格式',
   currentValue: '当前值：',
-  datetime: '日期时间',
   datetimeNoSeconds: '不带秒',
   datetimeMinMax: '限制日期时间范围',
   datetimeAllowedTimes: '限制可选时间',
