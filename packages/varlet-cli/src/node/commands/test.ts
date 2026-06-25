@@ -10,7 +10,7 @@ interface TestCommandOptions {
 export async function test({ component, watch, coverage }: TestCommandOptions) {
   process.env.NODE_ENV = 'test'
 
-  const args: string[] = [watch ? 'watch' : 'run', '--config', VITEST_CONFIG]
+  const args: string[] = [watch ? 'watch' : 'run', '--config', VITEST_CONFIG, '--update=none']
 
   if (coverage) {
     args.push('--coverage')

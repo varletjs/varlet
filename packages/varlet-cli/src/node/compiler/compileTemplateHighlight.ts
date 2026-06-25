@@ -38,6 +38,22 @@ export const replaceVersion = (s: string) => s.replace(/\*\*\*.+\*\*\*/g, '').tr
 
 export const replaceUnderline = (s: string) => s.replace(/_/g, '')
 
+export const camelize = (s: string) => s.replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''))
+
+export function parseVModelName(name: string): { attribute: string; event: string } | null {
+  if (name === 'v-model') {
+    return { attribute: 'model-value', event: 'update:modelValue' }
+  }
+
+  const matched = name.match(/^v-model:(.+)$/)
+  if (matched) {
+    const arg = matched[1]
+    return { attribute: arg, event: `update:${camelize(arg)}` }
+  }
+
+  return null
+}
+
 export function parseTable(table: string) {
   const rows = table.split('\n').filter(Boolean)
   return rows.map((row) => {
@@ -84,20 +100,37 @@ export function compileWebTypes(
 ) {
   const { attributesTable, eventsTable, slotsTable } = table
 
-  const attributes = attributesTable.map((row: any) => ({
-    name: replaceVersion(replaceDot(row[0])),
-    description: row[1],
-    default: replaceDot(row[3]),
-    value: {
-      type: replaceUnderline(row[2]),
-      kind: 'expression',
-    },
-  }))
+  const modelEvents: Array<{ name: string; description: string }> = []
+
+  const attributes = attributesTable.map((row: any) => {
+    const name = replaceVersion(replaceDot(row[0]))
+    const vModel = parseVModelName(name)
+
+    if (vModel) {
+      modelEvents.push({ name: vModel.event, description: row[1] })
+    }
+
+    return {
+      name: vModel ? vModel.attribute : name,
+      description: row[1],
+      default: replaceDot(row[3]),
+      value: {
+        type: replaceUnderline(row[2]),
+        kind: 'expression',
+      },
+    }
+  })
 
   const events = eventsTable.map((row: any) => ({
     name: replaceVersion(replaceDot(row[0])),
     description: row[1],
   }))
+
+  modelEvents.forEach((modelEvent) => {
+    if (!events.some((event: { name: string }) => event.name === modelEvent.name)) {
+      events.push(modelEvent)
+    }
+  })
 
   const slots = slotsTable.map((row: any) => ({
     name: replaceVersion(replaceDot(row[0])),
