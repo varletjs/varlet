@@ -87,7 +87,7 @@
                     :is-hour-allowed="startAllowFns.isHourAllowed"
                     :is-minute-allowed="startAllowFns.isMinuteAllowed"
                     :is-second-allowed="startAllowFns.isSecondAllowed"
-                    @change="(time) => handleRangeTimeChange(0, time)"
+                    @change="(time, unit) => handleRangeTimeChange(0, time, unit)"
                   />
                   <var-icon :class="n('datetime-arrow')" name="arrow-right" />
                   <time-select
@@ -100,7 +100,7 @@
                     :is-hour-allowed="endAllowFns.isHourAllowed"
                     :is-minute-allowed="endAllowFns.isMinuteAllowed"
                     :is-second-allowed="endAllowFns.isSecondAllowed"
-                    @change="(time) => handleRangeTimeChange(1, time)"
+                    @change="(time, unit) => handleRangeTimeChange(1, time, unit)"
                   />
                 </div>
                 <div v-else :class="n('datetime-row')">
@@ -145,7 +145,13 @@ import { type InputValidateTrigger } from '../input/props'
 import VarMenu from '../menu'
 import { createNamespace, useValidation } from '../utils/components'
 import { createDayjs } from '../utils/shared'
-import { props, type DateInputType, type DateInputValue } from './props'
+import {
+  props,
+  type DateInputAllowedTimeValidators,
+  type DateInputRangePosition,
+  type DateInputType,
+  type DateInputValue,
+} from './props'
 import TimeSelect from './TimeSelect.vue'
 
 const DateInputDefaultFormats = {
@@ -163,6 +169,8 @@ type TimeParts = {
   minute: number
   second: number
 }
+
+type TimeUnit = keyof TimeParts
 
 const { name, n, classes } = createNamespace('date-input')
 
@@ -316,7 +324,17 @@ export default defineComponent({
       return dayjsObject
     }
 
-    function createTimeAllowFns(getObject: () => Dayjs | undefined, getTime: () => TimeParts) {
+    function createTimeAllowFns(
+      getObject: () => Dayjs | undefined,
+      getTime: () => TimeParts,
+      position?: DateInputRangePosition,
+    ) {
+      const allowedTimeValidators = computed(() => {
+        const date = (getObject() ?? dayjs()).format(DateInputDefaultFormats.Date)
+
+        return props.allowedTimes?.(date, position)
+      })
+
       function isAllowed(unit: 'hour' | 'minute' | 'second', value: number) {
         const time = getTime()
         const candidate = (getObject() ?? dayjs())
@@ -335,7 +353,17 @@ export default defineComponent({
           return false
         }
 
-        return props.allowedTimes ? props.allowedTimes(candidate.format(DateInputDefaultFormats.Datetime)) : true
+        const validators = allowedTimeValidators.value
+
+        if (unit === 'hour') {
+          return validators?.hours ? validators.hours(value) : true
+        }
+
+        if (unit === 'minute') {
+          return validators?.minutes ? validators.minutes(value, time.hour) : true
+        }
+
+        return validators?.seconds ? validators.seconds(value, time.minute, time.hour) : true
       }
 
       return {
@@ -352,19 +380,89 @@ export default defineComponent({
     const startAllowFns = createTimeAllowFns(
       () => getDayjsObjectsByModelValue()[0],
       () => rangeTimes.value[0],
+      'start',
     )
     const endAllowFns = createTimeAllowFns(
       () => getDayjsObjectsByModelValue()[1],
       () => rangeTimes.value[1],
+      'end',
     )
 
     function applyTime(base: Dayjs, time: TimeParts) {
       return clampDatetime(base.hour(time.hour).minute(time.minute).second(time.second).millisecond(0))
     }
 
+    function getOrderedValues(preferred: number, count: number, fixed: boolean) {
+      if (fixed) {
+        return [preferred]
+      }
+
+      return [preferred, ...Array.from({ length: count }, (_, value) => value).filter((value) => value !== preferred)]
+    }
+
+    function isTimeCandidateAllowed(candidate: Dayjs, validators: DateInputAllowedTimeValidators) {
+      const min = getBoundObject(props.min)
+      const max = getBoundObject(props.max)
+      const hour = candidate.hour()
+      const minute = candidate.minute()
+      const second = candidate.second()
+
+      return (
+        (!min || !candidate.isBefore(min)) &&
+        (!max || !candidate.isAfter(max)) &&
+        (!validators.hours || validators.hours(hour)) &&
+        (!validators.minutes || validators.minutes(minute, hour)) &&
+        (!props.useSeconds || !validators.seconds || validators.seconds(second, minute, hour)) &&
+        (!props.allowedDates || props.allowedDates(candidate.format(getPickerFormat())))
+      )
+    }
+
+    function resolveAllowedDateTime(
+      base: Dayjs,
+      time: TimeParts,
+      position?: DateInputRangePosition,
+      changedUnit?: TimeUnit,
+    ) {
+      const date = base.format(DateInputDefaultFormats.Date)
+      const validators = props.allowedTimes?.(date, position) ?? {}
+      const hours = getOrderedValues(
+        time.hour,
+        24,
+        changedUnit === 'hour' || changedUnit === 'minute' || changedUnit === 'second',
+      )
+
+      for (const hour of hours) {
+        if (validators.hours && !validators.hours(hour)) {
+          continue
+        }
+
+        const minutes = getOrderedValues(time.minute, 60, changedUnit === 'minute' || changedUnit === 'second')
+
+        for (const minute of minutes) {
+          if (validators.minutes && !validators.minutes(minute, hour)) {
+            continue
+          }
+
+          const seconds = props.useSeconds ? getOrderedValues(time.second, 60, changedUnit === 'second') : [0]
+
+          for (const second of seconds) {
+            const candidate = base.hour(hour).minute(minute).second(second).millisecond(0)
+
+            if (isTimeCandidateAllowed(candidate, validators)) {
+              return candidate
+            }
+          }
+        }
+      }
+    }
+
     function commitDateTimes(dayjsObjects: Dayjs[]) {
       if (props.range) {
         const sorted = [...dayjsObjects].sort((a, b) => a.valueOf() - b.valueOf())
+
+        if (!isDayjsObjectSelectable(sorted[0], 'start') || !isDayjsObjectSelectable(sorted[1], 'end')) {
+          return false
+        }
 
         pickerValue.value = sorted.map((dayjsObject) => dayjsObject.format(getPickerFormat()))
         displayValue.value = sorted
@@ -372,27 +470,37 @@ export default defineComponent({
           .join(props.rangeSeparator)
         updateModelValue(sorted.map(dayjsObjectToModelValue))
 
-        return
+        return true
       }
 
       const [dayjsObject] = dayjsObjects
 
+      if (!isDayjsObjectSelectable(dayjsObject)) {
+        return false
+      }
+
       pickerValue.value = dayjsObject.format(getPickerFormat())
       displayValue.value = dayjsObject.format(getDisplayFormat())
       updateModelValue(dayjsObjectToModelValue(dayjsObject))
+
+      return true
     }
 
-    function handleTimeChange(time: TimeParts) {
+    function handleTimeChange(time: TimeParts, changedUnit?: TimeUnit) {
       if (isDisabled.value || isReadonly.value) {
         return
       }
 
       const [dayjsObject] = getDayjsObjectsByModelValue()
+      const base = dayjsObject ?? dayjs()
+      const resolved = changedUnit ? resolveAllowedDateTime(base, time, undefined, changedUnit) : applyTime(base, time)
 
-      commitDateTimes([applyTime(dayjsObject ?? dayjs(), time)])
+      if (resolved) {
+        commitDateTimes([resolved])
+      }
     }
 
-    function handleRangeTimeChange(index: number, time: TimeParts) {
+    function handleRangeTimeChange(index: number, time: TimeParts, changedUnit?: TimeUnit) {
       if (isDisabled.value || isReadonly.value) {
         return
       }
@@ -404,15 +512,63 @@ export default defineComponent({
       }
 
       const next = [...dayjsObjects]
-      next[index] = applyTime(dayjsObjects[index], time)
+      const position = index === 0 ? 'start' : 'end'
+      const resolved = changedUnit
+        ? resolveAllowedDateTime(dayjsObjects[index], time, position, changedUnit)
+        : applyTime(dayjsObjects[index], time)
 
-      commitDateTimes(next)
+      if (resolved) {
+        next[index] = resolved
+        commitDateTimes(next)
+      }
     }
 
     function stringToDayjsObject(value: string, format: string) {
       const dayjsObject = dayjs(value, format, true)
 
       return dayjsObject.isValid() ? dayjsObject : undefined
+    }
+
+    function isAllowedTime(dayjsObject: Dayjs, position?: DateInputRangePosition) {
+      if (!isDatetime.value || !props.allowedTimes) {
+        return true
+      }
+
+      const validators = props.allowedTimes(dayjsObject.format(DateInputDefaultFormats.Date), position) ?? {}
+      const hour = dayjsObject.hour()
+      const minute = dayjsObject.minute()
+      const second = dayjsObject.second()
+
+      return (
+        (!validators.hours || validators.hours(hour)) &&
+        (!validators.minutes || validators.minutes(minute, hour)) &&
+        (!props.useSeconds || !validators.seconds || validators.seconds(second, minute, hour))
+      )
+    }
+
+    function isDayjsObjectSelectable(dayjsObject: Dayjs, position?: DateInputRangePosition) {
+      const min = getBoundObject(props.min)
+      const max = getBoundObject(props.max)
+      const unit =
+        props.type === 'year' ? 'year' : props.type === 'month' ? 'month' : props.type === 'date' ? 'day' : undefined
+
+      if (min && (unit ? dayjsObject.isBefore(min, unit) : dayjsObject.isBefore(min))) {
+        return false
+      }
+
+      if (max && (unit ? dayjsObject.isAfter(max, unit) : dayjsObject.isAfter(max))) {
+        return false
+      }
+
+      if (props.allowedDates && !props.allowedDates(dayjsObject.format(getPickerFormat()))) {
+        return false
+      }
+
+      if (!isAllowedTime(dayjsObject, position)) {
+        return false
+      }
+
+      return true
     }
 
     function modelValueToDayjsObject(value: DateInputValue | undefined) {
@@ -529,7 +685,7 @@ export default defineComponent({
     function updateSingleStatesByDisplayValue(value: string) {
       const dayjsObject = stringToDayjsObject(value, getDisplayFormat())
 
-      if (!dayjsObject) {
+      if (!dayjsObject || !isDayjsObjectSelectable(dayjsObject)) {
         return
       }
 
@@ -551,6 +707,17 @@ export default defineComponent({
       }
 
       const validDayjsObjects = dayjsObjects.filter(isTruthy)
+
+      if (
+        validDayjsObjects.some((dayjsObject, index) => {
+          const position = props.range ? (index === 0 ? 'start' : 'end') : undefined
+
+          return !isDayjsObjectSelectable(dayjsObject, position)
+        })
+      ) {
+        return
+      }
+
       const modelValue = validDayjsObjects.map(dayjsObjectToModelValue)
       pickerValue.value = validDayjsObjects.map((dayjsObject) => dayjsObject.format(getPickerFormat()))
       updateModelValue(modelValue)
@@ -605,10 +772,17 @@ export default defineComponent({
 
         if (isDatetime.value && props.range) {
           const times = rangeTimes.value
-
-          commitDateTimes(
-            dayjsObjects.map((dayjsObject, index) => applyTime(dayjsObject, times[index] ?? getTimeParts())),
+          const resolved = dayjsObjects.map((dayjsObject, index) =>
+            resolveAllowedDateTime(dayjsObject, times[index] ?? getTimeParts(), index === 0 ? 'start' : 'end'),
           )
+
+          if (resolved.every(isTruthy)) {
+            if (!commitDateTimes(resolved.filter(isTruthy))) {
+              updateStatesByModelValue()
+            }
+          } else {
+            updateStatesByModelValue()
+          }
 
           return
         }
@@ -631,7 +805,15 @@ export default defineComponent({
       }
 
       if (isDatetime.value) {
-        commitDateTimes([applyTime(dayjsObject, singleTime.value)])
+        const resolved = resolveAllowedDateTime(dayjsObject, singleTime.value)
+
+        if (resolved) {
+          if (!commitDateTimes([resolved])) {
+            updateStatesByModelValue()
+          }
+        } else {
+          updateStatesByModelValue()
+        }
 
         return
       }

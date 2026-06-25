@@ -110,6 +110,100 @@ describe('test dateInput input behavior', () => {
     wrapper.unmount()
   })
 
+  test.each([
+    {
+      name: 'min',
+      props: { min: '2021-04-08' },
+      input: '2021-04-07',
+    },
+    {
+      name: 'max',
+      props: { max: '2021-04-08' },
+      input: '2021-04-09',
+    },
+    {
+      name: 'allowedDates',
+      props: { allowedDates: (value) => value !== '2021-04-09' },
+      input: '2021-04-09',
+    },
+    {
+      name: 'allowedTimes',
+      props: {
+        type: 'datetime',
+        allowedTimes: () => ({
+          hours: (hour) => hour >= 9,
+        }),
+      },
+      input: '2021-04-09 08:00:00',
+      modelValue: '2021-04-08 10:00:00',
+    },
+  ])('dateInput rejects manual input restricted by $name', async ({ props, input, modelValue = '2021-04-08' }) => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        ...props,
+        modelValue,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, input)
+
+    expect(wrapper.find('input').element.value).toBe(input)
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    await wrapper.find('input').trigger('change')
+    expect(wrapper.find('input').element.value).toBe(modelValue)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput rejects a manually entered range when an endpoint is restricted', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        range: true,
+        modelValue: ['2021-04-08', '2021-04-10'],
+        allowedDates: (value) => value !== '2021-04-09',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08 ~ 2021-04-09')
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-09')
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    await wrapper.find('input').trigger('change')
+    expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput validates allowedTimes with range positions on manual input', async () => {
+    const onUpdateModelValue = vi.fn()
+    const allowedTimes = vi.fn((_date, position) => ({
+      hours: (hour) => (position === 'start' ? hour >= 9 : hour <= 18),
+    }))
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-10 18:00:00'],
+        allowedTimes,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08 08:00:00 ~ 2021-04-10 18:00:00')
+
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+    expect(allowedTimes).toHaveBeenCalledWith('2021-04-08', 'start')
+    expect(allowedTimes).toHaveBeenCalledWith('2021-04-10', 'end')
+
+    wrapper.unmount()
+  })
+
   test('dateInput restores model display value on change when input format is invalid', async () => {
     const onUpdateModelValue = vi.fn()
     const wrapper = mount(VarDateInput, {
@@ -1086,18 +1180,174 @@ describe('test dateInput datetime behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput validates allowedTimes positions after sorting range endpoints', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-08 10:00:00'],
+        allowedTimes: (_date, position) => ({
+          hours: (hour) => position === 'start' || hour <= 12,
+        }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findAllComponents(TimeSelect)[0].vm.$emit('change', { hour: 15, minute: 0, second: 0 }, 'hour')
+    await delay(0)
+
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    wrapper.unmount()
+  })
+
   test('dateInput respects allowedTimes predicate', () => {
     const wrapper = mount(VarDateInput, {
       props: {
         type: 'datetime',
         modelValue: '2021-04-08 10:00:00',
-        allowedTimes: (value) => Number(value.split(' ')[1].split(':')[0]) >= 9,
+        allowedTimes: () => ({
+          hours: (hour) => hour >= 9,
+        }),
       },
     })
 
     const timeSelect = wrapper.findComponent(TimeSelect)
     expect(timeSelect.props('isHourAllowed')(8)).toBe(false)
     expect(timeSelect.props('isHourAllowed')(9)).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput validates allowed time units independently', () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 10:30:45',
+        allowedTimes: () => ({
+          hours: (hour) => hour === 9,
+          minutes: (minute, hour) => hour === 9 && minute === 0,
+          seconds: (second, minute, hour) => hour === 9 && minute === 0 && second === 0,
+        }),
+      },
+    })
+
+    const timeSelect = wrapper.findComponent(TimeSelect)
+    expect(timeSelect.props('isHourAllowed')(9)).toBe(true)
+    expect(timeSelect.props('isMinuteAllowed')(0)).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('dateInput ignores seconds validator when seconds are disabled', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        useSeconds: false,
+        modelValue: '2021-04-08 10:30',
+        allowedTimes: () => ({
+          seconds: () => false,
+        }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08 11:30')
+
+    expect(onUpdateModelValue).lastCalledWith('2021-04-08 11:30')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput resolves lower time units after selecting an hour', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 10:30:45',
+        allowedTimes: () => ({
+          hours: (hour) => hour === 9,
+          minutes: (minute, hour) => hour === 9 && minute === 0,
+          seconds: (second, minute, hour) => hour === 9 && minute === 0 && second === 0,
+        }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(TimeSelect).vm.$emit('change', { hour: 9, minute: 30, second: 45 }, 'hour')
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith('2021-04-08 09:00:00')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput resolves an allowed time after selecting a date', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 10:30:45',
+        allowedTimes: (date) => ({
+          hours: (hour) => (date === '2021-04-09' ? hour === 9 : true),
+          minutes: (minute) => (date === '2021-04-09' ? minute === 0 : true),
+          seconds: (second) => (date === '2021-04-09' ? second === 0 : true),
+        }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(DatePicker).vm.$emit('change', '2021-04-09')
+    await delay(0)
+
+    expect(onUpdateModelValue).lastCalledWith('2021-04-09 09:00:00')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput does not update when a selected date has no allowed time', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        modelValue: '2021-04-08 10:30:45',
+        allowedTimes: (date) => ({
+          hours: () => date !== '2021-04-09',
+        }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.findComponent(DatePicker).vm.$emit('change', '2021-04-09')
+    await delay(0)
+
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+    expect(wrapper.findComponent(DatePicker).props('modelValue')).toBe('2021-04-08')
+
+    wrapper.unmount()
+  })
+
+  test('dateInput passes date and range position to allowedTimes', () => {
+    const allowedTimes = vi.fn(() => ({
+      hours: () => true,
+    }))
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: ['2021-04-08 09:00:00', '2021-04-12 18:30:00'],
+        allowedTimes,
+      },
+    })
+
+    const [startTimeSelect, endTimeSelect] = wrapper.findAllComponents(TimeSelect)
+    startTimeSelect.props('isHourAllowed')(9)
+    endTimeSelect.props('isHourAllowed')(18)
+
+    expect(allowedTimes).toHaveBeenCalledWith('2021-04-08', 'start')
+    expect(allowedTimes).toHaveBeenCalledWith('2021-04-12', 'end')
 
     wrapper.unmount()
   })

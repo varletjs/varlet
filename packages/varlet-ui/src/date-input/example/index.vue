@@ -72,10 +72,11 @@ const datetimeRangeValue = ref(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
 
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 
-const allowedTimes = (value) => {
-  const hour = Number(value.split(' ')[1].split(':')[0])
-  return hour >= 9 && hour < 18
-}
+const allowedTimes = () => ({
+  hours: (hour) => hour >= 9 && hour < 18,
+  minutes: (minute) => minute % 15 === 0,
+  seconds: (second) => second === 0,
+})
 
 watchLang(use)
 onThemeChange()

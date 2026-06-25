@@ -143,7 +143,7 @@ export default defineComponent({
       time[key] = value
 
       openKey.value = null
-      emit('change', time)
+      emit('change', time, key)
     }
 
     function isInsidePopover(target: Node | null) {

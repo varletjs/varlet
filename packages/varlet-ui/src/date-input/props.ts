@@ -8,7 +8,15 @@ export type DateInputValue = string | number | Date
 
 export type DateInputValueFormat = 'timestamp' | 'date' | string
 
-export type DateInputAllowedTimes = (value: string) => boolean
+export type DateInputRangePosition = 'start' | 'end'
+
+export interface DateInputAllowedTimeValidators {
+  hours?: (hour: number) => boolean
+  minutes?: (minute: number, hour: number) => boolean
+  seconds?: (second: number, minute: number, hour: number) => boolean
+}
+
+export type DateInputAllowedTimes = (date: string, position?: DateInputRangePosition) => DateInputAllowedTimeValidators
 
 export const props = {
   modelValue: [String, Number, Date, Array] as PropType<DateInputValue | DateInputValue[]>,

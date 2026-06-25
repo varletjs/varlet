@@ -4,7 +4,7 @@
 
 Used to input or select dates.
 
-Use `type="datetime"` to pick both date and time. A `HH : mm : ss` time selector is rendered below the calendar. Set `use-seconds` to `false` to keep precision to the minute. `min` / `max` set the overall selectable boundary. `allowed-dates` disables calendar cells, while `allowed-times` disables time selector options.
+Use `type="datetime"` to pick both date and time. A `HH : mm : ss` time selector is rendered below the calendar. Set `use-seconds` to `false` to keep precision to the minute. `min` / `max` set the overall selectable boundary. `allowed-dates` disables calendar cells, while `allowed-times` disables time selector options. Datetime supports single and range selection, but does not support multiple selection.
 
 ### Standard Variant
 
@@ -130,10 +130,11 @@ const datetimeNoSecondsValue = ref('2021-04-08 12:30')
 const datetimeAllowedTimesValue = ref('2021-04-08 10:00:00')
 
 const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
-const allowedTimes = (value) => {
-  const hour = Number(value.split(' ')[1].split(':')[0])
-  return hour >= 9 && hour < 18
-}
+const allowedTimes = () => ({
+  hours: (hour) => hour >= 9 && hour < 18,
+  minutes: (minute) => minute % 15 === 0,
+  seconds: (second) => second === 0,
+})
 </script>
 
 <template>
@@ -368,7 +369,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `format` | Format used to display and parse input text | _string_ | inferred from `type` |
 | `value-format` | Binding value format, can be `timestamp` `date` or a date format string. Uses `format` to output a string when not set | _string_ | `-` |
 | `use-seconds` | Whether to keep precision to seconds when `type` is `datetime` | _boolean_ | `true` |
-| `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
+| `multiple` | Whether to enable multiple selection. Not supported when `type` is `datetime` | _boolean_ | `false` |
 | `range` | Whether to enable range selection | _boolean_ | `false` |
 | `separator` | Separator for multiple display | _string_ | `, ` |
 | `range-separator` | Separator for range display | _string_ | ` ~ ` |
@@ -386,7 +387,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | Validation rules. Return `true` to pass validation, other values are converted into user messages. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
 | `allowed-dates` | Restrict calendar cells. The argument format follows the calendar granularity (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`). When `type` is `datetime`, it receives only the date part (`YYYY-MM-DD`) and does not control hour / minute / second options | _(value: string) => boolean_ | `-` |
-| `allowed-times` | Restrict time selector options when `type` is `datetime`. The argument is a full `YYYY-MM-DD HH:mm:ss` string. It only controls hour / minute / second options and does not disable calendar cells | _(value: string) => boolean_ | `-` |
+| `allowed-times` | Returns validators for time options when `type` is `datetime`. The arguments are the selected date (`YYYY-MM-DD`) and the optional range position (`start` / `end`). The validators are `hours(hour)`, `minutes(minute, hour)`, and `seconds(second, minute, hour)`; return `true` for selectable options. It does not disable calendar cells | _(date: string, position?: 'start' \| 'end') => { hours?, minutes?, seconds? }_ | `-` |
 | `min` | Minimum selectable boundary. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`). When `type` is `datetime`, it disables calendar dates before the boundary date and disables earlier time options on the boundary date | _string_ | `-` |
 | `max` | Maximum selectable boundary. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`). When `type` is `datetime`, it disables calendar dates after the boundary date and disables later time options on the boundary date | _string_ | `-` |
 | `first-day-of-week` | First day of week, starts from Sunday `0` | _string \| number_ | `0` |
