@@ -28,6 +28,8 @@ export type Message = {
   datePickerWeekDict: Record<Week, { name: string; abbr: string }>
   datePickerSelected: string
   datePickerHint: string
+  datePickerYearHint: string
+  datePickerMonthHint: string
   // pagination
   paginationItem: string
   paginationPage: string

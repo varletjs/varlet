@@ -1,0 +1,77 @@
+import { type PropType } from 'vue'
+import { props as inputProps, type InputValidateTrigger } from '../input/props'
+import { defineListenerProp, pickProps } from '../utils/components'
+
+export type DateInputType = 'year' | 'month' | 'date' | 'datetime'
+
+export type DateInputValue = string | number | Date
+
+export type DateInputValueFormat = 'timestamp' | 'date' | string
+
+export type DateInputRangePosition = 'start' | 'end'
+
+export interface DateInputAllowedTimeValidators {
+  hours?: (hour: number) => boolean
+  minutes?: (minute: number, hour: number) => boolean
+  seconds?: (second: number, minute: number, hour: number) => boolean
+}
+
+export type DateInputAllowedTimes = (date: string, position?: DateInputRangePosition) => DateInputAllowedTimeValidators
+
+export const props = {
+  modelValue: [String, Number, Date, Array] as PropType<DateInputValue | DateInputValue[]>,
+  type: {
+    type: String as PropType<DateInputType>,
+    default: 'date',
+  },
+  format: String,
+  valueFormat: {
+    type: String as PropType<DateInputValueFormat>,
+  },
+  useSeconds: {
+    type: Boolean,
+    default: true,
+  },
+  multiple: Boolean,
+  range: Boolean,
+  separator: {
+    type: String,
+    default: ', ',
+  },
+  rangeSeparator: {
+    type: String,
+    default: ' ~ ',
+  },
+  allowedDates: Function as PropType<(value: string) => boolean>,
+  allowedTimes: Function as PropType<DateInputAllowedTimes>,
+  min: String,
+  max: String,
+  firstDayOfWeek: {
+    type: [String, Number],
+    default: 0,
+  },
+  readonly: Boolean,
+  disabled: Boolean,
+  clearable: Boolean,
+  validateTrigger: {
+    type: Array as PropType<InputValidateTrigger[]>,
+    default: () => ['onInput', 'onClear', 'onChange'],
+  },
+  onFocus: defineListenerProp<(e: FocusEvent) => void>(),
+  onBlur: defineListenerProp<(e: FocusEvent) => void>(),
+  onChange: defineListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>(),
+  onClear: defineListenerProp<(value: string) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: DateInputValue | DateInputValue[] | undefined) => void>(),
+  ...pickProps(inputProps, [
+    'size',
+    'variant',
+    'placeholder',
+    'line',
+    'hint',
+    'textColor',
+    'focusColor',
+    'blurColor',
+    'rules',
+    'tabindex',
+  ]),
+}

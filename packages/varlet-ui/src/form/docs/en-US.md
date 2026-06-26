@@ -16,6 +16,8 @@ const formData = reactive({
   password: '',
   otp: '',
   email: '',
+  date: '',
+  datetimeRange: [],
   department: '',
   period: undefined,
   gender: undefined,
@@ -54,23 +56,41 @@ const suggestions = computed(() =>
     <var-space direction="column" :size="['4vmin', 0]">
       <var-input
         v-model="formData.username"
+        variant="outlined"
         placeholder="Please input username"
         :rules="[(v) => !!v || 'The username cannot be empty']"
       />
       <var-input
         v-model="formData.password"
+        variant="outlined"
         type="password"
         placeholder="Please input password"
         :rules="[v => !!v || 'The password cannot be empty', (v) => v.length >= 8 || 'The password cannot be less than 8 characters']"
       />
       <var-auto-complete
         v-model="formData.email"
+        variant="outlined"
         placeholder="Please input email"
         :rules="[(v) => !!v || 'The email cannot be empty']"
         :options="suggestions"
       />
+      <var-date-input
+        v-model="formData.date"
+        variant="outlined"
+        placeholder="Please select date"
+        :rules="[(v) => !!v || 'A date must be selected']"
+      />
+      <var-date-input
+        v-model="formData.datetimeRange"
+        variant="outlined"
+        type="datetime"
+        range
+        placeholder="Please select datetime range"
+        :rules="[(v) => v.length === 2 || 'A datetime range must be selected']"
+      />
       <var-select
         v-model="formData.department"
+        variant="outlined"
         placeholder="Please select department"
         :rules="[(v) => !!v || 'The select cannot be empty']"
       >
@@ -80,6 +100,7 @@ const suggestions = computed(() =>
       </var-select>
       <var-select
         v-model="formData.group"
+        variant="outlined"
         multiple
         placeholder="Please select group"
         :rules="[(v) => v.length >= 1 || 'The select cannot be empty']"
@@ -130,6 +151,7 @@ const suggestions = computed(() =>
       />
       <var-otp-input
         v-model="formData.otp"
+        variant="outlined"
         :rules="[v => !!v || 'The OTP cannot be empty', (v) => v.length === 6 || 'The OTP length must be 6']"
       />
       <var-uploader
@@ -194,11 +216,13 @@ function handleReset() {
   <var-form @submit="handleSubmit" @reset="handleReset">
     <var-space direction="column" :size="[14, 0]">
       <var-input
+        variant="outlined"
         placeholder="Please input username"
         :rules="v => !!v || 'The username cannot be empty'"
         v-model="formData.username"
       />
       <var-input
+        variant="outlined"
         type="password"
         placeholder="Please input password"
         :rules="[v => !!v || 'The password cannot be empty', (v) => v.length >= 8 || 'The password cannot be less than 8 characters']"

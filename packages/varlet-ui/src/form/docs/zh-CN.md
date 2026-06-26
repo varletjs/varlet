@@ -16,6 +16,8 @@ const formData = reactive({
   password: '',
   otp: '',
   email: '',
+  date: '',
+  datetimeRange: [],
   department: '',
   period: undefined,
   gender: undefined,
@@ -54,23 +56,41 @@ const suggestions = computed(() =>
     <var-space direction="column" :size="['4vmin', 0]">
       <var-input
         v-model="formData.username"
+        variant="outlined"
         placeholder="请输入用户名"
         :rules="[(v) => !!v || '用户名不能为空']"
       />
       <var-input
         v-model="formData.password"
+        variant="outlined"
         type="password"
         placeholder="请输入密码"
         :rules="[(v) => !!v || '密码不能为空', (v) => v.length >= 8 || '密码长度不能低于8位']"
       />
       <var-auto-complete
         v-model="formData.email"
+        variant="outlined"
         placeholder="请输入邮箱"
         :rules="[(v) => !!v || '邮箱不能为空']"
         :options="suggestions"
       />
+      <var-date-input
+        v-model="formData.date"
+        variant="outlined"
+        placeholder="请选择日期"
+        :rules="[(v) => !!v || '必须选择一个日期']"
+      />
+      <var-date-input
+        v-model="formData.datetimeRange"
+        variant="outlined"
+        type="datetime"
+        range
+        placeholder="请选择日期时间范围"
+        :rules="[(v) => v.length === 2 || '必须选择一个日期时间范围']"
+      />
       <var-select
         v-model="formData.department"
+        variant="outlined"
         placeholder="请选择部门"
         :rules="[(v) => !!v || '必须选一个部门']"
       >
@@ -80,6 +100,7 @@ const suggestions = computed(() =>
       </var-select>
       <var-select
         v-model="formData.group"
+        variant="outlined"
         multiple
         placeholder="请选择组织"
         :rules="[(v) => v.length >= 1 || '至少选择一个组织']"
@@ -130,6 +151,7 @@ const suggestions = computed(() =>
       />
       <var-otp-input
         v-model="formData.otp"
+        variant="outlined"
         :rules="[v => !!v || '验证码不能为空', (v) => v.length === 6 || '验证码长度必须为 6']"
       />
       <var-uploader
@@ -194,11 +216,13 @@ function handleReset() {
   <var-form @submit="handleSubmit" @reset="handleReset">
     <var-space direction="column" :size="[14, 0]">
       <var-input
+        variant="outlined"
         placeholder="请输入用户名"
         :rules="v => !!v || '用户名不能为空'"
         v-model="formData.username"
       />
       <var-input
+        variant="outlined"
         type="password"
         placeholder="请输入密码"
         :rules="[v => !!v || '密码不能为空', (v) => v.length <= 8 || '密码长度不能低于8位']"

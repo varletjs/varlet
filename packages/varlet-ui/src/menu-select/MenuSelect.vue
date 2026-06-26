@@ -63,14 +63,14 @@
 <script lang="ts">
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarMenu from '../menu'
 import VarMenuOption from '../menu-option'
 import { type MenuOptionProvider } from '../menu-option/provide'
 import { type Reference } from '../menu/usePopover'
 import { useSelectController } from '../select/useSelectController'
 import { createNamespace, formatElevation } from '../utils/components'
-import { focusChildElementByKey } from '../utils/elements'
+import { focusChildElementByKey, scrollSelectedIntoView } from '../utils/elements'
 import VarMenuChildren from './MenuChildren.vue'
 import { MenuSelectOption, props } from './props'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
@@ -136,7 +136,18 @@ export default defineComponent({
 
     bindMenuOptions(menuSelectProvider)
 
+    watch(show, (value) => {
+      if (value) {
+        nextTick(scrollSelectedOptionIntoView)
+      }
+    })
+
     useEventListener(() => window, 'keydown', handleKeydown)
+
+    function scrollSelectedOptionIntoView() {
+      const scroller = menuOptionsRef.value
+      scrollSelectedIntoView(scroller, scroller?.querySelector<HTMLElement>('.var-menu-option--selected-color'))
+    }
 
     function getEnhancedOption(value: any) {
       return enhancedOptions.value.find((option) => option.value === value)

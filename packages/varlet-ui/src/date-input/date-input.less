@@ -1,0 +1,127 @@
+:root {
+  --date-input-picker-width: 320px;
+  --date-input-time-select-separator-color: var(--color-on-surface-variant);
+  --date-input-time-select-border-color: var(--color-outline);
+  --date-input-time-select-active-color: var(--color-primary);
+}
+
+.var-date-input {
+  text-align: left;
+
+  .var-menu[var-date-input-cover] {
+    width: 100%;
+    background: transparent;
+    display: block;
+  }
+
+  &__picker {
+    width: var(--date-input-picker-width);
+
+    --date-picker-border-radius: 0;
+    --date-picker-body-background-color: transparent;
+    --date-picker-title-background: transparent;
+
+    .var-date-picker-header {
+      background-color: var(--menu-background-color);
+    }
+  }
+
+  &__calendar-icon {
+    margin-left: 6px;
+  }
+
+  &__clear-icon-container {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+
+  &__clear-icon {
+    font-size: var(--field-decorator-icon-size);
+  }
+
+  &--menu {
+    overflow: hidden;
+  }
+
+  &--standard-menu-margin {
+    margin-top: var(--field-decorator-line-focus-size) !important;
+  }
+
+  &--filled-menu-margin {
+    margin-top: var(--field-decorator-line-focus-size) !important;
+  }
+
+  &__datetime {
+    width: 100%;
+  }
+
+  &__datetime-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &--range {
+      justify-content: center;
+    }
+  }
+
+  &__datetime-arrow {
+    flex: none;
+    font-size: 12px;
+    color: var(--date-input-time-select-separator-color);
+  }
+}
+
+.var-date-input-time-select {
+  display: inline-flex;
+  align-items: center;
+
+  &__separator {
+    margin: 0 4px;
+    color: var(--date-input-time-select-separator-color);
+  }
+
+  &__box {
+    min-width: 36px;
+    height: 30px;
+    padding: 0 8px;
+    border: thin solid var(--date-input-time-select-border-color);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    transition: border-color 0.2s var(--cubic-bezier);
+
+    &:not(&--disabled):hover {
+      border-color: var(--date-input-time-select-active-color);
+    }
+
+    &--active {
+      border-color: var(--date-input-time-select-active-color);
+      color: var(--date-input-time-select-active-color);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: var(--opacity-disabled);
+    }
+  }
+
+  &__popover {
+    min-width: 64px;
+
+    --menu-select-menu-max-height: 200px;
+
+    .var-menu-select__menu {
+      scrollbar-width: none;
+    }
+
+    .var-menu-select__menu::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

@@ -322,6 +322,10 @@ interface BaseStyleVars {
   '--data-table-row-large-height'?: string
   '--data-table-footer-padding'?: string
   '--data-table-empty-padding'?: string
+  '--date-input-picker-width'?: string
+  '--date-input-time-select-separator-color'?: string
+  '--date-input-time-select-border-color'?: string
+  '--date-input-time-select-active-color'?: string
   '--date-picker-border-radius'?: string
   '--date-picker-font-size'?: string
   '--date-picker-min-width'?: string
@@ -332,10 +336,6 @@ interface BaseStyleVars {
   '--date-picker-title-padding'?: string
   '--date-picker-title-background'?: string
   '--date-picker-title-color'?: string
-  '--date-picker-title-year-font-size'?: string
-  '--date-picker-title-year-font-weight'?: string
-  '--date-picker-title-year-margin-bottom'?: string
-  '--date-picker-title-year-min-height'?: string
   '--date-picker-title-date-height'?: string
   '--date-picker-title-date-font-size'?: string
   '--date-picker-title-date-font-weight'?: string
@@ -346,16 +346,19 @@ interface BaseStyleVars {
   '--date-picker-body-height'?: string
   '--date-picker-body-padding'?: string
   '--date-picker-header-padding'?: string
+  '--date-picker-header-padding-top-no-title'?: string
   '--date-picker-actions-padding'?: string
   '--date-picker-header-color'?: string
   '--month-picker-padding'?: string
   '--month-picker-item-width'?: string
   '--month-picker-item-height'?: string
   '--month-picker-item-button-max-width'?: string
+  '--month-picker-item-button-font-weight'?: string
   '--year-picker-padding'?: string
   '--year-picker-item-width'?: string
   '--year-picker-item-height'?: string
   '--year-picker-item-button-max-width'?: string
+  '--year-picker-item-button-font-weight'?: string
   '--day-picker-content-item-width'?: string
   '--day-picker-content-item-min-height'?: string
   '--day-picker-content-item-font-size'?: string
@@ -364,8 +367,10 @@ interface BaseStyleVars {
   '--day-picker-content-item-button-height'?: string
   '--day-picker-content-item-button-font-size'?: string
   '--day-picker-head-item-color'?: string
+  '--day-picker-head-item-font-size'?: string
   '--day-picker-head-item-padding'?: string
   '--day-picker-head-item-font-weight'?: string
+  '--day-picker-adjacent-item-color'?: string
   '--dialog-width'?: string
   '--dialog-background'?: string
   '--dialog-border-radius'?: string

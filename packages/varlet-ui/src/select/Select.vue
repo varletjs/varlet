@@ -190,7 +190,7 @@ import VarMenu from '../menu'
 import VarOption from '../option'
 import { type OptionProvider } from '../option/provide'
 import { createNamespace, MaybeVNode, useValidation } from '../utils/components'
-import { focusChildElementByKey, toPxNum } from '../utils/elements'
+import { focusChildElementByKey, scrollSelectedIntoView, toPxNum } from '../utils/elements'
 import { props, type SelectValidateTrigger } from './props'
 import { useOptions, type SelectProvider } from './provide'
 import VarSelectFilter from './SelectFilter.vue'
@@ -322,6 +322,12 @@ export default defineComponent({
       },
     )
 
+    watch(showMenu, (value) => {
+      if (value) {
+        nextTick(scrollSelectedOptionIntoView)
+      }
+    })
+
     bindOptions(selectProvider)
     useEventListener(() => window, 'keydown', handleKeydown)
     useEventListener(() => window, 'keyup', handleKeyup)
@@ -345,6 +351,10 @@ export default defineComponent({
       }
 
       return true
+    }
+
+    function scrollSelectedOptionIntoView() {
+      scrollSelectedIntoView(menuEl.value, menuEl.value?.querySelector<HTMLElement>('.var-option--selected-color'))
     }
 
     function handleKeydown(event: KeyboardEvent) {
