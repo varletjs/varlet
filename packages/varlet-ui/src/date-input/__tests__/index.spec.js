@@ -1069,6 +1069,29 @@ describe('test dateInput datetime behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput ignores multiple when type is datetime', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        multiple: true,
+        modelValue: '2021-04-08 12:30:45',
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    expect(wrapper.findComponent(DatePicker).props('multiple')).toBe(false)
+    expect(wrapper.findAllComponents(TimeSelect)).toHaveLength(1)
+
+    wrapper.findComponent(DatePicker).vm.$emit('change', '2021-04-09')
+    await delay(0)
+
+    expect(wrapper.find('input').element.value).toBe('2021-04-09 12:30:45')
+    expect(onUpdateModelValue).lastCalledWith('2021-04-09 12:30:45')
+
+    wrapper.unmount()
+  })
+
   test('dateInput combines current date with picked time', async () => {
     const onUpdateModelValue = vi.fn()
     const wrapper = mount(VarDateInput, {

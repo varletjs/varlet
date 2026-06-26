@@ -64,7 +64,7 @@
             :class="n('picker')"
             :model-value="pickerValue"
             :type="pickerType"
-            :multiple="multiple"
+            :multiple="isMultiple"
             :range="range"
             :allowed-dates="allowedDates"
             :min="pickerMin"
@@ -200,8 +200,9 @@ export default defineComponent({
     const formReadonly = computed(() => form?.readonly.value ?? false)
     const isDisabled = computed(() => props.disabled || formDisabled.value)
     const isReadonly = computed(() => props.readonly || formReadonly.value)
-    const isMultipleOrRange = computed(() => props.multiple || props.range)
     const isDatetime = computed(() => props.type === 'datetime')
+    const isMultiple = computed(() => props.multiple && !isDatetime.value)
+    const isMultipleOrRange = computed(() => isMultiple.value || props.range)
     const pickerType = computed(() => (isDatetime.value ? 'date' : props.type) as 'year' | 'month' | 'date')
     const pickerMin = computed(() => getPickerBound(props.min))
     const pickerMax = computed(() => getPickerBound(props.max))
@@ -918,6 +919,7 @@ export default defineComponent({
       errorMessage,
       menuPopoverClass,
       isDatetime,
+      isMultiple,
       pickerType,
       pickerMin,
       pickerMax,
