@@ -1173,6 +1173,63 @@ describe('test dateInput datetime behavior', () => {
     wrapper.unmount()
   })
 
+  test('dateInput disables range time selects until range dates are completed', async () => {
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: [],
+      },
+    })
+
+    expect(wrapper.findAllComponents(TimeSelect).map((timeSelect) => timeSelect.props('disabled'))).toEqual([
+      true,
+      true,
+    ])
+
+    await wrapper.setProps({
+      modelValue: ['2021-04-08 09:00:00', '2021-04-12 18:30:00'],
+    })
+
+    expect(wrapper.findAllComponents(TimeSelect).map((timeSelect) => timeSelect.props('disabled'))).toEqual([
+      false,
+      false,
+    ])
+
+    wrapper.findComponent(DatePicker).vm.selectDayFromPanel(9)
+    await delay(0)
+
+    expect(wrapper.findAllComponents(TimeSelect).map((timeSelect) => timeSelect.props('disabled'))).toEqual([
+      true,
+      true,
+    ])
+
+    wrapper.unmount()
+  })
+
+  test('dateInput still accepts complete datetime range from input when range time selects are disabled', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type: 'datetime',
+        range: true,
+        modelValue: [],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    expect(wrapper.findAllComponents(TimeSelect).map((timeSelect) => timeSelect.props('disabled'))).toEqual([
+      true,
+      true,
+    ])
+
+    await triggerInput(wrapper, '2021-04-08 09:00:00 ~ 2021-04-12 18:30:00')
+
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08 09:00:00', '2021-04-12 18:30:00'])
+
+    wrapper.unmount()
+  })
+
   test('dateInput combines picked range dates with current start and end times', async () => {
     const onUpdateModelValue = vi.fn()
     const wrapper = mount(VarDateInput, {
