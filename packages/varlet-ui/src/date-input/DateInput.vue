@@ -708,6 +708,10 @@ export default defineComponent({
 
       const validDayjsObjects = dayjsObjects.filter(isTruthy)
 
+      if (props.range && validDayjsObjects[0].isAfter(validDayjsObjects[1])) {
+        return
+      }
+
       if (
         validDayjsObjects.some((dayjsObject, index) => {
           const position = props.range ? (index === 0 ? 'start' : 'end') : undefined

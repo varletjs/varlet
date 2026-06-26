@@ -180,6 +180,56 @@ describe('test dateInput input behavior', () => {
     wrapper.unmount()
   })
 
+  test.each([
+    {
+      type: 'date',
+      modelValue: ['2021-04-08', '2021-04-10'],
+      input: '2021-04-12 ~ 2021-04-09',
+    },
+    {
+      type: 'datetime',
+      modelValue: ['2021-04-08 09:00:00', '2021-04-08 18:00:00'],
+      input: '2021-04-08 20:00:00 ~ 2021-04-08 10:00:00',
+    },
+  ])('dateInput rejects a manually entered reversed $type range', async ({ type, modelValue, input }) => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        type,
+        range: true,
+        modelValue,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, input)
+
+    expect(wrapper.find('input').element.value).toBe(input)
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+
+    await wrapper.find('input').trigger('change')
+    expect(wrapper.find('input').element.value).toBe(modelValue.join(' ~ '))
+
+    wrapper.unmount()
+  })
+
+  test('dateInput accepts a manually entered range with equal endpoints', async () => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(VarDateInput, {
+      props: {
+        range: true,
+        modelValue: [],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await triggerInput(wrapper, '2021-04-08 ~ 2021-04-08')
+
+    expect(onUpdateModelValue).lastCalledWith(['2021-04-08', '2021-04-08'])
+
+    wrapper.unmount()
+  })
+
   test('dateInput validates allowedTimes with range positions on manual input', async () => {
     const onUpdateModelValue = vi.fn()
     const allowedTimes = vi.fn((_date, position) => ({
