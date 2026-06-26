@@ -17,6 +17,7 @@ const formData = reactive({
   otp: '',
   email: '',
   date: '',
+  datetimeRange: [],
   department: '',
   period: undefined,
   gender: undefined,
@@ -78,6 +79,14 @@ const suggestions = computed(() =>
         variant="outlined"
         placeholder="Please select date"
         :rules="[(v) => !!v || 'A date must be selected']"
+      />
+      <var-date-input
+        v-model="formData.datetimeRange"
+        variant="outlined"
+        type="datetime"
+        range
+        placeholder="Please select datetime range"
+        :rules="[(v) => v.length === 2 || 'A datetime range must be selected']"
       />
       <var-select
         v-model="formData.department"

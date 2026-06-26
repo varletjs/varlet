@@ -10,6 +10,8 @@ export default {
   emailMessage: 'The email cannot be empty',
   date: 'Please select date',
   dateMessage: 'A date must be selected',
+  datetimeRange: 'Please select datetime range',
+  datetimeRangeMessage: 'A datetime range must be selected',
   passwordMinLengthMessage: 'The password cannot be less than 8 characters',
   department: 'Please select department',
   departmentMessage: 'The select cannot be empty',

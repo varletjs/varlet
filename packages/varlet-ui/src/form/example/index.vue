@@ -10,6 +10,7 @@ const formData = reactive({
   otp: '',
   email: '',
   date: '',
+  datetimeRange: [],
   department: '',
   period: undefined,
   gender: undefined,
@@ -80,6 +81,14 @@ onThemeChange()
         variant="outlined"
         :placeholder="t('date')"
         :rules="[(v) => !!v || t('dateMessage')]"
+      />
+      <var-date-input
+        v-model="formData.datetimeRange"
+        variant="outlined"
+        type="datetime"
+        range
+        :placeholder="t('datetimeRange')"
+        :rules="[(v) => v.length === 2 || t('datetimeRangeMessage')]"
       />
       <var-select
         v-model="formData.department"

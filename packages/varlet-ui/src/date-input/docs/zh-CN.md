@@ -4,8 +4,6 @@
 
 用于输入或选择日期。
 
-通过 `type="datetime"` 选择日期与时间，日历下方提供 `时 : 分 : 秒` 的时间选择。设置 `use-seconds` 为 `false` 可只精确到分钟。`min` / `max` 设置整体可选边界。`allowed-dates` 用于禁用日历单元格，`allowed-times` 用于禁用时间选择器选项。日期时间支持单选和范围选择，不支持多选。
-
 ### 标准外观
 
 ```html
@@ -364,14 +362,14 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `v-model` | 绑定的值，具体类型由 `value-format` 决定 | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
+| `v-model` | 绑定值，默认格式为 `YYYY-MM-DD` / `YYYY-MM` / `YYYY` / `YYYY-MM-DD HH:mm:ss`，`use-seconds` 为 `false` 时日期时间格式为 `YYYY-MM-DD HH:mm`，`value-format` 可改变绑定值类型 | _string \| number \| Date \| Array<string \| number \| Date> \| undefined_ | `-` |
 | `type` | 输入类型，可选值为 `date` `month` `year` `datetime` | _string_ | `date` |
-| `format` | 输入框展示和解析用户输入时使用的格式 | _string_ | 根据 `type` 推导 |
-| `value-format` | 绑定值格式，可选值为 `timestamp` `date`，也可传入日期格式字符串。不传时使用 `format` 输出字符串 | _string_ | `-` |
+| `format` | 输入框展示格式 | _string_ | `-` |
+| `value-format` | 绑定值格式，可选值为 `timestamp` `date` 或日期格式字符串 | _string_ | `-` |
 | `use-seconds` | `type` 为 `datetime` 时是否精确到秒 | _boolean_ | `true` |
-| `multiple` | 是否支持多选，`type` 为 `datetime` 时不支持 | _boolean_ | `false` |
+| `multiple` | 是否支持多选，`type` 为 `datetime` 时不支持该属性 | _boolean_ | `false` |
 | `range` | 是否支持范围选择 | _boolean_ | `false` |
-| `separator` | 多选展示分隔符 | _string_ | `, ` |
+| `separator` | 多个日期在输入框中的分隔符 | _string_ | `, ` |
 | `range-separator` | 范围展示分隔符 | _string_ | ` ~ ` |
 | `placeholder` | 占位符 | _string_ | `-` |
 | `variant` | 输入框风格，可选值为 `standard` `outlined` `filled` | _string_ | `standard` |
@@ -386,10 +384,10 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation) | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | 限制日历单元格是否可选，参数格式随日历粒度变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`）。当 `type` 为 `datetime` 时，参数只有日期部分（`YYYY-MM-DD`），不控制时 / 分 / 秒选项 | _(value: string) => boolean_ | `-` |
-| `allowed-times` | `type` 为 `datetime` 时返回时间选项校验器，参数为选中的日期（`YYYY-MM-DD`）和可选的范围位置（`start` / `end`）。校验器为 `hours(hour)`、`minutes(minute, hour)`、`seconds(second, minute, hour)`，返回 `true` 表示选项可选，不禁用日历单元格 | _(date: string, position?: 'start' \| 'end') => { hours?, minutes?, seconds? }_ | `-` |
-| `min` | 最小可选边界，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`）。当 `type` 为 `datetime` 时，会禁用边界日期之前的日历日期，并禁用边界日期上更早的时间选项 | _string_ | `-` |
-| `max` | 最大可选边界，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD` / `YYYY-MM-DD HH:mm:ss`）。当 `type` 为 `datetime` 时，会禁用边界日期之后的日历日期，并禁用边界日期上更晚的时间选项 | _string_ | `-` |
+| `allowed-dates` | 可选日期过滤函数 | _(value: string) => boolean_ | `-` |
+| `allowed-times` | 可选时间过滤函数，仅在 `type` 为 `datetime` 时生效 | _(date: string, position?: 'start' \| 'end') => { hours?, minutes?, seconds? }_ | `-` |
+| `min` | 最小可选边界 | _string_ | `-` |
+| `max` | 最大可选边界 | _string_ | `-` |
 | `first-day-of-week` | 设置一周的第一天，从周日的 `0` 开始 | _string \| number_ | `0` |
 | `tabindex` | 与原生 input 的 tabindex 属性一致 | _string_ | `-` |
 
