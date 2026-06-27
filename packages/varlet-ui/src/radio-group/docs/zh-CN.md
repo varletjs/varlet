@@ -54,10 +54,10 @@ const value = ref(false)
     v-model="value"
   >
     <template #unchecked-icon>
-      <var-icon name="heart-half-full" size="24px"/>
+      <var-icon name="heart-half-full" />
     </template>
     <template #checked-icon>
-      <var-icon name="heart" size="24px"/>
+      <var-icon name="heart" />
     </template>
     <template #default>
       当前的值: {{ value }}

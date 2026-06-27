@@ -24,19 +24,19 @@
         "
         :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
       >
-        <span v-if="isIndeterminate" :class="n('icon')">
+        <span v-if="isIndeterminate" :class="n('icon')" :style="{ fontSize: toSizeUnit(iconSize) }">
           <slot name="indeterminate-icon">
-            <var-icon name="minus-box" :size="iconSize" />
+            <var-icon name="minus-box" />
           </slot>
         </span>
-        <span v-if="checked && !isIndeterminate" :class="n('icon')">
+        <span v-if="checked && !isIndeterminate" :class="n('icon')" :style="{ fontSize: toSizeUnit(iconSize) }">
           <slot name="checked-icon">
-            <var-icon name="checkbox-marked" :size="iconSize" />
+            <var-icon name="checkbox-marked" />
           </slot>
         </span>
-        <span v-if="!checked && !isIndeterminate" :class="n('icon')">
+        <span v-if="!checked && !isIndeterminate" :class="n('icon')" :style="{ fontSize: toSizeUnit(iconSize) }">
           <slot name="unchecked-icon">
-            <var-icon name="checkbox-blank-outline" :size="iconSize" />
+            <var-icon name="checkbox-blank-outline" />
           </slot>
         </span>
         <var-hover-overlay
@@ -75,6 +75,7 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { createNamespace, useValidation } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 import { props, type CheckboxValidateTrigger } from './props'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 
@@ -243,6 +244,7 @@ export default defineComponent({
       handleHovering,
       handleClick,
       handleTextClick,
+      toSizeUnit,
       toggle,
       reset,
       validate,

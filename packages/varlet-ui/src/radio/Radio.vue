@@ -25,14 +25,14 @@
         "
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
-        <span v-if="checked" :class="n('icon')">
+        <span v-if="checked" :class="n('icon')" :style="{ fontSize: toSizeUnit(iconSize) }">
           <slot name="checked-icon">
-            <var-icon name="radio-marked" :size="iconSize" />
+            <var-icon name="radio-marked" />
           </slot>
         </span>
-        <span v-else :class="n('icon')">
+        <span v-else :class="n('icon')" :style="{ fontSize: toSizeUnit(iconSize) }">
           <slot name="unchecked-icon">
-            <var-icon name="radio-blank" :size="iconSize" />
+            <var-icon name="radio-blank" />
           </slot>
         </span>
         <var-hover-overlay
@@ -70,6 +70,7 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { createNamespace, useValidation } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 import { props, type RadioValidateTrigger } from './props'
 import { useRadioGroup, type RadioProvider } from './provide'
 
@@ -257,6 +258,7 @@ export default defineComponent({
       classes,
       handleClick,
       handleTextClick,
+      toSizeUnit,
       toggle,
       reset,
       validate,
