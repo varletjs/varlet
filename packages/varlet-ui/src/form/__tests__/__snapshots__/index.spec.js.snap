@@ -67,7 +67,7 @@ exports[`form with checkbox 1`] = `
     <div role="checkbox" aria-checked="false" aria-disabled="true" class="var-checkbox">
       <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
         <!--v-if-->
-        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+        <!--v-if--><span class="var-checkbox__icon"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -85,7 +85,7 @@ exports[`form with checkbox 2`] = `
     <div role="checkbox" aria-checked="false" aria-disabled="false" class="var-checkbox" tabindex="0">
       <div class="var-checkbox__action var-checkbox--unchecked">
         <!--v-if-->
-        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+        <!--v-if--><span class="var-checkbox__icon"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -189,7 +189,7 @@ exports[`form with radio 1`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
     <div role="radio" class="var-radio" aria-checked="false" aria-disabled="true">
-      <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+      <div class="var-radio__action var-radio--unchecked var-radio--disabled"><span class="var-radio__icon"><i class="var-icon var-icon--set var-icon-radio-blank" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -205,7 +205,7 @@ exports[`form with radio 2`] = `
 "<form class="var-form">
   <div class="var-radio__wrap">
     <div role="radio" class="var-radio" aria-checked="false" aria-disabled="false" tabindex="0">
-      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+      <div class="var-radio__action var-radio--unchecked"><span class="var-radio__icon"><i class="var-icon var-icon--set var-icon-radio-blank" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
       <!--v-if-->
@@ -221,19 +221,19 @@ exports[`form with rate 1`] = `
 "<form class="var-form">
   <div class="var-rate__wrap">
     <div class="var-rate">
-      <div class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
+      <div class="var-rate__content var-rate--disabled"><span class="var-rate__content-icon"><i class="var-icon var-icon--set var-icon-star-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
+      <div class="var-rate__content var-rate--disabled"><span class="var-rate__content-icon"><i class="var-icon var-icon--set var-icon-star-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
+      <div class="var-rate__content var-rate--disabled"><span class="var-rate__content-icon"><i class="var-icon var-icon--set var-icon-star-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
+      <div class="var-rate__content var-rate--disabled"><span class="var-rate__content-icon"><i class="var-icon var-icon--set var-icon-star-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
-      <div style="margin-right: 0px;" class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
+      <div style="margin-right: 0px;" class="var-rate__content var-rate--disabled"><span class="var-rate__content-icon"><i class="var-icon var-icon--set var-icon-star-outline" style="transition-duration: 0ms;"></i></span>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
