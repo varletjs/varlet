@@ -14,5 +14,6 @@ export default {
   badge: 'Badge',
   customBadgeColor: 'Custom Badge Color',
   customBadgeIcon: 'Custom Badge Icon',
+  customBadgeIconSlot: 'Customize Badge Icon With Slot',
   customBadgeValue: 'Custom Badge Value',
 }

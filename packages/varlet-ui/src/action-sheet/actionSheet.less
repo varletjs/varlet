@@ -44,11 +44,16 @@
     max-height: var(--action-sheet-action-item-height);
   }
 
-  &__action-icon[var-action-sheet-cover] {
+  &__action-icon {
+    display: inline-flex;
     margin: var(--action-sheet-icon-margin);
     width: var(--action-sheet-icon-size);
     height: var(--action-sheet-icon-size);
     font-size: var(--action-sheet-icon-size);
+
+    .var-icon {
+      font-size: inherit;
+    }
   }
 
   &--disabled {

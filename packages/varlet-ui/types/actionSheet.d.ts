@@ -29,7 +29,7 @@ export interface ActionSheetProps extends BasicAttributes {
 export interface ActionItem {
   name: string
   color?: string
-  icon?: string
+  icon?: string | VNode | (() => VNode)
   namespace?: string
   iconSize?: string | number
   className?: string

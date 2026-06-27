@@ -25,12 +25,16 @@
         "
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
-        <slot v-if="checked" name="checked-icon">
-          <var-icon :class="n('icon')" var-radio-cover name="radio-marked" :size="iconSize" />
-        </slot>
-        <slot v-else name="unchecked-icon">
-          <var-icon :class="n('icon')" var-radio-cover name="radio-blank" :size="iconSize" />
-        </slot>
+        <span v-if="checked" :class="n('icon')">
+          <slot name="checked-icon">
+            <var-icon name="radio-marked" :size="iconSize" />
+          </slot>
+        </span>
+        <span v-else :class="n('icon')">
+          <slot name="unchecked-icon">
+            <var-icon name="radio-blank" :size="iconSize" />
+          </slot>
+        </span>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"
           :focusing="!disabled && !formDisabled && isFocusing"

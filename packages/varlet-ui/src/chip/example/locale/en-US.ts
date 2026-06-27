@@ -16,6 +16,7 @@ export default {
   blockChip: 'Block Chip',
   canCloseChip: 'Can Close Chip',
   customCloseIcon: 'Custom Close Icon',
+  customCloseIconSlot: 'Customize Close Icon With Slot',
   customColor: 'Custom Color',
   chip: 'Chip',
   addSlot: 'Add Slot',

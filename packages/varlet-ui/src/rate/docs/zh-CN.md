@@ -59,6 +59,32 @@ const score = ref(3)
 </template>
 ```
 
+### 通过插槽自定义评分图标
+
+通过 `icon`、`half-icon` 和 `empty-icon` 插槽自定义评分图标。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const score = ref(3.5)
+</script>
+
+<template>
+  <var-rate v-model="score" half color="red">
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+    <template #half-icon>
+      <var-icon name="heart-half-full" />
+    </template>
+    <template #empty-icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-rate>
+</template>
+```
+
 ### 自定义评分图标尺寸与间隔
 
 通过 `size` 属性设置评分图标的尺寸。
@@ -216,6 +242,14 @@ const score = ref(3)
 | `clearable`      | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _((v: number) => any) \| ZodType \| Array<((v: number) => any) \| ZodType>_ | `-` |
+
+### 插槽
+
+| 名称 | 说明 | 参数 |
+| --- | --- | --- |
+| `icon` ***3.19.0*** | 选中时的图标 | `-` |
+| `empty-icon` ***3.19.0*** | 未选中时的图标 | `-` |
+| `half-icon` ***3.19.0*** | 半选时的图标 | `-` |
 
 ### 事件
 

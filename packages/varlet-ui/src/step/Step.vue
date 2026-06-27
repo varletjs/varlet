@@ -6,27 +6,21 @@
         :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
         @click="click"
       >
-        <var-icon
-          v-if="isActive"
-          :class="n('icon')"
-          var-step-cover
-          :name="activeIcon"
-          :namespace="activeIconNamespace"
-        />
-        <var-icon
-          v-else-if="isCurrent && currentIcon"
-          :class="n('icon')"
-          var-step-cover
-          :name="currentIcon"
-          :namespace="currentIconNamespace"
-        />
-        <var-icon
-          v-else-if="inactiveIcon"
-          :class="n('icon')"
-          var-step-cover
-          :name="inactiveIcon"
-          :namespace="inactiveIconNamespace"
-        />
+        <span v-if="isActive" :class="n('icon')">
+          <slot name="active-icon">
+            <var-icon :name="activeIcon" :namespace="activeIconNamespace" />
+          </slot>
+        </span>
+        <span v-else-if="isCurrent && ($slots['current-icon'] || currentIcon)" :class="n('icon')">
+          <slot name="current-icon">
+            <var-icon :name="currentIcon" :namespace="currentIconNamespace" />
+          </slot>
+        </span>
+        <span v-else-if="$slots['inactive-icon'] || inactiveIcon" :class="n('icon')">
+          <slot name="inactive-icon">
+            <var-icon :name="inactiveIcon" :namespace="inactiveIconNamespace" />
+          </slot>
+        </span>
         <span v-else>{{ index + 1 }}</span>
       </div>
       <div

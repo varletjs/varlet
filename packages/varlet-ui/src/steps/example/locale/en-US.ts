@@ -1,6 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   customStyle: 'Custom Style',
+  customIconWithSlots: 'Customize Icon With Slots',
   dynamicSteps: 'Dynamic Steps',
   vertical: 'Vertical Mode',
   next: 'next',

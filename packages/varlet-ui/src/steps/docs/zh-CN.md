@@ -61,6 +61,40 @@ const active = ref(0)
 </template>
 ```
 
+### 通过插槽自定义图标
+
+通过 `active-icon`、`current-icon` 和 `inactive-icon` 插槽自定义步骤图标。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-steps
+    :active="active"
+    active-color="var(--color-danger)"
+    inactive-color="var(--color-warning)"
+  >
+    <var-step v-for="step in ['步骤1', '步骤2', '步骤3', '步骤4']" :key="step">
+      {{ step }}
+
+      <template #active-icon>
+        <var-icon name="heart" />
+      </template>
+      <template #current-icon>
+        <var-icon name="fire" />
+      </template>
+      <template #inactive-icon>
+        <var-icon name="heart-half-full" />
+      </template>
+    </var-step>
+  </var-steps>
+</template>
+```
+
 ### 垂直模式
 
 通过 `direction` 属性改变步骤条的显示方向。
@@ -127,6 +161,9 @@ const active = ref(0)
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | step 的内容 | `-` |
+| `active-icon` ***3.19.0*** | 激活状态图标 | `-` |
+| `current-icon` ***3.19.0*** | 当前步骤时的图标 | `-` |
+| `inactive-icon` ***3.19.0*** | 未激活状态图标 | `-` |
 
 ### 样式变量
 

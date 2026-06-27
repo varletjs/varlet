@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import Chip from '..'
 import VarChip from '../Chip'
 
@@ -140,6 +140,21 @@ describe('test chip component props', () => {
     wrapper.unmount()
   })
 
+  test('chip icon has higher priority than iconName', () => {
+    const wrapper = mount(VarChip, {
+      props: {
+        closeable: true,
+        iconName: 'delete',
+        icon: 'window-close',
+      },
+    })
+
+    expect(wrapper.find('.var-icon-window-close').exists()).toBe(true)
+    expect(wrapper.find('.var-icon-delete').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('chip color', async () => {
     const wrapper = mount(VarChip, {
       props: {
@@ -204,6 +219,22 @@ describe('test chip component slots', () => {
     })
 
     expect(wrapper.find('.var-chip').html()).toContain('<span class="var-chip__text-normal"></span>This is right slots')
+    wrapper.unmount()
+  })
+
+  test('chip icon slot has higher priority than icon prop', () => {
+    const wrapper = mount(VarChip, {
+      props: {
+        closeable: true,
+        icon: 'delete',
+      },
+      slots: {
+        icon: () => h('i', { class: 'i-custom-chip' }),
+      },
+    })
+
+    expect(wrapper.find('.i-custom-chip').exists()).toBe(true)
+    expect(wrapper.find('.var-icon-delete').exists()).toBe(false)
     wrapper.unmount()
   })
 })

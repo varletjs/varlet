@@ -62,6 +62,40 @@ const active = ref(0)
 </template>
 ```
 
+### Customize Icon With Slots
+
+Use `active-icon`, `current-icon`, and `inactive-icon` slots to customize step icons.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-steps
+    :active="active"
+    active-color="var(--color-danger)"
+    inactive-color="var(--color-warning)"
+  >
+    <var-step v-for="step in ['Step1', 'Step2', 'Step3', 'Step4']" :key="step">
+      {{ step }}
+
+      <template #active-icon>
+        <var-icon name="heart" />
+      </template>
+      <template #current-icon>
+        <var-icon name="fire" />
+      </template>
+      <template #inactive-icon>
+        <var-icon name="heart-half-full" />
+      </template>
+    </var-step>
+  </var-steps>
+</template>
+```
+
 ### Vertical Mode
 
 Change the display direction of the step bar through the `direction` attribute.
@@ -101,7 +135,7 @@ const active = ref(0)
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active-icon` | Active icon name  | _string_ | `check` |
-| `current-icon` | Icon name of current ste	 | _string_ | `-`|
+| `current-icon` | Current icon name | _string_ | `-`|
 | `inactive-icon` | Inactive icon name	 | _string_ | `-`|
 | `active-icon-namespace` | Active icon namespace  | _string_ | `var-icon` |
 | `current-icon-namespace` | Current icon namespace | _string_ |`var-icon` |
@@ -128,6 +162,9 @@ const active = ref(0)
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Content of step | `-`|
+| `active-icon` ***3.19.0*** | Active icon | `-` |
+| `current-icon` ***3.19.0*** | Current icon | `-` |
+| `inactive-icon` ***3.19.0*** | Inactive icon | `-` |
 
 ### Style Variables
 

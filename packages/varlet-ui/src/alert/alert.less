@@ -2,9 +2,9 @@
   --alert-padding: 16px;
   --alert-border-radius: 4px;
   --alert-icon-size: 22px;
-  --alert-icon-margin: 0 12px 0 0;
+  --alert-icon-margin: 1px 12px 0 0;
   --alert-close-icon-size: 22px;
-  --alert-close-icon-margin: 2px 0 0 12px;
+  --alert-close-icon-margin: 1px 0 0 12px;
   --alert-standard-info-text-color: var(--color-on-info);
   --alert-standard-danger-text-color: var(--color-on-danger);
   --alert-standard-success-text-color: var(--color-on-success);
@@ -35,10 +35,13 @@
   border-radius: var(--alert-border-radius);
 
   &__icon {
+    display: inline-flex;
+    align-items: start;
     margin: var(--alert-icon-margin);
+    font-size: var(--alert-icon-size);
 
     .var-icon {
-      font-size: var(--alert-icon-size);
+      font-size: inherit;
     }
   }
 
@@ -61,14 +64,18 @@
   &__message {
     font-size: var(--alert-message-font-size);
     line-height: var(--alert-message-line-height);
+    margin-top: 2px;
   }
 
   &__close-icon {
+    display: inline-flex;
+    align-items: start;
     cursor: pointer;
     margin: var(--alert-close-icon-margin);
+    font-size: var(--alert-close-icon-size);
 
-    .var-icon[alert-cover] {
-      font-size: var(--alert-close-icon-size);
+    .var-icon {
+      font-size: inherit;
     }
   }
 

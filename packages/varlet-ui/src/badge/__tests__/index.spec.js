@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import Badge from '..'
 import VarBadge from '../Badge'
 
@@ -234,6 +234,35 @@ describe('test badge component slots', () => {
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('badge icon slot has higher priority than icon prop', () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        icon: 'notebook',
+      },
+      slots: {
+        icon: () => h('i', { class: 'i-custom-badge' }),
+      },
+    })
+
+    expect(wrapper.find('.i-custom-badge').exists()).toBe(true)
+    expect(wrapper.find('.var-icon-notebook').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('badge icon slot only suppresses default value content', () => {
+    const wrapper = mount(VarBadge, {
+      slots: {
+        icon: () => h('i', { class: 'i-custom-badge' }),
+        value: () => h('span', { class: 'custom-value' }, 'custom value'),
+      },
+    })
+
+    expect(wrapper.find('.i-custom-badge').exists()).toBe(true)
+    expect(wrapper.find('.custom-value').text()).toBe('custom value')
+    expect(wrapper.find('.var-badge__content').text()).not.toContain('0')
     wrapper.unmount()
   })
 })

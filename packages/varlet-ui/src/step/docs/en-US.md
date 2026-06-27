@@ -16,3 +16,6 @@
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Content of step | `-`|
+| `active-icon` ***3.19.0*** | Active icon | `-` |
+| `current-icon` ***3.19.0*** | Current icon | `-` |
+| `inactive-icon` ***3.19.0*** | Inactive icon | `-` |

@@ -152,6 +152,27 @@ Set Badge Icon through `icon` property.
 </template>
 ```
 
+### Customize Badge Icon With Slot
+
+Use the `icon` slot to customize the badge icon.
+
+```html
+<template>
+  <var-badge type="primary">
+    <var-chip>Badge</var-chip>
+
+    <template #icon>
+      <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+        <path
+          fill="currentColor"
+          d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        />
+      </svg>
+    </template>
+  </var-badge>
+</template>
+```
+
 ### Custom Badge Value
 
 ```html
@@ -190,6 +211,7 @@ Set Badge Icon through `icon` property.
 | --- | --- | --- |
 | `default` |  Badge content | `-` |
 | `value` | The value shown in the badge | `-` |
+| `icon` ***3.19.0*** | Badge icon | `-` |
 
 ### Style Variables
 

@@ -24,15 +24,21 @@
         "
         :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
       >
-        <slot v-if="isIndeterminate" name="indeterminate-icon">
-          <var-icon :class="n('icon')" name="minus-box" :size="iconSize" var-checkbox-cover />
-        </slot>
-        <slot v-if="checked && !isIndeterminate" name="checked-icon">
-          <var-icon :class="n('icon')" name="checkbox-marked" :size="iconSize" var-checkbox-cover />
-        </slot>
-        <slot v-if="!checked && !isIndeterminate" name="unchecked-icon">
-          <var-icon :class="n('icon')" name="checkbox-blank-outline" :size="iconSize" var-checkbox-cover />
-        </slot>
+        <span v-if="isIndeterminate" :class="n('icon')">
+          <slot name="indeterminate-icon">
+            <var-icon name="minus-box" :size="iconSize" />
+          </slot>
+        </span>
+        <span v-if="checked && !isIndeterminate" :class="n('icon')">
+          <slot name="checked-icon">
+            <var-icon name="checkbox-marked" :size="iconSize" />
+          </slot>
+        </span>
+        <span v-if="!checked && !isIndeterminate" :class="n('icon')">
+          <slot name="unchecked-icon">
+            <var-icon name="checkbox-blank-outline" :size="iconSize" />
+          </slot>
+        </span>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"
           :focusing="!disabled && !formDisabled && isFocusing"

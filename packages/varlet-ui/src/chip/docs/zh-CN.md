@@ -75,7 +75,7 @@
 
 ### 可关闭纸片
 
-通过 `closeable` 属性将纸片设置为可关闭纸片，使用 `icon-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
+通过 `closeable` 属性将纸片设置为可关闭纸片，使用 `icon` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
 
 ```html
 <script setup>
@@ -89,11 +89,32 @@ const show1= ref(true)
   <var-chip closeable v-if="show" @close="show = false">可关闭纸片</var-chip>
   <var-chip
     closeable
-    icon-name="delete"
+    icon="delete"
     v-if="show1"
     @close="show1 = false"
   >
     自定义关闭图标
+  </var-chip>
+</template>
+```
+
+### 通过插槽自定义关闭图标
+
+通过 `icon` 插槽自定义关闭图标。
+
+```html
+<template>
+  <var-chip closeable>
+    自定义关闭图标
+
+    <template #icon>
+      <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+        <path
+          fill="currentColor"
+          d="M12 10.59 16.95 5.64l1.41 1.41L13.41 12l4.95 4.95-1.41 1.41L12 13.41l-4.95 4.95-1.41-1.41L10.59 12 5.64 7.05l1.41-1.41z"
+        />
+      </svg>
+    </template>
   </var-chip>
 </template>
 ```
@@ -156,7 +177,8 @@ const show1= ref(true)
 | `block` | 是否为块级样式 | _boolean_ | `false` |
 | `elevation` ***3.3.0***  | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                  | _string \| number \| boolean_ | `false`            |
 | `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
-| `icon-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `icon` ***3.19.0*** | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `icon-name` | 已废弃，请使用 `icon` 代替 | _string_ | `-` |
 | `namespace` | 自定义可关闭纸片的图标的命名空间 | _string_ | `var-icon` |
 | `color` | 纸片颜色 | _string_ | `_` |
 | `text-color` | 文本颜色，优先级高于 `color` 属性 | _string_ | `-` |
@@ -168,6 +190,7 @@ const show1= ref(true)
 | `default` | 纸片内容 | `-` |
 | `left` | 插入至纸片左侧的内容 | `-` |
 | `right` | 插入至纸片右侧的内容 | `-` |
+| `icon` ***3.19.0*** | 关闭图标 | `-` |
 
 ### 事件
 

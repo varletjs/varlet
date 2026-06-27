@@ -149,9 +149,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-padding` | `16px` |
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-size` | `22px` |
-| `--alert-icon-margin` | `0 12px 0 0` |
+| `--alert-icon-margin` | `1px 12px 0 0` |
 | `--alert-close-icon-size` | `22px` |
-| `--alert-close-icon-margin` | `2px 0 0 12px` |
+| `--alert-close-icon-margin` | `1px 0 0 12px` |
 | `--alert-standard-info-text-color` | `var(--color-on-info)` |
 | `--alert-standard-danger-text-color` | `var(--color-on-danger)` |
 | `--alert-standard-success-text-color` | `var(--color-on-success)` |

@@ -25,19 +25,17 @@
       "
     >
       <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover>
-        <slot name="icon" :active="isActive">
-          <var-icon
-            v-if="icon"
-            :name="icon"
-            :namespace="namespace"
-            :class="n('icon')"
-            var-bottom-navigation-item-cover
-          />
-        </slot>
+        <span :class="n('icon')">
+          <slot name="icon" :active="isActive">
+            <var-icon v-if="icon" :name="icon" :namespace="namespace" />
+          </slot>
+        </span>
       </var-badge>
-      <slot v-else name="icon" :active="isActive">
-        <var-icon v-if="icon" :name="icon" :namespace="namespace" :class="n('icon')" var-bottom-navigation-item-cover />
-      </slot>
+      <span v-else-if="$slots.icon || icon" :class="n('icon')">
+        <slot name="icon" :active="isActive">
+          <var-icon v-if="icon" :name="icon" :namespace="namespace" />
+        </slot>
+      </span>
     </div>
 
     <span :class="n('label')">

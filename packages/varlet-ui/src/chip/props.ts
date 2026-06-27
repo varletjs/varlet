@@ -17,6 +17,11 @@ export const props = {
   },
   color: String,
   textColor: String,
+  icon: pickProps(iconProps, 'name'),
+
+  /**
+   * @deprecated use icon instead
+   */
   iconName: pickProps(iconProps, 'name'),
   namespace: pickProps(iconProps, 'namespace'),
   plain: Boolean,

@@ -17,6 +17,8 @@ export interface ChipProps extends BasicAttributes {
   size?: ChipSize
   color?: string
   textColor?: string
+  icon?: string
+  /** @deprecated Use icon instead. */
   iconName?: string
   namespace?: string
   plain?: boolean
@@ -36,6 +38,7 @@ export class Chip extends VarComponent {
     default(): VNode[]
     left(): VNode[]
     right(): VNode[]
+    icon(): VNode[]
   }
 }
 

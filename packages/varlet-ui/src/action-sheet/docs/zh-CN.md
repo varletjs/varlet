@@ -154,6 +154,14 @@ async function handleSelect(){
 ```html
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
+import { h } from 'vue'
+
+const svgIcon = h('svg', { viewBox: '0 0 24 24', style: { width: '1em', height: '1em' } }, [
+  h('path', {
+    fill: 'currentColor',
+    d: 'M12 2 2 7l10 5 10-5zm0 7.8L6.45 7 12 4.2 17.55 7zm-8 1.7 8 4 8-4v2.2l-8 4-8-4zm0 4 8 4 8-4v2.2l-8 4-8-4z',
+  }),
+])
 
 async function handleSelect() {
   const action = await ActionSheet({ 
@@ -165,7 +173,7 @@ async function handleSelect() {
       },
       {
         name: 'Item 02',
-        icon: 'notebook',
+        icon: svgIcon,
         color: 'var(--color-warning)',
       },
       {
@@ -346,10 +354,16 @@ function handleSelect(action) {
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
+const svgIcon = h('svg', { viewBox: '0 0 24 24', style: { width: '1em', height: '1em' } }, [
+  h('path', {
+    fill: 'currentColor',
+    d: 'M12 2 2 7l10 5 10-5zm0 7.8L6.45 7 12 4.2 17.55 7zm-8 1.7 8 4 8-4v2.2l-8 4-8-4zm0 4 8 4 8-4v2.2l-8 4-8-4z',
+  }),
+])
 const actions = ref([
   {
     name: 'Item 01',
@@ -358,7 +372,7 @@ const actions = ref([
   },
   {
     name: 'Item 02',
-    icon: 'notebook',
+    icon: svgIcon,
     color: 'var(--color-warning)',
   },
   {
@@ -453,7 +467,7 @@ function handleSelect(action) {
 | --- | --- | --- | --- |
 | `name` | 选项名称 | _string_ | `-` |
 | `color` | 选项文字颜色 | _string_ | `-` |
-| `icon` | icon 图标，支持网络图片地址 | _string_ | `-` |
+| `icon` | icon 图标，支持网络图片地址、VNode 或渲染函数 | _string \| VNode \| () => VNode_ | `-` |
 | `iconSize` | 图标尺寸 | _string_ | `-` |
 | `namespace` | 图标命名空间 | _string_ | `-` |
 | `className` | 选项附加类名 | _string_ | `-` |

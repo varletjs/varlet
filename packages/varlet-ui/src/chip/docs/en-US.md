@@ -76,7 +76,7 @@ Set the chip to block level through the `block` attribute.
 
 ### Can Close Chip
 
-Set the paper to be closable through the `closeable` attribute, and use the `icon-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
+Set the paper to be closable through the `closeable` attribute, and use the `icon` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
 
 ```html
 <script>
@@ -90,11 +90,32 @@ Set the paper to be closable through the `closeable` attribute, and use the `ico
   <var-chip closeable v-if="show" @close="show = false">Can Close Chip</var-chip>
   <var-chip 
     closeable 
-    icon-name="delete" 
+    icon="delete"
     v-if="show1" 
     @close="show1 = false"
   >
     Custom Close Icon
+  </var-chip>
+</template>
+```
+
+### Customize Close Icon With Slot
+
+Use the `icon` slot to customize the close icon.
+
+```html
+<template>
+  <var-chip closeable>
+    Custom Close Icon
+
+    <template #icon>
+      <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+        <path
+          fill="currentColor"
+          d="M12 10.59 16.95 5.64l1.41 1.41L13.41 12l4.95 4.95-1.41 1.41L12 13.41l-4.95 4.95-1.41-1.41L10.59 12 5.64 7.05l1.41-1.41z"
+        />
+      </svg>
+    </template>
   </var-chip>
 </template>
 ```
@@ -158,7 +179,8 @@ Set the chip color through the `color` and `text-color` attributes.
 | `block` | Whether to be block label | _boolean_ | `false` |
 | `elevation` ***3.3.0*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `closeable` | Whether to be closed label | _boolean_ | `false`|
-| `icon-name` | Custom closeable icon must be used when `Closeable` is `true`| _string_ | `-` |
+| `icon` ***3.19.0*** | Custom closeable icon must be used when `closeable` is `true`| _string_ | `-` |
+| `icon-name` | Deprecated, use `icon` instead | _string_ | `-` |
 | `namespace` | Closeable icon namespace | _string_ | `var-icon` |
 | `color` | The label color | _string_ | `_` |
 | `text-color` | The text color takes precedence over the `color` attribute | _string_ | `-` |
@@ -170,6 +192,7 @@ Set the chip color through the `color` and `text-color` attributes.
 | `default` | Chip content | `-` |
 | `left` | The content inserted to the left of the chip | `-` |
 | `right` | The content inserted to the right of the label | `-` |
+| `icon` ***3.19.0*** | Close icon | `-` |
 
 ### Events
 

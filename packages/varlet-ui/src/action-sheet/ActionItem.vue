@@ -5,14 +5,10 @@
     :class="classes(n('action-item'), className, [disabled, n('--disabled')])"
     :style="{ color }"
   >
-    <var-icon
-      v-if="icon"
-      var-action-sheet-cover
-      :class="n('action-icon')"
-      :namespace="namespace"
-      :name="icon"
-      :size="iconSize"
-    />
+    <var-icon v-if="isString(icon)" :class="n('action-icon')" :namespace="namespace" :name="icon" :size="iconSize" />
+    <span v-else-if="icon" :class="n('action-icon')">
+      <maybe-v-node :is="renderIcon()" />
+    </span>
     <div :class="n('action-name')">{{ name }}</div>
 
     <var-hover-overlay :hovering="disabled ? false : hovering" />
@@ -20,18 +16,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { callOrReturn, isString } from '@varlet/shared'
+import { defineComponent, type PropType, type VNode } from 'vue'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { createNamespace } from '../utils/components'
+import { createNamespace, MaybeVNode } from '../utils/components'
 
 const { name, n, classes } = createNamespace('action-sheet')
 
 export default defineComponent({
   name,
   components: {
+    MaybeVNode,
     VarHoverOverlay,
     VarIcon,
   },
@@ -43,16 +41,22 @@ export default defineComponent({
     color: String,
     namespace: String,
     iconSize: [String, Number],
-    icon: String,
+    icon: [String, Object, Function] as PropType<string | VNode | (() => VNode)>,
   },
-  setup() {
+  setup(props) {
     const { hovering, handleHovering } = useHoverOverlay()
+
+    function renderIcon() {
+      return callOrReturn(props.icon)
+    }
 
     return {
       hovering,
+      isString,
       n,
       classes,
       handleHovering,
+      renderIcon,
     }
   },
 })

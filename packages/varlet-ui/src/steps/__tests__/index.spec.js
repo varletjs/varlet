@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import Steps from '..'
 import Step from '../../step'
 import VarStep from '../../step/Step'
@@ -128,6 +128,41 @@ describe('test steps and step components props', () => {
 
     await delay(50)
     expect(wrapper.findAll('.var-step')[2].find('.var-icon-minus-circle-outline').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
+  test('step icon slots have higher priority than icon props', async () => {
+    const wrapper = mount({
+      components: {
+        [VarSteps.name]: VarSteps,
+        [VarStep.name]: VarStep,
+      },
+      setup() {
+        return () =>
+          h(VarSteps, { active: 1 }, () => [
+            h(VarStep, { activeIcon: 'check' }, { 'active-icon': () => h('i', { class: 'i-custom-active-step' }) }),
+            h(
+              VarStep,
+              { currentIcon: 'radio-blank' },
+              { 'current-icon': () => h('i', { class: 'i-custom-current-step' }) },
+            ),
+            h(
+              VarStep,
+              { inactiveIcon: 'minus-circle-outline' },
+              { 'inactive-icon': () => h('i', { class: 'i-custom-inactive-step' }) },
+            ),
+          ])
+      },
+    })
+
+    await delay(50)
+    expect(wrapper.find('.i-custom-active-step').exists()).toBe(true)
+    expect(wrapper.find('.i-custom-current-step').exists()).toBe(true)
+    expect(wrapper.find('.i-custom-inactive-step').exists()).toBe(true)
+    expect(wrapper.find('.var-icon-check').exists()).toBe(false)
+    expect(wrapper.find('.var-icon-radio-blank').exists()).toBe(false)
+    expect(wrapper.find('.var-icon-minus-circle-outline').exists()).toBe(false)
+
     wrapper.unmount()
   })
 })

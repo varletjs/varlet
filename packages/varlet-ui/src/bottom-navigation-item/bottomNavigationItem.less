@@ -84,8 +84,13 @@
     margin-right: calc(var(--bottom-navigation-height) + var(--bottom-navigation-fab-offset));
   }
 
-  &__icon[var-bottom-navigation-item-cover] {
+  &__icon {
+    display: inline-flex;
     font-size: var(--bottom-navigation-item-icon-size);
+
+    .var-icon {
+      font-size: inherit;
+    }
   }
 
   &__badge[var-bottom-navigation-item-cover] {

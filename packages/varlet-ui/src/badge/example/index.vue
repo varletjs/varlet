@@ -98,6 +98,20 @@ onThemeChange()
       <var-chip>{{ t('badge') }}</var-chip>
     </var-badge>
 
+    <app-type>{{ t('customBadgeIconSlot') }}</app-type>
+    <var-badge type="primary">
+      <var-chip>{{ t('badge') }}</var-chip>
+
+      <template #icon>
+        <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+          <path
+            fill="currentColor"
+            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+          />
+        </svg>
+      </template>
+    </var-badge>
+
     <app-type>{{ t('customBadgeValue') }}</app-type>
     <var-badge>
       <var-chip>{{ t('badge') }}</var-chip>

@@ -61,10 +61,10 @@ onThemeChange()
   <app-type>{{ t('setStyle') }}</app-type>
   <var-radio v-model="value3" unchecked-color="var(--color-warning)" checked-color="var(--color-danger)">
     <template #unchecked-icon>
-      <var-icon name="heart-half-full" size="24px" />
+      <var-icon name="heart-half-full" />
     </template>
     <template #checked-icon>
-      <var-icon name="heart" size="24px" />
+      <var-icon name="heart" />
     </template>
     <template #default> {{ t('currentValue') }} {{ value3 }} </template>
   </var-radio>

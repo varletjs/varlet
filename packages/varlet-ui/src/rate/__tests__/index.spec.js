@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import Rate from '..'
 import { delay, trigger } from '../../utils/test'
 import VarRate from '../Rate'
@@ -178,6 +178,29 @@ describe('test rate component props', () => {
       halfIcon: 'heart-half-full',
     })
     expect(wrapper.findAll('.var-icon-heart-half-full').length).toBe(1)
+
+    wrapper.unmount()
+  })
+
+  test('rate icon slots have higher priority than icon props', () => {
+    const wrapper = mount(VarRate, {
+      props: {
+        modelValue: 1.5,
+        half: true,
+      },
+      slots: {
+        icon: () => h('i', { class: 'i-custom-rate' }),
+        'half-icon': () => h('i', { class: 'i-custom-half-rate' }),
+        'empty-icon': () => h('i', { class: 'i-custom-empty-rate' }),
+      },
+    })
+
+    expect(wrapper.findAll('.i-custom-rate')).toHaveLength(1)
+    expect(wrapper.findAll('.i-custom-half-rate')).toHaveLength(1)
+    expect(wrapper.findAll('.i-custom-empty-rate')).toHaveLength(3)
+    expect(wrapper.find('.var-icon-star').exists()).toBe(false)
+    expect(wrapper.find('.var-icon-star-half-full').exists()).toBe(false)
+    expect(wrapper.find('.var-icon-star-outline').exists()).toBe(false)
 
     wrapper.unmount()
   })

@@ -48,8 +48,22 @@ onThemeChange()
   <app-type>{{ t('canCloseChip') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip v-if="show" closeable @close="show = false">{{ t('canCloseChip') }}</var-chip>
-    <var-chip v-if="show1" closeable icon-name="delete" @close="show1 = false"> {{ t('customCloseIcon') }}</var-chip>
+    <var-chip v-if="show1" closeable icon="delete" @close="show1 = false"> {{ t('customCloseIcon') }}</var-chip>
   </var-space>
+
+  <app-type>{{ t('customCloseIconSlot') }}</app-type>
+  <var-chip closeable>
+    {{ t('customCloseIconSlot') }}
+
+    <template #icon>
+      <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+        <path
+          fill="currentColor"
+          d="M12 10.59 16.95 5.64l1.41 1.41L13.41 12l4.95 4.95-1.41 1.41L12 13.41l-4.95 4.95-1.41-1.41L10.59 12 5.64 7.05l1.41-1.41z"
+        />
+      </svg>
+    </template>
+  </var-chip>
 
   <app-type>{{ t('customColor') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">

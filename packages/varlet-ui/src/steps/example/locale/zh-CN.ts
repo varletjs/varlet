@@ -1,6 +1,7 @@
 export default {
   basicUsage: '基本使用',
   customStyle: '自定义样式',
+  customIconWithSlots: '通过插槽自定义图标',
   dynamicSteps: '动态步骤',
   vertical: '垂直模式',
   next: '下一步',

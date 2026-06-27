@@ -64,11 +64,14 @@
     }
   }
 
-  &__icon[var-rail-navigation-item-cover] {
-    font-size: var(--rail-navigation-item-icon-size);
-  }
-
   &__icon {
+    display: inline-flex;
+    font-size: var(--rail-navigation-item-icon-size);
+
+    .var-icon {
+      font-size: inherit;
+    }
+
     z-index: 1;
     position: relative;
     line-height: 1;

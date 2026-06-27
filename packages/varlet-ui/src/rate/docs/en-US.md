@@ -58,6 +58,32 @@ const score = ref(3)
 </template>
 ```
 
+### Customize Rating Icon With Slots
+
+Use `icon`, `half-icon`, and `empty-icon` slots to customize rating icons.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const score = ref(3.5)
+</script>
+
+<template>
+  <var-rate v-model="score" half color="red">
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+    <template #half-icon>
+      <var-icon name="heart-half-full" />
+    </template>
+    <template #empty-icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-rate>
+</template>
+```
+
 ### Customize Rating Icon Size And Gap
 
 Use the `size` property to set the size of the score icon.
@@ -216,6 +242,14 @@ const score = ref(3)
 | `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: number) => any) \| ZodType \| Array<((v: number) => any) \| ZodType>_ | `-` |
+
+### Slots
+
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| `icon` ***3.19.0*** | The selected icon | `-` |
+| `empty-icon` ***3.19.0*** | The unchecked icon | `-` |
+| `half-icon` ***3.19.0*** | The half-selected icon | `-` |
 
 ### Events
 

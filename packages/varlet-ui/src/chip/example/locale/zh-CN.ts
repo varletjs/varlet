@@ -16,6 +16,7 @@ export default {
   blockChip: '块级纸片',
   canCloseChip: '可关闭纸片',
   customCloseIcon: '自定义关闭图标',
+  customCloseIconSlot: '通过插槽自定义关闭图标',
   customColor: '自定义颜色',
   chip: '纸片',
   addSlot: '添加插槽',

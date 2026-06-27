@@ -153,6 +153,14 @@ Options provide parameters to configure the style. See the `Action` data structu
 ```html
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
+import { h } from 'vue'
+
+const svgIcon = h('svg', { viewBox: '0 0 24 24', style: { width: '1em', height: '1em' } }, [
+  h('path', {
+    fill: 'currentColor',
+    d: 'M12 2 2 7l10 5 10-5zm0 7.8L6.45 7 12 4.2 17.55 7zm-8 1.7 8 4 8-4v2.2l-8 4-8-4zm0 4 8 4 8-4v2.2l-8 4-8-4z',
+  }),
+])
 
 async function handleSelect() {
   const action = await ActionSheet({ 
@@ -164,7 +172,7 @@ async function handleSelect() {
       },
       {
         name: 'Item 02',
-        icon: 'notebook',
+        icon: svgIcon,
         color: 'var(--color-warning)',
       },
       {
@@ -345,10 +353,16 @@ function handleSelect(action) {
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
+const svgIcon = h('svg', { viewBox: '0 0 24 24', style: { width: '1em', height: '1em' } }, [
+  h('path', {
+    fill: 'currentColor',
+    d: 'M12 2 2 7l10 5 10-5zm0 7.8L6.45 7 12 4.2 17.55 7zm-8 1.7 8 4 8-4v2.2l-8 4-8-4zm0 4 8 4 8-4v2.2l-8 4-8-4z',
+  }),
+])
 const actions = ref([
   {
     name: 'Item 01',
@@ -357,7 +371,7 @@ const actions = ref([
   },
   {
     name: 'Item 02',
-    icon: 'notebook',
+    icon: svgIcon,
     color: 'var(--color-warning)',
   },
   {
@@ -451,7 +465,7 @@ function handleSelect(action) {
 | ----------- | ----------------------------------- | --------- | ------- |
 | `name`      | Action name                         | _string_  | `-`     |
 | `color`     | Action text color                   | _string_  | `-`     |
-| `icon`      | Icon, support network image address | _string_  | `-`     |
+| `icon`      | Icon, support network image address, VNode, or render function | _string \| VNode \| () => VNode_  | `-`     |
 | `iconSize`  | Icon size                           | _string_  | `-`     |
 | `namespace` | Icon namespace | _string_ | `-` |
 | `className` | Class name                          | _string_  | `-`     |

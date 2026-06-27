@@ -10,15 +10,12 @@
         :class="getClass(value)"
         @click="handleClick(value, $event)"
       >
-        <var-icon
-          :class="n('content-icon')"
-          var-rate-cover
-          :transition="0"
-          :namespace="getCurrentState(value).namespace"
-          :name="getCurrentState(value).name"
-          :style="{ fontSize: toSizeUnit(size) }"
-        >
-        </var-icon>
+        <span :class="n('content-icon')" :style="{ fontSize: toSizeUnit(size) }">
+          <slot :name="getCurrentState(value).slot">
+            <var-icon :transition="0" :namespace="getCurrentState(value).namespace" :name="getCurrentState(value).name">
+            </var-icon>
+          </slot>
+        </span>
 
         <var-hover-overlay :hovering="hovering && value === currentHoveringValue && !disabled && !formDisabled" />
       </div>
@@ -111,17 +108,18 @@ export default defineComponent({
       }
 
       if (index <= modelValue) {
-        return { color: iconColor, name: icon, namespace }
+        return { color: iconColor, name: icon, namespace, slot: 'icon' }
       }
 
       if (half && index <= modelValue + 0.5) {
-        return { color: iconColor, name: halfIcon, namespace: halfIconNamespace }
+        return { color: iconColor, name: halfIcon, namespace: halfIconNamespace, slot: 'half-icon' }
       }
 
       return {
         color: disabled || form?.disabled.value ? disabledColor : emptyColor,
         name: emptyIcon,
         namespace: emptyIconNamespace,
+        slot: 'empty-icon',
       }
     }
 

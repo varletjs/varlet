@@ -154,6 +154,27 @@ function handleChange() {
 </template>
 ```
 
+### 通过插槽自定义徽标图标
+
+通过 `icon` 插槽自定义徽标图标。
+
+```html
+<template>
+  <var-badge type="primary">
+    <var-chip>徽标</var-chip>
+
+    <template #icon>
+      <svg viewBox="0 0 24 24" style="width: 1em; height: 1em">
+        <path
+          fill="currentColor"
+          d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        />
+      </svg>
+    </template>
+  </var-badge>
+</template>
+```
+
 ### 自定义徽标值
 
 ```html
@@ -192,6 +213,7 @@ function handleChange() {
 | ---- | ---- | ----|
 | `default` |  徽标内容 | `-` |
 | `value` | 徽标中显示的值 | `-` |
+| `icon` ***3.19.0*** | 徽标图标 | `-` |
 
 ### 样式变量
 

@@ -30,6 +30,23 @@ function next() {
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">{{ t('fourth') }}</var-step>
   </var-steps>
 
+  <app-type>{{ t('customIconWithSlots') }}</app-type>
+  <var-steps :active="active" active-color="var(--color-danger)" inactive-color="var(--color-warning)">
+    <var-step v-for="step in [t('first'), t('second'), t('third'), t('fourth')]" :key="step">
+      {{ step }}
+
+      <template #active-icon>
+        <var-icon name="heart" />
+      </template>
+      <template #current-icon>
+        <var-icon name="fire" />
+      </template>
+      <template #inactive-icon>
+        <var-icon name="heart-half-full" />
+      </template>
+    </var-step>
+  </var-steps>
+
   <app-type>{{ t('vertical') }}</app-type>
   <var-steps direction="vertical" :active="active">
     <var-step>{{ t('first') }}</var-step>

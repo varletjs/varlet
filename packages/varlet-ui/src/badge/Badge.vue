@@ -11,16 +11,20 @@
             n(`--${type}`),
             [$slots.default, n(`--${position}`), n('--offset')],
             [dot, n('--dot')],
-            [icon, n('--icon')],
+            [icon || $slots.icon, n('--icon')],
           )
         "
         :style="{ background: color, ...offsetStyle }"
         v-bind="$attrs"
       >
-        <var-icon v-if="icon" :class="n('icon')" var-badge-cover :name="icon" :namespace="namespace" />
+        <span v-if="$slots.icon || icon" :class="n('icon')">
+          <slot name="icon">
+            <var-icon :name="icon" :namespace="namespace" />
+          </slot>
+        </span>
 
         <slot name="value">
-          <span v-if="!icon && !dot">{{ value }}</span>
+          <span v-if="!$slots.icon && !icon && !dot">{{ value }}</span>
         </slot>
       </span>
     </transition>

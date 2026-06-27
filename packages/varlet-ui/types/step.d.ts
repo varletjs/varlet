@@ -19,6 +19,9 @@ export class Step extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    'active-icon'(): VNode[]
+    'current-icon'(): VNode[]
+    'inactive-icon'(): VNode[]
   }
 }
 

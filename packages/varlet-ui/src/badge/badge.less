@@ -43,8 +43,13 @@
     transform: translateX(var(--badge-offset-x)) translateY(var(--badge-offset-y));
   }
 
-  &__icon[var-badge-cover] {
+  &__icon {
+    display: inline-flex;
     font-size: var(--badge-icon-size);
+
+    .var-icon {
+      font-size: inherit;
+    }
   }
 
   &--icon {

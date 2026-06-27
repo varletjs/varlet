@@ -2,6 +2,7 @@ export default {
   basicUsage: 'Basic Usage',
   customTotalRating: 'Customize Total Rating',
   customRatingIconStyle: 'Customize Rating Icon Style',
+  customRatingIconSlot: 'Customize Rating Icon With Slots',
   customRatingIconSizeAndGap: 'Customize Rating Icon Size And Gap',
   halfStar: 'Allow Half Rating',
   disabledAndReadonly: 'Disabled And Readonly',

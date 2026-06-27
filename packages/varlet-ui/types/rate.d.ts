@@ -1,3 +1,4 @@
+import { VNode } from 'vue'
 import { BasicAttributes, ListenerProp, Rules as RateRules, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const rateProps: Record<keyof RateProps, any>
@@ -30,6 +31,12 @@ export class Rate extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<RateProps>
 
   $props: RateProps
+
+  $slots: {
+    icon(): VNode[]
+    'empty-icon'(): VNode[]
+    'half-icon'(): VNode[]
+  }
 }
 
 export class _RateComponent extends Rate {}

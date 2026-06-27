@@ -1,5 +1,5 @@
 import { call, inBrowser } from '@varlet/shared'
-import { nextTick, reactive, type TeleportProps } from 'vue'
+import { nextTick, shallowReactive, type TeleportProps, type VNode } from 'vue'
 import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import VarActionSheet from './ActionSheet.vue'
 import { props as actionSheetProps } from './props'
@@ -9,7 +9,7 @@ export type ActionSheetActions = ActionItem | 'close'
 export interface ActionItem {
   name: string
   color?: string
-  icon?: string
+  icon?: string | VNode | (() => VNode)
   iconSize?: string | number
   namespace?: string
   className?: string
@@ -54,7 +54,9 @@ function ActionSheet(options?: ActionSheetOptions): Promise<ActionSheetActions |
   return new Promise((resolve) => {
     ActionSheet.close()
 
-    const reactiveActionSheetOptions: ActionSheetOptions = reactive(normalizeOptions(options))
+    const reactiveActionSheetOptions = shallowReactive(
+      normalizeOptions(options) as Record<string, any>,
+    ) as ActionSheetOptions
     reactiveActionSheetOptions.teleport = 'body'
     singletonOptions = reactiveActionSheetOptions
 

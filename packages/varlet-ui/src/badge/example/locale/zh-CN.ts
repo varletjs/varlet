@@ -14,5 +14,6 @@ export default {
   badge: '徽标',
   customBadgeColor: '自定义徽标颜色',
   customBadgeIcon: '自定义徽标图标',
+  customBadgeIconSlot: '通过插槽自定义徽标图标',
   customBadgeValue: '自定义徽标值',
 }

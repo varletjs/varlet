@@ -15,7 +15,9 @@
       <slot name="right" />
 
       <span v-if="closeable" :class="n('--close')" @click="handleClose">
-        <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
+        <slot name="icon">
+          <var-icon :name="closeIconName" :namespace="namespace" />
+        </slot>
       </span>
     </span>
   </transition>
@@ -62,6 +64,7 @@ export default defineComponent({
 
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
+    const closeIconName = computed(() => props.icon ?? props.iconName ?? 'close-circle')
 
     function handleClose(e: Event) {
       call(props.onClose, e)
@@ -70,6 +73,7 @@ export default defineComponent({
     return {
       chipStyle,
       contentClass,
+      closeIconName,
       n,
       classes,
       formatElevation,

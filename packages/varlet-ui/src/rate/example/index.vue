@@ -20,6 +20,7 @@ const scores = reactive({
   score11: 3,
   score12: 3.5,
   score13: 3,
+  score14: 3.5,
 })
 
 function handleChange(score) {
@@ -49,6 +50,19 @@ watchLang(use)
     color="var(--color-danger)"
     empty-color="var(--color-danger)"
   />
+
+  <app-type>{{ t('customRatingIconSlot') }}</app-type>
+  <var-rate v-model="scores.score14" half color="var(--color-danger)">
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+    <template #half-icon>
+      <var-icon name="heart-half-full" />
+    </template>
+    <template #empty-icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-rate>
 
   <app-type>{{ t('customRatingIconSizeAndGap') }}</app-type>
   <var-rate v-model="scores.score4" size="8vmin" gap="1vmin" />

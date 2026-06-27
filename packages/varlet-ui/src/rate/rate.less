@@ -25,8 +25,18 @@
     transition: color 0.25s;
     -webkit-tap-highlight-color: transparent;
 
-    &-icon[var-rate-cover] {
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
       font-size: var(--rate-size);
+      line-height: 1;
+
+      .var-icon {
+        font-size: inherit;
+      }
     }
   }
 
