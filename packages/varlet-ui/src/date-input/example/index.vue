@@ -103,7 +103,7 @@ onThemeChange()
     />
     <var-date-input v-model="standardValue9" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar" />
+        <var-icon class="prepend-icon" name="calendar-month-outline" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -150,7 +150,7 @@ onThemeChange()
     />
     <var-date-input v-model="outlinedValue9" variant="outlined" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar" />
+        <var-icon class="prepend-icon" name="calendar-month-outline" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />
@@ -251,7 +251,7 @@ onThemeChange()
     />
     <var-date-input v-model="filledValue9" variant="filled" :placeholder="t('displayIcon')">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="calendar" />
+        <var-icon class="prepend-icon" name="calendar-month-outline" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="heart-outline" />

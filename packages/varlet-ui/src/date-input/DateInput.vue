@@ -48,7 +48,9 @@
 
         <template #append-icon>
           <slot name="append-icon">
-            <var-icon :class="n('calendar-icon')" name="calendar" />
+            <span :class="n('calendar-icon-container')">
+              <var-icon :class="n('calendar-icon')" name="calendar-month-outline" />
+            </span>
           </slot>
         </template>
 

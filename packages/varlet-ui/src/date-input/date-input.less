@@ -26,8 +26,14 @@
     }
   }
 
-  &__calendar-icon {
+  &__calendar-icon-container {
+    display: inline-flex;
+    align-items: center;
     margin-left: 6px;
+  }
+
+  &__calendar-icon {
+    font-size: var(--field-decorator-icon-size);
   }
 
   &__clear-icon-container {

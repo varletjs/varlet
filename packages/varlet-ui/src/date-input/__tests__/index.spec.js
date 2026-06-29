@@ -398,6 +398,7 @@ describe('test dateInput input behavior', () => {
     })
 
     expect(wrapper.find('.var-date-input__calendar-icon').exists()).toBe(false)
+    expect(wrapper.find('.var-date-input__calendar-icon-container').exists()).toBe(false)
     expect(wrapper.find('.custom-append-icon').exists()).toBe(true)
 
     wrapper.unmount()
