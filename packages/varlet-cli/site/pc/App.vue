@@ -2,12 +2,12 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import config from '@config'
 import { getMobileIndex, getPCLocationInfo } from '@varlet/cli/client'
-import { isPhone } from '../utils'
+import { getBrowserLanguage, isPhone } from '../utils'
 
 export default defineComponent({
   setup() {
     const useMobile = ref(config?.useMobile)
-    const defaultLanguage = config?.defaultLanguage
+    const defaultLanguage = config?.defaultLanguage ?? getBrowserLanguage()
 
     const init = () => {
       const { language, menuName } = getPCLocationInfo()

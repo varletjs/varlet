@@ -3,13 +3,13 @@ import config from '@config'
 import routes from '@mobile-routes'
 import Varlet from '@varlet/ui'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { inIframe, isPhone } from '../utils'
+import { getBrowserLanguage, inIframe, isPhone } from '../utils'
 import App from './App.vue'
 import '@varlet/touch-emulator'
 import '@varlet/ui/es/style'
 
 const redirect = config?.mobile?.redirect
-const defaultLanguage = config?.defaultLanguage
+const defaultLanguage = config?.defaultLanguage ?? getBrowserLanguage()
 
 redirect &&
   routes.push({

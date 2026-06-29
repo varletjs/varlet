@@ -5,10 +5,11 @@ import Varlet, { Snackbar } from '@varlet/ui'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import CodeExample from './components/code-example'
+import { getBrowserLanguage } from '../utils'
 import '@varlet/ui/es/style'
 import '@varlet/touch-emulator'
 
-const defaultLanguage = config?.defaultLanguage
+const defaultLanguage = config?.defaultLanguage ?? getBrowserLanguage()
 const redirect = config?.pc?.redirect
 const mobileRedirect = config?.mobile?.redirect
 
