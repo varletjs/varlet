@@ -14,6 +14,12 @@ exports[`test code component props > code language 1`] = `
 </div>"
 `;
 
+exports[`test code component props > code no highlighter 1`] = `
+"<div class="var-highlighter-provider">
+  <div class="var-code"></div>
+</div>"
+`;
+
 exports[`test code component props > code no trim 1`] = `
 "<div class="var-highlighter-provider">
   <div class="var-code"><pre class="shiki vitesse-light" style="background-color:#ffffff;color:#393a34" tabindex="0"><code><span class="line"><span style="color:#B07D48">   console</span><span style="color:#999999">.</span><span style="color:#59873A">log</span><span style="color:#999999">(</span><span style="color:#B5695977">'</span><span style="color:#B56959">hello world</span><span style="color:#B5695977">'</span><span style="color:#999999">)</span><span style="color:#393A34">   </span></span></code></pre>
@@ -34,3 +40,5 @@ exports[`test code component props > code trim 1`] = `
   </div>
 </div>"
 `;
+
+exports[`test code component props > code without provider 1`] = `"<div class="var-code"></div>"`;
