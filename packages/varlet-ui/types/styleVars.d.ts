@@ -344,6 +344,7 @@ interface BaseStyleVars {
   '--date-picker-header-arrow-filter'?: string
   '--date-picker-body-background-color'?: string
   '--date-picker-body-height'?: string
+  '--date-picker-body-padding-horizontal'?: string
   '--date-picker-body-padding'?: string
   '--date-picker-header-padding'?: string
   '--date-picker-header-padding-top-no-title'?: string
@@ -371,6 +372,10 @@ interface BaseStyleVars {
   '--day-picker-head-item-padding'?: string
   '--day-picker-head-item-font-weight'?: string
   '--day-picker-adjacent-item-color'?: string
+  '--date-picker-title-year-font-size'?: string
+  '--date-picker-title-year-font-weight'?: string
+  '--date-picker-title-year-margin-bottom'?: string
+  '--date-picker-title-year-min-height'?: string
   '--dialog-width'?: string
   '--dialog-background'?: string
   '--dialog-border-radius'?: string

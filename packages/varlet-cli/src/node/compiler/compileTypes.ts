@@ -18,7 +18,7 @@ export * from '${relative(moduleDir, TYPES_DIR)}'
 
 export async function compileTypes() {
   await ensureDir(TYPES_DIR)
-  compileStyleVars()
+  await compileStyleVars()
 
   const { namespace = '', directives = '' } = await getVarletConfig()
   const { name: libraryName } = readJSONSync(UI_PACKAGE_JSON)

@@ -31,7 +31,7 @@ export function compileDir(path: string, keys: Set<string>, defaultLanguage: 'zh
 export async function compileStyleVars() {
   ensureDirSync(TYPES_DIR)
 
-  const { defaultLanguage } = await getVarletConfig()
+  const { defaultLanguage = 'zh-CN' } = await getVarletConfig()
 
   const keys = new Set<string>()
 
