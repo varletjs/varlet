@@ -209,6 +209,76 @@ test('input hint to be false', () => {
   wrapper.unmount()
 })
 
+test('input resize when layout changes after mounted', async () => {
+  const OriginalResizeObserver = globalThis.ResizeObserver
+  let triggerResizeObserver
+  let shouldUseLayoutSize = false
+
+  globalThis.ResizeObserver = class ResizeObserver {
+    constructor(callback) {
+      triggerResizeObserver = callback
+    }
+
+    observe() {}
+
+    disconnect() {}
+  }
+
+  const offsetWidthDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
+  const offsetHeightDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight')
+
+  Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+    configurable: true,
+    get() {
+      return shouldUseLayoutSize && this.classList.contains('var-field-decorator__middle') ? 120 : 0
+    },
+  })
+
+  Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+    configurable: true,
+    get() {
+      return shouldUseLayoutSize && this.classList.contains('var-field-decorator__middle') ? 32 : 0
+    },
+  })
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      variant: 'outlined',
+      placeholder: 'placeholder',
+    },
+  })
+
+  try {
+    expect(wrapper.find('.var-field-decorator__controller').attributes('style')).toContain(
+      '--field-decorator-middle-offset-width: 0px',
+    )
+
+    shouldUseLayoutSize = true
+    triggerResizeObserver()
+    await delay(16)
+
+    expect(wrapper.find('.var-field-decorator__controller').attributes('style')).toContain(
+      '--field-decorator-middle-offset-width: 120px',
+    )
+    expect(wrapper.find('.var-field-decorator__controller').attributes('style')).toContain(
+      '--field-decorator-middle-offset-height: 32px',
+    )
+  } finally {
+    wrapper.unmount()
+
+    if (offsetWidthDescriptor) {
+      Object.defineProperty(HTMLElement.prototype, 'offsetWidth', offsetWidthDescriptor)
+    }
+
+    if (offsetHeightDescriptor) {
+      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', offsetHeightDescriptor)
+    }
+
+    globalThis.ResizeObserver = OriginalResizeObserver
+  }
+})
+
 test('input clear', async () => {
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const onClear = vi.fn()

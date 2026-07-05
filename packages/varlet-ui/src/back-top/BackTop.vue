@@ -6,6 +6,7 @@
       :style="{
         right: toSizeUnit(right),
         bottom: toSizeUnit(bottom),
+        '--back-top-button-size': toSizeUnit(size),
       }"
       v-bind="$attrs"
       @click.stop="handleClick"

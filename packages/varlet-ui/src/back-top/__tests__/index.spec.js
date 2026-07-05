@@ -65,6 +65,20 @@ describe('test backTop props', () => {
     expect(wrapper.find('.var-elevation--2').exists()).toBe(true)
     wrapper.unmount()
   })
+
+  test('backTop size', () => {
+    const wrapper = mount(VarBackTop, {
+      props: {
+        size: 56,
+      },
+      attachTo: document.body,
+    })
+
+    const backTopEl = document.querySelector('.var-back-top')
+
+    expect(backTopEl.style.getPropertyValue('--back-top-button-size')).toBe('56px')
+    wrapper.unmount()
+  })
 })
 
 describe('test backTop events', () => {

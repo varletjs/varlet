@@ -16,6 +16,7 @@ export const props = {
     default: true,
   },
   bottom: [Number, String],
+  size: [Number, String],
   target: [String, Object] as PropType<string | HTMLElement>,
   onClick: defineListenerProp<(event: Event) => void>(),
 }

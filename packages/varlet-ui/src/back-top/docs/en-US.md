@@ -31,6 +31,7 @@ const lists = [...Array(100).keys()]
 | `visibility-height` | The button will not show until the scroll height reaches this value                                     | _string \| number_ | `200` |
 | `bottom`            | Distance between `BackTop` and page bottom                                                              | _string \| number_ | `-` |
 | `right`            | Distance between `BackTop` and page right                                                               | _string \| number_ | `-` |
+| `size`             | BackTop button size                                                                                     | _string \| number_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `duration` | Time to return to top(ms)                                                                               | _number_ | `300` |
 

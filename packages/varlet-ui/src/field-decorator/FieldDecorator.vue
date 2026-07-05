@@ -110,7 +110,7 @@
 
 <script lang="ts">
 import { call, doubleRaf, getStyle, isEmpty } from '@varlet/shared'
-import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { onSmartMounted, onWindowResize, useResizeObserver } from '@varlet/use'
 import { computed, defineComponent, nextTick, onUpdated, ref, watch } from 'vue'
 import VarIcon from '../icon'
 import { usePopup } from '../popup/provide'
@@ -141,6 +141,7 @@ export default defineComponent({
     )
 
     onWindowResize(resize)
+    useResizeObserver(middleEl, resize)
 
     onSmartMounted(() => {
       resize()
@@ -192,6 +193,10 @@ export default defineComponent({
     }
 
     function resize() {
+      if (!middleEl.value) {
+        return
+      }
+
       middleOffsetLeft.value = `${middleEl.value!.offsetLeft}px`
       middleOffsetWidth.value = `${middleEl.value!.offsetWidth}px`
       middleOffsetHeight.value = `${middleEl.value!.offsetHeight}px`
