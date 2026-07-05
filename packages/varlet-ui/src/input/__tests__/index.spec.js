@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp, h } from 'vue'
+import { createApp, h, nextTick } from 'vue'
 import { z } from 'zod'
 import Input from '..'
 import { delay } from '../../utils/test'
@@ -256,6 +256,10 @@ test('input resize when layout changes after mounted', async () => {
 
     shouldUseLayoutSize = true
     triggerResizeObserver()
+    await nextTick()
+
+    expect(wrapper.find('.var-field-decorator--transition-disabled').exists()).toBe(true)
+
     await delay(16)
 
     expect(wrapper.find('.var-field-decorator__controller').attributes('style')).toContain(

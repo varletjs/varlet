@@ -109,7 +109,7 @@
 </template>
 
 <script lang="ts">
-import { call, doubleRaf, getStyle, isEmpty } from '@varlet/shared'
+import { call, doubleRaf, getStyle, isEmpty, raf } from '@varlet/shared'
 import { onSmartMounted, onWindowResize, useResizeObserver } from '@varlet/use'
 import { computed, defineComponent, nextTick, onUpdated, ref, watch } from 'vue'
 import VarIcon from '../icon'
@@ -135,13 +135,14 @@ export default defineComponent({
     const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocusing))
     const { popup, bindPopup } = usePopup()
     const { bindSwipeResizeDispatcher } = useSwipeResizeDispatcher()
+    let transitionVersion = 0
 
     const color = computed<string | undefined>(() =>
       !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined,
     )
 
-    onWindowResize(resize)
-    useResizeObserver(middleEl, resize)
+    onWindowResize(() => resize(true))
+    useResizeObserver(middleEl, () => resize(true))
 
     onSmartMounted(() => {
       resize()
@@ -156,7 +157,7 @@ export default defineComponent({
     call(bindPopup, null)
     call(bindSwipeResizeDispatcher, {
       onResize() {
-        nextTick().then(resize)
+        nextTick().then(() => resize(true))
       },
     })
 
@@ -166,7 +167,7 @@ export default defineComponent({
         async (show) => {
           if (show) {
             await doubleRaf()
-            resize()
+            resize(true)
           }
         },
       )
@@ -192,10 +193,17 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    function resize() {
+    async function resize(disableTransition = false) {
       if (!middleEl.value) {
         return
       }
+
+      if (disableTransition) {
+        transitionVersion++
+        transitionDisabled.value = true
+      }
+
+      const currentTransitionVersion = transitionVersion
 
       middleOffsetLeft.value = `${middleEl.value!.offsetLeft}px`
       middleOffsetWidth.value = `${middleEl.value!.offsetWidth}px`
@@ -205,6 +213,15 @@ export default defineComponent({
         const placeholderTextStyle = getStyle(placeholderTextEl.value)
         const placeholderSpace = `var(--field-decorator-outlined-${props.size}-placeholder-space)`
         legendWidth.value = `calc(${placeholderTextStyle.width} * 0.75 + ${placeholderSpace} * 2)`
+      }
+
+      if (disableTransition) {
+        await nextTick()
+        await raf()
+
+        if (currentTransitionVersion === transitionVersion) {
+          transitionDisabled.value = false
+        }
       }
     }
 
