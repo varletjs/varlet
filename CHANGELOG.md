@@ -1,11 +1,16 @@
+## [3.19.1](https://github.com/varletjs/varlet/compare/v3.19.0...v3.19.1) (2026-07-05)
+
+
+### Features
+
+* **BackTop, field:** add size prop for customizable button size and update documentation and fix field decorator resize issues and close [#2008](https://github.com/varletjs/varlet/issues/2008) ([4a28bb0](https://github.com/varletjs/varlet/commit/4a28bb06e791c033bd78e6f80d43914378c8244e))
+
 # [3.19.0](https://github.com/varletjs/varlet/compare/v3.18.2...v3.19.0) (2026-06-29)
 
 
 ### Bug Fixes
 
-* **checkbox, radio, slider, switch:** fixed onChange event emit timing ([f3b9504](https://github.com/varletjs/varlet/commit/f3b95049aa425bb223d252c2333c9775f598db05))
 * **cli:** generate web-types with real props and update events for v-model bindings ([#2001](https://github.com/varletjs/varlet/issues/2001)) ([529f808](https://github.com/varletjs/varlet/commit/529f8084f6fd8327b89d09c5067f5560fbef94a2)), closes [#1935](https://github.com/varletjs/varlet/issues/1935)
-* **cli:** restore test coverage report by adding explicit include ([#1975](https://github.com/varletjs/varlet/issues/1975)) ([4d08c18](https://github.com/varletjs/varlet/commit/4d08c182ab2c11844d49573d60b9fbb49347be8f))
 * **DateInput:** update multiple prop handling for datetime type and add related test ([b31b000](https://github.com/varletjs/varlet/commit/b31b00035bc4162a80f59c156d65c0b50a5b2fbc))
 * **test:** add '--update=none' argument to test command ([2df8122](https://github.com/varletjs/varlet/commit/2df8122059773c7b8cb39d566c66c5515ea9173b))
 * update radio group icon structure and adjust theme alert margins ([327e6bc](https://github.com/varletjs/varlet/commit/327e6bc5d50cd13ba48c7d8929afe3b5b68a5685))
@@ -19,6 +24,14 @@
 * enhance icon styling across multiple components for better alignment and sizing ([a900fb6](https://github.com/varletjs/varlet/commit/a900fb658c3930d7c6c31fb633995e2e5df98d9f))
 * new component DateInput ([#2003](https://github.com/varletjs/varlet/issues/2003)) ([2916e2b](https://github.com/varletjs/varlet/commit/2916e2bd3d1e10f80be4eff7b5fb89d37ec5c053))
 * **styleVars:** make styleVars function asynchronous and update compileStyleVars calls ([bd14848](https://github.com/varletjs/varlet/commit/bd14848bd2040414f070d795bd5f3f3a67131298))
+
+## [3.18.2](https://github.com/varletjs/varlet/compare/v3.18.1...v3.18.2) (2026-06-22)
+
+
+### Bug Fixes
+
+* **checkbox, radio, slider, switch:** fixed onChange event emit timing ([f3b9504](https://github.com/varletjs/varlet/commit/f3b95049aa425bb223d252c2333c9775f598db05))
+* **cli:** restore test coverage report by adding explicit include ([#1975](https://github.com/varletjs/varlet/issues/1975)) ([4d08c18](https://github.com/varletjs/varlet/commit/4d08c182ab2c11844d49573d60b9fbb49347be8f))
 
 ## [3.18.1](https://github.com/varletjs/varlet/compare/v3.18.0...v3.18.1) (2026-06-13)
 
