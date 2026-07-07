@@ -73,15 +73,15 @@ exports[`test button group component props > button group text mode 1`] = `
 `;
 
 exports[`test button group component props > button group tonal mode 1`] = `
-"<div class="var-button-group var--box var-button-group--mode-tonal var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+"<div class="var-button-group var--box var-button-group--mode-tonal var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default var-button--elevation-disabled" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default var-button--elevation-disabled" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default var-button--elevation-disabled" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>

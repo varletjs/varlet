@@ -201,8 +201,10 @@ describe('test button component props', () => {
 
     expect(wrapper.find('button').classes()).toContain('var-button--icon-container-default')
     expect(wrapper.find('button').classes()).not.toContain('var-elevation--2')
+    expect(wrapper.find('button').classes()).toContain('var-button--elevation-disabled')
     await wrapper.setProps({ tonal: false })
     expect(wrapper.find('button').classes()).not.toContain('var-button--icon-container-default')
+    expect(wrapper.find('button').classes()).not.toContain('var-button--elevation-disabled')
     wrapper.unmount()
   })
 
@@ -315,6 +317,30 @@ describe('test button component props', () => {
       },
     })
     expect(wrapper.find('.var-elevation--4').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
+  test('button disabled elevation active shadow', async () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        elevation: false,
+      },
+    })
+    const button = wrapper.find('button')
+    const buttonStyles = readFileSync(resolve(process.cwd(), 'src/button/button.less'), 'utf-8')
+
+    expect(button.classes()).toContain('var-button--elevation-disabled')
+    expect(buttonStyles).toMatch(/&--elevation-disabled[\s\S]*&:active\s*{\s*box-shadow:\s*none;\s*}/)
+
+    await wrapper.setProps({ elevation: 0 })
+    expect(button.classes()).toContain('var-button--elevation-disabled')
+
+    await wrapper.setProps({ elevation: '0' })
+    expect(button.classes()).toContain('var-button--elevation-disabled')
+
+    await wrapper.setProps({ elevation: true })
+    expect(button.classes()).not.toContain('var-button--elevation-disabled')
+
     wrapper.unmount()
   })
 

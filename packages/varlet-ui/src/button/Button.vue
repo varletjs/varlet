@@ -13,6 +13,7 @@
         [states.text, `${n('--text')} ${n(`--text-${states.type}`)}`],
         [states.iconContainer, n(`--icon-container-${states.type}`)],
         [states.filledDefault, n('--filled-default')],
+        [states.elevationDisabled, n('--elevation-disabled')],
         [round, n('--round')],
         [fab, n('--fab')],
         [states.outline, n('--outline')],
@@ -90,9 +91,10 @@ export default defineComponent({
           textColor: props.textColor,
           outline: props.outline,
           iconContainer: props.tonal || props.iconContainer,
+          elevationDisabled: props.tonal || props.elevation === false || toNumber(props.elevation) === 0,
           filledDefault:
             (props.type == null || props.type === 'default') &&
-            isFilledElevation(props.elevation) &&
+            (props.elevation === false || toNumber(props.elevation) === 0) &&
             !props.text &&
             !props.outline &&
             !props.tonal &&
@@ -111,8 +113,11 @@ export default defineComponent({
         text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
         iconContainer: mode.value === 'tonal' || mode.value === 'icon-container',
+        elevationDisabled: mode.value === 'tonal',
         filledDefault:
-          mode.value === 'normal' && (props.type ?? type.value) === 'default' && isFilledElevation(elevation.value),
+          mode.value === 'normal' &&
+          (props.type ?? type.value) === 'default' &&
+          (elevation.value === false || toNumber(elevation.value) === 0),
       }
     })
 
@@ -156,10 +161,6 @@ export default defineComponent({
       }
 
       isFocusing.value = true
-    }
-
-    function isFilledElevation(elevation: boolean | number | string) {
-      return elevation === false || toNumber(elevation) === 0
     }
 
     return {
