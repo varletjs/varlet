@@ -1,10 +1,17 @@
-## [3.19.2](https://github.com/varletjs/varlet/compare/v3.19.1...v3.19.2) (2026-07-05)
+## [3.19.3](https://github.com/varletjs/varlet/compare/v3.19.2...v3.19.3) (2026-07-07)
+
+
+### Features
+
+* **Button:** add elevation-disabled state and update styles and tests ([1c8f228](https://github.com/varletjs/varlet/commit/1c8f228d80c4adeb15c79fc6e8692d21d3e8b0a7))
+* **FieldDecorator:** enhance resize functionality with transition control and update tests ([ca35c61](https://github.com/varletjs/varlet/commit/ca35c61e0c5de45996bfb58d5547d44673517cc8))
+
+## [3.19.1](https://github.com/varletjs/varlet/compare/v3.19.0...v3.19.1) (2026-07-05)
 
 
 ### Features
 
 * **BackTop, field:** add size prop for customizable button size and update documentation and fix field decorator resize issues and close [#2008](https://github.com/varletjs/varlet/issues/2008) ([4a28bb0](https://github.com/varletjs/varlet/commit/4a28bb06e791c033bd78e6f80d43914378c8244e))
-* **FieldDecorator:** enhance resize functionality with transition control and update tests ([ca35c61](https://github.com/varletjs/varlet/commit/ca35c61e0c5de45996bfb58d5547d44673517cc8))
 
 # [3.19.0](https://github.com/varletjs/varlet/compare/v3.18.2...v3.19.0) (2026-06-29)
 
