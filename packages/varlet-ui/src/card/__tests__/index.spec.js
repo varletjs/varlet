@@ -31,6 +31,40 @@ describe('test card component events', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
     wrapper.unmount()
   })
+
+  test('card close button emits update', async () => {
+    const onUpdateFloating = vi.fn()
+    const wrapper = mount(VarCard, {
+      props: {
+        floating: true,
+        floatingDuration: 0,
+        'onUpdate:floating': onUpdateFloating,
+      },
+    })
+
+    await delay(64)
+    const closeButton = wrapper.find('.var-card__close-button')
+    expect(closeButton.exists()).toBe(true)
+    await closeButton.trigger('click')
+    expect(onUpdateFloating).toHaveBeenCalledWith(false)
+    wrapper.unmount()
+  })
+
+  test('card floating respects ripple delay', async () => {
+    const timerSpy = vi.spyOn(global, 'setTimeout')
+    const wrapper = mount(VarCard, {
+      props: {
+        floating: true,
+        ripple: true,
+      },
+    })
+
+    await delay(16)
+    expect(timerSpy.mock.calls.some(([, delay]) => delay === 500)).toBe(true)
+    await delay(550)
+    wrapper.unmount()
+    timerSpy.mockRestore()
+  })
 })
 
 describe('test card component props', () => {
@@ -342,6 +376,54 @@ describe('test card component props', () => {
     })
     await delay(300)
     expect(wrapper.find('.var-card__floater').attributes('style')).toContain('width: 100vw;')
+    wrapper.unmount()
+  })
+
+  test('card floating dropdown restores layout', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        floating: true,
+        floatingDuration: 0,
+      },
+    })
+
+    await delay(64)
+    expect(wrapper.find('.var-card__floater').attributes('style')).toContain('width: 100vw;')
+    expect(wrapper.find('.var-card__floating-buttons').exists()).toBe(true)
+
+    await wrapper.setProps({
+      floating: false,
+    })
+    await delay(64)
+    expect(wrapper.find('.var-card__floater').attributes('style')).toContain('width: 100%;')
+    expect(wrapper.find('.var-card__floating-buttons').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('card ripple disabled when ripple is false', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        ripple: false,
+      },
+    })
+
+    await wrapper.trigger('touchstart')
+    await delay(50)
+    expect(wrapper.find('.var-ripple').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('card floating ignored in row layout', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        layout: 'row',
+        floating: true,
+      },
+    })
+
+    await delay(16)
+    expect(wrapper.find('.var-card__floating-buttons').exists()).toBe(false)
     wrapper.unmount()
   })
 
