@@ -2,10 +2,11 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp, Fragment, h } from 'vue'
+import { createApp, Fragment, h, inject } from 'vue'
 import Button from '..'
 import ButtonGroup from '../../button-group'
 import VarButtonGroup from '../../button-group/ButtonGroup.vue'
+import { BUTTON_GROUP_BIND_BUTTON_KEY } from '../../button-group/provide'
 import { delay, trigger } from '../../utils/test'
 import VarButton from '../Button.vue'
 
@@ -131,6 +132,24 @@ describe('test button component props', () => {
     await trigger(wrapper, 'touchstart')
     expect(wrapper.find('.var-loading').exists()).toBeTruthy()
     await delay(100)
+    expect(wrapper.find('.var-loading').exists()).toBeFalsy()
+
+    wrapper.unmount()
+  })
+
+  test('button auto loading handles rejection', async () => {
+    const onClick = () => Promise.reject(new Error('fail'))
+
+    const wrapper = mount(VarButton, {
+      props: {
+        autoLoading: true,
+        onClick,
+      },
+    })
+
+    await trigger(wrapper, 'click')
+    expect(wrapper.find('.var-loading').exists()).toBeTruthy()
+    await delay(0)
     expect(wrapper.find('.var-loading').exists()).toBeFalsy()
 
     wrapper.unmount()
@@ -287,6 +306,35 @@ describe('test button component props', () => {
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('button focus ignored when not focusable', () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        focusable: false,
+      },
+    })
+
+    wrapper.vm.handleFocus()
+    expect(wrapper.vm.isFocusing).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('button focus and blur when focusable', async () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        focusable: true,
+      },
+    })
+
+    await wrapper.find('button').trigger('focus')
+    expect(wrapper.vm.isFocusing).toBe(true)
+
+    await wrapper.find('button').trigger('blur')
+    expect(wrapper.vm.isFocusing).toBe(false)
+
     wrapper.unmount()
   })
 
@@ -513,6 +561,68 @@ describe('test button group component props', () => {
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('button group provide reactive props', () => {
+    let provider
+    const Consumer = {
+      setup() {
+        provider = inject(BUTTON_GROUP_BIND_BUTTON_KEY)
+      },
+      render() {
+        return null
+      },
+    }
+
+    const wrapper = mount({
+      components: {
+        VarButtonGroup,
+        VarButton,
+        Consumer,
+      },
+      template: `
+        <var-button-group :elevation="3" type="primary" size="small" color="red" text-color="blue" mode="text">
+          <consumer />
+          <var-button />
+          <var-button />
+        </var-button-group>
+      `,
+    })
+
+    expect(provider).toBeTruthy()
+    expect(provider.elevation.value).toBe(3)
+    expect(provider.type.value).toBe('primary')
+    expect(provider.size.value).toBe('small')
+    expect(provider.color.value).toBe('red')
+    expect(provider.textColor.value).toBe('blue')
+    expect(provider.mode.value).toBe('text')
+
+    wrapper.unmount()
+  })
+
+  test('button group classes', async () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        mode: 'outline',
+        vertical: true,
+        elevation: true,
+      },
+    })
+
+    expect(wrapper.classes()).toContain('var-button-group')
+    expect(wrapper.classes()).toContain('var-button-group--mode-outline')
+    expect(wrapper.classes()).toContain('var-button-group--vertical')
+    expect(wrapper.classes()).not.toContain('var-button-group--horizontal')
+    expect(wrapper.classes()).not.toContain('var-elevation--2')
+
+    await wrapper.setProps({ mode: 'normal', vertical: false })
+
+    expect(wrapper.classes()).toContain('var-button-group--mode-normal')
+    expect(wrapper.classes()).toContain('var-button-group--horizontal')
+    expect(wrapper.classes()).not.toContain('var-button-group--vertical')
+    expect(wrapper.classes()).toContain('var-elevation--2')
+
     wrapper.unmount()
   })
 })
