@@ -147,4 +147,61 @@ describe('test code component props', () => {
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
+
+  test('code no highlighter', async () => {
+    const wrapper = mount(VarHighlighterProvider, {
+      props: {
+        theme: 'vitesse-light',
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            code: "console.log('hello world')",
+            language: 'javascript',
+          }),
+      },
+    })
+
+    await delay(0)
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('code without provider', async () => {
+    const wrapper = mount(VarCode, {
+      props: {
+        code: "console.log('hello world')",
+        language: 'javascript',
+      },
+    })
+
+    await delay(0)
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('code defaults language and theme', async () => {
+    let receivedOptions
+    const wrapper = mount(VarHighlighterProvider, {
+      props: {
+        highlighter: {
+          codeToHtml: (value, options) => {
+            receivedOptions = options
+            return Promise.resolve(value)
+          },
+        },
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            code: "console.log('hello world')",
+          }),
+      },
+    })
+
+    await delay(0)
+    expect(receivedOptions).toStrictEqual({ lang: '', theme: '' })
+
+    wrapper.unmount()
+  })
 })
