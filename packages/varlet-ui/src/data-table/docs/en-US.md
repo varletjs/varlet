@@ -16,12 +16,14 @@ const columns = ref([
   { key: 'status', title: 'Status' },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
-])
+const data = ref(
+  Array.from({ length: 18 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'Engineer' : 'Operator',
+    status: index % 3 === 0 ? 'Online' : 'Offline',
+  })),
+)
 </script>
 
 <template>
@@ -54,12 +56,14 @@ const columns = ref([
   },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: 'Admin', status: 'Online' },
-  { id: 2, name: 'Linus', role: 'Maintainer', status: 'Offline' },
-  { id: 3, name: 'Taylor', role: 'Designer', status: 'Online' },
-  { id: 4, name: 'Evan', role: 'Reviewer', status: 'Busy' },
-])
+const data = ref(
+  Array.from({ length: 18 }, (_, index) => ({
+    id: index + 1,
+    name: `User ${index + 1}`,
+    role: index % 2 === 0 ? 'Engineer' : 'Operator',
+    status: index % 3 === 0 ? 'Online' : 'Offline',
+  })),
+)
 </script>
 
 <template>
@@ -967,6 +971,7 @@ const data = ref([
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `simple` | Whether to use simple pagination | _boolean_ | `false` |
+| `elevation` | Pagination item elevation; defaults to `1` when the table is `plain` | _boolean \| number \| string_ | `true` |
 | `disabled` | Whether to disable pagination | _boolean_ | `false` |
 | `showSizeChanger` | Whether to show page size changer | _boolean_ | `false` |
 | `showQuickJumper` | Whether to show quick jumper | _boolean_ | `false` |

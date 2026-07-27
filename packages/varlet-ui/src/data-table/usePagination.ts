@@ -5,6 +5,7 @@ import type { DataTablePagination } from './props'
 
 const defaultPaginationOptions = {
   simple: false,
+  elevation: true,
   disabled: false,
   showSizeChanger: false,
   showQuickJumper: false,
@@ -14,7 +15,7 @@ const defaultPaginationOptions = {
 } satisfies Required<
   Pick<
     DataTablePagination,
-    'simple' | 'disabled' | 'showSizeChanger' | 'showQuickJumper' | 'maxPagerCount' | 'sizeOption'
+    'simple' | 'elevation' | 'disabled' | 'showSizeChanger' | 'showQuickJumper' | 'maxPagerCount' | 'sizeOption'
   >
 > &
   Pick<DataTablePagination, 'showTotal'>
@@ -23,6 +24,7 @@ interface UsePaginationOptions<Row = Record<string, any>> {
   pagination: () => boolean | DataTablePagination
   remote: () => boolean
   loading: () => boolean
+  plain: () => boolean
   page: () => number
   pageSize: () => number
   total: () => number | undefined
@@ -34,6 +36,7 @@ export function usePagination<Row = Record<string, any>>({
   pagination,
   remote,
   loading,
+  plain,
   page,
   pageSize,
   total,
@@ -46,6 +49,7 @@ export function usePagination<Row = Record<string, any>>({
     if (isBoolean(resolvedPagination)) {
       return {
         ...defaultPaginationOptions,
+        elevation: plain() ? 1 : true,
         disabled: loading(),
       }
     }
@@ -53,6 +57,7 @@ export function usePagination<Row = Record<string, any>>({
     return {
       ...defaultPaginationOptions,
       ...resolvedPagination,
+      elevation: resolvedPagination.elevation ?? (plain() ? 1 : true),
       disabled: loading() || resolvedPagination.disabled === true,
     }
   })

@@ -113,6 +113,7 @@ export type DataTableColumn<Row = any> =
 
 export interface DataTablePagination {
   simple?: boolean
+  elevation?: boolean | number | string
   disabled?: boolean
   showSizeChanger?: boolean
   showQuickJumper?: boolean

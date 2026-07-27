@@ -285,6 +285,7 @@ describe('test data-table component props', () => {
         columns,
         data,
         pagination: {
+          elevation: false,
           disabled: true,
           showSizeChanger: true,
           showQuickJumper: true,
@@ -297,6 +298,7 @@ describe('test data-table component props', () => {
 
     const pagination = wrapper.findComponent({ name: 'var-pagination' })
 
+    expect(pagination.props('elevation')).toBe(false)
     expect(pagination.props('disabled')).toBe(true)
     expect(pagination.props('showSizeChanger')).toBe(true)
     expect(pagination.props('showQuickJumper')).toBe(true)
@@ -304,6 +306,33 @@ describe('test data-table component props', () => {
     expect(pagination.props('sizeOption')).toEqual([5, 10])
     expect(showTotal).toHaveBeenCalledWith(3, [1, 3])
     wrapper.unmount()
+  })
+
+  test('should lower pagination elevation by default in plain mode and allow explicit override', () => {
+    const plainWrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        plain: true,
+      },
+    })
+
+    expect(plainWrapper.findComponent({ name: 'var-pagination' }).props('elevation')).toBe(1)
+    plainWrapper.unmount()
+
+    const elevatedWrapper = mount(VarDataTable, {
+      props: {
+        columns,
+        data,
+        plain: true,
+        pagination: {
+          elevation: true,
+        },
+      },
+    })
+
+    expect(elevatedWrapper.findComponent({ name: 'var-pagination' }).props('elevation')).toBe(true)
+    elevatedWrapper.unmount()
   })
 
   test('should hide pagination when remote total is not provided', () => {

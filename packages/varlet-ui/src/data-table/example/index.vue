@@ -426,10 +426,10 @@ watch(
   <var-data-table :columns="columns" :data="manyRows" surface="low" />
 
   <app-type>{{ t('plainTable') }}</app-type>
-  <var-data-table :columns="columns" :data="data" plain />
+  <var-data-table :columns="columns" :data="manyRows" plain />
 
   <app-type>{{ t('plainBordered') }}</app-type>
-  <var-data-table :columns="columns" :data="data" plain bordered />
+  <var-data-table :columns="columns" :data="manyRows" plain bordered />
 </template>
 
 <style scoped>

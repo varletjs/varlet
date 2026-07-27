@@ -16,12 +16,14 @@ const columns = ref([
   { key: 'status', title: '状态' },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
-  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
-  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
-  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
-])
+const data = ref(
+  Array.from({ length: 18 }, (_, index) => ({
+    id: index + 1,
+    name: `用户 ${index + 1}`,
+    role: index % 2 === 0 ? '工程师' : '操作员',
+    status: index % 3 === 0 ? '在线' : '离线',
+  })),
+)
 </script>
 
 <template>
@@ -54,12 +56,14 @@ const columns = ref([
   },
 ])
 
-const data = ref([
-  { id: 1, name: 'Ada', role: '管理员', status: '在线' },
-  { id: 2, name: 'Linus', role: '维护者', status: '离线' },
-  { id: 3, name: 'Taylor', role: '设计师', status: '在线' },
-  { id: 4, name: 'Evan', role: '评审', status: '忙碌' },
-])
+const data = ref(
+  Array.from({ length: 18 }, (_, index) => ({
+    id: index + 1,
+    name: `用户 ${index + 1}`,
+    role: index % 2 === 0 ? '工程师' : '操作员',
+    status: index % 3 === 0 ? '在线' : '离线',
+  })),
+)
 </script>
 
 <template>
@@ -967,6 +971,7 @@ const data = ref([
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `simple` | 是否使用简洁分页 | _boolean_ | `false` |
+| `elevation` | 分页项的海拔高度；表格开启 `plain` 时默认为 `1` | _boolean \| number \| string_ | `true` |
 | `disabled` | 是否禁用分页 | _boolean_ | `false` |
 | `showSizeChanger` | 是否显示每页条数切换器 | _boolean_ | `false` |
 | `showQuickJumper` | 是否显示快速跳转 | _boolean_ | `false` |

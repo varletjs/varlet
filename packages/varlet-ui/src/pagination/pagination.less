@@ -45,17 +45,38 @@
     cursor: pointer;
     border-radius: var(--pagination-item-border-radius);
     outline: none;
-    transition: all 0.25s;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+      color 0.25s,
+      background-color 0.25s,
+      box-shadow 0.25s;
     user-select: none;
     background-color: var(--pagination-item-background);
 
-    &:hover {
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
       background-color: var(--pagination-hover-bg-color);
+      transition: opacity 0.25s;
+    }
+
+    &:hover::before {
+      opacity: 1;
     }
 
     &--active {
       color: var(--pagination-active-color);
       background-color: var(--pagination-active-bg-color) !important;
+
+      &:hover::before {
+        opacity: 0;
+      }
     }
 
     &--hide {
@@ -73,15 +94,15 @@
       background-color: unset;
       box-shadow: none !important;
 
-      &:hover {
-        background-color: unset;
+      &:hover::before {
+        opacity: 0;
       }
 
       &--active {
         background-color: var(--pagination-bg-disabled-color);
 
-        &:hover {
-          background-color: var(--pagination-bg-disabled-color);
+        &:hover::before {
+          opacity: 0;
         }
       }
     }

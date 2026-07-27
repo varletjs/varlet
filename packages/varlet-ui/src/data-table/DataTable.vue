@@ -135,6 +135,7 @@
           :size="pageSize"
           :total="paginationTotal"
           :simple="paginationProps.simple"
+          :elevation="paginationProps.elevation"
           :disabled="paginationProps.disabled"
           :show-size-changer="paginationProps.showSizeChanger"
           :show-quick-jumper="paginationProps.showQuickJumper"
@@ -270,6 +271,7 @@ export default defineComponent({
       pagination: () => props.pagination,
       remote: () => props.remote,
       loading: () => props.loading,
+      plain: () => props.plain,
       page: () => page.value,
       pageSize: () => pageSize.value,
       total: () => props.total,
