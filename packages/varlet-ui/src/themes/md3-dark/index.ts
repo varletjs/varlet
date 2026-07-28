@@ -57,6 +57,7 @@ import ripple from './ripple'
 import segmentedButton from './segmentedButton'
 import segmentedButtons from './segmentedButtons'
 import select from './select'
+import shimmerText from './shimmerText'
 import signature from './signature'
 import skeleton from './skeleton'
 import slider from './slider'
@@ -226,5 +227,6 @@ export default {
   ...space,
   ...swipe,
   ...code,
+  ...shimmerText,
   ...signature,
 } as StyleVars

@@ -242,6 +242,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Shimmer Text 流光文字',
+          'en-US': 'Shimmer Text',
+        },
+        doc: 'shimmer-text',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Paper 纸张',
           'en-US': 'Paper',
         },

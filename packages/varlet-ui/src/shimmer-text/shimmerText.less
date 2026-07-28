@@ -1,0 +1,68 @@
+:root {
+  --shimmer-text-color: var(--color-on-surface-variant);
+  --shimmer-text-highlight-color: #fff;
+  --shimmer-text-duration: 1.4s;
+  --shimmer-text-angle: 100deg;
+}
+
+.var-shimmer-text {
+  display: inline-flex;
+  color: var(--shimmer-text-color);
+  background-image:
+    linear-gradient(
+      var(--shimmer-text-angle),
+      transparent 35%,
+      var(--shimmer-text-highlight-color) 50%,
+      transparent 65%
+    ),
+    linear-gradient(var(--shimmer-text-color), var(--shimmer-text-color));
+  background-repeat: no-repeat;
+  background-size:
+    200% 100%,
+    100% 100%;
+  background-position:
+    120% 0,
+    0 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: var-shimmer-text var(--shimmer-text-duration) linear infinite;
+
+  &--default {
+    --shimmer-text-color: var(--color-on-surface-variant);
+  }
+
+  &--primary {
+    --shimmer-text-color: var(--color-primary);
+  }
+
+  &--info {
+    --shimmer-text-color: var(--color-info);
+  }
+
+  &--success {
+    --shimmer-text-color: var(--color-success);
+  }
+
+  &--warning {
+    --shimmer-text-color: var(--color-warning);
+  }
+
+  &--danger {
+    --shimmer-text-color: var(--color-danger);
+  }
+}
+
+@keyframes var-shimmer-text {
+  from {
+    background-position:
+      120% 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      -20% 0,
+      0 0;
+  }
+}
