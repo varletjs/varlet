@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
+    "esbuild": "0.28.1",
     "nanospinner": "^1.1.0",
     "rattail": "catalog:",
     "tinyexec": "catalog:",
@@ -34,7 +35,7 @@
     "vite-plus": "catalog:"
   },
   "engines": {
-    "node": "^20.19.0 || >=22.12.0",
+    "node": "^20.19.0 || ^22.18.0 || >=24.11.0",
     "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@9.15.9",

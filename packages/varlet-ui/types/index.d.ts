@@ -81,8 +81,8 @@ export * from './row'
 export * from './segmentedButton'
 export * from './segmentedButtons'
 export * from './select'
-export * from './signature'
 export * from './shimmerText'
+export * from './signature'
 export * from './skeleton'
 export * from './slider'
 export * from './snackbar'
@@ -186,8 +186,8 @@ declare module 'vue' {
     VarSegmentedButton: typeof import('@varlet/ui')['_SegmentedButtonComponent']
     VarSegmentedButtons: typeof import('@varlet/ui')['_SegmentedButtonsComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
-    VarSignature: typeof import('@varlet/ui')['_SignatureComponent']
     VarShimmerText: typeof import('@varlet/ui')['_ShimmerTextComponent']
+    VarSignature: typeof import('@varlet/ui')['_SignatureComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
     VarSlider: typeof import('@varlet/ui')['_SliderComponent']
     VarSnackbar: typeof import('@varlet/ui')['_SnackbarComponent']

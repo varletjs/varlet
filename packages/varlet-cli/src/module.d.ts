@@ -1,9 +1,9 @@
 declare module 'less' {
-  export declare const render: any
+  export const render: any
 }
 
 declare module 'jest' {
-  declare const runCLI: any
+  const runCLI: any
 
   export default { runCLI }
 }
