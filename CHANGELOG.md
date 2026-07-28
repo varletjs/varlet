@@ -1,9 +1,19 @@
-## [3.19.3](https://github.com/varletjs/varlet/compare/v3.19.2...v3.19.3) (2026-07-07)
+# [3.20.0](https://github.com/varletjs/varlet/compare/v3.19.3...v3.20.0) (2026-07-28)
 
 
 ### Features
 
 * **Button:** add elevation-disabled state and update styles and tests ([1c8f228](https://github.com/varletjs/varlet/commit/1c8f228d80c4adeb15c79fc6e8692d21d3e8b0a7))
+* **DataTable:** add elevation prop to pagination and update related tests and documentation ([3c72d8e](https://github.com/varletjs/varlet/commit/3c72d8eb5830cdcde4acb30716b1eafe161f2c4f))
+* **ShimmerText:** add shimmer text component with themes and documentation ([78bcd68](https://github.com/varletjs/varlet/commit/78bcd68dcc8f81a728b93efc13a9e397199b9ac0))
+* **shimmerText:** add shimmer text properties for dark and light themes ([2ba6b1f](https://github.com/varletjs/varlet/commit/2ba6b1fb365c24d56f70d06d3f621f938798feb1))
+* **styleVars:** add shimmer text properties for customization ([e4983ba](https://github.com/varletjs/varlet/commit/e4983ba35e4ede6500e295a4494efae0ba0b3358))
+
+## [3.19.2](https://github.com/varletjs/varlet/compare/v3.19.1...v3.19.2) (2026-07-05)
+
+
+### Features
+
 * **FieldDecorator:** enhance resize functionality with transition control and update tests ([ca35c61](https://github.com/varletjs/varlet/commit/ca35c61e0c5de45996bfb58d5547d44673517cc8))
 
 ## [3.19.1](https://github.com/varletjs/varlet/compare/v3.19.0...v3.19.1) (2026-07-05)
