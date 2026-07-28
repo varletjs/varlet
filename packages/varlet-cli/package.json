@@ -57,7 +57,7 @@
     "nanospinner": "^1.1.0",
     "picocolors": "^1.0.0",
     "sass": "^1.77.4",
-    "sharp": "0.31.1",
+    "sharp": "0.35.0",
     "tinyexec": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
