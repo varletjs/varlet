@@ -242,8 +242,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Shimmer Text 流光文字',
-          'en-US': 'Shimmer Text',
+          'zh-CN': 'ShimmerText 流光文字',
+          'en-US': 'ShimmerText',
         },
         doc: 'shimmer-text',
         type: 2,
