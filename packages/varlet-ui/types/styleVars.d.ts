@@ -708,6 +708,10 @@ interface BaseStyleVars {
   '--option-font-size'?: string
   '--option-selected-background'?: string
   '--option-text-color'?: string
+  '--shimmer-text-color'?: string
+  '--shimmer-text-highlight-color'?: string
+  '--shimmer-text-duration'?: string
+  '--shimmer-text-angle'?: string
   '--signature-height'?: string
   '--signature-background-color'?: string
   '--signature-stroke-color'?: string
