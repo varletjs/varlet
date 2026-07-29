@@ -82,6 +82,7 @@ export function usePopover(options: UsePopoverOptions) {
   let reference: Reference | undefined = undefined
   let enterPopover = false
   let enterReference = false
+  let hoverSequence = 0
   let allowClose = true
 
   useEventListener(() => window, 'keydown', handleKeydown)
@@ -183,6 +184,7 @@ export function usePopover(options: UsePopoverOptions) {
     }
 
     enterReference = true
+    hoverSequence++
 
     open()
   }
@@ -193,10 +195,11 @@ export function usePopover(options: UsePopoverOptions) {
     }
 
     enterReference = false
+    const currentHoverSequence = ++hoverSequence
 
     await doubleRaf()
 
-    if (enterPopover) {
+    if (currentHoverSequence !== hoverSequence || enterReference || enterPopover) {
       return
     }
 
@@ -209,6 +212,7 @@ export function usePopover(options: UsePopoverOptions) {
     }
 
     enterPopover = true
+    hoverSequence++
 
     if (options.cascadeOptimization) {
       allowClose = false
@@ -221,10 +225,11 @@ export function usePopover(options: UsePopoverOptions) {
     }
 
     enterPopover = false
+    const currentHoverSequence = ++hoverSequence
 
     await doubleRaf()
 
-    if (enterReference) {
+    if (currentHoverSequence !== hoverSequence || enterReference || enterPopover) {
       return
     }
 

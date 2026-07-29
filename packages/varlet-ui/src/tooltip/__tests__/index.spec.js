@@ -107,6 +107,83 @@ test('tooltip hover trigger and events', async () => {
   mockRestore()
 })
 
+test('tooltip should remain open when the reference is re-entered before hover state settles', async () => {
+  const { mockRestore } = mockStubs()
+
+  const onClose = vi.fn()
+  const wrapper = mount(VarTooltip, {
+    props: {
+      onClose,
+    },
+  })
+
+  await wrapper.trigger('mouseenter')
+  await wrapper.trigger('mouseleave')
+  await wrapper.trigger('mouseenter')
+  await doubleRaf()
+  await delay(0)
+
+  expect(onClose).not.toHaveBeenCalled()
+
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('tooltip should remain open when the popover is re-entered before hover state settles', async () => {
+  const { mockRestore } = mockStubs()
+
+  const onClose = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarTooltip, {
+    props: {
+      show: true,
+      teleport: root,
+      onClose,
+    },
+  })
+  const popover = root.querySelector('.var-tooltip__tooltip')
+
+  await trigger(popover, 'mouseenter')
+  await trigger(popover, 'mouseleave')
+  await trigger(popover, 'mouseenter')
+  await doubleRaf()
+  await delay(0)
+
+  expect(onClose).not.toHaveBeenCalled()
+
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('tooltip should ignore an outdated hover close task', async () => {
+  const { mockRestore } = mockStubs()
+
+  const onClose = vi.fn()
+  const wrapper = mount(VarTooltip, {
+    props: {
+      onClose,
+    },
+  })
+
+  await wrapper.trigger('mouseenter')
+  await wrapper.trigger('mouseleave')
+  await new Promise(requestAnimationFrame)
+  await wrapper.trigger('mouseenter')
+  await wrapper.trigger('mouseleave')
+  await new Promise(requestAnimationFrame)
+  await delay(0)
+
+  expect(onClose).not.toHaveBeenCalled()
+
+  await new Promise(requestAnimationFrame)
+  await delay(0)
+
+  expect(onClose).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+  mockRestore()
+})
+
 test('tooltip type', () => {
   ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
     const { mockRestore } = mockStubs()
