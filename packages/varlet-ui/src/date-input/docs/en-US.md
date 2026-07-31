@@ -384,7 +384,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `clearable` | Whether to show clear icon | _boolean_ | `false` |
 | `validate-trigger` | Validation trigger timing, can be `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | Validation rules. Return `true` to pass validation, other values are converted into user messages. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | Selectable date filter | _(value: string) => boolean_ | `-` |
+| `allowed-dates` | Selectable date filter. The value format follows `type`: `year` uses `YYYY`, `month` uses `YYYY-MM`, and `date` / `datetime` use `YYYY-MM-DD` | _(value: string) => boolean_ | `-` |
 | `allowed-times` | Selectable time filter, only works when `type` is `datetime` | _(date: string, position?: 'start' \| 'end') => { hours?, minutes?, seconds? }_ | `-` |
 | `min` | Minimum selectable boundary | _string_ | `-` |
 | `max` | Maximum selectable boundary | _string_ | `-` |

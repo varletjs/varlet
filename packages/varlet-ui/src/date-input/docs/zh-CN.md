@@ -384,7 +384,7 @@ const allowedDates = (date) => Number(date.split('-')[2]) % 2 === 1
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation) | _((v: any) => any) \| ZodType \| Array<((v: any) => any) \| ZodType>_ | `-` |
-| `allowed-dates` | 可选日期过滤函数 | _(value: string) => boolean_ | `-` |
+| `allowed-dates` | 可选日期过滤函数，参数格式随 `type` 变化：`year` 使用 `YYYY`，`month` 使用 `YYYY-MM`，`date` / `datetime` 使用 `YYYY-MM-DD` | _(value: string) => boolean_ | `-` |
 | `allowed-times` | 可选时间过滤函数，仅在 `type` 为 `datetime` 时生效 | _(date: string, position?: 'start' \| 'end') => { hours?, minutes?, seconds? }_ | `-` |
 | `min` | 最小可选边界 | _string_ | `-` |
 | `max` | 最大可选边界 | _string_ | `-` |

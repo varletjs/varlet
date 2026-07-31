@@ -19,8 +19,7 @@ export const WeekHeader = ['0', '1', '2', '3', '4', '5', '6'] as const
 export const DatePickerFormats = {
   Year: 'YYYY',
   Month: 'YYYY-MM',
-  Day: 'YYYY-MM-D',
-  DayPadded: 'YYYY-MM-DD',
+  Day: 'YYYY-MM-DD',
 } as const
 
 export const ShiftDirections = enumOf({

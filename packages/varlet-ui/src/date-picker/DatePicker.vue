@@ -253,9 +253,7 @@ export default defineComponent({
       const { multiple, range } = props
 
       if (range) {
-        const formattedDays = selectionState.selectedRangeDays.map((date) =>
-          dayjs(date).format(DatePickerFormats.DayPadded),
-        )
+        const formattedDays = selectionState.selectedRangeDays.map((date) => dayjs(date).format(DatePickerFormats.Day))
 
         return formattedDays.length ? formattedDays.join(' ~ ') : ''
       }
@@ -281,7 +279,7 @@ export default defineComponent({
         return `${selectionState.selectedMonth}-${showDay} ${weekName.slice(0, 3)}`
       }
 
-      return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${selectionState.selectedDay}`
+      return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${toNumber(selectionState.selectedDay)}`
     })
     const dateSlotProps = computed<Record<string, string>>(() => {
       const weekIndex = dayjs(
@@ -299,7 +297,7 @@ export default defineComponent({
     })
 
     const formattedRangeDays = computed<string[]>(() =>
-      selectionState.selectedRangeDays.map((date) => dayjs(date).format(DatePickerFormats.DayPadded)),
+      selectionState.selectedRangeDays.map((date) => dayjs(date).format(DatePickerFormats.Day)),
     )
 
     const selectedYearInPreview = computed(() => selectionState.selectedYear === previewYear.value)
@@ -494,7 +492,7 @@ export default defineComponent({
           ? DatePickerFormats.Year
           : pickerType === DatePickerTypes.Month
             ? DatePickerFormats.Month
-            : DatePickerFormats.DayPadded
+            : DatePickerFormats.Day
       const nextMultipleValues = selectedMultipleValues.map((date) => dayjs(date).format(valueFormat))
 
       const index = nextMultipleValues.findIndex((multipleValue) => multipleValue === selectedValue)
@@ -567,7 +565,7 @@ export default defineComponent({
         monthOffset,
         DatePickerUnits.Month,
       )
-      const dayValue = `${targetMonthDayjsObject.format(DatePickerFormats.Month)}-${day}`
+      const dayValue = targetMonthDayjsObject.date(day).format(DatePickerFormats.Day)
 
       if (!isSelectableDate(dayValue, DatePickerUnits.Day)) {
         return
@@ -581,7 +579,7 @@ export default defineComponent({
         emitPreview()
       }
 
-      selectValue(dayjs(dayValue).format(DatePickerFormats.DayPadded), DatePickerTypes.Date)
+      selectValue(dayValue, DatePickerTypes.Date)
     }
 
     function selectMonthFromPanel(month: Month) {

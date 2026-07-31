@@ -120,20 +120,49 @@ test('datePicker allowedDates', () => {
   wrapper.unmount()
 })
 
+test('datePicker passes padded dates for every day panel cell', async () => {
+  const allowedDates = vi.fn(() => true)
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      allowedDates,
+      modelValue: '2021-03-01',
+    },
+  })
+
+  await delay(0)
+  const dateValues = [...new Set(allowedDates.mock.calls.map(([value]) => value))]
+
+  expect(dateValues).toHaveLength(42)
+  expect(dateValues).toContain('2021-02-28')
+  expect(dateValues).toContain('2021-03-01')
+  expect(dateValues).toContain('2021-03-09')
+  expect(dateValues).toContain('2021-04-10')
+  expect(dateValues.every((value) => /^\d{4}-\d{2}-\d{2}$/.test(value))).toBe(true)
+
+  wrapper.unmount()
+})
+
 test('datePicker does not emit change when choosing disabled value', async () => {
   const onUpdateModelValue = vi.fn()
   const onChange = vi.fn()
+  const allowedDates = vi.fn((val) => val !== '2021-03-02')
 
   const wrapper = mount(VarDatePicker, {
     props: {
       modelValue: '2021-03-01',
-      allowedDates: (val) => val !== '2021-03-2',
+      allowedDates,
       'onUpdate:modelValue': onUpdateModelValue,
       onChange,
     },
   })
 
+  await delay(0)
+  const dayButton = wrapper.findAll('.var-day-picker__button--usable').find((button) => button.text() === '2')
+
+  expect(dayButton.attributes('disabled')).toBeDefined()
   wrapper.vm.selectDayFromPanel(2)
+  expect(allowedDates.mock.calls.every(([value]) => value !== '2021-03-2')).toBe(true)
+  expect(allowedDates).toHaveBeenCalledWith('2021-03-02')
   expect(onUpdateModelValue).not.toHaveBeenCalled()
   expect(onChange).not.toHaveBeenCalled()
 

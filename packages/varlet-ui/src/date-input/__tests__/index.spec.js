@@ -749,10 +749,11 @@ describe('test dateInput picker behavior', () => {
 
   test('dateInput keeps picker open when clicking disabled date', async () => {
     const onUpdateModelValue = vi.fn()
+    const allowedDates = vi.fn((val) => val !== '2021-04-09')
     const wrapper = mount(VarDateInput, {
       props: {
         modelValue: '2021-04-08',
-        allowedDates: (val) => val !== '2021-04-9' && val !== '2021-04-09',
+        allowedDates,
         'onUpdate:modelValue': onUpdateModelValue,
       },
     })
@@ -765,6 +766,8 @@ describe('test dateInput picker behavior', () => {
     await delay(0)
 
     expect(onUpdateModelValue).not.toHaveBeenCalled()
+    expect(allowedDates.mock.calls.every(([value]) => /^\d{4}-\d{2}-\d{2}$/.test(value))).toBe(true)
+    expect(allowedDates).toHaveBeenCalledWith('2021-04-09')
     expect(wrapper.vm.showMenu).toBe(true)
 
     wrapper.unmount()
@@ -967,7 +970,7 @@ describe('test dateInput picker behavior', () => {
 
     expect(wrapper.find('input').element.value).toBe('2021-04-08 ~ 2021-04-10')
     expect(wrapper.findComponent(DatePicker).vm.rangeSelecting).toBe(false)
-    expect(wrapper.findComponent(DatePicker).vm.selectionState.selectedRangeDays).toEqual(['2021-04-8', '2021-04-10'])
+    expect(wrapper.findComponent(DatePicker).vm.selectionState.selectedRangeDays).toEqual(['2021-04-08', '2021-04-10'])
 
     await wrapper.setProps({
       type: 'month',
