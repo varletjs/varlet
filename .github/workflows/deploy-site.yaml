@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: gh-page-deploy
+  cancel-in-progress: false
+
 jobs:
   deploy-site:
     runs-on: ubuntu-latest
