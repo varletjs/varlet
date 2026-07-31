@@ -1,9 +1,10 @@
-## [3.20.1](https://github.com/varletjs/varlet/compare/v3.20.0...v3.20.1) (2026-07-29)
+## [3.20.2](https://github.com/varletjs/varlet/compare/v3.20.1...v3.20.2) (2026-07-31)
 
 
 ### Bug Fixes
 
 * correct spelling of 'ShimmerText' in configuration ([d48cc32](https://github.com/varletjs/varlet/commit/d48cc326abe3993eac9be5617d479fae8461d886))
+* **date-picker:** standardize date formatting and improve allowedDates tests ([a689c6f](https://github.com/varletjs/varlet/commit/a689c6f726de69bbd0ef6906ec2ed2d2b7abed67))
 
 
 ### Features
