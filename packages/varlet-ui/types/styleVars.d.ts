@@ -1060,6 +1060,9 @@ interface BaseStyleVars {
   '--uploader-file-close-icon-color'?: string
   '--uploader-file-cover-fit'?: string
   '--uploader-file-cover-background'?: string
+  '--uploader-outlined-background'?: string
+  '--uploader-filled-background'?: string
+  '--uploader-outline-color'?: string
   '--uploader-preview-video-width'?: string
   '--uploader-preview-video-height'?: string
   '--uploader-file-indicator-height'?: string

@@ -1,10 +1,22 @@
-## [3.20.2](https://github.com/varletjs/varlet/compare/v3.20.1...v3.20.2) (2026-07-31)
+## [3.20.3](https://github.com/varletjs/varlet/compare/v3.20.2...v3.20.3) (2026-08-12)
+
+
+### Bug Fixes
+
+* **date-picker:** standardize date formatting and improve allowedDates tests ([a689c6f](https://github.com/varletjs/varlet/commit/a689c6f726de69bbd0ef6906ec2ed2d2b7abed67))
+* **docs:** update variant description in uploader documentation for clarity ([b8f19b4](https://github.com/varletjs/varlet/commit/b8f19b428c4d389a7a819501bef3b9180a6e48cd))
+
+
+### Features
+
+* **uploader:** add variant support for uploader component and update documentation ([381229d](https://github.com/varletjs/varlet/commit/381229d1a467af2e992e18285a3256044bcc38b6))
+
+## [3.20.1](https://github.com/varletjs/varlet/compare/v3.20.0...v3.20.1) (2026-07-29)
 
 
 ### Bug Fixes
 
 * correct spelling of 'ShimmerText' in configuration ([d48cc32](https://github.com/varletjs/varlet/commit/d48cc326abe3993eac9be5617d479fae8461d886))
-* **date-picker:** standardize date formatting and improve allowedDates tests ([a689c6f](https://github.com/varletjs/varlet/commit/a689c6f726de69bbd0ef6906ec2ed2d2b7abed67))
 
 
 ### Features
