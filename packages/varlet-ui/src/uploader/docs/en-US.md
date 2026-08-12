@@ -23,6 +23,26 @@ function handleAfterRead(file) {
 </template>
 ```
 
+### Variants
+
+Use `variant` to set the paper appearance of upload items. The supported variants are `standard`, `outlined`, and `filled`. Only the `standard` variant applies `elevation`.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const standardFiles = ref([])
+const outlinedFiles = ref([])
+const filledFiles = ref([])
+</script>
+
+<template>
+  <var-uploader v-model="standardFiles" variant="standard" />
+  <var-uploader v-model="outlinedFiles" variant="outlined" />
+  <var-uploader v-model="filledFiles" variant="filled" />
+</template>
+```
+
 ### File Preview
 
 By analyzing the file URL suffix name to determine the file type, support image and video preview.
@@ -485,7 +505,8 @@ const files = ref([
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `elevation`| Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
+| `variant` | Appearance variant, optional values are `standard` `outlined` `filled` | _string_ | `standard` |
+| `elevation`| Elevation level, options `true` `false` and level of `0-24`, only effective with the `standard` variant | _string \| number \| boolean_|  `true` |
 | `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
 | `maxsize`   | Maximum file size, the unit is `byte` | _string \| number_ | `-` |
@@ -575,6 +596,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--uploader-file-close-icon-color`        | `#fff`                                                                                       |
 | `--uploader-file-cover-fit`               | `cover`                                                                                      |
 | `--uploader-file-cover-background`        | `#f7f8fa`                                                                                    |
+| `--uploader-outlined-background`          | `transparent`                                                                                |
+| `--uploader-filled-background`            | `hsla(0, 0%, 93%, 1)`                                                                        |
+| `--uploader-outline-color`                | `var(--color-outline)`                                                                       |
 | `--uploader-preview-video-width`          | `100vw`                                                                                      |
 | `--uploader-preview-video-height`         | `100vw`                                                                                      |
 | `--uploader-file-indicator-height`        | `4px`                                                                                        |

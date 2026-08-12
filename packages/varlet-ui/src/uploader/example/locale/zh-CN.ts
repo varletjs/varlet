@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  variant: '外观变体',
   preview: '文件预览',
   customPreview: '自定义预览',
   state: '上传状态',

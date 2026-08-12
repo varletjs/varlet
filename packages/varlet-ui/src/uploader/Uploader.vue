@@ -5,7 +5,15 @@
         v-for="f in files"
         :key="f.id"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
-        :class="classes(n('file'), formatElevation(elevation, 2), [f.state === 'loading', n('--loading')])"
+        :class="
+          classes(
+            n('file'),
+            [variant === 'standard', formatElevation(elevation, 2)],
+            [variant === 'outlined', n('--outlined')],
+            [variant === 'filled', n('--filled')],
+            [f.state === 'loading', n('--loading')],
+          )
+        "
         @click="preview(f)"
       >
         <div :class="n('file-name')">{{ f.name || f.url }}</div>
@@ -50,7 +58,10 @@
         :class="
           classes(
             n('--outline-none'),
-            [!$slots.default, `${n('action')} ${formatElevation(elevation, 2)}`],
+            [!$slots.default, n('action')],
+            [!$slots.default && variant === 'standard', formatElevation(elevation, 2)],
+            [!$slots.default && variant === 'outlined', n('--outlined')],
+            [!$slots.default && variant === 'filled', n('--filled')],
             [disabled || formDisabled, n('--disabled')],
           )
         "

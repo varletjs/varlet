@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  variant: 'Variants',
   preview: 'File Preview',
   customPreview: 'Custom Preview',
   state: 'Upload State',

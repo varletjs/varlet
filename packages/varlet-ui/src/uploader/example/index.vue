@@ -74,6 +74,9 @@ const values = reactive({
   files14: [],
   files15: [],
   files16: [],
+  files17: [],
+  files18: [],
+  files19: [],
 })
 
 let timer
@@ -157,6 +160,13 @@ function handleActionClick(chooseFile) {
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-uploader v-model="values.files" @after-read="handleAfterRead" />
+
+  <app-type>{{ t('variant') }}</app-type>
+  <var-space>
+    <var-uploader v-model="values.files17" :maxlength="1" />
+    <var-uploader v-model="values.files18" :maxlength="1" variant="outlined" />
+    <var-uploader v-model="values.files19" :maxlength="1" variant="filled" />
+  </var-space>
 
   <app-type>{{ t('preview') }}</app-type>
   <var-uploader v-model="values.files2" />

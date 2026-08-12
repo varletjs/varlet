@@ -22,6 +22,26 @@ function handleAfterRead(file) {
 </template>
 ```
 
+### 外观变体
+
+通过 `variant` 设置上传项的纸张外观，支持 `standard`、`outlined` 和 `filled` 三种类型。只有 `standard` 类型应用 `elevation`。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const standardFiles = ref([])
+const outlinedFiles = ref([])
+const filledFiles = ref([])
+</script>
+
+<template>
+  <var-uploader v-model="standardFiles" variant="standard" />
+  <var-uploader v-model="outlinedFiles" variant="outlined" />
+  <var-uploader v-model="filledFiles" variant="filled" />
+</template>
+```
+
 ### 文件预览
 
 通过分析文件的 url 后缀名判断文件类型，支持图片和视频预览。
@@ -484,7 +504,8 @@ const files = ref([
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
-| `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
+| `variant` | 外观类型，可选值为 `standard` `outlined` `filled` | _string_ | `standard` |
+| `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级，仅在 `standard` 外观下生效 | _string \| number \| boolean_|   `true`    |
 | `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小，单位为 `byte` | _string \| number_ | `-` |
@@ -574,6 +595,9 @@ const files = ref([
 | `--uploader-file-close-icon-color`        | `#fff`                                                                                       |
 | `--uploader-file-cover-fit`               | `cover`                                                                                      |
 | `--uploader-file-cover-background`        | `#f7f8fa`                                                                                    |
+| `--uploader-outlined-background`          | `transparent`                                                                                |
+| `--uploader-filled-background`            | `hsla(0, 0%, 93%, 1)`                                                                        |
+| `--uploader-outline-color`                | `var(--color-outline)`                                                                       |
 | `--uploader-preview-video-width`          | `100vw`                                                                                      |
 | `--uploader-preview-video-height`         | `100vw`                                                                                      |
 | `--uploader-file-indicator-height`        | `4px`                                                                                        |

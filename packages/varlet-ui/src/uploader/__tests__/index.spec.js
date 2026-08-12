@@ -17,6 +17,32 @@ test('uploader plugin', () => {
   expect(app.component(Uploader.name)).toBeTruthy()
 })
 
+test('uploader variant', async () => {
+  const wrapper = mount(VarUploader, {
+    props: {
+      elevation: 3,
+      modelValue: [{ name: 'cat.jpg' }],
+      variant: 'standard',
+    },
+  })
+
+  expect(wrapper.findAll('.var-elevation--3')).toHaveLength(2)
+  expect(wrapper.findAll('.var-uploader--outlined')).toHaveLength(0)
+  expect(wrapper.findAll('.var-uploader--filled')).toHaveLength(0)
+
+  await wrapper.setProps({ variant: 'outlined' })
+  expect(wrapper.findAll('.var-elevation--3')).toHaveLength(0)
+  expect(wrapper.findAll('.var-uploader--outlined')).toHaveLength(2)
+  expect(wrapper.findAll('.var-uploader--filled')).toHaveLength(0)
+
+  await wrapper.setProps({ variant: 'filled' })
+  expect(wrapper.findAll('.var-elevation--3')).toHaveLength(0)
+  expect(wrapper.findAll('.var-uploader--outlined')).toHaveLength(0)
+  expect(wrapper.findAll('.var-uploader--filled')).toHaveLength(2)
+
+  wrapper.unmount()
+})
+
 test('uploader onAfterRead', async () => {
   const onAfterRead = vi.fn()
 

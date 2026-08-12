@@ -20,6 +20,8 @@ export interface VarFile {
 
 export type UploaderResolveType = 'default' | 'file' | 'data-url'
 
+export type UploaderVariant = 'standard' | 'outlined' | 'filled'
+
 export type UploaderValidateTrigger = 'onChange' | 'onRemove'
 
 export type UploaderVarFileUtils = {
@@ -38,6 +40,7 @@ export interface UploaderProps extends BasicAttributes {
   readonly?: boolean
   disabled?: boolean
   elevation?: boolean | string | number
+  variant?: UploaderVariant
   removable?: boolean
   maxlength?: string | number
   maxsize?: string | number

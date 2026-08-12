@@ -17,6 +17,9 @@
   --uploader-file-close-icon-color: #fff;
   --uploader-file-cover-fit: cover;
   --uploader-file-cover-background: #f7f8fa;
+  --uploader-outlined-background: transparent;
+  --uploader-filled-background: hsla(0, 0%, 93%, 1);
+  --uploader-outline-color: var(--color-outline);
   --uploader-preview-video-width: 100vw;
   --uploader-preview-video-height: 100vw;
   --uploader-file-indicator-height: 4px;
@@ -185,6 +188,19 @@
 
   &--success {
     background: var(--uploader-file-indicator-success-color);
+  }
+
+  &--outlined {
+    --uploader-action-background: var(--uploader-outlined-background);
+    --uploader-file-name-background: var(--uploader-outlined-background);
+    --uploader-file-cover-background: var(--uploader-outlined-background);
+    border: thin solid var(--uploader-outline-color);
+  }
+
+  &--filled {
+    --uploader-action-background: var(--uploader-filled-background);
+    --uploader-file-name-background: var(--uploader-filled-background);
+    --uploader-file-cover-background: var(--uploader-filled-background);
   }
 
   &--error {
