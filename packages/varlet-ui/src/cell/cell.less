@@ -1,7 +1,9 @@
 :root {
   --cell-color: var(--color-text);
   --cell-font-size: var(--font-size-md);
+  --cell-title-line-height: 1.5;
   --cell-description-font-size: var(--font-size-sm);
+  --cell-description-line-height: 1.5;
   --cell-description-color: rgba(0, 0, 0, 0.6);
   --cell-description-margin-top: 4px;
   --cell-padding: 10px 12px;
@@ -52,6 +54,7 @@
   }
 
   &__title {
+    line-height: var(--cell-title-line-height);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -59,6 +62,7 @@
 
   &__description {
     font-size: var(--cell-description-font-size);
+    line-height: var(--cell-description-line-height);
     color: var(--cell-description-color);
     margin-top: var(--cell-description-margin-top);
   }
