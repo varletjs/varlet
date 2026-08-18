@@ -1,15 +1,22 @@
-## [3.20.3](https://github.com/varletjs/varlet/compare/v3.20.2...v3.20.3) (2026-08-12)
+## [3.20.4](https://github.com/varletjs/varlet/compare/v3.20.3...v3.20.4) (2026-08-18)
 
 
 ### Bug Fixes
 
-* **date-picker:** standardize date formatting and improve allowedDates tests ([a689c6f](https://github.com/varletjs/varlet/commit/a689c6f726de69bbd0ef6906ec2ed2d2b7abed67))
 * **docs:** update variant description in uploader documentation for clarity ([b8f19b4](https://github.com/varletjs/varlet/commit/b8f19b428c4d389a7a819501bef3b9180a6e48cd))
 
 
 ### Features
 
+* **cell:** add title and description line-height variables for improved styling ([a9a8ba1](https://github.com/varletjs/varlet/commit/a9a8ba1b70c5874ea4bd214910f17b8130092b45))
 * **uploader:** add variant support for uploader component and update documentation ([381229d](https://github.com/varletjs/varlet/commit/381229d1a467af2e992e18285a3256044bcc38b6))
+
+## [3.20.2](https://github.com/varletjs/varlet/compare/v3.20.1...v3.20.2) (2026-07-31)
+
+
+### Bug Fixes
+
+* **date-picker:** standardize date formatting and improve allowedDates tests ([a689c6f](https://github.com/varletjs/varlet/commit/a689c6f726de69bbd0ef6906ec2ed2d2b7abed67))
 
 ## [3.20.1](https://github.com/varletjs/varlet/compare/v3.20.0...v3.20.1) (2026-07-29)
 
