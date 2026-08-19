@@ -31,7 +31,7 @@
   "unpkg": "umd/varlet.js",
   "module": "es/index.mjs",
   "typings": "types/index.d.ts",
-  "style": "umd/style.css",
+  "style": "es/varlet.css",
   "files": [
     "json",
     "lib",
