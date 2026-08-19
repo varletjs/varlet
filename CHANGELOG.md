@@ -1,12 +1,24 @@
-## [3.20.5](https://github.com/varletjs/varlet/compare/v3.20.4...v3.20.5) (2026-08-19)
+## [3.20.6](https://github.com/varletjs/varlet/compare/v3.20.5...v3.20.6) (2026-08-19)
+
+
+### Bug Fixes
+
+* **package:** update style path to use es/varlet.css ([0a70334](https://github.com/varletjs/varlet/commit/0a70334d813d2ee71e7f5ecb2121723c8e23c5a1))
 
 
 ### Features
 
 * **button:** add text round button examples and documentation ([2a4577b](https://github.com/varletjs/varlet/commit/2a4577b71ccee083eb765c0d6a93b8ba8bacbec6))
-* **cell:** add title and description line-height variables for improved styling ([a9a8ba1](https://github.com/varletjs/varlet/commit/a9a8ba1b70c5874ea4bd214910f17b8130092b45))
 * **image-preview:** add additional style imports for elevation, hover overlay, ripple, and loading ([967058b](https://github.com/varletjs/varlet/commit/967058b74156f6d93bdad7290b67da5be34f2b32))
+* **paper:** add active state with overlay and update documentation ([92dade8](https://github.com/varletjs/varlet/commit/92dade8b10eae3b8a0c0a0419b77b6ece949143b))
 * **theme:** add line-height variables for cell title and description in dark and light themes ([d533139](https://github.com/varletjs/varlet/commit/d533139684690048a534cad690e0dfeae9d2f01a))
+
+## [3.20.4](https://github.com/varletjs/varlet/compare/v3.20.3...v3.20.4) (2026-08-18)
+
+
+### Features
+
+* **cell:** add title and description line-height variables for improved styling ([a9a8ba1](https://github.com/varletjs/varlet/commit/a9a8ba1b70c5874ea4bd214910f17b8130092b45))
 
 ## [3.20.3](https://github.com/varletjs/varlet/compare/v3.20.2...v3.20.3) (2026-08-12)
 
