@@ -30,6 +30,7 @@ export default {
   verticalButtonGroup: 'Vertical Button Group',
   linearGradientColor: 'LinearGradient Color',
   tonalRoundButton: 'Tonal Round Button',
+  textRoundButton: 'Text Round Button',
   fabButton: 'FAB Button',
   event: 'Events',
   click: 'Click',

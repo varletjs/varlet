@@ -129,6 +129,28 @@ function handleAutoLoadingClick() {
     </var-button>
   </var-space>
 
+  <app-type>{{ t('textRoundButton') }}</app-type>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-button round text>
+      <var-icon name="bookmark" />
+    </var-button>
+    <var-button type="primary" round text>
+      <var-icon name="plus" />
+    </var-button>
+    <var-button type="info" round text>
+      <var-icon name="information" />
+    </var-button>
+    <var-button type="success" round text>
+      <var-icon name="check" />
+    </var-button>
+    <var-button type="warning" round text>
+      <var-icon name="warning" />
+    </var-button>
+    <var-button type="danger" round text>
+      <var-icon name="window-close" />
+    </var-button>
+  </var-space>
+
   <app-type>{{ t('fabButton') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button type="primary" fab tonal>

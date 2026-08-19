@@ -59,7 +59,9 @@
     </var-swipe>
 
     <slot name="close-icon">
-      <var-icon v-if="closeable" :class="n('close-icon')" name="close-circle" var-image-preview-cover @click="close" />
+      <var-button v-if="closeable" :class="n('close-icon')" text round var-image-preview-cover @click="close">
+        <var-icon :class="n('close-icon-image')" name="window-close" />
+      </var-button>
     </slot>
 
     <div v-if="$slots.extra" :class="n('extra')">
@@ -72,6 +74,7 @@
 import { call, clamp, preventDefault, toNumber } from '@varlet/shared'
 import { useEventListener, useTouch, useVModel } from '@varlet/use'
 import { computed, defineComponent, ref } from 'vue'
+import VarButton from '../button'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import VarSwipe from '../swipe'
@@ -92,6 +95,7 @@ const BASE_RATIO = 1
 export default defineComponent({
   name,
   components: {
+    VarButton,
     VarSwipe,
     VarSwipeItem,
     VarPopup,
@@ -342,6 +346,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../button/button';
 @import '../icon/icon';
 @import '../swipe/swipe';
 @import '../swipe-item/swipeItem';

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch, type Ref } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 import config from '@config'
 import { getBrowserTheme, getPCLocationInfo, onThemeChange, setTheme, watchTheme, type Theme } from '@varlet/cli/client'
 import { useRoute, useRouter } from 'vue-router'
@@ -22,8 +22,6 @@ const indexPage: Ref<Record<string, any>> = ref(config?.pc?.indexPage)
 const teamTitle = () => indexPage.value?.teamMembers?.label?.[language.value]
 const contributorsTitle = () => indexPage.value?.contributors?.label?.[language.value]
 const sponsorsTitle = () => indexPage.value?.sponsors?.label?.[language.value]
-const indexCardVariant = computed(() => (currentTheme.value === 'md3DarkTheme' ? 'standard' : 'filled'))
-const indexCardSurface = computed(() => (currentTheme.value === 'md3DarkTheme' ? 'low' : undefined))
 
 const getStar = () => {
   router.push(`/${language.value}/home`)
@@ -129,14 +127,8 @@ watch(
         <div class="varlet-doc-index__features">
           <var-card
             class="varlet-doc-index__feature"
-            :variant="indexCardVariant"
-            :surface="indexCardSurface"
-            :hoverable="
-              getFeatureLink(feature) ? { color: 'var(--site-config-color-index-page-get-started-button)' } : false
-            "
-            :ripple="
-              getFeatureLink(feature) ? { color: 'var(--site-config-color-index-page-get-started-button)' } : false
-            "
+            variant="outlined"
+            :hoverable="Boolean(getFeatureLink(feature))"
             :elevation="false"
             v-for="feature in indexPage.features"
             @click="toFeature(feature)"
@@ -157,8 +149,7 @@ watch(
         <div class="varlet-doc-index__team-members">
           <var-card
             class="varlet-doc-index__team-member"
-            :variant="indexCardVariant"
-            :surface="indexCardSurface"
+            variant="outlined"
             :elevation="false"
             v-for="member in indexPage.teamMembers.members"
           >
@@ -204,7 +195,7 @@ watch(
         </div>
 
         <a class="varlet-doc-index__image-link" :href="indexPage.contributors.link">
-          <var-card class="varlet-doc-index__image-panel" :variant="indexCardVariant" :surface="indexCardSurface" :elevation="false">
+          <var-card class="varlet-doc-index__image-panel" variant="outlined" :elevation="false">
             <img class="varlet-doc-index__contributors-image" :src="indexPage.contributors.image" />
           </var-card>
         </a>
@@ -218,7 +209,7 @@ watch(
         </div>
 
         <a class="varlet-doc-index__image-link" :href="indexPage.sponsors.link">
-          <var-card class="varlet-doc-index__image-panel" :variant="indexCardVariant" :surface="indexCardSurface" :elevation="false">
+          <var-card class="varlet-doc-index__image-panel" variant="outlined" :elevation="false">
             <img class="varlet-doc-index__sponsors-image" :src="indexPage.sponsors.image" />
           </var-card>
         </a>

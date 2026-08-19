@@ -161,6 +161,33 @@ Button component for triggering actions.
 </template>
 ```
 
+### Text Round Button
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button round text>
+      <var-icon name="bookmark" />
+    </var-button>
+    <var-button type="primary" round text>
+      <var-icon name="plus" />
+    </var-button>
+    <var-button type="info" round text>
+      <var-icon name="information" />
+    </var-button>
+    <var-button type="success" round text>
+      <var-icon name="check" />
+    </var-button>
+    <var-button type="warning" round text>
+      <var-icon name="warning" />
+    </var-button>
+    <var-button type="danger" round text>
+      <var-icon name="window-close" />
+    </var-button>
+  </var-space>
+</template>
+```
+
 ### FAB Button
 
 ```html
