@@ -1,9 +1,12 @@
 <script setup>
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { ref } from 'vue'
 import { t, use } from './locale'
 
 watchLang(use)
 onThemeChange()
+
+const active = ref(false)
 </script>
 
 <template>
@@ -24,6 +27,21 @@ onThemeChange()
     :ripple="{ color: 'var(--color-primary)' }"
     :hoverable="{ color: 'var(--color-primary)' }"
   />
+
+  <app-type>{{ t('interactionState') }}</app-type>
+  <div class="paper-example-states">
+    <var-paper
+      :active="active"
+      hoverable
+      ripple
+      :elevation="2"
+      width="25vmin"
+      height="25vmin"
+      @click="active = !active"
+    >
+      {{ active ? t('active') : t('inactive') }}
+    </var-paper>
+  </div>
 
   <app-type>{{ t('round') }}</app-type>
   <var-paper :elevation="2" width="25vmin" height="25vmin" round />
@@ -55,5 +73,17 @@ onThemeChange()
   color: var(--color-text-disabled);
   font-size: 14px;
   line-height: 1.6;
+}
+
+.paper-example-states {
+  display: flex;
+  gap: 12px;
+
+  .var-paper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+  }
 }
 </style>

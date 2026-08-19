@@ -17,6 +17,10 @@ export interface PaperHoverable {
   color?: string
 }
 
+export interface PaperActive {
+  color?: string
+}
+
 export interface PaperProps extends BasicAttributes {
   elevation?: boolean | number | string
   ripple?: boolean | PaperRipple
@@ -28,6 +32,8 @@ export interface PaperProps extends BasicAttributes {
   variant?: PaperVariant
   surface?: PaperSurface
   hoverable?: boolean | PaperHoverable
+  active?: boolean | PaperActive
+  disabled?: boolean
   onClick?: ListenerProp<(e: Event) => void>
 }
 

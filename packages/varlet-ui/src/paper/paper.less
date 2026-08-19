@@ -5,6 +5,8 @@
   --paper-filled-background: hsla(0, 0%, 93%, 1);
   --paper-outline-color: var(--color-outline);
   --paper-border-radius: 4px;
+  --paper-active-color: var(--color-primary);
+  --paper-active-opacity: 0.2;
 }
 
 .var-paper {
@@ -21,6 +23,22 @@
 
   &--cursor {
     cursor: pointer;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--active {
+    color: var(--paper-active-color);
+  }
+
+  &__active-overlay {
+    color: var(--paper-active-color);
+
+    &.var-hover-overlay--hovering {
+      opacity: var(--paper-active-opacity);
+    }
   }
 
   &--surface-low {

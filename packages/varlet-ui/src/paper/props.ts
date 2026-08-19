@@ -15,6 +15,10 @@ export interface PaperHoverable {
   color?: string
 }
 
+export interface PaperActive {
+  color?: string
+}
+
 export const props = {
   elevation: {
     type: [Boolean, Number, String],
@@ -38,5 +42,10 @@ export const props = {
     type: [Boolean, Object] as PropType<boolean | PaperHoverable>,
     default: false,
   },
+  active: {
+    type: [Boolean, Object] as PropType<boolean | PaperActive>,
+    default: false,
+  },
+  disabled: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

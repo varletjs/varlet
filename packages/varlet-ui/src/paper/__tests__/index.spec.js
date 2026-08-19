@@ -147,7 +147,7 @@ test('paper hoverable object', async () => {
   })
 
   await wrapper.trigger('mouseenter')
-  const overlay = wrapper.find('.var-hover-overlay')
+  const overlay = wrapper.findAll('.var-hover-overlay')[1]
   expect(overlay.classes()).toContain('var-hover-overlay--hovering')
   expect(overlay.attributes('style')).toContain('color: rgb(255, 0, 0)')
 
@@ -160,6 +160,45 @@ test('paper hoverable object', async () => {
   await wrapper.trigger('mouseleave')
   await wrapper.trigger('mouseenter')
   expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
+test('paper active', async () => {
+  const wrapper = mount(VarPaper, {
+    props: {
+      active: true,
+    },
+  })
+
+  const activeOverlay = wrapper.find('.var-paper__active-overlay')
+  expect(wrapper.classes()).toContain('var-paper--active')
+  expect(activeOverlay.classes()).toContain('var-hover-overlay--hovering')
+  expect(activeOverlay.attributes('style')).toBeUndefined()
+
+  await wrapper.setProps({
+    active: { color: '#f00' },
+  })
+  expect(wrapper.attributes('style')).toContain('--paper-active-color: #f00')
+  wrapper.unmount()
+})
+
+test('paper disabled', async () => {
+  const onClick = vi.fn()
+  const wrapper = mount(VarPaper, {
+    props: {
+      active: true,
+      hoverable: true,
+      ripple: true,
+      disabled: true,
+      onClick,
+    },
+  })
+
+  expect(wrapper.classes()).toContain('var-paper--disabled')
+  expect(wrapper.classes()).not.toContain('var-paper--active')
+  expect(wrapper.find('.var-hover-overlay--hovering').exists()).toBeFalsy()
+  await wrapper.trigger('click')
+  expect(onClick).not.toBeCalled()
   wrapper.unmount()
 })
 

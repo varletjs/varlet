@@ -579,6 +579,8 @@ interface BaseStyleVars {
   '--paper-filled-background'?: string
   '--paper-outline-color'?: string
   '--paper-border-radius'?: string
+  '--paper-active-color'?: string
+  '--paper-active-opacity'?: string
   '--picker-background'?: string
   '--picker-toolbar-height'?: string
   '--picker-confirm-button-text-color'?: string

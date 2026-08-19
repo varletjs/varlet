@@ -42,6 +42,24 @@ An easier container using elevation and water effects.
 </template>
 ```
 
+### Interactive States
+
+`active` displays a persistent translucent primary-color overlay and applies the primary color to inheritable text. It is controlled and can be toggled by external logic such as a click handler.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(false)
+</script>
+
+<template>
+  <var-paper :active="active" hoverable ripple :width="200" :height="48" @click="active = !active">
+    {{ active ? 'Active' : 'Inactive' }}
+  </var-paper>
+</template>
+```
+
 ### Rounded Paper
 
 ```html
@@ -112,6 +130,8 @@ An easier container using elevation and water effects.
 | `variant` ***3.18.0*** | Paper variant, options `standard`, `outlined`, and `filled`. The `outlined` and `filled` modes do not mount elevation styles | _string_ | `standard` |
 | `surface`  ***3.16.0*** | Background preset, optional value is `low`, invalid when `variant` is `filled`. It currently only takes effect in the MD3 dark theme | _string_ | `-` |
 | `hoverable`  ***3.16.0*** | Whether to enable hover effect, supports object form `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
+| `active` ***3.20.6*** | Whether to enable the persistent active effect. It uses a translucent primary-color overlay and text color by default and supports object form `{ color?: string }` | _boolean \| object_ | `false` |
+| `disabled` ***3.20.6*** | Whether to disable interaction. When disabled, click, hover, and ripple effects are disabled and only a disabled cursor is shown | _boolean_ | `false` |
 
 ### Events
 
@@ -137,3 +157,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--paper-filled-background` | `hsla(0, 0%, 93%, 1)` |
 | `--paper-outline-color` | `var(--color-outline)` |
 | `--paper-border-radius` | `4px` |
+| `--paper-active-color` | `var(--color-primary)` |
+| `--paper-active-opacity` | `0.2` |

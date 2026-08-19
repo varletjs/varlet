@@ -42,6 +42,24 @@
 </template>
 ```
 
+### 交互状态
+
+`active` 会显示主色半透明的常驻叠层，并将可继承的文字颜色设为主色。它是受控状态，可以由点击事件等外部逻辑切换。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(false)
+</script>
+
+<template>
+  <var-paper :active="active" hoverable ripple :width="200" :height="48" @click="active = !active">
+    {{ active ? '激活状态' : '未激活状态' }}
+  </var-paper>
+</template>
+```
+
 ### 圆形纸张
 
 ```html
@@ -112,6 +130,8 @@
 | `variant` ***3.18.0*** | 纸张变体，可选值为 `standard`、`outlined`、`filled`，`outlined` 和 `filled` 模式不挂载海拔样式 | _string_ | `standard` |
 | `surface`  ***3.16.0*** | 背景色预设，可选值 `low`，在 `variant` 为 `filled` 时无效，目前只作用在 MD3 暗色主题 | _string_ | `-` |
 | `hoverable`  ***3.16.0*** | 是否开启鼠标悬停效果，支持对象形式 `{ disabled?: boolean, color?: string }` | _boolean \| object_ | `false` |
+| `active` ***3.20.6*** | 是否开启常驻激活效果，默认使用主色半透明叠层和文字颜色，支持对象形式 `{ color?: string }` | _boolean \| object_ | `false` |
+| `disabled` ***3.20.6*** | 是否禁用交互。禁用后不触发点击、悬停和水波效果，仅显示禁用光标 | _boolean_ | `false` |
 
 ### 事件
 
@@ -137,3 +157,5 @@
 | `--paper-filled-background`          | `hsla(0, 0%, 93%, 1)` |
 | `--paper-outline-color`              | `var(--color-outline)` |
 | `--paper-border-radius`              | `4px` |
+| `--paper-active-color`               | `var(--color-primary)` |
+| `--paper-active-opacity`             | `0.2` |
