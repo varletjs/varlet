@@ -1,4 +1,14 @@
-## [3.20.4](https://github.com/varletjs/varlet/compare/v3.20.3...v3.20.4) (2026-08-18)
+## [3.20.5](https://github.com/varletjs/varlet/compare/v3.20.4...v3.20.5) (2026-08-19)
+
+
+### Features
+
+* **button:** add text round button examples and documentation ([2a4577b](https://github.com/varletjs/varlet/commit/2a4577b71ccee083eb765c0d6a93b8ba8bacbec6))
+* **cell:** add title and description line-height variables for improved styling ([a9a8ba1](https://github.com/varletjs/varlet/commit/a9a8ba1b70c5874ea4bd214910f17b8130092b45))
+* **image-preview:** add additional style imports for elevation, hover overlay, ripple, and loading ([967058b](https://github.com/varletjs/varlet/commit/967058b74156f6d93bdad7290b67da5be34f2b32))
+* **theme:** add line-height variables for cell title and description in dark and light themes ([d533139](https://github.com/varletjs/varlet/commit/d533139684690048a534cad690e0dfeae9d2f01a))
+
+## [3.20.3](https://github.com/varletjs/varlet/compare/v3.20.2...v3.20.3) (2026-08-12)
 
 
 ### Bug Fixes
@@ -8,7 +18,6 @@
 
 ### Features
 
-* **cell:** add title and description line-height variables for improved styling ([a9a8ba1](https://github.com/varletjs/varlet/commit/a9a8ba1b70c5874ea4bd214910f17b8130092b45))
 * **uploader:** add variant support for uploader component and update documentation ([381229d](https://github.com/varletjs/varlet/commit/381229d1a467af2e992e18285a3256044bcc38b6))
 
 ## [3.20.2](https://github.com/varletjs/varlet/compare/v3.20.1...v3.20.2) (2026-07-31)
