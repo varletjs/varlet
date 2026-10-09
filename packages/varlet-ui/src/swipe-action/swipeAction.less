@@ -1,0 +1,45 @@
+:root {
+  --swipe-action-background: var(--color-surface-container-low);
+  --swipe-action-action-padding: 0 20px;
+  --swipe-action-action-font-size: var(--font-size-md);
+}
+
+.var-swipe-action {
+  overflow: hidden;
+  position: relative;
+
+  &__track {
+    position: relative;
+    transition-property: transform;
+    transition-timing-function: ease;
+  }
+
+  &__content {
+    background: var(--swipe-action-background);
+  }
+
+  &__actions {
+    display: flex;
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+
+  &--left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  &--right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &__action[var-swipe-action-cover] {
+    flex-shrink: 0;
+    height: 100%;
+    border-radius: 0;
+    padding: var(--swipe-action-action-padding);
+    font-size: var(--swipe-action-action-font-size);
+  }
+}
