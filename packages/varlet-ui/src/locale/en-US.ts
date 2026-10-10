@@ -1,6 +1,12 @@
 import { Message } from './index'
 
 export default {
+  // Tour
+  tourTitle: 'Tour',
+  tourPrevButtonText: 'Previous',
+  tourNextButtonText: 'Next',
+  tourFinishButtonText: 'Finish',
+  tourCloseButtonText: 'Skip',
   // Dialog
   dialogTitle: 'Hint',
   dialogConfirmButtonText: 'Confirm',
