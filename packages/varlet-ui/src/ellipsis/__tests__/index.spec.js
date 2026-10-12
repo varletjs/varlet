@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { expect, test, vi } from 'vite-plus/test'
-import { createApp } from 'vue'
+import { afterEach, expect, test, vi } from 'vite-plus/test'
+import { createApp, nextTick } from 'vue'
 import Ellipsis from '..'
 import VarEllipsis from '../Ellipsis.vue'
 
@@ -143,6 +143,144 @@ test('ellipsis expand', async () => {
   await wrapper.find('.var-ellipsis').trigger('click')
   expect(onUpdateExpand).toBeCalledTimes(2)
   expect(wrapper.find('.var-ellipsis--expand').exists()).toBeTruthy()
+
+  wrapper.unmount()
+})
+
+afterEach(() => {
+  vi.restoreAllMocks()
+})
+
+test('ellipsis expandOnOverflow does not expand when the text is not overflowed', async () => {
+  const onUpdateExpand = vi.fn()
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      expandTrigger: 'click',
+      expandOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeFalsy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).not.toBeCalled()
+
+  wrapper.unmount()
+})
+
+test('ellipsis expandOnOverflow expands when the text is overflowed', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockReturnValue(200)
+  vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      expandTrigger: 'click',
+      expandOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeTruthy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledTimes(1)
+  expect(wrapper.find('.var-ellipsis--expand').exists()).toBeTruthy()
+
+  wrapper.unmount()
+})
+
+test('ellipsis expandOnOverflow detects the overflow by the height when lineClamp is set', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(300)
+  vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      lineClamp: 3,
+      expandTrigger: 'click',
+      expandOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeTruthy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledTimes(1)
+
+  wrapper.unmount()
+})
+
+test('ellipsis expandOnOverflow does not expand when the lineClamp content is not overflowed', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(100)
+  vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      lineClamp: 3,
+      expandTrigger: 'click',
+      expandOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeFalsy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).not.toBeCalled()
+
+  wrapper.unmount()
+})
+
+test('ellipsis keep the expand behaviour when expandOnOverflow is disabled', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockReturnValue(10)
+  vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      expandTrigger: 'click',
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeTruthy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledTimes(1)
 
   wrapper.unmount()
 })

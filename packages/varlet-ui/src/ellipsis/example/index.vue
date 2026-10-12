@@ -27,6 +27,11 @@ onThemeChange()
     t('text')
   }}</var-ellipsis>
 
+  <app-type>{{ t('expandOnOverflow') }}</app-type>
+  <var-ellipsis expand-trigger="click" expand-on-overflow style="max-width: 50vmin" :tooltip="false">{{
+    t('text')
+  }}</var-ellipsis>
+
   <app-type>{{ t('tooltip') }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :tooltip="{ type: 'primary', sameWidth: false }">
     {{ t('text') }}

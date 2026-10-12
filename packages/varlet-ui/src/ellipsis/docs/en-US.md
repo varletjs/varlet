@@ -58,6 +58,22 @@ const expand = ref(false)
 </template>
 ```
 
+### Expand Only When Overflow
+
+When `expand-on-overflow` is enabled, the pointer cursor and the expand interaction are available only if the text is overflowed.
+
+```html
+<template>
+  <var-ellipsis
+    style="max-width: 170px"
+    expand-trigger="click"
+    expand-on-overflow
+  >
+    I want to say english to everyone like, even you still are normal people, you still can work a world champion and no one trust you!
+  </var-ellipsis>
+</template>
+```
+
 ### Custom Tooltip
 
 ```html
@@ -80,6 +96,7 @@ const expand = ref(false)
 | ----- | ------ | ---- | ---- |
 | `v-model:expand` | Whether to expand | _boolean_  | `false` |
 | `expand-trigger` | Expand trigger method, optional value `click` | _string_ | `-` |
+| `expand-on-overflow` | Expand on click only if the text is overflowed | _boolean_ | `false` |
 | `line-clamp` | Maximum number of display lines, see [line-clamp](https://caniuse.com/?search=line-clamp) for compatibility | _string_ | `-` |
 | `tooltip` | Tooltip component props, for deep customization. For more convenience, `sameWidth` defaults to `true` here | _boolean \| TooltipProps_ | `true` |
 

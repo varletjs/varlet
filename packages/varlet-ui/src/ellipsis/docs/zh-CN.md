@@ -58,6 +58,22 @@ const expand = ref(false)
 </template>
 ```
 
+### 只在省略时可展开
+
+开启 `expand-on-overflow` 后，只有内容被省略时才会显示手型光标并响应点击，未被省略时点击不会展开。
+
+```html
+<template>
+  <var-ellipsis
+    style="max-width: 170px"
+    expand-trigger="click"
+    expand-on-overflow
+  >
+    其实没有什么事情是不可能的，我都拿到世界冠军了，真的没有什么事情是不可能的。
+  </var-ellipsis>
+</template>
+```
+
 ### 自定义 Tooltip
 
 ```html
@@ -80,6 +96,7 @@ const expand = ref(false)
 |-------|------|----|----|
 | `v-model:expand` | 是否展开 | _boolean_  | `false` |
 | `expand-trigger` | 展开触发方式，可选值 `click` | _string_  | `-` |
+| `expand-on-overflow` | 仅在文本被省略时才能点击展开 | _boolean_  | `false` |
 | `line-clamp` | 最大显示行数，兼容性见 [line-clamp](https://caniuse.com/?search=line-clamp) | _string_  | `-` |
 | `tooltip` | Tooltip 组件配置，用于深度定制。为了更方便使用，`sameWidth` 在这里默认为 `true` | _boolean \| TooltipProps_  | `true` |
 
