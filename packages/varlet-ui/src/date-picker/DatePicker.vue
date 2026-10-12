@@ -58,7 +58,16 @@
         </transition>
       </div>
     </div>
-    <div :class="n('body')">
+    <date-picker-columns
+      v-if="isColumns"
+      :model-value="modelValue"
+      :type="type"
+      :min="min"
+      :max="max"
+      :allowed-dates="allowedDates"
+      @update:model-value="selectColumnsValue"
+    />
+    <div v-else :class="n('body')">
       <panel-header
         v-if="panelType"
         :type="headerType"
@@ -117,12 +126,14 @@ import {
   DatePickerFormats,
   DatePickerTypes,
   DatePickerUnits,
+  DatePickerVariants,
   MonthList,
   ShiftDirections,
   WeekHeader,
   type Month,
   type Week,
 } from './constants'
+import DatePickerColumns from './DatePickerColumns.vue'
 import DayPickerPanel from './DayPickerPanel.vue'
 import MonthPickerPanel from './MonthPickerPanel.vue'
 import PanelHeader from './PanelHeader.vue'
@@ -139,6 +150,7 @@ const dayjs = createDayjs()
 export default defineComponent({
   name,
   components: {
+    DatePickerColumns,
     MonthPickerPanel,
     YearPickerPanel,
     DayPickerPanel,
@@ -157,6 +169,7 @@ export default defineComponent({
     const previewMonth = ref<Month>(currentMonthValue)
     const previewYear = ref(currentYear)
     const reverse = ref(false)
+    const isColumns = computed(() => props.variant === DatePickerVariants.Columns)
     const yearPanelEl = ref<RendererNode | null>(null)
     const monthPanelEl = ref<RendererNode | null>(null)
     const dayPanelEl = ref<RendererNode | null>(null)
@@ -811,6 +824,11 @@ export default defineComponent({
       syncPreviewValue(previewSource)
     }
 
+    function selectColumnsValue(value: string) {
+      call(props['onUpdate:modelValue'], value)
+      call(props.onChange, value)
+    }
+
     function syncModelValue() {
       showYearPanel.value = false
       showMonthPanel.value = false
@@ -851,6 +869,8 @@ export default defineComponent({
       resetPreview,
       syncModelValue,
       rangeSelecting,
+      isColumns,
+      selectColumnsValue,
       formatElevation,
       DatePickerTypes,
     }
