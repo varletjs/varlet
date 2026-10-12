@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { t, use } from './locale'
 
 const expand = ref(false)
+const width = ref(100)
 
 watchLang(use)
 onThemeChange()
@@ -31,6 +32,19 @@ onThemeChange()
   <var-ellipsis expand-trigger="click" expand-on-overflow style="max-width: 50vmin" :tooltip="false">{{
     t('text')
   }}</var-ellipsis>
+
+  <app-type>{{ t('overflowOnResize') }}</app-type>
+  <var-space direction="column" size="large">
+    <var-ellipsis
+      expand-trigger="click"
+      expand-on-overflow
+      :style="{ maxWidth: `${width}%` }"
+      :tooltip="false"
+    >
+      {{ t('text') }}
+    </var-ellipsis>
+    <var-slider v-model="width" :min="30" :max="100" />
+  </var-space>
 
   <app-type>{{ t('tooltip') }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :tooltip="{ type: 'primary', sameWidth: false }">
