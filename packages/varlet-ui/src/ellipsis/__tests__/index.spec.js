@@ -120,6 +120,47 @@ test('ellipsis tooltip equals object', async () => {
   wrapper.unmount()
 })
 
+test('ellipsis tooltipOnOverflow only enables the tooltip for truncated single-line content', async () => {
+  const nonOverflowingWrapper = mount(VarEllipsis, {
+    props: {
+      tooltipOnOverflow: true,
+    },
+  })
+
+  await nextTick()
+  expect(nonOverflowingWrapper.vm.tooltipProps).toStrictEqual({ disabled: true })
+  nonOverflowingWrapper.unmount()
+
+  vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockReturnValue(200)
+  vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
+
+  const overflowingWrapper = mount(VarEllipsis, {
+    props: {
+      tooltipOnOverflow: true,
+    },
+  })
+
+  await nextTick()
+  expect(overflowingWrapper.vm.tooltipProps).toStrictEqual({ sameWidth: true })
+  overflowingWrapper.unmount()
+})
+
+test('ellipsis tooltipOnOverflow enables the tooltip for truncated line-clamped content', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(200)
+  vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      lineClamp: 2,
+      tooltipOnOverflow: true,
+    },
+  })
+
+  await nextTick()
+  expect(wrapper.vm.tooltipProps).toStrictEqual({ sameWidth: true })
+  wrapper.unmount()
+})
+
 test('ellipsis expand', async () => {
   const onUpdateExpand = vi.fn()
 
@@ -151,13 +192,13 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-test('ellipsis expandOnOverflow does not expand when the text is not overflowed', async () => {
+test('ellipsis expandableOnOverflow does not expand when the text is not overflowed', async () => {
   const onUpdateExpand = vi.fn()
 
   const wrapper = mount(VarEllipsis, {
     props: {
       expandTrigger: 'click',
-      expandOnOverflow: true,
+      expandableOnOverflow: true,
       'onUpdate:expand': onUpdateExpand,
     },
     slots: {
@@ -175,7 +216,7 @@ test('ellipsis expandOnOverflow does not expand when the text is not overflowed'
   wrapper.unmount()
 })
 
-test('ellipsis expandOnOverflow expands when the text is overflowed', async () => {
+test('ellipsis expandableOnOverflow expands when the text is overflowed', async () => {
   vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockReturnValue(200)
   vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
 
@@ -184,7 +225,7 @@ test('ellipsis expandOnOverflow expands when the text is overflowed', async () =
   const wrapper = mount(VarEllipsis, {
     props: {
       expandTrigger: 'click',
-      expandOnOverflow: true,
+      expandableOnOverflow: true,
       'onUpdate:expand': onUpdateExpand,
     },
     slots: {
@@ -203,7 +244,38 @@ test('ellipsis expandOnOverflow expands when the text is overflowed', async () =
   wrapper.unmount()
 })
 
-test('ellipsis expandOnOverflow detects the overflow by the height when lineClamp is set', async () => {
+test('ellipsis expandableOnOverflow can collapse single-line content after expanding', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockImplementation(function () {
+    return this.classList.contains('var-ellipsis--expand') ? 100 : 200
+  })
+  vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      expandTrigger: 'click',
+      expandableOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+  await wrapper.find('.var-ellipsis').trigger('click')
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeTruthy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledTimes(2)
+  expect(wrapper.find('.var-ellipsis--expand').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('ellipsis expandableOnOverflow detects the overflow by the height when lineClamp is set', async () => {
   vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(300)
   vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
 
@@ -213,7 +285,7 @@ test('ellipsis expandOnOverflow detects the overflow by the height when lineClam
     props: {
       lineClamp: 3,
       expandTrigger: 'click',
-      expandOnOverflow: true,
+      expandableOnOverflow: true,
       'onUpdate:expand': onUpdateExpand,
     },
     slots: {
@@ -231,7 +303,7 @@ test('ellipsis expandOnOverflow detects the overflow by the height when lineClam
   wrapper.unmount()
 })
 
-test('ellipsis expandOnOverflow does not expand when the lineClamp content is not overflowed', async () => {
+test('ellipsis expandableOnOverflow does not expand when the lineClamp content is not overflowed', async () => {
   vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockReturnValue(100)
   vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
 
@@ -241,7 +313,7 @@ test('ellipsis expandOnOverflow does not expand when the lineClamp content is no
     props: {
       lineClamp: 3,
       expandTrigger: 'click',
-      expandOnOverflow: true,
+      expandableOnOverflow: true,
       'onUpdate:expand': onUpdateExpand,
     },
     slots: {
@@ -259,7 +331,69 @@ test('ellipsis expandOnOverflow does not expand when the lineClamp content is no
   wrapper.unmount()
 })
 
-test('ellipsis keep the expand behaviour when expandOnOverflow is disabled', async () => {
+test('ellipsis expandableOnOverflow can collapse line-clamped content after expanding', async () => {
+  vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () {
+    return this.classList.contains('var-ellipsis--expand') ? 100 : 200
+  })
+  vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(100)
+
+  const onUpdateExpand = vi.fn()
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      lineClamp: 3,
+      expandTrigger: 'click',
+      expandableOnOverflow: true,
+      'onUpdate:expand': onUpdateExpand,
+    },
+    slots: {
+      default: () => 'hello',
+    },
+  })
+
+  await nextTick()
+  await wrapper.find('.var-ellipsis').trigger('click')
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeTruthy()
+
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledTimes(2)
+  expect(wrapper.find('.var-ellipsis--expand').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('ellipsis collapses expanded line-clamped content when its width changes', async () => {
+  let clientHeight = 100
+
+  vi.spyOn(HTMLElement.prototype, 'scrollHeight', 'get').mockImplementation(function () {
+    return this.classList.contains('var-ellipsis--expand') ? clientHeight : 200
+  })
+  vi.spyOn(HTMLElement.prototype, 'clientHeight', 'get').mockImplementation(() => clientHeight)
+
+  const wrapper = mount(VarEllipsis, {
+    props: {
+      lineClamp: 2,
+      expandableOnOverflow: true,
+    },
+  })
+
+  await nextTick()
+  wrapper.vm.handleResize([{ contentRect: { width: 100 } }])
+  await wrapper.find('.var-ellipsis').trigger('click')
+  await nextTick()
+
+  clientHeight = 200
+  wrapper.vm.handleResize([{ contentRect: { width: 200 } }])
+  await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--expand').exists()).toBeFalsy()
+  expect(wrapper.find('.var-ellipsis--cursor').exists()).toBeFalsy()
+
+  wrapper.unmount()
+})
+
+test('ellipsis keeps the expand behavior when expandableOnOverflow is disabled', async () => {
   vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockReturnValue(10)
   vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100)
 

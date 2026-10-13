@@ -39,10 +39,13 @@ export default defineComponent({
     const rootRef = ref<HTMLElement | RendererNode | null>(null)
     const truncated = ref(false)
     const expanding = useVModel(props, 'expand')
-    const clickable = computed(() => !!props.expandTrigger && (!props.expandOnOverflow || truncated.value))
+    let previousWidth: number | undefined
+    const clickable = computed(
+      () => !!props.expandTrigger && (!props.expandableOnOverflow || truncated.value || expanding.value),
+    )
     const rootStyles = computed<CSSProperties>(() => (props.lineClamp ? { '-webkit-line-clamp': props.lineClamp } : {}))
     const tooltipProps = computed<ExtractPublicPropTypes<typeof _tooltipProps>>(() => {
-      if (props.tooltip === false) {
+      if (props.tooltip === false || (props.tooltipOnOverflow && !truncated.value)) {
         return {
           disabled: true,
         }
@@ -89,7 +92,24 @@ export default defineComponent({
       expanding.value = !expanding.value
     }
 
-    useResizeObserver(getRootElement, checkTruncated)
+    function handleResize(entries: ResizeObserverEntry[]) {
+      const width = entries[0]?.contentRect.width
+
+      if (
+        width !== undefined &&
+        width !== previousWidth &&
+        previousWidth !== undefined &&
+        props.expandableOnOverflow &&
+        expanding.value
+      ) {
+        expanding.value = false
+      }
+
+      previousWidth = width
+      checkTruncated()
+    }
+
+    useResizeObserver(getRootElement, handleResize)
 
     watch(() => props.lineClamp, checkTruncated)
 
@@ -106,6 +126,7 @@ export default defineComponent({
       n,
       classes,
       handleClick,
+      handleResize,
     }
   },
 })

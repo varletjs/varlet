@@ -8,8 +8,9 @@ export type EllipsisExpandTrigger = 'click'
 export interface EllipsisProps extends BasicAttributes {
   expand?: boolean
   expandTrigger?: EllipsisExpandTrigger
-  expandOnOverflow?: boolean
+  expandableOnOverflow?: boolean
   lineClamp?: string | number
+  tooltipOnOverflow?: boolean
   tooltip?: boolean | TooltipProps
   'onUpdate:expand'?: ListenerProp<(expand: boolean) => void>
 }
