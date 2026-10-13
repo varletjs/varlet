@@ -35,12 +35,7 @@ onThemeChange()
 
   <app-type>{{ t('overflowOnResize') }}</app-type>
   <var-space direction="column" size="large">
-    <var-ellipsis
-      expand-trigger="click"
-      expand-on-overflow
-      :style="{ maxWidth: `${width}%` }"
-      :tooltip="false"
-    >
+    <var-ellipsis expand-trigger="click" expand-on-overflow :style="{ maxWidth: `${width}%` }" :tooltip="false">
       {{ t('text') }}
     </var-ellipsis>
     <var-slider v-model="width" :min="30" :max="100" />

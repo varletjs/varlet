@@ -35,14 +35,24 @@
     "vite-plus": "catalog:"
   },
   "engines": {
-    "node": "^20.19.0 || ^22.18.0 || >=24.11.0",
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0",
     "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@9.15.9",
   "pnpm": {
     "overrides": {
-      "vite": "catalog:",
-      "vitest": "catalog:"
+      "vite@*": "catalog:",
+      "vitest@*": "catalog:"
+    },
+    "peerDependencyRules": {
+      "allowAny": [
+        "vite",
+        "vitest"
+      ],
+      "allowedVersions": {
+        "vite": "*",
+        "vitest": "*"
+      }
     }
   }
 }
