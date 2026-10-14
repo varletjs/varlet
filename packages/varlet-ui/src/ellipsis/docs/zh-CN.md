@@ -58,18 +58,39 @@ const expand = ref(false)
 </template>
 ```
 
-### 只在省略时可展开
+### 溢出检测
 
-开启 `expand-on-overflow` 后，只有内容被省略时才会显示手型光标并响应点击，未被省略时点击不会展开。
+开启 `expandable-on-overflow` 后，内容被省略时可点击展开。开启 `tooltip-on-overflow` 后，Tooltip 仅在内容被省略时显示。
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const narrow = ref(true)
+</script>
+
 <template>
+  <var-button type="primary" @click="narrow = !narrow">切换文本容器尺寸</var-button>
+
+  <div style="margin-top: 12px; color: var(--color-on-surface-variant); font-size: 12px">单行省略</div>
   <var-ellipsis
-    style="max-width: 170px"
     expand-trigger="click"
-    expand-on-overflow
+    expandable-on-overflow
+    tooltip-on-overflow
+    :style="{ maxWidth: narrow ? '170px' : '340px' }"
   >
-    其实没有什么事情是不可能的，我都拿到世界冠军了，真的没有什么事情是不可能的。
+    文本溢出时才可以点击展开。
+  </var-ellipsis>
+
+  <div style="margin-top: 12px; color: var(--color-on-surface-variant); font-size: 12px">多行省略</div>
+  <var-ellipsis
+    expand-trigger="click"
+    expandable-on-overflow
+    tooltip-on-overflow
+    :line-clamp="2"
+    :style="{ maxWidth: narrow ? '170px' : '340px' }"
+  >
+    只有文本被截断时才可以点击展开，展开后可以查看完整内容并再次收起。
   </var-ellipsis>
 </template>
 ```
@@ -96,8 +117,9 @@ const expand = ref(false)
 |-------|------|----|----|
 | `v-model:expand` | 是否展开 | _boolean_  | `false` |
 | `expand-trigger` | 展开触发方式，可选值 `click` | _string_  | `-` |
-| `expand-on-overflow` | 仅在文本被省略时才能点击展开 | _boolean_  | `false` |
+| `expandable-on-overflow` ***3.20.7*** | 仅在文本被省略时允许展开 | _boolean_  | `false` |
 | `line-clamp` | 最大显示行数，兼容性见 [line-clamp](https://caniuse.com/?search=line-clamp) | _string_  | `-` |
+| `tooltip-on-overflow` ***3.20.7*** | 仅在文本被省略时显示 Tooltip | _boolean_ | `false` |
 | `tooltip` | Tooltip 组件配置，用于深度定制。为了更方便使用，`sameWidth` 在这里默认为 `true` | _boolean \| TooltipProps_  | `true` |
 
 ### 插槽

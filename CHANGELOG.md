@@ -1,4 +1,4 @@
-## [3.20.6](https://github.com/varletjs/varlet/compare/v3.20.5...v3.20.6) (2026-08-19)
+## [3.20.7](https://github.com/varletjs/varlet/compare/v3.20.6...v3.20.7) (2026-10-14)
 
 
 ### Bug Fixes
@@ -8,9 +8,18 @@
 
 ### Features
 
+* **ellipsis:** add expandTrigger prop to enable click expansion for line-clamped content ([0260965](https://github.com/varletjs/varlet/commit/0260965b86408a9af4212c1a505d4024e29c0781))
+* **ellipsis:** rename expandOnOverflow to expandableOnOverflow and add tooltipOnOverflow support ([de19fc3](https://github.com/varletjs/varlet/commit/de19fc3182dccdd680c8c92f7d359e0f3ac50f21))
+* **ellipsis:** support expand only when the text is overflowed ([#2022](https://github.com/varletjs/varlet/issues/2022)) ([786420f](https://github.com/varletjs/varlet/commit/786420f0730a114bd7634f4d02c52a0f1a0bcd8d))
+* **paper:** add active state with overlay and update documentation ([92dade8](https://github.com/varletjs/varlet/commit/92dade8b10eae3b8a0c0a0419b77b6ece949143b))
+
+## [3.20.5](https://github.com/varletjs/varlet/compare/v3.20.4...v3.20.5) (2026-08-19)
+
+
+### Features
+
 * **button:** add text round button examples and documentation ([2a4577b](https://github.com/varletjs/varlet/commit/2a4577b71ccee083eb765c0d6a93b8ba8bacbec6))
 * **image-preview:** add additional style imports for elevation, hover overlay, ripple, and loading ([967058b](https://github.com/varletjs/varlet/commit/967058b74156f6d93bdad7290b67da5be34f2b32))
-* **paper:** add active state with overlay and update documentation ([92dade8](https://github.com/varletjs/varlet/commit/92dade8b10eae3b8a0c0a0419b77b6ece949143b))
 * **theme:** add line-height variables for cell title and description in dark and light themes ([d533139](https://github.com/varletjs/varlet/commit/d533139684690048a534cad690e0dfeae9d2f01a))
 
 ## [3.20.4](https://github.com/varletjs/varlet/compare/v3.20.3...v3.20.4) (2026-08-18)

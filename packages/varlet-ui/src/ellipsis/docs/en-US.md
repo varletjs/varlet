@@ -58,18 +58,39 @@ const expand = ref(false)
 </template>
 ```
 
-### Expand Only When Overflow
+### Overflow Detection
 
-When `expand-on-overflow` is enabled, the pointer cursor and the expand interaction are available only if the text is overflowed.
+When `expandable-on-overflow` is enabled, truncated content can be expanded on click. When `tooltip-on-overflow` is enabled, the tooltip is shown only for truncated content.
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const narrow = ref(true)
+</script>
+
 <template>
+  <var-button type="primary" @click="narrow = !narrow">Toggle Text Container Size</var-button>
+
+  <div style="margin-top: 12px; color: var(--color-on-surface-variant); font-size: 12px">Single Line Ellipsis</div>
   <var-ellipsis
-    style="max-width: 170px"
     expand-trigger="click"
-    expand-on-overflow
+    expandable-on-overflow
+    tooltip-on-overflow
+    :style="{ maxWidth: narrow ? '170px' : '340px' }"
   >
-    I want to say english to everyone like, even you still are normal people, you still can work a world champion and no one trust you!
+    Click to expand only when this text overflows.
+  </var-ellipsis>
+
+  <div style="margin-top: 12px; color: var(--color-on-surface-variant); font-size: 12px">Multiple Line Ellipsis</div>
+  <var-ellipsis
+    expand-trigger="click"
+    expandable-on-overflow
+    tooltip-on-overflow
+    :line-clamp="2"
+    :style="{ maxWidth: narrow ? '170px' : '340px' }"
+  >
+    Only truncated text can be expanded. Click it to view the full content, then click it again to collapse.
   </var-ellipsis>
 </template>
 ```
@@ -96,8 +117,9 @@ When `expand-on-overflow` is enabled, the pointer cursor and the expand interact
 | ----- | ------ | ---- | ---- |
 | `v-model:expand` | Whether to expand | _boolean_  | `false` |
 | `expand-trigger` | Expand trigger method, optional value `click` | _string_ | `-` |
-| `expand-on-overflow` | Expand on click only if the text is overflowed | _boolean_ | `false` |
+| `expandable-on-overflow` ***3.20.7*** | Allow expansion only if the text is overflowed | _boolean_ | `false` |
 | `line-clamp` | Maximum number of display lines, see [line-clamp](https://caniuse.com/?search=line-clamp) for compatibility | _string_ | `-` |
+| `tooltip-on-overflow` ***3.20.7*** | Show the tooltip only when the text is truncated | _boolean_ | `false` |
 | `tooltip` | Tooltip component props, for deep customization. For more convenience, `sameWidth` defaults to `true` here | _boolean \| TooltipProps_ | `true` |
 
 ### Slots
