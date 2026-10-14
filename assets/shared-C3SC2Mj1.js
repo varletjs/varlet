@@ -1,0 +1,1 @@
+import{Pt as e}from"./client-BcDL197q.js";import"./customParseFormat-1_rZbMdg.js";var t=t=>{let n=[];return{cache:n,has(e){return this.cache.includes(e)},add(e){this.has(e)||(this.cache.length===t&&n.shift(),this.cache.push(e))},remove(t){this.has(t)&&e(this.cache,t)},clear(){this.cache.length=0}}},n=e=>e;export{n,t};
