@@ -796,6 +796,9 @@ interface BaseStyleVars {
   '--swipe-navigation-next-right'?: string
   '--swipe-navigation-prev-top'?: string
   '--swipe-navigation-next-bottom'?: string
+  '--swipe-action-background'?: string
+  '--swipe-action-action-padding'?: string
+  '--swipe-action-action-font-size'?: string
   '--switch-track-background'?: string
   '--switch-track-active-background'?: string
   '--switch-track-error-background'?: string

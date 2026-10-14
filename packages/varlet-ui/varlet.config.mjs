@@ -535,6 +535,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'SwipeAction 滑动操作',
+          'en-US': 'SwipeAction',
+        },
+        doc: 'swipe-action',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Snackbar 消息条',
           'en-US': 'Snackbar',
         },
