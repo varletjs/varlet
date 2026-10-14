@@ -374,6 +374,7 @@ test('ellipsis collapses expanded line-clamped content when its width changes', 
   const wrapper = mount(VarEllipsis, {
     props: {
       lineClamp: 2,
+      expandTrigger: 'click',
       expandableOnOverflow: true,
     },
   })
@@ -382,6 +383,8 @@ test('ellipsis collapses expanded line-clamped content when its width changes', 
   wrapper.vm.handleResize([{ contentRect: { width: 100 } }])
   await wrapper.find('.var-ellipsis').trigger('click')
   await nextTick()
+
+  expect(wrapper.find('.var-ellipsis--expand').exists()).toBeTruthy()
 
   clientHeight = 200
   wrapper.vm.handleResize([{ contentRect: { width: 200 } }])
