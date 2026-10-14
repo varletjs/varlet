@@ -5,17 +5,17 @@ catalog:
   typescript: 5.6.3
   vue: 3.5.21
   vue-router: 4.5.1
-  vite: 'npm:@voidzero-dev/vite-plus-core@0.2.6'
-  vitest: 4.1.10
+  vite: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vitest: 5.0.3
   jsdom: 26.1.0
   fs-extra: ^9.0.1
   live-server: ^1.2.1
   rimraf: ^5.0.1
   tinyexec: ^0.3.0
   rattail: ^2.1.1
-  vite-plus: 0.2.6
-  '@types/node': ^20.19.0
-  '@vitest/coverage-istanbul': 4.1.10
+  vite-plus: 1.1.0
+  '@types/node': ^22.18.0
+  '@vitest/coverage-istanbul': 5.0.3
   '@vue/runtime-core': 3.5.21
   '@vue/compiler-sfc': 3.5.21
   '@vitejs/plugin-vue': 6.0.6

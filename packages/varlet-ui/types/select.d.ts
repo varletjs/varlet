@@ -80,12 +80,12 @@ export class Select extends VarComponent {
   $props: SelectProps
 
   $slots: {
-    'selected'(): VNode[]
+    selected(): VNode[]
     'prepend-icon'(): VNode[]
     'clear-icon'(data: SelectClearIconData): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]
-    'empty'(): VNode[]
+    empty(): VNode[]
   }
 
   focus(): void
