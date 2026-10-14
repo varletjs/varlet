@@ -1,6 +1,12 @@
 import { Message } from './index'
 
 export default {
+  // Tour
+  tourTitle: 'راهنما',
+  tourPrevButtonText: 'قبلی',
+  tourNextButtonText: 'بعدی',
+  tourFinishButtonText: 'پایان',
+  tourCloseButtonText: 'رد کردن',
   // Dialog
   dialogTitle: 'اشاره',
   dialogConfirmButtonText: 'تایید',
