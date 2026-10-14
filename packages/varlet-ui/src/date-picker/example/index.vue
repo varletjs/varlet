@@ -10,6 +10,7 @@ const dates = reactive({
   date3: ['2021-02-01', '2021-02-15'],
   date9: ['2021-02', '2021-05'],
   date10: ['2021', '2025'],
+  date11: '2026-10-12',
   date4: '2020-11-11',
   date5: '2021-05',
   date6: '2021',
@@ -28,6 +29,9 @@ const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-date-picker v-model="dates.date1" />
+
+  <app-type>{{ t('columns') }}</app-type>
+  <var-date-picker variant="columns" v-model="dates.date11" />
 
   <app-type>{{ t('multiple') }}</app-type>
   <var-date-picker v-model="dates.date2" type="date" multiple />
