@@ -9,6 +9,7 @@ export { virtualListProps }
 export type {
   VirtualListAlign,
   VirtualListItemKey,
+  VirtualListItemSize,
   VirtualListKey,
   VirtualListRange,
   VirtualListScrollTarget,

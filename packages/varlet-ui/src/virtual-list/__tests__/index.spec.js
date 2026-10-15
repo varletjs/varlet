@@ -41,6 +41,7 @@ beforeEach(() => {
       constructor(callback) {
         this.callback = callback
         this.observe = vi.fn((element) => this.elements.add(element))
+        this.unobserve = vi.fn((element) => this.elements.delete(element))
         this.disconnect = vi.fn(() => this.elements.clear())
         observers.push(this)
       }
@@ -64,6 +65,9 @@ beforeEach(() => {
     return totalHeight(this) + Number(this.dataset.header ?? 0) + Number(this.dataset.footer ?? 0)
   })
   vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function () {
+    if (this.classList.contains('var-virtual-list__item')) {
+      return rect(0, Number(this.firstElementChild?.dataset.rowHeight ?? parseFloat(this.style.height)) || 0)
+    }
     if (this.hasAttribute('data-scroll-fixture')) {
       return rect(Number(this.dataset.top ?? 100), this.clientHeight + 4)
     }
@@ -485,4 +489,306 @@ test('server rendering uses a bounded initial window without resolving browser t
   expect(html.match(/role="listitem"/g)).toHaveLength(6)
   expect(html).toContain('height:500000px')
   expect(resolve).not.toHaveBeenCalled()
+})
+
+test.each([
+  [0, 20, [0, 0, 0, 0]],
+  [20, 80, [1, 1, 1, 1]],
+  [19.5, 80.5, [0, 2, 0, 2]],
+  [-20, 10, [0, 0, 0, 0]],
+  [110, 150, [-1, -1, -1, -1]],
+])('variable range uses cumulative boundaries at %s..%s', (start, end, expected) => {
+  expect(Object.values(getVirtualListRange(3, [0, 20, 80, 110], start, end, 0))).toEqual(expected)
+})
+
+test('binary range lookup agrees with intersecting unequal rows', () => {
+  const offsets = [0]
+  for (let index = 0; index < 200; index++) {
+    offsets.push(offsets[index] + 1 + ((index * 17) % 93) / 2)
+  }
+  for (let start = -20; start < offsets.at(-1) + 100; start += 13.25) {
+    const end = start + 79.5
+    const visible = offsets
+      .slice(0, -1)
+      .flatMap((top, index) => (top < end && offsets[index + 1] > start ? [index] : []))
+    const range = getVirtualListRange(200, offsets, start, end, 3)
+    expect(range.visibleStart).toBe(visible[0] ?? -1)
+    expect(range.visibleEnd).toBe(visible.at(-1) ?? -1)
+  }
+})
+
+test('item-size functions support unequal known heights and scroll alignment', async () => {
+  const wrapper = mountList({
+    items: items.slice(0, 20),
+    itemSize: (_, index) => (index % 2 ? 80 : 20),
+    height: 100,
+    overscan: 0,
+  })
+  expect(indices(wrapper)).toEqual([0, 1])
+  expect(wrapper.findAll('.var-virtual-list__item').map((row) => row.element.style.height)).toEqual(['20px', '80px'])
+  wrapper.vm.scrollToIndex(3, { align: 'end' })
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(100)
+  expect(indices(wrapper)).toEqual([2, 3])
+  expect(wrapper.find('.var-virtual-list__items').element.style.transform).toBe('translateY(100px)')
+})
+
+test.each(['internal', 'element', 'selector', 'resolver', 'window'])(
+  'anchors a partially visible item across prepends in the %s target',
+  async (kind) => {
+    const target = kind === 'internal' || kind === 'window' ? undefined : createScroller()
+    const scrollTarget =
+      kind === 'window' ? 'window' : kind === 'selector' ? `#${target.id}` : kind === 'resolver' ? () => target : target
+    const data = ref(items.slice(0, 100))
+    const onRangeChange = vi.fn()
+    const wrapper = mount(
+      defineComponent({
+        setup: () => () =>
+          h(VirtualList, {
+            items: data.value,
+            itemKey: 'id',
+            itemSize: 50,
+            preserveScrollPosition: true,
+            scrollTarget,
+            onRangeChange,
+          }),
+      }),
+      { attachTo: target ?? document.body },
+    )
+    const list = wrapper.findComponent(VirtualList)
+    list.vm.scrollToOffset(512)
+    await flush()
+    const before = kind === 'window' ? window.scrollY : (target ?? list.element).scrollTop
+    data.value.unshift({ id: -2 }, { id: -1 })
+    await flush()
+    expect(kind === 'window' ? window.scrollY : (target ?? list.element).scrollTop).toBe(before + 100)
+    expect(onRangeChange.mock.lastCall[0].visibleStart).toBe(12)
+    data.value = data.value.slice(1)
+    await flush()
+    expect(kind === 'window' ? window.scrollY : (target ?? list.element).scrollTop).toBe(before + 50)
+  },
+)
+
+test('position preservation is opt-in and deletion of the anchor is safe', async () => {
+  const wrapper = mountList({ items: items.slice(0, 100) })
+  wrapper.vm.scrollToOffset(512)
+  await wrapper.setProps({ items: [{ id: -1 }, ...items.slice(0, 100)] })
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(512)
+  await wrapper.setProps({ preserveScrollPosition: true, items: [] })
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(0)
+})
+
+test('prepending does not pull a window viewport into an offscreen list', async () => {
+  const wrapper = mountList({ scrollTarget: 'window', preserveScrollPosition: true })
+  await flush()
+  window.scrollTo.mockClear()
+  await wrapper.setProps({ items: [{ id: -1 }, ...items] })
+  await flush()
+  expect(window.scrollTo).not.toHaveBeenCalled()
+})
+
+test.each([
+  [{}, {}],
+  [{ id: 1 }, { id: 1 }],
+  [{ id: NaN }, { id: 2 }],
+])('warns once per instance for invalid keys and avoids sharing row identity', async (...data) => {
+  const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+  const wrapper = mountList({ items: data, itemSize: 50 })
+  await wrapper.setProps({ items: [...data, {}] })
+  await flush()
+  expect(warn).toHaveBeenCalledExactlyOnceWith(expect.stringContaining('"item-key"'))
+  expect(indices(wrapper)).toHaveLength(data.length + 1)
+})
+
+test('checks function keys and invalid size results as well as property keys', () => {
+  const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+  const wrapper = mountList({ items: items.slice(0, 2), itemKey: () => undefined, itemSize: () => NaN })
+  expect(warn).toHaveBeenCalledTimes(2)
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('2px')
+})
+
+function mountDynamic(props = {}, options = {}) {
+  return mountList(
+    { items: items.slice(0, 100), dynamic: true, ...props },
+    {
+      slots: { default: ({ item }) => h('div', { 'data-row-height': item.height ?? 50 }, item.label) },
+      ...options,
+    },
+  )
+}
+
+test('dynamic rows measure natural content and preserve the visible anchor when an earlier row grows', async () => {
+  const data = items.slice(0, 100).map((item) => ({ ...item, height: 50 }))
+  data[0].height = 100
+  const onRangeChange = vi.fn()
+  const wrapper = mountDynamic({ items: data, onRangeChange })
+  await flush()
+  expect(wrapper.find('.var-virtual-list__item').element.style.height).toBe('')
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5050px')
+  wrapper.vm.scrollToOffset(125)
+  await flush()
+  const row = wrapper.find('.var-virtual-list__item').element
+  expect(observers.at(-1).elements.has(row)).toBe(true)
+  row.firstElementChild.dataset.rowHeight = '150'
+  observers.at(-1).callback([{ target: row }])
+  await flush()
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(175)
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5100px')
+  expect(onRangeChange.mock.lastCall[0].visibleStart).toBe(1)
+})
+
+test('dynamic heights are cached by key across scrolling and prepending', async () => {
+  const data = items.slice(0, 100).map((item) => ({ ...item, height: item.id === 0 ? 100 : 50 }))
+  const wrapper = mountDynamic({ items: data, overscan: 0, preserveScrollPosition: true })
+  await flush()
+  wrapper.vm.scrollToOffset(1000)
+  await flush()
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5050px')
+  await wrapper.setProps({ items: [{ id: -1, height: 50 }, ...data] })
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(1050)
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5100px')
+  wrapper.vm.resetMeasurements()
+  await flush()
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5050px')
+  expect(wrapper.element.scrollTop).toBe(1000)
+})
+
+test('replacing a row invalidates its old measured height, even with the same key', async () => {
+  const wrapper = mountDynamic({ items: [{ id: 0, height: 100 }, ...items.slice(1, 100)] })
+  await flush()
+  await wrapper.setProps({ items: [{ id: 0, height: 70 }, ...items.slice(1, 100)] })
+  await flush()
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5020px')
+})
+
+test('dynamic rows can be remeasured manually without ResizeObserver', async () => {
+  vi.stubGlobal('ResizeObserver', undefined)
+  const wrapper = mountDynamic()
+  await flush()
+  wrapper.find('.var-virtual-list__item').element.firstElementChild.dataset.rowHeight = '125'
+  wrapper.vm.resize()
+  await flush()
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5075px')
+})
+
+test.each([
+  ['50vh', undefined, 8],
+  ['100%', undefined, 8],
+  ['1rem', undefined, 8],
+  ['50vh', 120, 5],
+  ['200px', undefined, 6],
+])('SSR height %s with estimate %s has a deterministic bounded window', async (height, ssrHeight, count) => {
+  const browserWindow = window
+  vi.stubGlobal('window', undefined)
+  const props = { items, itemKey: 'id', itemSize: 50, height, ssrHeight, overscan: 2 }
+  const html = await renderToString(createSSRApp(VirtualList, props))
+  expect(html.match(/role="listitem"/g)).toHaveLength(count)
+  vi.stubGlobal('window', browserWindow)
+  const container = document.createElement('div')
+  container.innerHTML = html
+  container.firstElementChild.dataset.viewportHeight = '200'
+  document.body.appendChild(container)
+  const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+  const app = createSSRApp(VirtualList, props)
+  app.mount(container)
+  await flush()
+  expect(container.querySelectorAll('[role="listitem"]')).toHaveLength(6)
+  expect(warn).not.toHaveBeenCalled()
+  app.unmount()
+})
+
+test.each(['element', 'window'])('dynamic measurements preserve the anchor for %s scrolling', async (kind) => {
+  const target = kind === 'element' ? createScroller(60) : undefined
+  const wrapper = mountDynamic({ scrollTarget: target ?? 'window' }, { attachTo: target ?? document.body })
+  wrapper.vm.scrollToOffset(512)
+  await flush()
+  const before = target ? target.scrollTop : window.scrollY
+  const first = wrapper.find('.var-virtual-list__item').element
+  first.firstElementChild.dataset.rowHeight = '85'
+  observers.at(-1).callback([{ target: first }])
+  await flush()
+  await flush()
+  expect(target ? target.scrollTop : window.scrollY).toBe(before + 35)
+})
+
+test('width changes invalidate offscreen measurements while retaining the visible anchor', async () => {
+  let width = 320
+  vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockImplementation(() => width)
+  const wrapper = mountDynamic({ items: [{ id: 0, height: 100 }, ...items.slice(1, 100)], overscan: 0 })
+  await flush()
+  wrapper.vm.scrollToOffset(1000)
+  await flush()
+  width = 240
+  observers.at(-1).callback([])
+  await flush()
+  await flush()
+  expect(wrapper.find('.var-virtual-list__spacer').element.style.height).toBe('5000px')
+  expect(wrapper.element.scrollTop).toBe(950)
+})
+
+test.each(['internal', 'element', 'window'])(
+  'explicit scrolling wins over initial measurement correction in the %s target',
+  async (kind) => {
+    const target = kind === 'element' ? createScroller(60) : undefined
+    const wrapper = mountDynamic(
+      {
+        items: [{ id: 0, height: 100 }, ...items.slice(1, 100)],
+        scrollTarget: target ?? (kind === 'window' ? 'window' : undefined),
+      },
+      { attachTo: target ?? document.body },
+    )
+    wrapper.vm.scrollToOffset(1000)
+    const expected = kind === 'window' ? 1400 : kind === 'element' ? 1060 : 1000
+    const scrollTop = () => (kind === 'window' ? window.scrollY : (target ?? wrapper.element).scrollTop)
+    expect(scrollTop()).toBe(expected)
+    await flush()
+    await flush()
+    expect(scrollTop()).toBe(expected)
+  },
+)
+
+test.each(
+  ['offset', 'index', 'auto', 'latest'].flatMap((method) => [
+    [method, false],
+    [method, true],
+  ]),
+)('explicit %s scrolling cancels anchor correction (after watcher: %s)', async (method, afterWatcher) => {
+  const wrapper = mountDynamic()
+  await flush()
+  wrapper.find('.var-virtual-list__item').element.firstElementChild.dataset.rowHeight = '100'
+  wrapper.vm.resize()
+  if (afterWatcher) {
+    await nextTick()
+  }
+  if (method === 'offset' || method === 'latest') {
+    wrapper.vm.scrollToOffset(1000)
+    if (method === 'latest') {
+      wrapper.vm.scrollToOffset(1500)
+    }
+  } else {
+    wrapper.vm.scrollToIndex(method === 'auto' ? 0 : 20, { align: method === 'auto' ? 'auto' : 'start' })
+  }
+  const expected = method === 'auto' ? 0 : method === 'index' ? 1050 : method === 'latest' ? 1500 : 1000
+  expect(wrapper.element.scrollTop).toBe(expected)
+  await flush()
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(expected)
+})
+
+test('new measurements after an explicit scroll compensate from its layout snapshot', async () => {
+  const wrapper = mountDynamic()
+  await flush()
+  const row = wrapper.find('.var-virtual-list__item').element.firstElementChild
+  row.dataset.rowHeight = '100'
+  wrapper.vm.resize()
+  wrapper.vm.scrollToOffset(1000)
+  row.dataset.rowHeight = '150'
+  wrapper.vm.resize()
+  await flush()
+  await flush()
+  expect(wrapper.element.scrollTop).toBe(1050)
 })

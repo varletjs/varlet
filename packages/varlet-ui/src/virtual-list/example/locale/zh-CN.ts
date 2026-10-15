@@ -1,5 +1,8 @@
 export default {
   basicUsage: '基本使用',
+  dynamicHeight: '动态行高与头插保持位置',
+  loadEarlier: '加载更早的消息',
+  message: '消息内容会随容器宽度自然换行。',
   externalScroller: '外部滚动容器',
   infiniteLoading: '无限加载',
   pageScrolling: '页面滚动',

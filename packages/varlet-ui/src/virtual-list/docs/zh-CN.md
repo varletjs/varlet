@@ -2,7 +2,7 @@
 
 ### 介绍
 
-用于纵向、单列、固定行高的大数据列表。保留完整列表的滚动高度，只渲染视口内的项目及上下缓冲项目。
+用于纵向、单列的大数据列表，支持固定行高、已知不等行高和动态行高。保留完整列表的滚动高度，只渲染视口内的项目及上下缓冲项目。
 组件负责渲染范围和滚动定位，加载、重试与完成状态可通过 `List` 组件实现。
 
 ### 基本使用
@@ -22,6 +22,64 @@ const items = Array.from({ length: 10000 }, (_, id) => ({ id, label: `列表项 
     </template>
   </var-virtual-list>
 </template>
+```
+
+### 不等行高与动态行高
+
+已知各项高度时，`item-size` 可以传入 `(item, index) => number`，返回该项实际占用的像素高度。
+开启 `dynamic` 后，`item-size` 表示未测量项目的估算高度，行容器不再设置固定高度或裁剪内容。
+组件测量已渲染项目的实际高度，并通过 ResizeObserver 跟踪文本换行、图片和字体加载等造成的高度变化。
+测量结果按 `item-key` 缓存，累计位置通过二分查找确定可见范围；视口上方项目实测高度变化时会补偿滚动位置。
+
+```html
+<script setup>
+const items = Array.from({ length: 10000 }, (_, id) => ({
+  id,
+  text: '这是一段可以自然换行的内容。'.repeat(id % 5 + 1),
+}))
+const estimateSize = (item) => item.text.length > 40 ? 100 : 60
+</script>
+
+<template>
+  <var-virtual-list :items="items" :item-size="estimateSize" item-key="id" dynamic>
+    <template #default="{ item }">
+      <div style="padding: 12px; line-height: 24px">{{ item.text }}</div>
+    </template>
+  </var-virtual-list>
+</template>
+```
+
+项目替换或删除时会清理对应缓存，容器宽度变化时会重新估算和测量。
+修改未渲染内容或全局排版后，可调用 `resetMeasurements()` 清空缓存。`resize()` 只重测当前渲染项。
+没有 ResizeObserver 的环境需在内容尺寸变化后手动调用 `resize()`。
+未测量项目仍使用估算值，因此远距离定位和滚动条长度会随测量结果修正；动态模式下不建议使用平滑滚动。
+
+### 头部插入时保持位置
+
+开启 `preserve-scroll-position` 后，数据更新会按更新前首个可见项的 `item-key` 和项内像素偏移保持位置。
+适用于聊天记录加载更早消息，也支持原数组上的 `unshift` / `splice`；固定、动态行高及各种滚动容器均可使用。
+默认关闭以保留原有像素偏移行为。锚点被删除时不自动选择其他项目，滚动位置受容器边界限制；列表在视口外时不会自动滚入视口。
+
+```html
+<var-virtual-list :items="messages" :item-size="64" item-key="id" preserve-scroll-position>
+  <template #default="{ item }">
+    <div style="height: 64px">{{ item.text }}</div>
+  </template>
+</var-virtual-list>
+```
+
+### SSR 首屏估算
+
+`height` 支持 CSS 长度。服务端无法解析 `vh`、`%`、`rem` 等相对单位，默认使用 `300px` 估算视口；数字和 `px` 使用对应值。
+可通过 `ssr-height` 提供明确的像素估算，它优先于 `height`，也适用于外部容器和 window 滚动。
+服务端与客户端首次渲染使用相同估算，挂载后再测量真实视口；估算偏差仍可能导致渲染范围调整。
+
+```html
+<var-virtual-list :items="items" :item-size="50" item-key="id" height="50vh" :ssr-height="400">
+  <template #default="{ item }">
+    <div style="height: 50px">{{ item.label }}</div>
+  </template>
+</var-virtual-list>
 ```
 
 ### 滚动定位
@@ -126,12 +184,12 @@ function refresh() {
 
 ### 使用约定
 
-- 仅支持固定行高。行容器高度为 `item-size`，超出内容会被裁剪；需将 Cell、图片和自定义内容约束在该高度内。Cell 的最小高度不能直接视为实际行高。
-- `item-key` 可为属性名或 `(item, index) => string | number`，必须返回唯一且稳定的键。原始值数组可使用 `:item-key="item => item"`，不要用索引标识可排序或增删的数据。
+- 默认使用指定行高并裁剪溢出内容；需将 Cell、图片和自定义内容约束在该高度内。内容需自然撑开时开启 `dynamic`，不要在行容器外设置额外垂直间距。所有高度及估算值都须为有限正数。
+- `item-key` 可为属性名或 `(item, index) => string | number`，必须返回唯一且稳定的键。原始值数组可使用 `:item-key="item => item"`，不要用索引标识可排序或增删的数据。开发环境下，缺失、非法或重复 key 会在每个组件实例中提示一次。
 - 滚出缓冲范围的项目会卸载。输入内容、选择和展开状态需按数据键存储在外部；稳定 key 不会保存已经卸载的组件状态。未渲染的项目也不能直接被浏览器查找或 Tour 定位。
-- 追加数据保留滚动位置。刷新、排序、筛选和头部插入默认保留像素偏移，不自动锚定原项目；需要回到顶部时调用 `scrollToIndex(0)`。自身滚动容器会在数据变短后限制滚动位置，外部容器由浏览器管理。
+- 追加数据保留滚动位置。刷新、排序、筛选和头部插入默认保留像素偏移，开启 `preserve-scroll-position` 可锚定原项目；需要回到顶部时调用 `scrollToIndex(0)`。自身滚动容器会在数据变短后限制滚动位置，外部容器由浏览器管理。
 - 容器尺寸变化、KeepAlive 恢复和 TabItem 激活后会重新计算。选择器目标稍后才插入，或上方内容改变位置但未触发尺寸变化时，请在 `nextTick` 后调用 `resize()`。
-- SSR 会渲染一个有限的初始范围，在挂载后测量实际视口。服务端和客户端首次渲染应使用相同的数据及参数。非数字或非 `px` 高度使用 `300px` 作为首屏估算值。
+- SSR 会渲染一个有限的初始范围，在挂载后测量实际视口。服务端和客户端首次渲染应使用相同的数据及参数。非数字或非 `px` 高度默认使用 `300px`，可通过 `ssr-height` 指定首屏估算值。
 - 虚拟化减少渲染节点，不会删除数据数组中的项目，也不负责请求或缓存数据。
 
 ## API
@@ -141,9 +199,12 @@ function refresh() {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `items` | 列表数据 | _any[]_ | `[]` |
-| `item-size` | 必填，每项占用高度，单位 px，须为有限正数 | _number_ | `-` |
+| `item-size` | 必填，每项像素高度或高度函数；动态模式下用作估算值，须为有限正数 | _number \| (item, index) => number_ | `-` |
+| `dynamic` | 测量并缓存自然行高 | _boolean_ | `false` |
+| `preserve-scroll-position` | 数据更新时按首个可见项及项内偏移保持位置 | _boolean_ | `false` |
 | `item-key` | 必填，唯一键的属性名或获取函数 | _string \| (item, index) => string \| number_ | `-` |
 | `height` | 自身滚动容器高度，支持 CSS 长度 | _string \| number_ | `300` |
+| `ssr-height` | SSR 初始视口像素估算，优先于 height；须为有限非负数 | _number_ | `-` |
 | `overscan` | 视口上下额外渲染的项目数，向下取整且不小于 0 | _number_ | `5` |
 | `scroll-target` | 外部滚动目标，支持 `'window'`、选择器、元素和返回目标的函数 | _string \| HTMLElement \| Window \| (() => HTMLElement \| Window \| null \| undefined)_ | `-` |
 
@@ -168,6 +229,7 @@ function refresh() {
 | --- | --- | --- |
 | `scrollToIndex` | 滚动到指定数据索引 | `index: number`, `options?: { align?: 'start' \| 'center' \| 'end' \| 'auto', behavior?: 'auto' \| 'smooth' \| 'instant' }` |
 | `scrollToOffset` | 滚动到相对于列表起点的偏移 | `offset: number`, `behavior?: 'auto' \| 'smooth' \| 'instant'` |
-| `resize` | 重新绑定滚动目标并计算范围 | `-` |
+| `resize` | 重新绑定滚动目标、重测已渲染项目并计算范围 | `-` |
+| `resetMeasurements` | 清除所有实测高度缓存并重测当前渲染项 | `-` |
 
 `scrollToIndex` 默认使用 `align: 'start'` 和 `behavior: 'auto'`。`align: 'auto'` 会保持完全可见的项目不动，否则移动最小距离。

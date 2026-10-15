@@ -1,5 +1,8 @@
 export default {
   basicUsage: 'Basic Usage',
+  dynamicHeight: 'Dynamic Heights and Prepend Anchoring',
+  loadEarlier: 'Load Earlier Messages',
+  message: 'Messages wrap naturally to fit the container. ',
   externalScroller: 'External Scroll Container',
   infiniteLoading: 'Infinite Loading',
   pageScrolling: 'Page Scrolling',

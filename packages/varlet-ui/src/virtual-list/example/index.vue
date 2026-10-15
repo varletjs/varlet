@@ -15,7 +15,15 @@ const loading = ref(false)
 const finished = ref(false)
 const refreshing = ref(false)
 const loadedItems = ref([])
+const messages = ref(items.slice(0, 100).map(({ id }) => ({ id })))
+let earlierId = 0
 let timer
+
+function prepend() {
+  const start = earlierId - 10
+  messages.value.unshift(...Array.from({ length: 10 }, (_, index) => ({ id: start + index })))
+  earlierId = start
+}
 
 function load() {
   clearTimeout(timer)
@@ -47,6 +55,19 @@ onBeforeUnmount(() => clearTimeout(timer))
   <var-virtual-list ref="virtualList" :items="items" :item-size="50" item-key="id" :height="300">
     <template #default="{ item }">
       <var-cell border class="virtual-list-example-row">{{ t('listItem') }} {{ item.id + 1 }}</var-cell>
+    </template>
+  </var-virtual-list>
+
+  <app-type>{{ t('dynamicHeight') }}</app-type>
+  <div style="margin-bottom: 12px">
+    <var-button size="small" @click="prepend">{{ t('loadEarlier') }}</var-button>
+  </div>
+  <var-virtual-list :items="messages" :item-size="80" item-key="id" dynamic preserve-scroll-position>
+    <template #default="{ item }">
+      <div class="virtual-list-example-message" :data-message-id="item.id">
+        <strong>{{ t('listItem') }} {{ item.id }}</strong>
+        <div>{{ t('message').repeat((Math.abs(item.id) % 5) + 1) }}</div>
+      </div>
     </template>
   </var-virtual-list>
 
@@ -93,5 +114,12 @@ onBeforeUnmount(() => clearTimeout(timer))
 
 .virtual-list-example-row {
   height: 50px;
+}
+
+.virtual-list-example-message {
+  padding: 12px 16px;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--color-outline);
 }
 </style>

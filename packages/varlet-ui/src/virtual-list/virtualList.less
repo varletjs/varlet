@@ -15,6 +15,7 @@
   &__spacer {
     position: relative;
     width: 100%;
+    overflow-anchor: none;
   }
 
   &__items {
@@ -28,5 +29,10 @@
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+  }
+
+  &--dynamic &__item {
+    display: flow-root;
+    overflow: visible;
   }
 }
