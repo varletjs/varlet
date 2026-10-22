@@ -101,6 +101,44 @@ const placementOptions = [
 </template>
 ```
 
+### 坐标定位
+
+同时设置 `x` 和 `y` 可以相对于指定坐标显示菜单。坐标单位为视口 CSS 像素，可直接使用鼠标事件的 `clientX` 和 `clientY`，`0` 也是有效值。
+坐标作为宽高为 `0` 的定位点，仍支持 `placement`、`offset-x`、`offset-y` 和空间不足时的自动翻转，`same-width` 在此模式下不生效。
+未同时设置 `x` 和 `y` 时，菜单仍相对于触发元素定位。
+
+下面通过 `trigger="manual"` 和 `v-model:show` 实现右键菜单。手动触发时需要自行控制关闭，示例中点击按钮或菜单项即可关闭菜单。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+const x = ref(0)
+const y = ref(0)
+
+function openContextMenu(event) {
+  x.value = event.clientX
+  y.value = event.clientY
+  show.value = true
+}
+</script>
+
+<template>
+  <var-menu v-model:show="show" trigger="manual" placement="bottom-start" :x="x" :y="y">
+    <var-button type="primary" @contextmenu.prevent="openContextMenu" @click="show = false">
+      右键打开菜单
+    </var-button>
+
+    <template #menu>
+      <var-cell @click="show = false">菜单项</var-cell>
+      <var-cell @click="show = false">菜单项</var-cell>
+      <var-cell @click="show = false">菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### 与触发元素同宽
 
 通过 `same-width` 使弹出的菜单和触发元素的宽度相同。
@@ -121,7 +159,7 @@ const placementOptions = [
 
 ### 触发方式
 
-通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`。
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click`、`hover` 和 `manual`。设置为 `manual` 时，通过 `v-model:show` 或组件方法控制菜单的显示和隐藏。
 
 ```html
 <template>
@@ -221,6 +259,8 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | `v-model:show`  | 是否显示菜单                                                      | _boolean_              | `false`         |
 | `placement`     | 菜单弹出位置                                                      | _Placement_           | `cover-top-start` |
 | `strategy`       | 菜单定位方式，可选值为 `absolute` `fixed` | _string_              | `absolute`           |
+| `x` | 定位点的视口 x 坐标，单位为 CSS 像素，需与 `y` 同时设置 | _number_ | `-` |
+| `y` | 定位点的视口 y 坐标，单位为 CSS 像素，需与 `x` 同时设置 | _number_ | `-` |
 | `offset-x`      | x 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
 | `offset-y`      | y 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
 | `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to'] \| false_ | `body`            |
@@ -228,7 +268,7 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | `trigger`       | 菜单触发方式，可选值为 `click` `hover` `manual` | _string_              | `click`           |
 | `reference`       | 菜单关联的触发元素，`string` 类型为菜单组件的子孙元素选择器， `HTMLElement` 类型为任意指定的元素节点 | _string \| HTMLElement_              | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
-| `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
+| `same-width`    | 是否与触发元素同宽，坐标定位时不生效 | _boolean_             | `false`           |
 | `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |

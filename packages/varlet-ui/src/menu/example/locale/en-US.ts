@@ -5,6 +5,8 @@ export default {
   menuOption: 'Menu Option',
   bottomAlignment: 'Bottom Alignment',
   offset: 'Offset',
+  coordinatePositioning: 'Coordinate Positioning',
+  rightClick: 'Right Click to Open',
   sameWidth: 'Same Width As Trigger Element',
   events: 'Events',
   disabled: 'Disabled',

@@ -49,6 +49,8 @@ export interface MenuSelectProps extends BasicAttributes {
   disabled?: boolean
   trigger?: MenuSelectTrigger
   reference?: MenuSelectReference
+  x?: number
+  y?: number
   placement?: MenuSelectPlacement
   strategy?: MenuSelectStrategy
   labelKey?: string

@@ -7,6 +7,8 @@
     :disabled="disabled"
     :trigger="trigger"
     :reference="reference"
+    :x="x"
+    :y="y"
     :placement="placement"
     :strategy="strategy"
     :offset-x="offsetX"

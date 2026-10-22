@@ -26,6 +26,52 @@ const value = ref()
 </template>
 ```
 
+### Coordinate Positioning
+
+Set both `x` and `y` to position the menu relative to a point. Coordinates are viewport CSS pixels, so you can use the mouse event's `clientX` and `clientY` directly. `0` is a valid coordinate.
+The point has zero width and height. `placement`, `offset-x`, `offset-y`, and automatic flipping when space is limited still apply, while `same-width` is ignored in this mode.
+If either coordinate is missing, the menu is positioned relative to its trigger element.
+
+Use `trigger="manual"` and `v-model:show` to create a context menu. Selecting an option closes the menu by default; you can also click the button to close it.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+const show = ref(false)
+const x = ref(0)
+const y = ref(0)
+
+function openContextMenu(event) {
+  x.value = event.clientX
+  y.value = event.clientY
+  show.value = true
+}
+</script>
+
+<template>
+  <var-menu-select
+    v-model="value"
+    v-model:show="show"
+    trigger="manual"
+    placement="bottom-start"
+    :x="x"
+    :y="y"
+  >
+    <var-button type="primary" @contextmenu.prevent="openContextMenu" @click="show = false">
+      {{ value || 'Right Click to Open' }}
+    </var-button>
+
+    <template #options>
+      <var-menu-option label="Eat" />
+      <var-menu-option label="Sleep" />
+      <var-menu-option label="Play game" />
+    </template>
+  </var-menu-select>
+</template>
+```
+
 ### Selected Event
 
 ```html
@@ -423,6 +469,8 @@ const options = ref([
 | `close-on-select`     | Whether to close the menu when selected (selected options in multi-select mode never close the menu) | _boolean_           | `true` |
 | `placement`     | Menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
 | `strategy`       | Menu position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
+| `x` | The point's viewport x coordinate in CSS pixels; must be set together with `y` | _number_ | `-` |
+| `y` | The point's viewport y coordinate in CSS pixels; must be set together with `x` | _number_ | `-` |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
@@ -430,7 +478,7 @@ const options = ref([
 | `trigger`       | Menu trigger method, optional value is `click` `hover` `manual` | _string_  | `click`           |
 | `reference` | The trigger element associated with the menu, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
+| `same-width`    | Whether to use the trigger element's width; ignored when positioning by coordinates | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
 | `options` ***3.3.7*** | Specifies options | _MenuSelectOption[]_ | `[]` |

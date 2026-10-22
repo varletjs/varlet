@@ -5,6 +5,10 @@ import { computed, ref } from 'vue'
 import { t, use } from './locale'
 
 const value = ref()
+const coordinateValue = ref()
+const coordinateShow = ref(false)
+const x = ref(0)
+const y = ref(0)
 const valueNormal = ref()
 const valueSmall = ref()
 const valueMini = ref()
@@ -88,6 +92,8 @@ const cascadeOptions = ref([
 watchLang((lang) => {
   use(lang)
   value.value = undefined
+  coordinateValue.value = undefined
+  coordinateShow.value = false
   valueNormal.value = undefined
   valueSmall.value = undefined
   valueLarge.value = undefined
@@ -106,12 +112,38 @@ onThemeChange()
 function handleSelect(value) {
   Snackbar(`Select: ${value}`)
 }
+
+function openContextMenu(event) {
+  x.value = event.clientX
+  y.value = event.clientY
+  coordinateShow.value = true
+}
 </script>
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-menu-select v-model="value">
     <var-button type="primary">{{ value ? value : t('please') }}</var-button>
+
+    <template #options>
+      <var-menu-option :label="t('eat')" />
+      <var-menu-option :label="t('sleep')" />
+      <var-menu-option :label="t('play')" />
+    </template>
+  </var-menu-select>
+
+  <app-type>{{ t('coordinatePositioning') }}</app-type>
+  <var-menu-select
+    v-model="coordinateValue"
+    v-model:show="coordinateShow"
+    trigger="manual"
+    placement="bottom-start"
+    :x="x"
+    :y="y"
+  >
+    <var-button type="primary" @contextmenu.prevent="openContextMenu" @click="coordinateShow = false">
+      {{ coordinateValue || t('rightClick') }}
+    </var-button>
 
     <template #options>
       <var-menu-option :label="t('eat')" />
