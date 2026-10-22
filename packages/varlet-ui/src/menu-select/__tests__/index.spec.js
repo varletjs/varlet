@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { flushPromises, mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vite-plus/test'
 import { createApp, Fragment, h } from 'vue'
 import MenuSelect from '..'
@@ -129,6 +129,55 @@ test('menu-select closeOnSelect', async () => {
   expect(onUpdateShow).toBeCalledTimes(0)
 
   wrapper.unmount()
+})
+
+test.each([true, false])('menu-select coordinates support selection with closeOnSelect %s', async (closeOnSelect) => {
+  const width = vi.spyOn(document.documentElement, 'clientWidth', 'get').mockReturnValue(1024)
+  const height = vi.spyOn(document.documentElement, 'clientHeight', 'get').mockReturnValue(768)
+  const onUpdateModelValue = vi.fn()
+  const onUpdateShow = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      trigger: 'manual',
+      x: 0,
+      y: 0,
+      placement: 'bottom-start',
+      strategy: 'fixed',
+      closeOnSelect,
+      teleport: root,
+      options: [{ label: 'Option 1', value: 1 }],
+      'onUpdate:modelValue': onUpdateModelValue,
+      'onUpdate:show': onUpdateShow,
+    },
+  })
+  const menu = root.querySelector('.var-menu__menu')
+
+  try {
+    await flushPromises()
+    expect(menu.style.left).toBe('0px')
+    expect(menu.style.top).toBe('0px')
+
+    await wrapper.setProps({ x: 180, y: 240, offsetX: 12, offsetY: 8 })
+    await flushPromises()
+    expect(menu.style.left).toBe('192px')
+    expect(menu.style.top).toBe('248px')
+
+    await trigger(root.querySelector('.var-menu-option'), 'click')
+    expect(onUpdateModelValue).toHaveBeenCalledExactlyOnceWith(1)
+    expect(menu.style.display).toBe(closeOnSelect ? 'none' : '')
+
+    if (closeOnSelect) {
+      expect(onUpdateShow).toHaveBeenCalledExactlyOnceWith(false)
+    } else {
+      expect(onUpdateShow).not.toHaveBeenCalled()
+    }
+  } finally {
+    wrapper.unmount()
+    width.mockRestore()
+    height.mockRestore()
+  }
 })
 
 test('menu-option disabled', async () => {

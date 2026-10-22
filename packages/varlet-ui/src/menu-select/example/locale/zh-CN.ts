@@ -1,5 +1,7 @@
 export default {
   basicUsage: '基本使用',
+  coordinatePositioning: '坐标定位',
+  rightClick: '右键打开菜单',
   size: '尺寸',
   eat: '吃饭',
   sleep: '睡觉',

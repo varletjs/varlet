@@ -3,10 +3,10 @@ import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
 import flip from '@popperjs/core/lib/modifiers/flip.js'
 import offset from '@popperjs/core/lib/modifiers/offset.js'
 import { createPopper } from '@popperjs/core/lib/popper-lite.js'
-import { type Instance, type Modifier } from '@popperjs/core/lib/types'
+import { type Instance, type Modifier, type VirtualElement } from '@popperjs/core/lib/types'
 import { call, doubleRaf, getStyle, isString, preventDefault } from '@varlet/shared'
 import { onWindowResize, useEventListener, useVModel } from '@varlet/use'
-import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { useStack } from '../context/stack'
 import { useZIndex } from '../context/zIndex'
 import { type ListenerProp } from '../utils/components'
@@ -49,6 +49,8 @@ export interface UsePopoverOptions {
   offsetX: string | number
   offsetY: string | number
   reference?: string | HTMLElement
+  x?: number
+  y?: number
   closeOnClickReference?: boolean
   closeOnKeyEscape?: boolean
   onOpen?: ListenerProp<() => void>
@@ -63,6 +65,14 @@ export function usePopover(options: UsePopoverOptions) {
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
   const referenceSize: Ref<ReferenceSize> = ref({ width: 0, height: 0 })
+  const hasCoordinates = computed(() => options.x != null && options.y != null)
+  const coordinateReference: VirtualElement = {
+    getBoundingClientRect() {
+      const { x = 0, y = 0 } = options
+
+      return new DOMRect(x, y, 0, 0)
+    },
+  }
   const show = useVModel(options, 'show', {
     passive: true,
     defaultValue: false,
@@ -86,7 +96,11 @@ export function usePopover(options: UsePopoverOptions) {
   let allowClose = true
 
   useEventListener(() => window, 'keydown', handleKeydown)
-  watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
+  watch(hasCoordinates, () => {
+    destroyPopperInstance()
+    createPopperInstance()
+  })
+  watch(() => [options.x, options.y, options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
   watch(
     () => show.value,
@@ -104,7 +118,11 @@ export function usePopover(options: UsePopoverOptions) {
   function createPopperInstance() {
     const reference = getReference()!
 
-    popoverInstance = createPopper(reference, popover.value!, getPopperOptions())
+    popoverInstance = createPopper(
+      hasCoordinates.value ? coordinateReference : reference,
+      popover.value!,
+      getPopperOptions(),
+    )
     reference.addEventListener('mouseenter', handleReferenceMouseenter)
     reference.addEventListener('mouseleave', handleReferenceMouseleave)
     reference.addEventListener('click', handleReferenceClick)
@@ -125,6 +143,11 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   function computeReferenceSize() {
+    if (hasCoordinates.value) {
+      referenceSize.value = { width: 0, height: 0 }
+      return
+    }
+
     const reference = getReference()
     if (!reference) {
       return
@@ -473,6 +496,7 @@ export function usePopover(options: UsePopoverOptions) {
     zIndex,
     host,
     referenceSize,
+    hasCoordinates,
     handlePopoverClose,
     handlePopoverMouseenter,
     handlePopoverMouseleave,

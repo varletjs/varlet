@@ -9,7 +9,7 @@
           ref="popover"
           :style="{
             zIndex,
-            width: sameWidth ? toSizeUnit(Math.ceil(referenceSize.width)) : undefined,
+            width: sameWidth && !hasCoordinates ? toSizeUnit(Math.ceil(referenceSize.width)) : undefined,
           }"
           :class="
             classes(
@@ -50,6 +50,7 @@ export default defineComponent({
       popover,
       host,
       referenceSize,
+      hasCoordinates,
       show,
       zIndex,
       handlePopoverMouseenter,
@@ -75,6 +76,7 @@ export default defineComponent({
       popover,
       host,
       referenceSize,
+      hasCoordinates,
       show,
       zIndex,
       teleportDisabled,
