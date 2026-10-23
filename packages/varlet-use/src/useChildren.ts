@@ -51,7 +51,7 @@ export function useChildren<P, C>(key: symbol | string) {
   const length: ComputedRef<number> = computed(() => childInstances.length)
 
   const sortInstances = () => {
-    const vNodes: any[] = flatVNodes(parentInstance.subTree)
+    const vNodes = flatVNodes(parentInstance.subTree)
     const vNodeIndices = new Map<VNode, number>()
 
     vNodes.forEach((vNode, index) => {
