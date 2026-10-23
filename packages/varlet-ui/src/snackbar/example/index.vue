@@ -11,11 +11,12 @@ const shows = reactive({
   show4: false,
   show5: false,
   show9: false,
+  showProgress: false,
 })
 
 const VarSnackbar = Snackbar.Component
 
-const { show1, show2, show3, show4, show5, show9 } = toRefs(shows)
+const { show1, show2, show3, show4, show5, show9, showProgress } = toRefs(shows)
 
 onBeforeUnmount(() => {
   Snackbar.allowMultiple(false)
@@ -45,6 +46,14 @@ function createSnackbar(type) {
     Snackbar({
       content: t('text'),
       duration: 1000,
+    })
+  }
+
+  if (type === 'progress') {
+    Snackbar({
+      content: t('text'),
+      duration: 4000,
+      progress: true,
     })
   }
 
@@ -92,6 +101,7 @@ function openMultiple() {
     <var-button type="primary" block @click="changeValue('show3')">{{ t('multiLine') }}</var-button>
     <var-button type="primary" block @click="changeValue('show2')">{{ t('bottomDisplay') }}</var-button>
     <var-button type="primary" block @click="changeValue('show4')">{{ t('hiddenTime') }}</var-button>
+    <var-button type="primary" block @click="changeValue('showProgress')">{{ t('progress') }}</var-button>
     <var-button type="primary" block @click="changeValue('show5')">{{ t('customIcon') }}</var-button>
     <var-button type="primary" block @click="changeValue('show9')">{{ t('forbidClick') }}</var-button>
   </var-space>
@@ -100,6 +110,7 @@ function openMultiple() {
   <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="warning" block @click="createSnackbar()">{{ t('basicUsage') }}</var-button>
     <var-button type="warning" block @click="createSnackbar('time')">{{ t('hiddenTime') }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('progress')">{{ t('progress') }}</var-button>
     <var-button type="warning" block @click="createSnackbar('position')">{{ t('bottomDisplay') }}</var-button>
     <var-button type="warning" block @click="createSnackbar('custom')">{{ t('custom') }}</var-button>
   </var-space>
@@ -136,6 +147,10 @@ function openMultiple() {
     </var-snackbar>
 
     <var-snackbar v-model:show="show4" :duration="100000" :elevation="5">
+      {{ t('text') }}
+    </var-snackbar>
+
+    <var-snackbar v-model:show="showProgress" :duration="4000" progress>
       {{ t('text') }}
     </var-snackbar>
 

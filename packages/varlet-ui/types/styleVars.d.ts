@@ -762,6 +762,8 @@ interface BaseStyleVars {
   '--snackbar-action-margin'?: string
   '--snackbar-icon-margin'?: string
   '--snackbar-vertical-action-margin'?: string
+  '--snackbar-progress-height'?: string
+  '--snackbar-progress-color'?: string
   '--space-size-mini-y'?: string
   '--space-size-mini-x'?: string
   '--space-size-small-y'?: string

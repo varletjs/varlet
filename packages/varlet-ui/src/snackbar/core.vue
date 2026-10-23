@@ -7,6 +7,7 @@
           n(`wrapper-${position}`),
           formatElevation(elevation, 4),
           [vertical, n('vertical')],
+          [showProgress, n('wrapper--progress')],
           [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)],
         )
       "
@@ -29,6 +30,9 @@
       <div v-if="$slots.action" :class="n('action')">
         <slot name="action" />
       </div>
+      <div v-if="showProgress" :key="countdown?.id" :class="n('progress')" aria-hidden="true">
+        <div :class="n('progress-bar')" :style="progressStyle" />
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +40,7 @@
 <script lang="ts">
 import { call } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
-import { computed, defineComponent, ref, watch, type ComputedRef, type Ref } from 'vue'
+import { computed, defineComponent, onUnmounted, shallowRef, watch, type ComputedRef } from 'vue'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
 import VarIcon from '../icon'
@@ -63,7 +67,9 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const timer: Ref = ref(null)
+    let timer: ReturnType<typeof setTimeout> | undefined
+    let countdownId = 0
+    const countdown = shallowRef<{ id: number; duration: number; startedAt: number }>()
     const { zIndex } = useZIndex(() => props.show, 1)
 
     useLock(
@@ -78,11 +84,44 @@ export default defineComponent({
 
     const iconName: ComputedRef<string> = computed(() => (!props.type ? '' : ICON_TYPE_DICT[props.type]))
 
+    const showProgress = computed(
+      () =>
+        props.progress &&
+        countdown.value !== undefined &&
+        countdown.value.duration > 0 &&
+        Number.isFinite(countdown.value.duration),
+    )
+
+    const progressStyle = computed(() => {
+      if (!props.progress || !countdown.value) {
+        return
+      }
+
+      const { duration, startedAt } = countdown.value
+
+      return {
+        animationDuration: `${duration}ms`,
+        animationDelay: `${-Math.max(0, Date.now() - startedAt)}ms`,
+      }
+    })
+
+    function clearCountdown() {
+      clearTimeout(timer)
+      timer = undefined
+      countdown.value = undefined
+    }
+
     function updateAfterDuration() {
-      timer.value = setTimeout(() => {
-        if (props.type !== 'loading') {
-          call(props['onUpdate:show'], false)
-        }
+      clearCountdown()
+
+      if (!props.show || props.type === 'loading') {
+        return
+      }
+
+      countdown.value = { id: countdownId++, duration: props.duration, startedAt: Date.now() }
+      timer = setTimeout(() => {
+        clearCountdown()
+        call(props['onUpdate:show'], false)
       }, props.duration)
     }
 
@@ -91,21 +130,13 @@ export default defineComponent({
       (show) => {
         if (show) {
           call(props.onOpen)
-          updateAfterDuration()
         } else {
-          clearTimeout(timer.value)
           call(props.onClose)
         }
       },
     )
 
-    watch(
-      () => props._update,
-      () => {
-        clearTimeout(timer.value)
-        updateAfterDuration()
-      },
-    )
+    watch([() => props.show, () => props.type === 'loading', () => props._update], updateAfterDuration)
 
     onSmartMounted(() => {
       if (props.show) {
@@ -114,11 +145,16 @@ export default defineComponent({
       }
     })
 
+    onUnmounted(clearCountdown)
+
     return {
       SNACKBAR_TYPE,
       zIndex,
       iconName,
       isForbidClick,
+      countdown,
+      showProgress,
+      progressStyle,
       n,
       classes,
       formatElevation,

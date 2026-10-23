@@ -18,6 +18,7 @@ export const props = {
     type: Number,
     default: 3000,
   },
+  progress: Boolean,
   elevation: {
     type: [Boolean, String, Number],
     default: true,
