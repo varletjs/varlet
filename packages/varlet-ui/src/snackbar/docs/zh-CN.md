@@ -88,6 +88,7 @@ const show = ref(false)
 
 设置 `progress` 显示进度条，表示距离自动关闭的剩余时长。进度条仅在类型不是 `loading`，且本次自动关闭时长为大于 `0` 的有限数值时显示。`duration` 为 `0` 时仍会立即关闭消息条。
 重新打开消息条时，进度重新开始；显示期间切换 `progress` 不会重置关闭计时。
+切换为 `loading` 类型时会取消并清空倒计时；显示期间从 `loading` 切换为普通类型时，会按当前 `duration` 重新开始关闭计时和进度。
 
 ```html
 <script setup>

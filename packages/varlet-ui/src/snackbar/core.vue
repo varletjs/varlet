@@ -30,7 +30,7 @@
       <div v-if="$slots.action" :class="n('action')">
         <slot name="action" />
       </div>
-      <div v-if="showProgress" :key="countdown.id" :class="n('progress')" aria-hidden="true">
+      <div v-if="showProgress" :key="countdown?.id" :class="n('progress')" aria-hidden="true">
         <div :class="n('progress-bar')" :style="progressStyle" />
       </div>
     </div>
@@ -68,7 +68,8 @@ export default defineComponent({
   props,
   setup(props) {
     let timer: ReturnType<typeof setTimeout> | undefined
-    const countdown = shallowRef({ id: 0, duration: 0, startedAt: 0 })
+    let countdownId = 0
+    const countdown = shallowRef<{ id: number; duration: number; startedAt: number }>()
     const { zIndex } = useZIndex(() => props.show, 1)
 
     useLock(
@@ -86,33 +87,41 @@ export default defineComponent({
     const showProgress = computed(
       () =>
         props.progress &&
-        props.show &&
-        props.type !== 'loading' &&
+        countdown.value !== undefined &&
         countdown.value.duration > 0 &&
         Number.isFinite(countdown.value.duration),
     )
 
-    const progressStyle = shallowRef<{ animationDuration: string; animationDelay: string }>()
-
-    watch([showProgress, countdown], ([show, { duration, startedAt }]) => {
-      if (!show) {
-        progressStyle.value = undefined
+    const progressStyle = computed(() => {
+      if (!props.progress || !countdown.value) {
         return
       }
 
-      progressStyle.value = {
+      const { duration, startedAt } = countdown.value
+
+      return {
         animationDuration: `${duration}ms`,
         animationDelay: `${-Math.max(0, Date.now() - startedAt)}ms`,
       }
     })
 
-    function updateAfterDuration() {
+    function clearCountdown() {
       clearTimeout(timer)
-      countdown.value = { id: countdown.value.id + 1, duration: props.duration, startedAt: Date.now() }
+      timer = undefined
+      countdown.value = undefined
+    }
+
+    function updateAfterDuration() {
+      clearCountdown()
+
+      if (!props.show || props.type === 'loading') {
+        return
+      }
+
+      countdown.value = { id: countdownId++, duration: props.duration, startedAt: Date.now() }
       timer = setTimeout(() => {
-        if (props.type !== 'loading') {
-          call(props['onUpdate:show'], false)
-        }
+        clearCountdown()
+        call(props['onUpdate:show'], false)
       }, props.duration)
     }
 
@@ -121,20 +130,13 @@ export default defineComponent({
       (show) => {
         if (show) {
           call(props.onOpen)
-          updateAfterDuration()
         } else {
-          clearTimeout(timer)
           call(props.onClose)
         }
       },
     )
 
-    watch(
-      () => props._update,
-      () => {
-        updateAfterDuration()
-      },
-    )
+    watch([() => props.show, () => props.type === 'loading', () => props._update], updateAfterDuration)
 
     onSmartMounted(() => {
       if (props.show) {
@@ -143,7 +145,7 @@ export default defineComponent({
       }
     })
 
-    onUnmounted(() => clearTimeout(timer))
+    onUnmounted(clearCountdown)
 
     return {
       SNACKBAR_TYPE,

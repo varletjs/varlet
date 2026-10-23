@@ -246,10 +246,91 @@ test('snackbar loading does not display progress or close automatically', async 
   const { wrapper, onUpdateShow } = mountSnackbar({ progress: true, type: 'loading' })
   await nextTick()
   expect(wrapper.find('.var-snackbar__progress').exists()).toBe(false)
+  expect(vi.getTimerCount()).toBe(0)
 
   await vi.advanceTimersByTimeAsync(2000)
   expect(onUpdateShow).not.toHaveBeenCalled()
   expect(wrapper.get('.var-snackbar').element.style.display).toBe('')
+})
+
+test.each([true, false])('snackbar starts a fresh countdown after loading with progress %s', async (progress) => {
+  const { wrapper, onUpdateShow } = mountSnackbar({ progress, type: 'loading' })
+  await vi.advanceTimersByTimeAsync(2000)
+  await wrapper.setProps({ duration: 1500, type: 'success' })
+
+  expect(vi.getTimerCount()).toBe(1)
+  if (progress) {
+    const bar = wrapper.get('.var-snackbar__progress-bar').element
+    expect(bar.style.animationDuration).toBe('1500ms')
+    expect(Number.parseFloat(bar.style.animationDelay)).toBe(0)
+  }
+
+  await vi.advanceTimersByTimeAsync(1499)
+  expect(onUpdateShow).not.toHaveBeenCalled()
+  await vi.advanceTimersByTimeAsync(1)
+  expect(onUpdateShow).toHaveBeenCalledExactlyOnceWith(false)
+})
+
+test.each([true, false])(
+  'snackbar cancels and clears its countdown when entering loading with progress %s',
+  async (progress) => {
+    const { wrapper, onUpdateShow } = mountSnackbar({ progress })
+    await vi.advanceTimersByTimeAsync(400)
+    await wrapper.setProps({ type: 'loading' })
+    expect(vi.getTimerCount()).toBe(0)
+    expect(wrapper.find('.var-snackbar__progress').exists()).toBe(false)
+
+    await vi.advanceTimersByTimeAsync(2000)
+    expect(onUpdateShow).not.toHaveBeenCalled()
+    await wrapper.setProps({ type: 'info' })
+    if (progress) {
+      const bar = wrapper.get('.var-snackbar__progress-bar').element
+      expect(bar.style.animationDuration).toBe('1000ms')
+      expect(Number.parseFloat(bar.style.animationDelay)).toBe(0)
+    }
+
+    await vi.advanceTimersByTimeAsync(999)
+    expect(onUpdateShow).not.toHaveBeenCalled()
+    await vi.advanceTimersByTimeAsync(1)
+    expect(onUpdateShow).toHaveBeenCalledExactlyOnceWith(false)
+  },
+)
+
+test('snackbar type changes while hidden do not start a countdown', async () => {
+  const { wrapper, onUpdateShow } = mountSnackbar({ progress: true, show: false, type: 'loading' })
+  await wrapper.setProps({ type: 'success' })
+  expect(vi.getTimerCount()).toBe(0)
+  expect(wrapper.find('.var-snackbar__progress').exists()).toBe(false)
+  await vi.advanceTimersByTimeAsync(2000)
+  expect(onUpdateShow).not.toHaveBeenCalled()
+
+  await wrapper.setProps({ show: true })
+  expect(Number.parseFloat(wrapper.get('.var-snackbar__progress-bar').element.style.animationDelay)).toBe(0)
+  await vi.advanceTimersByTimeAsync(1000)
+  expect(onUpdateShow).toHaveBeenCalledExactlyOnceWith(false)
+})
+
+test('snackbar function loading replacement cancels and restarts the countdown', async () => {
+  Snackbar({ content: 'First message', progress: true, duration: 1000 })
+  await nextTick()
+  await vi.advanceTimersByTimeAsync(400)
+  Snackbar.loading({ content: 'Loading message', progress: true, duration: 1000 })
+  await nextTick()
+  expect(document.querySelector('.var-snackbar__progress')).toBeNull()
+
+  await vi.advanceTimersByTimeAsync(2000)
+  expect(document.querySelector('.var-snackbar__wrapper-loading')).not.toBeNull()
+  expect(vi.getTimerCount()).toBe(0)
+  Snackbar.success({ content: 'Complete message', progress: true, duration: 1500 })
+  await nextTick()
+  const bar = document.querySelector('.var-snackbar__progress-bar')
+  expect(bar.style.animationDuration).toBe('1500ms')
+  expect(Number.parseFloat(bar.style.animationDelay)).toBe(0)
+
+  await vi.advanceTimersByTimeAsync(1499)
+  expect(document.querySelector('.var-snackbar__progress-bar')).toBe(bar)
+  await vi.advanceTimersByTimeAsync(1)
+  expect(document.querySelector('.var-snackbar__progress')).toBeNull()
 })
 
 test.each([0, -100, Number.NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY])(

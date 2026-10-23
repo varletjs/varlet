@@ -90,6 +90,7 @@ const show = ref(false)
 
 Set `progress` to display a bar indicating the time remaining before automatic dismissal. The bar is shown only when the type is not `loading` and the current timeout is a finite number greater than `0`. A `duration` of `0` still dismisses the snackbar immediately.
 The progress restarts when the snackbar reopens. Toggling `progress` while it is visible does not reset the dismissal timer.
+Switching to `loading` cancels and clears the countdown. Switching from `loading` to a regular type while visible starts a fresh dismissal timer and progress using the current `duration`.
 
 ```html
 <script setup>
