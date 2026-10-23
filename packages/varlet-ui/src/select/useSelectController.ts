@@ -72,9 +72,11 @@ export function useSelectController(options: UseSelectControllerOptions) {
     const options = optionProvidersGetter()
 
     if (multiple) {
+      const selectedValues = new Set(modelValue)
+
       options.forEach((option) =>
         option.sync(
-          modelValue.includes(getOptionProviderKey(option)),
+          selectedValues.has(getOptionProviderKey(option)),
           optionIsIndeterminate ? optionIsIndeterminate(option) : undefined,
         ),
       )
