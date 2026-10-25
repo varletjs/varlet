@@ -14,6 +14,8 @@
   --snackbar-action-margin: 0 8px;
   --snackbar-vertical-action-margin: 0 8px 8px 0;
   --snackbar-icon-margin: 0 8px;
+  --snackbar-progress-height: 4px;
+  --snackbar-progress-color: currentColor;
 }
 
 .var-transition-group {
@@ -72,6 +74,10 @@
     pointer-events: auto;
     transition: 0.3s var(--cubic-bezier);
 
+    &--progress {
+      position: relative;
+    }
+
     &-success {
       background: var(--snackbar-success-background);
     }
@@ -91,6 +97,25 @@
 
   &__icon {
     margin: var(--snackbar-icon-margin);
+  }
+
+  &__progress {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--snackbar-progress-height);
+    overflow: hidden;
+    border-radius: 0 0 var(--snackbar-border-radius) var(--snackbar-border-radius);
+    pointer-events: none;
+  }
+
+  &__progress-bar {
+    height: 100%;
+    background: var(--snackbar-progress-color);
+    opacity: 0.4;
+    transform-origin: left;
+    animation: var-snackbar-progress linear forwards;
   }
 
   &__content {
@@ -118,5 +143,15 @@
   &-fade-leave-to {
     opacity: 0;
     transform: translateY(-30px);
+  }
+}
+
+@keyframes var-snackbar-progress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
   }
 }
