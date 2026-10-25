@@ -5,6 +5,8 @@ export default {
   menuOption: '菜单项',
   bottomAlignment: '底部对齐',
   offset: '偏移量',
+  coordinatePositioning: '坐标定位',
+  rightClick: '右键打开菜单',
   sameWidth: '与触发元素同宽',
   events: '注册事件',
   disabled: '禁用菜单',

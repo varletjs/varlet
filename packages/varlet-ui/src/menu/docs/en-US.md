@@ -102,6 +102,44 @@ The offset of the Menu popup can be set with `offset-x` and `offset-y`.
 </template>
 ```
 
+### Coordinate Positioning
+
+Set both `x` and `y` to position the menu relative to a point. Coordinates are viewport CSS pixels, so you can use the mouse event's `clientX` and `clientY` directly. `0` is a valid coordinate.
+The point has zero width and height. `placement`, `offset-x`, `offset-y`, and automatic flipping when space is limited still apply, while `same-width` is ignored in this mode.
+If either coordinate is missing, the menu is positioned relative to its trigger element.
+
+Use `trigger="manual"` and `v-model:show` to create a context menu. Manual mode requires you to control closing; click the button or a menu option to close this example.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+const x = ref(0)
+const y = ref(0)
+
+function openContextMenu(event) {
+  x.value = event.clientX
+  y.value = event.clientY
+  show.value = true
+}
+</script>
+
+<template>
+  <var-menu v-model:show="show" trigger="manual" placement="bottom-start" :x="x" :y="y">
+    <var-button type="primary" @contextmenu.prevent="openContextMenu" @click="show = false">
+      Right Click to Open
+    </var-button>
+
+    <template #menu>
+      <var-cell @click="show = false">Menu Option</var-cell>
+      <var-cell @click="show = false">Menu Option</var-cell>
+      <var-cell @click="show = false">Menu Option</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### Same Width As Trigger Element
 
 Use `same-width` to make the popup menu and trigger the same width.
@@ -122,8 +160,8 @@ Use `same-width` to make the popup menu and trigger the same width.
 
 ### Trigger
 
-Use `trigger` to change the trigger method of menu display, 
-the optional values are `click` and `hover`
+Use `trigger` to change how the menu opens. The available values are `click`, `hover`, and `manual`.
+In `manual` mode, control visibility with `v-model:show` or the component methods.
 
 ```html
 <template>
@@ -225,6 +263,8 @@ it is recommended to wrap a `block` element.
 | `v-model:show`  | Whether to show the menu                                                                                                     | _boolean_             | `false`         |
 | `placement`     | Menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
 | `strategy`       | Menu position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
+| `x` | The point's viewport x coordinate in CSS pixels; must be set together with `y` | _number_ | `-` |
+| `y` | The point's viewport y coordinate in CSS pixels; must be set together with `x` | _number_ | `-` |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
@@ -233,7 +273,7 @@ it is recommended to wrap a `block` element.
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `reference` | The trigger element associated with the menu, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
+| `same-width`    | Whether to use the trigger element's width; ignored when positioning by coordinates | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |

@@ -59,6 +59,8 @@ export const props = {
     'disabled',
     'trigger',
     'reference',
+    'x',
+    'y',
     'placement',
     'strategy',
     'offsetX',

@@ -11,6 +11,8 @@ export const props = {
     default: 'click',
   },
   reference: [String, Object] as PropType<Reference>,
+  x: Number,
+  y: Number,
   placement: {
     type: String as PropType<Placement>,
     default: 'cover-top-start',

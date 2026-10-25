@@ -5,6 +5,9 @@ import { ref } from 'vue'
 import { t, use } from './locale/index'
 
 const show = ref(false)
+const coordinateShow = ref(false)
+const x = ref(0)
+const y = ref(0)
 const trigger = ref('click')
 const placementValue = ref('cover-top-start')
 const placementOptions = ref([
@@ -35,6 +38,12 @@ onThemeChange()
 
 function closeMenu() {
   show.value = false
+}
+
+function openContextMenu(event) {
+  x.value = event.clientX
+  y.value = event.clientY
+  coordinateShow.value = true
 }
 </script>
 
@@ -73,6 +82,19 @@ function closeMenu() {
       <var-cell>{{ t('menuOption') }}</var-cell>
       <var-cell>{{ t('menuOption') }}</var-cell>
       <var-cell>{{ t('menuOption') }}</var-cell>
+    </template>
+  </var-menu>
+
+  <app-type>{{ t('coordinatePositioning') }}</app-type>
+  <var-menu v-model:show="coordinateShow" trigger="manual" placement="bottom-start" :x="x" :y="y">
+    <var-button type="primary" @contextmenu.prevent="openContextMenu" @click="coordinateShow = false">
+      {{ t('rightClick') }}
+    </var-button>
+
+    <template #menu>
+      <var-cell @click="coordinateShow = false">{{ t('menuOption') }}</var-cell>
+      <var-cell @click="coordinateShow = false">{{ t('menuOption') }}</var-cell>
+      <var-cell @click="coordinateShow = false">{{ t('menuOption') }}</var-cell>
     </template>
   </var-menu>
 

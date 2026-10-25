@@ -1,5 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
+  coordinatePositioning: 'Coordinate Positioning',
+  rightClick: 'Right Click to Open',
   size: 'Size',
   eat: 'Eat',
   sleep: 'Sleep',
