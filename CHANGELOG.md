@@ -1,4 +1,14 @@
-## [3.20.7](https://github.com/varletjs/varlet/compare/v3.20.6...v3.20.7) (2026-10-14)
+## [3.20.8](https://github.com/varletjs/varlet/compare/v3.20.7...v3.20.8) (2026-10-25)
+
+
+### Features
+
+* **ellipsis:** add expandTrigger prop to enable click expansion for line-clamped content ([0260965](https://github.com/varletjs/varlet/commit/0260965b86408a9af4212c1a505d4024e29c0781))
+* **ellipsis:** rename expandOnOverflow to expandableOnOverflow and add tooltipOnOverflow support ([de19fc3](https://github.com/varletjs/varlet/commit/de19fc3182dccdd680c8c92f7d359e0f3ac50f21))
+* **ellipsis:** support expand only when the text is overflowed ([#2022](https://github.com/varletjs/varlet/issues/2022)) ([786420f](https://github.com/varletjs/varlet/commit/786420f0730a114bd7634f4d02c52a0f1a0bcd8d))
+* **snackbar:** add timeout progress indicator ([#2030](https://github.com/varletjs/varlet/issues/2030)) ([70c8061](https://github.com/varletjs/varlet/commit/70c8061bfc17b375daf2cc29fdd7a26b2ec43d53))
+
+## [3.20.6](https://github.com/varletjs/varlet/compare/v3.20.5...v3.20.6) (2026-08-19)
 
 
 ### Bug Fixes
@@ -8,9 +18,6 @@
 
 ### Features
 
-* **ellipsis:** add expandTrigger prop to enable click expansion for line-clamped content ([0260965](https://github.com/varletjs/varlet/commit/0260965b86408a9af4212c1a505d4024e29c0781))
-* **ellipsis:** rename expandOnOverflow to expandableOnOverflow and add tooltipOnOverflow support ([de19fc3](https://github.com/varletjs/varlet/commit/de19fc3182dccdd680c8c92f7d359e0f3ac50f21))
-* **ellipsis:** support expand only when the text is overflowed ([#2022](https://github.com/varletjs/varlet/issues/2022)) ([786420f](https://github.com/varletjs/varlet/commit/786420f0730a114bd7634f4d02c52a0f1a0bcd8d))
 * **paper:** add active state with overlay and update documentation ([92dade8](https://github.com/varletjs/varlet/commit/92dade8b10eae3b8a0c0a0419b77b6ece949143b))
 
 ## [3.20.5](https://github.com/varletjs/varlet/compare/v3.20.4...v3.20.5) (2026-08-19)
