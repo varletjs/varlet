@@ -88,9 +88,7 @@ const show = ref(false)
 
 ### Timeout Progress
 
-Set `progress` to display a bar indicating the time remaining before automatic dismissal. The bar is shown only when the type is not `loading` and the current timeout is a finite number greater than `0`. A `duration` of `0` still dismisses the snackbar immediately.
-The progress restarts when the snackbar reopens. Toggling `progress` while it is visible does not reset the dismissal timer.
-Switching to `loading` cancels and clears the countdown. Switching from `loading` to a regular type while visible starts a fresh dismissal timer and progress using the current `duration`.
+Set `progress` to display the countdown before automatic dismissal. The progress bar is not shown for the `loading` type.
 
 ```html
 <script setup>
@@ -185,8 +183,7 @@ function createSnackbar() {
 
 ### Timeout Progress
 
-Function calls also support the `progress` option. Use `Snackbar.setDefaultOptions({ progress: true })` to enable it by default.
-In the default singleton mode, calling `Snackbar` again restarts the progress for the new message.
+Function calls also support the `progress` option.
 
 ```html
 <script setup>
@@ -351,7 +348,7 @@ function openMultiple() {
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |
 | `position`| `Snackbar` position, Optional value is one of `top, center, bottom`                | _string_ | `top` |
 | `duration`| Display duration                                                                   | _number_ | `3000` |
-| `progress` | Whether to show timeout progress; requires a non-loading type and a finite positive timeout | _boolean_ | `false` |
+| `progress` ***3.20.8*** | Whether to show timeout progress | _boolean_ | `false` |
 | `elevation` ***3.3.0***  | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content` | Custom content                                                                     | _string_ | `-` |
 | `content-class` | Class of custom content                                                            | _string_ | `-` |
@@ -407,7 +404,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `progress` | Whether to show timeout progress; requires a non-loading type and a finite positive timeout | _boolean_ | `false` |
+| `progress` ***3.20.8*** | Whether to show timeout progress | _boolean_ | `false` |
 | `elevation` ***3.3.0*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
 | `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |

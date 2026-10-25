@@ -86,9 +86,7 @@ const show = ref(false)
 
 ### 自动关闭进度
 
-设置 `progress` 显示进度条，表示距离自动关闭的剩余时长。进度条仅在类型不是 `loading`，且本次自动关闭时长为大于 `0` 的有限数值时显示。`duration` 为 `0` 时仍会立即关闭消息条。
-重新打开消息条时，进度重新开始；显示期间切换 `progress` 不会重置关闭计时。
-切换为 `loading` 类型时会取消并清空倒计时；显示期间从 `loading` 切换为普通类型时，会按当前 `duration` 重新开始关闭计时和进度。
+设置 `progress` 显示消息条自动关闭的倒计时进度。`loading` 类型不显示进度条。
 
 ```html
 <script setup>
@@ -183,8 +181,7 @@ function createSnackbar() {
 
 ### 自动关闭进度
 
-函数调用同样支持 `progress` 选项，也可以通过 `Snackbar.setDefaultOptions({ progress: true })` 默认启用。
-在默认单例模式下，再次调用 `Snackbar` 时，进度会随新消息重新开始。
+函数调用同样支持 `progress` 选项。
 
 ```html
 <script setup>
@@ -349,7 +346,7 @@ function openMultiple() {
 | `type`           | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
 | `position`       | `Snackbar`  位置，可选值为 `top center bottom`                 | _string_ | `top` |
 | `duration`       | 显示时长                                                    | _number_ | `3000` |
-| `progress` | 是否显示自动关闭进度条，仅在非 `loading` 类型且自动关闭时长为有限正数时生效 | _boolean_ | `false` |
+| `progress` ***3.20.8*** | 是否显示自动关闭进度条 | _boolean_ | `false` |
 | `elevation` ***3.3.0***  | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `content`        | 自定义内容                                                   | _string_ | `-` |
 | `content-class`  | 自定义内容的类名                                                | _string_ | `-` |
@@ -405,7 +402,7 @@ function openMultiple() {
 | `type`          | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-`            |
 | `position`      | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top`          |
 | `duration`      | 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭)                   | _number_ | `3000`         |
-| `progress` | 是否显示自动关闭进度条，仅在非 `loading` 类型且自动关闭时长为有限正数时生效 | _boolean_ | `false` |
+| `progress` ***3.20.8*** | 是否显示自动关闭进度条 | _boolean_ | `false` |
 | `elevation` ***3.3.0*** | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `content`       | 自定义内容                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `icon`          | 自定义图标                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
