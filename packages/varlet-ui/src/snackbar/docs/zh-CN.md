@@ -84,7 +84,7 @@ const show = ref(false)
 </template>
 ```
 
-### 自动关闭进度
+### 自动关闭倒计时
 
 设置 `progress` 显示消息条自动关闭的倒计时进度。`loading` 类型不显示进度条。
 
@@ -179,7 +179,7 @@ function createSnackbar() {
 </template>
 ```
 
-### 自动关闭进度
+### 自动关闭倒计时
 
 函数调用同样支持 `progress` 选项。
 

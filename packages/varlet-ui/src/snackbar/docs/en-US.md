@@ -86,7 +86,7 @@ const show = ref(false)
 </template>
 ```
 
-### Timeout Progress
+### Dismissal Countdown
 
 Set `progress` to display the countdown before automatic dismissal. The progress bar is not shown for the `loading` type.
 
@@ -181,7 +181,7 @@ function createSnackbar() {
 </template>
 ```
 
-### Timeout Progress
+### Dismissal Countdown
 
 Function calls also support the `progress` option.
 
