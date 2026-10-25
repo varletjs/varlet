@@ -23,7 +23,7 @@ const show = ref(false)
 
 ### 垂直排列
 
-通过 `vertical` 属性改变 `snackbar` 排列方式，通过 `自定义插槽` 创建右边 action。
+通过 `vertical` 属性改变 `Snackbar` 排列方式，通过自定义插槽创建右侧操作区。
 
 ```html
 <script setup>
@@ -45,7 +45,7 @@ const show = ref(false)
 
 ### 底部显示
 
-通过 `position` 属性改变 `snackbar` 显示位置。
+通过 `position` 属性改变 `Snackbar` 显示位置。
 
 ```html
 <script setup>
@@ -67,7 +67,7 @@ const show = ref(false)
 
 ### 显示时长
 
-通过 `duration` 属性改变 `snackbar` 显示时长。
+通过 `duration` 属性改变 `Snackbar` 显示时长。
 
 ```html
 <script setup>
@@ -97,7 +97,7 @@ const show = ref(false)
 
 <template>
   <var-snackbar v-model:show="show" :duration="4000" progress>这是一个消息条！！</var-snackbar>
-  <var-button type="primary" block @click="show = !show">自动关闭进度</var-button>
+  <var-button type="primary" block @click="show = !show">自动关闭倒计时</var-button>
 </template>
 ```
 
@@ -197,7 +197,7 @@ function createSnackbar() {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar">自动关闭进度</var-button>
+  <var-button type="warning" block @click="createSnackbar">自动关闭倒计时</var-button>
 </template>
 ```
 
@@ -344,17 +344,17 @@ function openMultiple() {
 |------------------|---------------------------------------------------------| -------- | ---------- |
 | `v-model:show`   | 是否显示 `Snackbar`                                         | _boolean_ | `false` |
 | `type`           | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
-| `position`       | `Snackbar`  位置，可选值为 `top center bottom`                 | _string_ | `top` |
+| `position`       | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top` |
 | `duration`       | 显示时长                                                    | _number_ | `3000` |
-| `progress` ***3.20.8*** | 是否显示自动关闭进度条 | _boolean_ | `false` |
+| `progress` ***3.20.8*** | 是否显示自动关闭倒计时进度条 | _boolean_ | `false` |
 | `elevation` ***3.3.0***  | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `content`        | 自定义内容                                                   | _string_ | `-` |
 | `content-class`  | 自定义内容的类名                                                | _string_ | `-` |
 | `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |
-| `loading-type`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
-| `loading-size`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
-| `loading-color`  | loading颜色(见 `loading`组件)                                |_string_|`currentColor`|
-| `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
+| `loading-type`   | Loading 类型（见 `Loading` 组件）                              | _string_ | `circle`       |
+| `loading-size`   | Loading 大小（见 `Loading` 组件）                              | _string_ | `normal`       |
+| `loading-color`  | Loading 颜色（见 `Loading` 组件）                              | _string_ | `currentColor` |
+| `loading-radius` | Loading 半径（见 `Loading` 组件）                              | _string \| number_ | `-` |
 | `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
 | `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
 | `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to'] \| false_  | `body` |
@@ -393,7 +393,7 @@ function openMultiple() {
 | `Snackbar.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `Snackbar.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 
-### Snackbar Options
+### Snackbar 选项
 
 #### 函数式调用时传入的选项
 
@@ -401,20 +401,20 @@ function openMultiple() {
 |-----------------|---------------------------------------------------------| -------- |----------------|
 | `type`          | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-`            |
 | `position`      | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top`          |
-| `duration`      | 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭)                   | _number_ | `3000`         |
-| `progress` ***3.20.8*** | 是否显示自动关闭进度条 | _boolean_ | `false` |
+| `duration`      | 显示时长（当 `type` 属性为 `loading` 时，需要手动关闭）                  | _number_ | `3000`         |
+| `progress` ***3.20.8*** | 是否显示自动关闭倒计时进度条 | _boolean_ | `false` |
 | `elevation` ***3.3.0*** | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `content`       | 自定义内容                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `icon`          | 自定义图标                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `action`        | 自定义右边动作区                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `contentClass`  | 自定义内容的类名                                                | _string_ | `-`            |
 | `vertical`      | 是否启用竖直排列方式                                              | _boolean_ | `false`        |
-| `loadingType`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
-| `loadingSize`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
-| `loadingColor`  | Loading颜色(见 `Loading` 组件)                               | _string_ | `currentColor` |
-| `loadingRadius` | Loading半径大小(见 `Loading` 组件)                                 | _string \| number_  | `-` |
+| `loadingType`   | Loading 类型（见 `Loading` 组件）                              | _string_ | `circle`       |
+| `loadingSize`   | Loading 大小（见 `Loading` 组件）                              | _string_ | `normal`       |
+| `loadingColor`  | Loading 颜色（见 `Loading` 组件）                              | _string_ | `currentColor` |
+| `loadingRadius` | Loading 半径（见 `Loading` 组件）                              | _string \| number_ | `-` |
 | `lockScroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false`        |
-| `forbidClick`   | 是否禁止穿透点击(当 `type` 属性为 `loading` 时，默认为 `true`)           | _boolean_  | `false`        |
+| `forbidClick`   | 是否禁止穿透点击（当 `type` 属性为 `loading` 时，默认为 `true`）          | _boolean_  | `false`        |
 | `onOpen`        | 打开 `Snackbar` 时触发                                       | _() => void_ | `-`            |
 | `onOpened`      | 打开 `Snackbar` 动画结束时触发                                   | _() => void_ | `-`            |
 | `onClose`       | 关闭 `Snackbar` 时触发                                       | _() => void_ | `-`            |
@@ -422,7 +422,7 @@ function openMultiple() {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+以下为组件使用的 CSS 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

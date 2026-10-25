@@ -99,7 +99,7 @@ const show = ref(false)
 
 <template>
   <var-snackbar v-model:show="show" :duration="4000" progress>Hello, I'm a snackbar</var-snackbar>
-  <var-button type="primary" block @click="show = !show">Timeout Progress</var-button>
+  <var-button type="primary" block @click="show = !show">Dismissal Countdown</var-button>
 </template>
 ```
 
@@ -199,7 +199,7 @@ function createSnackbar() {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar">Timeout Progress</var-button>
+  <var-button type="warning" block @click="createSnackbar">Dismissal Countdown</var-button>
 </template>
 ```
 
@@ -348,7 +348,7 @@ function openMultiple() {
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |
 | `position`| `Snackbar` position, Optional value is one of `top, center, bottom`                | _string_ | `top` |
 | `duration`| Display duration                                                                   | _number_ | `3000` |
-| `progress` ***3.20.8*** | Whether to show timeout progress | _boolean_ | `false` |
+| `progress` ***3.20.8*** | Whether to show dismissal countdown | _boolean_ | `false` |
 | `elevation` ***3.3.0***  | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content` | Custom content                                                                     | _string_ | `-` |
 | `content-class` | Class of custom content                                                            | _string_ | `-` |
@@ -404,7 +404,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `progress` ***3.20.8*** | Whether to show timeout progress | _boolean_ | `false` |
+| `progress` ***3.20.8*** | Whether to show dismissal countdown | _boolean_ | `false` |
 | `elevation` ***3.3.0*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
 | `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |
