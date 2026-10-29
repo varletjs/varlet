@@ -1,4 +1,13 @@
-## [3.20.8](https://github.com/varletjs/varlet/compare/v3.20.7...v3.20.8) (2026-10-25)
+## [3.20.9](https://github.com/varletjs/varlet/compare/v3.20.8...v3.20.9) (2026-10-29)
+
+
+### Features
+
+* **auto-complete:** support configurable menu radius ([#2037](https://github.com/varletjs/varlet/issues/2037)) ([b59ec37](https://github.com/varletjs/varlet/commit/b59ec37f9e5d9e73a233bd03077ed8f96048764d))
+* **menu:** support configurable popup radius ([#2036](https://github.com/varletjs/varlet/issues/2036)) ([494bc0d](https://github.com/varletjs/varlet/commit/494bc0d200a62d7890b07a286e94548ee5d6a0fe))
+* **snackbar:** add timeout progress indicator ([#2030](https://github.com/varletjs/varlet/issues/2030)) ([70c8061](https://github.com/varletjs/varlet/commit/70c8061bfc17b375daf2cc29fdd7a26b2ec43d53))
+
+## [3.20.7](https://github.com/varletjs/varlet/compare/v3.20.6...v3.20.7) (2026-10-14)
 
 
 ### Features
@@ -6,7 +15,6 @@
 * **ellipsis:** add expandTrigger prop to enable click expansion for line-clamped content ([0260965](https://github.com/varletjs/varlet/commit/0260965b86408a9af4212c1a505d4024e29c0781))
 * **ellipsis:** rename expandOnOverflow to expandableOnOverflow and add tooltipOnOverflow support ([de19fc3](https://github.com/varletjs/varlet/commit/de19fc3182dccdd680c8c92f7d359e0f3ac50f21))
 * **ellipsis:** support expand only when the text is overflowed ([#2022](https://github.com/varletjs/varlet/issues/2022)) ([786420f](https://github.com/varletjs/varlet/commit/786420f0730a114bd7634f4d02c52a0f1a0bcd8d))
-* **snackbar:** add timeout progress indicator ([#2030](https://github.com/varletjs/varlet/issues/2030)) ([70c8061](https://github.com/varletjs/varlet/commit/70c8061bfc17b375daf2cc29fdd7a26b2ec43d53))
 
 ## [3.20.6](https://github.com/varletjs/varlet/compare/v3.20.5...v3.20.6) (2026-08-19)
 
