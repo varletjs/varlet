@@ -18,6 +18,8 @@ export type AutoCompleteValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'o
 
 export type AutoCompleteSize = 'small' | 'normal'
 
+export type AutoCompleteMenuRadius = 'normal' | 'large'
+
 export interface AutoCompleteOption {
   label?: AutoCompleteOptionLabel
   value?: any
@@ -34,6 +36,7 @@ export interface AutoCompleteProps extends BasicAttributes {
   line?: boolean
   size?: AutoCompleteSize
   variant?: AutoCompleteVariant
+  menuRadius?: AutoCompleteMenuRadius
   placeholder?: string
   hint?: boolean
   textColor?: string

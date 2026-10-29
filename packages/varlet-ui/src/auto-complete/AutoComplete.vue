@@ -13,6 +13,7 @@
       scrollable
       trigger="manual"
       placement="bottom"
+      :radius="menuRadius"
       :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
       :popover-class="

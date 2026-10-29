@@ -4,6 +4,9 @@ import { computed, ref } from 'vue'
 import { z } from 'zod'
 import { t, use } from './locale'
 
+const { value: normalRadiusValue, options: normalRadiusOptions } = useAutoComplete()
+const { value: largeRadiusValue, options: largeRadiusOptions } = useAutoComplete()
+
 const { value: standardValue, options: standardOptions } = useAutoComplete()
 const { value: standardValue2, options: standardOptions2 } = useAutoComplete()
 const { value: standardValue3, options: standardOptions3 } = useAutoComplete()
@@ -290,6 +293,24 @@ function useAutoComplete() {
       size="small"
       :placeholder="t('smallSize')"
       :options="filledOptions11"
+    />
+  </var-space>
+
+  <app-type>{{ t('menuRadius') }}</app-type>
+  <var-space direction="column" size="large">
+    <var-auto-complete
+      v-model="normalRadiusValue"
+      variant="outlined"
+      menu-radius="normal"
+      :placeholder="t('normalRadius')"
+      :options="normalRadiusOptions"
+    />
+    <var-auto-complete
+      v-model="largeRadiusValue"
+      variant="outlined"
+      menu-radius="large"
+      :placeholder="t('largeRadius')"
+      :options="largeRadiusOptions"
     />
   </var-space>
 </template>

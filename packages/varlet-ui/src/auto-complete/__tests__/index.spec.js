@@ -757,3 +757,53 @@ test('auto-complete valiation with zod', async () => {
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
   wrapper.unmount()
 })
+
+test.each(['standard', 'outlined', 'filled'])(
+  'auto-complete menu-radius changes the popup without changing the %s input',
+  async (variant) => {
+    const onUpdateModelValue = vi.fn()
+    const wrapper = mount(AutoComplete, {
+      props: {
+        modelValue: 'a',
+        variant,
+        options: [
+          { label: 'First', value: 'first' },
+          { label: 'Last', value: 'last' },
+        ],
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    try {
+      const menuSelect = wrapper.findComponent({ name: 'VarMenuSelect' })
+      const input = wrapper.findComponent({ name: 'VarInput' })
+      const inputClasses = input.attributes('class')
+      const popup = document.querySelector('.var-menu-select__menu')
+      const defaultClasses = popup.className
+      expect(wrapper.props('menuRadius')).toBe('normal')
+      expect(menuSelect.props('radius')).toBe('normal')
+      expect(menuSelect.props('placement')).toBe('bottom')
+
+      await wrapper.trigger('focusin')
+      await wrapper.setProps({ menuRadius: 'large' })
+      expect(menuSelect.props('radius')).toBe('large')
+      expect(popup.classList.contains('var-menu-select--radius-large')).toBe(true)
+      expect(popup.parentElement.classList.contains('var-menu--radius-large')).toBe(true)
+      expect(input.attributes('class')).toBe(inputClasses)
+      expect(input.props('variant')).toBe(variant)
+      expect(input.attributes('menu-radius')).toBeUndefined()
+      expect(popup.querySelectorAll(':scope > .var-auto-complete__options > .var-menu-option')).toHaveLength(2)
+
+      await wrapper.setProps({ menuRadius: 'normal' })
+      expect(menuSelect.props('radius')).toBe('normal')
+      expect(popup.className).toBe(defaultClasses)
+      expect(popup.parentElement.classList.contains('var-menu--radius-large')).toBe(false)
+
+      await wrapper.setProps({ menuRadius: 'large' })
+      await trigger(popup.querySelector('.var-menu-option'), 'click')
+      expect(onUpdateModelValue).toHaveBeenCalledWith('first')
+    } finally {
+      wrapper.unmount()
+    }
+  },
+)

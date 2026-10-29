@@ -1,4 +1,7 @@
 export default {
+  menuRadius: 'Menu Radius',
+  normalRadius: 'Normal Menu Radius',
+  largeRadius: 'Large Menu Radius',
   standard: 'Standard Variant',
   outlined: 'Outlined Variant',
   filled: 'Filled Variant',
