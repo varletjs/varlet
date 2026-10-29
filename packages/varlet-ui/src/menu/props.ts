@@ -3,7 +3,13 @@ import { type PropType, type TeleportProps } from 'vue'
 import { defineListenerProp } from '../utils/components'
 import { type Placement, type Reference, type Trigger } from './usePopover'
 
+export type MenuRadius = 'normal' | 'large'
+
 export const props = {
+  radius: {
+    type: String as PropType<MenuRadius>,
+    default: 'normal',
+  },
   show: Boolean,
   disabled: Boolean,
   trigger: {

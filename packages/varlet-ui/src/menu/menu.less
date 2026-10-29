@@ -1,6 +1,7 @@
 :root {
   --menu-background-color: var(--color-surface-container-high);
   --menu-border-radius: 2px;
+  --menu-large-border-radius: 8px;
 }
 
 .var-menu {
@@ -10,6 +11,10 @@
   &__menu {
     --scrollbar-track-background: var(--menu-background-color);
     border-radius: var(--menu-border-radius);
+  }
+
+  &--radius-large {
+    border-radius: var(--menu-large-border-radius);
   }
 
   &-enter-from,

@@ -6,8 +6,9 @@
     placement="right-start"
     cascade-optimization
     var-menu-children-cover
-    :class="n()"
+    :class="[n(), radius !== 'normal' ? n(`--menu-radius-${radius}`) : undefined]"
     :disabled="disabled"
+    :radius="radius"
     :teleport="false"
     :close-on-click-reference="false"
   >
@@ -25,7 +26,7 @@
     />
 
     <template v-if="options.length" #menu>
-      <div ref="menuOptions">
+      <div ref="menuOptions" v-bind="radius !== 'normal' ? { class: n(`--radius-${radius}`) } : {}">
         <template v-for="menuOption in options" :key="menuOption[valueKey]">
           <var-menu-children
             v-if="menuOption[childrenKey]"
@@ -35,6 +36,7 @@
             :options="menuOption[childrenKey]"
             :highlight-options="highlightOptions"
             :disabled="menuOption.disabled"
+            :radius="radius"
             @key-arrow-x="handleArrowLeft"
             @key-arrow-right-open="allowChildrenClose(menuOption)"
             @mouseenter="allowChildrenClose(menuOption)"
@@ -84,7 +86,7 @@ export default defineComponent({
     onKeyArrowX: defineListenerProp<(trigger: 'ArrowLeft' | 'ArrowRight') => void>(),
     onKeyArrowRightOpen: defineListenerProp<() => void>(),
     onMouseenter: defineListenerProp<() => void>(),
-    ...pickProps(menuSelectProps, ['options', 'valueKey', 'labelKey', 'childrenKey']),
+    ...pickProps(menuSelectProps, ['options', 'valueKey', 'labelKey', 'childrenKey', 'radius']),
   },
   setup(props) {
     const show = ref(false)

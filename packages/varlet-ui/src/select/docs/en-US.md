@@ -547,6 +547,34 @@ const keyOptions = computed(() => [
 </style>
 ```
 
+### Menu Radius
+
+Use `menu-radius` to set the popup menu radius to `normal` or `large`. `normal` is the default and preserves the existing radius and CSS variable overrides. Only the popup menu container is affected; the select field, options, colors, and spacing remain unchanged.
+
+The default MD2 radii are `2px` and `8px`; the MD3 radii are `4px` and `16px`, respectively. They can be customized with the style variables below.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-select v-model="normalRadiusValue" menu-radius="normal" variant="outlined" placeholder="Normal Menu Radius">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select v-model="largeRadiusValue" menu-radius="large" variant="outlined" placeholder="Large Menu Radius">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
@@ -561,6 +589,7 @@ const keyOptions = computed(() => [
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `0` |
+| `menu-radius` ***3.20.9*** | Popup menu radius, optional values are `normal` `large`; does not affect the select field | _string_ | `normal` |
 | `chip` | Whether to use chip style (multiple choices only) | _boolean_ | `false` |
 | `line` | Whether to display a dividing line | _boolean_ | `true` |
 | `hint` | Whether to use placeholders as prompts | _boolean_ | `true` |
@@ -652,6 +681,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-scroller-large-border-radius` | `8px` |
 | `--select-label-font-size` | `16px` |
 | `--select-chips-margin` | `-5px 0 0 0` |
 | `--select-chips-padding` | `2px 0` |

@@ -533,9 +533,11 @@ interface BaseStyleVars {
   '--loading-bar-height'?: string
   '--menu-background-color'?: string
   '--menu-border-radius'?: string
+  '--menu-large-border-radius'?: string
   '--menu-select-menu-max-height'?: string
   '--menu-select-menu-padding'?: string
   '--menu-select-menu-border-radius'?: string
+  '--menu-select-menu-large-border-radius'?: string
   '--menu-select-menu-background-color'?: string
   '--menu-option-normal-height'?: string
   '--menu-option-small-height'?: string
@@ -696,6 +698,7 @@ interface BaseStyleVars {
   '--select-scroller-padding'?: string
   '--select-scroller-max-height'?: string
   '--select-scroller-border-radius'?: string
+  '--select-scroller-large-border-radius'?: string
   '--select-label-font-size'?: string
   '--select-chips-margin'?: string
   '--select-chips-padding'?: string

@@ -1,5 +1,6 @@
 import { SelectHTMLAttributes, VNode, VNodeChild, type PropType } from 'vue'
 import { fieldDecoratorProps } from '../field-decorator'
+import { type MenuRadius } from '../menu/props'
 import { defineListenerProp, pickProps } from '../utils/components'
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
@@ -36,6 +37,10 @@ export const props = {
   valueKey: {
     type: String,
     default: 'value',
+  },
+  menuRadius: {
+    type: String as PropType<MenuRadius>,
+    default: 'normal',
   },
   multiple: Boolean,
   offsetY: {

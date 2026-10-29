@@ -4,6 +4,9 @@ import { Snackbar } from '@varlet/ui'
 import { computed, ref } from 'vue'
 import { t, use } from './locale'
 
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+
 const value = ref()
 const valueNormal = ref()
 const valueSmall = ref()
@@ -86,6 +89,9 @@ const cascadeOptions = ref([
 ])
 
 watchLang((lang) => {
+  normalRadiusValue.value = undefined
+  largeRadiusValue.value = undefined
+
   use(lang)
   value.value = undefined
   valueNormal.value = undefined
@@ -130,6 +136,26 @@ function handleSelect(value) {
       <var-menu-option :label="t('play')" />
     </template>
   </var-menu-select>
+
+  <app-type>{{ t('radius') }}</app-type>
+  <var-space align="center" :size="[20, 60]">
+    <var-menu-select v-model="normalRadiusValue" radius="normal">
+      <var-button type="primary">{{ normalRadiusValue || t('normalRadius') }}</var-button>
+      <template #options>
+        <var-menu-option :label="t('eat')" />
+        <var-menu-option :label="t('sleep')" />
+        <var-menu-option :label="t('play')" />
+      </template>
+    </var-menu-select>
+    <var-menu-select v-model="largeRadiusValue" radius="large">
+      <var-button type="primary">{{ largeRadiusValue || t('largeRadius') }}</var-button>
+      <template #options>
+        <var-menu-option :label="t('eat')" />
+        <var-menu-option :label="t('sleep')" />
+        <var-menu-option :label="t('play')" />
+      </template>
+    </var-menu-select>
+  </var-space>
 
   <app-type>{{ t('size') }}</app-type>
   <var-space align="center" :size="[20, 60]">

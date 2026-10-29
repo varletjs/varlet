@@ -4,6 +4,9 @@ import { computed, ref } from 'vue'
 import { z } from 'zod'
 import { t, use } from './locale'
 
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+
 const standardValue = ref()
 const standardValue2 = ref()
 const standardValue3 = ref()
@@ -72,6 +75,9 @@ const keyOptions = computed(() => [
 ])
 
 watchLang((lang) => {
+  normalRadiusValue.value = undefined
+  largeRadiusValue.value = undefined
+
   standardValue.value = undefined
   standardValue2.value = undefined
   standardValue3.value = undefined
@@ -520,6 +526,20 @@ onThemeChange()
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
+    </var-select>
+  </var-space>
+
+  <app-type>{{ t('radius') }}</app-type>
+  <var-space direction="column" size="large">
+    <var-select v-model="normalRadiusValue" menu-radius="normal" variant="outlined" :placeholder="t('normalRadius')">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+    </var-select>
+    <var-select v-model="largeRadiusValue" menu-radius="large" variant="outlined" :placeholder="t('largeRadius')">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
     </var-select>
   </var-space>
 

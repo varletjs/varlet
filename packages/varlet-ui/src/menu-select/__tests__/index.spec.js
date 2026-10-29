@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises'
+import { createRequire } from 'node:module'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vite-plus/test'
 import { createApp, Fragment, h } from 'vue'
@@ -656,4 +658,194 @@ test('menu-select cascade menu open and close', async () => {
   expect(option2Menu.style.display).not.toBe('none')
   await trigger(option1, 'mouseenter')
   expect(option2Menu.style.display).toBe('none')
+})
+
+test('menu-select radius follows dynamic changes through every cascading popup', async () => {
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      teleport: root,
+      options: [
+        {
+          label: 'Parent',
+          value: 1,
+          children: [{ label: 'Child', value: 2, children: [{ label: 'Leaf', value: 3 }] }],
+        },
+      ],
+    },
+    slots: { default: () => h('button', { class: 'radius-trigger' }, 'Trigger') },
+  })
+
+  try {
+    const menu = root.querySelector('.var-menu-select__menu')
+    const defaultClasses = menu.className
+    expect(wrapper.props('radius')).toBe('normal')
+    await wrapper.setProps({ radius: 'normal' })
+    expect(menu.className).toBe(defaultClasses)
+    expect(root.querySelectorAll('.var-menu__menu')).toHaveLength(3)
+
+    const radius = 'large'
+    await wrapper.setProps({ radius })
+    expect(menu.classList.contains(`var-menu-select--radius-${radius}`)).toBe(true)
+    const popups = root.querySelectorAll('.var-menu__menu')
+    for (const popup of popups) {
+      expect(popup.classList.contains(`var-menu--radius-${radius}`)).toBe(true)
+    }
+    expect(wrapper.classes()).not.toContain(`var-menu-select--radius-${radius}`)
+    expect(wrapper.find('.radius-trigger').classes()).not.toContain(`var-menu--radius-${radius}`)
+
+    await trigger(root.querySelectorAll('.var-menu-option')[0], 'mouseenter')
+    await trigger(root.querySelectorAll('.var-menu-option')[1], 'mouseenter')
+    await delay(300)
+    expect(popups[1].style.display).not.toBe('none')
+    expect(popups[2].style.display).not.toBe('none')
+    await wrapper.setProps({ radius: 'normal' })
+    expect(menu.className).toBe(defaultClasses)
+    for (const popup of popups) {
+      expect(popup.className).not.toContain('--radius-')
+    }
+  } finally {
+    wrapper.unmount()
+  }
+})
+
+test('menu-select state backgrounds follow the compiled popup edge corners without clipping cascades', async () => {
+  const dependencyRequire = createRequire(import.meta.url)
+  const less = createRequire(dependencyRequire.resolve('@varlet/cli'))('less')
+  const source = (
+    await Promise.all(
+      ['../menuSelect.less', '../../hover-overlay/hoverOverlay.less', '../../ripple/ripple.less'].map(
+        async (path) => await readFile(dependencyRequire.resolve(path), 'utf8'),
+      ),
+    )
+  ).join('\n')
+  const { css } = await less.render(source)
+  const stylesheet = document.createElement('style')
+  stylesheet.textContent = css
+  document.head.appendChild(stylesheet)
+
+  try {
+    expect(css).not.toMatch(/overflow[^;]*hidden/)
+    for (const kind of ['direct', 'fragment', 'wrapper', 'single', 'cascade']) {
+      const root = document.createElement('div')
+      document.body.appendChild(root)
+      const options =
+        kind === 'single'
+          ? [{ label: 'Only', value: 1, disabled: true }]
+          : kind === 'cascade'
+            ? [
+                {
+                  label: 'First branch',
+                  value: 1,
+                  children: [
+                    { label: 'Nested branch', value: 11, children: [{ label: 'Leaf', value: 111, disabled: true }] },
+                    { label: 'Last child', value: 12 },
+                  ],
+                },
+                { label: 'Middle', value: 2 },
+                { label: 'Last branch', value: 3, children: [{ label: 'Last leaf', value: 31 }] },
+              ]
+            : [
+                { label: 'First', value: 1 },
+                { label: 'Middle', value: 2 },
+                { label: 'Last', value: 3, disabled: true },
+              ]
+      const wrapper = mount(VarMenuSelect, {
+        props: {
+          modelValue: 1,
+          show: true,
+          teleport: root,
+          options: kind === 'wrapper' || kind === 'fragment' ? [] : options,
+        },
+        slots: {
+          default: () => h('button', 'Trigger'),
+          ...(kind === 'wrapper' || kind === 'fragment'
+            ? {
+                options: () =>
+                  kind === 'fragment'
+                    ? h(
+                        Fragment,
+                        options.map((option) => h(VarMenuOption, option)),
+                      )
+                    : h(
+                        'div',
+                        { class: 'approval-options', style: '--menu-option-normal-height:auto' },
+                        options.map((option) => h(VarMenuOption, option)),
+                      ),
+              }
+            : {}),
+        },
+      })
+
+      try {
+        const radius = 'large'
+        await wrapper.setProps({ radius })
+        const menus = root.querySelectorAll(`.var-menu-select__menu, .var-menu-children--radius-${radius}`)
+        expect(menus.length).toBe(kind === 'cascade' ? 4 : 1)
+        for (const menu of menus) {
+          const rows = Array.from((menu.querySelector(':scope > .approval-options') ?? menu).children).map((entry) =>
+            entry.classList.contains('var-menu-children') ? entry.querySelector(':scope > .var-menu-option') : entry,
+          )
+          const prefix = menu.classList.contains('var-menu-select__menu') ? 'menu-select-menu' : 'menu'
+          const expectedRadius = `var(--${prefix}-${radius}-border-radius)`
+          expect(getComputedStyle(rows[0]).borderTopLeftRadius).toBe(expectedRadius)
+          expect(getComputedStyle(rows[0]).borderTopRightRadius).toBe(expectedRadius)
+          expect(getComputedStyle(rows.at(-1)).borderBottomLeftRadius).toBe(expectedRadius)
+          expect(getComputedStyle(rows.at(-1)).borderBottomRightRadius).toBe(expectedRadius)
+          expect(getComputedStyle(rows[0].querySelector('.var-menu-option__cover')).borderRadius).toBe('inherit')
+          if (rows.length > 1) {
+            expect(getComputedStyle(rows[0]).borderBottomLeftRadius).not.toBe(expectedRadius)
+            expect(getComputedStyle(rows.at(-1)).borderTopLeftRadius).not.toBe(expectedRadius)
+          }
+          if (rows.length > 2) {
+            expect(getComputedStyle(rows[1]).borderRadius).toBe('')
+          }
+          expect(getComputedStyle(menu).overflow).not.toBe('hidden')
+        }
+        const first = root.querySelector('.var-menu-option')
+        if (!first.classList.contains('var-menu-option--disabled')) {
+          await trigger(first, 'focus')
+          const overlay = first.querySelector('.var-hover-overlay')
+          expect(overlay.classList.contains('var-hover-overlay--focusing')).toBe(true)
+          expect(getComputedStyle(overlay).borderRadius).toBe('inherit')
+          await trigger(first, 'touchstart', 10, 10)
+          await delay(50)
+          expect(first.querySelector(':scope > .var-ripple')).not.toBeNull()
+          expect(first.style.overflow).toBe('hidden')
+          expect(getComputedStyle(first.parentElement).overflow).not.toBe('hidden')
+        }
+        if (kind === 'direct' || kind === 'fragment' || kind === 'wrapper') {
+          expect(
+            first.querySelector('.var-menu-option__cover').classList.contains('var-menu-option--selected-background'),
+          ).toBe(true)
+        }
+        for (const host of root.querySelectorAll(`.var-menu-children--menu-radius-${radius}`)) {
+          expect(getComputedStyle(host).getPropertyValue(`--menu-${radius}-border-radius`)).toBe(
+            `var(--menu-select-menu-${radius}-border-radius)`,
+          )
+        }
+        if (kind === 'cascade') {
+          const branches = root.querySelectorAll('.var-menu-children > .var-menu-option')
+          await trigger(branches[0], 'mouseenter')
+          await trigger(branches[1], 'mouseenter')
+          await delay(300)
+          const popups = root.querySelectorAll('.var-menu__menu')
+          expect(popups[1].style.display).not.toBe('none')
+          expect(popups[2].style.display).not.toBe('none')
+        }
+        await wrapper.setProps({ radius: 'normal' })
+        for (const option of root.querySelectorAll('.var-menu-option')) {
+          expect(getComputedStyle(option).borderTopLeftRadius).toBe('')
+          expect(getComputedStyle(option).borderBottomLeftRadius).toBe('')
+        }
+        expect(root.querySelector('[class*="--radius-"], [class*="--menu-radius-"]')).toBeNull()
+      } finally {
+        wrapper.unmount()
+        root.remove()
+      }
+    }
+  } finally {
+    stylesheet.remove()
+  }
 })

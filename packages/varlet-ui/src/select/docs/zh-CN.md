@@ -548,6 +548,34 @@ const keyOptions = computed(() => [
 </style>
 ```
 
+### 菜单圆角
+
+通过 `menu-radius` 设置弹出菜单的圆角，可选值为 `normal` 和 `large`。`normal` 为默认值，保留原有圆角以及对应样式变量的自定义值。仅改变弹出菜单容器的圆角，不改变选择框、选项、颜色或间距。
+
+默认 MD2 主题的两档圆角依次为 `2px` 和 `8px`，MD3 主题依次为 `4px` 和 `16px`，可通过下方样式变量自定义。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-select v-model="normalRadiusValue" menu-radius="normal" variant="outlined" placeholder="常规圆角">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </var-select>
+    <var-select v-model="largeRadiusValue" menu-radius="large" variant="outlined" placeholder="大圆角">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </var-select>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -562,6 +590,7 @@ const keyOptions = computed(() => [
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
 | `offset-y` | 下拉菜单的垂直偏移量 | _string \| number_ | `0` |
+| `menu-radius` ***3.20.9*** | 弹出菜单圆角，可选值 `normal` `large`，不影响选择框 | _string_ | `normal` |
 | `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |
 | `line` | 是否显示分割线 | _boolean_ | `true` |
 | `hint` | 是否使用占位符作为提示 | _boolean_ | `true` |
@@ -653,6 +682,7 @@ const keyOptions = computed(() => [
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-scroller-large-border-radius` | `8px` |
 | `--select-label-font-size` | `16px` |
 | `--select-chips-margin` | `-5px 0 0 0` |
 | `--select-chips-padding` | `2px 0` |

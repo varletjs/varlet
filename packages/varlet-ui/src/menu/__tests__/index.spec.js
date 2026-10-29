@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import Menu from '..'
+import Themes from '../../themes'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import VarMenu from '../Menu'
 
@@ -262,3 +263,43 @@ test('menu elevation', async () => {
   mockRestore()
   wrapper.unmount()
 })
+
+test('menu radius only changes the teleported popup and preserves the normal default', async () => {
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenu, { props: { show: true, teleport: root } })
+
+  try {
+    const popup = root.querySelector('.var-menu__menu')
+    const defaultClasses = popup.className
+    expect(wrapper.props('radius')).toBe('normal')
+    await wrapper.setProps({ radius: 'normal' })
+    expect(popup.className).toBe(defaultClasses)
+
+    const radius = 'large'
+    await wrapper.setProps({ radius })
+    expect(popup.classList.contains(`var-menu--radius-${radius}`)).toBe(true)
+    expect(wrapper.classes()).not.toContain(`var-menu--radius-${radius}`)
+
+    await wrapper.setProps({ radius: 'normal' })
+    expect(popup.className).toBe(defaultClasses)
+    await wrapper.setProps({ teleport: false, radius: 'large' })
+    expect(root.querySelector('.var-menu__menu')).toBeNull()
+    expect(wrapper.find('.var-menu__menu').classes()).toContain('var-menu--radius-large')
+  } finally {
+    wrapper.unmount()
+  }
+})
+
+test.each([
+  [Themes.dark, '2px', '8px'],
+  [Themes.md3Light, '4px', '16px'],
+  [Themes.md3Dark, '4px', '16px'],
+])(
+  'menu radius theme tokens preserve the normal override and define the optional large size',
+  (theme, normal, large) => {
+    for (const prefix of ['menu', 'menu-select-menu', 'select-scroller']) {
+      expect(theme[`--${prefix}-border-radius`]).toBe(normal)
+      expect(theme[`--${prefix}-large-border-radius`]).toBe(large)
+    }
+  },
+)

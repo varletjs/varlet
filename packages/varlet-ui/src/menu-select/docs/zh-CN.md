@@ -50,6 +50,40 @@ function handleSelect(value) {
 </template>
 ```
 
+### 圆角
+
+通过 `radius` 设置弹出菜单的圆角，可选值为 `normal` 和 `large`。`normal` 为默认值，保留原有外观以及对应样式变量的自定义值。设置为 `large` 时，弹出菜单容器及首尾选项的状态背景边缘会适配对应圆角，不改变触发元素、选项颜色或间距。
+
+默认 MD2 主题的两档圆角依次为 `2px` 和 `8px`，MD3 主题依次为 `4px` 和 `16px`，可通过下方样式变量自定义。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+</script>
+
+<template>
+  <var-space>
+    <var-menu-select v-model="normalRadiusValue" radius="normal">
+      <var-button type="primary">{{ normalRadiusValue || '常规圆角' }}</var-button>
+      <template #options>
+        <var-menu-option label="吃饭" />
+        <var-menu-option label="睡觉" />
+      </template>
+    </var-menu-select>
+    <var-menu-select v-model="largeRadiusValue" radius="large">
+      <var-button type="primary">{{ largeRadiusValue || '大圆角' }}</var-button>
+      <template #options>
+        <var-menu-option label="吃饭" />
+        <var-menu-option label="睡觉" />
+      </template>
+    </var-menu-select>
+  </var-space>
+</template>
+```
+
 ### 尺寸
 
 ```html
@@ -430,6 +464,7 @@ const options = ref([
 | `trigger`       | 菜单触发方式，可选值为 `click` `hover` `manual` | _string_              | `click`           |
 | `reference`       | 菜单关联的触发元素，`string` 类型为菜单组件的子孙元素选择器， `HTMLElement` 类型为任意指定的元素节点 | _string \| HTMLElement_ | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `radius` ***3.20.9*** | 弹出菜单圆角，可选值 `normal` `large` | _string_ | `normal` |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
@@ -532,6 +567,7 @@ const options = ref([
 | `--menu-select-menu-max-height` | `278px` |
 | `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
+| `--menu-select-menu-large-border-radius` | `8px` |
 | `--menu-select-menu-background-color` | `var(--color-surface-container-high)` |
 
 #### MenuOption Variables

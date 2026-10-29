@@ -1,4 +1,5 @@
 import { SelectHTMLAttributes, VNode } from 'vue'
+import { MenuRadius } from './menu'
 import {
   BasicAttributes,
   ListenerProp,
@@ -37,6 +38,7 @@ export interface SelectProps extends BasicAttributes {
   valueKey?: string
   variant?: SelectVariant
   size?: SelectSize
+  menuRadius?: MenuRadius
   placeholder?: string
   multiple?: boolean
   offsetY?: number | string

@@ -19,6 +19,35 @@
 </template>
 ```
 
+### 圆角
+
+通过 `radius` 设置弹出菜单的圆角，可选值为 `normal` 和 `large`。`normal` 为默认值，保留原有圆角以及对应样式变量的自定义值。仅改变弹出菜单容器的圆角，不改变触发元素、选项、颜色或间距。
+
+默认 MD2 主题的两档圆角依次为 `2px` 和 `8px`，MD3 主题依次为 `4px` 和 `16px`，可通过下方样式变量自定义。
+
+```html
+<template>
+  <var-space>
+    <var-menu radius="normal">
+      <var-button type="primary">常规圆角</var-button>
+      <template #menu>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </template>
+    </var-menu>
+    <var-menu radius="large">
+      <var-button type="primary">大圆角</var-button>
+      <template #menu>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+        <var-cell>菜单项</var-cell>
+      </template>
+    </var-menu>
+  </var-space>
+</template>
+```
+
 ### 弹出位置
 
 ```html
@@ -228,6 +257,7 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | `trigger`       | 菜单触发方式，可选值为 `click` `hover` `manual` | _string_              | `click`           |
 | `reference`       | 菜单关联的触发元素，`string` 类型为菜单组件的子孙元素选择器， `HTMLElement` 类型为任意指定的元素节点 | _string \| HTMLElement_              | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `radius` ***3.20.9*** | 弹出菜单圆角，可选值 `normal` `large` | _string_ | `normal` |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
@@ -293,3 +323,4 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | --- | --- |
 | `--menu-background-color` | `var(--color-surface-container-high)` |
 | `--menu-border-radius` | `2px` |
+| `--menu-large-border-radius` | `8px` |

@@ -1,6 +1,7 @@
 import { PositioningStrategy } from '@popperjs/core'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
+import { MenuRadius } from './menu'
 import { BasicAttributes, ListenerProp, SetPropsDefaults, VarComponent } from './varComponent'
 
 export declare const menuSelectProps: Record<keyof MenuSelectProps, any>
@@ -42,6 +43,7 @@ export interface MenuSelectProps extends BasicAttributes {
   modelValue?: any
   options?: MenuSelectOption[]
   size?: MenuSelectSize
+  radius?: MenuRadius
   multiple?: boolean
   scrollable?: boolean
   closeOnSelect?: boolean

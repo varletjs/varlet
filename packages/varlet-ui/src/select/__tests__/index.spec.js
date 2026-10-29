@@ -877,3 +877,34 @@ test('select custom filter', async () => {
 
   wrapper.unmount()
 })
+
+test('select menu-radius changes only the popup while preserving field size and variant', async () => {
+  const wrapper = mount(VarSelect, {
+    props: { variant: 'outlined', size: 'small', options: [{ label: 'Option', value: 1 }] },
+  })
+
+  try {
+    const popup = document.querySelector('.var-select__scroller')
+    const defaultClasses = popup.className
+    const field = wrapper.find('.var-field-decorator')
+    const fieldClasses = field.attributes('class')
+    expect(wrapper.props('menuRadius')).toBe('normal')
+    expect(wrapper.findComponent({ name: 'VarMenu' }).props('placement')).toBe('bottom')
+    await wrapper.setProps({ menuRadius: 'normal' })
+    expect(popup.className).toBe(defaultClasses)
+
+    const radius = 'large'
+    await wrapper.setProps({ menuRadius: radius })
+    expect(popup.classList.contains(`var-select--menu-radius-${radius}`)).toBe(true)
+    expect(popup.parentElement.classList.contains(`var-menu--radius-${radius}`)).toBe(true)
+    expect(field.attributes('class')).toBe(fieldClasses)
+    expect(wrapper.findComponent({ name: 'VarMenu' }).props('placement')).toBe('bottom')
+    expect(wrapper.classes()).not.toContain(`var-select--menu-radius-${radius}`)
+
+    await wrapper.setProps({ menuRadius: 'normal' })
+    expect(popup.className).toBe(defaultClasses)
+    expect(field.attributes('class')).toBe(fieldClasses)
+  } finally {
+    wrapper.unmount()
+  }
+})

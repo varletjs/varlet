@@ -1,4 +1,7 @@
 export default {
+  radius: 'Radius',
+  normalRadius: 'Normal Radius',
+  largeRadius: 'Large Radius',
   basicUsage: 'Basic Usage',
   size: 'Size',
   eat: 'Eat',
