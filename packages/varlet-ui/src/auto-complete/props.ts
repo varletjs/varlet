@@ -2,6 +2,8 @@ import { type PropType, type VNode, type VNodeChild } from 'vue'
 import { inputProps } from '../input'
 import { defineListenerProp, pickProps } from '../utils/components'
 
+export type AutoCompleteMenuRadius = 'normal' | 'large'
+
 export type AutoCompleteOptionLabelRender = (option: AutoCompleteOption, checked: boolean) => VNodeChild
 
 export type AutoCompleteOptionLabel = string | VNode | AutoCompleteOptionLabelRender
@@ -29,6 +31,10 @@ export const props = {
   valueKey: {
     type: String,
     default: 'value',
+  },
+  menuRadius: {
+    type: String as PropType<AutoCompleteMenuRadius>,
+    default: 'normal',
   },
   maxlength: [String, Number],
   readonly: Boolean,

@@ -317,6 +317,42 @@ function useAutoComplete() {
 </style>
 ```
 
+### 菜单圆角
+
+通过 `menu-radius="large"` 设置弹出菜单为大圆角。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref('')
+const largeRadiusValue = ref('')
+const options = [
+  { label: 'JavaScript', value: 'JavaScript' },
+  { label: 'TypeScript', value: 'TypeScript' },
+]
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete
+      v-model="normalRadiusValue"
+      variant="outlined"
+      menu-radius="normal"
+      placeholder="常规圆角"
+      :options="options"
+    />
+    <var-auto-complete
+      v-model="largeRadiusValue"
+      variant="outlined"
+      menu-radius="large"
+      placeholder="大圆角"
+      :options="options"
+    />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -329,6 +365,7 @@ function useAutoComplete() {
 | `variant` | 输入框风格, 可选值为 `standard` `outlined` `filled`   | _string_ | `standard` |
 | `size` | 输入框尺寸，可选值 `normal` `small`              | _string_ | `normal` |
 | `placeholder` | 占位符                      | _string_ | `-` |
+| `menu-radius` ***3.20.9*** | 弹出菜单圆角，可选值 `normal` `large` | _string_ | `normal` |
 | `options`  | 指定可选项 | _AutoCompleteOption[]_ | `[]` |
 | `label-key`  | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key`  | 作为 value 唯一标识的键名 | _string_ | `value` |

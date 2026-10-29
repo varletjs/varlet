@@ -317,6 +317,42 @@ function useAutoComplete() {
 </style>
 ```
 
+### Menu Radius
+
+Use `menu-radius="large"` to display the popup menu with large rounded corners.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref('')
+const largeRadiusValue = ref('')
+const options = [
+  { label: 'JavaScript', value: 'JavaScript' },
+  { label: 'TypeScript', value: 'TypeScript' },
+]
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete
+      v-model="normalRadiusValue"
+      variant="outlined"
+      menu-radius="normal"
+      placeholder="Normal Menu Radius"
+      :options="options"
+    />
+    <var-auto-complete
+      v-model="largeRadiusValue"
+      variant="outlined"
+      menu-radius="large"
+      placeholder="Large Menu Radius"
+      :options="options"
+    />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
@@ -329,6 +365,7 @@ function useAutoComplete() {
 | `variant` | Input variants, The optional value is `standard` `outlined` `filled`   | _string_ | `standard` |
 | `size` | Input size, The optional value is `normal` `small`     | _string_ | `normal` |
 | `placeholder` | placeholder          | _string_ | `-` |
+| `menu-radius` ***3.20.9*** | Popup menu radius, optional values are `normal` `large` | _string_ | `normal` |
 | `options`  | Specifies options | _AutoCompleteOption[]_ | `[]` |
 | `label-key` | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` | As the key that uniquely identifies value | _string_ | `value` |
