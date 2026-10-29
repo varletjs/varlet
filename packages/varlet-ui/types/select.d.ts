@@ -1,5 +1,4 @@
 import { SelectHTMLAttributes, VNode } from 'vue'
-import { MenuRadius } from './menu'
 import {
   BasicAttributes,
   ListenerProp,
@@ -16,6 +15,8 @@ export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick
 export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export type SelectSize = 'small' | 'normal'
+
+export type SelectMenuRadius = 'normal' | 'large'
 
 export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
 
@@ -38,7 +39,7 @@ export interface SelectProps extends BasicAttributes {
   valueKey?: string
   variant?: SelectVariant
   size?: SelectSize
-  menuRadius?: MenuRadius
+  menuRadius?: SelectMenuRadius
   placeholder?: string
   multiple?: boolean
   offsetY?: number | string
