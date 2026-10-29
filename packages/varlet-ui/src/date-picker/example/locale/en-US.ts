@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  columns: 'Columns',
   monthPicker: 'Month Picker',
   yearPicker: 'Year Picker',
   multiple: 'Multiple',

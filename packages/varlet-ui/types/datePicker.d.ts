@@ -5,9 +5,12 @@ export declare const datePickerProps: Record<keyof DatePickerProps, any>
 
 export type DatePickerType = 'year' | 'date' | 'month'
 
+export type DatePickerVariant = 'calendar' | 'columns'
+
 export interface DatePickerProps extends BasicAttributes {
   modelValue: string | Array<string>
   type?: DatePickerType
+  variant?: DatePickerVariant
   allowedDates?: (val: string) => boolean
   color?: string
   hint?: string
