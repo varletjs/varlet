@@ -6,34 +6,6 @@
   --menu-select-menu-background-color: var(--color-surface-container-high);
 }
 
-.menu-select-option-edge-corners(@radius) {
-  > .var-menu-option:first-child,
-  > .var-menu-children:first-child > .var-menu-option {
-    border-top-left-radius: @radius;
-    border-top-right-radius: @radius;
-  }
-
-  > .var-menu-option:last-child,
-  > .var-menu-children:last-child > .var-menu-option {
-    border-bottom-left-radius: @radius;
-    border-bottom-right-radius: @radius;
-  }
-
-  > .var-menu-option > .var-menu-option__cover,
-  > .var-menu-children > .var-menu-option > .var-menu-option__cover {
-    border-radius: inherit;
-  }
-}
-
-.menu-select-option-corners(@radius) {
-  .menu-select-option-edge-corners(@radius);
-
-  > :only-child:not(.var-menu-option):not(.var-menu-children) {
-    border-radius: inherit;
-    .menu-select-option-edge-corners(@radius);
-  }
-}
-
 .var-menu-select {
   &__menu {
     --scrollbar-track-background: var(--menu-select-menu-background-color);
@@ -45,7 +17,7 @@
 
   &--radius-large {
     border-radius: var(--menu-select-menu-large-border-radius);
-    .menu-select-option-corners(var(--menu-select-menu-large-border-radius));
+    --menu-select-option-border-radius: var(--menu-select-menu-large-border-radius);
   }
 
   &--scrollable {
@@ -66,6 +38,36 @@
 
   &--radius-large {
     border-radius: inherit;
-    .menu-select-option-corners(var(--menu-large-border-radius));
+    --menu-select-option-border-radius: var(--menu-large-border-radius);
+  }
+}
+
+.var-menu-select--radius-large,
+.var-menu-children--radius-large {
+  > .var-menu-option:first-child,
+  > .var-menu-children:first-child > .var-menu-option,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) > .var-menu-option:first-child,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) > .var-menu-children:first-child > .var-menu-option {
+    border-top-left-radius: var(--menu-select-option-border-radius);
+    border-top-right-radius: var(--menu-select-option-border-radius);
+  }
+
+  > .var-menu-option:last-child,
+  > .var-menu-children:last-child > .var-menu-option,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) > .var-menu-option:last-child,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) > .var-menu-children:last-child > .var-menu-option {
+    border-bottom-left-radius: var(--menu-select-option-border-radius);
+    border-bottom-right-radius: var(--menu-select-option-border-radius);
+  }
+
+  > .var-menu-option > .var-menu-option__cover,
+  > .var-menu-children > .var-menu-option > .var-menu-option__cover,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) > .var-menu-option > .var-menu-option__cover,
+  > :only-child:not(.var-menu-option):not(.var-menu-children)
+    > .var-menu-children
+    > .var-menu-option
+    > .var-menu-option__cover,
+  > :only-child:not(.var-menu-option):not(.var-menu-children) {
+    border-radius: inherit;
   }
 }

@@ -788,7 +788,10 @@ test('menu-select state backgrounds follow the compiled popup edge corners witho
             entry.classList.contains('var-menu-children') ? entry.querySelector(':scope > .var-menu-option') : entry,
           )
           const prefix = menu.classList.contains('var-menu-select__menu') ? 'menu-select-menu' : 'menu'
-          const expectedRadius = `var(--${prefix}-${radius}-border-radius)`
+          const expectedRadius = 'var(--menu-select-option-border-radius)'
+          expect(getComputedStyle(menu).getPropertyValue('--menu-select-option-border-radius')).toBe(
+            `var(--${prefix}-${radius}-border-radius)`,
+          )
           expect(getComputedStyle(rows[0]).borderTopLeftRadius).toBe(expectedRadius)
           expect(getComputedStyle(rows[0]).borderTopRightRadius).toBe(expectedRadius)
           expect(getComputedStyle(rows.at(-1)).borderBottomLeftRadius).toBe(expectedRadius)
