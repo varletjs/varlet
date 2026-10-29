@@ -52,9 +52,7 @@ function handleSelect(value) {
 
 ### 圆角
 
-通过 `radius` 设置弹出菜单的圆角，可选值为 `normal` 和 `large`。`normal` 为默认值，保留原有外观以及对应样式变量的自定义值。设置为 `large` 时，弹出菜单容器及首尾选项的状态背景边缘会适配对应圆角，不改变触发元素、选项颜色或间距。
-
-默认 MD2 主题的两档圆角依次为 `2px` 和 `8px`，MD3 主题依次为 `4px` 和 `16px`，可通过下方样式变量自定义。
+通过 `radius="large"` 设置弹出菜单为大圆角。
 
 ```html
 <script setup>

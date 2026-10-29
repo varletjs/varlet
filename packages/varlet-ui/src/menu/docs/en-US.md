@@ -22,9 +22,7 @@ and changes the display position of the menu by controlling the placement and of
 
 ### Radius
 
-Use `radius` to set the popup menu radius to `normal` or `large`. `normal` is the default and preserves the existing radius and CSS variable overrides. Only the popup menu container is affected; the trigger, options, colors, and spacing remain unchanged.
-
-The default MD2 radii are `2px` and `8px`; the MD3 radii are `4px` and `16px`, respectively. They can be customized with the style variables below.
+Use `radius="large"` to display the popup menu with large rounded corners.
 
 ```html
 <template>

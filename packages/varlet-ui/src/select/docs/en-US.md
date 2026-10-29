@@ -549,9 +549,7 @@ const keyOptions = computed(() => [
 
 ### Menu Radius
 
-Use `menu-radius` to set the popup menu radius to `normal` or `large`. `normal` is the default and preserves the existing radius and CSS variable overrides. Only the popup menu container is affected; the select field, options, colors, and spacing remain unchanged.
-
-The default MD2 radii are `2px` and `8px`; the MD3 radii are `4px` and `16px`, respectively. They can be customized with the style variables below.
+Use `menu-radius="large"` to display the popup menu with large rounded corners.
 
 ```html
 <script setup>
