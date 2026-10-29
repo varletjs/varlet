@@ -49,6 +49,26 @@ function closeMenu() {
     </template>
   </var-menu>
 
+  <app-type>{{ t('radius') }}</app-type>
+  <var-space align="center" :size="[20, 60]">
+    <var-menu radius="normal">
+      <var-button type="primary">{{ t('normalRadius') }}</var-button>
+      <template #menu>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+      </template>
+    </var-menu>
+    <var-menu radius="large">
+      <var-button type="primary">{{ t('largeRadius') }}</var-button>
+      <template #menu>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+        <var-cell>{{ t('menuOption') }}</var-cell>
+      </template>
+    </var-menu>
+  </var-space>
+
   <app-type>{{ t('placement') }}</app-type>
   <var-select v-model="placementValue" :hint="false">
     <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />

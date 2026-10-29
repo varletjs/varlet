@@ -3,6 +3,7 @@
   --select-scroller-padding: 6px 0;
   --select-scroller-max-height: 278px;
   --select-scroller-border-radius: 2px;
+  --select-scroller-large-border-radius: 8px;
   --select-chips-margin: -5px 0 0 0;
   --select-chips-padding: 2px 0;
   --select-chip-margin: 5px 5px 0 0;
@@ -141,6 +142,10 @@
     flex-shrink: 0;
     font-size: var(--select-arrow-size);
     margin-left: 6px;
+  }
+
+  &--menu-radius-large {
+    border-radius: var(--select-scroller-large-border-radius);
   }
 
   &--standard-menu-margin {

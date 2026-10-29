@@ -16,6 +16,7 @@
               n('menu'),
               n('$--box'),
               n('$--scrollbar'),
+              [radius !== 'normal', n(`--radius-${radius}`)],
               popoverClass,
               [defaultStyle, n('--menu-background-color')],
               [defaultStyle, formatElevation(elevation, 3)],

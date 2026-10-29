@@ -18,6 +18,8 @@ export type MenuPlacement =
   | 'cover-left'
   | 'cover-right'
 
+export type MenuRadius = 'normal' | 'large'
+
 export type MenuTrigger = 'click' | 'hover' | 'manual'
 
 export type MenuStrategy = PositioningStrategy
@@ -25,6 +27,7 @@ export type MenuStrategy = PositioningStrategy
 export type MenuReference = string | HTMLElement
 
 export interface MenuProps extends BasicAttributes {
+  radius?: MenuRadius
   show?: boolean
   disabled?: boolean
   trigger?: MenuTrigger

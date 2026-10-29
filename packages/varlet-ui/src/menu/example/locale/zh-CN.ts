@@ -1,4 +1,7 @@
 export default {
+  radius: '圆角',
+  normalRadius: '常规圆角',
+  largeRadius: '大圆角',
   basicUsage: '基本使用',
   alignmentMethods: '对齐方式',
   topAlignment: '顶部对齐',

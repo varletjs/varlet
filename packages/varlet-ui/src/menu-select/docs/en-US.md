@@ -50,6 +50,38 @@ function handleSelect(value) {
 </template>
 ```
 
+### Radius
+
+Use `radius="large"` to display the popup menu with large rounded corners.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+</script>
+
+<template>
+  <var-space>
+    <var-menu-select v-model="normalRadiusValue" radius="normal">
+      <var-button type="primary">{{ normalRadiusValue || 'Normal Radius' }}</var-button>
+      <template #options>
+        <var-menu-option label="Eat" />
+        <var-menu-option label="Sleep" />
+      </template>
+    </var-menu-select>
+    <var-menu-select v-model="largeRadiusValue" radius="large">
+      <var-button type="primary">{{ largeRadiusValue || 'Large Radius' }}</var-button>
+      <template #options>
+        <var-menu-option label="Eat" />
+        <var-menu-option label="Sleep" />
+      </template>
+    </var-menu-select>
+  </var-space>
+</template>
+```
+
 ### Size
 
 ```html
@@ -430,6 +462,7 @@ const options = ref([
 | `trigger`       | Menu trigger method, optional value is `click` `hover` `manual` | _string_  | `click`           |
 | `reference` | The trigger element associated with the menu, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `radius` ***3.20.9*** | Popup menu radius, optional values are `normal` `large` | _string_ | `normal` |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
@@ -532,6 +565,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-select-menu-max-height` | `278px` |
 | `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
+| `--menu-select-menu-large-border-radius` | `8px` |
 | `--menu-select-menu-background-color` | `var(--color-surface-container-high)` |
 
 #### MenuOption Variables

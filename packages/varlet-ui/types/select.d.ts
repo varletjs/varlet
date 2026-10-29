@@ -16,6 +16,8 @@ export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export type SelectSize = 'small' | 'normal'
 
+export type SelectMenuRadius = 'normal' | 'large'
+
 export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
 
 export type SelectOptionLabel = string | VNode | SelectOptionLabelRender
@@ -37,6 +39,7 @@ export interface SelectProps extends BasicAttributes {
   valueKey?: string
   variant?: SelectVariant
   size?: SelectSize
+  menuRadius?: SelectMenuRadius
   placeholder?: string
   multiple?: boolean
   offsetY?: number | string

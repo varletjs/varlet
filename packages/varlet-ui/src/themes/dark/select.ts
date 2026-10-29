@@ -3,6 +3,7 @@ export default {
   '--select-scroller-padding': '6px 0',
   '--select-scroller-max-height': '278px',
   '--select-scroller-border-radius': '2px',
+  '--select-scroller-large-border-radius': '8px',
   '--select-chips-margin': '-5px 0 0 0',
   '--select-chips-padding': '2px 0',
   '--select-chip-margin': '5px 5px 0 0',

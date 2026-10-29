@@ -1,6 +1,7 @@
 export default {
   '--select-scroller-background': 'var(--color-surface-container)',
   '--select-scroller-border-radius': '4px',
+  '--select-scroller-large-border-radius': '16px',
   '--select-scroller-padding': '6px 0',
   '--select-scroller-max-height': '278px',
   '--select-chips-margin': '-5px 0 0 0',

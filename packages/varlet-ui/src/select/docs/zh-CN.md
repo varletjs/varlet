@@ -548,6 +548,32 @@ const keyOptions = computed(() => [
 </style>
 ```
 
+### 菜单圆角
+
+通过 `menu-radius="large"` 设置弹出菜单为大圆角。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const normalRadiusValue = ref()
+const largeRadiusValue = ref()
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-select v-model="normalRadiusValue" menu-radius="normal" variant="outlined" placeholder="常规圆角">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </var-select>
+    <var-select v-model="largeRadiusValue" menu-radius="large" variant="outlined" placeholder="大圆角">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </var-select>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -562,6 +588,7 @@ const keyOptions = computed(() => [
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
 | `offset-y` | 下拉菜单的垂直偏移量 | _string \| number_ | `0` |
+| `menu-radius` ***3.20.9*** | 弹出菜单圆角，可选值 `normal` `large`，不影响选择框 | _string_ | `normal` |
 | `chip` | 是否使用纸片风格(仅限多选) | _boolean_ | `false` |
 | `line` | 是否显示分割线 | _boolean_ | `true` |
 | `hint` | 是否使用占位符作为提示 | _boolean_ | `true` |
@@ -653,6 +680,7 @@ const keyOptions = computed(() => [
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-scroller-large-border-radius` | `8px` |
 | `--select-label-font-size` | `16px` |
 | `--select-chips-margin` | `-5px 0 0 0` |
 | `--select-chips-padding` | `2px 0` |

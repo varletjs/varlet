@@ -1,4 +1,7 @@
 export default {
+  radius: '圆角',
+  normalRadius: '常规圆角',
+  largeRadius: '大圆角',
   basicUsage: '基本使用',
   size: '尺寸',
   eat: '吃饭',

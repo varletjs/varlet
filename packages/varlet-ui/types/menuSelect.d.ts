@@ -24,6 +24,8 @@ export type MenuSelectStrategy = PositioningStrategy
 
 export type MenuSelectSize = 'normal' | 'mini' | 'small' | 'large'
 
+export type MenuSelectRadius = 'normal' | 'large'
+
 export type MenuSelectReference = string | HTMLElement
 
 export type MenuSelectOptionLabelRender = (option: MenuSelectOption, checked: boolean) => VNodeChild
@@ -42,6 +44,7 @@ export interface MenuSelectProps extends BasicAttributes {
   modelValue?: any
   options?: MenuSelectOption[]
   size?: MenuSelectSize
+  radius?: MenuSelectRadius
   multiple?: boolean
   scrollable?: boolean
   closeOnSelect?: boolean

@@ -10,6 +10,7 @@
       :class="n('menu')"
       :popover-class="variant === 'standard' && hint && !filterable ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
+      :radius="menuRadius"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
@@ -149,7 +150,15 @@
       </var-field-decorator>
 
       <template #menu>
-        <div ref="menuEl" :class="classes(n('scroller'), n('$--scrollbar'), n('$-elevation--3'))">
+        <div
+          ref="menuEl"
+          :class="
+            classes(n('scroller'), n('$--scrollbar'), n('$-elevation--3'), [
+              menuRadius !== 'normal',
+              n(`--menu-radius-${menuRadius}`),
+            ])
+          "
+        >
           <template v-if="showEmpty">
             <slot name="empty">
               <div :class="n('empty')">{{ (pt ? pt : t)('selectEmptyText') }}</div>

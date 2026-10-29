@@ -1,4 +1,7 @@
 export default {
+  radius: 'Radius',
+  normalRadius: 'Normal Radius',
+  largeRadius: 'Large Radius',
   basicUsage: 'Basic Usage',
   alignmentMethods: 'Alignment Methods',
   topAlignment: 'Top Alignment',

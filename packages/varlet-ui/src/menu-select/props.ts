@@ -65,6 +65,7 @@ export const props = {
     'offsetY',
     'teleport',
     'sameWidth',
+    'radius',
     'elevation',
     'popoverClass',
     'closeOnClickReference',

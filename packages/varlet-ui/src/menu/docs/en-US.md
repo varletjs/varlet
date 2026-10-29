@@ -20,6 +20,33 @@ and changes the display position of the menu by controlling the placement and of
 </template>
 ```
 
+### Radius
+
+Use `radius="large"` to display the popup menu with large rounded corners.
+
+```html
+<template>
+  <var-space>
+    <var-menu radius="normal">
+      <var-button type="primary">Normal Radius</var-button>
+      <template #menu>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </template>
+    </var-menu>
+    <var-menu radius="large">
+      <var-button type="primary">Large Radius</var-button>
+      <template #menu>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+        <var-cell>Menu Option</var-cell>
+      </template>
+    </var-menu>
+  </var-space>
+</template>
+```
+
 ### Placement
 
 ```html
@@ -233,6 +260,7 @@ it is recommended to wrap a `block` element.
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `reference` | The trigger element associated with the menu, the `string` type is the descendant element selector of the menu component, the `HTMLElement` type is any specified element node | _string \| HTMLElement_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `radius` ***3.20.9*** | Popup menu radius, optional values are `normal` `large` | _string_ | `normal` |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
@@ -298,3 +326,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | --- | --- |
 | `--menu-background-color` | `var(--color-surface-container-high)` |
 | `--menu-border-radius` | `2px` |
+| `--menu-large-border-radius` | `8px` |

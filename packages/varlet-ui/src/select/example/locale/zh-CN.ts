@@ -1,4 +1,7 @@
 export default {
+  radius: '菜单圆角',
+  normalRadius: '常规圆角',
+  largeRadius: '大圆角',
   standard: '标准外观',
   outlined: '外边框外观',
   filled: '填充外观',

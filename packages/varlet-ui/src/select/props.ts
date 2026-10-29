@@ -4,6 +4,8 @@ import { defineListenerProp, pickProps } from '../utils/components'
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
+export type SelectMenuRadius = 'normal' | 'large'
+
 export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
@@ -36,6 +38,10 @@ export const props = {
   valueKey: {
     type: String,
     default: 'value',
+  },
+  menuRadius: {
+    type: String as PropType<SelectMenuRadius>,
+    default: 'normal',
   },
   multiple: Boolean,
   offsetY: {
