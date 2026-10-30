@@ -5,6 +5,7 @@ import { t, use } from './locale'
 
 const actives = reactive({
   active: 0,
+  activeShort: 0,
   active2: 0,
   active3: 0,
   active4: 0,
@@ -14,7 +15,8 @@ const actives = reactive({
   active8: 0,
   activeRelation: 0,
 })
-const { active, active2, active3, active4, active5, active6, active7, active8, activeRelation } = toRefs(actives)
+const { active, activeShort, active2, active3, active4, active5, active6, active7, active8, activeRelation } =
+  toRefs(actives)
 const currentTheme = ref()
 
 watchLang(use)
@@ -29,6 +31,13 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
     <var-tab>{{ t('option') }}3</var-tab>
+  </var-tabs>
+
+  <app-type>{{ t('shortIndicator') }}</app-type>
+  <var-tabs v-model:active="activeShort" indicator-variant="short">
+    <var-tab>{{ t('shortOption1') }}</var-tab>
+    <var-tab>{{ t('shortOption2') }}</var-tab>
+    <var-tab>{{ t('shortOption3') }}</var-tab>
   </var-tabs>
 
   <app-type>{{ t('modifyStyle') }}</app-type>
