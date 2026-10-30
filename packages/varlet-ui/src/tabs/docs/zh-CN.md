@@ -351,7 +351,7 @@ const active = ref(0)
 | `active-color`     | 选项卡激活的主要颜色                             | _string_ | `-`    |
 | `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `-`    |
 | `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `-`    |
-| `indicator-variant` | 指示器外观，可选值为 `full`（完整长度）和 `short`（固定长度的短指示器） | _string_ | `full` |
+| `indicator-variant` ***3.20.10*** | 指示器外观，可选值为 `full`（完整长度）和 `short`（固定长度的短指示器） | _string_ | `full` |
 | `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `-`    |
 | `indicator-size`   | 指示器厚度，两种外观均生效，优先于 CSS 变量；默认 `full` 为 `2px`，`short` 为 `3px`                            | _string \| number_      | `-`        |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |

@@ -351,7 +351,7 @@ const active = ref(0)
 | `active-color`     | The primary color that the tab is activates                                  | _string_ | `-`    |
 | `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `-`    |
 | `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `-`    |
-| `indicator-variant` | Indicator appearance, can be `full` (full length) or `short` (fixed short length) | _string_ | `full` |
+| `indicator-variant` ***3.20.10*** | Indicator appearance, can be `full` (full length) or `short` (fixed short length) | _string_ | `full` |
 | `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `-`    |
 | `indicator-size`   | Indicator thickness for both variants, overriding CSS variables. Defaults to `2px` for `full` and `3px` for `short`                                      | _string \| number_      | `-`        |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
