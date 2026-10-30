@@ -43,6 +43,26 @@ const active = ref('选项1')
 </template>
 ```
 
+### 短指示器
+
+通过 `indicator-variant="short"` 开启居中的短指示器，默认长度固定为 `32px`、厚度为 `3px`，不随标签内容长度变化。圆角朝向容器内侧，随布局方向和指示器位置调整；长度不超过当前选项卡的尺寸。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs v-model:active="active" indicator-variant="short">
+    <var-tab>推荐</var-tab>
+    <var-tab>我的收藏</var-tab>
+    <var-tab>最近浏览记录</var-tab>
+  </var-tabs>
+</template>
+```
+
 ### 修改样式
 
 ```html
@@ -331,8 +351,9 @@ const active = ref(0)
 | `active-color`     | 选项卡激活的主要颜色                             | _string_ | `-`    |
 | `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `-`    |
 | `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `-`    |
+| `indicator-variant` ***3.20.10*** | 指示器外观，可选值为 `full`（完整长度）和 `short`（固定长度的短指示器） | _string_ | `full` |
 | `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `-`    |
-| `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \| number_      | `2px`        |
+| `indicator-size`   | 指示器厚度，两种外观均生效，优先于 CSS 变量；默认 `full` 为 `2px`，`short` 为 `3px`                            | _string \| number_      | `-`        |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
@@ -437,6 +458,11 @@ const active = ref(0)
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
 | `--tabs-indicator-inner-size`             | `100%`                 |
+| `--tabs-short-indicator-size` | `3px` |
+| `--tabs-short-indicator-inner-size` | `32px` |
+| `--tabs-short-indicator-border-radius` | `3px` |
+
+`--tabs-indicator-background` 对两种外观均生效。`--tabs-indicator-size`、`--tabs-indicator-inner-size` 和 `--tabs-indicator-border-radius` 仅作用于 `full`；`--tabs-short-indicator-*` 仅作用于 `short`。`indicator-size` prop 覆盖当前外观的厚度变量，`indicator-color` prop 覆盖背景颜色变量。短指示器的圆角变量为单个圆角半径，圆角方向由组件自动处理。
 
 #### Tab Variables
 

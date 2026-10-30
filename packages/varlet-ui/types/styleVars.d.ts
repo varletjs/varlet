@@ -863,6 +863,9 @@ interface BaseStyleVars {
   '--tabs-indicator-background'?: string
   '--tabs-background'?: string
   '--tabs-indicator-inner-size'?: string
+  '--tabs-short-indicator-size'?: string
+  '--tabs-short-indicator-inner-size'?: string
+  '--tabs-short-indicator-border-radius'?: string
   '--tab-padding'?: string
   '--tab-active-color'?: string
   '--tab-inactive-color'?: string

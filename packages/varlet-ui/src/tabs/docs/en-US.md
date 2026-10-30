@@ -43,6 +43,26 @@ const active = ref('Option1')
 </template>
 ```
 
+### Short Indicator
+
+Set `indicator-variant="short"` to use a centered short indicator with a fixed default length of `32px` and thickness of `3px`, independent of the label content. Rounded corners face inward and adapt to the layout direction and indicator position. The length is capped at the size of the current tab.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs v-model:active="active" indicator-variant="short">
+    <var-tab>For you</var-tab>
+    <var-tab>Favorites</var-tab>
+    <var-tab>Recently viewed</var-tab>
+  </var-tabs>
+</template>
+```
+
 ### Modify Style
 
 ```html
@@ -331,8 +351,9 @@ const active = ref(0)
 | `active-color`     | The primary color that the tab is activates                                  | _string_ | `-`    |
 | `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `-`    |
 | `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `-`    |
+| `indicator-variant` ***3.20.10*** | Indicator appearance, can be `full` (full length) or `short` (fixed short length) | _string_ | `full` |
 | `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `-`    |
-| `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_      | `2px`        |
+| `indicator-size`   | Indicator thickness for both variants, overriding CSS variables. Defaults to `2px` for `full` and `3px` for `short`                                      | _string \| number_      | `-`        |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
@@ -437,6 +458,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
 | `--tabs-indicator-inner-size`             | `100%`                 |
+| `--tabs-short-indicator-size` | `3px` |
+| `--tabs-short-indicator-inner-size` | `32px` |
+| `--tabs-short-indicator-border-radius` | `3px` |
+
+`--tabs-indicator-background` applies to both variants. `--tabs-indicator-size`, `--tabs-indicator-inner-size`, and `--tabs-indicator-border-radius` only apply to `full`; `--tabs-short-indicator-*` only apply to `short`. The `indicator-size` prop overrides the thickness variable for the current variant, and the `indicator-color` prop overrides the background color variable. The short indicator radius variable accepts a single corner radius; the component handles corner orientation automatically.
 
 #### Tab Variables
 
