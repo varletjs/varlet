@@ -1021,6 +1021,17 @@ interface BaseStyleVars {
   '--tooltip-success-text-color'?: string
   '--tooltip-warning-text-color'?: string
   '--tooltip-danger-text-color'?: string
+  '--tour-width'?: string
+  '--tour-padding'?: string
+  '--tour-border-radius'?: string
+  '--tour-background'?: string
+  '--tour-title-color'?: string
+  '--tour-title-font-size'?: string
+  '--tour-description-color'?: string
+  '--tour-description-font-size'?: string
+  '--tour-description-line-height'?: string
+  '--tour-overlay-color'?: string
+  '--tour-highlight-color'?: string
   '--tree-menu-background'?: string
   '--tree-menu-border-color'?: string
   '--tree-menu-item-text-color'?: string

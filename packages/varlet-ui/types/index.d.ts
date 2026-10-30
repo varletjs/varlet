@@ -103,6 +103,7 @@ export * from './tabsItems'
 export * from './themes'
 export * from './timePicker'
 export * from './tooltip'
+export * from './tour'
 export * from './treeMenu'
 export * from './uploader'
 export * from './varComponent'
@@ -208,6 +209,7 @@ declare module 'vue' {
     VarThemes: typeof import('@varlet/ui')['_ThemesComponent']
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
+    VarTour: typeof import('@varlet/ui')['_TourComponent']
     VarTreeMenu: typeof import('@varlet/ui')['_TreeMenuComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
     VarWatermark: typeof import('@varlet/ui')['_WatermarkComponent']

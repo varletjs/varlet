@@ -1,0 +1,111 @@
+:root {
+  --tour-width: 320px;
+  --tour-padding: 20px;
+  --tour-border-radius: var(--dialog-border-radius);
+  --tour-background: var(--dialog-background);
+  --tour-title-color: var(--dialog-title-color);
+  --tour-title-font-size: var(--dialog-title-font-size);
+  --tour-description-color: var(--dialog-message-color);
+  --tour-description-font-size: var(--dialog-message-font-size);
+  --tour-description-line-height: var(--dialog-message-line-height);
+  --tour-overlay-color: var(--overlay-background-color);
+  --tour-highlight-color: var(--color-primary);
+}
+
+.var-tour {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  &__mask {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: var(--tour-overlay-color);
+
+    path {
+      pointer-events: fill;
+    }
+  }
+
+  &__highlight {
+    position: absolute;
+    box-shadow: 0 0 0 2px var(--tour-highlight-color);
+    pointer-events: auto;
+  }
+
+  &--interactive {
+    pointer-events: none;
+  }
+
+  &__panel {
+    position: fixed;
+    width: var(--tour-width);
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    overflow: auto;
+    padding: var(--tour-padding);
+    border-radius: var(--tour-border-radius);
+    background: var(--tour-background);
+    pointer-events: auto;
+    outline: none;
+  }
+
+  &--center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    color: var(--tour-title-color);
+    font-size: var(--tour-title-font-size);
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  &__description {
+    color: var(--tour-description-color);
+    font-size: var(--tour-description-font-size);
+    line-height: var(--tour-description-line-height);
+    overflow-wrap: anywhere;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  &__progress {
+    color: var(--tour-description-color);
+    font-size: var(--font-size-sm);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-inline-start: auto;
+  }
+
+  &--fade-enter-from,
+  &--fade-leave-to {
+    opacity: 0;
+  }
+
+  &--fade-enter-active,
+  &--fade-leave-active {
+    transition: opacity 0.2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .var-tour--fade-enter-active,
+  .var-tour--fade-leave-active {
+    transition: none;
+  }
+}
