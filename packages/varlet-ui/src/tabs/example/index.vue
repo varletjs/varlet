@@ -52,18 +52,6 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <app-type>{{ t('shortIndicatorVertical') }}</app-type>
-  <var-tabs
-    v-model:active="activeShortVertical"
-    class="vertical-tabs"
-    indicator-variant="short"
-    layout-direction="vertical"
-  >
-    <var-tab>{{ t('option') }}1</var-tab>
-    <var-tab>{{ t('option') }}2</var-tab>
-    <var-tab>{{ t('option') }}3</var-tab>
-  </var-tabs>
-
   <app-type>{{ t('modifyStyle') }}</app-type>
   <var-tabs
     v-model:active="active2"
@@ -147,6 +135,18 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
+  <var-tabs
+    v-model:active="activeShortVertical"
+    class="vertical-tabs"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    layout-direction="vertical"
+  >
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
+  </var-tabs>
+
   <app-type>{{ t('viewRelation') }}</app-type>
   <var-tabs
     v-model:active="activeRelation"
@@ -202,6 +202,12 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
+  <var-tabs v-model:active="active8" style="margin-top: 20px" indicator-variant="short" indicator-position="reverse">
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
+  </var-tabs>
+
   <var-tabs
     v-model:active="active8"
     style="margin-top: 20px"
@@ -212,6 +218,19 @@ onThemeChange((theme) => {
     color="var(--color-primary)"
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
+  >
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="active8"
+    class="vertical-tabs"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+    layout-direction="vertical"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>

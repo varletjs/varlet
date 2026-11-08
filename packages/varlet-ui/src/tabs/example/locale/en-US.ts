@@ -1,5 +1,4 @@
 export default {
-  shortIndicatorVertical: 'Vertical Short Indicator',
   shortIndicator: 'Short Indicator',
   basicUsage: 'Basic Usage',
   modifyStyle: 'Modify Style',

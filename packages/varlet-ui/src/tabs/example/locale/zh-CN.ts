@@ -1,5 +1,4 @@
 export default {
-  shortIndicatorVertical: '短指示器垂直布局',
   shortIndicator: '短指示器',
   basicUsage: '基本使用',
   modifyStyle: '修改样式',

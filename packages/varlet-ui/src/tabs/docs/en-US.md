@@ -63,38 +63,6 @@ const active = ref(0)
 </template>
 ```
 
-### Vertical Short Indicator
-
-Use `layout-direction="vertical"` to display tabs vertically.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-tabs
-    v-model:active="active"
-    class="tabs-example-short-vertical"
-    indicator-variant="short"
-    layout-direction="vertical"
-  >
-    <var-tab>Option1</var-tab>
-    <var-tab>Option2</var-tab>
-    <var-tab>Option3</var-tab>
-  </var-tabs>
-</template>
-
-<style>
-.tabs-example-short-vertical {
-  width: 80px;
-  height: 120px;
-}
-</style>
-```
-
 ### Modify Style
 
 ```html
@@ -223,6 +191,7 @@ const active = ref(0)
 import { ref } from 'vue'
 
 const active = ref(0)
+const activeShort = ref(0)
 </script>
 
 <template>
@@ -234,6 +203,18 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="activeShort"
+    class="tabs-example-vertical"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    layout-direction="vertical"
   >
     <var-tab>Option1</var-tab>
     <var-tab>Option2</var-tab>
@@ -343,6 +324,17 @@ const active = ref(0)
   </var-tabs>
 
   <var-tabs
+    v-model:active="active"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
     class="tabs-example-vertical"
     elevation
     indicator-position="reverse"
@@ -351,6 +343,18 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-vertical"
+    indicator-variant="short"
+    indicator-position="reverse"
+    layout-direction="vertical"
   >
     <var-tab>Option1</var-tab>
     <var-tab>Option2</var-tab>

@@ -63,38 +63,6 @@ const active = ref(0)
 </template>
 ```
 
-### 短指示器垂直布局
-
-通过 `layout-direction="vertical"` 设置垂直布局。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const active = ref(0)
-</script>
-
-<template>
-  <var-tabs
-    v-model:active="active"
-    class="tabs-example-short-vertical"
-    indicator-variant="short"
-    layout-direction="vertical"
-  >
-    <var-tab>选项1</var-tab>
-    <var-tab>选项2</var-tab>
-    <var-tab>选项3</var-tab>
-  </var-tabs>
-</template>
-
-<style>
-.tabs-example-short-vertical {
-  width: 80px;
-  height: 120px;
-}
-</style>
-```
-
 ### 修改样式
 
 ```html
@@ -222,6 +190,7 @@ const active = ref(0)
 import { ref } from 'vue'
 
 const active = ref(0)
+const activeShort = ref(0)
 </script>
 
 <template>
@@ -233,6 +202,18 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="activeShort"
+    class="tabs-example-vertical"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    layout-direction="vertical"
   >
     <var-tab>选项1</var-tab>
     <var-tab>选项2</var-tab>
@@ -343,6 +324,17 @@ const active = ref(0)
   </var-tabs>
 
   <var-tabs
+    v-model:active="active"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
     class="tabs-example-vertical"
     elevation
     indicator-position="reverse"
@@ -351,6 +343,18 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-vertical"
+    indicator-variant="short"
+    indicator-position="reverse"
+    layout-direction="vertical"
   >
     <var-tab>选项1</var-tab>
     <var-tab>选项2</var-tab>
