@@ -501,14 +501,14 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tabs-item-vertical-height`   | `66px`                 |
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
-| `--tabs-indicator-size` (full) | `2px`                  |
-| `--tabs-indicator-border-radius` (full) | `0`         |
+| `--tabs-indicator-size` | `2px`                  |
+| `--tabs-indicator-border-radius` | `0`         |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
-| `--tabs-indicator-inner-size` (full) | `100%`                 |
-| `--tabs-short-indicator-size` (short) | `3px` |
-| `--tabs-short-indicator-inner-size` (short) | `32px` |
-| `--tabs-short-indicator-border-radius` (short) | `3px` |
+| `--tabs-indicator-inner-size` | `100%`                 |
+| `--tabs-short-indicator-size` | `3px` |
+| `--tabs-short-indicator-inner-size` | `32px` |
+| `--tabs-short-indicator-border-radius` | `3px` |
 
 #### Tab Variables
 
