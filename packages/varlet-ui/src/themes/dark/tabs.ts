@@ -8,4 +8,7 @@ export default {
   '--tabs-indicator-border-radius': '0',
   '--tabs-indicator-background': 'var(--color-primary)',
   '--tabs-indicator-inner-size': '100%',
+  '--tabs-short-indicator-size': '3px',
+  '--tabs-short-indicator-inner-size': '32px',
+  '--tabs-short-indicator-border-radius': '3px',
 }

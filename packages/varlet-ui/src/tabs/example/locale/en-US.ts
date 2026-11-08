@@ -1,4 +1,5 @@
 export default {
+  shortIndicator: 'Short Indicator',
   basicUsage: 'Basic Usage',
   modifyStyle: 'Modify Style',
   disabled: 'Tab Disabled',

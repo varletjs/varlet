@@ -11,6 +11,8 @@ export declare const tabsProps: Record<keyof TabsProps, any>
 
 export type TabsScrollable = 'auto' | 'always'
 
+export type TabsIndicatorVariant = 'full' | 'short'
+
 export type TabsIndicatorPosition = 'normal' | 'reverse'
 
 export { TabsDirection }
@@ -24,6 +26,7 @@ export interface TabsProps extends BasicAttributes {
   inactiveColor?: string
   disabledColor?: string
   color?: string
+  indicatorVariant?: TabsIndicatorVariant
   indicatorColor?: string
   indicatorSize?: string | number
   elevation?: boolean | string | number

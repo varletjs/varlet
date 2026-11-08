@@ -34,7 +34,12 @@
         <slot />
 
         <div
-          :class="classes(n('indicator'), n(`--layout-${layoutDirection}${indicatorPosition}-indicator`))"
+          :class="
+            classes(n('indicator'), n(`--layout-${layoutDirection}${indicatorPosition}-indicator`), [
+              indicatorVariant === 'short',
+              n('--indicator-short'),
+            ])
+          "
           :style="{
             width: layoutDirection === 'horizontal' ? indicatorWidth : toSizeUnit(indicatorSize),
             height: layoutDirection === 'horizontal' ? toSizeUnit(indicatorSize) : indicatorHeight,

@@ -27,6 +27,7 @@ const Wrapper = {
     'activeColor',
     'inactiveColor',
     'disabledColor',
+    'indicatorVariant',
     'indicatorColor',
     'indicatorSize',
     'elevation',
@@ -159,6 +160,26 @@ describe('test tabs component props', () => {
     })
 
     expect(wrapper.find('.var-tab--disabled').attributes('style')).toContain('color: red;')
+    wrapper.unmount()
+  })
+
+  test('tabs indicator-variant', async () => {
+    const wrapper = mount(Wrapper)
+
+    expect(wrapper.findComponent(Tabs).props('indicatorVariant')).toBe('full')
+    expect(wrapper.find('.var-tabs--indicator-short').exists()).toBe(false)
+
+    await wrapper.setProps({ indicatorVariant: 'short', indicatorSize: 6, indicatorColor: 'red' })
+    expect(wrapper.find('.var-tabs--indicator-short').exists()).toBe(true)
+    expect(wrapper.find('.var-tabs--layout-horizontal-indicator').attributes('style')).toContain('height: 6px;')
+    expect(wrapper.find('.var-tabs__indicator-inner').attributes('style')).toContain('background: red;')
+
+    await wrapper.setProps({ layoutDirection: 'vertical', indicatorPosition: 'reverse' })
+    expect(wrapper.find('.var-tabs--indicator-short').exists()).toBe(true)
+    expect(wrapper.find('.var-tabs--layout-vertical-reverse-indicator').attributes('style')).toContain('width: 6px;')
+
+    await wrapper.setProps({ indicatorVariant: 'full' })
+    expect(wrapper.find('.var-tabs--indicator-short').exists()).toBe(false)
     wrapper.unmount()
   })
 

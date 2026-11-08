@@ -43,6 +43,26 @@ const active = ref('选项1')
 </template>
 ```
 
+### 短指示器
+
+通过 `indicator-variant="short"` 设置短指示器。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs v-model:active="active" indicator-variant="short">
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+</template>
+```
+
 ### 修改样式
 
 ```html
@@ -170,6 +190,7 @@ const active = ref(0)
 import { ref } from 'vue'
 
 const active = ref(0)
+const activeShort = ref(0)
 </script>
 
 <template>
@@ -181,6 +202,22 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="activeShort"
+    class="tabs-example-vertical"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>选项1</var-tab>
     <var-tab>选项2</var-tab>
@@ -291,6 +328,21 @@ const active = ref(0)
   </var-tabs>
 
   <var-tabs
+    v-model:active="active"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
     class="tabs-example-vertical"
     elevation
     indicator-position="reverse"
@@ -299,6 +351,22 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-vertical"
+    indicator-variant="short"
+    indicator-position="reverse"
+    layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>选项1</var-tab>
     <var-tab>选项2</var-tab>
@@ -331,8 +399,9 @@ const active = ref(0)
 | `active-color`     | 选项卡激活的主要颜色                             | _string_ | `-`    |
 | `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `-`    |
 | `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `-`    |
+| `indicator-variant` ***3.20.10*** | 指示器外观，可选值为 `full`（完整长度）和 `short`（固定长度的短指示器） | _string_ | `full` |
 | `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `-`    |
-| `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \| number_      | `2px`        |
+| `indicator-size` | 指示器的厚度 | _string \| number_ | `full`: `2px`，`short`: `3px` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
@@ -432,11 +501,14 @@ const active = ref(0)
 | `--tabs-item-vertical-height`   | `66px`                 |
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
-| `--tabs-indicator-size`         | `2px`                  |
-| `--tabs-indicator-border-radius`         | `0`                  |
+| `--tabs-indicator-size` | `2px`                  |
+| `--tabs-indicator-border-radius` | `0`                  |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
-| `--tabs-indicator-inner-size`             | `100%`                 |
+| `--tabs-indicator-inner-size` | `100%`                 |
+| `--tabs-short-indicator-size` | `3px` |
+| `--tabs-short-indicator-inner-size` | `32px` |
+| `--tabs-short-indicator-border-radius` | `3px` |
 
 #### Tab Variables
 

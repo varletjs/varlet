@@ -6,6 +6,8 @@ export type TabsDirection = 'horizontal' | 'vertical'
 
 export type TabsScrollable = 'auto' | 'always'
 
+export type TabsIndicatorVariant = 'full' | 'short'
+
 export type TabsIndicatorPosition = 'normal' | 'reverse'
 
 export const props = {
@@ -26,6 +28,10 @@ export const props = {
   inactiveColor: String,
   disabledColor: String,
   color: String,
+  indicatorVariant: {
+    type: String as PropType<TabsIndicatorVariant>,
+    default: 'full',
+  },
   indicatorColor: String,
   indicatorSize: [String, Number],
   elevation: {

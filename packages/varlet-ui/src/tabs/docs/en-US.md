@@ -43,6 +43,26 @@ const active = ref('Option1')
 </template>
 ```
 
+### Short Indicator
+
+Use `indicator-variant="short"` to display a short indicator.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs v-model:active="active" indicator-variant="short">
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+</template>
+```
+
 ### Modify Style
 
 ```html
@@ -171,6 +191,7 @@ const active = ref(0)
 import { ref } from 'vue'
 
 const active = ref(0)
+const activeShort = ref(0)
 </script>
 
 <template>
@@ -182,6 +203,22 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="activeShort"
+    class="tabs-example-vertical"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>Option1</var-tab>
     <var-tab>Option2</var-tab>
@@ -291,6 +328,21 @@ const active = ref(0)
   </var-tabs>
 
   <var-tabs
+    v-model:active="active"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
     class="tabs-example-vertical"
     elevation
     indicator-position="reverse"
@@ -299,6 +351,22 @@ const active = ref(0)
     active-color="var(--color-on-primary)"
     inactive-color="var(--color-on-info)"
     v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-vertical"
+    indicator-variant="short"
+    indicator-position="reverse"
+    layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>Option1</var-tab>
     <var-tab>Option2</var-tab>
@@ -331,8 +399,9 @@ const active = ref(0)
 | `active-color`     | The primary color that the tab is activates                                  | _string_ | `-`    |
 | `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `-`    |
 | `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `-`    |
+| `indicator-variant` ***3.20.10*** | Indicator appearance, can be `full` (full length) or `short` (fixed short length) | _string_ | `full` |
 | `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `-`    |
-| `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_      | `2px`        |
+| `indicator-size` | Indicator thickness | _string \| number_ | `full`: `2px`, `short`: `3px` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
@@ -432,11 +501,14 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tabs-item-vertical-height`   | `66px`                 |
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
-| `--tabs-indicator-size`         | `2px`                  |
-| `--tabs-indicator-border-radius`         | `0`         |
+| `--tabs-indicator-size` | `2px`                  |
+| `--tabs-indicator-border-radius` | `0`         |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
-| `--tabs-indicator-inner-size`             | `100%`                 |
+| `--tabs-indicator-inner-size` | `100%`                 |
+| `--tabs-short-indicator-size` | `3px` |
+| `--tabs-short-indicator-inner-size` | `32px` |
+| `--tabs-short-indicator-border-radius` | `3px` |
 
 #### Tab Variables
 
