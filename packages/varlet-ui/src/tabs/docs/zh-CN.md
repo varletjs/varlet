@@ -401,7 +401,7 @@ const active = ref(0)
 | `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `-`    |
 | `indicator-variant` ***3.20.10*** | 指示器外观，可选值为 `full`（完整长度）和 `short`（固定长度的短指示器） | _string_ | `full` |
 | `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `-`    |
-| `indicator-size`   | 指示器厚度，两种外观均生效，优先于 CSS 变量；默认 `full` 为 `2px`，`short` 为 `3px`                            | _string \| number_      | `-`        |
+| `indicator-size` | 指示器的厚度 | _string \| number_ | `full`: `2px`，`short`: `3px` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
@@ -501,16 +501,14 @@ const active = ref(0)
 | `--tabs-item-vertical-height`   | `66px`                 |
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
-| `--tabs-indicator-size`         | `2px`                  |
-| `--tabs-indicator-border-radius`         | `0`                  |
+| `--tabs-indicator-size` (full) | `2px`                  |
+| `--tabs-indicator-border-radius` (full) | `0`                  |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
-| `--tabs-indicator-inner-size`             | `100%`                 |
-| `--tabs-short-indicator-size` | `3px` |
-| `--tabs-short-indicator-inner-size` | `32px` |
-| `--tabs-short-indicator-border-radius` | `3px` |
-
-`--tabs-indicator-background` 对两种外观均生效。`--tabs-indicator-size`、`--tabs-indicator-inner-size` 和 `--tabs-indicator-border-radius` 仅作用于 `full`；`--tabs-short-indicator-*` 仅作用于 `short`。`indicator-size` prop 覆盖当前外观的厚度变量，`indicator-color` prop 覆盖背景颜色变量。短指示器的圆角变量为单个圆角半径，圆角方向由组件自动处理。
+| `--tabs-indicator-inner-size` (full) | `100%`                 |
+| `--tabs-short-indicator-size` (short) | `3px` |
+| `--tabs-short-indicator-inner-size` (short) | `32px` |
+| `--tabs-short-indicator-border-radius` (short) | `3px` |
 
 #### Tab Variables
 

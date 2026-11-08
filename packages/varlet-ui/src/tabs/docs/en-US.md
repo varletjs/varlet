@@ -401,7 +401,7 @@ const active = ref(0)
 | `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `-`    |
 | `indicator-variant` ***3.20.10*** | Indicator appearance, can be `full` (full length) or `short` (fixed short length) | _string_ | `full` |
 | `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `-`    |
-| `indicator-size`   | Indicator thickness for both variants, overriding CSS variables. Defaults to `2px` for `full` and `3px` for `short`                                      | _string \| number_      | `-`        |
+| `indicator-size` | Indicator thickness | _string \| number_ | `full`: `2px`, `short`: `3px` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
@@ -501,16 +501,14 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tabs-item-vertical-height`   | `66px`                 |
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
-| `--tabs-indicator-size`         | `2px`                  |
-| `--tabs-indicator-border-radius`         | `0`         |
+| `--tabs-indicator-size` (full) | `2px`                  |
+| `--tabs-indicator-border-radius` (full) | `0`         |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
-| `--tabs-indicator-inner-size`             | `100%`                 |
-| `--tabs-short-indicator-size` | `3px` |
-| `--tabs-short-indicator-inner-size` | `32px` |
-| `--tabs-short-indicator-border-radius` | `3px` |
-
-`--tabs-indicator-background` applies to both variants. `--tabs-indicator-size`, `--tabs-indicator-inner-size`, and `--tabs-indicator-border-radius` only apply to `full`; `--tabs-short-indicator-*` only apply to `short`. The `indicator-size` prop overrides the thickness variable for the current variant, and the `indicator-color` prop overrides the background color variable. The short indicator radius variable accepts a single corner radius; the component handles corner orientation automatically.
+| `--tabs-indicator-inner-size` (full) | `100%`                 |
+| `--tabs-short-indicator-size` (short) | `3px` |
+| `--tabs-short-indicator-inner-size` (short) | `32px` |
+| `--tabs-short-indicator-border-radius` (short) | `3px` |
 
 #### Tab Variables
 
