@@ -1,4 +1,4 @@
-## [3.20.9](https://github.com/varletjs/varlet/compare/v3.20.8...v3.20.9) (2026-10-29)
+## [3.20.10](https://github.com/varletjs/varlet/compare/v3.20.9...v3.20.10) (2026-11-08)
 
 
 ### Features
@@ -6,6 +6,7 @@
 * **auto-complete:** support configurable menu radius ([#2037](https://github.com/varletjs/varlet/issues/2037)) ([b59ec37](https://github.com/varletjs/varlet/commit/b59ec37f9e5d9e73a233bd03077ed8f96048764d))
 * **menu:** support configurable popup radius ([#2036](https://github.com/varletjs/varlet/issues/2036)) ([494bc0d](https://github.com/varletjs/varlet/commit/494bc0d200a62d7890b07a286e94548ee5d6a0fe))
 * **snackbar:** add timeout progress indicator ([#2030](https://github.com/varletjs/varlet/issues/2030)) ([70c8061](https://github.com/varletjs/varlet/commit/70c8061bfc17b375daf2cc29fdd7a26b2ec43d53))
+* **tabs:** support short indicator variant ([#2038](https://github.com/varletjs/varlet/issues/2038)) ([1fbc872](https://github.com/varletjs/varlet/commit/1fbc87239b093a8ccaf7719c8f10a9a416abd277))
 
 ## [3.20.7](https://github.com/varletjs/varlet/compare/v3.20.6...v3.20.7) (2026-10-14)
 
