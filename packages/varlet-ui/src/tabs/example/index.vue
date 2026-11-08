@@ -141,6 +141,10 @@ onThemeChange((theme) => {
     style="margin-top: 20px"
     indicator-variant="short"
     layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
@@ -202,7 +206,16 @@ onThemeChange((theme) => {
     <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <var-tabs v-model:active="active8" style="margin-top: 20px" indicator-variant="short" indicator-position="reverse">
+  <var-tabs
+    v-model:active="active8"
+    style="margin-top: 20px"
+    indicator-variant="short"
+    indicator-position="reverse"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
+  >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
     <var-tab>{{ t('option') }}3</var-tab>
@@ -231,6 +244,10 @@ onThemeChange((theme) => {
     indicator-variant="short"
     indicator-position="reverse"
     layout-direction="vertical"
+    elevation
+    color="var(--color-primary)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
   >
     <var-tab>{{ t('option') }}1</var-tab>
     <var-tab>{{ t('option') }}2</var-tab>
