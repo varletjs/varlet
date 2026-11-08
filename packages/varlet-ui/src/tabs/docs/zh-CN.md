@@ -56,11 +56,43 @@ const active = ref(0)
 
 <template>
   <var-tabs v-model:active="active" indicator-variant="short">
-    <var-tab>推荐</var-tab>
-    <var-tab>我的收藏</var-tab>
-    <var-tab>最近浏览记录</var-tab>
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
   </var-tabs>
 </template>
+```
+
+### 短指示器垂直布局
+
+通过 `layout-direction="vertical"` 设置垂直布局。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-short-vertical"
+    indicator-variant="short"
+    layout-direction="vertical"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+</template>
+
+<style>
+.tabs-example-short-vertical {
+  width: 80px;
+  height: 120px;
+}
+</style>
 ```
 
 ### 修改样式

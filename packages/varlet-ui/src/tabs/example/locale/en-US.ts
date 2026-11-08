@@ -1,7 +1,5 @@
 export default {
-  shortOption1: 'For you',
-  shortOption2: 'Favorites',
-  shortOption3: 'Recently viewed',
+  shortIndicatorVertical: 'Vertical Short Indicator',
   shortIndicator: 'Short Indicator',
   basicUsage: 'Basic Usage',
   modifyStyle: 'Modify Style',

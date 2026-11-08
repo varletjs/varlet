@@ -56,11 +56,43 @@ const active = ref(0)
 
 <template>
   <var-tabs v-model:active="active" indicator-variant="short">
-    <var-tab>For you</var-tab>
-    <var-tab>Favorites</var-tab>
-    <var-tab>Recently viewed</var-tab>
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
   </var-tabs>
 </template>
+```
+
+### Vertical Short Indicator
+
+Use `layout-direction="vertical"` to display tabs vertically.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs
+    v-model:active="active"
+    class="tabs-example-short-vertical"
+    indicator-variant="short"
+    layout-direction="vertical"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+</template>
+
+<style>
+.tabs-example-short-vertical {
+  width: 80px;
+  height: 120px;
+}
+</style>
 ```
 
 ### Modify Style
