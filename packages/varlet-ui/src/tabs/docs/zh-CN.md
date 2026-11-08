@@ -45,7 +45,7 @@ const active = ref('选项1')
 
 ### 短指示器
 
-通过 `indicator-variant="short"` 开启居中的短指示器，默认长度固定为 `32px`、厚度为 `3px`，不随标签内容长度变化。圆角朝向容器内侧，随布局方向和指示器位置调整；长度不超过当前选项卡的尺寸。
+通过 `indicator-variant="short"` 设置短指示器。
 
 ```html
 <script setup>

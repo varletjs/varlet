@@ -45,7 +45,7 @@ const active = ref('Option1')
 
 ### Short Indicator
 
-Set `indicator-variant="short"` to use a centered short indicator with a fixed default length of `32px` and thickness of `3px`, independent of the label content. Rounded corners face inward and adapt to the layout direction and indicator position. The length is capped at the size of the current tab.
+Use `indicator-variant="short"` to display a short indicator.
 
 ```html
 <script setup>
