@@ -6,6 +6,7 @@ import { type MenuSelectSize } from './props'
 export const MENU_SELECT_BIND_MENU_OPTION_KEY = Symbol('MENU_SELECT_BIND_MENU_OPTION_KEY')
 
 export interface MenuSelectProvider {
+  disabled: ComputedRef<boolean>
   size: ComputedRef<MenuSelectSize>
   multiple: ComputedRef<boolean>
   computeLabel(): void

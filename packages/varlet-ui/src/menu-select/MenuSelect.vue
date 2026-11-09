@@ -138,6 +138,7 @@ export default defineComponent({
     })
 
     const menuSelectProvider: MenuSelectProvider = {
+      disabled: computed(() => props.disabled),
       size: computed(() => props.size),
       multiple: computed(() => props.multiple),
       computeLabel,
@@ -215,6 +216,10 @@ export default defineComponent({
     }
 
     function onSelect(optionProvider: MenuOptionProvider) {
+      if (props.disabled) {
+        return
+      }
+
       const { multiple, closeOnSelect } = props
       const { value, label, selected, disabled, ripple } = optionProvider
       const enhancedOption = getEnhancedOption(value.value)
