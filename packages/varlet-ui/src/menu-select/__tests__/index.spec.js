@@ -80,6 +80,44 @@ test('menu-select modelValue', async () => {
   wrapper.unmount()
 })
 
+test.each([false, true])('menu-select ignores a click after disabling while open (multiple: %s)', async (multiple) => {
+  const onUpdateModelValue = vi.fn()
+  const onSelect = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      multiple,
+      modelValue: multiple ? ['Apple'] : 'Apple',
+      'onUpdate:modelValue': onUpdateModelValue,
+      onSelect,
+      teleport: root,
+      options: [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Orange', value: 'Orange' },
+      ],
+    },
+    slots: { default: () => h('button', 'Open') },
+  })
+  const orange = root.querySelectorAll('.var-menu-option')[1]
+
+  expect(orange.closest('.var-menu__menu').style.display).not.toBe('none')
+
+  await wrapper.setProps({ disabled: true })
+  await trigger(orange, 'click')
+
+  expect(onUpdateModelValue).not.toHaveBeenCalled()
+  expect(onSelect).not.toHaveBeenCalled()
+
+  await wrapper.setProps({ disabled: false, show: false })
+  await wrapper.setProps({ show: true })
+  await trigger(orange, 'click')
+
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+  expect(onSelect).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
+})
+
 test('menu-select multiple', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })

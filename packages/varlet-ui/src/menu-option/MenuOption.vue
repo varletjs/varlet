@@ -1,7 +1,7 @@
 <template>
   <div
     ref="root"
-    v-ripple="{ disabled: disabled || !ripple }"
+    v-ripple="{ disabled: interactionDisabled || !ripple }"
     v-hover:desktop="handleHovering"
     :class="
       classes(
@@ -9,11 +9,11 @@
         n('$--box'),
         n(`--${size}`),
         [optionSelected, n('--selected-color')],
-        [disabled, n('--disabled')],
+        [interactionDisabled, n('--disabled')],
         [childrenTrigger, n('--children-trigger')],
       )
     "
-    :tabindex="disabled ? undefined : '-1'"
+    :tabindex="interactionDisabled ? undefined : '-1'"
     @click="handleClick"
     @focus="isFocusing = true"
     @blur="isFocusing = false"
@@ -25,7 +25,7 @@
       ref="checkbox"
       v-model="optionSelected"
       v-model:indeterminate="optionIndeterminate"
-      :disabled="disabled"
+      :disabled="interactionDisabled"
       @click.stop
       @change="handleSelect"
     />
@@ -40,7 +40,10 @@
       <var-icon var-menu-option-cover :class="n('arrow-icon')" name="chevron-right" />
     </div>
 
-    <var-hover-overlay :hovering="(hovering || highlight) && !disabled" :focusing="isFocusing && !disabled" />
+    <var-hover-overlay
+      :hovering="(hovering || highlight) && !interactionDisabled"
+      :focusing="isFocusing && !interactionDisabled"
+    />
   </div>
 </template>
 
@@ -82,6 +85,7 @@ export default defineComponent({
     const ripple = computed(() => props.ripple)
     const { menuSelect, bindMenuSelect } = useMenuSelect()
     const { size, multiple, onSelect, computeLabel } = menuSelect
+    const interactionDisabled = computed(() => menuSelect.disabled.value || disabled.value)
     const { hovering, handleHovering } = useHoverOverlay()
 
     const labelVNode = computed(() =>
@@ -116,7 +120,7 @@ export default defineComponent({
     useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleClick() {
-      if (props.disabled) {
+      if (interactionDisabled.value) {
         return
       }
 
@@ -190,6 +194,7 @@ export default defineComponent({
       checkbox,
       optionSelected,
       optionIndeterminate,
+      interactionDisabled,
       size,
       multiple,
       hovering,
