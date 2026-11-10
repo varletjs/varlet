@@ -107,6 +107,7 @@ export * from './treeMenu'
 export * from './uploader'
 export * from './varComponent'
 export * from './varDirective'
+export * from './virtualList'
 export * from './watermark'
 
 declare module 'vue' {
@@ -210,6 +211,7 @@ declare module 'vue' {
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarTreeMenu: typeof import('@varlet/ui')['_TreeMenuComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+    VarVirtualList: typeof import('@varlet/ui')['_VirtualListComponent']
     VarWatermark: typeof import('@varlet/ui')['_WatermarkComponent']
   }
 
