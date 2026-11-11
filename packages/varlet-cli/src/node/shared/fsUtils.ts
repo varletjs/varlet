@@ -1,7 +1,8 @@
 import { extname, resolve } from 'path'
 import { fileURLToPath } from 'url'
+import { slash } from '@varlet/shared'
 import fse from 'fs-extra'
-import globSync from 'glob'
+import { glob as globFiles } from 'glob'
 import { CLI_PACKAGE_JSON, PUBLIC_DIR_INDEXES, SCRIPTS_EXTENSIONS, SRC_DIR, UI_PACKAGE_JSON } from './constant.js'
 
 const {
@@ -61,16 +62,11 @@ export function outputFileSyncOnChange(path: string, code: string) {
   }
 }
 
-export function glob(pattern: string): Promise<string[]> {
-  return new Promise((resolve, reject) => {
-    globSync(pattern, (err, files) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(files)
-      }
-    })
-  })
+// match glob@7 results: `\` is a path separator on Windows, output is `/` separated and sorted
+export async function glob(pattern: string): Promise<string[]> {
+  const files = await globFiles(pattern, { windowsPathsNoEscape: true })
+
+  return files.map(slash).sort((a, b) => a.localeCompare(b, 'en'))
 }
 
 export function getDirname(url: string) {

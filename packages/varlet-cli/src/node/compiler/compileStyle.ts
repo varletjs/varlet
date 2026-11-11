@@ -1,6 +1,6 @@
 import { parse, resolve } from 'path'
 import fse from 'fs-extra'
-import glob from 'glob'
+import { globSync } from 'glob'
 import less from 'less'
 import * as sass from 'sass'
 import { CWD } from '../shared/constant.js'
@@ -62,9 +62,9 @@ export function compileScss(file: string) {
 }
 
 export function clearLessFiles(dir: string) {
-  glob.sync(`${dir}/**/*.less`).forEach(unlinkSync)
+  globSync(`${dir}/**/*.less`, { windowsPathsNoEscape: true }).forEach(unlinkSync)
 }
 
 export function clearScssFiles(dir: string) {
-  glob.sync(`${dir}/**/*.scss`).forEach(unlinkSync)
+  globSync(`${dir}/**/*.scss`, { windowsPathsNoEscape: true }).forEach(unlinkSync)
 }
