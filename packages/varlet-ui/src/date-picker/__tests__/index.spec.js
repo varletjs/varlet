@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import dayjs from 'dayjs/esm'
+import dayjs from 'dayjs'
 import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import DatePicker from '..'

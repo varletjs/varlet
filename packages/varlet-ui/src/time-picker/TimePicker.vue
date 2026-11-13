@@ -65,7 +65,7 @@
 
 <script lang="ts">
 import { call, getRect, preventDefault, toNumber } from '@varlet/shared'
-import dayjs from 'dayjs/esm/index.js'
+import dayjs from 'dayjs'
 import { computed, defineComponent, reactive, ref, watch, type DefineComponent } from 'vue'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'

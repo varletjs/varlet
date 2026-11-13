@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { getRect, toNumber } from '@varlet/shared'
-import dayjs from 'dayjs/esm/index.js'
+import dayjs from 'dayjs'
 import { computed, defineComponent, ref, watch, type ComputedRef, type PropType, type Ref } from 'vue'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'

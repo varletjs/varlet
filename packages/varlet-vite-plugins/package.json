@@ -44,6 +44,6 @@
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "vite": "catalog:"
+    "vite": "^8.0.0"
   }
 }

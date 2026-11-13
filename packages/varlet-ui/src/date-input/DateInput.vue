@@ -136,7 +136,7 @@
 
 <script lang="ts">
 import { call, isArray, isDate, isEqual, isNumber, isTruthy, preventDefault } from '@varlet/shared'
-import { type Dayjs } from 'dayjs/esm/index.js'
+import { type Dayjs } from 'dayjs'
 import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import VarDatePicker from '../date-picker'
 import VarFormDetails from '../form-details'
