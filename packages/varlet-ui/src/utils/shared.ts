@@ -1,8 +1,8 @@
 import { isString, removeItem } from '@varlet/shared'
-import dayjs from 'dayjs/esm/index.js'
-import customParseFormat from 'dayjs/esm/plugin/customParseFormat/index.js'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat.js'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js'
 
 export interface CacheInstance<T> {
   cache: T[]
