@@ -104,6 +104,9 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   swipe: {
     path: '/swipe',
   },
+  'swipe-action': {
+    path: '/swipe-action',
+  },
   'swipe-item': {
     path: '/swipe',
   },

@@ -93,6 +93,7 @@ export * from './sticky'
 export * from './styleProvider'
 export * from './styleVars'
 export * from './swipe'
+export * from './swipeAction'
 export * from './swipeItem'
 export * from './switch'
 export * from './tab'
@@ -198,6 +199,7 @@ declare module 'vue' {
     VarStyleProvider: typeof import('@varlet/ui')['_StyleProviderComponent']
     VarStyleVars: typeof import('@varlet/ui')['_StyleVarsComponent']
     VarSwipe: typeof import('@varlet/ui')['_SwipeComponent']
+    VarSwipeAction: typeof import('@varlet/ui')['_SwipeActionComponent']
     VarSwipeItem: typeof import('@varlet/ui')['_SwipeItemComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
     VarTab: typeof import('@varlet/ui')['_TabComponent']
