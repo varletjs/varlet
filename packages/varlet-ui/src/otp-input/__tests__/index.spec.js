@@ -98,6 +98,37 @@ describe('test otp-input behaviors', () => {
     wrapper.unmount()
   })
 
+  test('disabling paste cancels native insertion without blocking autofill', async () => {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onPaste = vi.fn()
+    const wrapper = mount(VarOtpInput, {
+      props: {
+        modelValue: '',
+        allowPaste: false,
+        onPaste,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+    const input = wrapper.find('input')
+    const pasteEvent = new Event('paste', { bubbles: true, cancelable: true })
+    Object.defineProperty(pasteEvent, 'clipboardData', {
+      value: { getData: () => '123456' },
+    })
+
+    input.element.dispatchEvent(pasteEvent)
+
+    expect(pasteEvent.defaultPrevented).toBe(true)
+    expect(onUpdateModelValue).not.toHaveBeenCalled()
+    expect(onPaste).not.toHaveBeenCalled()
+
+    await input.setValue('123456')
+
+    expect(onUpdateModelValue).toHaveBeenLastCalledWith('123456')
+    expect(wrapper.findAll('input').map(({ element }) => element.value)).toEqual(['1', '2', '3', '4', '5', '6'])
+
+    wrapper.unmount()
+  })
+
   test('click should emit event and trigger onClick validation', async () => {
     const onClick = vi.fn()
     const rule = vi.fn(() => true)
