@@ -354,6 +354,7 @@ export default defineComponent({
 
     function handlePaste(event: ClipboardEvent) {
       if (!props.allowPaste || formDisabled.value || formReadonly.value || props.disabled || props.readonly) {
+        event.preventDefault()
         return
       }
 
