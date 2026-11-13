@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test, vi } from 'vite-plus/test'
-import { createApp, h } from 'vue'
+import { createApp, h, ref } from 'vue'
 import { z } from 'zod'
 import Select from '..'
 import Option from '../../option'
@@ -367,6 +367,37 @@ test('select multiple value', async () => {
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
   expect(wrapper.vm.value).toStrictEqual(['eat', 'sleep'])
+
+  wrapper.unmount()
+  document.body.innerHTML = ''
+})
+
+test('select multiple object values from a reactive model', async () => {
+  const list = [{ id: 1 }, { id: 2 }]
+  const value = ref([list[0]])
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      setup: () => ({ list, value }),
+      template: `
+        <var-select multiple v-model="value">
+          <var-option label="first" :value="list[0]" />
+          <var-option label="second" :value="list[1]" />
+        </var-select>
+      `,
+    },
+    { attachTo: document.body },
+  )
+
+  await wrapper.trigger('click')
+  const options = document.querySelectorAll('.var-option')
+  expect(options[0].querySelector('.var-checkbox--checked')).toBeTruthy()
+  expect(options[1].querySelector('.var-checkbox--checked')).toBeFalsy()
+
+  value.value = [list[1]]
+  await wrapper.vm.$nextTick()
+  expect(options[0].querySelector('.var-checkbox--checked')).toBeFalsy()
+  expect(options[1].querySelector('.var-checkbox--checked')).toBeTruthy()
 
   wrapper.unmount()
   document.body.innerHTML = ''

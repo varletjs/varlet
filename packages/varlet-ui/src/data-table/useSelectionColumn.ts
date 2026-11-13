@@ -256,7 +256,15 @@ export function useSelectionColumn({
     return keys
   }
 
-  function shouldAncestorBeChecked(row: Record<string, any>, nextKeys: Set<string | number>): boolean {
+  function shouldAncestorBeChecked(
+    row: Record<string, any>,
+    nextKeys: Set<string | number>,
+    checkedByRow: Map<Record<string, any>, boolean>,
+  ): boolean {
+    if (checkedByRow.has(row)) {
+      return checkedByRow.get(row)!
+    }
+
     const column = selectionColumn.value
     const flatRow = treeRowMeta().rowByObject.get(row)
 
@@ -267,19 +275,19 @@ export function useSelectionColumn({
     const selectable = isRowSelectable(row, flatRow.rowIndex, column)
     const children = getTreeChildren(row)
 
-    if (!children.length) {
-      return selectable ? nextKeys.has(flatRow.key) : true
-    }
+    const checked = !children.length
+      ? selectable
+        ? nextKeys.has(flatRow.key)
+        : true
+      : selectable && children.every((child) => shouldAncestorBeChecked(child, nextKeys, checkedByRow))
 
-    return (
-      selectable &&
-      children.every((child) => {
-        return shouldAncestorBeChecked(child, nextKeys)
-      })
-    )
+    checkedByRow.set(row, checked)
+
+    return checked
   }
 
   function syncAncestorSelection(nextKeys: Set<string | number>, key: string | number) {
+    const checkedByRow = new Map<Record<string, any>, boolean>()
     let parentKey = treeRowMeta().parentKeyByChild.get(key)
 
     while (parentKey != null) {
@@ -289,7 +297,7 @@ export function useSelectionColumn({
         break
       }
 
-      if (shouldAncestorBeChecked(parentRow.row, nextKeys)) {
+      if (shouldAncestorBeChecked(parentRow.row, nextKeys, checkedByRow)) {
         nextKeys.add(parentKey)
       } else {
         nextKeys.delete(parentKey)
