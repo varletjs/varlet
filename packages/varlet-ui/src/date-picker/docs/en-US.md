@@ -78,6 +78,16 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 </template>
 ```
 
+### Columns
+
+Set `variant` to `columns` to select the year, month and day with scrollable columns. The column count follows `type` (three columns for `date`, two for `month`, one for `year`), and `min` / `max` / `allowed-dates` still apply, values out of range are not rendered. When `min` / `max` are not set, the default range is ten years before and after the current year.
+
+```html
+<template>
+  <var-date-picker variant="columns" v-model="date" />
+</template>
+```
+
 ### Hide Title
 
 Use `show-title` prop to control whether to display the top title area.
@@ -157,6 +167,7 @@ const date = ref('2021')
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected value. The format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`), and is an array when `multiple` or `range` | _string[] \| string_ | `undefined` |
 | `type` | Picker type, optional values `date` `month` `year`                                                                         | _string_ | `date` |
+| `variant` ***3.21.0*** | Display variant, optional values `calendar` `columns`. The `columns` variant uses scrollable columns and does not support `multiple` or `range` | _string_ | `calendar` |
 | `allowed-dates` | Restricts selectable values. The value format follows `type` (`YYYY` / `YYYY-MM` / `YYYY-MM-DD`)                  | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `-` |
 | `title-color` | Color of picker title. If not specified it will use `color` prop or the default picker color. | _string_ | `-` |

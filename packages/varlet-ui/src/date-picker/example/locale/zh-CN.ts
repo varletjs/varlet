@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  columns: '多列选择',
   monthPicker: '月份选择器',
   yearPicker: '年份选择器',
   multiple: '多选',
