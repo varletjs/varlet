@@ -285,6 +285,8 @@ describe('test rate component props', () => {
     wrapper.vm.reset()
     await delay(16)
     expect(wrapper.props('modelValue')).toBe(0)
+    await wrapper.find('.var-rate__content').trigger('click')
+    expect(wrapper.props('modelValue')).toBe(1)
 
     wrapper.unmount()
   })
@@ -305,6 +307,10 @@ describe('test rate component props', () => {
     await wrapper.find('.var-rate__content').trigger('click')
     expect(onChange).toHaveBeenCalledTimes(1)
     expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+    expect(wrapper.props('modelValue')).toBe(0)
+
+    await wrapper.setProps({ modelValue: 3 })
+    await wrapper.findAll('.var-rate__content')[2].trigger('click')
     expect(wrapper.props('modelValue')).toBe(0)
 
     wrapper.unmount()

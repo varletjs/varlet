@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { call, toNumber } from '@varlet/shared'
-import { defineComponent, nextTick, ref } from 'vue'
+import { defineComponent, nextTick, ref, watch } from 'vue'
 import VarFormDetails from '../form-details'
 import { useForm } from '../form/provide'
 import Hover from '../hover'
@@ -57,6 +57,13 @@ export default defineComponent({
     const { hovering } = useHoverOverlay()
 
     let lastScore = toNumber(props.modelValue)
+
+    watch(
+      () => props.modelValue,
+      (value) => {
+        lastScore = toNumber(value)
+      },
+    )
 
     const rateProvider: RateProvider = {
       reset,
