@@ -1,4 +1,4 @@
-## [3.20.11](https://github.com/varletjs/varlet/compare/v3.20.10...v3.20.11) (2026-11-13)
+## [3.20.12](https://github.com/varletjs/varlet/compare/v3.20.11...v3.20.12) (2026-11-22)
 
 
 ### Bug Fixes
@@ -6,6 +6,9 @@
 * **cli:** migrate to glob 14 API (supersedes [#2039](https://github.com/varletjs/varlet/issues/2039)) ([#2041](https://github.com/varletjs/varlet/issues/2041)) ([d538b80](https://github.com/varletjs/varlet/commit/d538b8056a16ae58e4b58a9ec8026c45e69e600e))
 * **menu-select:** ignore option clicks after disabling ([#2040](https://github.com/varletjs/varlet/issues/2040)) ([4f56984](https://github.com/varletjs/varlet/commit/4f56984dbf90036ebdea4167217ff7659f2e4c9f))
 * **otp-input:** block native paste when disabled ([#2042](https://github.com/varletjs/varlet/issues/2042)) ([69e3f6e](https://github.com/varletjs/varlet/commit/69e3f6e88ad976e4d9ca3221f88f4d72477c63dc))
+* **rate:** allow selecting the same score after a reset ([#2044](https://github.com/varletjs/varlet/issues/2044)) ([f6fef00](https://github.com/varletjs/varlet/commit/f6fef00076f71f67a43b00414f625e6bf209c2d9))
+
+## [3.20.10](https://github.com/varletjs/varlet/compare/v3.20.9...v3.20.10) (2026-11-08)
 
 
 ### Features
@@ -19,6 +22,12 @@
 
 * **auto-complete:** support configurable menu radius ([#2037](https://github.com/varletjs/varlet/issues/2037)) ([b59ec37](https://github.com/varletjs/varlet/commit/b59ec37f9e5d9e73a233bd03077ed8f96048764d))
 * **menu:** support configurable popup radius ([#2036](https://github.com/varletjs/varlet/issues/2036)) ([494bc0d](https://github.com/varletjs/varlet/commit/494bc0d200a62d7890b07a286e94548ee5d6a0fe))
+
+## [3.20.8](https://github.com/varletjs/varlet/compare/v3.20.7...v3.20.8) (2026-10-25)
+
+
+### Features
+
 * **snackbar:** add timeout progress indicator ([#2030](https://github.com/varletjs/varlet/issues/2030)) ([70c8061](https://github.com/varletjs/varlet/commit/70c8061bfc17b375daf2cc29fdd7a26b2ec43d53))
 
 ## [3.20.7](https://github.com/varletjs/varlet/compare/v3.20.6...v3.20.7) (2026-10-14)
