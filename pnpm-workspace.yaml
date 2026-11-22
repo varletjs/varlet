@@ -13,7 +13,7 @@ catalog:
   rimraf: ^5.0.1
   tinyexec: ^0.3.0
   rattail: ^2.1.1
-  vite-plus: 1.1.0
+  vite-plus: 1.3.0
   '@types/node': ^22.18.0
   '@vitest/coverage-istanbul': 5.0.3
   '@vue/runtime-core': 3.5.21
