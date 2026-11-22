@@ -4,6 +4,7 @@ import { describe, expect, test, vi } from 'vite-plus/test'
 import { createApp } from 'vue'
 import DatePicker from '..'
 import { delay, mockConsole, mockScrollIntoView } from '../../utils/test'
+import VarPicker from '../../picker/Picker'
 import VarDatePicker from '../DatePicker'
 
 mockScrollIntoView()
@@ -1045,4 +1046,88 @@ test('datePicker rerender date panel when max or min changes', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+})
+
+describe('test datePicker variant columns', () => {
+  const mountColumns = (props = {}) =>
+    mount(VarDatePicker, {
+      props: {
+        variant: 'columns',
+        modelValue: '2026-10-12',
+        min: '2016-01-01',
+        max: '2036-12-31',
+        ...props,
+      },
+    })
+
+  test('datePicker columns renders year, month and day columns', () => {
+    const wrapper = mountColumns()
+    const picker = wrapper.findComponent(VarPicker)
+
+    expect(picker.exists()).toBeTruthy()
+    expect(picker.props('columns')).toHaveLength(3)
+    expect(picker.props('columns')[0].map((option) => option.value)).toEqual(
+      Array.from({ length: 21 }, (_, index) => `${2016 + index}`),
+    )
+    expect(picker.props('columns')[1]).toHaveLength(12)
+    expect(picker.props('columns')[2]).toHaveLength(31)
+    expect(picker.props('modelValue')).toEqual(['2026', '10', '12'])
+
+    wrapper.unmount()
+  })
+
+  test('datePicker columns renders the columns count by type', () => {
+    expect(mountColumns({ type: 'year', modelValue: '2026' }).findComponent(VarPicker).props('columns')).toHaveLength(1)
+    expect(mountColumns({ type: 'month', modelValue: '2026-10' }).findComponent(VarPicker).props('columns')).toHaveLength(2)
+    expect(mountColumns({ type: 'date' }).findComponent(VarPicker).props('columns')).toHaveLength(3)
+  })
+
+  test('datePicker columns filters the values by min and max', () => {
+    const wrapper = mountColumns({ min: '2026-10-05', max: '2026-10-20' })
+    const columns = wrapper.findComponent(VarPicker).props('columns')
+
+    expect(columns[0].map((option) => option.value)).toEqual(['2026'])
+    expect(columns[1].map((option) => option.value)).toEqual(['10'])
+    expect(columns[2].map((option) => option.value)).toEqual(
+      Array.from({ length: 16 }, (_, index) => `0${index + 5}`.slice(-2)),
+    )
+
+    wrapper.unmount()
+  })
+
+  test('datePicker columns filters the days by allowedDates', () => {
+    const wrapper = mountColumns({ allowedDates: (value) => value !== '2026-10-12' })
+    const days = wrapper.findComponent(VarPicker).props('columns')[2].map((option) => option.value)
+
+    expect(days).not.toContain('12')
+    expect(days).toHaveLength(30)
+
+    wrapper.unmount()
+  })
+
+  test('datePicker columns emits the value on change', async () => {
+    const onUpdateModelValue = vi.fn()
+    const onChange = vi.fn()
+    const wrapper = mountColumns({ 'onUpdate:modelValue': onUpdateModelValue, onChange })
+
+    wrapper.findComponent(VarPicker).vm.$emit('change', ['2026', '11', '05'])
+    await delay(100)
+
+    expect(onUpdateModelValue).toHaveBeenCalledWith('2026-11-05')
+    expect(onChange).toHaveBeenCalledWith('2026-11-05')
+
+    wrapper.unmount()
+  })
+
+  test('datePicker columns syncs the picker value with the modelValue', async () => {
+    const wrapper = mountColumns()
+
+    await wrapper.setProps({
+      modelValue: '2030-03-09',
+    })
+
+    expect(wrapper.findComponent(VarPicker).props('modelValue')).toEqual(['2030', '03', '09'])
+
+    wrapper.unmount()
+  })
 })

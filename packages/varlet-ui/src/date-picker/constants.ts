@@ -6,6 +6,13 @@ export const DatePickerTypes = enumOf({
   Date: 'date',
 })
 
+export const DatePickerVariants = enumOf({
+  Calendar: 'calendar',
+  Columns: 'columns',
+})
+
+export type DatePickerVariants = EnumOf<typeof DatePickerVariants>
+
 export const DatePickerUnits = enumOf({
   Year: DatePickerTypes.Year,
   Month: DatePickerTypes.Month,

@@ -1,9 +1,9 @@
 import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
-import { DatePickerTypes } from './constants'
+import { DatePickerTypes, DatePickerVariants } from './constants'
 import { type AllowedDates } from './types'
 
-export type { DatePickerTypes, Month, Week } from './constants'
+export type { DatePickerTypes, DatePickerVariants, Month, Week } from './constants'
 export type { AllowedDates, DatePickerSelectionState, PanelDatePickerProps, DatePickerPreviewState } from './types'
 
 export const props = {
@@ -11,6 +11,10 @@ export const props = {
   type: {
     type: String as PropType<DatePickerTypes>,
     default: DatePickerTypes.Date,
+  },
+  variant: {
+    type: String as PropType<DatePickerVariants>,
+    default: DatePickerVariants.Calendar,
   },
   hint: String,
   fallbackViewDate: String,

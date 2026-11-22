@@ -79,6 +79,16 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 </template>
 ```
 
+### 多列选择
+
+将 `variant` 设置为 `columns`，使用年 / 月 / 日多列滚动选择。列数与 `type` 对应（`date` 三列、`month` 两列、`year` 单列），`min` / `max` / `allowed-dates` 同样生效，超出范围的值不会出现在选项里。未设置 `min` / `max` 时，默认范围为当前年份前后 10 年。
+
+```html
+<template>
+  <var-date-picker variant="columns" v-model="date" />
+</template>
+```
+
 ### 隐藏标题
 
 通过 `show-title` 属性控制是否显示顶部标题区域。
@@ -158,6 +168,7 @@ const date = ref('2021')
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `v-model`           | 选中值，格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`），`multiple` 或 `range` 时为数组 | _string[] \| string_ | `undefined` |
 | `type`              | 选择器类型，可选值为 `date month year`                      | _string_ | `date` |
+| `variant` ***3.21.0*** | 展示变体，可选值为 `calendar` `columns`。`columns` 为多列滚动选择，不支持 `multiple` 与 `range` | _string_ | `calendar` |
 | `allowed-dates`     | 限制可以选择的值，参数格式随 `type` 变化（`YYYY` / `YYYY-MM` / `YYYY-MM-DD`） | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `-` |
 | `title-color`       | 标题背景色。如果未指定，将使用 `color` 属性或默认颜色。              | _string_ | `-` |
