@@ -1208,6 +1208,42 @@ describe('test data-table component props', () => {
     wrapper.unmount()
   })
 
+  test('should sync every ancestor in a deeply nested tree', async () => {
+    const onUpdateCheckedRowKeys = vi.fn()
+    const deepTree = [
+      {
+        id: 1,
+        name: 'Level 1',
+        nodes: [
+          {
+            id: 2,
+            name: 'Level 2',
+            nodes: [{ id: 3, name: 'Level 3', nodes: [{ id: 4, name: 'Level 4', nodes: [{ id: 5, name: 'Leaf' }] }] }],
+          },
+        ],
+      },
+    ]
+    const wrapper = mount(VarDataTable, {
+      props: {
+        columns: [{ type: 'selection' }, ...columns],
+        data: deepTree,
+        pagination: false,
+        tree: true,
+        childrenKey: 'nodes',
+        expandedTreeRowKeys: [1, 2, 3, 4],
+        checkedRowKeys: [],
+        'onUpdate:checkedRowKeys': onUpdateCheckedRowKeys,
+      },
+    })
+
+    const checkboxes = wrapper.findAllComponents({ name: 'var-checkbox' })
+    checkboxes[5].vm.$emit('update:modelValue', true)
+    await nextTick()
+    expect(onUpdateCheckedRowKeys).toHaveBeenLastCalledWith([5, 4, 3, 2, 1])
+
+    wrapper.unmount()
+  })
+
   test('should support non-cascading tree selection when cascade is false', async () => {
     const onUpdateCheckedRowKeys = vi.fn()
     const wrapper = mount(VarDataTable, {

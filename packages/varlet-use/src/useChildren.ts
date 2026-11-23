@@ -51,16 +51,23 @@ export function useChildren<P, C>(key: symbol | string) {
   const length: ComputedRef<number> = computed(() => childInstances.length)
 
   const sortInstances = () => {
-    const vNodes: any[] = flatVNodes(parentInstance.subTree)
+    const vNodes = flatVNodes(parentInstance.subTree)
+    const vNodeIndices = new Map<VNode, number>()
+
+    vNodes.forEach((vNode, index) => {
+      if (!vNodeIndices.has(vNode)) {
+        vNodeIndices.set(vNode, index)
+      }
+    })
     const pairs = childInstances.map((instance, index) => ({
       instance,
       provider: childProviders[index],
     }))
 
     const getVNodeIndex = (instance: ComponentInternalInstance) => {
-      const index = vNodes.indexOf(instance.vnode)
+      const index = vNodeIndices.get(instance.vnode)
 
-      return index === -1 ? Number.MAX_SAFE_INTEGER : index
+      return index === undefined ? Number.MAX_SAFE_INTEGER : index
     }
 
     pairs.sort((a, b) => getVNodeIndex(a.instance) - getVNodeIndex(b.instance))

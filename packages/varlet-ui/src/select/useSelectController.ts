@@ -1,5 +1,5 @@
 import { isEmpty } from '@varlet/shared'
-import { ref, watch } from 'vue'
+import { ref, toRaw, watch } from 'vue'
 import { type OptionProvider } from '../option/provide'
 
 export interface UseSelectControllerOptions {
@@ -72,9 +72,11 @@ export function useSelectController(options: UseSelectControllerOptions) {
     const options = optionProvidersGetter()
 
     if (multiple) {
+      const selectedValues = new Set(toRaw(modelValue))
+
       options.forEach((option) =>
         option.sync(
-          modelValue.includes(getOptionProviderKey(option)),
+          selectedValues.has(toRaw(getOptionProviderKey(option))),
           optionIsIndeterminate ? optionIsIndeterminate(option) : undefined,
         ),
       )
