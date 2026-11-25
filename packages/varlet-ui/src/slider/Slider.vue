@@ -192,7 +192,7 @@ export default defineComponent({
     })
 
     let activeThumb: Thumbs
-    let dragValue = props.modelValue
+    let dragValue = 0
 
     const sliderProvider: SliderProvider = {
       reset,
@@ -333,10 +333,10 @@ export default defineComponent({
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
-      dragValue = range ? rangeValue.map((value) => toPrecision(value)) : toPrecision(curValue)
+      dragValue = toPrecision(curValue)
 
       if (prevValue !== curValue) {
-        emitChange(dragValue)
+        emitChange(range ? rangeValue.map((value) => toPrecision(value)) : dragValue)
       }
     }
 
@@ -373,7 +373,7 @@ export default defineComponent({
       }
 
       activeThumb = type
-      dragValue = props.modelValue
+      dragValue = isArray(props.modelValue) ? props.modelValue[type === Thumbs.First ? 0 : 1] : props.modelValue
       addDocumentEvents()
 
       if (isDisabled.value || isReadonly.value) {
@@ -410,7 +410,7 @@ export default defineComponent({
     function end() {
       removeDocumentEvents()
 
-      const { onEnd } = props
+      const { range, modelValue, onEnd } = props
 
       if (!isDisabled.value) {
         thumbsProps[activeThumb].active = false
@@ -422,7 +422,14 @@ export default defineComponent({
 
       thumbsProps[activeThumb].currentOffset = thumbsProps[activeThumb].percentValue * unitWidth.value
 
-      call(onEnd, isArray(dragValue) ? dragValue.map(toPrecision) : toPrecision(dragValue))
+      const value =
+        range && isArray(modelValue)
+          ? activeThumb === Thumbs.First
+            ? [dragValue, modelValue[1]]
+            : [modelValue[0], dragValue]
+          : dragValue
+
+      call(onEnd, isArray(value) ? value.map(toPrecision) : toPrecision(value))
       isScroll.value = false
     }
 

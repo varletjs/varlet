@@ -503,6 +503,19 @@ test('slider validation with zod', async () => {
 })
 
 describe('drag release after bounds change', () => {
+  test('preserves an updated inactive thumb at release', async () => {
+    const onEnd = vi.fn()
+    const wrapper = mount(VarSlider, { props: { modelValue: [20, 0], range: true, onEnd } })
+    await delay()
+    await trigger(wrapper.findAll('.var-slider__horizontal-thumb')[1], 'touchstart', 0, 0)
+    await trigger(document, 'touchmove', 170, 0)
+    await wrapper.setProps({ modelValue: [30, 85], max: 60 })
+    await trigger(document, 'touchend', 170, 0)
+
+    expect(onEnd).toHaveBeenLastCalledWith([30, 60])
+    wrapper.unmount()
+  })
+
   test.each([
     { range: false, modelValue: 0, max: 60, min: 0, expected: 60 },
     { range: false, modelValue: 0, max: 100, min: 40, expected: 85 },
