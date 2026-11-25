@@ -501,3 +501,25 @@ test('slider validation with zod', async () => {
   expect(wrapper.find('.var-slider__horizontal--error').exists()).toBeTruthy()
   expect(wrapper.find('.var-form-details__error-message').text()).toBe('slider value must be greater than 10')
 })
+
+describe('drag release after bounds change', () => {
+  test.each([
+    { range: false, modelValue: 0, max: 60, min: 0, expected: 60 },
+    { range: false, modelValue: 0, max: 100, min: 40, expected: 85 },
+    { range: false, modelValue: 0, max: 100, min: 90, expected: 90 },
+    { range: true, modelValue: [20, 0], max: 60, min: 0, expected: [20, 60] },
+    { range: true, modelValue: [20, 0], max: 100, min: 90, expected: [90, 90] },
+  ])('keeps end values within the current bounds', async ({ range, modelValue, max, min, expected }) => {
+    const onEnd = vi.fn()
+    const wrapper = mount(VarSlider, { props: { modelValue, range, onEnd } })
+    await delay()
+    const thumbs = wrapper.findAll('.var-slider__horizontal-thumb')
+    await trigger(thumbs[range ? 1 : 0], 'touchstart', 0, 0)
+    await trigger(document, 'touchmove', 170, 0)
+    await wrapper.setProps({ max, min })
+    await trigger(document, 'touchend', 170, 0)
+
+    expect(onEnd).toHaveBeenLastCalledWith(expected)
+    wrapper.unmount()
+  })
+})
