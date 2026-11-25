@@ -192,6 +192,7 @@ export default defineComponent({
     })
 
     let activeThumb: Thumbs
+    let dragValue = 0
 
     const sliderProvider: SliderProvider = {
       reset,
@@ -332,9 +333,10 @@ export default defineComponent({
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
+      dragValue = toPrecision(curValue)
+
       if (prevValue !== curValue) {
-        const value = range ? rangeValue.map((value) => toPrecision(value)) : toPrecision(curValue)
-        emitChange(value)
+        emitChange(range ? rangeValue.map((value) => toPrecision(value)) : dragValue)
       }
     }
 
@@ -371,6 +373,7 @@ export default defineComponent({
       }
 
       activeThumb = type
+      dragValue = isArray(props.modelValue) ? props.modelValue[type === Thumbs.First ? 0 : 1] : props.modelValue
       addDocumentEvents()
 
       if (isDisabled.value || isReadonly.value) {
@@ -407,7 +410,7 @@ export default defineComponent({
     function end() {
       removeDocumentEvents()
 
-      const { range, modelValue, onEnd, step, min } = props
+      const { range, modelValue, onEnd } = props
 
       if (!isDisabled.value) {
         thumbsProps[activeThumb].active = false
@@ -417,17 +420,16 @@ export default defineComponent({
         return
       }
 
-      let rangeValue: Array<number> = []
-
       thumbsProps[activeThumb].currentOffset = thumbsProps[activeThumb].percentValue * unitWidth.value
 
-      const curValue = thumbsProps[activeThumb].percentValue * toNumber(step) + toNumber(min)
+      const value =
+        range && isArray(modelValue)
+          ? activeThumb === Thumbs.First
+            ? [dragValue, modelValue[1]]
+            : [modelValue[0], dragValue]
+          : dragValue
 
-      if (range && isArray(modelValue)) {
-        rangeValue = activeThumb === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
-      }
-
-      call(onEnd, range ? rangeValue : curValue)
+      call(onEnd, isArray(value) ? value.map(toPrecision) : toPrecision(value))
       isScroll.value = false
     }
 
