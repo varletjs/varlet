@@ -473,6 +473,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Tour 漫游引导',
+          'en-US': 'Tour',
+        },
+        doc: 'tour',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'TreeMenu 树形菜单',
           'en-US': 'TreeMenu',
         },

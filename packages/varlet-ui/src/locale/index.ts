@@ -9,6 +9,12 @@ import zhHK from './zh-HK'
 import zhTW from './zh-TW'
 
 export type Message = {
+  // Tour
+  tourTitle?: string
+  tourPrevButtonText?: string
+  tourNextButtonText?: string
+  tourFinishButtonText?: string
+  tourCloseButtonText?: string
   // Dialog
   dialogTitle: string
   dialogConfirmButtonText: string

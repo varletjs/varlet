@@ -1,6 +1,12 @@
 import { Message } from './index'
 
 export default {
+  // Tour
+  tourTitle: '漫游引导',
+  tourPrevButtonText: '上一步',
+  tourNextButtonText: '下一步',
+  tourFinishButtonText: '完成',
+  tourCloseButtonText: '跳过',
   // Dialog
   dialogTitle: '提示',
   dialogConfirmButtonText: '确认',

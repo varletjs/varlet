@@ -1,6 +1,12 @@
 import { Message } from './index'
 
 export default {
+  // Tour
+  tourTitle: '使い方ガイド',
+  tourPrevButtonText: '前へ',
+  tourNextButtonText: '次へ',
+  tourFinishButtonText: '完了',
+  tourCloseButtonText: 'スキップ',
   // Dialog
   dialogTitle: '確認',
   dialogConfirmButtonText: '確認',
