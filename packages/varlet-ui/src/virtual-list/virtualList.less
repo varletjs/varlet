@@ -1,0 +1,38 @@
+.var-virtual-list {
+  width: 100%;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &--scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+  }
+
+  &__spacer {
+    position: relative;
+    width: 100%;
+    overflow-anchor: none;
+  }
+
+  &__items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &--dynamic &__item {
+    display: flow-root;
+    overflow: visible;
+  }
+}

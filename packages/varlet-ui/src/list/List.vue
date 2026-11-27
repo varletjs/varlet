@@ -31,10 +31,10 @@ import VarLoading from '../loading'
 import { t } from '../locale'
 import { injectLocaleProvider } from '../locale-provider/provide'
 import Ripple from '../ripple'
+import { useTabItem } from '../tab-item/provide'
 import { createNamespace } from '../utils/components'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
-import { useTabItem } from './provide'
 
 const { name, n, classes } = createNamespace('list')
 

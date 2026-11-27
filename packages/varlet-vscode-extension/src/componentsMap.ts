@@ -266,6 +266,10 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   table: {
     path: '/table',
   },
+  'virtual-list': {
+    path: '/virtual-list',
+    attrs: [':items=""', ':item-size="50"', 'item-key="id"'],
+  },
   pagination: {
     path: '/pagination',
     closeSelf: true,

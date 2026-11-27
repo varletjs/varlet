@@ -13,6 +13,16 @@ export interface TabItemProvider {
 
 export const TAB_ITEM_BIND_LIST_KEY = Symbol('TAB_ITEM_BIND_LIST_KEY')
 
+export function useTabItem() {
+  const { parentProvider, bindParent, index } = useParent<TabItemProvider, ListProvider>(TAB_ITEM_BIND_LIST_KEY)
+
+  return {
+    index,
+    tabItem: parentProvider,
+    bindTabItem: bindParent,
+  }
+}
+
 export function useTabsItems() {
   const { parentProvider, bindParent, index } = useParent<TabsItemsProvider, TabItemProvider>(
     TABS_ITEMS_BIND_TAB_ITEM_KEY,
